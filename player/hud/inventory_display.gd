@@ -1,10 +1,13 @@
 class_name InventoryDisplay extends Control
 
+signal inventory_toggled(shown: bool)
+
 const _TILE_SCENE := preload("uid://chbbyih2rlm8q")
 const _ITEM_SCENE := preload("uid://cdd6epqw6450l")
 
 var _inventory := Inventory.new()
 var _grid_tiles: Dictionary[Vector2i, Control] = {}
+var _active := false
 
 @onready var _grid: GridContainer = %GridContainer
 @onready var _items: Control = %ItemBucket
@@ -16,9 +19,16 @@ func _ready() -> void:
 			var tile: Control = _TILE_SCENE.instantiate()
 			_grid_tiles[Vector2i(x, y)] = tile
 			_grid.add_child(tile)
+	modulate.a = 0.0
 	await get_tree().process_frame
 	_draw_items()
 	_inventory.item_added.connect(_draw_item)
+
+func _input(event: InputEvent) -> void:
+	if GASInput.is_event_action_just_pressed(event, &"toggle_inventory"):
+		_active = !_active
+		modulate.a = 1.0 if _active else 0.0
+		inventory_toggled.emit(_active)
 
 func _draw_items() -> void:
 	for i in _items.get_children():

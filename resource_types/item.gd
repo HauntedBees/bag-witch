@@ -3,6 +3,9 @@ class_name Item extends Resource
 ## The item's name.
 @export var name: String
 
+## You don't need me to explain what this is.
+@export var description: String
+
 ## How much inventory space this item takes up.
 @export var size: Vector2i
 

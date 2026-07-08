@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_tj7ko")
 name = "Broom"
+description = "You can ride on it or whack things with it."
 size = Vector2i(4, 1)
 persistent = true
 icon = Rect2i(0, 0, 4, 1)
