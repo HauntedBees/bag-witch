@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://de32v0r5edf6f"]
+
+[ext_resource type="Script" uid="uid://djh86ws1x81ow" path="res://player/hud/inventory_display.gd" id="1_hnfcf"]
+
+[node name="InventoryDisplay" type="Control" unique_id=53194332]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_hnfcf")
+
+[node name="GridContainer" type="GridContainer" parent="." unique_id=773468309]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 8
+
+[node name="ItemBucket" type="Control" parent="." unique_id=1897343714]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

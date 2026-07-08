@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://b0fbr48rbvn27" path="res://addons/JehenoAdvancedFirstPersonController/PlayerCharacter/Camera/camera_script.gd" id="13_lnq35"]
 [ext_resource type="PackedScene" uid="uid://de48m7vvbdt75" path="res://assets/models/arms.glb" id="14_0lqnk"]
 [ext_resource type="Material" uid="uid://ch2vf3lw1206n" path="res://assets/materials/hands.tres" id="15_6di07"]
+[ext_resource type="PackedScene" uid="uid://de32v0r5edf6f" path="res://player/hud/inventory_display.tscn" id="16_200os"]
 
 [sub_resource type="Curve" id="Curve_s7fsc"]
 _limits = [0.0, 60.0, 0.0, 60.0]
@@ -181,6 +182,23 @@ unique_name_in_owner = true
 exclude_parent = false
 target_position = Vector3(0, -3, 0)
 debug_shape_custom_color = Color(0, 0.823529, 0.956863, 1)
+
+[node name="HUDLayer" type="CanvasLayer" parent="." unique_id=1289413728]
+follow_viewport_enabled = true
+
+[node name="HUD" type="Control" parent="HUDLayer" unique_id=530175044]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="InventoryDisplay" parent="HUDLayer/HUD" unique_id=53194332 instance=ExtResource("16_200os")]
+layout_mode = 1
 
 [connection signal="change_fov" from="StateMachine" to="CameraHolder" method="change_fov"]
 

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://dpgrb2fqcl3qn"]
+
+[ext_resource type="Script" uid="uid://cgt7ckkn1gh5b" path="res://resource_types/item.gd" id="1_tj7ko"]
+
+[resource]
+script = ExtResource("1_tj7ko")
+name = "Broom"
+size = Vector2i(4, 1)
+persistent = true
+icon = Rect2i(0, 0, 4, 1)
+metadata/_custom_type_script = "uid://cgt7ckkn1gh5b"

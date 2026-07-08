@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cdd6epqw6450l"]
+
+[ext_resource type="Texture2D" uid="uid://b3am6tfjmdqyo" path="res://assets/sprites/item_sheet.png" id="1_pimev"]
+[ext_resource type="Script" uid="uid://c8og2ryhcxmto" path="res://player/hud/inventory_item_display.gd" id="2_b7tql"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhbnc"]
+resource_local_to_scene = true
+atlas = ExtResource("1_pimev")
+region = Rect2(0, 0, 64, 64)
+filter_clip = true
+
+[node name="InventoryItemDisplay" type="TextureRect" unique_id=824651648]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("AtlasTexture_rhbnc")
+script = ExtResource("2_b7tql")
