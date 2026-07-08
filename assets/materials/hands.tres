@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://ch2vf3lw1206n"]
+
+[ext_resource type="Texture2D" uid="uid://prokvgf05pu3" path="res://assets/models/arms_arm_albedo_pale.png" id="1_uonvc"]
+
+[resource]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("1_uonvc")
+disable_receive_shadows = true
+use_z_clip_scale = true
+z_clip_scale = 0.5
+use_fov_override = true
