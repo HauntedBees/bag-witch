@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bm25pyymw8l2l"]
+
+[ext_resource type="PackedScene" uid="uid://4i1yaejh33ss" path="res://assets/models/broom.glb" id="1_q838r"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eeolf"]
+shading_mode = 0
+albedo_color = Color(1, 0.54901963, 1, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_rhbnc"]
+material = SubResource("StandardMaterial3D_eeolf")
+size = Vector2(5, 5)
+
+[node name="Node3D" type="Node3D" unique_id=1875861316]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1142949169]
+mesh = SubResource("QuadMesh_rhbnc")
+
+[node name="ThingContainer" type="Node3D" parent="." unique_id=2123754959]
+
+[node name="broom" parent="ThingContainer" unique_id=93656533 instance=ExtResource("1_q838r")]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=465674123]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.9159544)

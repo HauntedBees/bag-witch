@@ -1,10 +1,10 @@
-[gd_scene format=3 uid="uid://dmrpilfruwqyx"]
+[gd_scene format=3 uid="uid://d4mc3iacd475w"]
 
-[ext_resource type="PackedScene" uid="uid://de48m7vvbdt75" path="res://assets/models/arms.glb" id="1_2gpuf"]
+[ext_resource type="PackedScene" uid="uid://de48m7vvbdt75" path="res://assets/models/arms.glb" id="1_oul6g"]
 
 [node name="Player" type="Node3D" unique_id=1833694512]
 
-[node name="arms2" parent="." unique_id=1522515799 instance=ExtResource("1_2gpuf")]
+[node name="arms2" parent="." unique_id=1522515799 instance=ExtResource("1_oul6g")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.120900154)
 
