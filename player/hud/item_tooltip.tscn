@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://bdcwnvc7nfxv3"]
+
+[ext_resource type="Script" uid="uid://bcjlliulmtajp" path="res://player/hud/item_tooltip.gd" id="1_o28ls"]
+
+[node name="ItemTooltip" type="PanelContainer" unique_id=388522004]
+top_level = true
+z_index = 4096
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 195.0
+offset_bottom = 58.0
+mouse_filter = 2
+script = ExtResource("1_o28ls")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=978229327]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1712662938]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer" unique_id=629503335]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Placeholder"
+
+[node name="Description" type="RichTextLabel" parent="MarginContainer/VBoxContainer" unique_id=794565206]
+unique_name_in_owner = true
+custom_maximum_size = Vector2(320, -1)
+layout_mode = 2
+bbcode_enabled = true
+text = "Placeholder placeholder"
+fit_content = true
