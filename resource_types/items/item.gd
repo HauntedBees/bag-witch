@@ -7,7 +7,7 @@ class_name Item extends Resource
 @export var description: String
 
 ## How much inventory space this item takes up.
-@export var size: Vector2i
+@export var size := Vector2i.ONE
 
 ## If the item persists between warps.
 @export var persistent := false

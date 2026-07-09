@@ -1,8 +1,10 @@
-class_name ItemTooltip extends PanelContainer
+class_name ItemTooltip extends MarginContainer
 
 var item: Item:
 	set(value):
 		item = value
+		if !is_inside_tree():
+			await ready
 		_update_item()
 
 @onready var _title: Label = %Title

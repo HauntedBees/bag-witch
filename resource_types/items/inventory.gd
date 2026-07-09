@@ -11,6 +11,7 @@ signal item_added(i: InventoryDetail)
 func _init() -> void:
 	var broom := load("uid://dpgrb2fqcl3qn")
 	add_item(broom, Vector2i(2, 1), false)
+	add_item(broom, Vector2i(0, 0), false)
 
 func add_item(i: Item, pos: Vector2i, trigger_signal := true) -> void:
 	var new_item := InventoryDetail.new(i, pos)
@@ -18,12 +19,3 @@ func add_item(i: Item, pos: Vector2i, trigger_signal := true) -> void:
 	_items_list.append(i)
 	if trigger_signal:
 		item_added.emit(new_item)
-
-class InventoryDetail extends Resource:
-	var item: Item
-	var position: Vector2i
-	var rotation: int
-	func _init(i: Item, p: Vector2i) -> void:
-		item = i
-		position = p
-		rotation = 0

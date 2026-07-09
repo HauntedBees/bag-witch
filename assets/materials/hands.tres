@@ -6,6 +6,7 @@
 diffuse_mode = 3
 specular_mode = 1
 albedo_texture = ExtResource("1_uonvc")
+texture_filter = 0
 disable_receive_shadows = true
 use_z_clip_scale = true
 z_clip_scale = 0.5

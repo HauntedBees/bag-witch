@@ -12,5 +12,6 @@ filter_clip = true
 [node name="InventoryItemDisplay" type="TextureRect" unique_id=824651648]
 offset_right = 40.0
 offset_bottom = 40.0
+pivot_offset = Vector2(64, 32)
 texture = SubResource("AtlasTexture_rhbnc")
 script = ExtResource("2_b7tql")
