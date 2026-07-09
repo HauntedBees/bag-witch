@@ -3,6 +3,7 @@ class_name EnemyBehavior extends Node
 @export var priority := 0
 
 var active := true
+var wants_control := false
 
 var _parent: EnemyDisplay
 
@@ -20,18 +21,25 @@ func _physics_process(delta: float) -> void:
 func _behave(_delta: float) -> void:
 	pass
 
-func _try_take_control() -> bool:
-	var children := _parent.get_children()
-	for c in children:
-		if c is EnemyBehavior:
-			if c.priority > priority:
-				return false
-	for c in children:
-		if c is EnemyBehavior:
-			c.active = false
-	return true
-
-func _relinquish_control() -> void:
+func take_control() -> void:
+	wants_control = true
 	for c in _parent.get_children():
 		if c is EnemyBehavior:
+			if c.priority < priority:
+				c.active = false
+
+func _relinquish_control() -> void:
+	var next_active_behavior: EnemyBehavior = null
+	for c in _parent.get_children():
+		if c is EnemyBehavior:
+			if c == self:
+				continue
 			c.active = true
+			if c.wants_control:
+				if next_active_behavior == null:
+					next_active_behavior = c
+				elif c.priority > next_active_behavior.priority:
+					next_active_behavior = c
+	wants_control = false
+	if next_active_behavior != null:
+		next_active_behavior.take_control()

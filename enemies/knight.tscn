@@ -1,23 +1,65 @@
 [gd_scene format=3 uid="uid://djtpn6s6cdlln"]
 
 [ext_resource type="Script" uid="uid://cjlidc7juluwi" path="res://enemies/enemy.gd" id="1_fgu83"]
-[ext_resource type="PackedScene" uid="uid://cen6t4vxoxv6u" path="res://assets/models/knight.blend" id="1_kmvdg"]
+[ext_resource type="PackedScene" uid="uid://ci7mbtq4xt4qi" path="res://assets/models/knight.tscn" id="2_gwjxy"]
+[ext_resource type="AnimationLibrary" uid="uid://xlv4s4pm7msn" path="res://assets/animations/Rig_Medium_CombatMelee.glb" id="3_nbc5u"]
 [ext_resource type="Script" uid="uid://c7obdbhjgnuay" path="res://enemies/behaviors/enemy_chase_player.gd" id="3_oimey"]
 [ext_resource type="Script" uid="uid://cmgcelj1qxg8o" path="res://addons/tattomoosa.vision_cone_3d/src/VisionCone3D.gd" id="4_7hoow"]
+[ext_resource type="AnimationLibrary" uid="uid://ce56a4127anc5" path="res://assets/animations/Rig_Medium_General.glb" id="4_v7oti"]
 [ext_resource type="Script" uid="uid://b2ldfj5ngv3ch" path="res://enemies/enemy_melee_player.gd" id="5_e6v1h"]
+[ext_resource type="AnimationLibrary" uid="uid://ntjgewrphs02" path="res://assets/animations/Rig_Medium_MovementBasic.glb" id="5_kgpmu"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rhbnc"]
 radius = 0.75
 height = 2.6044922
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_rhbnc"]
-radius = 4.0
+radius = 3.0
 
-[node name="Knight" type="CharacterBody3D" unique_id=222303382]
+[node name="Knight" type="CharacterBody3D" unique_id=222303382 node_paths=PackedStringArray("animation_player")]
 script = ExtResource("1_fgu83")
+animation_player = NodePath("knight/AnimationPlayer")
 
-[node name="knight" parent="." unique_id=1607028048 instance=ExtResource("1_kmvdg")]
+[node name="knight" parent="." unique_id=1607028048 instance=ExtResource("2_gwjxy")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="Skeleton3D" parent="knight/Rig_Medium" parent_id_path=PackedInt32Array(1607028048, 1645285198) index="0" unique_id=938991813]
+bones/1/position = Vector3(0, 0.39206383, 0)
+bones/1/rotation = Quaternion(-1.11122625e-10, 0.043157753, 2.5724098e-09, 0.9990683)
+bones/2/rotation = Quaternion(-6.938893e-18, 7.1054274e-15, 4.93038e-32, 1)
+bones/3/rotation = Quaternion(8.271806e-25, 3.7252903e-09, -2.75506e-40, 1)
+bones/4/position = Vector3(0.21200736, 0.13413203, 7.9299625e-08)
+bones/4/rotation = Quaternion(-0.55990624, -0.060880326, -0.6439744, 0.51777935)
+bones/5/rotation = Quaternion(3.765066e-08, -5.13848e-08, -0.4947193, 0.8690529)
+bones/6/rotation = Quaternion(1.514567e-08, -7.3584387e-09, 0.0266581, 0.99964464)
+bones/6/scale = Vector3(1.0000001, 1, 1)
+bones/7/rotation = Quaternion(-0.32106528, -0.32531866, 0.1457259, 0.8774103)
+bones/8/position = Vector3(-6.936717e-09, 0.096125185, -0.057500005)
+bones/8/rotation = Quaternion(6.9489685e-09, -3.5877434e-09, -0.7071068, 0.7071067)
+bones/9/position = Vector3(-0.21200737, 0.13413203, 8.6813984e-08)
+bones/9/rotation = Quaternion(-0.61824393, 0.08072861, 0.6180116, 0.47887278)
+bones/10/rotation = Quaternion(2.1687788e-08, 6.223696e-08, 0.51793927, 0.85541743)
+bones/11/rotation = Quaternion(2.249753e-10, 6.824684e-09, -0.026658092, 0.99964464)
+bones/11/scale = Vector3(0.99999994, 0.99999994, 1)
+bones/12/rotation = Quaternion(-0.31929126, 0.30052418, -0.22734971, 0.8695116)
+bones/13/position = Vector3(-1.541501e-08, 0.096125126, -0.057499975)
+bones/13/rotation = Quaternion(-9.53579e-10, -4.3147743e-09, 0.7071068, 0.7071067)
+bones/14/rotation = Quaternion(-5.8060785e-11, -0.031341746, -1.880125e-09, 0.99950874)
+bones/15/position = Vector3(0.17094508, 0.1135872, 1.5994095e-08)
+bones/15/rotation = Quaternion(0.99250895, 0.073577166, -0.09013845, -0.037250433)
+bones/16/rotation = Quaternion(0.16501392, 8.071146e-08, -1.09722144e-07, 0.9862912)
+bones/17/rotation = Quaternion(-0.53554744, -0.124929845, 0.053840294, 0.83347625)
+bones/18/rotation = Quaternion(-5.3818203e-06, 0.920253, -0.391324, 1.3281511e-06)
+bones/19/position = Vector3(-0.17094508, 0.11358732, 1.557549e-08)
+bones/19/rotation = Quaternion(0.99732214, -0.02945736, 0.03152927, 0.059048314)
+bones/20/rotation = Quaternion(0.27400813, -6.3812955e-08, 1.9276068e-07, 0.96172744)
+bones/21/rotation = Quaternion(-0.5590394, 0.11451277, -0.0086276345, 0.82115006)
+bones/22/rotation = Quaternion(-8.9348905e-05, 0.92022175, -0.3913977, 2.0290994e-05)
+
+[node name="AnimationPlayer" parent="knight" index="1" unique_id=1107206194]
+libraries/Rig_Medium_CombatMelee = ExtResource("3_nbc5u")
+libraries/Rig_Medium_General = ExtResource("4_v7oti")
+libraries/Rig_Medium_MovementBasic = ExtResource("5_kgpmu")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1136467649]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1882875, 0)
@@ -50,3 +92,5 @@ vision = NodePath("../VisionCone3D")
 script = ExtResource("5_e6v1h")
 close_enough_radius = NodePath("../CloseEnough")
 priority = 1
+
+[editable path="knight"]
