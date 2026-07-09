@@ -31,7 +31,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/gas/plugin.cfg", "res://addons/safe_resource_picker/plugin.cfg")
+enabled=PackedStringArray("res://addons/gas/plugin.cfg", "res://addons/safe_resource_picker/plugin.cfg", "res://addons/tattomoosa.vision_cone_3d/plugin.cfg")
 
 [file_customization]
 
