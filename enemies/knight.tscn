@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://djtpn6s6cdlln"]
+
+[ext_resource type="Script" uid="uid://cjlidc7juluwi" path="res://enemies/enemy.gd" id="1_fgu83"]
+[ext_resource type="PackedScene" uid="uid://cen6t4vxoxv6u" path="res://assets/models/knight.blend" id="1_kmvdg"]
+[ext_resource type="Script" uid="uid://c7obdbhjgnuay" path="res://enemies/behaviors/enemy_chase_player.gd" id="3_oimey"]
+[ext_resource type="Script" uid="uid://cmgcelj1qxg8o" path="res://addons/tattomoosa.vision_cone_3d/src/VisionCone3D.gd" id="4_7hoow"]
+[ext_resource type="Script" uid="uid://b2ldfj5ngv3ch" path="res://enemies/enemy_melee_player.gd" id="5_e6v1h"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rhbnc"]
+radius = 0.75
+height = 2.6044922
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_rhbnc"]
+radius = 4.0
+
+[node name="Knight" type="CharacterBody3D" unique_id=222303382]
+script = ExtResource("1_fgu83")
+
+[node name="knight" parent="." unique_id=1607028048 instance=ExtResource("1_kmvdg")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1136467649]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1882875, 0)
+shape = SubResource("CapsuleShape3D_rhbnc")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1284204168]
+
+[node name="VisionCone3D" type="Area3D" parent="." unique_id=762140472]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5323029, 0)
+collision_mask = 2
+script = ExtResource("4_7hoow")
+range = 15.0
+angle = 70.0
+debug_draw = true
+collision_mask_ = 2
+metadata/_custom_type_script = "uid://cmgcelj1qxg8o"
+
+[node name="CloseEnough" type="Area3D" parent="." unique_id=1728047459]
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CloseEnough" unique_id=1144917725]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2713928, 0)
+shape = SubResource("SphereShape3D_rhbnc")
+
+[node name="EnemyChasePlayer" type="Node" parent="." unique_id=612944538 node_paths=PackedStringArray("vision")]
+script = ExtResource("3_oimey")
+vision = NodePath("../VisionCone3D")
+
+[node name="EnemyMeleePlayer" type="Node" parent="." unique_id=1780040447 node_paths=PackedStringArray("close_enough_radius")]
+script = ExtResource("5_e6v1h")
+close_enough_radius = NodePath("../CloseEnough")
+priority = 1
