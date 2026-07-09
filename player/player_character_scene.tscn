@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bub2sh1fg5ddq"]
 
-[ext_resource type="Script" uid="uid://d3s8yxuvpmekm" path="res://addons/JehenoAdvancedFirstPersonController/PlayerCharacter/StateMachine/player_character_script.gd" id="1_ffm6a"]
+[ext_resource type="Script" uid="uid://ccbywyn2nty7a" path="res://player/player_script.gd" id="1_200os"]
 [ext_resource type="Script" uid="uid://sca7ypsol83f" path="res://addons/JehenoAdvancedFirstPersonController/PlayerCharacter/StateMachine/state_machine_script.gd" id="2_6t7aj"]
 [ext_resource type="Script" uid="uid://stil4xkf3tk0" path="res://addons/JehenoAdvancedFirstPersonController/PlayerCharacter/StateMachine/idle_state_script.gd" id="3_q18mn"]
 [ext_resource type="Script" uid="uid://bhoqhv7escpyx" path="res://addons/JehenoAdvancedFirstPersonController/PlayerCharacter/StateMachine/crouch_state_script.gd" id="4_iex72"]
@@ -40,7 +40,7 @@ floor_block_on_wall = false
 floor_max_angle = 1.13446
 floor_snap_length = 0.0
 platform_floor_layers = 4278190081
-script = ExtResource("1_ffm6a")
+script = ExtResource("1_200os")
 desired_move_speed_curve = SubResource("Curve_s7fsc")
 max_desired_move_speed = 60.0
 in_air_move_speed_curve = SubResource("Curve_gfbru")
