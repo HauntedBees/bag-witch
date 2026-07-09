@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ProjectileWeapon" format=3 uid="uid://dn56uhy46vn32"]
+
+[ext_resource type="Script" uid="uid://dq216hufmeoo3" path="res://resource_types/weapons/projectile_weapon.gd" id="1_kb34c"]
+
+[resource]
+script = ExtResource("1_kb34c")
+scene_path = "uid://c27lg3w5occ5n"
+name = "Icicle"
+cooldown = 0.2
+metadata/_custom_type_script = "uid://dq216hufmeoo3"

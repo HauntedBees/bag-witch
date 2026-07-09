@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://de48m7vvbdt75" path="res://assets/models/arms.glb" id="14_0lqnk"]
 [ext_resource type="Material" uid="uid://ch2vf3lw1206n" path="res://assets/materials/hands.tres" id="15_6di07"]
 [ext_resource type="PackedScene" uid="uid://de32v0r5edf6f" path="res://player/hud/inventory_display.tscn" id="16_200os"]
+[ext_resource type="Texture2D" uid="uid://dv747ov6fcrsg" path="res://addons/JehenoAdvancedFirstPersonController/PlayerCharacter/HUD/crosshair.png" id="17_g2747"]
 
 [sub_resource type="Curve" id="Curve_s7fsc"]
 _limits = [0.0, 60.0, 0.0, 60.0]
@@ -26,6 +27,9 @@ point_count = 2
 _limits = [3.0, 30.0, 0.0, 30.0]
 _data = [Vector2(0, 3), 0.0, 0.0, 0, 0, Vector2(30, 30), 0.0, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="BoxMesh" id="BoxMesh_rhbnc"]
+size = Vector3(0.25, 0.25, 0.25)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5yjma"]
 
@@ -108,15 +112,6 @@ transform = Transform3D(1, 0, -1.0658141e-14, 0, 1, 0, 1.0658141e-14, 0, 1, 0.40
 
 [node name="Skeleton3D" parent="CameraHolder/arms2/arms" parent_id_path=PackedInt32Array(1522515799, 1889520810) index="0" unique_id=672150936]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.2049432)
-bones/3/rotation = Quaternion(0.7289851, 0.105450734, 0.3213293, 0.5951541)
-bones/3/scale = Vector3(0.9999999, 1, 1)
-bones/28/rotation = Quaternion(0.812741, -0.25012013, -0.17344758, 0.49679768)
-bones/28/scale = Vector3(0.99999976, 0.9999999, 0.99999994)
-bones/29/rotation = Quaternion(0.039239217, -0.13210201, -0.22273423, 0.9650901)
-bones/29/scale = Vector3(1, 1.0000001, 1.0000002)
-bones/47/position = Vector3(0.21445052, 1.2945037, 0.017233815)
-bones/47/rotation = Quaternion(-1.03889164e-07, 0.005795716, -4.7827463e-08, 0.9999832)
-bones/47/scale = Vector3(1, 1.0000001, 0.99999994)
 
 [node name="arms_mesh" parent="CameraHolder/arms2/arms/Skeleton3D" index="0" unique_id=796828364]
 surface_material_override/0 = ExtResource("15_6di07")
@@ -146,6 +141,13 @@ exclude_parent = false
 target_position = Vector3(-1, 0, 0)
 collision_mask = 4
 debug_shape_custom_color = Color(0.91764706, 0.79607844, 0.18039216, 1)
+
+[node name="ProjectileSpot" type="Node3D" parent="CameraHolder" unique_id=1165267181]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2658556, -1.070638, -1.6036669)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CameraHolder/ProjectileSpot" unique_id=1010615469]
+mesh = SubResource("BoxMesh_rhbnc")
 
 [node name="Hitbox" type="CollisionShape3D" parent="." unique_id=795912197]
 shape = SubResource("CapsuleShape3D_5yjma")
@@ -199,6 +201,18 @@ mouse_filter = 2
 
 [node name="InventoryDisplay" parent="HUDLayer/HUD" unique_id=53194332 instance=ExtResource("16_200os")]
 layout_mode = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="HUDLayer/HUD" unique_id=1562813601]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="HUDLayer/HUD/CenterContainer" unique_id=1412273142]
+layout_mode = 2
+texture = ExtResource("17_g2747")
 
 [connection signal="change_fov" from="StateMachine" to="CameraHolder" method="change_fov"]
 [connection signal="inventory_toggled" from="HUDLayer/HUD/InventoryDisplay" to="CameraHolder" method="_on_inventory_toggled"]

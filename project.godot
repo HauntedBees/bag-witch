@@ -17,10 +17,10 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+Player="*uid://dvk07rtkr1o1w"
 GASConfig="*uid://hji8rr7jjdq1"
 GASInput="*uid://dxcu5tow6vkyq"
 GASText="*uid://b8471x5s6b0g"
-Player="*uid://dvk07rtkr1o1w"
 
 [display]
 

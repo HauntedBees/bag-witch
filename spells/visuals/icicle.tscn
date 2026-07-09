@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://c27lg3w5occ5n"]
+
+[ext_resource type="Script" uid="uid://b5g7n1ix1u6f5" path="res://resource_types/weapons/projectile.gd" id="1_435l2"]
+[ext_resource type="PackedScene" uid="uid://dynxry648x77a" path="res://assets/models/icicle.blend" id="1_q2xyx"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_rhbnc"]
+radius = 0.2
+
+[node name="Icicle" type="Node3D" unique_id=1263134127]
+script = ExtResource("1_435l2")
+
+[node name="icicle" parent="." unique_id=997537143 instance=ExtResource("1_q2xyx")]
+
+[node name="Area3D" type="Area3D" parent="." unique_id=268404323]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1931484683]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_rhbnc")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
