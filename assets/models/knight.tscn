@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://ci7mbtq4xt4qi"]
+
+[ext_resource type="PackedScene" uid="uid://cen6t4vxoxv6u" path="res://assets/models/knight.blend" id="1_ff3rj"]
+
+[node name="knight" unique_id=1607028048 instance=ExtResource("1_ff3rj")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1" unique_id=1107206194]

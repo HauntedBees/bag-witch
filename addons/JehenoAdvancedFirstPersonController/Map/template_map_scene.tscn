@@ -412,4 +412,4 @@ material = ExtResource("4_ivwfa")
 [node name="Enemies" type="Node3D" parent="." unique_id=1864672806]
 
 [node name="Knight" parent="Enemies" unique_id=222303382 instance=ExtResource("9_s1bnp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.48789454, -21)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46827865, -21)
