@@ -17,6 +17,7 @@
 [ext_resource type="Material" uid="uid://ch2vf3lw1206n" path="res://assets/materials/hands.tres" id="15_6di07"]
 [ext_resource type="PackedScene" uid="uid://de32v0r5edf6f" path="res://player/hud/inventory_display.tscn" id="16_200os"]
 [ext_resource type="Texture2D" uid="uid://dv747ov6fcrsg" path="res://addons/JehenoAdvancedFirstPersonController/PlayerCharacter/HUD/crosshair.png" id="17_g2747"]
+[ext_resource type="PackedScene" uid="uid://d18gii6kb6w0k" path="res://player/hud/health_bar.tscn" id="18_j6aac"]
 
 [sub_resource type="Curve" id="Curve_s7fsc"]
 _limits = [0.0, 60.0, 0.0, 60.0]
@@ -215,6 +216,23 @@ grow_vertical = 2
 [node name="TextureRect" type="TextureRect" parent="HUDLayer/HUD/CenterContainer" unique_id=1412273142]
 layout_mode = 2
 texture = ExtResource("17_g2747")
+
+[node name="MarginContainer" type="MarginContainer" parent="HUDLayer/HUD" unique_id=2099340369]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="HealthBar" parent="HUDLayer/HUD/MarginContainer" unique_id=178334899 instance=ExtResource("18_j6aac")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
 
 [connection signal="change_fov" from="StateMachine" to="CameraHolder" method="change_fov"]
 [connection signal="inventory_toggled" from="HUDLayer/HUD/InventoryDisplay" to="CameraHolder" method="_on_inventory_toggled"]
