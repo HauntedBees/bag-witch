@@ -8,4 +8,5 @@ spells = Array[int]([1])
 name = "Book of Ice"
 size = Vector2i(1, 2)
 icon = Rect2i(0, 1, 1, 2)
+scene_path = "uid://baaev0tc1par5"
 metadata/_custom_type_script = "uid://cbas7jc82h2rj"

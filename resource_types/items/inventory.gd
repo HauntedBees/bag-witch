@@ -13,6 +13,10 @@ func _init() -> void:
 	add_item(broom, Vector2i(2, 1), false)
 	add_item(broom, Vector2i(0, 0), false)
 
+func remove_item(i: InventoryDetail) -> void:
+	items.erase(i)
+	_items_list.erase(i.item) # TODO: this might not play nice with things like ammo?
+
 func add_item(i: Item, pos: Vector2i, trigger_signal := true) -> void:
 	add_item_detail(InventoryDetail.new(i, pos), trigger_signal)
 

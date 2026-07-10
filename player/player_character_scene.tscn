@@ -170,7 +170,6 @@ material_override = SubResource("StandardMaterial3D_6bkys")
 mesh = SubResource("CapsuleMesh_p2iaj")
 
 [node name="Raycasts" type="Node3D" parent="." unique_id=2075336265]
-visible = false
 
 [node name="CeilingCheck" type="RayCast3D" parent="Raycasts" unique_id=2010550089]
 unique_name_in_owner = true
@@ -255,16 +254,10 @@ offset_bottom = 213.0
 
 [node name="InventoryDisplay" parent="HUDLayer/HUD" unique_id=53194332 instance=ExtResource("16_200os")]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.0
-offset_left = -197.0
-offset_right = 197.0
-grow_vertical = 1
 
 [connection signal="change_fov" from="StateMachine" to="CameraHolder" method="change_fov"]
 [connection signal="inventory_toggled" from="HUDLayer/HUD/InventoryDisplay" to="." method="_on_inventory_toggled"]
 [connection signal="inventory_toggled" from="HUDLayer/HUD/InventoryDisplay" to="CameraHolder" method="_on_inventory_toggled"]
+[connection signal="spawn_item" from="HUDLayer/HUD/InventoryDisplay" to="." method="_on_inventory_display_spawn_item"]
 
 [editable path="CameraHolder/arms2"]
