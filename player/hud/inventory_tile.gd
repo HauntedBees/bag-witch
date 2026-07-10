@@ -5,14 +5,19 @@ signal item_dropped(i: ItemDragDetails, p: Vector2i)
 
 var grid_pos: Vector2i
 
-@onready var _color_rect: ColorRect = %ColorRect
-@onready var _base_color := _color_rect.color
+@onready var _frame_base: TextureRect = %FrameBase
+@onready var _frame_ok: TextureRect = %FrameOK
+@onready var _frame_bad: TextureRect = %FrameBad
 
 func set_highlight(allowed: bool) -> void:
-	_color_rect.color = Color.GREEN_YELLOW if allowed else Color.INDIAN_RED
+	_frame_base.visible = false
+	_frame_ok.visible = allowed
+	_frame_bad.visible = !allowed
 
 func remove_highlight() -> void:
-	_color_rect.color = _base_color
+	_frame_base.visible = true
+	_frame_ok.visible = false
+	_frame_bad.visible = false
 
 func _can_drop_data(_pos: Vector2, data: Variant) -> bool:
 	if data is ItemDragDetails:

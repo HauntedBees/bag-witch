@@ -1,20 +1,36 @@
 [gd_scene format=3 uid="uid://chbbyih2rlm8q"]
 
 [ext_resource type="Script" uid="uid://cxclddt03r7an" path="res://player/hud/inventory_tile.gd" id="1_8722s"]
+[ext_resource type="Texture2D" uid="uid://dbyj8je8rrxrt" path="res://assets/sprites/item_frame.png" id="2_w2bm1"]
+[ext_resource type="Texture2D" uid="uid://deqdjq6vx2ll2" path="res://assets/sprites/item_frame_ok.png" id="3_4eoji"]
+[ext_resource type="Texture2D" uid="uid://163nincqpsl3" path="res://assets/sprites/item_frame_disallowed.png" id="4_kkda0"]
 
 [node name="InventoryTile" type="MarginContainer" unique_id=662639641]
 offset_right = 40.0
 offset_bottom = 40.0
 pivot_offset = Vector2(32, 32)
-theme_override_constants/margin_left = 2
-theme_override_constants/margin_top = 2
-theme_override_constants/margin_right = 2
-theme_override_constants/margin_bottom = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
 script = ExtResource("1_8722s")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1855185754]
+[node name="FrameBase" type="TextureRect" parent="." unique_id=1576809259]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(60, 60)
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-mouse_filter = 1
-color = Color(0.85798925, 0.7231602, 0.90951073, 1)
+texture = ExtResource("2_w2bm1")
+
+[node name="FrameOK" type="TextureRect" parent="." unique_id=1597728829]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("3_4eoji")
+
+[node name="FrameBad" type="TextureRect" parent="." unique_id=1564793078]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("4_kkda0")

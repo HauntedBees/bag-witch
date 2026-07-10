@@ -42,6 +42,7 @@ theme_override_constants/separation = 8
 alignment = 1
 
 [node name="InputImage" parent="CenterContainer/MarginContainer/HBoxContainer" unique_id=1161082248 instance=ExtResource("2_fxoor")]
+unique_name_in_owner = true
 layout_mode = 2
 action_name = "use"
 
