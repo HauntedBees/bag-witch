@@ -17,3 +17,6 @@ class_name Item extends Resource
 
 ## The path to the 3D scene.
 @export_custom(SRP_HINT.RESOURCE_PATH, "PackedScene") var scene_path: String
+
+func get_description() -> String:
+	return description

@@ -5,7 +5,6 @@ signal inventory_toggled(shown: bool)
 const _TILE_SCENE := preload("uid://chbbyih2rlm8q")
 const _ITEM_SCENE := preload("uid://cdd6epqw6450l")
 
-var _inventory := Inventory.new()
 var _grid_info: Dictionary[Vector2i, TileDetails] = {}
 
 var _active := false
@@ -13,6 +12,7 @@ var _current_draggable: ItemDragDetails
 
 @onready var _grid: GridContainer = %GridContainer
 @onready var _items: Control = %ItemBucket
+@onready var _inventory := Player.data.inventory
 
 func _ready() -> void:
 	_grid.columns = _inventory.dimensions.x

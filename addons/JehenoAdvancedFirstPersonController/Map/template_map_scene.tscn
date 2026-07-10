@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://d4gavwq81shmv" path="res://addons/JehenoAdvancedFirstPersonController/Map/MovementModifiers/conveyorZone/conveyor_zone_scene.tscn" id="7_q4rg5"]
 [ext_resource type="PackedScene" uid="uid://ct3rwravhrwk1" path="res://addons/JehenoAdvancedFirstPersonController/Map/MovementModifiers/jumpPads/directionalJumpPad/directional_jump_pad_scene.tscn" id="8_q4rg5"]
 [ext_resource type="PackedScene" uid="uid://djtpn6s6cdlln" path="res://enemies/knight.tscn" id="9_s1bnp"]
+[ext_resource type="PackedScene" uid="uid://baaev0tc1par5" path="res://items/world/spellbook.tscn" id="10_8cawr"]
+[ext_resource type="Resource" uid="uid://gloeqm86u5q" path="res://items/ice_book.tres" id="11_yfojv"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fjbi6"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -413,3 +415,7 @@ material = ExtResource("4_ivwfa")
 
 [node name="Knight" parent="Enemies" unique_id=222303382 instance=ExtResource("9_s1bnp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46827865, -21)
+
+[node name="Spellbook" parent="." unique_id=22620735 instance=ExtResource("10_8cawr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0.507602, -31)
+item = ExtResource("11_yfojv")

@@ -14,4 +14,4 @@ func _update_item() -> void:
 	if item == null:
 		return
 	_title.text = item.name
-	_description.text = item.description
+	_description.text = item.get_description()

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bi75tcolvv8tm"]
+
+[ext_resource type="Texture2D" uid="uid://dorg26lk5rom5" path="res://assets/sprites/input_icons.png" id="1_yqkdp"]
+[ext_resource type="Script" uid="uid://cu2luw7ioo8ie" path="res://player/hud/input_image.gd" id="2_2qloy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhbnc"]
+atlas = ExtResource("1_yqkdp")
+region = Rect2(0, 208, 16, 16)
+filter_clip = true
+
+[node name="InputImage" type="TextureRect" unique_id=1161082248]
+custom_minimum_size = Vector2(32, 32)
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("AtlasTexture_rhbnc")
+stretch_mode = 5
+script = ExtResource("2_2qloy")

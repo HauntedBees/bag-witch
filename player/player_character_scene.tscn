@@ -18,6 +18,8 @@
 [ext_resource type="PackedScene" uid="uid://de32v0r5edf6f" path="res://player/hud/inventory_display.tscn" id="16_200os"]
 [ext_resource type="Texture2D" uid="uid://dv747ov6fcrsg" path="res://addons/JehenoAdvancedFirstPersonController/PlayerCharacter/HUD/crosshair.png" id="17_g2747"]
 [ext_resource type="PackedScene" uid="uid://d18gii6kb6w0k" path="res://player/hud/health_bar.tscn" id="18_j6aac"]
+[ext_resource type="PackedScene" uid="uid://dxckpdtgf6aa5" path="res://player/hud/equip_bar.tscn" id="19_8kajx"]
+[ext_resource type="PackedScene" uid="uid://cpmm4xyy23p80" path="res://player/hud/item_select.tscn" id="20_5ko36"]
 
 [sub_resource type="Curve" id="Curve_s7fsc"]
 _limits = [0.0, 60.0, 0.0, 60.0]
@@ -145,6 +147,13 @@ target_position = Vector3(-1, 0, 0)
 collision_mask = 4
 debug_shape_custom_color = Color(0.91764706, 0.79607844, 0.18039216, 1)
 
+[node name="FrontCheck" type="RayCast3D" parent="CameraHolder/Camera/CameraBasedRaycasts" unique_id=2105455808]
+unique_name_in_owner = true
+transform = Transform3D(1, 5.4975374e-10, 3.4567904e-12, -5.4975374e-10, 0.9999209, 0.012576897, 3.4567904e-12, -0.012576897, 0.9999209, 0, 0, 0)
+target_position = Vector3(0, 0, -10)
+collision_mask = 6
+collide_with_areas = true
+
 [node name="ProjectileSpot" type="Node3D" parent="CameraHolder" unique_id=1165267181]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2658556, -1.070638, -1.6036669)
@@ -202,10 +211,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
 
-[node name="InventoryDisplay" parent="HUDLayer/HUD" unique_id=53194332 instance=ExtResource("16_200os")]
-layout_mode = 1
-
-[node name="CenterContainer" type="CenterContainer" parent="HUDLayer/HUD" unique_id=1562813601]
+[node name="Crosshair" type="CenterContainer" parent="HUDLayer/HUD" unique_id=1562813601]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -213,28 +219,52 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="HUDLayer/HUD/CenterContainer" unique_id=1412273142]
+[node name="TextureRect" type="TextureRect" parent="HUDLayer/HUD/Crosshair" unique_id=1412273142]
 layout_mode = 2
 texture = ExtResource("17_g2747")
 
-[node name="MarginContainer" type="MarginContainer" parent="HUDLayer/HUD" unique_id=2099340369]
+[node name="Meters" type="MarginContainer" parent="HUDLayer/HUD" unique_id=2099340369]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 32
 
-[node name="HealthBar" parent="HUDLayer/HUD/MarginContainer" unique_id=178334899 instance=ExtResource("18_j6aac")]
+[node name="HealthBar" parent="HUDLayer/HUD/Meters" unique_id=178334899 instance=ExtResource("18_j6aac")]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 
+[node name="EquipBar" parent="HUDLayer/HUD/Meters" unique_id=1451960217 instance=ExtResource("19_8kajx")]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="ItemSelect" parent="HUDLayer/HUD" unique_id=720485576 instance=ExtResource("20_5ko36")]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = -197.0
+offset_top = -213.0
+offset_right = 197.0
+offset_bottom = 213.0
+
+[node name="InventoryDisplay" parent="HUDLayer/HUD" unique_id=53194332 instance=ExtResource("16_200os")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 763.0
+offset_top = 729.0
+offset_right = 1157.0
+offset_bottom = 729.0
+
 [connection signal="change_fov" from="StateMachine" to="CameraHolder" method="change_fov"]
+[connection signal="inventory_toggled" from="HUDLayer/HUD/InventoryDisplay" to="." method="_on_inventory_toggled"]
 [connection signal="inventory_toggled" from="HUDLayer/HUD/InventoryDisplay" to="CameraHolder" method="_on_inventory_toggled"]
 
 [editable path="CameraHolder/arms2"]

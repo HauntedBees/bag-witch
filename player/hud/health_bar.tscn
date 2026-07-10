@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://betn02pn5nolr" path="res://assets/sprites/health_bar.png" id="1_sxd0a"]
 [ext_resource type="Texture2D" uid="uid://r2celiat71wr" path="res://assets/sprites/health_bar_fill.png" id="2_aqcie"]
+[ext_resource type="Script" uid="uid://dl65jnrgeqnsq" path="res://player/hud/health_bar.gd" id="3_aqcie"]
 
 [node name="HealthBar" type="TextureProgressBar" unique_id=178334899]
 texture_filter = 1
@@ -15,3 +16,4 @@ value = 100.0
 texture_over = ExtResource("1_sxd0a")
 texture_progress = ExtResource("2_aqcie")
 texture_progress_offset = Vector2(8, 4)
+script = ExtResource("3_aqcie")

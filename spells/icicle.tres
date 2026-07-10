@@ -5,6 +5,12 @@
 [resource]
 script = ExtResource("1_kb34c")
 scene_path = "uid://c27lg3w5occ5n"
+velocity = 40.0
+gravity = 0.02
+damage_range = Vector2i(3, 5)
+metadata_increase_ranges = Dictionary[int, Vector2]({
+1: Vector2(0.05, 0.12)
+})
 name = "Icicle"
-cooldown = 0.2
+spell = 1
 metadata/_custom_type_script = "uid://dq216hufmeoo3"
