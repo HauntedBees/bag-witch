@@ -9,15 +9,18 @@ var grid_pos: Vector2i
 @onready var _frame_ok: TextureRect = %FrameOK
 @onready var _frame_bad: TextureRect = %FrameBad
 
+func _ready() -> void:
+	remove_highlight()
+
 func set_highlight(allowed: bool) -> void:
-	_frame_base.visible = false
-	_frame_ok.visible = allowed
-	_frame_bad.visible = !allowed
+	_frame_base.modulate.a = 0.0
+	_frame_ok.modulate.a = 1.0 if allowed else 0.0
+	_frame_bad.modulate.a = 0.0 if allowed else 1.0
 
 func remove_highlight() -> void:
-	_frame_base.visible = true
-	_frame_ok.visible = false
-	_frame_bad.visible = false
+	_frame_base.modulate.a = 1.0
+	_frame_ok.modulate.a = 0.0
+	_frame_bad.modulate.a = 0.0
 
 func _can_drop_data(_pos: Vector2, data: Variant) -> bool:
 	if data is ItemDragDetails:
@@ -27,4 +30,5 @@ func _can_drop_data(_pos: Vector2, data: Variant) -> bool:
 		return false
 
 func _drop_data(_pos: Vector2, data: Variant):
+	print("oo")
 	item_dropped.emit(data, grid_pos)

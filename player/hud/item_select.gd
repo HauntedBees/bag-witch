@@ -10,8 +10,8 @@ func set_from_world_item(w: WorldItem) -> void:
 func set_from_enemy(e: EnemyDisplay) -> void:
 	_set_visible(e.get_screen_bounds(), e.enemy_name, false)
 
-func _set_visible(dims: Rect2, name: String, show_input_image: bool) -> void:
+func _set_visible(dims: Rect2, display_name: String, show_input_image: bool) -> void:
 	visible = true
 	_selection.custom_minimum_size = dims.size
-	_item_name.text = name
+	_item_name.text = display_name
 	_input_image.visible = show_input_image
