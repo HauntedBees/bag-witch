@@ -254,14 +254,14 @@ offset_right = 197.0
 offset_bottom = 213.0
 
 [node name="InventoryDisplay" parent="HUDLayer/HUD" unique_id=53194332 instance=ExtResource("16_200os")]
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
 anchor_bottom = 0.0
-offset_left = 763.0
-offset_top = 729.0
-offset_right = 1157.0
-offset_bottom = 729.0
+offset_left = -197.0
+offset_right = 197.0
+grow_vertical = 1
 
 [connection signal="change_fov" from="StateMachine" to="CameraHolder" method="change_fov"]
 [connection signal="inventory_toggled" from="HUDLayer/HUD/InventoryDisplay" to="." method="_on_inventory_toggled"]
