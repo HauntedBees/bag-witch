@@ -9,4 +9,5 @@ description = "You can ride on it or whack things with it."
 size = Vector2i(4, 1)
 persistent = true
 icon = Rect2i(0, 0, 4, 1)
+scene_path = "uid://c0c6yem7oc5h2"
 metadata/_custom_type_script = "uid://cgt7ckkn1gh5b"

@@ -30,5 +30,4 @@ func _can_drop_data(_pos: Vector2, data: Variant) -> bool:
 		return false
 
 func _drop_data(_pos: Vector2, data: Variant):
-	print("oo")
 	item_dropped.emit(data, grid_pos)

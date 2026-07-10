@@ -15,7 +15,7 @@ class_name Item extends Resource
 ## The position and size of the item's icon in item_sheet.png to be used in the inventory grid.
 @export var icon: Rect2i
 
-## The path to the 3D scene.
+## The path to the 3D scene; should be a WorldItem.
 @export_custom(SRP_HINT.RESOURCE_PATH, "PackedScene") var scene_path: String
 
 func get_description() -> String:

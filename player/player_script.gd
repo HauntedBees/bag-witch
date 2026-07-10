@@ -90,6 +90,12 @@ func get_mouse_center() -> Vector3: #TODO: maybe replace now that _front_check e
 		return result["position"]
 	return to
 
-
 func _on_inventory_toggled(shown: bool) -> void:
 	_in_inventory = shown
+
+func _on_inventory_display_spawn_item(i: WorldItem) -> void:
+	get_parent().add_child(i)
+	var center := get_viewport().get_visible_rect().size / 2.0
+	var to := cam.project_ray_normal(center)
+	i.global_position = global_position + to * 2.0
+	i.plep(to)
