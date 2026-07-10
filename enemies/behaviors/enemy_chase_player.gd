@@ -37,6 +37,8 @@ func _behave(delta: float) -> void:
 	_parent.nav.target_position = _parent.target.global_position
 	var next := _parent.nav.get_next_path_position()
 	_parent.velocity = _parent.global_position.direction_to(next) * movement_speed
+	if !_parent.is_on_floor():
+		_parent.velocity.y -= 5.0
 	_parent.look_at(next)
 	_parent.move_and_slide()
 	_parent.animation_player.play(Anim.RUN)

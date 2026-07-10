@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bm25pyymw8l2l"]
 
 [ext_resource type="PackedScene" uid="uid://4i1yaejh33ss" path="res://assets/models/broom.glb" id="1_q838r"]
+[ext_resource type="PackedScene" uid="uid://4xew5eee7k3a" path="res://assets/models/book.blend" id="2_kxga4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eeolf"]
 shading_mode = 0
@@ -19,6 +20,10 @@ mesh = SubResource("QuadMesh_rhbnc")
 
 [node name="broom" parent="ThingContainer" unique_id=93656533 instance=ExtResource("1_q838r")]
 transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+visible = false
+
+[node name="book" parent="ThingContainer" unique_id=1558442499 instance=ExtResource("2_kxga4")]
+transform = Transform3D(1, 0, 0, 0, 0.04936305, -0.9987809, 0, 0.9987809, 0.04936305, 0, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=465674123]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.9159544)

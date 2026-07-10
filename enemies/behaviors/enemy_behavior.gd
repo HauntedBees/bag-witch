@@ -15,7 +15,7 @@ func _setup_behavior() -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
-	if active:
+	if active && !_parent.stunned:
 		_behave(delta)
 
 func _behave(_delta: float) -> void:

@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://cpmm4xyy23p80"]
+
+[ext_resource type="Script" uid="uid://d11kpsp6r2uvf" path="res://player/hud/item_select.gd" id="1_fxoor"]
+[ext_resource type="Texture2D" uid="uid://dsf3o2qr6ixxv" path="res://assets/sprites/item_name.png" id="1_hmaqs"]
+[ext_resource type="Script" uid="uid://hafxp56l0iao" path="res://addons/gas/gas_label.gd" id="2_1kh52"]
+[ext_resource type="PackedScene" uid="uid://bi75tcolvv8tm" path="res://player/hud/input_image.tscn" id="2_fxoor"]
+[ext_resource type="Texture2D" uid="uid://bato3ky5yjr8h" path="res://assets/sprites/item_cursor.png" id="3_fxoor"]
+
+[node name="ItemSelect" type="VBoxContainer" unique_id=720485576]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -177.0
+offset_top = -164.0
+offset_right = 177.0
+offset_bottom = 164.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = -24
+script = ExtResource("1_fxoor")
+
+[node name="CenterContainer" type="MarginContainer" parent="." unique_id=1089813069]
+layout_mode = 2
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="CenterContainer" unique_id=1058231123]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+texture = ExtResource("1_hmaqs")
+patch_margin_left = 96
+patch_margin_right = 96
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer" unique_id=1959042507]
+layout_mode = 2
+theme_override_constants/margin_left = 84
+theme_override_constants/margin_right = 84
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/MarginContainer" unique_id=1536075022]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="InputImage" parent="CenterContainer/MarginContainer/HBoxContainer" unique_id=1161082248 instance=ExtResource("2_fxoor")]
+layout_mode = 2
+action_name = "use"
+
+[node name="ItemName" type="Label" parent="CenterContainer/MarginContainer/HBoxContainer" unique_id=1059708048]
+unique_name_in_owner = true
+layout_mode = 2
+text = "SPELLBOOK"
+horizontal_alignment = 1
+script = ExtResource("2_1kh52")
+metadata/_custom_type_script = "uid://hafxp56l0iao"
+
+[node name="CenterContainer2" type="CenterContainer" parent="." unique_id=311854117]
+layout_mode = 2
+
+[node name="Selection" type="NinePatchRect" parent="CenterContainer2" unique_id=430676607]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(288, 330)
+layout_mode = 2
+texture = ExtResource("3_fxoor")
+draw_center = false
+patch_margin_left = 64
+patch_margin_top = 136
+patch_margin_right = 64
+patch_margin_bottom = 152

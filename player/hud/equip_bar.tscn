@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://dxckpdtgf6aa5"]
+
+[ext_resource type="Script" uid="uid://d02m8c768a6dt" path="res://player/hud/equip_bar.gd" id="1_aot1u"]
+[ext_resource type="Texture2D" uid="uid://7j1np82pkhxi" path="res://assets/sprites/ammo_bar.png" id="1_ovlwn"]
+[ext_resource type="Texture2D" uid="uid://b7eia8kbs1qii" path="res://assets/sprites/spell_sheet.png" id="2_5lopv"]
+[ext_resource type="Script" uid="uid://hafxp56l0iao" path="res://addons/gas/gas_label.gd" id="3_71ejj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhbnc"]
+atlas = ExtResource("2_5lopv")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="LabelSettings" id="LabelSettings_rhbnc"]
+font_size = 36
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rhbnc"]
+
+[node name="EquipBar" type="MarginContainer" unique_id=1451960217]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_top = -24
+theme_override_constants/margin_bottom = -24
+script = ExtResource("1_aot1u")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1288593672]
+texture_filter = 1
+custom_minimum_size = Vector2(384, 112)
+layout_mode = 2
+texture = ExtResource("1_ovlwn")
+stretch_mode = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1481355624]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+
+[node name="EquipIcon" type="TextureRect" parent="MarginContainer" unique_id=491505507]
+unique_name_in_owner = true
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 0
+texture = SubResource("AtlasTexture_rhbnc")
+stretch_mode = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1461718247]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
+[node name="CurrentAmount" type="Label" parent="HBoxContainer" unique_id=346891113]
+unique_name_in_owner = true
+layout_mode = 2
+text = "100"
+label_settings = SubResource("LabelSettings_rhbnc")
+horizontal_alignment = 2
+script = ExtResource("3_71ejj")
+metadata/_custom_type_script = "uid://hafxp56l0iao"
+
+[node name="RemainingAmount" type="Label" parent="HBoxContainer" unique_id=2032508458]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+text = "/100"
+vertical_alignment = 2
+script = ExtResource("3_71ejj")
+metadata/_custom_type_script = "uid://hafxp56l0iao"
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer" unique_id=1909083795]
+layout_mode = 2
+theme_override_constants/separation = 42
+theme_override_styles/separator = SubResource("StyleBoxEmpty_rhbnc")
+
+[node name="MarginContainer2" type="MarginContainer" parent="." unique_id=1547702909]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="CooldownBar" type="ProgressBar" parent="MarginContainer2" unique_id=917446521]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(68, 8)
+layout_mode = 2
+size_flags_horizontal = 0
+value = 50.0
+show_percentage = false
+
+[node name="MarginContainer3" type="MarginContainer" parent="." unique_id=1086628310]
+layout_mode = 2
+theme_override_constants/margin_left = 76
+theme_override_constants/margin_bottom = 12
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer3" unique_id=1449067394]
+custom_minimum_size = Vector2(4, 4)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+color = Color(0, 0.1764706, 0.42745098, 1)
