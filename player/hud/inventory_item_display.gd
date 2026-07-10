@@ -23,6 +23,8 @@ func _get_drag_data(_at_position: Vector2) -> Variant:
 
 	var preview = Control.new()
 	preview.add_child(drag_icon)
+	preview.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	drag_icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	if details.rotated:
 		drag_icon.position = DRAG_OFFSET_ROTATED
 		drag_icon.rotation_degrees = 90.0

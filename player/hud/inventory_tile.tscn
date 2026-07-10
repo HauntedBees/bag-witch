@@ -23,14 +23,12 @@ texture = ExtResource("2_w2bm1")
 
 [node name="FrameOK" type="TextureRect" parent="." unique_id=1597728829]
 unique_name_in_owner = true
-visible = false
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture = ExtResource("3_4eoji")
 
 [node name="FrameBad" type="TextureRect" parent="." unique_id=1564793078]
 unique_name_in_owner = true
-visible = false
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture = ExtResource("4_kkda0")
