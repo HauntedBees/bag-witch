@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b66jl5gw8dewc" path="res://items/world/world_item.gd" id="1_lywwn"]
 [ext_resource type="PackedScene" uid="uid://4xew5eee7k3a" path="res://assets/models/book.blend" id="1_m7mj2"]
+[ext_resource type="Resource" uid="uid://gloeqm86u5q" path="res://items/ice_book.tres" id="2_greb1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rhbnc"]
 size = Vector3(1, 0.41229248, 1.4127197)
@@ -11,6 +12,7 @@ collision_layer = 4
 collision_mask = 0
 monitoring = false
 script = ExtResource("1_lywwn")
+item = ExtResource("2_greb1")
 collider = NodePath("CollisionShape3D")
 
 [node name="book" parent="." unique_id=1076280985 instance=ExtResource("1_m7mj2")]

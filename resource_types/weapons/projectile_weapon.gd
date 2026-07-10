@@ -1,7 +1,7 @@
 class_name ProjectileWeapon extends Weapon
 
 ## The path to the projectile's scene.
-@export_custom(SRP_HINT.RESOURCE_PATH, "PackedScene") var scene_path: String
+@export_custom(SRP_HINT.RESOURCE_PATH, "PackedScene") var projectile_path: String
 
 ## How fast it moves.
 @export var velocity := 10.0
@@ -28,7 +28,7 @@ var _cached_scene: PackedScene = null
 
 func _inner_use(player: BogWitch) -> void:
 	if _cached_scene == null:
-		_cached_scene = load(scene_path)
+		_cached_scene = load(projectile_path)
 	var projectile: Projectile = _cached_scene.instantiate()
 	player.get_parent().add_child(projectile)
 	projectile.global_position = player.get_projectile_launch_point()

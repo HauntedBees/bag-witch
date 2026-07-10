@@ -30,7 +30,7 @@ func _process(delta: float) -> void:
 func _handle_non_mouse_camera_movement() -> void:
 	var mouse_dir := Vector2(
 		Input.get_action_strength(&"camera_left") - Input.get_action_strength(&"camera_right"),
-		Input.get_action_strength(&"camera_down") - Input.get_action_strength(&"camera_up") #TODO: invert axis
+		Input.get_action_strength(&"camera_up") - Input.get_action_strength(&"camera_down") #TODO: invert axis option?
 	)
 	if mouse_dir != Vector2.ZERO:
 		cam_holder.keyboard_touch(mouse_dir)

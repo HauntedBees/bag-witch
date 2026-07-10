@@ -12,6 +12,8 @@ func _init() -> void:
 	var broom := load("uid://dpgrb2fqcl3qn")
 	add_item(broom, Vector2i(2, 1), false)
 	add_item(broom, Vector2i(0, 0), false)
+	var book := load("uid://gloeqm86u5q")
+	add_item(book, Vector2i(0, 1), false)
 
 func remove_item(i: InventoryDetail) -> void:
 	items.erase(i)
@@ -61,7 +63,7 @@ func _get_occupied_positions() -> Array[Vector2i]: # for small arrays, array che
 			used_tiles.append(p)
 	return used_tiles
 
-func has_spell(spell: BWEnum.Spell) -> bool:
+func has_spell(spell: Weapon) -> bool:
 	for i in _items_list:
 		if i is Spellbook:
 			for s in i.spells:

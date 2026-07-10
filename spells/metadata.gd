@@ -5,11 +5,6 @@ enum Effect {
 	Freeze
 }
 
-enum Spell {
-	None,
-	IceV1
-}
-
 static func get_bounds(base_pos: Vector3, box: BoxShape3D, cam: Camera3D) -> Rect2:
 	var extents := box.size / 2.0
 	var corners: Array[Vector3] = [

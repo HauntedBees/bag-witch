@@ -12,14 +12,14 @@ var weapon_cooldown := 0.0:
 		weapon_cooldown_changed.emit(value)
 
 func use_weapon(w: Weapon) -> void:
-	if w.spell == BWEnum.Spell.None:
-		pass # TODO: handle weapon ammo
-	else:
+	if w.is_spell:
 		var remaining_ammo := data.get_loaded_ammo(w)
 		if remaining_ammo < 0: # unlimited ammo, no action needed
 			return
 		var new_ammo := data.use_spell_ammo(w)
 		ammo_changed.emit(new_ammo)
+	else:
+		pass # TODO: handle weapon ammo
 
 func take_damage(amount: int) -> void:
 	data.current_health -= amount

@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dd6i8p1qr32o4"]
+
+[ext_resource type="Texture2D" uid="uid://b7eia8kbs1qii" path="res://assets/sprites/spell_sheet.png" id="1_24pc1"]
+[ext_resource type="Script" uid="uid://vgnuqmhde531" path="res://player/hud/spell_icon.gd" id="2_x5af5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhbnc"]
+resource_local_to_scene = true
+atlas = ExtResource("1_24pc1")
+region = Rect2(0, 0, 16, 16)
+filter_clip = true
+
+[node name="SpellIcon" type="TextureRect" unique_id=791937979]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("AtlasTexture_rhbnc")
+stretch_mode = 5
+script = ExtResource("2_x5af5")
