@@ -6,11 +6,13 @@ signal spawn_item(i: WorldItem)
 const _TILE_SCENE := preload("uid://chbbyih2rlm8q")
 const _ITEM_SCENE := preload("uid://cdd6epqw6450l")
 const _SPELL_SCENE := preload("uid://dd6i8p1qr32o4")
+const _HIGHLIGHT_SCENE := preload("uid://8un54pjusa0y")
 
 var _item_grid_info: Dictionary[Vector2i, TileDetails] = {}
 
 var _active := false
 var _current_draggable: ItemDragDetails
+var _highlight: Highlight
 
 @onready var _drop_area: ItemDropArea = %DropArea
 @onready var _item_grid: GridContainer = %ItemGridContainer
@@ -20,6 +22,7 @@ var _current_draggable: ItemDragDetails
 @onready var _spell_grid: GridContainer = %SpellGridContainer
 
 func _ready() -> void:
+	_highlight = _HIGHLIGHT_SCENE.instantiate()
 	_item_grid.columns = _inventory.dimensions.x
 	for y in _inventory.dimensions.y:
 		for x in _inventory.dimensions.x:
@@ -28,6 +31,7 @@ func _ready() -> void:
 			tile.grid_pos = pos
 			tile.item_dropped.connect(_on_item_dropped)
 			tile.item_hovered.connect(_on_item_hovered)
+			tile.mouse_entered.connect(_on_tile_hovered, CONNECT_APPEND_SOURCE_OBJECT)
 			_item_grid_info[pos] = TileDetails.new(tile)
 			_item_grid.add_child(tile)
 	_draw_spells()
@@ -40,6 +44,7 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if GASInput.is_event_action_just_pressed(event, &"toggle_inventory"):
 		_active = !_active
+		_highlight.set_to(null)
 		modulate.a = 1.0 if _active else 0.0
 		inventory_toggled.emit(_active)
 	if GASInput.is_event_action_just_pressed(event, &"rotate_item"):
@@ -53,6 +58,15 @@ func _input(event: InputEvent) -> void:
 		else:
 			_current_draggable.preview.rotation_degrees = 0.0
 			_current_draggable.preview.position = InventoryItemDisplay.DRAG_OFFSET
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_EXIT_TREE:
+		if is_instance_valid(_highlight) && !_highlight.is_inside_tree():
+			_highlight.queue_free()
+			_highlight = null
+
+func _on_tile_hovered(tile: InventoryTile) -> void:
+	_highlight.set_to(tile)
 
 #region Items
 func _on_item_hovered(drag_details: ItemDragDetails, grid_pos: Vector2i) -> void:
@@ -85,6 +99,9 @@ func _on_item_dropped(drag_details: ItemDragDetails, grid_pos: Vector2i) -> void
 	else:
 		print("no")
 
+func _on_item_tile_hovered(item: InventoryItemDisplay) -> void:
+	_highlight.set_to(item)
+
 func _can_place(item: InventoryDetail, new_positions: Array[Vector2i]) -> bool:
 	for p in new_positions:
 		if _item_grid_info.has(p):
@@ -116,6 +133,7 @@ func _draw_item(i: InventoryDetail) -> void:
 	_items.add_child(id)
 	id.details = i
 	id.drag_ended.connect(_on_drag_ended)
+	id.mouse_entered.connect(_on_item_tile_hovered, CONNECT_APPEND_SOURCE_OBJECT)
 	var info := _item_grid_info[i.position]
 	id.global_position = info.tile.global_position
 	if i.rotated:
@@ -145,12 +163,15 @@ func _draw_spells() -> void:
 		for x in 3:
 			var pos := Vector2i(x, y)
 			var tile: InventoryTile = _TILE_SCENE.instantiate()
+			tile.mouse_entered.connect(_on_tile_hovered, CONNECT_APPEND_SOURCE_OBJECT)
 			tile.grid_pos = pos
 			_spell_grid.add_child(tile)
 			if i < spells.size():
+				var spell := spells[i]
 				var si: SpellIcon = _SPELL_SCENE.instantiate()
 				tile.add_child(si)
-				si.set_spell(spells[i])
+				tile.set_highlight(Player.data.inventory.has_spell(spell))
+				si.set_spell(spell)
 			i += 1
 #endregion
 
