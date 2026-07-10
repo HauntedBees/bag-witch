@@ -1,33 +1,84 @@
 [gd_scene format=3 uid="uid://de32v0r5edf6f"]
 
 [ext_resource type="Script" uid="uid://djh86ws1x81ow" path="res://player/hud/inventory_display.gd" id="1_hnfcf"]
+[ext_resource type="Texture2D" uid="uid://druk4uk8sgd5o" path="res://assets/sprites/heading.png" id="2_njn6f"]
+[ext_resource type="Script" uid="uid://hafxp56l0iao" path="res://addons/gas/gas_label.gd" id="3_krq55"]
+[ext_resource type="Texture2D" uid="uid://drv7ir1iktivu" path="res://assets/sprites/scroll.png" id="4_a1n3b"]
 
-[node name="InventoryDisplay" type="Control" unique_id=53194332]
-layout_mode = 3
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rhbnc"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eeolf"]
+texture = ExtResource("4_a1n3b")
+texture_margin_left = 130.0
+texture_margin_top = 120.0
+texture_margin_right = 130.0
+texture_margin_bottom = 120.0
+
+[node name="InventoryDisplay" type="VBoxContainer" unique_id=699574517]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme_override_constants/separation = -100
 script = ExtResource("1_hnfcf")
 
-[node name="GridContainer" type="GridContainer" parent="." unique_id=773468309]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=423327638]
+layout_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer" unique_id=419732073]
+layout_mode = 2
+theme_override_constants/separation = 48
+theme_override_styles/separator = SubResource("StyleBoxEmpty_rhbnc")
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer" unique_id=104703693]
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="HBoxContainer/MarginContainer" unique_id=1653181822]
+layout_mode = 2
+texture = ExtResource("2_njn6f")
+patch_margin_left = 64
+patch_margin_top = 46
+patch_margin_right = 64
+patch_margin_bottom = 46
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer" unique_id=866202038]
+layout_mode = 2
+theme_override_constants/margin_left = 78
+theme_override_constants/margin_right = 78
+theme_override_constants/margin_bottom = 23
+
+[node name="GASLabel" type="Label" parent="HBoxContainer/MarginContainer/MarginContainer" unique_id=232168262]
+layout_mode = 2
+text = "Your Bag"
+script = ExtResource("3_krq55")
+metadata/_custom_type_script = "uid://hafxp56l0iao"
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=86781988]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer" unique_id=1984984424]
+custom_minimum_size = Vector2(0, 256)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_eeolf")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer" unique_id=909153675]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 90
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 90
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/MarginContainer" unique_id=773468309]
 unique_name_in_owner = true
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 2
 mouse_filter = 2
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 columns = 8
 
-[node name="ItemBucket" type="Control" parent="." unique_id=1897343714]
+[node name="ItemBucket" type="Control" parent="MarginContainer/MarginContainer" unique_id=1897343714]
 unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 mouse_filter = 2
