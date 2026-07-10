@@ -23,8 +23,17 @@ func _input(event: InputEvent) -> void:
 
 func _process(delta: float) -> void:
 	super(delta)
+	_handle_non_mouse_camera_movement()
 	_handle_front_raycast()
 	_handle_attack(delta)
+
+func _handle_non_mouse_camera_movement() -> void:
+	var mouse_dir := Vector2(
+		Input.get_action_strength(&"camera_left") - Input.get_action_strength(&"camera_right"),
+		Input.get_action_strength(&"camera_down") - Input.get_action_strength(&"camera_up") #TODO: invert axis
+	)
+	if mouse_dir != Vector2.ZERO:
+		cam_holder.keyboard_touch(mouse_dir)
 
 func _handle_front_raycast() -> void:
 	var obj := _front_check.get_collider()

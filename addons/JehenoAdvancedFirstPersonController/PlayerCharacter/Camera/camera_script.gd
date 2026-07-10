@@ -3,6 +3,8 @@ extends Node3D
 #class name
 class_name CameraObject
 
+const _KEYBOARD_ROTATION_SPEED := 0.15
+
 #camera variables
 @export_group("Camera variables")
 @export_range(0.0, 0.5, 0.001) var x_axis_sensibility : float = 0.05
@@ -126,6 +128,14 @@ func _unhandled_input(event) -> void:
 		camera.rotate_x(-event.relative.y * (y_axis_sensibility / 10))
 		#use of deg_to_rad, because we change the x axis rotation with rotation,x, which use radians instead of degrees
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(max_up_angle_view), deg_to_rad(max_down_angle_view))
+
+func keyboard_touch(dir: Vector2) -> void:
+	if mouse_free:
+		return
+	rotate_y(dir.x * _KEYBOARD_ROTATION_SPEED)
+	camera.rotate_x(dir.y * _KEYBOARD_ROTATION_SPEED)
+	#use of deg_to_rad, because we change the x axis rotation with rotation,x, which use radians instead of degrees
+	camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(max_up_angle_view), deg_to_rad(max_down_angle_view))
 
 func _process(delta : float) -> void:
 	state = play_char.state_machine.curr_state_name

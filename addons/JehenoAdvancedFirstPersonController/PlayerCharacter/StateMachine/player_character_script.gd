@@ -151,7 +151,7 @@ run_action, crouch_action, jump_action, slide_action, dash_action, fly_action]
 var default_input_actions : Dictionary
 
 #references variables
-@onready var cam_holder: Node3D = $CameraHolder
+@onready var cam_holder: CameraObject = $CameraHolder
 @onready var cam: Camera3D = %Camera
 @onready var model: MeshInstance3D = $Model
 @onready var hitbox: CollisionShape3D = $Hitbox

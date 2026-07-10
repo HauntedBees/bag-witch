@@ -27,10 +27,10 @@ script = ExtResource("1_hnfcf")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1878816168]
 layout_mode = 2
+alignment = 1
 
 [node name="YourBag" type="VBoxContainer" parent="HBoxContainer" unique_id=699574517]
 layout_mode = 2
-size_flags_horizontal = 3
 mouse_filter = 2
 theme_override_constants/separation = -100
 
