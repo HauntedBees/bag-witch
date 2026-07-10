@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://8un54pjusa0y"]
+
+[ext_resource type="Texture2D" uid="uid://drkgwweuv4vwb" path="res://assets/sprites/highlight.png" id="1_wdpcm"]
+[ext_resource type="Script" uid="uid://bemsuhte3sa6y" path="res://player/hud/highlight.gd" id="2_0eu0d"]
+
+[node name="Highlight" type="NinePatchRect" unique_id=524059628]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("1_wdpcm")
+patch_margin_left = 18
+patch_margin_top = 18
+patch_margin_right = 18
+patch_margin_bottom = 18
+script = ExtResource("2_0eu0d")
