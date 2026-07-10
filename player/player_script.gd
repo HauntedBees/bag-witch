@@ -33,9 +33,10 @@ func _handle_front_raycast() -> void:
 		_current_target = null
 		return
 	if obj is WorldItem:
-		_item_select.visible = true
 		_item_select.set_from_world_item(obj)
 		_current_target = obj
+	elif obj is EnemyDisplay:
+		_item_select.set_from_enemy(obj)
 	else:
 		_current_target = null
 

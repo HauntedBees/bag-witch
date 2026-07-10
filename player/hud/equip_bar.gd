@@ -12,6 +12,7 @@ func _ready() -> void:
 	Player.weapon_changed.connect(_on_weapon_changed)
 	Player.weapon_cooldown_changed.connect(_on_weapon_cooldown_changed)
 	Player.ammo_changed.connect(_on_ammo_changed)
+	Player.data.inventory.item_added.connect(_on_item_added)
 	_on_weapon_changed(Player.data.current_weapon)
 
 func _on_weapon_cooldown_changed(new_amount: float) -> void:
@@ -35,6 +36,10 @@ func _on_weapon_changed(w: Weapon) -> void:
 	else:
 		_current_amount.text = str(ammo)
 		_remaining_amount.text = "/%d" % Player.data.get_remaining_ammo(w)
+
+## Trigger refresh in case ammo was acquired.
+func _on_item_added(_i: InventoryDetail) -> void:
+	_on_weapon_changed(Player.data.current_weapon)
 
 func _on_ammo_changed(new_amount: int) -> void:
 	_current_amount.text = str(new_amount)

@@ -1,5 +1,8 @@
 class_name EnemyDisplay extends CharacterBody3D
 
+## This should be obvious.
+@export var enemy_name := ""
+
 ## The enemy's max health and initial health.
 @export var max_health := 100
 
@@ -9,12 +12,17 @@ class_name EnemyDisplay extends CharacterBody3D
 ## The animation player for this enemy.
 @export var animation_player: AnimationPlayer
 
+## For the HUD.
+@export var bounding_box: CollisionShape3D
+
 var target: BogWitch
 var stunned := false
 
 var _health := 100
 var _stun_delay := 0.0
 var _effects: Dictionary[BWEnum.Effect, float] = {}
+
+@onready var _box: BoxShape3D = bounding_box.shape
 
 func _ready() -> void:
 	_health = max_health
@@ -31,6 +39,9 @@ func _physics_process(delta: float) -> void:
 		if _effects[e] <= 0.0:
 			_effects.erase(e)
 	# TODO: handle knockback
+
+func get_screen_bounds() -> Rect2:
+	return BWEnum.get_bounds(global_position, _box, get_viewport().get_camera_3d())
 
 func take_damage(amount: int, received_direction := Vector3.ZERO) -> void:
 	_health -= amount
