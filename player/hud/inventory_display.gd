@@ -5,6 +5,7 @@ signal spawn_item(i: WorldItem)
 
 const _TILE_SCENE := preload("uid://chbbyih2rlm8q")
 const _ITEM_SCENE := preload("uid://cdd6epqw6450l")
+const _SPELL_SCENE := preload("uid://dd6i8p1qr32o4")
 
 var _item_grid_info: Dictionary[Vector2i, TileDetails] = {}
 
@@ -29,12 +30,7 @@ func _ready() -> void:
 			tile.item_hovered.connect(_on_item_hovered)
 			_item_grid_info[pos] = TileDetails.new(tile)
 			_item_grid.add_child(tile)
-	for y in 3:
-		for x in 3:
-			var pos := Vector2i(x, y)
-			var tile: InventoryTile = _TILE_SCENE.instantiate()
-			tile.grid_pos = pos
-			_spell_grid.add_child(tile)
+	_draw_spells()
 	modulate.a = 0.0
 	await get_tree().process_frame
 	_draw_items()
@@ -58,6 +54,7 @@ func _input(event: InputEvent) -> void:
 			_current_draggable.preview.rotation_degrees = 0.0
 			_current_draggable.preview.position = InventoryItemDisplay.DRAG_OFFSET
 
+#region Items
 func _on_item_hovered(drag_details: ItemDragDetails, grid_pos: Vector2i) -> void:
 	_current_draggable = drag_details
 	_drop_area.remove_highlight(false)
@@ -138,6 +135,24 @@ func _bake_positions() -> void:
 	for i in _inventory.items:
 		for p in i.get_positions(i.position):
 			_item_grid_info[p].item = i
+#endregion
+
+#region Spells
+func _draw_spells() -> void:
+	var spells := Player.data.get_available_spells()
+	var i := 0
+	for y in 3:
+		for x in 3:
+			var pos := Vector2i(x, y)
+			var tile: InventoryTile = _TILE_SCENE.instantiate()
+			tile.grid_pos = pos
+			_spell_grid.add_child(tile)
+			if i < spells.size():
+				var si: SpellIcon = _SPELL_SCENE.instantiate()
+				tile.add_child(si)
+				si.set_spell(spells[i])
+			i += 1
+#endregion
 
 class TileDetails extends RefCounted:
 	var tile: InventoryTile

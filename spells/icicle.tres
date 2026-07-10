@@ -4,13 +4,14 @@
 
 [resource]
 script = ExtResource("1_kb34c")
-scene_path = "uid://c27lg3w5occ5n"
+projectile_path = "uid://c27lg3w5occ5n"
 velocity = 40.0
 gravity = 0.02
 damage_range = Vector2i(3, 5)
 metadata_increase_ranges = Dictionary[int, Vector2]({
 1: Vector2(0.05, 0.12)
 })
+is_spell = true
 name = "Icicle"
-spell = 1
+icon = Rect2i(0, 0, -1, 0)
 metadata/_custom_type_script = "uid://dq216hufmeoo3"

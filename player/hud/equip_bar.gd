@@ -3,7 +3,7 @@ extends MarginContainer
 const _INFSYM := "∞"
 const _COOLDOWN_MULT := 100.0
 
-@onready var _equip_icon: TextureRect = %EquipIcon
+@onready var _equip_icon: SpellIcon = %EquipIcon
 @onready var _current_amount: GASLabel = %CurrentAmount
 @onready var _remaining_amount: GASLabel = %RemainingAmount
 @onready var _cooldown_bar: ProgressBar = %CooldownBar
