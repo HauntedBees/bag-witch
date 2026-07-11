@@ -1,5 +1,8 @@
 class_name EnemyBehavior extends Node
 
+const _DAMAGED_PRIORITY := 999
+const _DEAD_PRIORITY := 9999
+
 @export var priority := 0
 
 var active := true
@@ -15,7 +18,7 @@ func _setup_behavior() -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
-	if active:
+	if active && !_parent.is_dead():
 		_behave(delta)
 
 func _behave(_delta: float) -> void:

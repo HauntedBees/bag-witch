@@ -4,6 +4,8 @@
 
 [resource]
 script = ExtResource("1_tj7ko")
+cooldown = 0.4
+damage_range = Vector2i(7, 15)
 name = "Broom"
 description = "You can ride on it or whack things with it."
 size = Vector2i(4, 1)

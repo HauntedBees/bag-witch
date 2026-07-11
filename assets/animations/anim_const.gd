@@ -6,3 +6,4 @@ const SLASH := &"Rig_Medium_CombatMelee/Melee_1H_Attack_Slice_Diagonal"
 
 const HIT := &"Rig_Medium_General/Hit_A"
 const BIG_HIT := &"Rig_Medium_General/Hit_B"
+const DIE := &"Rig_Medium_General/Death_A"
