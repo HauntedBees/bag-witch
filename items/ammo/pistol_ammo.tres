@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Ammo" format=3 uid="uid://d0go325edul0h"]
+
+[ext_resource type="Script" uid="uid://co5j381442318" path="res://resource_types/items/ammo.gd" id="1_dxcik"]
+[ext_resource type="Resource" uid="uid://bjf5fkot1fjp5" path="res://items/handgun.tres" id="2_wjv2i"]
+
+[resource]
+script = ExtResource("1_dxcik")
+weapon = ExtResource("2_wjv2i")
+initial_ammo_range = Vector2i(1, 6)
+name = "Handgun Ammo"
+scene_path = "uid://ceg3otvwnm6o8"
+metadata/_custom_type_script = "uid://co5j381442318"

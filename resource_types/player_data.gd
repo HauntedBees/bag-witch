@@ -102,17 +102,17 @@ func equip_spell_to_slot(spell: Weapon, slot: int) -> void:
 	var fake_item := InventoryDetail.new(spell, Vector2i.LEFT)
 	equip_slots[slot] = fake_item
 
-func equip_to_slot(item: InventoryDetail, slot: int) -> void:
-	if item.item is not Weapon:
+func equip_to_slot(id: InventoryDetail, slot: int) -> void:
+	if id.item is not Weapon:
 		print("only weapons can be equipped!") #TODO: if I have time, it would be funnier for this to not be true
 		return
 	#var current_item := equip_slots[slot]
 	#if current_item != null:
 	#	current_item.unequip()
-	var item_at_different_slot := equip_slots.find(item)
+	var item_at_different_slot := equip_slots.find(id)
 	if item_at_different_slot >= 0:
 		equip_slots[item_at_different_slot] = null
-	equip_slots[slot] = item
+	equip_slots[slot] = id
 	#item.equip(slot)
 
 func refresh_spell_ammo() -> void:
@@ -169,5 +169,5 @@ func get_remaining_ammo(w: Weapon) -> int:
 		var total := 0
 		for id in inventory.items:
 			if id.item is Ammo && (id.item as Ammo).weapon == w:
-				total += (id.item as Ammo).get_amount()
+				total += id.ammo
 		return total

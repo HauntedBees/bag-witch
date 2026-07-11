@@ -3527,7 +3527,7 @@ tracks/99/keys = PackedFloat32Array(0, 1, 0.3202272, 0.23568954, -0.6659133, 0.6
 
 [sub_resource type="Animation" id="Animation_kjoej"]
 resource_name = "Handgun_Use"
-length = 0.19999999999999998
+length = 0.2
 step = 0.0333333
 tracks/0/type = "position_3d"
 tracks/0/imported = false
@@ -5993,7 +5993,7 @@ tracks/99/keys = PackedFloat32Array(0, 1, 1.2757727, -1.0655785, 3.9076252)
 
 [sub_resource type="Animation" id="Animation_jlu7f"]
 resource_name = "Spell1_Use"
-length = 0.19999999999999998
+length = 0.2
 step = 0.0333333
 tracks/0/type = "rotation_3d"
 tracks/0/imported = false

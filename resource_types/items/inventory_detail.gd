@@ -1,10 +1,15 @@
 class_name InventoryDetail extends Resource
 
+signal ammo_updated(new_amount: int)
+
 @export var item: Item
 @export var position: Vector2i
 @export var rotated: bool
 
-@export var ammo := 0
+@export var ammo := 0:
+	set(value):
+		ammo = value
+		ammo_updated.emit(ammo)
 
 func _init(i: Item, p: Vector2i) -> void:
 	item = i
@@ -13,6 +18,8 @@ func _init(i: Item, p: Vector2i) -> void:
 	if i is ProjectileWeapon:
 		if !i.is_spell:
 			ammo = randi_range(i.initial_ammo_range.x, i.initial_ammo_range.y)
+	elif i is Ammo:
+		ammo = randi_range(i.initial_ammo_range.x, i.initial_ammo_range.y)
 
 func get_positions(base_position: Vector2i, rotation_altered := false) -> Array[Vector2i]:
 	var pos: Array[Vector2i] = []
