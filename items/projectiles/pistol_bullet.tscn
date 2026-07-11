@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://b7tgst5mfxxfd"]
+
+[ext_resource type="Script" uid="uid://b5g7n1ix1u6f5" path="res://resource_types/weapons/projectile.gd" id="1_c4x4e"]
+[ext_resource type="PackedScene" uid="uid://y4f61cses7yx" path="res://assets/models/weapons/pistol_bullet.blend" id="2_k2o0r"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_rhbnc"]
+height = 0.5617676
+radius = 0.021972656
+
+[node name="PistolBullet" type="Node3D" unique_id=1263134127]
+script = ExtResource("1_c4x4e")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=268404323]
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1931484683]
+transform = Transform3D(0.80054146, -8.718608e-09, 0.5992774, -0.5992774, -2.6195245e-08, 0.80054146, 8.718608e-09, -1, -2.6195245e-08, 0, 0, 0.20338506)
+shape = SubResource("CylinderShape3D_rhbnc")
+
+[node name="pistol_bullet" parent="." unique_id=574989348 instance=ExtResource("2_k2o0r")]
+transform = Transform3D(7.642742e-15, -1.7484555e-07, 4, -4, -1.7484555e-07, 0, 1.7484555e-07, -4, -1.7484555e-07, 0, 0, 0)
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
