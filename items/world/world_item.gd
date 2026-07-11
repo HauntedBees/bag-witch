@@ -17,6 +17,18 @@ var _plepping := false
 var _plep_dir := Vector3.ZERO
 var _plep_ray: RayCast3D
 
+func get_item_name() -> String:
+	if item.is_ammo_applicable():
+		if !had_ammo_set:
+			had_ammo_set = true
+			if item is Ammo:
+				ammo = randi_range(item.initial_ammo_range.x, item.initial_ammo_range.y)
+			elif item is ProjectileWeapon:
+				ammo = randi_range(item.initial_ammo_range.x, item.initial_ammo_range.y)
+		return "%s (%s)" % [item.name, ammo]
+	else:
+		return item.name
+
 func get_screen_bounds() -> Rect2:
 	return BWEnum.get_bounds(global_transform, _box, get_viewport().get_camera_3d())
 

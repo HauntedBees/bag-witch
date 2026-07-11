@@ -5,6 +5,13 @@
 [ext_resource type="Script" uid="uid://hafxp56l0iao" path="res://addons/gas/gas_label.gd" id="2_1kh52"]
 [ext_resource type="PackedScene" uid="uid://bi75tcolvv8tm" path="res://player/hud/input_image.tscn" id="2_fxoor"]
 [ext_resource type="Texture2D" uid="uid://bato3ky5yjr8h" path="res://assets/sprites/item_cursor.png" id="3_fxoor"]
+[ext_resource type="Texture2D" uid="uid://dorg26lk5rom5" path="res://assets/sprites/input_icons.png" id="4_vhii5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wl5c5"]
+resource_local_to_scene = true
+atlas = ExtResource("4_vhii5")
+region = Rect2(0, 208, 16, 16)
+filter_clip = true
 
 [node name="ItemSelect" type="VBoxContainer" unique_id=720485576]
 anchors_preset = 8
@@ -44,6 +51,7 @@ alignment = 1
 [node name="InputImage" parent="CenterContainer/MarginContainer/HBoxContainer" unique_id=1161082248 instance=ExtResource("2_fxoor")]
 unique_name_in_owner = true
 layout_mode = 2
+texture = SubResource("AtlasTexture_wl5c5")
 action_name = "use"
 
 [node name="ItemName" type="Label" parent="CenterContainer/MarginContainer/HBoxContainer" unique_id=1059708048]

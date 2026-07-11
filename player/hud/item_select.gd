@@ -5,7 +5,7 @@ class_name ItemSelect extends VBoxContainer
 @onready var _input_image: InputImage = %InputImage
 
 func set_from_world_item(w: WorldItem) -> void:
-	_set_visible(w.get_screen_bounds(), w.item.name, true)
+	_set_visible(w.get_screen_bounds(), w.get_item_name(), true)
 
 func set_from_enemy(e: EnemyDisplay) -> void:
 	_set_visible(e.get_screen_bounds(), e.enemy_name, false)

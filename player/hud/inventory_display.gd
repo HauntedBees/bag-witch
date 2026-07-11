@@ -66,6 +66,7 @@ func _input(event: InputEvent) -> void:
 
 func _on_item_added(i: InventoryDetail) -> void:
 	_draw_item(i)
+	_bake_item_positions()
 	if i.item is Spellbook:
 		_draw_spells()
 
@@ -114,13 +115,28 @@ func _on_item_dropped(drag_details: ItemDragDetails, grid_pos: Vector2i) -> void
 	var item := drag_details.item
 	var new_positions := item.get_positions(grid_pos, _current_draggable.rotation_changed)
 	if _can_place(item, new_positions):
-		var old_info := _item_grid_info[item.position]
-		old_info.item_display.queue_free()
-		old_info.item_display = null
-		item.position = grid_pos
-		item.rotated = !item.rotated if _current_draggable.rotation_changed else item.rotated
-		_draw_item(item)
-		_bake_item_positions()
+		var potential_merge := _get_merge_item(item, new_positions)
+		if potential_merge == null:
+			var old_info := _item_grid_info[item.position]
+			old_info.item_display.queue_free()
+			old_info.item_display = null
+			item.position = grid_pos
+			item.rotated = !item.rotated if _current_draggable.rotation_changed else item.rotated
+			_draw_item(item)
+			_bake_item_positions()
+		else:
+			item.item.combine(item, potential_merge)
+			if potential_merge.item.is_destroyed_after_merge(potential_merge):
+				var old_info := _item_grid_info[item.position]
+				old_info.item_display.queue_free()
+				old_info.item_display = null
+				var item_being_replaced := _item_grid_info[potential_merge.position]
+				item_being_replaced.item_display.queue_free()
+				item_being_replaced.item_display = null
+				item.position = grid_pos
+				item.rotated = !item.rotated if _current_draggable.rotation_changed else item.rotated
+				_draw_item(item)
+				_bake_item_positions()
 	else:
 		print("no")
 
@@ -133,11 +149,29 @@ func _can_place(item: InventoryDetail, new_positions: Array[Vector2i]) -> bool:
 	for p in new_positions:
 		if _item_grid_info.has(p):
 			var existing_item := _item_grid_info[p].item
-			if existing_item != null && existing_item != item:
+			if existing_item == null:
+				continue
+			if existing_item.item.can_be_combined(existing_item, item):
+				continue
+			if existing_item != item:
 				return false
 		else:
 			return false
 	return true
+
+## Only call this AFTER [code]_can_place[/code] has returned [code]true[/code]
+## already; this simply returns items that overlap, it does not check if the
+## merge is compatible, and if that happens, well, this is a game jam, so I
+## don't have time to double validate that shit. Just don't fuck it.
+func _get_merge_item(item: InventoryDetail, new_positions: Array[Vector2i]) -> InventoryDetail:
+	for p in new_positions:
+		if _item_grid_info.has(p):
+			var existing_item := _item_grid_info[p].item
+			if existing_item == null || existing_item == item:
+				continue
+			if existing_item.item.can_be_combined(existing_item, item):
+				return existing_item
+	return null
 
 func _on_item_removed(i: ItemDragDetails) -> void:
 	var id := i.item
@@ -182,6 +216,8 @@ func _bake_item_positions() -> void:
 		for p in i.get_positions(i.position):
 			_item_grid_info[p].item = i
 		var display := _item_grid_info[i.position].item_display
+		if display == null:
+			continue
 		var equip_idx := Player.data.get_slot(i)
 		if equip_idx < 0:
 			display.clear_slot()

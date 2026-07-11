@@ -10,10 +10,10 @@ const _TOOLTIP_SCENE := preload("uid://bdcwnvc7nfxv3")
 
 @export var details: InventoryDetail:
 	set(value):
-		if details != null && details.item is Ammo:
+		if details != null && details.item.is_ammo_applicable():
 			details.ammo_updated.disconnect(_on_ammo_changed)
 		details = value
-		if details != null && details.item is Ammo:
+		if details != null && details.item.is_ammo_applicable():
 			details.ammo_updated.connect(_on_ammo_changed)
 		_update_display()
 
