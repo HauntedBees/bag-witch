@@ -12,6 +12,9 @@ class_name Item extends Resource
 ## If the item persists between warps.
 @export var persistent := false
 
+## The AltasTexture's offset for the equipped sprite (in spell_sheet.png)
+@export var equip_sprite_offset := Vector2i.ZERO
+
 ## The position and size of the item's icon in item_sheet.png to be used in the inventory grid.
 @export var icon: Rect2i
 

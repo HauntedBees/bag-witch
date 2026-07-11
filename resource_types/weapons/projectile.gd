@@ -21,12 +21,5 @@ func _physics_process(delta: float) -> void:
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	print("hit %s" % body.name)
 	if body is EnemyDisplay:
-		if _weapon.knockback > 0.0:
-			var dir := body.global_position.direction_to(_source_position)
-			body.velocity -= dir.normalized() * _weapon.knockback
-			body.velocity.y += _weapon.additional_y_knockback
-		body.take_damage(randi_range(_weapon.damage_range.x, _weapon.damage_range.y), _source_position)
-		for e: BWEnum.Effect in _weapon.metadata_increase_ranges.keys():
-			var r := _weapon.metadata_increase_ranges[e]
-			body.apply_effect(e, randf_range(r.x, r.y))
+		body.receive_weapon_hit(_source_position, _weapon)
 	queue_free()

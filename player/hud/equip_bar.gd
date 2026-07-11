@@ -27,6 +27,7 @@ func _on_weapon_changed(w: Weapon) -> void:
 		_remaining_amount.text = ""
 		return
 	_equip_icon.visible = true
+	_equip_icon.spell = w
 	_cooldown_bar.visible = true
 	_cooldown_bar.max_value = w.cooldown * _COOLDOWN_MULT
 	_cooldown_bar.value = _cooldown_bar.max_value

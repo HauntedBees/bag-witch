@@ -2,15 +2,8 @@
 
 [ext_resource type="Script" uid="uid://d02m8c768a6dt" path="res://player/hud/equip_bar.gd" id="1_aot1u"]
 [ext_resource type="Texture2D" uid="uid://7j1np82pkhxi" path="res://assets/sprites/ammo_bar.png" id="1_ovlwn"]
-[ext_resource type="Texture2D" uid="uid://b7eia8kbs1qii" path="res://assets/sprites/spell_sheet.png" id="2_5lopv"]
 [ext_resource type="Script" uid="uid://hafxp56l0iao" path="res://addons/gas/gas_label.gd" id="3_71ejj"]
 [ext_resource type="PackedScene" uid="uid://dd6i8p1qr32o4" path="res://player/hud/spell_icon.tscn" id="3_pd138"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pd138"]
-resource_local_to_scene = true
-atlas = ExtResource("2_5lopv")
-region = Rect2(0, 0, 16, 16)
-filter_clip = true
 
 [sub_resource type="LabelSettings" id="LabelSettings_rhbnc"]
 font_size = 36
@@ -41,7 +34,6 @@ theme_override_constants/margin_left = 24
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
-texture = SubResource("AtlasTexture_pd138")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1461718247]
 layout_mode = 2

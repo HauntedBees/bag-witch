@@ -1,5 +1,7 @@
 class_name EnemyDisplay extends CharacterBody3D
 
+signal on_hit(w: Weapon, dir: Vector3, damage_dealt: int)
+
 ## This should be obvious.
 @export var enemy_name := ""
 
@@ -16,10 +18,8 @@ class_name EnemyDisplay extends CharacterBody3D
 @export var bounding_box: CollisionShape3D
 
 var target: BogWitch
-var stunned := false
 
 var _health := 100
-var _stun_delay := 0.0
 var _effects: Dictionary[BWEnum.Effect, float] = {}
 
 @onready var _box: BoxShape3D = bounding_box.shape
@@ -29,27 +29,26 @@ func _ready() -> void:
 	if animation_player != null:
 		animation_player.play(Anim.IDLE)
 
+func is_in_danger() -> bool:
+	return _health <= (0.1 * max_health)
+
 func _physics_process(delta: float) -> void:
-	if stunned:
-		_stun_delay -= delta
-		if _stun_delay <= 0.0:
-			stunned = false
 	for e: BWEnum.Effect in _effects.keys():
 		_effects[e] -= delta
 		if _effects[e] <= 0.0:
 			_effects.erase(e)
 	# TODO: handle knockback
 
+func receive_weapon_hit(source: Vector3, w: Weapon) -> void:
+	var damage_dealt := randi_range(w.damage_range.x, w.damage_range.y)
+	on_hit.emit(w, source, damage_dealt)
+	_health -= damage_dealt
+	for e: BWEnum.Effect in w.metadata_increase_ranges.keys():
+		var r := w.metadata_increase_ranges[e]
+		apply_effect(e, randf_range(r.x, r.y))
+
 func get_screen_bounds() -> Rect2:
 	return BWEnum.get_bounds(global_transform, _box, get_viewport().get_camera_3d())
-
-func take_damage(amount: int, received_direction := Vector3.ZERO) -> void:
-	_health -= amount
-	stunned = true
-	_stun_delay = 0.25
-	animation_player.play(Anim.BIG_HIT if amount >= (max_health * 0.1) || _health <= (0.1 * max_health) else Anim.HIT, -1, 2.0)
-	received_direction.y = global_position.y
-	look_at(received_direction)
 
 func apply_effect(effect: BWEnum.Effect, amount: float) -> void:
 	if _effects.has(effect):
