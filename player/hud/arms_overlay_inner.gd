@@ -7,15 +7,18 @@ class_name ArmsOverlayInner extends Node3D
 func _ready() -> void:
 	Player.weapon_changed.connect(_on_weapon_changed)
 
-func fly() -> void:
-	_anim.play(&"BroomFly")
-
-func land() -> void:
+func reset_idle() -> void:
 	var w := Player.data.current_weapon
 	if w == null || w.equipped_animation == "":
 		_anim.play(&"Idle")
 	else:
 		_anim.play(w.equipped_animation)
+
+func play_anim(anim: StringName, return_to_idle := true) -> void:
+	_anim.play(anim)
+	if return_to_idle:
+		await _anim.animation_finished
+		reset_idle()
 
 func _on_weapon_changed(w: Weapon) -> void:
 	for n in _right_hand.get_children():

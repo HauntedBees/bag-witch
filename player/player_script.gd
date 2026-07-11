@@ -1,7 +1,7 @@
 class_name BogWitch extends PlayerCharacter
 
-var glide_steps := 0
 var ready_to_glide := false
+var current_weapon_metadata: Dictionary[String, int] = {}
 
 var _mouse_ray_length := 50.0
 var _current_target: WorldItem
@@ -87,7 +87,8 @@ func _try_switch_weapon(event: InputEvent) -> bool:
 	for i in BWEnum.WEAPON_SLOTS.size():
 		if GASInput.is_event_action_just_pressed(event, BWEnum.WEAPON_SLOTS[i]):
 			Player.try_change_weapon(i)
-			glide_steps = 0
+			current_weapon_metadata.clear()
+			ready_to_glide = false
 			print("current weapon is %s" % Player.data.current_weapon)
 			Player.weapon_cooldown = 0.0
 			return true

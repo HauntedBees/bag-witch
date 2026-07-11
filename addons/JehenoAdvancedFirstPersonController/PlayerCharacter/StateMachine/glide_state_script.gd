@@ -10,14 +10,14 @@ var fly_deccel := 0.0
 
 func enter(play_char_ref : CharacterBody3D) -> void:
 	play_char = play_char_ref
-	play_char.arms_overlay.arms.fly()
+	play_char.arms_overlay.arms.play_anim(&"BroomFly", false)
 	play_char.ready_to_glide = false
 	play_char.speed_lines.visible = true
 	verifications()
 
 func exit() -> void:
 	play_char.speed_lines.visible = false
-	play_char.arms_overlay.arms.land()
+	play_char.arms_overlay.arms.reset_idle()
 
 func verifications() -> void:
 	fly_speed = play_char.fly_speed
