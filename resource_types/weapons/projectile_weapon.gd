@@ -20,6 +20,9 @@ class_name ProjectileWeapon extends Weapon
 
 var _cached_scene: PackedScene = null
 
+func is_ammo_applicable() -> bool:
+	return !is_spell
+
 func _inner_use(player: BogWitch) -> void:
 	if _cached_scene == null:
 		_cached_scene = load(projectile_path)

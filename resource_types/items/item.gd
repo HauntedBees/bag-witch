@@ -47,6 +47,18 @@ class_name Item extends Resource
 ## When true, the equip scene will be on both hands.
 @export var both_hands := false
 
+func can_be_combined(_me: InventoryDetail, _them: InventoryDetail) -> bool:
+	return false
+
+func combine(_me: InventoryDetail, _them: InventoryDetail) -> void:
+	pass
+
+func is_destroyed_after_merge(_me: InventoryDetail) -> bool:
+	return true
+
+func is_ammo_applicable() -> bool:
+	return false
+
 func get_description() -> String:
 	return description
 

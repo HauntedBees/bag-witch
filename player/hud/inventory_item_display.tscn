@@ -38,12 +38,14 @@ texture = SubResource("AtlasTexture_rhbnc")
 layout_mode = 0
 offset_right = 64.0
 offset_bottom = 64.0
+mouse_filter = 2
 
 [node name="EquipSlot" parent="MarginContainer" unique_id=1161082248 instance=ExtResource("3_ndcmy")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
+mouse_filter = 2
 texture = SubResource("AtlasTexture_g5htb")
 
 [node name="AmmoCount" type="Label" parent="MarginContainer" unique_id=2084217979]
