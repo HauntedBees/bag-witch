@@ -176,6 +176,17 @@ func _on_inventory_display_spawn_item(wi: WorldItem, id: InventoryDetail) -> voi
 	wi.had_ammo_set = true
 	get_parent().add_child(wi)
 	var center := get_viewport().get_visible_rect().size / 2.0
-	var to := cam.project_ray_normal(center)
-	wi.global_position = global_position + to * 2.0
+	var to := _get_adjusted_drop_position(global_position, cam.project_ray_normal(center))
+	wi.global_position = global_position + to + Vector3(0.0, 0.3, 0.0)
 	wi.plep(to)
+
+func _get_adjusted_drop_position(from: Vector3, to: Vector3) -> Vector3:
+	var space_state := get_world_3d().direct_space_state
+	for i: float in [2.0, 1.5, 1.0, 0.5]:
+		var query := PhysicsRayQueryParameters3D.create(from, from + to * i)
+		var result := space_state.intersect_ray(query)
+		if result.is_empty():
+			print("FUCKED WITH %s" % i)
+			return to * i
+		print("can't fuck with %s" % i)
+	return Vector3.ZERO
