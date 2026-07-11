@@ -11,8 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://djtpn6s6cdlln" path="res://enemies/knight.tscn" id="9_s1bnp"]
 [ext_resource type="PackedScene" uid="uid://baaev0tc1par5" path="res://items/world/spellbook.tscn" id="10_8cawr"]
 [ext_resource type="PackedScene" uid="uid://ceg3otvwnm6o8" path="res://items/world/pistol_ammo.tscn" id="11_toqqt"]
-[ext_resource type="Script" uid="uid://co5j381442318" path="res://resource_types/items/ammo.gd" id="12_bjyw8"]
-[ext_resource type="Resource" uid="uid://bjf5fkot1fjp5" path="res://items/handgun.tres" id="13_l5pyb"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fjbi6"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -51,22 +49,6 @@ _data = {
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
-
-[sub_resource type="Resource" id="Resource_toqqt"]
-resource_local_to_scene = true
-script = ExtResource("12_bjyw8")
-weapon = ExtResource("13_l5pyb")
-random_range = Vector2i(4, 16)
-name = "Pistol Ammo"
-metadata/_custom_type_script = "uid://co5j381442318"
-
-[sub_resource type="Resource" id="Resource_bjyw8"]
-resource_local_to_scene = true
-script = ExtResource("12_bjyw8")
-weapon = ExtResource("13_l5pyb")
-random_range = Vector2i(4, 16)
-name = "Pistol Ammo"
-metadata/_custom_type_script = "uid://co5j381442318"
 
 [node name="TemplateMap" type="Node3D" unique_id=1708358735]
 
@@ -438,9 +420,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46827865, -21)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0.507602, -31)
 
 [node name="PistolAmmo" parent="." unique_id=458796508 instance=ExtResource("11_toqqt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0.52094364, -28)
-item = SubResource("Resource_toqqt")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0.40111923, -28)
 
-[node name="PistolAmmo2" parent="." unique_id=1048228295 instance=ExtResource("11_toqqt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0.52094364, -28)
-item = SubResource("Resource_bjyw8")
+[node name="PistolAmmo2" parent="." unique_id=2142033360 instance=ExtResource("11_toqqt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0.40111923, -28)
