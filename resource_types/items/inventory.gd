@@ -1,6 +1,7 @@
 class_name Inventory extends Resource
 
 signal item_added(i: InventoryDetail)
+signal item_removed(i: InventoryDetail)
 
 @export var dimensions := Vector2i(7, 4)
 
@@ -18,6 +19,7 @@ func _init() -> void:
 func remove_item(i: InventoryDetail) -> void:
 	items.erase(i)
 	_items_list.erase(i.item) # TODO: this might not play nice with things like ammo?
+	item_removed.emit(i)
 
 func add_item(i: Item, pos: Vector2i, trigger_signal := true) -> void:
 	add_item_detail(InventoryDetail.new(i, pos), trigger_signal)

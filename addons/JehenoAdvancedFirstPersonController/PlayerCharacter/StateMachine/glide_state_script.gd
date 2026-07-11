@@ -9,13 +9,9 @@ var fly_accel := 0.0
 var fly_deccel := 0.0
 
 func enter(play_char_ref : CharacterBody3D) -> void:
-	print("hello glide time")
 	play_char = play_char_ref
 	play_char.glide_steps = 0
 	verifications()
-
-func exit() -> void:
-	print("goodbye glide time")
 
 func verifications() -> void:
 	fly_speed = play_char.fly_speed
@@ -48,23 +44,9 @@ func input_management() -> void:
 	if Input.is_action_just_pressed(play_char.fly_action):
 		transitioned.emit(self, "InairState")
 
-	if Input.is_action_just_pressed(play_char.run_action):
-		play_char.fly_boost_on = !play_char.fly_boost_on
-		fly_speed = play_char.fly_speed * play_char.fly_boost_multiplier if play_char.fly_boost_on else play_char.fly_speed
-		fly_accel = play_char.fly_speed * play_char.fly_boost_multiplier if play_char.fly_boost_on else play_char.fly_accel
-		fly_deccel = play_char.fly_speed * play_char.fly_boost_multiplier if play_char.fly_boost_on else play_char.fly_deccel
-
 func move(delta: float) -> void:
-	play_char.input_direction = Input.get_vector(play_char.move_left_action, play_char.move_right_action, play_char.move_forward_action, play_char.move_backward_action)
-	#need to get the cam reference directly, and not the cam holder one, because only the cam is rotating
-	play_char.move_direction = (play_char.cam.global_transform.basis * Vector3(play_char.input_direction.x, 0.0, play_char.input_direction.y))
-
-	play_char.desired_move_speed = clamp(play_char.desired_move_speed, 0.0, play_char.max_desired_move_speed)
-
 	#if play_char.move_direction:
 	var new_vel := play_char.get_front_direction() * play_char.velocity.length()
 	var grav_vel := new_vel
 	grav_vel.y = -9.0
-	play_char.velocity = lerp(new_vel, grav_vel, fly_accel * delta) #lerp(play_char.velocity, play_char.move_direction * fly_speed, fly_accel * delta)
-#	else:
-#		play_char.velocity = lerp(play_char.velocity, play_char.move_direction * fly_speed, fly_deccel * delta)
+	play_char.velocity = lerp(new_vel, grav_vel, fly_accel * delta)
