@@ -26,6 +26,8 @@ var _highlighted_spell: Weapon
 func _ready() -> void:
 	_highlight = _HIGHLIGHT_SCENE.instantiate()
 	_item_grid.columns = _inventory.dimensions.x
+	Player.data.inventory.item_added.connect(_on_item_changed)
+	Player.data.inventory.item_removed.connect(_on_item_changed)
 	for y in _inventory.dimensions.y:
 		for x in _inventory.dimensions.x:
 			var pos := Vector2i(x, y)
@@ -63,6 +65,9 @@ func _input(event: InputEvent) -> void:
 			_current_draggable.preview.rotation_degrees = 0.0
 			_current_draggable.preview.position = InventoryItemDisplay.DRAG_OFFSET
 	_try_equip_item(event)
+
+func _on_item_changed(_i: InventoryDetail) -> void:
+	_draw_spells()
 
 func _try_equip_item(event: InputEvent) -> void:
 	if _highlighted_item == null && _highlighted_spell == null:
@@ -185,6 +190,8 @@ func _bake_item_positions() -> void:
 
 #region Spells
 func _draw_spells() -> void: #TODO: bake this new when getting/losing items
+	for c in _spell_grid.get_children():
+		c.queue_free()
 	var spells := Player.data.get_available_spells()
 	var i := 0
 	for y in 3:

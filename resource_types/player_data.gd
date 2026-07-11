@@ -92,7 +92,7 @@ func get_loaded_ammo(w: Weapon) -> int:
 
 func get_remaining_ammo(w: Weapon) -> int:
 	if w.is_spell:
-		if inventory.has_spell(w.spell):
+		if inventory.has_spell(w):
 			return -1
 		else:
 			return 0
