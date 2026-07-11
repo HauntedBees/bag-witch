@@ -13,10 +13,29 @@ var _spell_ammo_remaining: Dictionary[Weapon, int] = {}
 
 func _init() -> void:
 	inventory.item_added.connect(_on_item_added)
+	inventory.item_removed.connect(_on_item_removed)
 	for i in 10:
 		equip_slots.append(null)
 	for i in inventory.items: # for the default items
 		_on_item_added(i)
+
+func _on_item_removed(id: InventoryDetail) -> void:
+	var idx := equip_slots.find(id)
+	if idx < 0:
+		if current_weapon == id.item:
+			Player.try_change_weapon(equip_slots.find(current_weapon))
+		return
+	var alt: InventoryDetail = null
+	for potential_alt in inventory.items:
+		if potential_alt.item == id.item:
+			alt = potential_alt
+			break
+	if alt != null:
+		equip_to_slot(alt, idx)
+	elif current_weapon == id.item:
+		print("clearing slot %s" % idx)
+		equip_slots[idx] = null
+		Player.try_change_weapon(idx)
 
 func _on_item_added(id: InventoryDetail) -> void:
 	if id.item is Spellbook:
@@ -109,9 +128,6 @@ func get_available_spells() -> Array[Weapon]:
 		if !w.has(r):
 			w.append(r)
 	return w
-
-func get_weapon(slot: int) -> Weapon:
-	return null if slot > 0 else null
 
 func use_spell_ammo(w: Weapon) -> int:
 	if !_spell_ammo_remaining.has(w):
