@@ -12,6 +12,12 @@ class_name ProjectileWeapon extends Weapon
 ## How long it takes for the projectile to go away if it never hits anything.
 @export var fade_time := 5.0
 
+## The amount of ammo a random weapon might have when you first pick it up.
+@export var initial_ammo_range := Vector2i(0, 6)
+
+## How much a fully loaded weapon can hold.
+@export var full_clip_size := 6
+
 var _cached_scene: PackedScene = null
 
 func _inner_use(player: BogWitch) -> void:
@@ -19,6 +25,7 @@ func _inner_use(player: BogWitch) -> void:
 		_cached_scene = load(projectile_path)
 	var projectile: Projectile = _cached_scene.instantiate()
 	player.get_parent().add_child(projectile)
+	player.arms_overlay.arms.play_anim(use_animation)
 	projectile.global_position = player.get_projectile_launch_point()
 	projectile.look_at(player.get_mouse_center())
 	projectile.initialize(self, player.global_position)

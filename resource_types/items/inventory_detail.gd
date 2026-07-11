@@ -4,10 +4,15 @@ class_name InventoryDetail extends Resource
 @export var position: Vector2i
 @export var rotated: bool
 
+@export var ammo := 0
+
 func _init(i: Item, p: Vector2i) -> void:
 	item = i
 	position = p
 	rotated = i.rotated_by_default
+	if i is ProjectileWeapon:
+		if !i.is_spell:
+			ammo = randi_range(i.initial_ammo_range.x, i.initial_ammo_range.y)
 
 func get_positions(base_position: Vector2i, rotation_altered := false) -> Array[Vector2i]:
 	var pos: Array[Vector2i] = []

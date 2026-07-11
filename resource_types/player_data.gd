@@ -2,7 +2,7 @@ class_name PlayerData extends Resource
 
 var inventory := Inventory.new()
 
-var current_weapon: Weapon = null
+var current_weapon_detail: InventoryDetail = null
 
 var equip_slots: Array[InventoryDetail] = []
 
@@ -19,11 +19,16 @@ func _init() -> void:
 	for i in inventory.items: # for the default items
 		_on_item_added(i)
 
+func current_weapon() -> Weapon:
+	if current_weapon_detail == null:
+		return null
+	return current_weapon_detail.item
+
 func _on_item_removed(id: InventoryDetail) -> void:
 	var idx := equip_slots.find(id)
 	if idx < 0:
-		if current_weapon == id.item:
-			Player.try_change_weapon(equip_slots.find(current_weapon))
+		if current_weapon() == id.item:
+			Player.try_change_weapon(equip_slots.find(current_weapon_detail))
 		return
 	var alt: InventoryDetail = null
 	for potential_alt in inventory.items:
@@ -32,7 +37,7 @@ func _on_item_removed(id: InventoryDetail) -> void:
 			break
 	if alt != null:
 		equip_to_slot(alt, idx)
-	elif current_weapon == id.item:
+	elif current_weapon() == id.item:
 		print("clearing slot %s" % idx)
 		equip_slots[idx] = null
 		Player.try_change_weapon(idx)
@@ -40,6 +45,10 @@ func _on_item_removed(id: InventoryDetail) -> void:
 func _on_item_added(id: InventoryDetail) -> void:
 	if id.item is Spellbook:
 		_handle_spell_auto_equipping()
+		return
+	if id.item is Ammo: # force ammo refresh for UI
+		if current_weapon_detail != null:
+			Player.ammo_changed.emit(get_loaded_ammo(current_weapon_detail))
 		return
 	if id.item is not Weapon:
 		return
@@ -135,7 +144,8 @@ func use_spell_ammo(w: Weapon) -> int:
 	_spell_ammo_remaining[w] -= 1
 	return _spell_ammo_remaining[w]
 
-func get_loaded_ammo(w: Weapon) -> int:
+func get_loaded_ammo(id: InventoryDetail) -> int:
+	var w: Weapon = id.item
 	if w.is_spell:
 		if inventory.has_spell(w):
 			return -1
@@ -144,8 +154,10 @@ func get_loaded_ammo(w: Weapon) -> int:
 		else:
 			_spell_ammo_remaining[w] = w.spell_ammo
 			return w.spell_ammo
+	elif w is ProjectileWeapon:
+		return id.ammo
 	else:
-		return 10 # TODO: physical weapon ammo
+		return -1
 
 func get_remaining_ammo(w: Weapon) -> int:
 	if w.is_spell:
@@ -154,4 +166,8 @@ func get_remaining_ammo(w: Weapon) -> int:
 		else:
 			return 0
 	else:
-		return 10 # TODO: physical weapon ammo
+		var total := 0
+		for id in inventory.items:
+			if id.item is Ammo && (id.item as Ammo).weapon == w:
+				total += (id.item as Ammo).get_amount()
+		return total

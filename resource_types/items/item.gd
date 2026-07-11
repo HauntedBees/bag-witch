@@ -16,7 +16,7 @@ class_name Item extends Resource
 @export var equip_sprite_offset := Vector2i.ZERO
 
 ## The position and size of the item's icon in item_sheet.png to be used in the inventory grid.
-@export var icon: Rect2i
+@export var icon := Rect2i(0, 0, 1, 1)
 
 ## For items that are tall, not long, I would've had to *think* and *write better code* to handle
 ## rotation and stuff properly, so the quick solution I've come up with is to *not* do that, and
@@ -29,8 +29,17 @@ class_name Item extends Resource
 ## Mostly for use by spells; when the item is equipped, this is used instead of the regular scene.
 @export_custom(SRP_HINT.RESOURCE_PATH, "PackedScene") var custom_equip_scene: String
 
-## The animation the hands should play when this item is in use.
+## The animation the hands should play when this item is equipped (not *being* equipped).
 @export var equipped_animation: StringName
+
+## The animation the hands should play when this item is actively used.
+@export var use_animation: StringName
+
+## The animation the hands should play when this item is reloaded.
+@export var reload_animation: StringName
+
+## The time it takes to reload the weapon.
+@export var reload_time := 0.0
 
 ## How big the equipped thing should be.
 @export var equipped_scale := 1.0

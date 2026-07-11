@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://c8og2ryhcxmto" path="res://player/hud/inventory_item_display.gd" id="2_b7tql"]
 [ext_resource type="PackedScene" uid="uid://bi75tcolvv8tm" path="res://player/hud/input_image.tscn" id="3_ndcmy"]
 [ext_resource type="Texture2D" uid="uid://dorg26lk5rom5" path="res://assets/sprites/input_icons.png" id="4_c52qj"]
+[ext_resource type="Script" uid="uid://hafxp56l0iao" path="res://addons/gas/gas_label.gd" id="5_g5htb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rhbnc"]
 resource_local_to_scene = true
@@ -11,7 +12,7 @@ atlas = ExtResource("1_pimev")
 region = Rect2(0, 0, 64, 64)
 filter_clip = true
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_g5htb"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxrga"]
 resource_local_to_scene = true
 atlas = ExtResource("4_c52qj")
 region = Rect2(0, 208, 16, 16)
@@ -43,4 +44,15 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-texture = SubResource("AtlasTexture_g5htb")
+texture = SubResource("AtlasTexture_gxrga")
+
+[node name="AmmoCount" type="Label" parent="MarginContainer" unique_id=2084217979]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 2
+script = ExtResource("5_g5htb")
+metadata/_custom_type_script = "uid://hafxp56l0iao"

@@ -26,8 +26,6 @@ var _highlighted_spell: Weapon
 func _ready() -> void:
 	_highlight = _HIGHLIGHT_SCENE.instantiate()
 	_item_grid.columns = _inventory.dimensions.x
-	Player.data.inventory.item_added.connect(_on_item_changed)
-	Player.data.inventory.item_removed.connect(_on_item_changed)
 	for y in _inventory.dimensions.y:
 		for x in _inventory.dimensions.x:
 			var pos := Vector2i(x, y)
@@ -42,6 +40,8 @@ func _ready() -> void:
 	modulate.a = 0.0
 	await get_tree().process_frame
 	_draw_items()
+	_inventory.item_added.connect(_on_item_changed)
+	_inventory.item_removed.connect(_on_item_changed)
 	_inventory.item_added.connect(_draw_item)
 	_drop_area.item_dropped.connect(_on_item_removed)
 
