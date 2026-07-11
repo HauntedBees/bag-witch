@@ -50,7 +50,7 @@ func applies(delta : float) -> void:
 		else: transitioned.emit(self, "IdleState")
 
 func input_management() -> void:
-	if play_char.glide_steps == 2:
+	if play_char.ready_to_glide:
 		transitioned.emit(self, "GlideState")
 		return
 

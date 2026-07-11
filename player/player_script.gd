@@ -1,6 +1,7 @@
 class_name BogWitch extends PlayerCharacter
 
 var glide_steps := 0
+var ready_to_glide := false
 
 var _mouse_ray_length := 50.0
 var _current_target: WorldItem
@@ -26,6 +27,8 @@ func _process(delta: float) -> void:
 	_handle_non_mouse_camera_movement()
 	_handle_front_raycast()
 	_handle_attack(delta)
+	if is_on_floor():
+		ready_to_glide = false
 
 func _on_jump_state_jumped() -> void:
 	if Player.data.current_weapon == null || Player.data.current_weapon is not Broom:
@@ -36,10 +39,8 @@ func _on_jump_state_jumped() -> void:
 	front_dir.y = 0.0
 	front_dir = front_dir.normalized()
 	var vel_dir := vel.normalized()
-	if vel_dir.dot(front_dir) >= 0.9 && vel.length() >= 20.0:
-		glide_steps += 1
-	else:
-		glide_steps = 0
+	if vel_dir.dot(front_dir) >= 0.9 && vel.length() >= 20.0 && !is_on_floor():
+		ready_to_glide = true
 
 func get_front_direction(normalized := true) -> Vector3:
 	var dir := _front_check.to_global(_front_check.target_position) - _front_check.global_position

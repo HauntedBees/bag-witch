@@ -11,7 +11,7 @@ var fly_deccel := 0.0
 func enter(play_char_ref : CharacterBody3D) -> void:
 	play_char = play_char_ref
 	play_char.arms_overlay.arms.fly()
-	play_char.glide_steps = 0
+	play_char.ready_to_glide = false
 	play_char.speed_lines.visible = true
 	verifications()
 

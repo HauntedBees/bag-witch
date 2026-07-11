@@ -32,9 +32,6 @@ class_name Item extends Resource
 ## How big the equipped thing should be.
 @export var equipped_scale := 1.0
 
-## How much the equipped thing should be rotated.
-@export var equipped_rotation := 0.0
-
 ## When true, the equip scene will be on both hands.
 @export var both_hands := false
 
