@@ -6,6 +6,9 @@ var _mouse_ray_length := 50.0
 var _current_target: WorldItem
 var _in_inventory := false
 
+@onready var speed_lines: ColorRect = %SpeedLines
+@onready var arms_overlay: ArmsOverlay = %ArmsOverlay
+
 @onready var _projectile_launch_spot: Node3D = %ProjectileSpot
 @onready var _front_check: RayCast3D = %FrontCheck
 @onready var _item_select: ItemSelect = %ItemSelect
@@ -37,7 +40,6 @@ func _on_jump_state_jumped() -> void:
 		glide_steps += 1
 	else:
 		glide_steps = 0
-
 
 func get_front_direction(normalized := true) -> Vector3:
 	var dir := _front_check.to_global(_front_check.target_position) - _front_check.global_position
@@ -84,6 +86,7 @@ func _try_switch_weapon(event: InputEvent) -> bool:
 	for i in BWEnum.WEAPON_SLOTS.size():
 		if GASInput.is_event_action_just_pressed(event, BWEnum.WEAPON_SLOTS[i]):
 			Player.try_change_weapon(i)
+			glide_steps = 0
 			print("current weapon is %s" % Player.data.current_weapon)
 			Player.weapon_cooldown = 0.0
 			return true
