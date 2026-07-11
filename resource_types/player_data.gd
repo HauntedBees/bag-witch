@@ -54,6 +54,14 @@ func equip_to_slot(item: InventoryDetail, slot: int) -> void:
 	equip_slots[slot] = item
 	#item.equip(slot)
 
+func refresh_spell_ammo() -> void:
+	for id in inventory.items:
+		var i := id.item
+		if i is Spellbook:
+			for s in i.spells:
+				if _spell_ammo_remaining.has(s):
+					_spell_ammo_remaining.erase(s)
+
 func get_available_spells() -> Array[Weapon]:
 	var w: Array[Weapon] = []
 	for id in inventory.items:

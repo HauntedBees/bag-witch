@@ -189,9 +189,10 @@ func _bake_item_positions() -> void:
 #endregion
 
 #region Spells
-func _draw_spells() -> void: #TODO: bake this new when getting/losing items
+func _draw_spells() -> void:
 	for c in _spell_grid.get_children():
 		c.queue_free()
+	Player.data.refresh_spell_ammo() #TODO: THIS ISN'T GREAT. BUT ALSO WHATEVER.
 	var spells := Player.data.get_available_spells()
 	var i := 0
 	for y in 3:
