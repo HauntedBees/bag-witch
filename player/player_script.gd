@@ -35,8 +35,6 @@ func _on_jump_state_jumped() -> void:
 	var vel_dir := vel.normalized()
 	if vel_dir.dot(front_dir) >= 0.9 && vel.length() >= 20.0:
 		glide_steps += 1
-		if glide_steps == 2:
-			state_machine.on_state_child_transition(state_machine.curr_state, "GlideState")
 	else:
 		glide_steps = 0
 

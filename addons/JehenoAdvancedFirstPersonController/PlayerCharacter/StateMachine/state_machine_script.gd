@@ -33,17 +33,13 @@ func _physics_process(delta: float) -> void:
 	if curr_state: curr_state.physics_update(delta)
 
 func on_state_child_transition(state : State, new_state_name : String) -> void:
-	print_stack()
+	#print_stack()
 	#manage the transition from one state to another
 
 	if state != curr_state: return
 
 	var new_state = states.get(new_state_name.to_lower())
 	if !new_state: return
-
-	if curr_state is GlideState && new_state is JumpState:
-		print("NO!")
-		return
 
 	#exit the current state
 	if curr_state: curr_state.exit()
@@ -54,6 +50,5 @@ func on_state_child_transition(state : State, new_state_name : String) -> void:
 	curr_state = new_state
 	var last_state_name := curr_state_name
 	curr_state_name = curr_state.state_name
-	print("new state name: %s (from %s/%s)" % [curr_state_name, last_state_name, state.state_name])
 
 	emit_signal("change_fov")
