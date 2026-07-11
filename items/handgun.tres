@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ProjectileWeapon" format=3 uid="uid://bjf5fkot1fjp5"]
+
+[ext_resource type="Script" uid="uid://dq216hufmeoo3" path="res://resource_types/weapons/projectile_weapon.gd" id="1_lg2v6"]
+
+[resource]
+script = ExtResource("1_lg2v6")
+projectile_path = "uid://b7tgst5mfxxfd"
+velocity = 90.0
+cooldown = 0.25
+damage_range = Vector2i(25, 35)
+name = "Handgun"
+scene_path = "uid://bqq68u3ntgxfx"
+equipped_animation = &"Handgun"
+equipped_scale = 1.25
+metadata/_custom_type_script = "uid://dq216hufmeoo3"

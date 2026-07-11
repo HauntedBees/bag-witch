@@ -15,6 +15,9 @@ func _init() -> void:
 	add_item(broom, Vector2i(0, 0), false)
 	var book := load("uid://gloeqm86u5q")
 	add_item(book, Vector2i(0, 1), false)
+	var handgun := load("uid://bjf5fkot1fjp5")
+	add_item(handgun, Vector2i(0, 2), false)
+
 
 func remove_item(i: InventoryDetail) -> void:
 	items.erase(i)
