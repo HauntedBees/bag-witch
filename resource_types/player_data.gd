@@ -12,8 +12,41 @@ var max_health := 100
 var _spell_ammo_remaining: Dictionary[Weapon, int] = {}
 
 func _init() -> void:
+	inventory.item_added.connect(_on_item_added)
 	for i in 10:
 		equip_slots.append(null)
+	for i in inventory.items: # for the default items
+		_on_item_added(i)
+
+func _on_item_added(id: InventoryDetail) -> void:
+	if id.item is Spellbook:
+		_handle_spell_auto_equipping()
+		return
+	if id.item is not Weapon:
+		return
+	var first_empty := -1
+	for i in equip_slots.size():
+		var e := equip_slots[i]
+		if e == null:
+			if first_empty < 0:
+				first_empty = i
+		elif e.item == id.item: # don't need to equip the same item twice
+			return
+	if first_empty >= 0:
+		equip_to_slot(id, first_empty)
+
+func _handle_spell_auto_equipping() -> void:
+	for s in get_available_spells():
+		if get_spell_slot(s) >= 0:
+			continue
+		var first_empty := -1
+		for i in equip_slots.size():
+			var e := equip_slots[i]
+			if e == null && first_empty < 0:
+				first_empty = i
+				break
+		if first_empty >= 0:
+			equip_spell_to_slot(s, first_empty)
 
 func get_spell_slot(spell: Item) -> int:
 	for i in equip_slots.size():
