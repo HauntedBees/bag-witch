@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://4i1yaejh33ss" path="res://assets/models/broom.glb" id="3_dddjd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rhbnc"]
-size = Vector3(1.1843262, 0.16757202, 0.25234985)
+size = Vector3(0.252, 0.168, 1.184)
 
 [node name="Broom" type="Area3D" unique_id=458796508 node_paths=PackedStringArray("collider")]
 collision_layer = 4
@@ -16,8 +16,8 @@ item = ExtResource("2_fufuf")
 collider = NodePath("CollisionShape3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1439180978]
-transform = Transform3D(1.4156103e-07, 0, 1, 0, 1, 0, -1, 0, 1.4156103e-07, 0.004219056, 0.087631226, -0.015434265)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.004219056, 0.087631226, -0.015434265)
 shape = SubResource("BoxShape3D_rhbnc")
 
 [node name="broom" parent="." unique_id=93656533 instance=ExtResource("3_dddjd")]
-transform = Transform3D(-6.217249e-15, 1.4156103e-07, 1, -1, -4.371139e-08, 0, 4.371139e-08, -1, 1.4156103e-07, 0.015434263, 0.0785836, 0.004219055)
+transform = Transform3D(-8.54034e-15, 1.9470718e-07, 1, -1, -4.371139e-08, -2.9419572e-17, 4.371139e-08, -1, 1.9470718e-07, 0.015434263, 0.0785836, 0.004219055)

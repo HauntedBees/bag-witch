@@ -155,7 +155,7 @@ var default_input_actions : Dictionary
 @onready var cam: Camera3D = %Camera
 @onready var model: MeshInstance3D = $Model
 @onready var hitbox: CollisionShape3D = $Hitbox
-@onready var state_machine: Node = $StateMachine
+@onready var state_machine: PlayerStateMachine = $StateMachine
 @onready var ceiling_check: RayCast3D = %CeilingCheck
 @onready var floor_check: RayCast3D = %FloorCheck
 @onready var wallrun_floor_check : RayCast3D = %WallrunFloorCheck

@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="Item" format=3 uid="uid://dpgrb2fqcl3qn"]
+[gd_resource type="Resource" script_class="Broom" format=3 uid="uid://dpgrb2fqcl3qn"]
 
-[ext_resource type="Script" uid="uid://cgt7ckkn1gh5b" path="res://resource_types/items/item.gd" id="1_tj7ko"]
+[ext_resource type="Script" uid="uid://cnsy5yd5id8mg" path="res://resource_types/items/broom.gd" id="1_tj7ko"]
 
 [resource]
 script = ExtResource("1_tj7ko")
@@ -10,4 +10,6 @@ size = Vector2i(4, 1)
 persistent = true
 icon = Rect2i(0, 0, 4, 1)
 scene_path = "uid://c0c6yem7oc5h2"
+equipped_scale = 4.0
+equipped_rotation = 1.571
 metadata/_custom_type_script = "uid://cgt7ckkn1gh5b"

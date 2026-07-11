@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://bw4ajtv2jt8w1"]
+
+[ext_resource type="Texture2D" uid="uid://yc6o5363chss" path="res://assets/sprites/ice_sparkles.png" id="1_vptpb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jnyms"]
+atlas = ExtResource("1_vptpb")
+region = Rect2(0, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vr8ua"]
+atlas = ExtResource("1_vptpb")
+region = Rect2(48, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ws47l"]
+atlas = ExtResource("1_vptpb")
+region = Rect2(96, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kxvdw"]
+atlas = ExtResource("1_vptpb")
+region = Rect2(144, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6a45"]
+atlas = ExtResource("1_vptpb")
+region = Rect2(192, 0, 48, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rhbnc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jnyms")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vr8ua")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ws47l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kxvdw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f6a45")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="IceParticles" type="Node3D" unique_id=111976614]
+
+[node name="IceSprite" type="AnimatedSprite3D" parent="." unique_id=761236086]
+pixel_size = 0.03
+billboard = 1
+sprite_frames = SubResource("SpriteFrames_rhbnc")
+autoplay = "default"
+frame_progress = 0.27360672
+
+[node name="IceSprite2" type="AnimatedSprite3D" parent="." unique_id=1769251126]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.21094418)
+pixel_size = 0.02
+billboard = 1
+sprite_frames = SubResource("SpriteFrames_rhbnc")
+autoplay = "default"
+frame_progress = 0.27011475
+
+[node name="IceSprite3" type="AnimatedSprite3D" parent="." unique_id=1399070243]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.51665664)
+pixel_size = 0.02
+billboard = 1
+sprite_frames = SubResource("SpriteFrames_rhbnc")
+autoplay = "default"
+frame_progress = 0.27011475

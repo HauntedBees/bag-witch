@@ -1,19 +1,21 @@
-extends State
+class_name GlideState extends State
 
-class_name FlyState
+var state_name := "Glide"
 
-var state_name : String = "Fly"
+var play_char: BogWitch
 
-var play_char : CharacterBody3D
-
-var fly_speed : float = 0.0
-var fly_accel : float = 0.0
-var fly_deccel : float = 0.0
+var fly_speed := 0.0
+var fly_accel := 0.0
+var fly_deccel := 0.0
 
 func enter(play_char_ref : CharacterBody3D) -> void:
+	print("hello glide time")
 	play_char = play_char_ref
-
+	play_char.glide_steps = 0
 	verifications()
+
+func exit() -> void:
+	print("goodbye glide time")
 
 func verifications() -> void:
 	fly_speed = play_char.fly_speed
@@ -29,17 +31,18 @@ func verifications() -> void:
 	play_char.tween_hitbox_height(play_char.base_hitbox_height)
 	play_char.tween_model_height(play_char.base_model_height)
 
-func physics_update(delta : float) -> void:
+func physics_update(delta: float) -> void:
 	applies(delta)
-
 	input_management()
-
 	move(delta)
+	if play_char.is_on_floor():
+		transitioned.emit(self, "InairState")
 
-func applies(delta : float) -> void:
-	if play_char.jump_cooldown > 0.0: play_char.jump_cooldown -= delta
-
-	if play_char.hit_ground_cooldown > 0.0: play_char.hit_ground_cooldown -= delta
+func applies(delta: float) -> void:
+	if play_char.jump_cooldown > 0.0:
+		play_char.jump_cooldown -= delta
+	if play_char.hit_ground_cooldown > 0.0:
+		play_char.hit_ground_cooldown -= delta
 
 func input_management() -> void:
 	if Input.is_action_just_pressed(play_char.fly_action):
@@ -51,14 +54,17 @@ func input_management() -> void:
 		fly_accel = play_char.fly_speed * play_char.fly_boost_multiplier if play_char.fly_boost_on else play_char.fly_accel
 		fly_deccel = play_char.fly_speed * play_char.fly_boost_multiplier if play_char.fly_boost_on else play_char.fly_deccel
 
-func move(delta : float) -> void:
+func move(delta: float) -> void:
 	play_char.input_direction = Input.get_vector(play_char.move_left_action, play_char.move_right_action, play_char.move_forward_action, play_char.move_backward_action)
 	#need to get the cam reference directly, and not the cam holder one, because only the cam is rotating
 	play_char.move_direction = (play_char.cam.global_transform.basis * Vector3(play_char.input_direction.x, 0.0, play_char.input_direction.y))
 
 	play_char.desired_move_speed = clamp(play_char.desired_move_speed, 0.0, play_char.max_desired_move_speed)
 
-	if play_char.move_direction:
-		play_char.velocity = lerp(play_char.velocity, play_char.move_direction * fly_speed, fly_accel * delta)
-	else:
-		play_char.velocity = lerp(play_char.velocity, play_char.move_direction * fly_speed, fly_deccel * delta)
+	#if play_char.move_direction:
+	var new_vel := play_char.get_front_direction() * play_char.velocity.length()
+	var grav_vel := new_vel
+	grav_vel.y = -9.0
+	play_char.velocity = lerp(new_vel, grav_vel, fly_accel * delta) #lerp(play_char.velocity, play_char.move_direction * fly_speed, fly_accel * delta)
+#	else:
+#		play_char.velocity = lerp(play_char.velocity, play_char.move_direction * fly_speed, fly_deccel * delta)

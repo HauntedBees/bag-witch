@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://cjfldj2s7jm1n"]
+
+[ext_resource type="PackedScene" uid="uid://dyp4e3ngk44h5" path="res://player/hud/arms_overlay_inner.tscn" id="1_epxri"]
+[ext_resource type="Script" uid="uid://cvnjfawqoeja4" path="res://player/hud/arms_overlay.gd" id="1_s1c6f"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_rhbnc"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="Environment" id="Environment_epxri"]
+
+[sub_resource type="World3D" id="World3D_pdci5"]
+environment = SubResource("Environment_epxri")
+
+[node name="ArmsOverlay" type="TextureRect" unique_id=938030434]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_rhbnc")
+script = ExtResource("1_s1c6f")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=620400552]
+own_world_3d = true
+world_3d = SubResource("World3D_pdci5")
+transparent_bg = true
+size = Vector2i(1920, 1080)
+
+[node name="ArmsOverlayInner" parent="SubViewport" unique_id=520152911 instance=ExtResource("1_epxri")]
+unique_name_in_owner = true

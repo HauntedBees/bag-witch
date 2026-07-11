@@ -1,4 +1,4 @@
-class_name InventoryItemDisplay extends TextureRect
+class_name InventoryItemDisplay extends Control
 
 signal drag_ended()
 
@@ -13,12 +13,24 @@ const _TOOLTIP_SCENE := preload("uid://bdcwnvc7nfxv3")
 		details = value
 		_update_display()
 
-@onready var _texture := texture as AtlasTexture
+@onready var _equip_slot: InputImage = %EquipSlot
+@onready var _item: TextureRect = %Item
+@onready var _texture := _item.texture as AtlasTexture
+
+func _ready() -> void:
+	_equip_slot.visible = false
+
+func clear_slot() -> void:
+	_equip_slot.visible = false
+
+func set_slot(action_name: StringName) -> void:
+	_equip_slot.visible = true
+	_equip_slot.action_name = action_name
 
 func _get_drag_data(_at_position: Vector2) -> Variant:
 	var drag_icon := TextureRect.new()
-	drag_icon.texture = texture
-	drag_icon.custom_minimum_size = custom_minimum_size
+	drag_icon.texture = _texture
+	drag_icon.custom_minimum_size = _item.custom_minimum_size
 	drag_icon.modulate.a = 0.5
 
 	var preview = Control.new()
@@ -42,8 +54,10 @@ func _notification(what: int) -> void:
 	match what:
 		NOTIFICATION_DRAG_BEGIN:
 			mouse_filter = Control.MOUSE_FILTER_IGNORE
+			_item.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		NOTIFICATION_DRAG_END:
 			mouse_filter = Control.MOUSE_FILTER_STOP
+			_item.mouse_filter = Control.MOUSE_FILTER_PASS
 			drag_ended.emit()
 
 func _update_display() -> void:
@@ -54,13 +68,15 @@ func _update_display() -> void:
 	var item := details.item
 	var item_size := _TILE_SIZE * item.icon.size
 	custom_minimum_size = item_size
+	_item.custom_minimum_size = item_size
+	if details.rotated:
+		custom_minimum_size = Vector2(item_size.y, item_size.x)
 	tooltip_text = "placeholder"
 	_texture.region = Rect2(
 		_TILE_SIZE * item.icon.position,
 		item_size
 	)
-	rotation_degrees = 90.0 if details.rotated else 0.0
-	# position is handled in InventoryDisplay
+	_item.rotation_degrees = 90.0 if details.rotated else 0.0
 
 func _make_custom_tooltip(_for_text: String) -> Object:
 	var tt: ItemTooltip = _TOOLTIP_SCENE.instantiate()

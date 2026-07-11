@@ -14,4 +14,6 @@ metadata_increase_ranges = Dictionary[int, Vector2]({
 is_spell = true
 name = "Icicle"
 icon = Rect2i(0, 0, -1, 0)
+custom_equip_scene = "uid://bw4ajtv2jt8w1"
+equipped_animation = &"Spell1"
 metadata/_custom_type_script = "uid://dq216hufmeoo3"

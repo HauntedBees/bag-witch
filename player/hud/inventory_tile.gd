@@ -4,6 +4,7 @@ signal item_hovered(i: ItemDragDetails, p: Vector2i)
 signal item_dropped(i: ItemDragDetails, p: Vector2i)
 
 var grid_pos: Vector2i
+var idx := 0
 
 @onready var _frame_base: TextureRect = %FrameBase
 @onready var _frame_ok: TextureRect = %FrameOK

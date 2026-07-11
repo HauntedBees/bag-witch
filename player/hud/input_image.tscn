@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cu2luw7ioo8ie" path="res://player/hud/input_image.gd" id="2_2qloy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rhbnc"]
+resource_local_to_scene = true
 atlas = ExtResource("1_yqkdp")
 region = Rect2(0, 208, 16, 16)
 filter_clip = true

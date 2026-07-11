@@ -29,9 +29,12 @@ func take_damage(amount: int) -> void:
 
 func try_change_weapon(slot: int) -> void:
 	weapon_cooldown = 0.0
-	if data.weapon_slots.size() <= slot:
+	if data.equip_slots.size() <= slot:
 		data.current_weapon = null
-		weapon_changed.emit(null)
 	else:
-		data.current_weapon = data.weapon_slots[slot]
-		weapon_changed.emit(data.current_weapon)
+		var obj := data.equip_slots[slot]
+		if obj == null:
+			data.current_weapon = null
+		else:
+			data.current_weapon = obj.item
+	weapon_changed.emit(data.current_weapon)
