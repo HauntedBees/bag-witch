@@ -11,6 +11,5 @@ persistent = true
 icon = Rect2i(0, 0, 4, 1)
 scene_path = "uid://c0c6yem7oc5h2"
 equipped_animation = &"Broom"
-equipped_scale = 4.0
-equipped_rotation = 1.571
+equipped_scale = 6.0
 metadata/_custom_type_script = "uid://cgt7ckkn1gh5b"

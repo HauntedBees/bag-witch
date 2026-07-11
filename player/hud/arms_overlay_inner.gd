@@ -36,5 +36,4 @@ func _on_weapon_changed(w: Weapon) -> void:
 func _add_to_bone(n: BoneAttachment3D, w: Weapon) -> void:
 	var attachment := w.get_equip_instance()
 	attachment.scale *= w.equipped_scale
-	attachment.rotate_y(w.equipped_rotation)
 	n.add_child(attachment)
