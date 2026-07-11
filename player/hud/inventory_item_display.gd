@@ -11,10 +11,10 @@ const _TOOLTIP_SCENE := preload("uid://bdcwnvc7nfxv3")
 @export var details: InventoryDetail:
 	set(value):
 		if details != null && details.item is Ammo:
-			(details.item as Ammo).ammo_updated.disconnect(_on_ammo_changed)
+			details.ammo_updated.disconnect(_on_ammo_changed)
 		details = value
 		if details != null && details.item is Ammo:
-			(details.item as Ammo).ammo_updated.connect(_on_ammo_changed)
+			details.ammo_updated.connect(_on_ammo_changed)
 		_update_display()
 
 @onready var _equip_slot: InputImage = %EquipSlot
@@ -88,7 +88,7 @@ func _update_display() -> void:
 	_item.rotation_degrees = 90.0 if details.rotated else 0.0
 	if item is Ammo:
 		_ammo_count.visible = true
-		_ammo_count.text = str(item.get_amount())
+		_ammo_count.text = str(details.ammo)
 	elif item is ProjectileWeapon && !(item as ProjectileWeapon).is_spell:
 		_ammo_count.visible = true
 		_ammo_count.text = str(details.ammo)

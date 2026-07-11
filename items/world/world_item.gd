@@ -3,6 +3,14 @@ class_name WorldItem extends Area3D
 @export var item: Item
 @export var collider: CollisionShape3D
 
+## The amount of ammo this item has on it. Only applies if the Item is a ProjectileWeapon
+## or ammo and if "had_ammo_set" is true.
+@export var ammo := 0
+
+## If true, "ammo" is used for the InventoryDetail's ammo count, otherwise, a random value
+## is picked from the item's "initial_ammo_range" property.
+@export var had_ammo_set := false
+
 @onready var _box: BoxShape3D = collider.shape
 
 var _plepping := false

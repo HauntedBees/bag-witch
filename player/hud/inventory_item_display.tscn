@@ -12,7 +12,7 @@ atlas = ExtResource("1_pimev")
 region = Rect2(0, 0, 64, 64)
 filter_clip = true
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gxrga"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_g5htb"]
 resource_local_to_scene = true
 atlas = ExtResource("4_c52qj")
 region = Rect2(0, 208, 16, 16)
@@ -44,7 +44,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-texture = SubResource("AtlasTexture_gxrga")
+texture = SubResource("AtlasTexture_g5htb")
 
 [node name="AmmoCount" type="Label" parent="MarginContainer" unique_id=2084217979]
 unique_name_in_owner = true

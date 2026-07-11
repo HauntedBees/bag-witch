@@ -92,16 +92,16 @@ func _try_reload(event: InputEvent) -> bool:
 			var a := id.item as Ammo
 			if a.weapon != pw:
 				continue
-			var amount := a.get_amount()
+			var amount := id.ammo
 			if amount == 0:
 				continue
 			if amount >= remaining:
-				a.amount -= remaining
+				id.ammo -= remaining
 				Player.data.current_weapon_detail.ammo += remaining
 				remaining = 0
 			else:
 				Player.data.current_weapon_detail.ammo += amount
-				a.amount = 0
+				id.ammo = 0
 				remaining -= amount
 		if remaining == 0:
 			break
@@ -120,6 +120,8 @@ func _try_pick_up_item(event: InputEvent) -> bool:
 	if !potential_add:
 		print("NO ROOM!")
 		return false
+	if _current_target.had_ammo_set:
+		potential_add.ammo = _current_target.ammo
 	Player.data.inventory.add_item_detail(potential_add)
 	_current_target.queue_free()
 	_current_target = null
@@ -169,9 +171,11 @@ func get_mouse_center() -> Vector3: #TODO: maybe replace now that _front_check e
 func _on_inventory_toggled(shown: bool) -> void:
 	_in_inventory = shown
 
-func _on_inventory_display_spawn_item(i: WorldItem) -> void:
-	get_parent().add_child(i)
+func _on_inventory_display_spawn_item(wi: WorldItem, id: InventoryDetail) -> void:
+	wi.ammo = id.ammo
+	wi.had_ammo_set = true
+	get_parent().add_child(wi)
 	var center := get_viewport().get_visible_rect().size / 2.0
 	var to := cam.project_ray_normal(center)
-	i.global_position = global_position + to * 2.0
-	i.plep(to)
+	wi.global_position = global_position + to * 2.0
+	wi.plep(to)

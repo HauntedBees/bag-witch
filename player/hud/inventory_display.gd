@@ -1,7 +1,7 @@
 class_name InventoryDisplay extends VBoxContainer
 
 signal inventory_toggled(shown: bool)
-signal spawn_item(i: WorldItem)
+signal spawn_item(wi: WorldItem, id: InventoryDetail)
 
 const _TILE_SCENE := preload("uid://chbbyih2rlm8q")
 const _ITEM_SCENE := preload("uid://cdd6epqw6450l")
@@ -40,9 +40,7 @@ func _ready() -> void:
 	modulate.a = 0.0
 	await get_tree().process_frame
 	_draw_items()
-	_inventory.item_added.connect(_on_item_changed)
-	_inventory.item_removed.connect(_on_item_changed)
-	_inventory.item_added.connect(_draw_item)
+	_inventory.item_added.connect(_on_item_added)
 	_drop_area.item_dropped.connect(_on_item_removed)
 
 func _input(event: InputEvent) -> void:
@@ -66,8 +64,10 @@ func _input(event: InputEvent) -> void:
 			_current_draggable.preview.position = InventoryItemDisplay.DRAG_OFFSET
 	_try_equip_item(event)
 
-func _on_item_changed(_i: InventoryDetail) -> void:
-	_draw_spells()
+func _on_item_added(i: InventoryDetail) -> void:
+	_draw_item(i)
+	if i.item is Spellbook:
+		_draw_spells()
 
 func _try_equip_item(event: InputEvent) -> void:
 	if _highlighted_item == null && _highlighted_spell == null:
@@ -140,13 +140,16 @@ func _can_place(item: InventoryDetail, new_positions: Array[Vector2i]) -> bool:
 	return true
 
 func _on_item_removed(i: ItemDragDetails) -> void:
-	Player.data.inventory.remove_item(i.item)
-	var old_info := _item_grid_info[i.item.position]
+	var id := i.item
+	Player.data.inventory.remove_item(id)
+	var old_info := _item_grid_info[id.position]
 	old_info.item_display.queue_free()
 	old_info.item_display = null
 	_bake_item_positions()
-	var item_scene: PackedScene = load(i.item.item.scene_path)
-	spawn_item.emit(item_scene.instantiate())
+	var item_scene: PackedScene = load(id.item.scene_path)
+	spawn_item.emit(item_scene.instantiate(), id)
+	if id.item is Spellbook:
+		_draw_spells()
 
 func _draw_items() -> void:
 	for i in _items.get_children():

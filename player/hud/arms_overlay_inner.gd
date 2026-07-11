@@ -21,11 +21,11 @@ func play_anim(anim: StringName, return_to_idle := true) -> void:
 		reset_idle()
 
 func _on_weapon_changed(id: InventoryDetail) -> void:
-	var w: Weapon = id.item
 	for n in _right_hand.get_children():
 		n.queue_free()
 	for n in _left_hand.get_children():
 		n.queue_free()
+	var w: Weapon = null if id == null else id.item
 	if w == null:
 		_anim.play(&"Idle")
 		return
