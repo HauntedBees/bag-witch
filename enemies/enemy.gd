@@ -41,7 +41,7 @@ func _physics_process(delta: float) -> void:
 	# TODO: handle knockback
 
 func get_screen_bounds() -> Rect2:
-	return BWEnum.get_bounds(global_position, _box, get_viewport().get_camera_3d())
+	return BWEnum.get_bounds(global_transform, _box, get_viewport().get_camera_3d())
 
 func take_damage(amount: int, received_direction := Vector3.ZERO) -> void:
 	_health -= amount

@@ -33,7 +33,7 @@ func get_item_if_fits(i: Item) -> InventoryDetail:
 	var d := InventoryDetail.new(i, Vector2i.ZERO)
 	var valid_pos := _check_all_positions(d, in_use)
 	if valid_pos.x < 0:
-		d.rotated = true
+		d.rotated = !d.rotated
 		valid_pos = _check_all_positions(d, in_use)
 	if valid_pos.x < 0:
 		return null

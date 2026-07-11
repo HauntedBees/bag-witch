@@ -12,9 +12,9 @@
 [ext_resource type="Script" uid="uid://c4skioddhqatw" path="res://addons/JehenoAdvancedFirstPersonController/PlayerCharacter/StateMachine/dash_state_script.gd" id="10_kxoh0"]
 [ext_resource type="Script" uid="uid://8g033x6qm1rx" path="res://addons/JehenoAdvancedFirstPersonController/PlayerCharacter/StateMachine/fly_state_script.gd" id="11_n2v5p"]
 [ext_resource type="Script" uid="uid://bq1stj2mujnp2" path="res://addons/JehenoAdvancedFirstPersonController/PlayerCharacter/StateMachine/wallrun_state_script.gd" id="12_nfn7e"]
+[ext_resource type="Script" uid="uid://dryknghkh8d6m" path="res://addons/JehenoAdvancedFirstPersonController/PlayerCharacter/StateMachine/glide_state_script.gd" id="13_5ko36"]
 [ext_resource type="Script" uid="uid://b0fbr48rbvn27" path="res://addons/JehenoAdvancedFirstPersonController/PlayerCharacter/Camera/camera_script.gd" id="13_lnq35"]
-[ext_resource type="PackedScene" uid="uid://de48m7vvbdt75" path="res://assets/models/arms.glb" id="14_0lqnk"]
-[ext_resource type="Material" uid="uid://ch2vf3lw1206n" path="res://assets/materials/hands.tres" id="15_6di07"]
+[ext_resource type="PackedScene" uid="uid://cjfldj2s7jm1n" path="res://player/hud/arms_overlay.tscn" id="14_8kajx"]
 [ext_resource type="PackedScene" uid="uid://de32v0r5edf6f" path="res://player/hud/inventory_display.tscn" id="16_200os"]
 [ext_resource type="Texture2D" uid="uid://dv747ov6fcrsg" path="res://addons/JehenoAdvancedFirstPersonController/PlayerCharacter/HUD/crosshair.png" id="17_g2747"]
 [ext_resource type="PackedScene" uid="uid://d18gii6kb6w0k" path="res://player/hud/health_bar.tscn" id="18_j6aac"]
@@ -42,6 +42,9 @@ height = 4.0
 albedo_color = Color(0.196078, 0.223529, 1, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_p2iaj"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_8kajx"]
+viewport_path = NodePath("SubViewport")
 
 [node name="PlayerCharacter" type="CharacterBody3D" unique_id=1631114635 groups=["PlayerCharacter"]]
 collision_layer = 2
@@ -107,19 +110,13 @@ metadata/_custom_type_script = "uid://8g033x6qm1rx"
 script = ExtResource("12_nfn7e")
 metadata/_custom_type_script = "uid://bq1stj2mujnp2"
 
+[node name="GlideState" type="Node" parent="StateMachine" unique_id=278010761]
+script = ExtResource("13_5ko36")
+metadata/_custom_type_script = "uid://dryknghkh8d6m"
+
 [node name="CameraHolder" type="Node3D" parent="." unique_id=1821849285]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.715, 0)
 script = ExtResource("13_lnq35")
-
-[node name="arms2" parent="CameraHolder" unique_id=1522515799 instance=ExtResource("14_0lqnk")]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, -1.0658141e-14, 0, 1, 0, 1.0658141e-14, 0, 1, 0.40021878, -0.715, 1.352608)
-
-[node name="Skeleton3D" parent="CameraHolder/arms2/arms" parent_id_path=PackedInt32Array(1522515799, 1889520810) index="0" unique_id=672150936]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.2049432)
-
-[node name="arms_mesh" parent="CameraHolder/arms2/arms/Skeleton3D" index="0" unique_id=796828364]
-surface_material_override/0 = ExtResource("15_6di07")
 
 [node name="Camera" type="Camera3D" parent="CameraHolder" unique_id=1370684373]
 unique_name_in_owner = true
@@ -210,6 +207,15 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
 
+[node name="ArmsOverlay" parent="HUDLayer/HUD" unique_id=938030434 instance=ExtResource("14_8kajx")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+texture = SubResource("ViewportTexture_8kajx")
+
 [node name="Crosshair" type="CenterContainer" parent="HUDLayer/HUD" unique_id=1562813601]
 layout_mode = 1
 anchors_preset = 15
@@ -256,8 +262,7 @@ offset_bottom = 213.0
 layout_mode = 1
 
 [connection signal="change_fov" from="StateMachine" to="CameraHolder" method="change_fov"]
+[connection signal="jumped" from="StateMachine/JumpState" to="." method="_on_jump_state_jumped"]
 [connection signal="inventory_toggled" from="HUDLayer/HUD/InventoryDisplay" to="." method="_on_inventory_toggled"]
 [connection signal="inventory_toggled" from="HUDLayer/HUD/InventoryDisplay" to="CameraHolder" method="_on_inventory_toggled"]
 [connection signal="spawn_item" from="HUDLayer/HUD/InventoryDisplay" to="." method="_on_inventory_display_spawn_item"]
-
-[editable path="CameraHolder/arms2"]

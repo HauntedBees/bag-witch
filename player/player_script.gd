@@ -1,9 +1,6 @@
 class_name BogWitch extends PlayerCharacter
 
-const _WEAPON_SLOTS: Array[StringName] = [
-	&"weapon_slot_1", &"weapon_slot_2", &"weapon_slot_3", &"weapon_slot_4", &"weapon_slot_5",
-	&"weapon_slot_6", &"weapon_slot_7", &"weapon_slot_8", &"weapon_slot_9", &"weapon_slot_0"
-]
+var glide_steps := 0
 
 var _mouse_ray_length := 50.0
 var _current_target: WorldItem
@@ -26,6 +23,29 @@ func _process(delta: float) -> void:
 	_handle_non_mouse_camera_movement()
 	_handle_front_raycast()
 	_handle_attack(delta)
+
+func _on_jump_state_jumped() -> void:
+	if Player.data.current_weapon == null || Player.data.current_weapon is not Broom:
+		return
+	var vel := velocity
+	vel.y = 0.0
+	var front_dir := get_front_direction(false)
+	front_dir.y = 0.0
+	front_dir = front_dir.normalized()
+	var vel_dir := vel.normalized()
+	if vel_dir.dot(front_dir) >= 0.9 && vel.length() >= 20.0:
+		glide_steps += 1
+		if glide_steps == 2:
+			state_machine.on_state_child_transition(state_machine.curr_state, "GlideState")
+	else:
+		glide_steps = 0
+
+
+func get_front_direction(normalized := true) -> Vector3:
+	var dir := _front_check.to_global(_front_check.target_position) - _front_check.global_position
+	if normalized:
+		return dir.normalized()
+	return dir
 
 func _handle_non_mouse_camera_movement() -> void:
 	var mouse_dir := Vector2(
@@ -63,8 +83,8 @@ func _try_pick_up_item(event: InputEvent) -> bool:
 	return true
 
 func _try_switch_weapon(event: InputEvent) -> bool:
-	for i in _WEAPON_SLOTS.size():
-		if GASInput.is_event_action_just_pressed(event, _WEAPON_SLOTS[i]):
+	for i in BWEnum.WEAPON_SLOTS.size():
+		if GASInput.is_event_action_just_pressed(event, BWEnum.WEAPON_SLOTS[i]):
 			Player.try_change_weapon(i)
 			print("current weapon is %s" % Player.data.current_weapon)
 			Player.weapon_cooldown = 0.0

@@ -2,6 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://b3am6tfjmdqyo" path="res://assets/sprites/item_sheet.png" id="1_pimev"]
 [ext_resource type="Script" uid="uid://c8og2ryhcxmto" path="res://player/hud/inventory_item_display.gd" id="2_b7tql"]
+[ext_resource type="PackedScene" uid="uid://bi75tcolvv8tm" path="res://player/hud/input_image.tscn" id="3_ndcmy"]
+[ext_resource type="Texture2D" uid="uid://dorg26lk5rom5" path="res://assets/sprites/input_icons.png" id="4_c52qj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rhbnc"]
 resource_local_to_scene = true
@@ -9,9 +11,36 @@ atlas = ExtResource("1_pimev")
 region = Rect2(0, 0, 64, 64)
 filter_clip = true
 
-[node name="InventoryItemDisplay" type="TextureRect" unique_id=824651648]
-offset_right = 40.0
-offset_bottom = 40.0
-pivot_offset = Vector2(64, 32)
-texture = SubResource("AtlasTexture_rhbnc")
+[sub_resource type="AtlasTexture" id="AtlasTexture_g5htb"]
+resource_local_to_scene = true
+atlas = ExtResource("4_c52qj")
+region = Rect2(0, 208, 16, 16)
+filter_clip = true
+
+[node name="InventoryItemDisplay" type="Control" unique_id=1956193385]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 64.0
+offset_bottom = 64.0
 script = ExtResource("2_b7tql")
+
+[node name="Item" type="TextureRect" parent="." unique_id=824651648]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+pivot_offset = Vector2(32, 32)
+texture = SubResource("AtlasTexture_rhbnc")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1058220174]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+
+[node name="EquipSlot" parent="MarginContainer" unique_id=1161082248 instance=ExtResource("3_ndcmy")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = SubResource("AtlasTexture_g5htb")

@@ -10,7 +10,7 @@ var _plep_dir := Vector3.ZERO
 var _plep_ray: RayCast3D
 
 func get_screen_bounds() -> Rect2:
-	return BWEnum.get_bounds(global_position, _box, get_viewport().get_camera_3d())
+	return BWEnum.get_bounds(global_transform, _box, get_viewport().get_camera_3d())
 
 func _physics_process(delta: float) -> void:
 	if !_plepping:

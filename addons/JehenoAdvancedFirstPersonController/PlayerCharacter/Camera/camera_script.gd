@@ -17,7 +17,7 @@ const _KEYBOARD_ROTATION_SPEED := 0.15
 @export_range(0.0, 180.0, 0.01) var min_fov_val : float = 10.0
 @export_range(0.0, 180.0, 0.01) var max_fov_val : float = 170.0
 @export var cam_fov_per_state : Dictionary[String, Vector2] = {
-	#fov value, durationz
+	#fov value, duration
 	"Default" : Vector2(90.0, 0.2),
 	"Idle" : Vector2(90.0, 0.2),
 	"Crouch" : Vector2(90.0, 0.2),
@@ -25,7 +25,8 @@ const _KEYBOARD_ROTATION_SPEED := 0.15
 	"Run" : Vector2(100.0, 0.2),
 	"Slide" : Vector2(100.0, 0.2),
 	"Dash" : Vector2(110.0, 0.05),
-	"Fly" : Vector2(100.0, 0.2)
+	"Fly" : Vector2(100.0, 0.2),
+	"Glide" : Vector2(100.0, 0.2)
 }
 
 @export_group("Zoom variables")
