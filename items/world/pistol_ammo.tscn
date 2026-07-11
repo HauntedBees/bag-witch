@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://ceg3otvwnm6o8"]
+
+[ext_resource type="Script" uid="uid://b66jl5gw8dewc" path="res://items/world/world_item.gd" id="1_0mlhm"]
+[ext_resource type="Script" uid="uid://co5j381442318" path="res://resource_types/items/ammo.gd" id="2_71g2w"]
+[ext_resource type="PackedScene" uid="uid://g8ri41fugakv" path="res://assets/models/weapons/ammo1.blend" id="3_0mlhm"]
+[ext_resource type="Resource" uid="uid://bjf5fkot1fjp5" path="res://items/handgun.tres" id="3_vqasn"]
+
+[sub_resource type="Resource" id="Resource_xtkht"]
+resource_local_to_scene = true
+script = ExtResource("2_71g2w")
+weapon = ExtResource("3_vqasn")
+random_range = Vector2i(4, 16)
+name = "Pistol Ammo"
+metadata/_custom_type_script = "uid://co5j381442318"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rhbnc"]
+size = Vector3(1, 0.41229248, 0.54421234)
+
+[node name="PistolAmmo" type="Area3D" unique_id=458796508 node_paths=PackedStringArray("collider")]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_0mlhm")
+item = SubResource("Resource_xtkht")
+collider = NodePath("CollisionShape3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1439180978]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20999146, -0.08979416)
+shape = SubResource("BoxShape3D_rhbnc")
+
+[node name="ammo1" parent="." unique_id=932594749 instance=ExtResource("3_0mlhm")]

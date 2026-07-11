@@ -14,24 +14,25 @@ func _ready() -> void:
 	Player.ammo_changed.connect(_on_ammo_changed)
 	Player.data.inventory.item_added.connect(_on_item_changed)
 	Player.data.inventory.item_removed.connect(_on_item_changed)
-	_on_weapon_changed(Player.data.current_weapon)
+	_on_weapon_changed(Player.data.current_weapon_detail)
 
 func _on_weapon_cooldown_changed(new_amount: float) -> void:
 	_cooldown_bar.value = _cooldown_bar.max_value - new_amount * _COOLDOWN_MULT
 
-func _on_weapon_changed(w: Weapon) -> void:
-	if w == null:
+func _on_weapon_changed(id: InventoryDetail) -> void:
+	if id == null:
 		_equip_icon.visible = false
 		_cooldown_bar.visible = false
 		_current_amount.text = "-"
 		_remaining_amount.text = ""
 		return
+	var w: Weapon = id.item
 	_equip_icon.visible = true
 	_equip_icon.spell = w
 	_cooldown_bar.visible = true
 	_cooldown_bar.max_value = w.cooldown * _COOLDOWN_MULT
 	_cooldown_bar.value = _cooldown_bar.max_value
-	var ammo := Player.data.get_loaded_ammo(w)
+	var ammo := Player.data.get_loaded_ammo(id)
 	if ammo < 0:
 		_current_amount.text = _INFSYM
 		_remaining_amount.text = ""
@@ -41,7 +42,8 @@ func _on_weapon_changed(w: Weapon) -> void:
 
 ## Trigger refresh in case ammo was acquired.
 func _on_item_changed(_i: InventoryDetail) -> void:
-	_on_weapon_changed(Player.data.current_weapon)
+	_on_weapon_changed(Player.data.current_weapon_detail)
 
 func _on_ammo_changed(new_amount: int) -> void:
 	_current_amount.text = str(new_amount)
+	_remaining_amount.text = "/%d" % Player.data.get_remaining_ammo(Player.data.current_weapon())

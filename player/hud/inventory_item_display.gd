@@ -10,15 +10,24 @@ const _TOOLTIP_SCENE := preload("uid://bdcwnvc7nfxv3")
 
 @export var details: InventoryDetail:
 	set(value):
+		if details != null && details.item is Ammo:
+			(details.item as Ammo).ammo_updated.disconnect(_on_ammo_changed)
 		details = value
+		if details != null && details.item is Ammo:
+			(details.item as Ammo).ammo_updated.connect(_on_ammo_changed)
 		_update_display()
 
 @onready var _equip_slot: InputImage = %EquipSlot
 @onready var _item: TextureRect = %Item
 @onready var _texture := _item.texture as AtlasTexture
+@onready var _ammo_count: GASLabel = %AmmoCount
 
 func _ready() -> void:
 	_equip_slot.visible = false
+	_ammo_count.visible = false
+
+func _on_ammo_changed(new_amount: int) -> void:
+	_ammo_count.text = str(new_amount)
 
 func clear_slot() -> void:
 	_equip_slot.visible = false
@@ -77,6 +86,14 @@ func _update_display() -> void:
 		item_size
 	)
 	_item.rotation_degrees = 90.0 if details.rotated else 0.0
+	if item is Ammo:
+		_ammo_count.visible = true
+		_ammo_count.text = str(item.get_amount())
+	elif item is ProjectileWeapon && !(item as ProjectileWeapon).is_spell:
+		_ammo_count.visible = true
+		_ammo_count.text = str(details.ammo)
+	else:
+		_ammo_count.visible = false
 
 func _make_custom_tooltip(_for_text: String) -> Object:
 	var tt: ItemTooltip = _TOOLTIP_SCENE.instantiate()

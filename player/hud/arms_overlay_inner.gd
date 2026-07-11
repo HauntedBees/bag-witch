@@ -8,7 +8,7 @@ func _ready() -> void:
 	Player.weapon_changed.connect(_on_weapon_changed)
 
 func reset_idle() -> void:
-	var w := Player.data.current_weapon
+	var w: Weapon = Player.data.current_weapon()
 	if w == null || w.equipped_animation == "":
 		_anim.play(&"Idle")
 	else:
@@ -20,7 +20,8 @@ func play_anim(anim: StringName, return_to_idle := true) -> void:
 		await _anim.animation_finished
 		reset_idle()
 
-func _on_weapon_changed(w: Weapon) -> void:
+func _on_weapon_changed(id: InventoryDetail) -> void:
+	var w: Weapon = id.item
 	for n in _right_hand.get_children():
 		n.queue_free()
 	for n in _left_hand.get_children():

@@ -6,6 +6,7 @@ var current_weapon_metadata: Dictionary[String, int] = {}
 var _mouse_ray_length := 50.0
 var _current_target: WorldItem
 var _in_inventory := false
+var _reloading_time_remaining := 0.0
 
 @onready var speed_lines: ColorRect = %SpeedLines
 @onready var arms_overlay: ArmsOverlay = %ArmsOverlay
@@ -21,9 +22,13 @@ func _input(event: InputEvent) -> void:
 		return
 	if _try_pick_up_item(event):
 		return
+	if _try_reload(event):
+		return
 
 func _process(delta: float) -> void:
 	super(delta)
+	if _reloading_time_remaining >= 0.0:
+		_reloading_time_remaining -= delta
 	_handle_non_mouse_camera_movement()
 	_handle_front_raycast()
 	_handle_attack(delta)
@@ -31,7 +36,7 @@ func _process(delta: float) -> void:
 		ready_to_glide = false
 
 func _on_jump_state_jumped() -> void:
-	if Player.data.current_weapon == null || Player.data.current_weapon is not Broom:
+	if Player.data.current_weapon_detail == null || Player.data.current_weapon() is not Broom:
 		return
 	var vel := velocity
 	vel.y = 0.0
@@ -70,7 +75,44 @@ func _handle_front_raycast() -> void:
 	else:
 		_current_target = null
 
+func _try_reload(event: InputEvent) -> bool:
+	if _in_inventory || _reloading_time_remaining > 0.0:
+		return false
+	if !GASInput.is_event_action_just_pressed(event, &"reload"):
+		return false
+	var w := Player.data.current_weapon()
+	if w == null || w.reload_time <= 0.0:
+		return false
+	if w is not ProjectileWeapon:
+		return false
+	var pw := w as ProjectileWeapon
+	var remaining := pw.full_clip_size - Player.data.current_weapon_detail.ammo
+	for id in Player.data.inventory.items:
+		if id.item is Ammo:
+			var a := id.item as Ammo
+			if a.weapon != pw:
+				continue
+			var amount := a.get_amount()
+			if amount == 0:
+				continue
+			if amount >= remaining:
+				a.amount -= remaining
+				Player.data.current_weapon_detail.ammo += remaining
+				remaining = 0
+			else:
+				Player.data.current_weapon_detail.ammo += amount
+				a.amount = 0
+				remaining -= amount
+		if remaining == 0:
+			break
+	Player.ammo_changed.emit(Player.data.current_weapon_detail.ammo)
+	_reloading_time_remaining = w.reload_time
+	arms_overlay.arms.play_anim(w.reload_animation)
+	return true
+
 func _try_pick_up_item(event: InputEvent) -> bool:
+	if _in_inventory:
+		return false
 	if _current_target == null || !GASInput.is_event_action_just_pressed(event, &"use"):
 		return false
 	var item := _current_target.item
@@ -84,27 +126,29 @@ func _try_pick_up_item(event: InputEvent) -> bool:
 	return true
 
 func _try_switch_weapon(event: InputEvent) -> bool:
+	if _in_inventory || _reloading_time_remaining > 0.0:
+		return false
 	for i in BWEnum.WEAPON_SLOTS.size():
 		if GASInput.is_event_action_just_pressed(event, BWEnum.WEAPON_SLOTS[i]):
 			Player.try_change_weapon(i)
 			current_weapon_metadata.clear()
 			ready_to_glide = false
-			print("current weapon is %s" % Player.data.current_weapon)
+			print("current weapon is %s" % Player.data.current_weapon())
 			Player.weapon_cooldown = 0.0
 			return true
 	return false
 
 func _handle_attack(delta: float) -> void:
-	if _in_inventory:
+	if _in_inventory || _reloading_time_remaining > 0.0:
 		return
 	if Player.weapon_cooldown > 0.0:
 		Player.weapon_cooldown -= delta
-	if Player.weapon_cooldown > 0.0 || Player.data.current_weapon == null || !Input.is_action_pressed(&"attack"):
+	if Player.weapon_cooldown > 0.0 || Player.data.current_weapon_detail == null || !Input.is_action_pressed(&"attack"):
 		return
-	if Player.data.get_loaded_ammo(Player.data.current_weapon) == 0:
+	if Player.data.get_loaded_ammo(Player.data.current_weapon_detail) == 0:
 		return
-	Player.data.current_weapon.use(self)
-	Player.weapon_cooldown = Player.data.current_weapon.cooldown
+	Player.data.current_weapon().use(self)
+	Player.weapon_cooldown = Player.data.current_weapon().cooldown
 
 func get_projectile_launch_point() -> Vector3:
 	return _projectile_launch_spot.global_position
