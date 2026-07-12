@@ -2,6 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://dyp4e3ngk44h5" path="res://player/hud/arms_overlay_inner.tscn" id="1_epxri"]
 [ext_resource type="Script" uid="uid://cvnjfawqoeja4" path="res://player/hud/arms_overlay.gd" id="1_s1c6f"]
+[ext_resource type="Shader" uid="uid://bpa7mp1kjoqym" path="res://assets/shaders/canvas_pixelate.gdshader" id="1_wfvdd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pdci5"]
+shader = ExtResource("1_wfvdd")
+shader_parameter/pixelSize = 4
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_rhbnc"]
 viewport_path = NodePath("SubViewport")
@@ -12,6 +17,7 @@ viewport_path = NodePath("SubViewport")
 environment = SubResource("Environment_epxri")
 
 [node name="ArmsOverlay" type="TextureRect" unique_id=938030434]
+material = SubResource("ShaderMaterial_pdci5")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_kb34c")
+category = "icicle"
 projectile_path = "uid://c27lg3w5occ5n"
 velocity = 40.0
 gravity = 0.02

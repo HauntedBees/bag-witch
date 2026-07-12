@@ -16,7 +16,7 @@ func _setup_behavior() -> void:
 		vision.body_entered.connect(_on_player_sighted)
 		vision.body_exited.connect(_on_player_lost)
 
-func _on_effect_applied(e: BWEnum.Effect) -> void:
+func _on_effect_applied(e: BWEnum.Effect, _level: int) -> void:
 	if e != BWEnum.Effect.Freeze:
 		return
 	_time_to_give_up = 0.0

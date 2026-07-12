@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_ccacv")
 magic_level_requirement = 2
+category = "icicle"
 projectile_path = "uid://c27lg3w5occ5n"
 velocity = 50.0
 gravity = 0.02

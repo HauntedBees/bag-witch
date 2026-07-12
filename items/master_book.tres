@@ -1,15 +1,17 @@
 [gd_resource type="Resource" script_class="Spellbook" format=3 uid="uid://gloeqm86u5q"]
 
 [ext_resource type="Script" uid="uid://cbas7jc82h2rj" path="res://resource_types/items/spell_book.gd" id="1_mqxu7"]
-[ext_resource type="Script" uid="uid://edpdef33uqc3" path="res://resource_types/weapons/weapon.gd" id="2_oyxgk"]
+[ext_resource type="Script" uid="uid://bh5gblgdby5gl" path="res://resource_types/spells/spell.gd" id="2_x0y84"]
 [ext_resource type="Resource" uid="uid://dn56uhy46vn32" path="res://spells/icicle.tres" id="3_2owhc"]
 [ext_resource type="Resource" uid="uid://dnft5khdupabw" path="res://spells/icicle2.tres" id="4_x0y84"]
 [ext_resource type="Resource" uid="uid://dc8e456a32hwk" path="res://spells/icicle3.tres" id="5_owy3d"]
 [ext_resource type="Resource" uid="uid://w2fsdi0pdqtq" path="res://spells/fireball.tres" id="6_oyxgk"]
+[ext_resource type="Resource" uid="uid://7pq7lupy2ii0" path="res://spells/fireball2.tres" id="7_owy3d"]
+[ext_resource type="Resource" uid="uid://cvi4rh1y7wvjr" path="res://spells/fireball3.tres" id="8_dq1ty"]
 
 [resource]
 script = ExtResource("1_mqxu7")
-spells = Array[ExtResource("2_oyxgk")]([ExtResource("3_2owhc"), ExtResource("4_x0y84"), ExtResource("5_owy3d"), ExtResource("6_oyxgk")])
+spells = Array[ExtResource("2_x0y84")]([ExtResource("3_2owhc"), ExtResource("4_x0y84"), ExtResource("5_owy3d"), ExtResource("6_oyxgk"), ExtResource("7_owy3d"), ExtResource("8_dq1ty")])
 name = "Book of Many"
 size = Vector2i(2, 1)
 icon = Rect2i(0, 1, 2, 1)
