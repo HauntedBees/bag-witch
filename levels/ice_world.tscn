@@ -3,6 +3,8 @@
 [ext_resource type="MeshLibrary" uid="uid://cpij8rf6je8tl" path="res://assets/models/environment/ice.blend" id="1_d6hs4"]
 [ext_resource type="PackedScene" uid="uid://bub2sh1fg5ddq" path="res://player/player_character_scene.tscn" id="2_6ulv1"]
 [ext_resource type="Script" uid="uid://cpe3jrnwinlxh" path="res://addons/JehenoAdvancedFirstPersonController/Map/MovementModifiers/slipperyZone/slippery_zone_script.gd" id="2_7qlf3"]
+[ext_resource type="PackedScene" uid="uid://cxsel0affhwtk" path="res://assets/levels/ice.blend" id="3_8us22"]
+[ext_resource type="Script" uid="uid://ln2dmsedw0ev" path="res://assets/levels/snowifier.gd" id="4_hcls4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_d6hs4"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -85,6 +87,10 @@ script = ExtResource("2_7qlf3")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/IceArea" unique_id=576866987]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.0539017, 2.3697495, 17.907085)
 shape = SubResource("BoxShape3D_7qlf3")
+
+[node name="ice" parent="NavigationRegion3D" unique_id=1539915198 instance=ExtResource("3_8us22")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 194.73909, -33.625553, 4.9587927)
+script = ExtResource("4_hcls4")
 
 [node name="PlayerCharacter" type="Node3D" parent="." unique_id=30556669]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2353992, 3.50542, 0.741127)
