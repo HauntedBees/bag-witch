@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cx0gck7r7hbl3"]
+
+[ext_resource type="Texture2D" uid="uid://cdopkj37crhg0" path="res://assets/levels/common/textures/waterfall_fx.png" id="1_pnuom"]
+
+[resource]
+cull_mode = 2
+albedo_color = Color(0.7110978, 0.9407908, 0.95277363, 1)
+albedo_texture = ExtResource("1_pnuom")
+metallic = 0.45
+metallic_specular = 1.0
+roughness = 0.7

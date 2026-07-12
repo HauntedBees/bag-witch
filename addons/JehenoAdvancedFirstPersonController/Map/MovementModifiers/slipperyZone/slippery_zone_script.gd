@@ -19,19 +19,24 @@ func _physics_process(_delta: float) -> void:
 		#apply acceleration and friction multiplier to acceleration values
 		play_char_body.move_accel *= acceleration_multiplier
 		play_char_body.move_deccel *= friction_multiplier
+		play_char_body.idle_deccel *= friction_multiplier
 
 func _on_body_entered(body) -> void:
 	if body is PlayerCharacter:
+		print("entering ice")
 		play_char_body = body
 
 		#stock original values
 		original_values["accel"] = body.move_accel
 		original_values["deccel"] = body.move_deccel
+		original_values["ideccel"] = body.idle_deccel
 
 func _on_body_exited(body) -> void:
 	if body is PlayerCharacter:
+		print("exiting ice")
 		#return to original acceleration values
 		body.move_accel = original_values["accel"]
 		body.move_deccel = original_values["deccel"]
+		body.idle_deccel = original_values["ideccel"]
 
 		play_char_body = null

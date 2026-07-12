@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dsgjuot0c2n6e"]
+
+[ext_resource type="Shader" uid="uid://dms4cjv1dfknx" path="res://assets/shaders/waterfall.gdshader" id="1_chnfe"]
+[ext_resource type="Texture2D" uid="uid://cdopkj37crhg0" path="res://assets/levels/common/textures/waterfall_fx.png" id="2_d7soj"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_chnfe")
+shader_parameter/scroll_speed = Vector2(0, -0.5)
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/texture_albedo = ExtResource("2_d7soj")

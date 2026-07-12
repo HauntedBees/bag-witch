@@ -19,7 +19,6 @@ func _physics_process(delta: float) -> void:
 		queue_free()
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	print("hit %s" % body.name)
 	if body is EnemyDisplay:
 		body.receive_weapon_hit(_source_position, _weapon)
 	queue_free()

@@ -10,6 +10,11 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		_add_smoke(body, false)
 	elif body.is_in_group(&"ice"):
 		_add_smoke(body, true)
+	var b := body.get_parent()
+	if b != null && b is Waterfall:
+		var wf := b as Waterfall
+		if wf.frozen:
+			wf.frozen = false # TODO: play a sound
 	super(body)
 
 func _add_smoke(body: Node3D, extreme: bool) -> void:

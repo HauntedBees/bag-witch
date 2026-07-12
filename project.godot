@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Bag Witch"
-run/main_scene="uid://oj3blpxqf1bl"
+run/main_scene="uid://b8knls82eve"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
