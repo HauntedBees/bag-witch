@@ -5,7 +5,8 @@ func _ready() -> void:
 
 func _try_groupify(c: Node3D) -> void:
 	if c is StaticBody3D:
-		c.add_to_group(&"snow")
+		if !c.is_in_group(&"ice"):
+			c.add_to_group(&"snow")
 	else:
 		for ch in c.get_children():
 			_try_groupify(ch)

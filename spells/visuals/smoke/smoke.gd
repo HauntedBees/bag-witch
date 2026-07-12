@@ -13,3 +13,7 @@ func _ready() -> void:
 
 func _on_smoke_2_finished() -> void:
 	queue_free()
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	if body is BogWitch:
+		body.velocity.y += 4.0 if extreme else 2.0
