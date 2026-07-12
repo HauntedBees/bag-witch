@@ -10,7 +10,7 @@ var strength := 1:
 	set(value):
 		strength = value
 		stat_changed.emit()
-var magic := 2:
+var magic := 3:
 	set(value):
 		magic = value
 		stat_changed.emit()

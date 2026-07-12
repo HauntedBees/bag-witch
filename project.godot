@@ -41,6 +41,11 @@ folder_colors={
 "res://spells/": "green"
 }
 
+[global_group]
+
+snow=""
+ice=""
+
 [gui]
 
 theme/custom="uid://cvdqmdn56kxau"
