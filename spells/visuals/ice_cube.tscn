@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://brjmi7v2y6hgo"]
+
+[ext_resource type="PackedScene" uid="uid://yxslm1744h7n" path="res://assets/models/weapons/ice_cube.blend" id="1_m7tia"]
+[ext_resource type="Script" uid="uid://bolqqsqcokfu" path="res://spells/visuals/ice_cube.gd" id="1_qryay"]
+[ext_resource type="Shader" uid="uid://c2dnanuqe4gih" path="res://assets/shaders/ice.gdshader" id="2_qryay"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_mkopk"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_sglqa"]
+generate_mipmaps = false
+noise = SubResource("FastNoiseLite_mkopk")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eeolf"]
+render_priority = 0
+shader = ExtResource("2_qryay")
+shader_parameter/FresnelPower = 2.5
+shader_parameter/FresnelColor = Color(0, 1, 1, 1)
+shader_parameter/Color = Color(0, 0.8509804, 0.8509804, 0.21568628)
+shader_parameter/Tiling = Vector3(1, 1, 0)
+shader_parameter/Offset = Vector3(0, 0, 0)
+shader_parameter/Ice_Texture = SubResource("NoiseTexture2D_sglqa")
+shader_parameter/RefractionAmount = 1.0
+shader_parameter/Metallic = 0.134
+shader_parameter/Smoothness = 0.627
+shader_parameter/Normals = 0.77
+
+[node name="IceCube" type="Node3D" unique_id=573620875]
+script = ExtResource("1_qryay")
+
+[node name="ice_cube" parent="." unique_id=2027960973 instance=ExtResource("1_m7tia")]
+unique_name_in_owner = true
+
+[node name="Cube" parent="ice_cube" index="0" unique_id=647940073]
+surface_material_override/0 = SubResource("ShaderMaterial_eeolf")
+
+[editable path="ice_cube"]

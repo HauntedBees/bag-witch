@@ -9,6 +9,8 @@ func _setup_behavior() -> void:
 	_parent.on_hit.connect(_on_hit)
 
 func _on_hit(w: Weapon, source: Vector3, damage_dealt: int) -> void:
+	if !active:
+		return
 	take_control()
 	_time_stunned = _STUN_TIME
 	if w.knockback > 0.0:

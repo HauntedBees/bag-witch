@@ -8,12 +8,18 @@ var _can_see_player := false
 var _time_to_give_up := 0.0
 
 func _setup_behavior() -> void:
+	_parent.on_effect_applied.connect(_on_effect_applied)
 	if vision is VisionCone3D:
 		vision.body_sighted.connect(_on_player_sighted)
 		vision.body_hidden.connect(_on_player_lost)
 	else:
 		vision.body_entered.connect(_on_player_sighted)
 		vision.body_exited.connect(_on_player_lost)
+
+func _on_effect_applied(e: BWEnum.Effect) -> void:
+	if e != BWEnum.Effect.Freeze:
+		return
+	_time_to_give_up = 0.0
 
 func _on_player_sighted(body: Node3D) -> void:
 	if body is BogWitch:

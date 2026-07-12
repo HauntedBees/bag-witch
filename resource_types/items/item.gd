@@ -35,6 +35,9 @@ class_name Item extends Resource
 ## The animation the hands should play when this item is actively used.
 @export var use_animation: StringName
 
+## If set, this is the animation the hands should play every other time this item is actively used.
+@export var alt_use_animation: StringName
+
 ## The animation the hands should play when this item is reloaded.
 @export var reload_animation: StringName
 

@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://bju1pcheyyg8y"]
+
+[ext_resource type="Shader" uid="uid://vwoxfwonv22e" path="res://assets/shaders/fire.gdshader" id="1_dtp54"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sglqa"]
+render_priority = 0
+shader = ExtResource("1_dtp54")
+shader_parameter/apply_shape_deform = true
+shader_parameter/top_radius = 0.0
+shader_parameter/bottom_radius = 1.5
+shader_parameter/center_radius = 0.0
+shader_parameter/center_position = 0.2930000139175
+shader_parameter/cylinder_height = 4.7930002276675
+shader_parameter/bottom_curve = 0.46
+shader_parameter/_vibrate_amplitude = 0.015
+shader_parameter/_vibrate_frequency = 200.0
+shader_parameter/_speed = 1.0
+shader_parameter/_scale = 1.0
+shader_parameter/color_inner = Color(1.353, 0.919, 0.416, 0)
+shader_parameter/color_outer = Color(0.737, 0.141, 0, 0.678)
+shader_parameter/color_threshold = 0.5
+shader_parameter/flame_height = 1.325
+shader_parameter/flame_height_offset = 0.0
+shader_parameter/pattern_scale = 2.5
+shader_parameter/use_additional_texture = false
+shader_parameter/texture_scale = 1.0
+shader_parameter/texture_blend = 1.0
+shader_parameter/outline_enabled = true
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/outline_thickness = 0.04
+
+[sub_resource type="SphereMesh" id="SphereMesh_rhbnc"]
+material = SubResource("ShaderMaterial_sglqa")
+radius = 1.0
+height = 2.0
+
+[node name="FireParticles" type="Node3D" unique_id=853589577]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=250575135]
+transform = Transform3D(0.65012, 0.20392038, -0.7319575, -0.098036125, -0.9327515, -0.34693587, -0.7534815, 0.297308, -0.5864085, -0.258, 0.336, -0.2)
+mesh = SubResource("SphereMesh_rhbnc")

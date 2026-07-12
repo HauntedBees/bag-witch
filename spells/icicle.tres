@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="ProjectileWeapon" format=3 uid="uid://dn56uhy46vn32"]
+[gd_resource type="Resource" script_class="Spell" format=3 uid="uid://dn56uhy46vn32"]
 
-[ext_resource type="Script" uid="uid://dq216hufmeoo3" path="res://resource_types/weapons/projectile_weapon.gd" id="1_kb34c"]
+[ext_resource type="Script" uid="uid://bh5gblgdby5gl" path="res://resource_types/spells/spell.gd" id="1_kb34c"]
 
 [resource]
 script = ExtResource("1_kb34c")
@@ -10,7 +10,7 @@ gravity = 0.02
 is_spell = true
 damage_range = Vector2i(3, 5)
 metadata_increase_ranges = Dictionary[int, Vector2]({
-1: Vector2(0.05, 0.12)
+1: Vector2(0.04, 0.08)
 })
 name = "Icicle"
 icon = Rect2i(0, 0, -1, 0)

@@ -2,6 +2,7 @@ class_name BogWitch extends PlayerCharacter
 
 var ready_to_glide := false
 var current_weapon_metadata: Dictionary[String, int] = {}
+var alt_hand_for_attack_anim := false
 
 var _mouse_ray_length := 50.0
 var _current_target: WorldItem
@@ -12,6 +13,7 @@ var _reloading_time_remaining := 0.0
 @onready var arms_overlay: ArmsOverlay = %ArmsOverlay
 
 @onready var _projectile_launch_spot: Node3D = %ProjectileSpot
+@onready var _alt_projectile_launch_spot: Node3D = %ProjectileSpot2
 @onready var _front_check: RayCast3D = %FrontCheck
 @onready var _item_select: ItemSelect = %ItemSelect
 
@@ -108,6 +110,7 @@ func _try_reload(event: InputEvent) -> bool:
 	Player.ammo_changed.emit(Player.data.current_weapon_detail.ammo)
 	_reloading_time_remaining = w.reload_time
 	arms_overlay.arms.play_anim(w.reload_animation)
+	alt_hand_for_attack_anim = false
 	return true
 
 func _try_pick_up_item(event: InputEvent) -> bool:
@@ -137,6 +140,7 @@ func _try_switch_weapon(event: InputEvent) -> bool:
 			ready_to_glide = false
 			print("current weapon is %s" % Player.data.current_weapon())
 			Player.weapon_cooldown = 0.0
+			alt_hand_for_attack_anim = false
 			return true
 	return false
 
@@ -152,8 +156,11 @@ func _handle_attack(delta: float) -> void:
 	Player.data.current_weapon().use(self)
 	Player.weapon_cooldown = Player.data.current_weapon().cooldown
 
-func get_projectile_launch_point() -> Vector3:
-	return _projectile_launch_spot.global_position
+func get_projectile_launch_point(left_hand: bool) -> Vector3:
+	if left_hand:
+		return _alt_projectile_launch_spot.global_position
+	else:
+		return _projectile_launch_spot.global_position
 
 func get_mouse_center() -> Vector3: #TODO: maybe replace now that _front_check exists
 	var center := get_viewport().get_visible_rect().size / 2.0

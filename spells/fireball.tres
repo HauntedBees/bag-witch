@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Spell" format=3 uid="uid://w2fsdi0pdqtq"]
+
+[ext_resource type="Script" uid="uid://bh5gblgdby5gl" path="res://resource_types/spells/spell.gd" id="1_kdtli"]
+
+[resource]
+script = ExtResource("1_kdtli")
+projectile_path = "uid://bs6rw37t6rj3k"
+velocity = 50.0
+gravity = 0.02
+cooldown = 0.3
+is_spell = true
+spell_ammo = 20
+damage_range = Vector2i(1, 2)
+name = "Icicle"
+equip_sprite_offset = Vector2i(2, 0)
+icon = Rect2i(0, 0, -1, 0)
+custom_equip_scene = "uid://bju1pcheyyg8y"
+equipped_animation = &"Spell1"
+use_animation = &"Spell1_Use"
+alt_use_animation = &"Spell1_UseAlt"
+both_hands = true
+metadata/_custom_type_script = "uid://dq216hufmeoo3"
