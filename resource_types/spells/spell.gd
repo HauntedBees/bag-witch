@@ -1,1 +1,3 @@
-class_name Spell extends Weapon
+class_name Spell extends ProjectileWeapon
+
+@export var magic_level_requirement := 1

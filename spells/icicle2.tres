@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Spell" format=3 uid="uid://dnft5khdupabw"]
+
+[ext_resource type="Script" uid="uid://bh5gblgdby5gl" path="res://resource_types/spells/spell.gd" id="1_ccacv"]
+
+[resource]
+script = ExtResource("1_ccacv")
+magic_level_requirement = 2
+projectile_path = "uid://c27lg3w5occ5n"
+velocity = 50.0
+gravity = 0.02
+fade_time = 6.0
+cooldown = 0.4
+is_spell = true
+spell_ammo = 10
+damage_range = Vector2i(6, 10)
+metadata_increase_ranges = Dictionary[int, Vector2]({
+1: Vector2(0.06, 0.12)
+})
+name = "Icicle II"
+icon = Rect2i(0, 0, -1, 0)
+custom_equip_scene = "uid://bw4ajtv2jt8w1"
+equipped_animation = &"Spell1"
+use_animation = &"Spell1_Use"
+metadata/_custom_type_script = "uid://dq216hufmeoo3"

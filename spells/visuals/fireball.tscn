@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://bs6rw37t6rj3k"]
+
+[ext_resource type="Shader" uid="uid://vwoxfwonv22e" path="res://assets/shaders/fire.gdshader" id="1_5mhq5"]
+[ext_resource type="Script" uid="uid://b5g7n1ix1u6f5" path="res://resource_types/weapons/projectile.gd" id="1_twtx8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hwng4"]
+render_priority = 0
+shader = ExtResource("1_5mhq5")
+shader_parameter/apply_shape_deform = false
+shader_parameter/top_radius = 0.0
+shader_parameter/bottom_radius = 0.0
+shader_parameter/center_radius = 0.0
+shader_parameter/center_position = 0.0
+shader_parameter/cylinder_height = 1.0
+shader_parameter/bottom_curve = 0.4
+shader_parameter/_vibrate_amplitude = 0.015
+shader_parameter/_vibrate_frequency = 200.0
+shader_parameter/_speed = 1.0
+shader_parameter/_scale = 1.0
+shader_parameter/color_inner = Color(1.353, 0.919, 0.416, 0)
+shader_parameter/color_outer = Color(0.7372549, 0.14117648, 0, 1)
+shader_parameter/color_threshold = 0.5
+shader_parameter/flame_height = 1.0
+shader_parameter/flame_height_offset = -0.09
+shader_parameter/pattern_scale = 2.5
+shader_parameter/use_additional_texture = false
+shader_parameter/texture_scale = 1.0
+shader_parameter/texture_blend = 1.0
+shader_parameter/outline_enabled = true
+shader_parameter/outline_color = Color(0.40784314, 0, 0, 1)
+shader_parameter/outline_thickness = 0.04
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_5mhq5"]
+material = SubResource("ShaderMaterial_hwng4")
+radius = 0.2
+height = 1.2
+radial_segments = 16
+rings = 4
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_twtx8"]
+material = SubResource("ShaderMaterial_hwng4")
+radius = 0.25
+height = 1.3759766
+radial_segments = 16
+rings = 4
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rhbnc"]
+radius = 0.27685547
+height = 0.9436035
+
+[node name="Fireball" type="Node3D" unique_id=998055476]
+script = ExtResource("1_twtx8")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1480972262]
+transform = Transform3D(0.9345249, -0.3558978, -1.5556788e-08, 0, -4.371139e-08, 1, -0.3558978, -0.9345249, -4.084938e-08, 0.2291565, 8.217229e-09, 0.5058136)
+mesh = SubResource("CapsuleMesh_5mhq5")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=1120747254]
+transform = Transform3D(0.93482566, 0.35510698, 1.552222e-08, 0, -4.371139e-08, 1, 0.35510698, -0.93482566, -4.0862528e-08, -0.22, 0, 0.506)
+mesh = SubResource("CapsuleMesh_5mhq5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2069705721]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0.31782532)
+mesh = SubResource("CapsuleMesh_twtx8")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=263345672]
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1397903384]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 5.0210467e-09, 0.114868164)
+shape = SubResource("CapsuleShape3D_rhbnc")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

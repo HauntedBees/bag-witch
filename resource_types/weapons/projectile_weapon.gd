@@ -28,7 +28,12 @@ func _inner_use(player: BogWitch) -> void:
 		_cached_scene = load(projectile_path)
 	var projectile: Projectile = _cached_scene.instantiate()
 	player.get_parent().add_child(projectile)
-	player.arms_overlay.arms.play_anim(use_animation)
-	projectile.global_position = player.get_projectile_launch_point()
+	player.alt_hand_for_attack_anim = !player.alt_hand_for_attack_anim
+	if player.alt_hand_for_attack_anim && alt_use_animation != &"":
+		player.arms_overlay.arms.play_anim(alt_use_animation)
+		projectile.global_position = player.get_projectile_launch_point(true)
+	else:
+		player.arms_overlay.arms.play_anim(use_animation)
+		projectile.global_position = player.get_projectile_launch_point(false)
 	projectile.look_at(player.get_mouse_center())
 	projectile.initialize(self, player.global_position)

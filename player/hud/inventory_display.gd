@@ -16,6 +16,12 @@ var _highlight: Highlight
 var _highlighted_item: InventoryDetail
 var _highlighted_spell: Weapon
 
+@onready var _mind_label: GASLabel = %MindLabel
+@onready var _strength_label: GASLabel = %StrengthLabel
+@onready var _magic_label: GASLabel = %MagicLabel
+@onready var _bag_label: GASLabel = %BagLabel
+@onready var _speed_label: GASLabel = %SpeedLabel
+
 @onready var _drop_area: ItemDropArea = %DropArea
 @onready var _item_grid: GridContainer = %ItemGridContainer
 @onready var _items: Control = %ItemBucket
@@ -42,6 +48,8 @@ func _ready() -> void:
 	_draw_items()
 	_inventory.item_added.connect(_on_item_added)
 	_drop_area.item_dropped.connect(_on_item_removed)
+	Player.data.stat_changed.connect(_refresh_stats)
+	_refresh_stats()
 
 func _input(event: InputEvent) -> void:
 	if GASInput.is_event_action_just_pressed(event, &"toggle_inventory"):
@@ -93,6 +101,13 @@ func _on_tile_hovered(tile: InventoryTile) -> void:
 	_highlighted_item = null
 	_highlighted_spell = null
 	_highlight.set_to(tile)
+
+func _refresh_stats() -> void:
+	_mind_label.text = "Mind: %s" % Player.data.mind
+	_strength_label.text = "Strength: %s" % Player.data.strength
+	_magic_label.text = "Magic: %s" % Player.data.magic
+	_bag_label.text = "Bag: %s" % Player.data.bag
+	_speed_label.text = "Speed: %s" % Player.data.speed
 
 #region Items
 func _on_item_hovered(drag_details: ItemDragDetails, grid_pos: Vector2i) -> void:

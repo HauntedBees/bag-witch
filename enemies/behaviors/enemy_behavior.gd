@@ -5,7 +5,12 @@ const _DEAD_PRIORITY := 9999
 
 @export var priority := 0
 
-var active := true
+var active := true:
+	set(value):
+		var changed := active != value
+		active = value
+		if changed:
+			_on_active_changed()
 var wants_control := false
 
 var _parent: EnemyDisplay
@@ -15,6 +20,9 @@ func _ready() -> void:
 	_setup_behavior()
 
 func _setup_behavior() -> void:
+	pass
+
+func _on_active_changed() -> void:
 	pass
 
 func _physics_process(delta: float) -> void:

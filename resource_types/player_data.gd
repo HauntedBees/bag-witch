@@ -1,9 +1,31 @@
 class_name PlayerData extends Resource
 
+signal stat_changed()
+
+var mind := 1:
+	set(value):
+		mind = value
+		stat_changed.emit()
+var strength := 1:
+	set(value):
+		strength = value
+		stat_changed.emit()
+var magic := 1:
+	set(value):
+		magic = value
+		stat_changed.emit()
+var bag := 1:
+	set(value):
+		bag = value
+		stat_changed.emit()
+var speed := 1:
+	set(value):
+		speed = value
+		stat_changed.emit()
+
 var inventory := Inventory.new()
 
 var current_weapon_detail: InventoryDetail = null
-
 var equip_slots: Array[InventoryDetail] = []
 
 var current_health := 100
