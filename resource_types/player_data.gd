@@ -10,7 +10,7 @@ var strength := 1:
 	set(value):
 		strength = value
 		stat_changed.emit()
-var magic := 1:
+var magic := 2:
 	set(value):
 		magic = value
 		stat_changed.emit()
@@ -146,18 +146,26 @@ func refresh_spell_ammo() -> void:
 					_spell_ammo_remaining.erase(s)
 
 func get_available_spells() -> Array[Weapon]:
-	var w: Array[Weapon] = []
+	var spells: Dictionary[String, Spell] = {}
 	for id in inventory.items:
 		var i := id.item
-		if i is Spellbook:
-			for s in i.spells:
-				if !w.has(s):
-					w.append(s)
-		#if i is Weapon && i.is_spell: # player isn't gonna have spells in their actual pockets. probably.
-		#	w.append(i)
+		if i is not Spellbook:
+			continue
+		for s: Spell in i.spells:
+			if magic < s.magic_level_requirement:
+				continue
+			if !spells.has(s.category):
+				spells[s.category] = s
+			elif s.magic_level_requirement > spells[s.category].magic_level_requirement:
+				spells[s.category] = s
 	for r: Weapon in _spell_ammo_remaining.keys():
-		if !w.has(r):
-			w.append(r)
+		if r is Spell:
+			if !spells.has(r.category):
+				spells[r.category] = r
+			elif r.magic_level_requirement > spells[r.category].magic_level_requirement:
+				spells[r.category] = r
+	var w: Array[Weapon] = []
+	w.append_array(spells.values())
 	return w
 
 func use_spell_ammo(w: Weapon) -> int:

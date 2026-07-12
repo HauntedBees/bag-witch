@@ -1,3 +1,3 @@
 class_name Spellbook extends Item
 
-@export var spells: Array[Weapon] = []
+@export var spells: Array[Spell] = []

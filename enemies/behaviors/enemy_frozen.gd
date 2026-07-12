@@ -35,6 +35,11 @@ func _on_hit(w: Weapon, source: Vector3, damage_dealt: int) -> void:
 			_kill_cube()
 
 func _on_effect_applied(e: BWEnum.Effect, level: int) -> void:
+	if e == BWEnum.Effect.Burn:
+		if _cube != null:
+			_kill_cube()
+			_relinquish_control()
+		return
 	if e != BWEnum.Effect.Freeze:
 		return
 	if _time_stunned > 0.0: # no double freezies

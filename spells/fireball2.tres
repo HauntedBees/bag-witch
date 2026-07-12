@@ -1,21 +1,22 @@
-[gd_resource type="Resource" script_class="Spell" format=3 uid="uid://w2fsdi0pdqtq"]
+[gd_resource type="Resource" script_class="Spell" format=3 uid="uid://7pq7lupy2ii0"]
 
-[ext_resource type="Script" uid="uid://bh5gblgdby5gl" path="res://resource_types/spells/spell.gd" id="1_kdtli"]
+[ext_resource type="Script" uid="uid://bh5gblgdby5gl" path="res://resource_types/spells/spell.gd" id="1_p25rb"]
 
 [resource]
-script = ExtResource("1_kdtli")
+script = ExtResource("1_p25rb")
+magic_level_requirement = 2
 category = "fireball"
 projectile_path = "uid://bs6rw37t6rj3k"
-velocity = 50.0
+velocity = 60.0
 gravity = 0.02
-cooldown = 0.3
+cooldown = 0.2
 is_spell = true
 spell_ammo = 20
-damage_range = Vector2i(1, 2)
+damage_range = Vector2i(3, 4)
 metadata_increase_ranges = Dictionary[int, Vector2]({
 2: Vector2(1, 1)
 })
-name = "Fireball"
+name = "Fireball II"
 equip_sprite_offset = Vector2i(2, 0)
 icon = Rect2i(0, 0, -1, 0)
 custom_equip_scene = "uid://bju1pcheyyg8y"

@@ -82,6 +82,6 @@ func apply_effect(effect: BWEnum.Effect, amount: float, weapon_magic_level: int)
 	else:
 		_effects[effect] = amount
 	var apply_chance := _effects[effect]
-	print("chance: %s" % apply_chance)
 	if randf() <= apply_chance:
+		_effects.erase(effect)
 		on_effect_applied.emit(effect, weapon_magic_level)
