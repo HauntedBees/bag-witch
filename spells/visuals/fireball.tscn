@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bs6rw37t6rj3k"]
 
 [ext_resource type="Shader" uid="uid://vwoxfwonv22e" path="res://assets/shaders/fire.gdshader" id="1_5mhq5"]
-[ext_resource type="Script" uid="uid://b5g7n1ix1u6f5" path="res://resource_types/weapons/projectile.gd" id="1_twtx8"]
+[ext_resource type="Script" uid="uid://dpdgmtnf6ftci" path="res://spells/visuals/fireball.gd" id="1_twtx8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hwng4"]
 render_priority = 0
@@ -69,5 +69,11 @@ collision_mask = 3
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1397903384]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 5.0210467e-09, 0.114868164)
 shape = SubResource("CapsuleShape3D_rhbnc")
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="." unique_id=67024550]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_rhbnc")
+target_position = Vector3(0, 0, 0)
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
