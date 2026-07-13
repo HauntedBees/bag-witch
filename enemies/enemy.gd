@@ -7,6 +7,9 @@ signal on_effect_applied(e: BWEnum.Effect, level: int)
 ## This should be obvious.
 @export var enemy_name := ""
 
+## To be passed to an EnemyWalkBetweenPoints behavior if one exists.
+@export var point_collection: Path3D
+
 ## The enemy's max health and initial health.
 @export var max_health := 100
 
