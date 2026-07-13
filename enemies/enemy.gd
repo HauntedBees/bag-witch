@@ -2,7 +2,7 @@ class_name EnemyDisplay extends CharacterBody3D
 
 signal on_died()
 signal on_target_identified()
-signal on_hit(w: Weapon, dir: Vector3, damage_dealt: int)
+signal on_hit(w: Weapon, dir: Vector3, damage_dealt: int, impact_position: Vector3)
 signal on_effect_applied(e: BWEnum.Effect, level: int)
 
 ## This should be obvious.
@@ -88,14 +88,14 @@ func take_specific_damage(damage_dealt: int) -> void:
 	if _health <= 0:
 		on_died.emit()
 
-func receive_weapon_hit(source: Vector3, w: Weapon) -> void:
+func receive_weapon_hit(source: Vector3, w: Weapon, has_impact_position := false, impact_position := Vector3.ZERO) -> void:
 	var damage_mult := 1
 	var effect_keys := w.metadata_increase_ranges.keys()
 	for e in weaknesses:
 		if effect_keys.has(e):
 			damage_mult *= 5
 	var damage_dealt := damage_mult * randi_range(w.damage_range.x, w.damage_range.y)
-	on_hit.emit(w, source, damage_dealt)
+	on_hit.emit(w, source, damage_dealt, impact_position if has_impact_position else global_position)
 	if _health <= 0:
 		return
 	_health -= damage_dealt

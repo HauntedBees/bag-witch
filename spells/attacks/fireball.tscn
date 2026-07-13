@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://bs6rw37t6rj3k"]
 
-[ext_resource type="Shader" uid="uid://vwoxfwonv22e" path="res://assets/shaders/fire.gdshader" id="1_5mhq5"]
-[ext_resource type="Script" uid="uid://dpdgmtnf6ftci" path="res://spells/visuals/fireball.gd" id="1_twtx8"]
+[ext_resource type="Script" uid="uid://dpdgmtnf6ftci" path="res://spells/attacks/fireball.gd" id="1_4hcvq"]
+[ext_resource type="Shader" uid="uid://vwoxfwonv22e" path="res://assets/shaders/fire.gdshader" id="2_q0fga"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hwng4"]
 render_priority = 0
-shader = ExtResource("1_5mhq5")
+shader = ExtResource("2_q0fga")
 shader_parameter/apply_shape_deform = false
 shader_parameter/top_radius = 0.0
 shader_parameter/bottom_radius = 0.0
@@ -49,7 +49,7 @@ radius = 0.27685547
 height = 0.9436035
 
 [node name="Fireball" type="Node3D" unique_id=998055476]
-script = ExtResource("1_twtx8")
+script = ExtResource("1_4hcvq")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1480972262]
 transform = Transform3D(0.9345249, -0.3558978, -1.5556788e-08, 0, -4.371139e-08, 1, -0.3558978, -0.9345249, -4.084938e-08, 0.2291565, 8.217229e-09, 0.5058136)

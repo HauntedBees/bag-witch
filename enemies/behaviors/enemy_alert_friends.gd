@@ -7,7 +7,7 @@ var _alert_timeout := 0.0
 func _setup_behavior() -> void:
 	_parent.on_hit.connect(_on_hit)
 
-func _on_hit(_w: Weapon, _source: Vector3, _damage_dealt: int) -> void:
+func _on_hit(_w: Weapon, _source: Vector3, _damage_dealt: int, _impact_position: Vector3) -> void:
 	_alert_timeout = 5.0
 
 func _permanent_behave(delta: float) -> void:

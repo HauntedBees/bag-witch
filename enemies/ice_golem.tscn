@@ -13,8 +13,8 @@ radius = 1.612793
 height = 6.3745117
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pblh2"]
-radius = 1.5374756
-height = 3.0749512
+radius = 1.2980347
+height = 2.5960693
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_rhbnc"]
 radius = 3.0
@@ -35,7 +35,6 @@ die_anims = Array[StringName]([&"Death_A", &"Death_C_Skeletons"])
 damage_stun_time = 0.05
 animation_player = NodePath("frost_golem/AnimationPlayer")
 bounding_box = NodePath("BoundingBox")
-death_bounding_box_y = 1.8
 weaknesses = Array[int]([2])
 resistances = Array[int]([1])
 
@@ -145,7 +144,7 @@ shape = SubResource("CapsuleShape3D_rhbnc")
 
 [node name="DeathCollisionShape3D" type="CollisionShape3D" parent="." unique_id=1992371214]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.423517, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1840761, 0)
 shape = SubResource("CapsuleShape3D_pblh2")
 disabled = true
 

@@ -19,7 +19,7 @@ func _on_active_changed() -> void:
 	if !active:
 		_kill_cube()
 
-func _on_hit(w: Weapon, source: Vector3, damage_dealt: int) -> void:
+func _on_hit(w: Weapon, source: Vector3, damage_dealt: int, _impact_position: Vector3) -> void:
 	if !active:
 		return
 	if damage_dealt >= (_parent.max_health * 0.5):
