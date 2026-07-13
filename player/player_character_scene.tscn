@@ -22,9 +22,9 @@
 [ext_resource type="PackedScene" uid="uid://cpmm4xyy23p80" path="res://player/hud/item_select.tscn" id="20_5ko36"]
 [ext_resource type="Shader" uid="uid://chplq7fb4mgyg" path="res://assets/shaders/speed_lines.gdshader" id="21_pdci5"]
 
-[sub_resource type="Curve" id="Curve_s7fsc"]
-_limits = [0.0, 60.0, 0.0, 60.0]
-_data = [Vector2(0, 20), 0.0, 0.0, 0, 0, Vector2(60, 60), 0.0, 0.0, 0, 0]
+[sub_resource type="Curve" id="Curve_pdci5"]
+_limits = [10.0, 30.0, 0.0, 60.0]
+_data = [Vector2(0, 10), 0.0, 0.0, 0, 0, Vector2(60, 30), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_gfbru"]
@@ -103,7 +103,7 @@ _data = {
 &"speed": SubResource("Animation_dehhv")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_pdci5"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_iy4o2"]
 viewport_path = NodePath("SubViewport")
 
 [node name="PlayerCharacter" type="CharacterBody3D" unique_id=1631114635 groups=["PlayerCharacter"]]
@@ -113,18 +113,17 @@ floor_max_angle = 1.13446
 floor_snap_length = 0.0
 platform_floor_layers = 4278190081
 script = ExtResource("1_200os")
-desired_move_speed_curve = SubResource("Curve_s7fsc")
-max_desired_move_speed = 60.0
+desired_move_speed_curve = SubResource("Curve_pdci5")
 in_air_move_speed_curve = SubResource("Curve_gfbru")
 walk_speed = 14.0
-walk_accel = 20.0
-walk_deccel = 15.0
-backward_walk_speed_multiplier = 0.9
-run_speed = 30.0
-run_accel = 20.0
+walk_accel = 12.0
+walk_deccel = 30.0
+run_speed = 24.0
+run_accel = 15.0
 run_deccel = 15.0
 continious_run = true
-backward_run_speed_multiplier = 0.8
+backward_run_speed_multiplier = 0.5
+jump_height = 2.2
 
 [node name="StateMachine" type="Node" parent="." unique_id=1836033318 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_6t7aj")
@@ -297,7 +296,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
-texture = SubResource("ViewportTexture_pdci5")
+texture = SubResource("ViewportTexture_iy4o2")
 
 [node name="Crosshair" type="CenterContainer" parent="HUDLayer/HUD" unique_id=1562813601]
 layout_mode = 1

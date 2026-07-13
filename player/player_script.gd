@@ -17,7 +17,37 @@ var _reloading_time_remaining := 0.0
 @onready var _front_check: RayCast3D = %FrontCheck
 @onready var _item_select: ItemSelect = %ItemSelect
 
+func _ready() -> void:
+	super()
+	Player.data.stat_changed.connect(_adjust_movement_stats)
+	_adjust_movement_stats()
+
+func _adjust_movement_stats() -> void:
+	print("SPEED IS %s" % Player.data.speed)
+	match Player.data.speed:
+		1:
+			max_desired_move_speed = 30.0
+			run_speed = 24.0
+			run_accel = 15.0
+			jump_height = 2.2
+		2:
+			max_desired_move_speed = 35.0
+			run_speed = 28.0
+			run_accel = 18.0
+			jump_height = 2.5
+		3:
+			max_desired_move_speed = 50.0
+			run_speed = 40.0
+			run_accel = 25.0
+			jump_height = 3.0
+
 func _input(event: InputEvent) -> void:
+	if Input.is_key_pressed(KEY_7):
+		Player.data.speed = 1
+	if Input.is_key_pressed(KEY_8):
+		Player.data.speed = 2
+	if Input.is_key_pressed(KEY_9):
+		Player.data.speed = 3
 	if _in_inventory:
 		return
 	if _try_switch_weapon(event):
@@ -46,7 +76,7 @@ func _on_jump_state_jumped() -> void:
 	front_dir.y = 0.0
 	front_dir = front_dir.normalized()
 	var vel_dir := vel.normalized()
-	if vel_dir.dot(front_dir) >= 0.9 && vel.length() >= 20.0 && !is_on_floor():
+	if vel_dir.dot(front_dir) >= 0.9 && vel.length() >= 17.0 && !is_on_floor():
 		ready_to_glide = true
 
 func get_front_direction(normalized := true) -> Vector3:

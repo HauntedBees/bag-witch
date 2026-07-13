@@ -49,8 +49,14 @@ var walk_or_run: String = "WalkState" #keep in memory if play char was walking o
 @export var backward_run_speed_multiplier : float = 0.7
 
 @export_group("Jump variables")
-@export var jump_height: float = 2.0
-@export var jump_time_to_peak: float = 0.3
+@export var jump_height: float = 2.0:
+	set(value):
+		jump_height = value
+		jump_velocity = (2.0 * jump_height) / jump_time_to_peak
+@export var jump_time_to_peak: float = 0.3:
+	set(value):
+		jump_time_to_peak = value
+		jump_velocity = (2.0 * jump_height) / jump_time_to_peak
 @export var jump_time_to_fall: float = 0.25
 @onready var jump_velocity: float = (2.0 * jump_height) / jump_time_to_peak
 @export var jump_cooldown: float = 0.25
