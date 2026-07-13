@@ -4,10 +4,20 @@ class_name EnemyChasePlayer extends EnemyBehavior
 @export var movement_speed := 5.0
 @export var give_up_time := 10.0
 
+@export var idle_anims: Array[StringName] = []
+@export var run_anims: Array[StringName] = []
+
 var _can_see_player := false
 var _time_to_give_up := 0.0
 
+var _idle_anim := Anim.IDLE
+var _run_anim := Anim.RUN
+
 func _setup_behavior() -> void:
+	if idle_anims.size() > 0:
+		_idle_anim = idle_anims.pick_random()
+	if run_anims.size() > 0:
+		_run_anim = run_anims.pick_random()
 	_parent.on_effect_applied.connect(_on_effect_applied)
 	if vision is VisionCone3D:
 		vision.body_sighted.connect(_on_player_sighted)
@@ -38,7 +48,7 @@ func _behave(delta: float) -> void:
 		_time_to_give_up -= delta
 		if _time_to_give_up <= 0.0:
 			_parent.target = null
-			_parent.animation_player.play(Anim.IDLE)
+			_parent.animation_player.play(_idle_anim)
 			return
 	_parent.nav.target_position = _parent.target.global_position
 	var next := _parent.nav.get_next_path_position()
@@ -47,4 +57,4 @@ func _behave(delta: float) -> void:
 		_parent.velocity.y -= 5.0
 	_parent.look_at(next)
 	_parent.move_and_slide()
-	_parent.animation_player.play(Anim.RUN)
+	_parent.animation_player.play(_run_anim)

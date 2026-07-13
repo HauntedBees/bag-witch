@@ -10,6 +10,17 @@ signal on_effect_applied(e: BWEnum.Effect, level: int)
 ## The enemy's max health and initial health.
 @export var max_health := 100
 
+@export var idle_anims: Array[StringName] = [Anim.IDLE]
+
+@export var hit_anim := Anim.HIT
+
+@export var big_hit_anim := Anim.BIG_HIT
+
+@export var die_anims: Array[StringName] = [Anim.DIE]
+
+## How long they flinch for when stunned.
+@export var damage_stun_time := 0.2
+
 ## The nav agent for this enemy.
 @onready var nav: NavigationAgent3D = $NavigationAgent3D
 
@@ -19,13 +30,19 @@ signal on_effect_applied(e: BWEnum.Effect, level: int)
 ## For the HUD.
 @export var bounding_box: CollisionShape3D
 
+## Things that hurt them more.
+@export var weaknesses: Array[BWEnum.Effect] = []
+
+## Effects taht don't apply to them.
+@export var resistances: Array[BWEnum.Effect] = []
+
 var target: BogWitch
 
 var _health := 100
 var _effects: Dictionary[BWEnum.Effect, float] = {}
-var _common_states: Array[EnemyBehavior] = [
-	EnemyReceiveDamage.new(),
-	EnemyDead.new(),
+@onready var _common_states: Array[EnemyBehavior] = [
+	EnemyReceiveDamage.new(damage_stun_time, hit_anim, big_hit_anim),
+	EnemyDead.new(die_anims),
 	EnemyFrozen.new()
 ]
 
@@ -36,7 +53,7 @@ func _ready() -> void:
 		add_child(c)
 	_health = max_health
 	if animation_player != null:
-		animation_player.play(Anim.IDLE)
+		animation_player.play(idle_anims.pick_random())
 
 func is_in_danger() -> bool:
 	return _health <= (0.1 * max_health)
@@ -59,7 +76,12 @@ func take_specific_damage(damage_dealt: int) -> void:
 		on_died.emit()
 
 func receive_weapon_hit(source: Vector3, w: Weapon) -> void:
-	var damage_dealt := randi_range(w.damage_range.x, w.damage_range.y)
+	var damage_mult := 1
+	var effect_keys := w.metadata_increase_ranges.keys()
+	for e in weaknesses:
+		if effect_keys.has(e):
+			damage_mult *= 5
+	var damage_dealt := damage_mult * randi_range(w.damage_range.x, w.damage_range.y)
 	on_hit.emit(w, source, damage_dealt)
 	if _health <= 0:
 		return
@@ -67,7 +89,7 @@ func receive_weapon_hit(source: Vector3, w: Weapon) -> void:
 	var magic_level := 1
 	if w is Spell:
 		magic_level = w.magic_level_requirement
-	for e: BWEnum.Effect in w.metadata_increase_ranges.keys():
+	for e: BWEnum.Effect in effect_keys:
 		var r := w.metadata_increase_ranges[e]
 		apply_effect(e, randf_range(r.x, r.y), magic_level)
 	if _health <= 0:
@@ -77,6 +99,8 @@ func get_screen_bounds() -> Rect2:
 	return BWEnum.get_bounds(global_transform, _box, get_viewport().get_camera_3d())
 
 func apply_effect(effect: BWEnum.Effect, amount: float, weapon_magic_level: int) -> void:
+	if resistances.has(effect):
+		return
 	if _effects.has(effect):
 		_effects[effect] += amount
 	else:

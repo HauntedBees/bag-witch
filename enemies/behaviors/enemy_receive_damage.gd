@@ -1,8 +1,14 @@
 class_name EnemyReceiveDamage extends EnemyBehavior
 
-const _STUN_TIME := 0.2
-
 var _time_stunned := 0.0
+var _hit_anim: StringName
+var _big_hit_anim: StringName
+var _stun_time: float
+
+func _init(stun_time: float, weak_hit_anim: StringName, strong_hit_anim: StringName) -> void:
+	_stun_time = stun_time
+	_hit_anim = weak_hit_anim
+	_big_hit_anim = strong_hit_anim
 
 func _setup_behavior() -> void:
 	priority = _DAMAGED_PRIORITY
@@ -12,7 +18,7 @@ func _on_hit(w: Weapon, source: Vector3, damage_dealt: int) -> void:
 	if !active:
 		return
 	take_control()
-	_time_stunned = _STUN_TIME
+	_time_stunned = _stun_time
 	if w.knockback > 0.0:
 		var dir := _parent.global_position.direction_to(source)
 		_parent.velocity -= dir.normalized() * w.knockback
@@ -20,9 +26,9 @@ func _on_hit(w: Weapon, source: Vector3, damage_dealt: int) -> void:
 	if _parent.is_dead(): # can still knock around a dead body but it won't look at you
 		return
 	_parent.animation_player.play(
-		Anim.BIG_HIT \
+		_big_hit_anim \
 		if damage_dealt >= (_parent.max_health * 0.1) || _parent.is_in_danger() \
-		else Anim.HIT,
+		else _hit_anim,
 		-1,
 		2.0
 	)

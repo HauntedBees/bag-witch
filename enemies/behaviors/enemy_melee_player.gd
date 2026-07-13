@@ -1,5 +1,6 @@
 class_name EnemyMeleePlayer extends EnemyBehavior
 
+@export var attack_anims: Array[StringName] = []
 @export var close_enough_radius: Area3D
 @export var attack_frequency := 1.0
 @export var attack_y_offset := 0.5
@@ -11,6 +12,8 @@ var _cached_attack_scene: PackedScene = null
 var _in_animation := false
 
 func _setup_behavior() -> void:
+	if attack_anims.size() == 0:
+		attack_anims.append(Anim.SLASH)
 	close_enough_radius.body_entered.connect(_on_player_in_range)
 	close_enough_radius.body_exited.connect(_on_player_leave_range)
 
@@ -38,7 +41,7 @@ func _behave(delta: float) -> void:
 		_parent.add_child(attack)
 		attack.position.y += attack_y_offset
 		_in_animation = true
-		_parent.animation_player.play(Anim.SLASH, -1.0, 2.5) #TODO: this probably shouldn't be hard-coded
+		_parent.animation_player.play(attack_anims.pick_random(), -1.0, 2.5)
 		_parent.animation_player.animation_finished.connect(_on_anim_finished, CONNECT_ONE_SHOT)
 		_time_to_next_attack = attack_frequency
 
