@@ -17,10 +17,12 @@ func _setup_behavior() -> void:
 	_parent.on_hit.connect(_on_hit)
 
 func _on_hit(w: Weapon, source: Vector3, damage_dealt: int, impact_position: Vector3) -> void:
+	var freezes := _stun_time > 0.0
 	if !active:
 		return
-	take_control()
-	_time_stunned = _stun_time
+	if freezes:
+		take_control()
+		_time_stunned = _stun_time
 	if w.knockback > 0.0:
 		var dir := _parent.global_position.direction_to(source)
 		_parent.velocity -= dir.normalized() * w.knockback
@@ -31,13 +33,14 @@ func _on_hit(w: Weapon, source: Vector3, damage_dealt: int, impact_position: Vec
 	ouch.set_damage(damage_dealt, _parent.is_about_to_die(damage_dealt))
 	_parent.add_child(ouch)
 	ouch.global_position = impact_position
-	_parent.animation_player.play(
-		_big_hit_anim \
-		if damage_dealt >= (_parent.max_health * 0.1) || _parent.is_in_danger() \
-		else _hit_anim,
-		-1,
-		2.0
-	)
+	if freezes:
+		_parent.animation_player.play(
+			_big_hit_anim \
+			if damage_dealt >= (_parent.max_health * 0.1) || _parent.is_in_danger() \
+			else _hit_anim,
+			-1,
+			2.0
+		)
 	var received_direction := source
 	received_direction.y = _parent.global_position.y
 	_parent.look_at(received_direction)
