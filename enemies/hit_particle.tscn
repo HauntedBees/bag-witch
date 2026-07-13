@@ -1,0 +1,223 @@
+[gd_scene format=3 uid="uid://ni2oyb1sktk0"]
+
+[ext_resource type="Texture2D" uid="uid://bdagrfeeq04yo" path="res://assets/sprites/sinestesia_hit_yellow.png" id="1_5cww3"]
+[ext_resource type="Script" uid="uid://dmvgvthvs643j" path="res://enemies/hit_particle.gd" id="1_8u3dp"]
+[ext_resource type="FontFile" uid="uid://bt4dviyx754lv" path="res://assets/fonts/Celtica-Bold.ttf" id="2_8u3dp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_efd2g"]
+atlas = ExtResource("1_5cww3")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3nsoy"]
+atlas = ExtResource("1_5cww3")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g2sc2"]
+atlas = ExtResource("1_5cww3")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u8hjp"]
+atlas = ExtResource("1_5cww3")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tsh3v"]
+atlas = ExtResource("1_5cww3")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sbe5u"]
+atlas = ExtResource("1_5cww3")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kgkql"]
+atlas = ExtResource("1_5cww3")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3mpj8"]
+atlas = ExtResource("1_5cww3")
+region = Rect2(384, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_842kd"]
+atlas = ExtResource("1_5cww3")
+region = Rect2(0, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iml7i"]
+atlas = ExtResource("1_5cww3")
+region = Rect2(128, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xye1a"]
+atlas = ExtResource("1_5cww3")
+region = Rect2(256, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q71r0"]
+atlas = ExtResource("1_5cww3")
+region = Rect2(384, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mc7ea"]
+atlas = ExtResource("1_5cww3")
+region = Rect2(0, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ifecg"]
+atlas = ExtResource("1_5cww3")
+region = Rect2(128, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m7k3h"]
+atlas = ExtResource("1_5cww3")
+region = Rect2(256, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jfcgg"]
+atlas = ExtResource("1_5cww3")
+region = Rect2(384, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8u3dp"]
+atlas = ExtResource("1_5cww3")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rhbnc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efd2g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3nsoy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g2sc2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u8hjp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tsh3v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sbe5u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kgkql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3mpj8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_842kd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iml7i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xye1a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q71r0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mc7ea")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ifecg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m7k3h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jfcgg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8u3dp")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 40.0
+}]
+
+[sub_resource type="Animation" id="Animation_bfgdh"]
+resource_name = "NumberDangle"
+length = 0.25
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DamageNumber:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.09175229, 0), Vector3(0, 1.0720547, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DamageNumber:pixel_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.18, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.015, 0.03, 0.001]
+}
+
+[sub_resource type="Animation" id="Animation_5cww3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DamageNumber:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.09175229, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DamageNumber:pixel_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.015]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5iq88"]
+_data = {
+&"NumberDangle": SubResource("Animation_bfgdh"),
+&"RESET": SubResource("Animation_5cww3")
+}
+
+[node name="HitParticle" type="Node3D" unique_id=614540662]
+script = ExtResource("1_8u3dp")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1200472119]
+pixel_size = 0.04
+billboard = 1
+no_depth_test = true
+texture_filter = 0
+render_priority = 98
+sprite_frames = SubResource("SpriteFrames_rhbnc")
+autoplay = "default"
+
+[node name="DamageNumber" type="Label3D" parent="." unique_id=386864265]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.09175229, 0)
+pixel_size = 0.015
+billboard = 1
+no_depth_test = true
+render_priority = 100
+outline_render_priority = 99
+text = "5"
+font = ExtResource("2_8u3dp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=497827728]
+libraries/ = SubResource("AnimationLibrary_5iq88")
+autoplay = &"NumberDangle"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
