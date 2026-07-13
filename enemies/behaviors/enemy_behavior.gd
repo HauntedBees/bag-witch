@@ -26,10 +26,17 @@ func _on_active_changed() -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
-	if active && !_parent.is_dead():
+	if _parent.is_dead():
+		return
+	if active:
 		_behave(delta)
+	_permanent_behave(delta)
 
 func _behave(_delta: float) -> void:
+	pass
+
+## runs even when inactive
+func _permanent_behave(_delta: float) -> void:
 	pass
 
 func take_control() -> void:

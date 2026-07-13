@@ -13,6 +13,10 @@
 radius = 0.75
 height = 2.6044922
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gwjxy"]
+radius = 0.61834717
+height = 1.2366943
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_rhbnc"]
 radius = 3.0
 
@@ -72,6 +76,11 @@ libraries/Rig_Medium_MovementBasic = ExtResource("5_kgpmu")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1136467649]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1882875, 0)
 shape = SubResource("CapsuleShape3D_rhbnc")
+
+[node name="DeathCollisionShape3D" type="CollisionShape3D" parent="." unique_id=1988389680]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5043886, 0)
+shape = SubResource("CapsuleShape3D_gwjxy")
+disabled = true
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1284204168]
 

@@ -18,8 +18,7 @@ func _setup_behavior() -> void:
 		_idle_anim = idle_anims.pick_random()
 	if run_anims.size() > 0:
 		_run_anim = run_anims.pick_random()
-	for i in _parent.point_collection.curve.point_count:
-		_points.append(_parent.point_collection.curve.get_point_position(i))
+	_points = BWEnum.path_to_points(_parent.point_collection)
 	_target_point = _points.pick_random()
 
 func _behave(delta: float) -> void:
