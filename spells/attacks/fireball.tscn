@@ -50,6 +50,7 @@ height = 0.9436035
 
 [node name="Fireball" type="Node3D" unique_id=998055476]
 script = ExtResource("1_4hcvq")
+effect = 2
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1480972262]
 transform = Transform3D(0.9345249, -0.3558978, -1.5556788e-08, 0, -4.371139e-08, 1, -0.3558978, -0.9345249, -4.084938e-08, 0.2291565, 8.217229e-09, 0.5058136)
@@ -76,4 +77,5 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0
 shape = SubResource("CapsuleShape3D_rhbnc")
 target_position = Vector3(0, 0, 0)
 
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

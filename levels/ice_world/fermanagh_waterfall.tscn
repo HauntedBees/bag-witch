@@ -28,5 +28,14 @@ visible = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=322995865]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.50110054, -10.580154, 1.3934021)
 shape = SubResource("BoxShape3D_rhbnc")
+disabled = true
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1438134]
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1899264257]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.50110054, -10.580154, 1.3934021)
+shape = SubResource("BoxShape3D_rhbnc")
+disabled = true
 
 [editable path="waterfall_base"]

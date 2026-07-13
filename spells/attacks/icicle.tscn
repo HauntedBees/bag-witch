@@ -8,6 +8,7 @@ radius = 0.2
 
 [node name="Icicle" type="Node3D" unique_id=1263134127]
 script = ExtResource("1_435l2")
+effect = 1
 
 [node name="icicle" parent="." unique_id=997537143 instance=ExtResource("1_q2xyx")]
 
@@ -18,4 +19,5 @@ collision_mask = 3
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
 shape = SubResource("CylinderShape3D_rhbnc")
 
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
