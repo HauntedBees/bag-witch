@@ -12,6 +12,7 @@ const _FLICKER_TIME := 0.1
 
 @onready var _base: MeshInstance3D = $waterfall_base/falls_layer_0
 @onready var _collider: CollisionShape3D = $StaticBody3D/CollisionShape3D
+@onready var _area_collider: CollisionShape3D = $Area3D/CollisionShape3D
 @onready var _falls_break_top_a: MeshInstance3D = $waterfall_base/falls_break_top_a
 @onready var _falls_break_bottom_a: MeshInstance3D = $waterfall_base/falls_break_bottom_a
 @onready var _falls_break_top_b: MeshInstance3D = $waterfall_base/falls_break_top_b
@@ -40,3 +41,4 @@ func _update_frozen() -> void:
 		c.visible = !frozen
 	_base.set_surface_override_material(0, _FROZEN_SHADER if frozen else _REGULAR_SHADER)
 	_collider.disabled = !frozen
+	_area_collider.disabled = frozen
