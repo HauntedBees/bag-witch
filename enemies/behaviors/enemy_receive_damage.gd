@@ -28,7 +28,7 @@ func _on_hit(w: Weapon, source: Vector3, damage_dealt: int, impact_position: Vec
 	if _parent.is_dead(): # can still knock around a dead body but it won't look at you
 		return
 	var ouch: HitParticle = _OUCHIE.instantiate()
-	ouch.set_damage(damage_dealt)
+	ouch.set_damage(damage_dealt, _parent.is_about_to_die(damage_dealt))
 	_parent.add_child(ouch)
 	ouch.global_position = impact_position
 	_parent.animation_player.play(
