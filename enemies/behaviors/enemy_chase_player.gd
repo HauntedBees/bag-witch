@@ -35,6 +35,7 @@ func _on_player_sighted(body: Node3D) -> void:
 	if body is BogWitch:
 		_can_see_player = true
 		_parent.target = body
+		take_control()
 
 func _on_player_lost(body: Node3D) -> void:
 	if body is BogWitch:
@@ -47,6 +48,7 @@ func _behave(delta: float) -> void:
 	if !_can_see_player:
 		_time_to_give_up -= delta
 		if _time_to_give_up <= 0.0:
+			_relinquish_control()
 			_parent.target = null
 			_parent.animation_player.play(_idle_anim)
 			return
@@ -55,6 +57,8 @@ func _behave(delta: float) -> void:
 	_parent.velocity = _parent.global_position.direction_to(next) * movement_speed
 	if !_parent.is_on_floor():
 		_parent.velocity.y -= 5.0
-	_parent.look_at(next)
+	next.y = _parent.global_position.y
+	if _parent.global_position.distance_to(next) > 1.0:
+		_parent.look_at(next)
 	_parent.move_and_slide()
 	_parent.animation_player.play(_run_anim)
