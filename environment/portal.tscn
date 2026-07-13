@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://dhlu6wawyieh5"]
+
+[ext_resource type="PackedScene" uid="uid://ogtdbm7k0f17" path="res://assets/models/portal.blend" id="1_aftk5"]
+[ext_resource type="Script" uid="uid://dvcflp1bg4tw3" path="res://environment/portal.gd" id="1_va07s"]
+[ext_resource type="Shader" uid="uid://bxvg24o86je3n" path="res://assets/shaders/portal.gdshader" id="2_i0tqa"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_33ahx"]
+render_priority = 0
+shader = ExtResource("2_i0tqa")
+shader_parameter/sway_amount = 0.0800000038
+shader_parameter/sway_scale = 10.0
+shader_parameter/sway_duration = 4.00000018930148
+shader_parameter/sway_direction = Vector3(1, 1, 0)
+shader_parameter/albedo_color = Color(1, 0.7529412, 1, 1)
+shader_parameter/metallic = 0.0
+shader_parameter/roughness = 0.0
+shader_parameter/specular = 0.0
+shader_parameter/opacity = 1.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_i0tqa"]
+material = SubResource("ShaderMaterial_33ahx")
+size = Vector2(6, 6)
+subdivide_width = 32
+subdivide_depth = 32
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rhbnc"]
+size = Vector3(0.5, 6.305, 5.86)
+
+[node name="Portal" type="Node3D" unique_id=573598963]
+script = ExtResource("1_va07s")
+
+[node name="Inside" type="MeshInstance3D" parent="." unique_id=2009057338]
+unique_name_in_owner = true
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 3.1299825, 0)
+mesh = SubResource("QuadMesh_i0tqa")
+
+[node name="PortalMesh" parent="." unique_id=1315378648 instance=ExtResource("1_aftk5")]
+
+[node name="Area3D" type="Area3D" parent="." unique_id=574784853]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.0086908, 0)
+collision_mask = 3
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1259080706]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28798676, 0.21948242, -0.097076416)
+shape = SubResource("BoxShape3D_rhbnc")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1759484764]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3924389, 3.244154, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=2074378575]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28798676, -0.1471405, -0.097076416)
+shape = SubResource("BoxShape3D_rhbnc")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
