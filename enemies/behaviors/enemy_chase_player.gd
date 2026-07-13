@@ -14,6 +14,7 @@ var _idle_anim := Anim.IDLE
 var _run_anim := Anim.RUN
 
 func _setup_behavior() -> void:
+	_parent.on_target_identified.connect(_on_target_identified_from_another_source)
 	if idle_anims.size() > 0:
 		_idle_anim = idle_anims.pick_random()
 	if run_anims.size() > 0:
@@ -32,6 +33,8 @@ func _on_effect_applied(e: BWEnum.Effect, _level: int) -> void:
 	_time_to_give_up = 0.0
 
 func _on_player_sighted(body: Node3D) -> void:
+	if _parent.is_dead():
+		return
 	if body is BogWitch:
 		_can_see_player = true
 		_parent.target = body
@@ -41,6 +44,12 @@ func _on_player_lost(body: Node3D) -> void:
 	if body is BogWitch:
 		_can_see_player = false
 		_time_to_give_up = give_up_time
+
+func _on_target_identified_from_another_source() -> void:
+	if _parent.is_dead():
+		return
+	_time_to_give_up = give_up_time * 1.5
+	_parent.animation_player.play(_run_anim)
 
 func _behave(delta: float) -> void:
 	if _parent.target == null:

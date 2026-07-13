@@ -1,6 +1,6 @@
 class_name ItemSelect extends VBoxContainer
 
-@onready var _selection: NinePatchRect = %Selection
+@onready var _selection: VBoxContainer = %Selection
 @onready var _item_name: GASLabel = %ItemName
 @onready var _input_image: InputImage = %InputImage
 

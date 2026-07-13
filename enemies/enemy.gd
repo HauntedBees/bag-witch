@@ -1,6 +1,7 @@
 class_name EnemyDisplay extends CharacterBody3D
 
 signal on_died()
+signal on_target_identified()
 signal on_hit(w: Weapon, dir: Vector3, damage_dealt: int)
 signal on_effect_applied(e: BWEnum.Effect, level: int)
 
@@ -49,14 +50,23 @@ var _effects: Dictionary[BWEnum.Effect, float] = {}
 	EnemyFrozen.new()
 ]
 
+@onready var alive_collider: CollisionShape3D = %CollisionShape3D
+@onready var death_collider: CollisionShape3D = %DeathCollisionShape3D
 @onready var _box: BoxShape3D = bounding_box.shape
 
 func _ready() -> void:
+	add_to_group(&"enemy")
 	for c in _common_states:
 		add_child(c)
 	_health = max_health
 	if animation_player != null:
 		animation_player.play(idle_anims.pick_random())
+
+func _on_peer_called_for_help(new_target: BogWitch, source_position: Vector3, allowed_radius: float) -> void:
+	if global_position.distance_to(source_position) > allowed_radius:
+		return
+	target = new_target
+	on_target_identified.emit()
 
 func is_in_danger() -> bool:
 	return _health <= (0.1 * max_health)

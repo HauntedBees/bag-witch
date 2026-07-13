@@ -3,13 +3,18 @@
 [ext_resource type="Script" uid="uid://cjlidc7juluwi" path="res://enemies/enemy.gd" id="1_idi53"]
 [ext_resource type="PackedScene" uid="uid://bkp5hliwkeaq7" path="res://assets/models/enemies/frost_golem.blend" id="2_i4csc"]
 [ext_resource type="Script" uid="uid://cw1pwskvve6sn" path="res://enemies/behaviors/enemy_walk_between_points.gd" id="6_5tyy8"]
+[ext_resource type="Script" uid="uid://dxggsp43p5ket" path="res://enemies/behaviors/enemy_alert_friends.gd" id="6_pblh2"]
 [ext_resource type="Script" uid="uid://cmgcelj1qxg8o" path="res://addons/tattomoosa.vision_cone_3d/src/VisionCone3D.gd" id="6_w1tp2"]
 [ext_resource type="Script" uid="uid://c7obdbhjgnuay" path="res://enemies/behaviors/enemy_chase_player.gd" id="7_673mu"]
 [ext_resource type="Script" uid="uid://b2ldfj5ngv3ch" path="res://enemies/behaviors/enemy_melee_player.gd" id="8_hyjxu"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rhbnc"]
-radius = 0.75
-height = 2.6044922
+radius = 1.612793
+height = 6.3745117
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pblh2"]
+radius = 1.5374756
+height = 3.0749512
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_rhbnc"]
 radius = 3.0
@@ -30,6 +35,7 @@ die_anims = Array[StringName]([&"Death_A", &"Death_C_Skeletons"])
 damage_stun_time = 0.05
 animation_player = NodePath("frost_golem/AnimationPlayer")
 bounding_box = NodePath("BoundingBox")
+death_bounding_box_y = 1.8
 weaknesses = Array[int]([2])
 resistances = Array[int]([1])
 
@@ -133,8 +139,15 @@ bones/39/scale = Vector3(1, 0.9999999, 0.99999994)
 bones/40/rotation = Quaternion(-4.857212e-17, 9.912367e-17, -1.9466906e-08, 1)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1136467649]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1882875, 0)
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.0732973, 0)
 shape = SubResource("CapsuleShape3D_rhbnc")
+
+[node name="DeathCollisionShape3D" type="CollisionShape3D" parent="." unique_id=1992371214]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.423517, 0)
+shape = SubResource("CapsuleShape3D_pblh2")
+disabled = true
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1284204168]
 
@@ -144,7 +157,6 @@ collision_mask = 2
 script = ExtResource("6_w1tp2")
 range = 37.078857
 angle = 102.52777367113438
-debug_draw = true
 collision_mask_ = 2
 metadata/_custom_type_script = "uid://cmgcelj1qxg8o"
 
@@ -158,6 +170,7 @@ shape = SubResource("SphereShape3D_rhbnc")
 [node name="EnemyChasePlayer" type="Node" parent="." unique_id=612944538 node_paths=PackedStringArray("vision")]
 script = ExtResource("7_673mu")
 vision = NodePath("../VisionCone3D")
+movement_speed = 15.0
 idle_anims = Array[StringName]([&"Idle", &"Idle_B"])
 run_anims = Array[StringName]([&"Running_A", &"Running_B", &"Running_C"])
 priority = 1
@@ -169,6 +182,11 @@ close_enough_radius = NodePath("../CloseEnough")
 attack_y_offset = 0.8
 attack_scene = "uid://b550rngva186a"
 priority = 2
+
+[node name="EnemyAlertFriends" type="Node" parent="." unique_id=466831532]
+script = ExtResource("6_pblh2")
+radius = 50.0
+metadata/_custom_type_script = "uid://dxggsp43p5ket"
 
 [node name="EnemyWalkBetweenPoints" type="Node" parent="." unique_id=1126768834]
 script = ExtResource("6_5tyy8")
