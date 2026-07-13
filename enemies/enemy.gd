@@ -96,7 +96,7 @@ func receive_weapon_hit(source: Vector3, w: Weapon, has_impact_position := false
 			damage_mult *= 5
 	var damage_dealt := damage_mult * randi_range(w.damage_range.x, w.damage_range.y)
 	on_hit.emit(w, source, damage_dealt, impact_position if has_impact_position else global_position)
-	if _health <= 0:
+	if is_dead():
 		return
 	_health -= damage_dealt
 	var magic_level := 1
@@ -107,6 +107,9 @@ func receive_weapon_hit(source: Vector3, w: Weapon, has_impact_position := false
 		apply_effect(e, randf_range(r.x, r.y), magic_level)
 	if _health <= 0:
 		on_died.emit()
+
+func is_about_to_die(damage: int) -> bool:
+	return damage >= _health
 
 func get_screen_bounds() -> Rect2:
 	return BWEnum.get_bounds(global_transform, _box, get_viewport().get_camera_3d())
