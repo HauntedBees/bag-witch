@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://c054yo85hklkh" path="res://assets/models/environment/textures/Icefloor.png" id="9_6nvvy"]
 [ext_resource type="PackedScene" uid="uid://cphjo0ynxtgmo" path="res://enemies/ice_golem.tscn" id="11_54j0y"]
 [ext_resource type="Script" uid="uid://b7o0pdvrytkig" path="res://levels/enemy_spawner.gd" id="12_jobve"]
+[ext_resource type="PackedScene" uid="uid://dhlu6wawyieh5" path="res://environment/portal.tscn" id="14_ffpem"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_d6hs4"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -149,3 +150,16 @@ point_collection = NodePath("../../Paths/FermanaghPoints")
 
 [node name="FermanaghPoints" type="Path3D" parent="Paths" unique_id=1230900363]
 curve = SubResource("Curve3D_54j0y")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=2013182712]
+render_target_update_mode = 4
+
+[node name="FocalPoint" type="Node3D" parent="SubViewport" unique_id=610838733]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.699, 94.473)
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport/FocalPoint" unique_id=1606593071]
+transform = Transform3D(1, 0, 0, 0, 0.8588198, 0.51227784, 0, -0.51227784, 0.8588198, 0, 8.699, 94.473)
+
+[node name="Portal" parent="." unique_id=573598963 node_paths=PackedStringArray("subviewport") instance=ExtResource("14_ffpem")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128.05383, -17.395311, 109.017395)
+subviewport = NodePath("../SubViewport")

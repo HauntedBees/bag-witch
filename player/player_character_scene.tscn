@@ -103,7 +103,7 @@ _data = {
 &"speed": SubResource("Animation_dehhv")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_iy4o2"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_pdci5"]
 viewport_path = NodePath("SubViewport")
 
 [node name="PlayerCharacter" type="CharacterBody3D" unique_id=1631114635 groups=["PlayerCharacter"]]
@@ -296,7 +296,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
-texture = SubResource("ViewportTexture_iy4o2")
+texture = SubResource("ViewportTexture_pdci5")
 
 [node name="Crosshair" type="CenterContainer" parent="HUDLayer/HUD" unique_id=1562813601]
 layout_mode = 1
