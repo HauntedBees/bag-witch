@@ -2,6 +2,8 @@ extends EnemyDisplay
 
 const _SMOKE_SCENE := preload("uid://bce761tpdiksy")
 
+@export var has_key := false
+
 var _frozen_state: EnemyFrozen
 
 func _addtl_enemy_setup() -> void:
