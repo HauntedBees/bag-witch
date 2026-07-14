@@ -13,13 +13,16 @@ func _setup_behavior() -> void:
 	_parent.on_effect_applied.connect(_on_effect_applied)
 	_parent.on_hit.connect(_on_hit)
 
+func is_frozen() -> bool:
+	return active && _time_stunned > 0.0
+
 func _on_active_changed() -> void:
 	_damage_remaining = 0
 	_time_stunned = 0
 	if !active:
 		_kill_cube()
 
-func _on_hit(w: Weapon, source: Vector3, damage_dealt: int, _impact_position: Vector3) -> void:
+func _on_hit(w: Weapon, source: Vector3, damage_dealt: int, impact_position: Vector3) -> void:
 	if !active:
 		return
 	if damage_dealt >= (_parent.max_health * 0.5):
@@ -27,7 +30,7 @@ func _on_hit(w: Weapon, source: Vector3, damage_dealt: int, _impact_position: Ve
 		_kill_cube()
 		var new_damage := roundi(_parent.max_health * 0.25)
 		_parent.take_specific_damage(new_damage)
-		_parent.on_hit.emit(w, source, new_damage)
+		_parent.on_hit.emit(w, source, new_damage, impact_position)
 	else:
 		_damage_remaining -= damage_dealt
 		if _damage_remaining <= 0:

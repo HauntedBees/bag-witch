@@ -35,6 +35,7 @@ func _process(delta: float) -> void:
 func _spawn_enemy() -> void:
 	var enemy_scene: PackedScene = enemy_types.pick_random()
 	var enemy: EnemyDisplay = enemy_scene.instantiate()
+	enemy.name = "%s%s" % [enemy.enemy_name, randi()]
 	if enemy_point_collection != null:
 		enemy.point_collection = enemy_point_collection
 	spawn_container.add_child(enemy)

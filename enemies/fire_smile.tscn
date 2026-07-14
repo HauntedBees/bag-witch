@@ -1,0 +1,107 @@
+[gd_scene format=3 uid="uid://eq158w8w1hls"]
+
+[ext_resource type="Script" uid="uid://c43mopu1jqdv0" path="res://enemies/types/lava_slime.gd" id="1_irxjj"]
+[ext_resource type="PackedScene" uid="uid://5mfo3873qvty" path="res://assets/models/enemies/lava_slime.blend" id="2_irxjj"]
+[ext_resource type="Script" uid="uid://c7obdbhjgnuay" path="res://enemies/behaviors/enemy_chase_player.gd" id="4_kpmbw"]
+[ext_resource type="Script" uid="uid://b2ldfj5ngv3ch" path="res://enemies/behaviors/enemy_melee_player.gd" id="5_iofec"]
+[ext_resource type="Script" uid="uid://dxggsp43p5ket" path="res://enemies/behaviors/enemy_alert_friends.gd" id="6_5ietn"]
+[ext_resource type="Script" uid="uid://cw1pwskvve6sn" path="res://enemies/behaviors/enemy_walk_between_points.gd" id="7_i2d11"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_wf1cx"]
+radius = 1.2804556
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_rhbnc"]
+radius = 3.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rhbnc"]
+size = Vector3(3, 3, 3)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_eeolf"]
+radius = 100.0
+
+[node name="FireSlime" type="CharacterBody3D" unique_id=222303382 node_paths=PackedStringArray("animation_player", "bounding_box")]
+collision_layer = 9
+collision_mask = 3
+script = ExtResource("1_irxjj")
+enemy_name = "Lava Slime"
+max_health = 5
+idle_anims = Array[StringName]([&"IDLE"])
+hit_anim = &"Attack"
+big_hit_anim = &"Attack"
+die_anims = Array[StringName]([&"Attack"])
+damage_stun_time = 0.0
+animation_player = NodePath("lava_slime/AnimationPlayer")
+bounding_box = NodePath("BoundingBox")
+
+[node name="lava_slime" parent="." unique_id=2093597872 instance=ExtResource("2_irxjj")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.6000141, 0)
+
+[node name="Skeleton3D" parent="lava_slime/Armature" parent_id_path=PackedInt32Array(2093597872, 2001258128) index="0" unique_id=1377423252]
+bones/0/rotation = Quaternion(0.0048435284, -0.7102225, -0.0048780595, 0.7039438)
+bones/0/scale = Vector3(0.999341, 0.81955504, 1)
+bones/1/rotation = Quaternion(-0.26866978, -0.652638, -0.2711477, 0.6544915)
+bones/2/rotation = Quaternion(0.56404775, 0.42643893, 0.5640479, -0.4264389)
+bones/3/rotation = Quaternion(3.7822354e-10, -6.765614e-09, 0.07148261, 0.9974418)
+bones/4/rotation = Quaternion(0.5878755, -0.3930232, -0.5878206, -0.39294052)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1136467649]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2116029, 0)
+shape = SubResource("SphereShape3D_wf1cx")
+
+[node name="DeathCollisionShape3D" type="CollisionShape3D" parent="." unique_id=1992371214]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1840761, 0)
+shape = SubResource("SphereShape3D_wf1cx")
+disabled = true
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1284204168]
+path_height_offset = -0.1
+
+[node name="CloseEnough" type="Area3D" parent="." unique_id=1728047459]
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CloseEnough" unique_id=1144917725]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2713928, 0)
+shape = SubResource("SphereShape3D_rhbnc")
+
+[node name="EnemyChasePlayer" type="Node" parent="." unique_id=612944538 node_paths=PackedStringArray("vision")]
+script = ExtResource("4_kpmbw")
+vision = NodePath("../Vision")
+movement_speed = 10.0
+idle_anims = Array[StringName]([&"IDLE"])
+run_anims = Array[StringName]([&"ROAM"])
+priority = 1
+
+[node name="EnemyMeleePlayer" type="Node" parent="." unique_id=1780040447 node_paths=PackedStringArray("close_enough_radius")]
+script = ExtResource("5_iofec")
+attack_anims = Array[StringName]([&"Attack"])
+close_enough_radius = NodePath("../CloseEnough")
+attack_y_offset = 0.8
+attack_scene = "uid://b550rngva186a"
+priority = 2
+
+[node name="EnemyAlertFriends" type="Node" parent="." unique_id=466831532]
+script = ExtResource("6_5ietn")
+radius = 50.0
+metadata/_custom_type_script = "uid://dxggsp43p5ket"
+
+[node name="EnemyWalkBetweenPoints" type="Node" parent="." unique_id=1126768834]
+script = ExtResource("7_i2d11")
+movement_speed = 2.0
+delay_range = Vector2(0.5, 2)
+idle_anims = Array[StringName]([&"IDLE"])
+run_anims = Array[StringName]([&"ROAM"])
+metadata/_custom_type_script = "uid://cw1pwskvve6sn"
+
+[node name="BoundingBox" type="CollisionShape3D" parent="." unique_id=1812678119]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.046844482, 1.1231182, 0.09354401)
+shape = SubResource("BoxShape3D_rhbnc")
+
+[node name="Vision" type="Area3D" parent="." unique_id=2015229869]
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Vision" unique_id=1897880764]
+shape = SubResource("SphereShape3D_eeolf")
+
+[editable path="lava_slime"]
