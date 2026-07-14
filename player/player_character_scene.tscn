@@ -104,7 +104,7 @@ _data = {
 &"speed": SubResource("Animation_dehhv")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_dehhv"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_iy4o2"]
 viewport_path = NodePath("SubViewport")
 
 [node name="PlayerCharacter" type="CharacterBody3D" unique_id=1631114635 groups=["PlayerCharacter"]]
@@ -216,6 +216,7 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2658556, -1.070638, -1.6036669)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CameraHolder/ProjectileSpot" unique_id=1010615469]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.57214355, 0)
 mesh = SubResource("BoxMesh_rhbnc")
 
 [node name="ProjectileSpot2" type="Node3D" parent="CameraHolder" unique_id=2133596762]
@@ -223,6 +224,7 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.266, -1.071, -1.604)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CameraHolder/ProjectileSpot2" unique_id=1105527693]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.57214355, 0)
 mesh = SubResource("BoxMesh_rhbnc")
 
 [node name="Hitbox" type="CollisionShape3D" parent="." unique_id=795912197]
@@ -297,7 +299,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
-texture = SubResource("ViewportTexture_dehhv")
+texture = SubResource("ViewportTexture_iy4o2")
 
 [node name="Crosshair" type="CenterContainer" parent="HUDLayer/HUD" unique_id=1562813601]
 layout_mode = 1

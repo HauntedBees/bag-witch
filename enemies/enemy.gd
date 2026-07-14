@@ -61,6 +61,11 @@ func _ready() -> void:
 	_health = max_health
 	if animation_player != null:
 		animation_player.play(idle_anims.pick_random())
+	_addtl_enemy_setup()
+
+## Called after _ready
+func _addtl_enemy_setup() -> void:
+	pass
 
 func _on_peer_called_for_help(new_target: BogWitch, source_position: Vector3, allowed_radius: float) -> void:
 	if global_position.distance_to(source_position) > allowed_radius:
