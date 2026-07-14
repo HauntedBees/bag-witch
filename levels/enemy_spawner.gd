@@ -1,7 +1,7 @@
 class_name EnemySpawner extends Node3D
 
 @export var enemy_types: Array[PackedScene] = []
-@export var potential_spawn_points: Path3D
+@export var potential_spawn_points: PointCollection3D
 @export var spawn_point_offset := Vector3(0.0, 1.0, 0.0)
 @export var enemy_point_collection: Path3D
 @export var spawn_container: Node3D
@@ -13,13 +13,17 @@ var _points: Array[Vector3]
 var _time_to_next_spawn_check := 0.0
 
 func _ready() -> void:
-	_points = BWEnum.path_to_points(potential_spawn_points)
+	_points = potential_spawn_points.get_points()
+	if !visible:
+		return
 	var remaining_to_spawn := max_spawned - _get_enemy_count()
 	while remaining_to_spawn > 0:
 		_spawn_enemy()
 		remaining_to_spawn -= 1
 
 func _process(delta: float) -> void:
+	if !visible:
+		return
 	if _get_enemy_count() >= max_spawned:
 		return
 	_time_to_next_spawn_check -= delta
@@ -29,7 +33,6 @@ func _process(delta: float) -> void:
 		_time_to_next_spawn_check = time_between_spawn_attempts
 
 func _spawn_enemy() -> void:
-	print("SPAWNING")
 	var enemy_scene: PackedScene = enemy_types.pick_random()
 	var enemy: EnemyDisplay = enemy_scene.instantiate()
 	if enemy_point_collection != null:
