@@ -1,9 +1,14 @@
 class_name BogWitch extends PlayerCharacter
 
+signal quest_added(q: Quest)
+signal quest_removed(q: Quest)
+
 var ready_to_glide := false
 var current_weapon_metadata: Dictionary[String, int] = {}
 var alt_hand_for_attack_anim := false
 
+var _quests: Dictionary[StringName, Quest] = {}
+var _already_completed_quests: Array[StringName] = []
 var _mouse_ray_length := 50.0
 var _current_target: WorldItem
 var _in_inventory := false
@@ -59,6 +64,8 @@ func _input(event: InputEvent) -> void:
 
 func _process(delta: float) -> void:
 	super(delta)
+	for q: Quest in _quests.values():
+		q.process(delta)
 	if _reloading_time_remaining >= 0.0:
 		_reloading_time_remaining -= delta
 	_handle_non_mouse_camera_movement()
@@ -66,6 +73,29 @@ func _process(delta: float) -> void:
 	_handle_attack(delta)
 	if is_on_floor():
 		ready_to_glide = false
+
+func already_beat_quest(key: StringName) -> bool:
+	return _already_completed_quests.has(key)
+
+func get_quest(key: StringName) -> Quest:
+	if _quests.has(key):
+		return _quests[key]
+	return null
+
+func set_quest(key: StringName, quest: Quest) -> void:
+	_quests[key] = quest
+	quest.ended.connect(_on_quest_ended.bind(key))
+	quest_added.emit(quest)
+
+func _on_quest_ended(key: StringName) -> void:
+	if !_quests.has(key):
+		return # shouldn't happen
+	var quest := _quests[key]
+	quest_removed.emit(quest)
+	_quests.erase(key)
+
+func is_on_broom() -> bool:
+	return state_machine.curr_state_name == "Glide"
 
 func _on_jump_state_jumped() -> void:
 	if Player.data.current_weapon_detail == null || Player.data.current_weapon() is not Broom:
@@ -76,7 +106,7 @@ func _on_jump_state_jumped() -> void:
 	front_dir.y = 0.0
 	front_dir = front_dir.normalized()
 	var vel_dir := vel.normalized()
-	if vel_dir.dot(front_dir) >= 0.9 && vel.length() >= 17.0 && !is_on_floor():
+	if vel_dir.dot(front_dir) >= 0.9 && vel.length() >= 14.0 && !is_on_floor():
 		ready_to_glide = true
 
 func get_front_direction(normalized := true) -> Vector3:
@@ -146,7 +176,10 @@ func _try_reload(event: InputEvent) -> bool:
 func _try_pick_up_item(event: InputEvent) -> bool:
 	if _in_inventory:
 		return false
-	if _current_target == null || !GASInput.is_event_action_just_pressed(event, &"use"):
+	if !GASInput.is_event_action_just_pressed(event, &"use"):
+		return false
+	arms_overlay.arms.play_anim(&"BagUse")
+	if _current_target == null:
 		return false
 	var item := _current_target.item
 	var potential_add := Player.data.inventory.get_item_if_fits(item)
@@ -198,7 +231,7 @@ func get_mouse_center() -> Vector3: #TODO: maybe replace now that _front_check e
 	var to := from + cam.project_ray_normal(center) * _mouse_ray_length
 
 	var space_state := get_world_3d().direct_space_state
-	var query := PhysicsRayQueryParameters3D.create(from, to)
+	var query := PhysicsRayQueryParameters3D.create(from, to, 5) # alive enemies and the environment
 	var result := space_state.intersect_ray(query)
 
 	if result:

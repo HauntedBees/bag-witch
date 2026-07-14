@@ -6,6 +6,9 @@
 [ext_resource type="Script" uid="uid://cpe3jrnwinlxh" path="res://addons/JehenoAdvancedFirstPersonController/Map/MovementModifiers/slipperyZone/slippery_zone_script.gd" id="3_v45bu"]
 [ext_resource type="PackedScene" uid="uid://dpdynlq3xfgb5" path="res://levels/ice_world/fermanagh_waterfall.tscn" id="5_v45bu"]
 [ext_resource type="PackedScene" uid="uid://c4ppwp0w8rjpq" path="res://assets/levels/ice/ice_mountain_squart.blend" id="6_kxgis"]
+[ext_resource type="Script" uid="uid://bn3r43bitaf3i" path="res://environment/point_collection.gd" id="7_pm6l3"]
+[ext_resource type="Script" uid="uid://b7o0pdvrytkig" path="res://levels/enemy_spawner.gd" id="8_hso2e"]
+[ext_resource type="PackedScene" uid="uid://cphjo0ynxtgmo" path="res://enemies/ice_golem.tscn" id="9_ipkyn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kxgis"]
 size = Vector3(64.847, 10, 28.856)
@@ -21,6 +24,13 @@ size = Vector3(15.209553, 10, 24.610205)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rhbnc"]
 size = Vector3(82.63417, 2, 62.60559)
+
+[sub_resource type="Curve3D" id="Curve3D_tlsib"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -63.097946, -17.180054, -6.676531, 0, 0, 0, 0, 0, 0, -30.052086, -17.179321, 21.38622, 0, 0, 0, 0, 0, 0, -19.823608, -17.180054, 50.23579, 0, 0, 0, 0, 0, 0, 12.697723, -17.17981, 66.75872, 0, 0, 0, 0, 0, 0, -10.119659, -17.179565, 29.516563, 0, 0, 0, 0, 0, 0, 14.009064, -17.179321, 26.893875, 0, 0, 0, 0, 0, 0, 34.46602, -17.17981, 12.993624, 0, 0, 0, 0, 0, 0, 69.61003, -17.179077, 17.714464, 0, 0, 0, 0, 0, 0, 58.85701, -17.179077, 61.775616, 0, 0, 0, 0, 0, 0, -5.6611023, -17.17981, -42.34508, 0, 0, 0, 0, 0, 0, -13.004623, -17.180542, -26.871225),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 11
 
 [node name="Fermanagh" type="Node3D" unique_id=1402286213]
 script = ExtResource("1_of8ud")
@@ -104,26 +114,44 @@ transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -14,
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.928242, 0.84212494, 46.6071)
 shape = SubResource("BoxShape3D_rhbnc")
 
-[node name="ice_mountain_squart" parent="." unique_id=1020155006 instance=ExtResource("6_kxgis")]
+[node name="Squarts" type="Node3D" parent="." unique_id=158284783]
+
+[node name="ice_mountain_squart" parent="Squarts" unique_id=1020155006 instance=ExtResource("6_kxgis")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 47.391907, -17.179504, 22.906162)
 
-[node name="ice_mountain_squart2" parent="." unique_id=710533536 instance=ExtResource("6_kxgis")]
+[node name="ice_mountain_squart2" parent="Squarts" unique_id=710533536 instance=ExtResource("6_kxgis")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 65.511826, -7.6630554, 35.26616)
 
-[node name="ice_mountain_squart3" parent="." unique_id=358481745 instance=ExtResource("6_kxgis")]
+[node name="ice_mountain_squart3" parent="Squarts" unique_id=358481745 instance=ExtResource("6_kxgis")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 106.763596, 3.539566, 38.512)
 
-[node name="ice_mountain_squart7" parent="." unique_id=188952611 instance=ExtResource("6_kxgis")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 139.02591, 3.539566, 38.512005)
+[node name="ice_mountain_squart7" parent="Squarts" unique_id=188952611 instance=ExtResource("6_kxgis")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 139.02591, 3.539566, 51.181454)
 
-[node name="ice_mountain_squart8" parent="." unique_id=575464551 instance=ExtResource("6_kxgis")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 168.61452, 3.539566, 38.51201)
+[node name="ice_mountain_squart8" parent="Squarts" unique_id=575464551 instance=ExtResource("6_kxgis")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 168.61452, 3.539566, 65.31275)
 
-[node name="ice_mountain_squart6" parent="." unique_id=1447067924 instance=ExtResource("6_kxgis")]
+[node name="ice_mountain_squart6" parent="Squarts" unique_id=1447067924 instance=ExtResource("6_kxgis")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 83.10835, -1.9183044, 38.512)
 
-[node name="ice_mountain_squart4" parent="." unique_id=380843074 instance=ExtResource("6_kxgis")]
+[node name="ice_mountain_squart4" parent="Squarts" unique_id=380843074 instance=ExtResource("6_kxgis")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 89.37894, 8.859207, 66.23881)
 
-[node name="ice_mountain_squart5" parent="." unique_id=374529507 instance=ExtResource("6_kxgis")]
+[node name="ice_mountain_squart5" parent="Squarts" unique_id=374529507 instance=ExtResource("6_kxgis")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 89.773, 13.15834, 97.57512)
+
+[node name="FermPoints" type="Path3D" parent="." unique_id=432790770]
+curve = SubResource("Curve3D_tlsib")
+script = ExtResource("7_pm6l3")
+metadata/_custom_type_script = "uid://bn3r43bitaf3i"
+
+[node name="FermSpawner" type="Node3D" parent="." unique_id=2066756860 node_paths=PackedStringArray("potential_spawn_points", "enemy_point_collection", "spawn_container")]
+script = ExtResource("8_hso2e")
+enemy_types = Array[PackedScene]([ExtResource("9_ipkyn")])
+potential_spawn_points = NodePath("../FermPoints")
+enemy_point_collection = NodePath("../FermPoints")
+spawn_container = NodePath("../FermEnemies")
+max_spawned = 2
+metadata/_custom_type_script = "uid://b7o0pdvrytkig"
+
+[node name="FermEnemies" type="Node3D" parent="." unique_id=1005139542]

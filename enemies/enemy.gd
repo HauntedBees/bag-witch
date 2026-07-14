@@ -9,7 +9,7 @@ signal on_effect_applied(e: BWEnum.Effect, level: int)
 @export var enemy_name := ""
 
 ## To be passed to an EnemyWalkBetweenPoints behavior if one exists.
-@export var point_collection: Path3D
+@export var point_collection: PointCollection3D
 
 ## The enemy's max health and initial health.
 @export var max_health := 100
@@ -86,7 +86,7 @@ func take_specific_damage(damage_dealt: int) -> void:
 		return
 	_health -= damage_dealt
 	if _health <= 0:
-		on_died.emit()
+		_die()
 
 func receive_weapon_hit(source: Vector3, w: Weapon, has_impact_position := false, impact_position := Vector3.ZERO) -> void:
 	var damage_mult := 1
@@ -106,7 +106,11 @@ func receive_weapon_hit(source: Vector3, w: Weapon, has_impact_position := false
 		var r := w.metadata_increase_ranges[e]
 		apply_effect(e, randf_range(r.x, r.y), magic_level)
 	if _health <= 0:
-		on_died.emit()
+		_die()
+
+func _die() -> void:
+	set_collision_layer_value(4, false)
+	on_died.emit()
 
 func is_about_to_die(damage: int) -> bool:
 	return damage >= _health

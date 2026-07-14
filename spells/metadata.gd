@@ -11,12 +11,6 @@ enum Effect {
 	Burn
 }
 
-static func path_to_points(p: Path3D) -> Array[Vector3]:
-	var points: Array[Vector3] = []
-	for i in p.curve.point_count:
-		points.append(p.curve.get_point_position(i))
-	return points
-
 static func get_bounds(base_pos: Transform3D, box: BoxShape3D, cam: Camera3D) -> Rect2:
 	var extents := box.size / 2.0
 	var corners: Array[Vector3] = [

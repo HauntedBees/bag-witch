@@ -23,7 +23,7 @@ radius = 3.0
 size = Vector3(5.9612427, 6.637581, 3.620346)
 
 [node name="IceGolem" type="CharacterBody3D" unique_id=222303382 node_paths=PackedStringArray("animation_player", "bounding_box")]
-collision_layer = 3
+collision_layer = 9
 collision_mask = 3
 script = ExtResource("1_idi53")
 enemy_name = "Ice Golem"

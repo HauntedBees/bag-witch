@@ -31,10 +31,13 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 			body.receive_weapon_hit(_source_position, _weapon)
 		else:
 			body.receive_weapon_hit(_source_position, _weapon, true, result["position"])
-	elif body_parent != null && body_parent is Waterfall:
-		var wf := body_parent as Waterfall
-		if effect == BWEnum.Effect.Burn && wf.frozen:
-			wf.frozen = false # TODO: play a sound
+	elif body is WoodenThing:
+		body.burn()
+	elif body_parent != null:
+		if body_parent is Waterfall:
+			var wf := body_parent as Waterfall
+			if effect == BWEnum.Effect.Burn && wf.frozen:
+				wf.frozen = false # TODO: play a sound
 	queue_free()
 
 func _on_area_3d_area_entered(area: Area3D) -> void:

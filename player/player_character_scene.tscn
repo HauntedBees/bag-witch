@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://d18gii6kb6w0k" path="res://player/hud/health_bar.tscn" id="18_j6aac"]
 [ext_resource type="PackedScene" uid="uid://dxckpdtgf6aa5" path="res://player/hud/equip_bar.tscn" id="19_8kajx"]
 [ext_resource type="PackedScene" uid="uid://cpmm4xyy23p80" path="res://player/hud/item_select.tscn" id="20_5ko36"]
+[ext_resource type="Script" uid="uid://clx8a6kmuy5u4" path="res://player/quest_details_container.gd" id="20_iy4o2"]
 [ext_resource type="Shader" uid="uid://chplq7fb4mgyg" path="res://assets/shaders/speed_lines.gdshader" id="21_pdci5"]
 
 [sub_resource type="Curve" id="Curve_pdci5"]
@@ -103,7 +104,7 @@ _data = {
 &"speed": SubResource("Animation_dehhv")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_pdci5"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_dehhv"]
 viewport_path = NodePath("SubViewport")
 
 [node name="PlayerCharacter" type="CharacterBody3D" unique_id=1631114635 groups=["PlayerCharacter"]]
@@ -296,7 +297,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
-texture = SubResource("ViewportTexture_pdci5")
+texture = SubResource("ViewportTexture_dehhv")
 
 [node name="Crosshair" type="CenterContainer" parent="HUDLayer/HUD" unique_id=1562813601]
 layout_mode = 1
@@ -310,7 +311,7 @@ grow_vertical = 2
 layout_mode = 2
 texture = ExtResource("17_g2747")
 
-[node name="Meters" type="MarginContainer" parent="HUDLayer/HUD" unique_id=2099340369]
+[node name="MainHUD" type="MarginContainer" parent="HUDLayer/HUD" unique_id=2099340369]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -322,15 +323,21 @@ theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 32
 
-[node name="HealthBar" parent="HUDLayer/HUD/Meters" unique_id=178334899 instance=ExtResource("18_j6aac")]
+[node name="HealthBar" parent="HUDLayer/HUD/MainHUD" unique_id=178334899 instance=ExtResource("18_j6aac")]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 
-[node name="EquipBar" parent="HUDLayer/HUD/Meters" unique_id=1451960217 instance=ExtResource("19_8kajx")]
+[node name="EquipBar" parent="HUDLayer/HUD/MainHUD" unique_id=1451960217 instance=ExtResource("19_8kajx")]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
+
+[node name="QuestDetails" type="VBoxContainer" parent="HUDLayer/HUD/MainHUD" unique_id=1035633827 node_paths=PackedStringArray("player")]
+layout_mode = 2
+theme_override_constants/separation = 16
+script = ExtResource("20_iy4o2")
+player = NodePath("../../../..")
 
 [node name="ItemSelect" parent="HUDLayer/HUD" unique_id=720485576 instance=ExtResource("20_5ko36")]
 unique_name_in_owner = true

@@ -1,0 +1,149 @@
+[gd_scene format=3 uid="uid://be51rag8tjrox"]
+
+[ext_resource type="PackedScene" uid="uid://cta6ya8xmoo7j" path="res://assets/levels/ice/tyrone.blend" id="1_q5p1h"]
+[ext_resource type="Script" uid="uid://b7o0pdvrytkig" path="res://levels/enemy_spawner.gd" id="2_ux1p4"]
+[ext_resource type="PackedScene" uid="uid://cphjo0ynxtgmo" path="res://enemies/ice_golem.tscn" id="3_iranh"]
+[ext_resource type="Script" uid="uid://bn3r43bitaf3i" path="res://environment/point_collection.gd" id="4_hky4b"]
+[ext_resource type="Script" uid="uid://ctno358dmapyd" path="res://levels/ice_world/stone_circle.gd" id="5_gghxb"]
+[ext_resource type="PackedScene" uid="uid://bjm0785j3dkt6" path="res://assets/levels/common/rock1.blend" id="5_iranh"]
+[ext_resource type="PackedScene" uid="uid://qygks4gkexbd" path="res://assets/levels/common/rock3.blend" id="6_28n6c"]
+[ext_resource type="PackedScene" uid="uid://mhc05n27vjvq" path="res://assets/levels/common/rock2.blend" id="7_gghxb"]
+[ext_resource type="PackedScene" uid="uid://bb2mbjijl17d5" path="res://assets/levels/common/rock4.blend" id="8_seomq"]
+[ext_resource type="PackedScene" uid="uid://bibhq0y5pdvul" path="res://assets/levels/common/rock5.blend" id="9_ff2of"]
+
+[sub_resource type="Curve3D" id="Curve3D_pw44e"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -76.412476, -9.648071, 2.310791, 0, 0, 0, 0, 0, 0, -36.26172, -12.460815, -23.071991, 0, 0, 0, 0, 0, 0, -15.154175, -12.405884, -42.925232, 0, 0, 0, 0, 0, 0, -0.8400879, -12.8967285, -59.682495, 0, 0, 0, 0, 0, 0, 26.230469, -10.592773, -49.583282, 0, 0, 0, 0, 0, 0, 50.197388, -10.291992, -35.70804, 0, 0, 0, 0, 0, 0, 72.652336, -10.973039, -24.374931, 0, 0, 0, 0, 0, 0, 78.47571, -11.149658, -21.435852, 0, 0, 0, 0, 0, 0, 97.87854, -8.669067, 0.364563, 0, 0, 0, 0, 0, 0, 120.20215, -12.781982, 10.871765, 0, 0, 0, 0, 0, 0, 141.7716, -12.114258, 23.203308, 0, 0, 0, 0, 0, 0, 170.46008, -11.175171, 25.78305, 0, 0, 0, 0, 0, 0, 145.75073, -12.731323, 52.059143, 0, 0, 0, 0, 0, 0, 128.24512, -10.918457, 73.74925, 0, 0, 0, 0, 0, 0, 103.01709, -12.896973, 97.7, 0, 0, 0, 0, 0, 0, 83.95093, -12.074951, 77.491684, 0, 0, 0, 0, 0, 0, 61.418945, -12.133789, 79.27403, 0, 0, 0, 0, 0, 0, 26.898438, -16.531006, 85.64053, 0, 0, 0, 0, 0, 0, 6.39209, -12.412231, 62.52655, 0, 0, 0, 0, 0, 0, -12.916504, -12.896851, 65.788284, 0, 0, 0, 0, 0, 0, -3.8900146, -10.993408, 36.25911, 0, 0, 0, 0, 0, 0, -45.363403, -12.070801, 9.182022, 0, 0, 0, 0, 0, 0, 17.462524, -10.654785, -37.70169, 0, 0, 0, 0, 0, 0, 32.08557, -11.639404, 58.308044, 0, 0, 0, 0, 0, 0, 39.44961, -11.129759, 22.517792, 0, 0, 0, 0, 0, 0, 45.660034, -10.699951, -7.6657104, 0, 0, 0, 0, 0, 0, 62.302002, -10.296387, 46.904327, 0, 0, 0, 0, 0, 0, 81.67566, -7.805298, 10.574188, 0, 0, 0, 0, 0, 0, 91.87463, -12.290405, 55.569687, 0, 0, 0, 0, 0, 0, 112.168335, -12.288086, 39.669632, 0, 0, 0, 0, 0, 0, 108.71179, -11.540527, 70.11711),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 31
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_eeolf"]
+height = 8.2109375
+radius = 10.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_rhbnc"]
+height = 5.0
+radius = 10.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_28n6c"]
+height = 10.0
+radius = 20.0
+
+[node name="Tyrone" type="Node3D" unique_id=1970826866]
+
+[node name="tyrone" parent="." unique_id=1453712414 instance=ExtResource("1_q5p1h")]
+
+[node name="TyroneSpawner" type="Node3D" parent="." unique_id=1174559903 node_paths=PackedStringArray("potential_spawn_points", "enemy_point_collection", "spawn_container")]
+script = ExtResource("2_ux1p4")
+enemy_types = Array[PackedScene]([ExtResource("3_iranh")])
+potential_spawn_points = NodePath("../TyronePoints")
+enemy_point_collection = NodePath("../TyronePoints")
+spawn_container = NodePath("../TyroneEnemies")
+max_spawned = 8
+
+[node name="TyroneEnemies" type="Node3D" parent="." unique_id=45931455]
+
+[node name="TyronePoints" type="Path3D" parent="." unique_id=1027361646]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.58593, 43.92521, -20.46127)
+curve = SubResource("Curve3D_pw44e")
+script = ExtResource("4_hky4b")
+metadata/_custom_type_script = "uid://bn3r43bitaf3i"
+
+[node name="StoneCircle1" type="Area3D" parent="." unique_id=604075666]
+transform = Transform3D(0.98251945, 0.18615992, 0, -0.18615992, 0.98251945, 0, 0, 0, 1, -129.11545, 31.785168, -15.596079)
+collision_mask = 2
+monitorable = false
+script = ExtResource("5_gghxb")
+id = 1
+is_start_or_finish_point = true
+
+[node name="rock1" parent="StoneCircle1" unique_id=1413783104 instance=ExtResource("5_iranh")]
+transform = Transform3D(0.97158015, 0.23671044, 0, -0.23671044, 0.97158015, 0, 0, 0, 1, -0.18493652, -0.0507679, -9.426903)
+
+[node name="rock2" parent="StoneCircle1" unique_id=718306489 instance=ExtResource("7_gghxb")]
+transform = Transform3D(0.98251945, -0.18615992, 0, 0.18615992, 0.98251945, 0, 0, 0, 1, -9.995499, -0.36887932, -0.5858784)
+
+[node name="rock3" parent="StoneCircle1" unique_id=1045211473 instance=ExtResource("6_28n6c")]
+transform = Transform3D(0.94305277, -0.31177467, 0.11596638, 0.33264345, 0.88388884, -0.32876763, -3.6601706e-09, 0.34862062, 0.93726385, -4.9350433, -0.19849968, 8.980852)
+
+[node name="rock4" parent="StoneCircle1" unique_id=1117299276 instance=ExtResource("8_seomq")]
+transform = Transform3D(0.9274916, 0.37384385, 0, -0.37384385, 0.9274916, 0, 0, 0, 1, 8.450684, -1.8072281, 4.115199)
+
+[node name="rock5" parent="StoneCircle1" unique_id=1799074366 instance=ExtResource("9_ff2of")]
+transform = Transform3D(0.98251945, -0.18615992, 0, 0.18615992, 0.98251945, 0, 0, 0, 1, 9.101868, -2.577814, -7.4797153)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StoneCircle1" unique_id=1362503071]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.056427002, 1.9032974, 0)
+shape = SubResource("CylinderShape3D_eeolf")
+
+[node name="StoneCircle2" type="Area3D" parent="." unique_id=727350437]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.27434158, 0)
+collision_mask = 2
+monitorable = false
+script = ExtResource("5_gghxb")
+id = 2
+
+[node name="rock1" parent="StoneCircle2" unique_id=1950937592 instance=ExtResource("5_iranh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.999401, 32.65785, 9.999331)
+
+[node name="rock3" parent="StoneCircle2" unique_id=7788124 instance=ExtResource("6_28n6c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.225547, 33.144516, 7.478184)
+
+[node name="rock2" parent="StoneCircle2" unique_id=722386782 instance=ExtResource("7_gghxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.920992, 32.78989, 11.180069)
+
+[node name="rock4" parent="StoneCircle2" unique_id=1520700102 instance=ExtResource("8_seomq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.1433115, 33.605125, 0.6870725)
+
+[node name="rock5" parent="StoneCircle2" unique_id=1709304709 instance=ExtResource("9_ff2of")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.84487, 33.138115, 1.8610109)
+
+[node name="rock6" parent="StoneCircle2" unique_id=1115919024 instance=ExtResource("6_28n6c")]
+transform = Transform3D(-0.8153493, 0, 0.5789694, 0, 1, 0, -0.5789694, 0, -0.8153493, -28.792496, 31.786665, -5.199224)
+
+[node name="rock7" parent="StoneCircle2" unique_id=711839141 instance=ExtResource("7_gghxb")]
+transform = Transform3D(-0.34393528, 0, 0.93899333, 0, 1, 0, -0.93899333, 0, -0.34393528, -12.003012, 33.884083, -6.06085)
+
+[node name="rock8" parent="StoneCircle2" unique_id=676729975 instance=ExtResource("5_iranh")]
+transform = Transform3D(-0.94991285, 0, 0.312515, 0, 1, 0, -0.312515, 0, -0.94991285, -20.81148, 31.865347, -10.474052)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StoneCircle2" unique_id=1898039864]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.080029, 34.221767, 0.82078075)
+shape = SubResource("CylinderShape3D_rhbnc")
+
+[node name="StoneCircle3" type="Area3D" parent="." unique_id=680369799]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.39486313, 0)
+collision_mask = 2
+monitorable = false
+script = ExtResource("5_gghxb")
+id = 3
+is_start_or_finish_point = true
+
+[node name="rock1" parent="StoneCircle3" unique_id=1899131667 instance=ExtResource("5_iranh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96.13986, 29.723656, 14.325188)
+
+[node name="rock2" parent="StoneCircle3" unique_id=308596555 instance=ExtResource("7_gghxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.09974, 30.974377, 7.4337792)
+
+[node name="rock3" parent="StoneCircle3" unique_id=684911400 instance=ExtResource("5_iranh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.92687, 30.54467, 23.35261)
+
+[node name="rock4" parent="StoneCircle3" unique_id=2084907872 instance=ExtResource("7_gghxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.31135, 31.08461, 38.334003)
+
+[node name="rock5" parent="StoneCircle3" unique_id=1450931218 instance=ExtResource("6_28n6c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74.01849, 31.702082, 45.28584)
+
+[node name="rock6" parent="StoneCircle3" unique_id=15110134 instance=ExtResource("8_seomq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90.9849, 30.75397, 40.570824)
+
+[node name="rock7" parent="StoneCircle3" unique_id=634864392 instance=ExtResource("9_ff2of")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 99.174164, 29.723297, 29.818436)
+
+[node name="rock8" parent="StoneCircle3" unique_id=350755071 instance=ExtResource("6_28n6c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.882034, 30.398066, 12.7095)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StoneCircle3" unique_id=1258865081]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.738625, 31.348362, 26.382336)
+shape = SubResource("CylinderShape3D_28n6c")

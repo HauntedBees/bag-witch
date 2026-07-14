@@ -78,7 +78,7 @@ collision_use_scale = true
 [sub_resource type="CylinderMesh" id="CylinderMesh_rhbnc"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_rhbnc"]
-height = 0.5
+height = 4.6869507
 radius = 0.7
 
 [node name="SmokeCloud" type="Node3D" unique_id=1242530226]
@@ -88,8 +88,8 @@ script = ExtResource("1_b84ht")
 unique_name_in_owner = true
 material_override = SubResource("ShaderMaterial_w8cq2")
 cast_shadow = 0
-amount = 2
-lifetime = 0.5
+amount = 3
+lifetime = 2.0
 trail_lifetime = 0.2
 process_material = SubResource("ParticleProcessMaterial_8qje5")
 draw_pass_1 = ExtResource("2_hyoyy")
@@ -103,7 +103,7 @@ collision_mask = 2
 monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1848819243]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2175293, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3110046, 0)
 shape = SubResource("CylinderShape3D_rhbnc")
 
 [connection signal="finished" from="Smoke2" to="." method="_on_smoke_2_finished"]

@@ -9,4 +9,5 @@ func _try_groupify(c: Node3D) -> void:
 			c.add_to_group(&"snow")
 	else:
 		for ch in c.get_children():
-			_try_groupify(ch)
+			if ch is Node3D:
+				_try_groupify(ch)
