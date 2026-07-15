@@ -8,7 +8,7 @@ signal set_suck(on: bool)
 @onready var _bag: Node3D = %bag
 
 func _ready() -> void:
-	Player.weapon_changed.connect(_on_weapon_changed)
+	Player.equip_changed.connect(_on_weapon_changed)
 
 func reset_idle() -> void:
 	_bag.visible = false
@@ -34,7 +34,7 @@ func _on_weapon_changed(id: InventoryDetail) -> void:
 		n.queue_free()
 	for n in _left_hand.get_children():
 		n.queue_free()
-	var w: Weapon = null if id == null else id.item
+	var w: Item = null if id == null else id.item
 	if w == null:
 		_anim.play(&"Idle")
 		return
@@ -46,7 +46,7 @@ func _on_weapon_changed(id: InventoryDetail) -> void:
 	if w.both_hands:
 		_add_to_bone(_left_hand, w)
 
-func _add_to_bone(n: BoneAttachment3D, w: Weapon) -> void:
+func _add_to_bone(n: BoneAttachment3D, w: Item) -> void:
 	var attachment := w.get_equip_instance()
 	attachment.scale *= w.equipped_scale
 	n.add_child(attachment)

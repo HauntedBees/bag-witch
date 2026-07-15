@@ -8,4 +8,7 @@ name = "Lava Slime"
 description = "It's hot and gooey. Like s'mores!"
 icon = Rect2i(2, 1, 1, 1)
 scene_path = "uid://j6ijx2yvkafq"
+custom_equip_scene = "uid://ba8a81r3bakjl"
+equipped_animation = &"CreatureHold"
+use_animation = &"CreatureOffer"
 metadata/_custom_type_script = "uid://cgt7ckkn1gh5b"
