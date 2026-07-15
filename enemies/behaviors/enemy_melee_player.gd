@@ -41,7 +41,7 @@ func _behave(delta: float) -> void:
 		_parent.add_child(attack)
 		attack.position.y += attack_y_offset
 		_in_animation = true
-		_parent.animation_player.play(attack_anims.pick_random(), -1.0, 2.5)
+		_parent.animation_player.play(attack_anims.pick_random(), -1.0, 3.0)
 		_parent.animation_player.animation_finished.connect(_on_anim_finished, CONNECT_ONE_SHOT)
 		_time_to_next_attack = attack_frequency
 

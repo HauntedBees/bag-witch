@@ -8,11 +8,36 @@ signal on_effect_applied(e: BWEnum.Effect, level: int)
 ## This should be obvious.
 @export var enemy_name := ""
 
+## What level your "Bag" ability needs to be to bag this enemy. Since the maximum
+## Bag level is 3, 4 means an enemy cannot be bagged.
+@export_range(1, 4) var capture_level := 4
+
+@export_category("Navigation")
+## The nav agent for this enemy.
+@onready var nav: NavigationAgent3D = $NavigationAgent3D
+
 ## To be passed to an EnemyWalkBetweenPoints behavior if one exists.
 @export var point_collection: PointCollection3D
 
+@export_category("Hurtage")
 ## The enemy's max health and initial health.
 @export var max_health := 100
+
+## How long they flinch for when stunned.
+@export var damage_stun_time := 0.2
+
+## Things that hurt them more.
+@export var weaknesses: Array[BWEnum.Effect] = []
+
+## Effects that don't apply to them.
+@export var resistances: Array[BWEnum.Effect] = []
+
+@export_category("Visuals")
+## For the HUD.
+@export var bounding_box: CollisionShape3D
+
+## The animation player for this enemy.
+@export var animation_player: AnimationPlayer
 
 @export var idle_anims: Array[StringName] = [Anim.IDLE]
 
@@ -21,24 +46,6 @@ signal on_effect_applied(e: BWEnum.Effect, level: int)
 @export var big_hit_anim := Anim.BIG_HIT
 
 @export var die_anims: Array[StringName] = [Anim.DIE]
-
-## How long they flinch for when stunned.
-@export var damage_stun_time := 0.2
-
-## The nav agent for this enemy.
-@onready var nav: NavigationAgent3D = $NavigationAgent3D
-
-## The animation player for this enemy.
-@export var animation_player: AnimationPlayer
-
-## For the HUD.
-@export var bounding_box: CollisionShape3D
-
-## Things that hurt them more.
-@export var weaknesses: Array[BWEnum.Effect] = []
-
-## Effects taht don't apply to them.
-@export var resistances: Array[BWEnum.Effect] = []
 
 var target: BogWitch
 

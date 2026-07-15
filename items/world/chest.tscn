@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://lsi087wm155f"]
+
+[ext_resource type="PackedScene" uid="uid://cpcso4g1l5dli" path="res://assets/models/items/chest.blend" id="1_bdgbi"]
+[ext_resource type="Script" uid="uid://b66jl5gw8dewc" path="res://items/world/world_item.gd" id="1_ngdwg"]
+[ext_resource type="Resource" uid="uid://cggr8i721y68m" path="res://items/special/chest.tres" id="2_h2x54"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rhbnc"]
+size = Vector3(0.84788513, 0.68743896, 0.763855)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h2x54"]
+size = Vector3(0.65233994, 0.5790863, 0.5450897)
+
+[node name="Chest" type="Area3D" unique_id=1723114092 node_paths=PackedStringArray("collider")]
+collision_layer = 4
+script = ExtResource("1_ngdwg")
+item = ExtResource("2_h2x54")
+collider = NodePath("CollisionShape3D")
+
+[node name="chest" parent="." unique_id=712899683 instance=ExtResource("1_bdgbi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.23154676, 0)
+
+[node name="Skeleton3D" parent="chest/Chest-col" parent_id_path=PackedInt32Array(712899683, 1943897980) index="0" unique_id=634621290]
+bones/0/rotation = Quaternion(0.023818817, 0.90405965, -0.42550886, -0.032420963)
+bones/1/rotation = Quaternion(0.94273293, -0.01304219, 0.06098748, -0.32766604)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1594162477]
+transform = Transform3D(1, 0, 0, 0, 1, 5.723532e-05, 0, -5.723532e-05, 1, 0.010520935, 0.34184915, 0.002166748)
+shape = SubResource("BoxShape3D_rhbnc")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=193231985]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1012076063]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0068683624, 0.28164208, -0.0012588501)
+shape = SubResource("BoxShape3D_h2x54")
+
+[editable path="chest"]
