@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://4xew5eee7k3a" path="res://assets/models/book.blend" id="2_kxga4"]
 [ext_resource type="PackedScene" uid="uid://ctlgvtilkqq0j" path="res://assets/models/enemies/lava_slime_key.blend" id="3_64tqg"]
 [ext_resource type="PackedScene" uid="uid://5mfo3873qvty" path="res://assets/models/enemies/lava_slime.blend" id="3_r0rjq"]
-[ext_resource type="PackedScene" uid="uid://lsi087wm155f" path="res://items/world/chest.tscn" id="5_06n70"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eeolf"]
 shading_mode = 0
@@ -37,18 +36,8 @@ visible = false
 transform = Transform3D(0.44418278, 0, -0.22956838, 0, 0.5, 0, 0.22956838, 0, 0.44418278, 0, -0.5259384, 0)
 visible = false
 
-[node name="Chest" parent="ThingContainer" unique_id=1205803338 instance=ExtResource("5_06n70")]
-transform = Transform3D(1, 0, 0, 0, 0.63501227, -0.7725022, 0, 0.7725022, 0.63501227, 0, -0.40130997, 0.7609303)
-
-[node name="Skeleton3D" parent="ThingContainer/Chest/chest/Chest-col" parent_id_path=PackedInt32Array(1205803338, 712899683, 1943897980) index="0" unique_id=634621290]
-bones/0/rotation = Quaternion(0.023818817, 0.90405965, -0.42550886, -0.032420963)
-bones/1/rotation = Quaternion(0.5219033, -0.0014936344, 0.04043852, -0.8520443)
-
 [node name="Camera3D" type="Camera3D" parent="." unique_id=465674123]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.9159544)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=120314320]
 transform = Transform3D(0.9717929, 0.11896129, -0.20363402, 0, 0.8634562, 0.50442386, 0.23583597, -0.4901955, 0.8391006, 0, 3.8723497, 4.9881706)
-
-[editable path="ThingContainer/Chest"]
-[editable path="ThingContainer/Chest/chest"]

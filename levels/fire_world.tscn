@@ -8,7 +8,6 @@
 [ext_resource type="Script" uid="uid://b7o0pdvrytkig" path="res://levels/enemy_spawner.gd" id="6_7xo41"]
 [ext_resource type="PackedScene" uid="uid://eq158w8w1hls" path="res://enemies/key_fire_smile.tscn" id="7_5rrxe"]
 [ext_resource type="PackedScene" uid="uid://j6ijx2yvkafq" path="res://enemies/fire_slime.tscn" id="8_5rrxe"]
-[ext_resource type="PackedScene" uid="uid://lsi087wm155f" path="res://items/world/chest.tscn" id="9_80h6e"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_blw58"]
 sky_top_color = Color(0.35019627, 0.005200732, 0.010569308, 1)
@@ -121,6 +120,3 @@ metadata/_custom_type_script = "uid://bn3r43bitaf3i"
 [node name="FireSlimeKey" parent="." unique_id=222303382 node_paths=PackedStringArray("point_collection") instance=ExtResource("7_5rrxe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 223, 13, 10)
 point_collection = NodePath("../SlimePointsBottom")
-
-[node name="Chest" parent="." unique_id=1723114092 instance=ExtResource("9_80h6e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -106.146996, 6.4564514, 127.388725)

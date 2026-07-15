@@ -46,6 +46,7 @@ func _get_drag_data(_at_position: Vector2) -> Variant:
 	preview.add_child(drag_icon)
 	preview.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	drag_icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	drag_icon.pivot_offset = pivot_offset
 	if details.rotated:
 		drag_icon.position = DRAG_OFFSET_ROTATED
 		drag_icon.rotation_degrees = 90.0
@@ -86,6 +87,7 @@ func _update_display() -> void:
 		item_size
 	)
 	_item.rotation_degrees = 90.0 if details.rotated else 0.0
+	_item.pivot_offset = item.size.y * (_TILE_SIZE / 2.0) * Vector2.ONE
 	if item is Ammo:
 		_ammo_count.visible = true
 		_ammo_count.text = str(details.ammo)

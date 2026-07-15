@@ -4,6 +4,7 @@ signal inventory_toggled(shown: bool)
 signal spawn_item(wi: WorldItem, id: InventoryDetail)
 
 const _TILE_SCENE := preload("uid://chbbyih2rlm8q")
+const _SAFE_TILE_SCENE := preload("uid://bydfttoq33xk3")
 const _ITEM_SCENE := preload("uid://cdd6epqw6450l")
 const _SPELL_SCENE := preload("uid://dd6i8p1qr32o4")
 const _HIGHLIGHT_SCENE := preload("uid://8un54pjusa0y")
@@ -35,7 +36,8 @@ func _ready() -> void:
 	for y in _inventory.dimensions.y:
 		for x in _inventory.dimensions.x:
 			var pos := Vector2i(x, y)
-			var tile: InventoryTile = _TILE_SCENE.instantiate()
+			var tile_scene := _SAFE_TILE_SCENE if _inventory.safe_tiles.has(pos) else _TILE_SCENE
+			var tile: InventoryTile = tile_scene.instantiate()
 			tile.grid_pos = pos
 			tile.item_dropped.connect(_on_item_dropped)
 			tile.item_hovered.connect(_on_item_hovered)
@@ -133,8 +135,9 @@ func _on_item_dropped(drag_details: ItemDragDetails, grid_pos: Vector2i) -> void
 		var potential_merge := _get_merge_item(item, new_positions)
 		if potential_merge == null:
 			var old_info := _item_grid_info[item.position]
-			old_info.item_display.queue_free()
-			old_info.item_display = null
+			if old_info.item_display:
+				old_info.item_display.queue_free()
+				old_info.item_display = null
 			item.position = grid_pos
 			item.rotated = !item.rotated if _current_draggable.rotation_changed else item.rotated
 			_draw_item(item)
@@ -163,12 +166,8 @@ func _on_item_tile_hovered(item: InventoryItemDisplay) -> void:
 func _can_place(id: InventoryDetail, new_positions: Array[Vector2i]) -> bool:
 	for p in new_positions:
 		if _item_grid_info.has(p):
-			if id.item is ChestItem && id.is_safe_chest_position(p):
-				continue
 			var existing_id := _item_grid_info[p].item
 			if existing_id == null:
-				continue
-			if existing_id.item is ChestItem && existing_id.is_safe_chest_position(p):
 				continue
 			if existing_id.item.can_be_combined(existing_id, id):
 				continue
