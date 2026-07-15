@@ -2,7 +2,7 @@ class_name SpellIcon extends MarginContainer
 
 const _ATLAS_SIZE := 16.0
 
-var spell: Weapon:
+var spell: Item:
 	set(value):
 		spell = value
 		_update_spell()

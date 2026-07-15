@@ -103,7 +103,7 @@ func is_on_broom() -> bool:
 	return state_machine.curr_state_name == "Glide"
 
 func _on_jump_state_jumped() -> void:
-	if Player.data.current_weapon_detail == null || Player.data.current_weapon() is not Broom:
+	if Player.data.current_equipped == null || Player.data.current_weapon() is not Broom:
 		return
 	var vel := velocity
 	vel.y = 0.0
@@ -158,7 +158,7 @@ func _try_reload(event: InputEvent) -> bool:
 	if w is not ProjectileWeapon:
 		return false
 	var pw := w as ProjectileWeapon
-	var remaining := pw.full_clip_size - Player.data.current_weapon_detail.ammo
+	var remaining := pw.full_clip_size - Player.data.current_equipped.ammo
 	for id in Player.data.inventory.items:
 		if id.item is Ammo:
 			var a := id.item as Ammo
@@ -169,15 +169,15 @@ func _try_reload(event: InputEvent) -> bool:
 				continue
 			if amount >= remaining:
 				id.ammo -= remaining
-				Player.data.current_weapon_detail.ammo += remaining
+				Player.data.current_equipped.ammo += remaining
 				remaining = 0
 			else:
-				Player.data.current_weapon_detail.ammo += amount
+				Player.data.current_equipped.ammo += amount
 				id.ammo = 0
 				remaining -= amount
 		if remaining == 0:
 			break
-	Player.ammo_changed.emit(Player.data.current_weapon_detail.ammo)
+	Player.ammo_changed.emit(Player.data.current_equipped.ammo)
 	_reloading_time_remaining = w.reload_time
 	arms_overlay.arms.play_anim(w.reload_animation)
 	alt_hand_for_attack_anim = false
@@ -296,9 +296,9 @@ func _handle_attack(delta: float) -> void:
 		return
 	if Player.weapon_cooldown > 0.0:
 		Player.weapon_cooldown -= delta
-	if Player.weapon_cooldown > 0.0 || Player.data.current_weapon_detail == null || !Input.is_action_pressed(&"attack"):
+	if Player.weapon_cooldown > 0.0 || Player.data.current_equipped == null || !Input.is_action_pressed(&"attack"):
 		return
-	if Player.data.get_loaded_ammo(Player.data.current_weapon_detail) == 0:
+	if Player.data.get_loaded_ammo(Player.data.current_equipped) == 0:
 		return
 	Player.data.current_weapon().use(self)
 	Player.weapon_cooldown = Player.data.current_weapon().cooldown

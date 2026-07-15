@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://ba8a81r3bakjl"]
+
+[ext_resource type="Script" uid="uid://do1linfxq7l8j" path="res://items/world/inventory_lava_slime.gd" id="1_4ons7"]
+[ext_resource type="PackedScene" uid="uid://5mfo3873qvty" path="res://assets/models/enemies/lava_slime.blend" id="1_7js3m"]
+
+[node name="InventoryLavaSlime" type="Node3D" unique_id=597440801]
+script = ExtResource("1_4ons7")
+
+[node name="lava_slime" parent="." unique_id=571389064 instance=ExtResource("1_7js3m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.0070214, 0)
+
+[node name="Skeleton3D" parent="lava_slime/Armature" parent_id_path=PackedInt32Array(571389064, 1267118561) index="0" unique_id=148578676]
+bones/0/rotation = Quaternion(0.00048823358, -0.71023905, -0.00048391754, 0.70396024)
+bones/0/scale = Vector3(0.99837166, 0.99840325, 0.99999994)
+bones/1/rotation = Quaternion(-0.42243016, -0.5670536, -0.4224338, 0.56705624)
+bones/2/rotation = Quaternion(0.56404775, 0.42643893, 0.5640479, -0.4264389)
+bones/3/rotation = Quaternion(1.8722154e-05, -1.3194691e-06, 0.073590495, 0.9972886)
+bones/4/rotation = Quaternion(0.5912074, -0.387902, -0.5912122, -0.38790968)
+
+[editable path="lava_slime"]

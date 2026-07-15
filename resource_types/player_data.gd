@@ -25,7 +25,7 @@ var speed := 1:
 
 var inventory := Inventory.new()
 
-var current_weapon_detail: InventoryDetail = null
+var current_equipped: InventoryDetail = null
 var equip_slots: Array[InventoryDetail] = []
 
 var current_health := 100
@@ -42,15 +42,15 @@ func _init() -> void:
 		_on_item_added(i)
 
 func current_weapon() -> Weapon:
-	if current_weapon_detail == null:
+	if current_equipped == null:
 		return null
-	return current_weapon_detail.item
+	return current_equipped.item
 
 func _on_item_removed(id: InventoryDetail) -> void:
 	var idx := equip_slots.find(id)
 	if idx < 0:
 		if current_weapon() == id.item:
-			Player.try_change_weapon(equip_slots.find(current_weapon_detail))
+			Player.try_change_weapon(equip_slots.find(current_equipped))
 		return
 	var alt: InventoryDetail = null
 	for potential_alt in inventory.items:
@@ -69,8 +69,8 @@ func _on_item_added(id: InventoryDetail) -> void:
 		_handle_spell_auto_equipping()
 		return
 	if id.item is Ammo: # force ammo refresh for UI
-		if current_weapon_detail != null:
-			Player.ammo_changed.emit(get_loaded_ammo(current_weapon_detail))
+		if current_equipped != null:
+			Player.ammo_changed.emit(get_loaded_ammo(current_equipped))
 		return
 	if id.item is not Weapon:
 		return
@@ -125,8 +125,8 @@ func equip_spell_to_slot(spell: Weapon, slot: int) -> void:
 	equip_slots[slot] = fake_item
 
 func equip_to_slot(id: InventoryDetail, slot: int) -> void:
-	if id.item is not Weapon:
-		print("only weapons can be equipped!") #TODO: if I have time, it would be funnier for this to not be true
+	if id.item.equipped_animation == &"":
+		print("only items with equip animations can be equipped!")
 		return
 	#var current_item := equip_slots[slot]
 	#if current_item != null:
@@ -175,8 +175,9 @@ func use_spell_ammo(w: Weapon) -> int:
 	return _spell_ammo_remaining[w]
 
 func get_loaded_ammo(id: InventoryDetail) -> int:
-	var w: Weapon = id.item
-	if w.is_spell:
+	var i: Item = id.item
+	if i is Weapon && i.is_spell:
+		var w: Weapon = i
 		if inventory.has_spell(w):
 			return -1
 		elif _spell_ammo_remaining.has(w):
@@ -184,20 +185,23 @@ func get_loaded_ammo(id: InventoryDetail) -> int:
 		else:
 			_spell_ammo_remaining[w] = w.spell_ammo
 			return w.spell_ammo
-	elif w is ProjectileWeapon:
+	elif i is ProjectileWeapon:
 		return id.ammo
 	else:
 		return -1
 
-func get_remaining_ammo(w: Weapon) -> int:
-	if w.is_spell:
-		if inventory.has_spell(w):
-			return -1
+func get_remaining_ammo(w: Item) -> int:
+	if w is Weapon:
+		if w.is_spell:
+			if inventory.has_spell(w):
+				return -1
+			else:
+				return 0
 		else:
-			return 0
+			var total := 0
+			for id in inventory.items:
+				if id.item is Ammo && (id.item as Ammo).weapon == w:
+					total += id.ammo
+			return total
 	else:
-		var total := 0
-		for id in inventory.items:
-			if id.item is Ammo && (id.item as Ammo).weapon == w:
-				total += id.ammo
-		return total
+		return -1

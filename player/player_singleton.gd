@@ -1,7 +1,7 @@
 extends Node
 
 signal health_changed(new_health: int)
-signal weapon_changed(weapon: InventoryDetail)
+signal equip_changed(weapon: InventoryDetail)
 signal weapon_cooldown_changed(amount: int)
 signal ammo_changed(new_ammo: int)
 
@@ -13,14 +13,14 @@ var weapon_cooldown := 0.0:
 
 func use_weapon(w: Weapon) -> void:
 	if w.is_spell:
-		var remaining_ammo := data.get_loaded_ammo(data.current_weapon_detail)
+		var remaining_ammo := data.get_loaded_ammo(data.current_equipped)
 		if remaining_ammo < 0: # unlimited ammo, no action needed
 			return
 		var new_ammo := data.use_spell_ammo(w)
 		ammo_changed.emit(new_ammo)
 	elif w is ProjectileWeapon:
-		data.current_weapon_detail.ammo -= 1
-		ammo_changed.emit(data.current_weapon_detail.ammo)
+		data.current_equipped.ammo -= 1
+		ammo_changed.emit(data.current_equipped.ammo)
 
 func take_damage(amount: int) -> void:
 	data.current_health -= amount
@@ -31,17 +31,17 @@ func take_damage(amount: int) -> void:
 func try_change_weapon(slot: int) -> void:
 	weapon_cooldown = 0.0
 	if data.equip_slots.size() <= slot:
-		data.current_weapon_detail = null
+		data.current_equipped = null
 	else:
 		var obj := data.equip_slots[slot]
 		if obj == null || !_is_weapon_valid(obj.item):
-			data.current_weapon_detail = null
+			data.current_equipped = null
 		else:
-			data.current_weapon_detail = obj
-	weapon_changed.emit(data.current_weapon_detail)
+			data.current_equipped = obj
+	equip_changed.emit(data.current_equipped)
 
-func _is_weapon_valid(w: Weapon) -> bool:
-	if w.is_spell:
+func _is_weapon_valid(w: Item) -> bool:
+	if w is Weapon && w.is_spell:
 		return data.inventory.has_spell(w)
 	for id in data.inventory.items:
 		if id.item == w:
