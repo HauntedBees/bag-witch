@@ -5,6 +5,8 @@ signal item_removed(i: InventoryDetail)
 
 @export var dimensions := Vector2i(7, 4)
 
+@export var safe_tiles: Array[Vector2i] = [Vector2i(6, 3)]
+
 @export var items: Array[InventoryDetail] = []
 
 @export var _items_list: Array[Item] = []
@@ -35,19 +37,22 @@ func add_item_detail(new_item: InventoryDetail, trigger_signal := true) -> void:
 func get_item_if_fits(i: Item) -> InventoryDetail:
 	var in_use := _get_occupied_positions()
 	var d := InventoryDetail.new(i, Vector2i.ZERO)
-	var valid_pos := _check_all_positions(d, in_use)
+	var valid_pos := _check_all_positions(d, in_use, false)
+	var was_rotated := false
 	if valid_pos.x < 0:
-		d.rotated = !d.rotated
-		valid_pos = _check_all_positions(d, in_use)
+		valid_pos = _check_all_positions(d, in_use, true)
+		was_rotated = true
 	if valid_pos.x < 0:
 		return null
 	d.position = valid_pos
+	if was_rotated:
+		d.rotated = !d.rotated
 	return d
 
-func _check_all_positions(d: InventoryDetail, in_use_positions: Array[Vector2i]) -> Vector2i:
+func _check_all_positions(d: InventoryDetail, in_use_positions: Array[Vector2i], flip_rotation: bool) -> Vector2i:
 	for y in dimensions.y:
 		for x in dimensions.x:
-			var all_pos := d.get_positions(Vector2i(x, y), false)
+			var all_pos := d.get_positions(Vector2i(x, y), flip_rotation)
 			var success := true
 			for p in all_pos:
 				if p.x < 0 || p.y < 0 || p.x >= dimensions.x || p.y >= dimensions.y:

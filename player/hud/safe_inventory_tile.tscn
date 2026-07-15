@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://bydfttoq33xk3"]
+
+[ext_resource type="Script" uid="uid://cxclddt03r7an" path="res://player/hud/inventory_tile.gd" id="1_8b8dc"]
+[ext_resource type="Texture2D" uid="uid://i3ioir2o2f8k" path="res://assets/sprites/item_frame_safe.png" id="2_8b8dc"]
+[ext_resource type="Texture2D" uid="uid://gplekfhoh354" path="res://assets/sprites/item_frame_safe_ok.png" id="3_5abed"]
+[ext_resource type="Texture2D" uid="uid://bng86fpj1kbp7" path="res://assets/sprites/item_frame_safe_disallowed.png" id="4_fylty"]
+
+[node name="SafeInventoryTile" type="MarginContainer" unique_id=662639641]
+offset_right = 40.0
+offset_bottom = 40.0
+pivot_offset = Vector2(32, 32)
+tooltip_text = "Items placed in this part of your bag will persist between teleports."
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+script = ExtResource("1_8b8dc")
+
+[node name="FrameBase" type="TextureRect" parent="." unique_id=1576809259]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("2_8b8dc")
+
+[node name="FrameOK" type="TextureRect" parent="." unique_id=1597728829]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("3_5abed")
+
+[node name="FrameBad" type="TextureRect" parent="." unique_id=1564793078]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("4_fylty")
