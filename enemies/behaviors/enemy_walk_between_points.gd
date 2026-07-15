@@ -1,6 +1,6 @@
 class_name EnemyWalkBetweenPoints extends EnemyBehavior
 
-@export var movement_speed := 5.0
+@export var movement_speed := 4.0
 
 @export var delay_range := Vector2(0.0, 1.0)
 

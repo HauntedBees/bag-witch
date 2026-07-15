@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ChestItem" format=3 uid="uid://cggr8i721y68m"]
+
+[ext_resource type="Script" uid="uid://dd5hc1bmq53tv" path="res://resource_types/items/chest.gd" id="1_83um6"]
+
+[resource]
+script = ExtResource("1_83um6")
+name = "Quantum Chest"
+description = "This chest can contain 4 items that would normally be lost when entering a portal. The items will survive the teleportation, but the chest will not."
+size = Vector2i(2, 3)
+icon = Rect2i(4, 1, 2, 3)
+scene_path = "uid://lsi087wm155f"
+metadata/_custom_type_script = "uid://dd5hc1bmq53tv"

@@ -10,7 +10,8 @@ var alt_hand_for_attack_anim := false
 var _quests: Dictionary[StringName, Quest] = {}
 var _already_completed_quests: Array[StringName] = []
 var _mouse_ray_length := 50.0
-var _current_target: WorldItem
+var _current_targeted_item: WorldItem
+var _current_targeted_enemy: EnemyDisplay
 var _in_inventory := false
 var _reloading_time_remaining := 0.0
 
@@ -57,8 +58,8 @@ func _input(event: InputEvent) -> void:
 		return
 	if _try_switch_weapon(event):
 		return
-	if _try_pick_up_item(event):
-		return
+	#if _try_use_bag(event):
+	#	return
 	if _try_reload(event):
 		return
 
@@ -70,6 +71,7 @@ func _process(delta: float) -> void:
 		_reloading_time_remaining -= delta
 	_handle_non_mouse_camera_movement()
 	_handle_front_raycast()
+	_handle_bag()
 	_handle_attack(delta)
 	if is_on_floor():
 		ready_to_glide = false
@@ -127,15 +129,20 @@ func _handle_front_raycast() -> void:
 	var obj := _front_check.get_collider()
 	if obj == null:
 		_item_select.visible = false
-		_current_target = null
+		_current_targeted_item = null
+		_current_targeted_enemy = null
 		return
 	if obj is WorldItem:
 		_item_select.set_from_world_item(obj)
-		_current_target = obj
+		_current_targeted_item = obj
+		_current_targeted_enemy = null
 	elif obj is EnemyDisplay:
 		_item_select.set_from_enemy(obj)
+		_current_targeted_item = null
+		_current_targeted_enemy = obj
 	else:
-		_current_target = null
+		_current_targeted_item = null
+		_current_targeted_enemy = null
 
 func _try_reload(event: InputEvent) -> bool:
 	if _in_inventory || _reloading_time_remaining > 0.0:
@@ -173,24 +180,46 @@ func _try_reload(event: InputEvent) -> bool:
 	alt_hand_for_attack_anim = false
 	return true
 
-func _try_pick_up_item(event: InputEvent) -> bool:
+func _handle_bag() -> bool:
+	if _in_inventory:
+		return false
+	if GASInput.is_action_just_pressed(&"use"):
+		if _current_targeted_item != null:
+			return _try_pick_up_item()
+		elif _current_targeted_enemy != null:
+			arms_overlay.arms.play_anim(&"BagSuck")
+			return false # TODO
+		else:
+			arms_overlay.arms.play_anim(&"BagUse")
+			return false
+	return false
+
+func _try_use_bag(event: InputEvent) -> bool:
 	if _in_inventory:
 		return false
 	if !GASInput.is_event_action_just_pressed(event, &"use"):
 		return false
-	arms_overlay.arms.play_anim(&"BagUse")
-	if _current_target == null:
+	if _current_targeted_item != null:
+		return _try_pick_up_item()
+	elif _current_targeted_enemy != null:
+		arms_overlay.arms.play_anim(&"BagSuck")
+		return false # TODO
+	else:
+		arms_overlay.arms.play_anim(&"BagUse")
 		return false
-	var item := _current_target.item
+
+func _try_pick_up_item() -> bool:
+	arms_overlay.arms.play_anim(&"BagUse")
+	var item := _current_targeted_item.item
 	var potential_add := Player.data.inventory.get_item_if_fits(item)
 	if !potential_add:
 		print("NO ROOM!")
 		return false
-	if _current_target.had_ammo_set:
-		potential_add.ammo = _current_target.ammo
+	if _current_targeted_item.had_ammo_set:
+		potential_add.ammo = _current_targeted_item.ammo
 	Player.data.inventory.add_item_detail(potential_add)
-	_current_target.queue_free()
-	_current_target = null
+	_current_targeted_item.queue_free()
+	_current_targeted_item = null
 	return true
 
 func _try_switch_weapon(event: InputEvent) -> bool:

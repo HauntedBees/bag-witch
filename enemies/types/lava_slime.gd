@@ -1,10 +1,12 @@
 extends EnemyDisplay
 
 const _SMOKE_SCENE := preload("uid://bce761tpdiksy")
+const _MAX_SCALE := 5.0
 
 @export var has_key := false
 
 var _frozen_state: EnemyFrozen
+var _current_scale := 1.0
 
 func _addtl_enemy_setup() -> void:
 	for c in get_children():
@@ -36,6 +38,10 @@ func receive_weapon_hit(source: Vector3, w: Weapon, has_impact_position := false
 	for e: BWEnum.Effect in effects:
 		if e == BWEnum.Effect.Freeze:
 			is_ice_attack = true
+			break
+		elif e == BWEnum.Effect.Burn:
+			_current_scale = minf(_MAX_SCALE, _current_scale * 1.1)
+			scale = _current_scale * Vector3.ONE
 			break
 	var damage_dealt := randi_range(w.damage_range.x, w.damage_range.y) if !is_ice_attack && _is_frozen() else 0
 	on_hit.emit(w, source, damage_dealt, impact_position if has_impact_position else global_position)
