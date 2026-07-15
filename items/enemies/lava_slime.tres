@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://dnxwvr16xgouf"]
+
+[ext_resource type="Script" uid="uid://cgt7ckkn1gh5b" path="res://resource_types/items/item.gd" id="1_c160o"]
+
+[resource]
+script = ExtResource("1_c160o")
+name = "Lava Slime"
+description = "It's hot and gooey. Like s'mores!"
+icon = Rect2i(2, 1, 1, 1)
+scene_path = "uid://j6ijx2yvkafq"
+metadata/_custom_type_script = "uid://cgt7ckkn1gh5b"

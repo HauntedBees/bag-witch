@@ -7,7 +7,6 @@
 [sub_resource type="Animation" id="Animation_0j0xl"]
 resource_name = "BagSuck"
 length = 0.25
-loop_mode = 1
 step = 0.0333333
 tracks/0/type = "position_3d"
 tracks/0/imported = false
@@ -9587,6 +9586,7 @@ autoplay = &"Idle"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.3634429)
 
 [node name="Skeleton3D" parent="arms2/arms" parent_id_path=PackedInt32Array(1508114174, 1138826295) index="0" unique_id=541455370]
+bones/3/rotation = Quaternion(0.7452866, 0.007922591, 0.30733392, 0.5916342)
 bones/3/scale = Vector3(1, 0.9999999, 0.9999999)
 bones/4/scale = Vector3(1, 1.0000001, 1)
 bones/5/rotation = Quaternion(-0.19578485, 0.014683957, 0.19575475, 0.9607981)
@@ -9594,8 +9594,11 @@ bones/12/rotation = Quaternion(-0.0009080964, -0.018355867, 0.110830754, 0.99366
 bones/13/rotation = Quaternion(-0.026190726, 0.033585776, -0.10871984, 0.99315965)
 bones/14/rotation = Quaternion(0.06246407, -0.1369784, 0.1775956, 0.97251993)
 bones/18/rotation = Quaternion(-0.16249192, -0.06371558, 0.028204648, 0.98424655)
+bones/20/position = Vector3(-0.92539644, 0.6177081, -0.14019127)
 bones/20/scale = Vector3(0.99999994, 0.9999996, 1.0000004)
+bones/27/position = Vector3(-0.001249749, 1.7392929, -2.630871e-05)
 bones/27/rotation = Quaternion(0.061552476, -0.0398768, -0.39811075, 0.91440094)
+bones/28/position = Vector3(1.8895745, 0.9198172, 0.2114338)
 bones/28/scale = Vector3(0.9999997, 1, 1)
 bones/29/scale = Vector3(1.0000002, 1.0000005, 1)
 bones/30/rotation = Quaternion(-0.19578525, -0.014684119, -0.19575462, 0.960798)
@@ -9606,7 +9609,7 @@ bones/39/rotation = Quaternion(0.06246367, 0.13697846, -0.17759539, 0.97252)
 
 [node name="RightHand" type="BoneAttachment3D" parent="arms2/arms/Skeleton3D" index="1" unique_id=53198998]
 unique_name_in_owner = true
-transform = Transform3D(0.45968708, 0.40775296, 0.78893936, -0.5210625, -0.595547, 0.611406, 0.7191533, -0.6921418, -0.061300535, 4.9785132, -3.5133772, -2.8627176)
+transform = Transform3D(0.4146228, -0.5868342, 0.6954951, -0.8911246, -0.10700592, 0.44096082, -0.18434882, -0.80260473, -0.56731, 1.370251, -2.1709409, -2.5740538)
 bone_name = "socket.r"
 bone_idx = 20
 
@@ -9616,7 +9619,7 @@ visible = false
 
 [node name="LeftHand" type="BoneAttachment3D" parent="arms2/arms/Skeleton3D" index="2" unique_id=591314673]
 unique_name_in_owner = true
-transform = Transform3D(0.45968783, -0.4077526, -0.788939, 0.52106273, -0.5955472, 0.61140585, -0.71915233, -0.69214314, -0.06130123, -4.9785094, -3.5133717, -2.8627186)
+transform = Transform3D(0.45968783, -0.4077526, -0.788939, 0.52106273, -0.5955472, 0.61140585, -0.71915233, -0.69214314, -0.06130123, -2.1995695, -3.5133717, -2.8627186)
 bone_name = "socket.l"
 bone_idx = 45
 

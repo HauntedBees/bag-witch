@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dyp4e3ngk44h5" path="res://player/hud/arms_overlay_inner.tscn" id="1_epxri"]
 [ext_resource type="Script" uid="uid://cvnjfawqoeja4" path="res://player/hud/arms_overlay.gd" id="1_s1c6f"]
 [ext_resource type="Shader" uid="uid://bpa7mp1kjoqym" path="res://assets/shaders/canvas_pixelate.gdshader" id="1_wfvdd"]
+[ext_resource type="Shader" uid="uid://dejqxw8slh4r2" path="res://assets/shaders/canvas_distort.gdshader" id="4_r7eeu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pdci5"]
 shader = ExtResource("1_wfvdd")
@@ -15,6 +16,36 @@ viewport_path = NodePath("SubViewport")
 
 [sub_resource type="World3D" id="World3D_pdci5"]
 environment = SubResource("Environment_epxri")
+
+[sub_resource type="Gradient" id="Gradient_6001y"]
+colors = PackedColorArray(0, 0, 0, 1, 0.04755766, 0.047557645, 0.047557645, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4cdps"]
+gradient = SubResource("Gradient_6001y")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_7jxje"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mkopk"]
+noise = SubResource("FastNoiseLite_7jxje")
+seamless = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_h20pj"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_b77vr"]
+noise = SubResource("FastNoiseLite_h20pj")
+seamless = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_qhdqd"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_sddrh"]
+noise = SubResource("FastNoiseLite_qhdqd")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rhbnc"]
+shader = ExtResource("4_r7eeu")
+shader_parameter/flame1_texture = SubResource("NoiseTexture2D_mkopk")
+shader_parameter/flame2_texture = SubResource("NoiseTexture2D_b77vr")
+shader_parameter/flame3_texture = SubResource("NoiseTexture2D_sddrh")
+shader_parameter/color_gradient = SubResource("GradientTexture1D_4cdps")
 
 [node name="ArmsOverlay" type="TextureRect" unique_id=938030434]
 material = SubResource("ShaderMaterial_pdci5")
@@ -34,3 +65,25 @@ size = Vector2i(1920, 1080)
 
 [node name="ArmsOverlayInner" parent="SubViewport" unique_id=520152911 instance=ExtResource("1_epxri")]
 unique_name_in_owner = true
+
+[node name="Suckage" type="ColorRect" parent="." unique_id=893545780]
+unique_name_in_owner = true
+visible = false
+material = SubResource("ShaderMaterial_rhbnc")
+custom_minimum_size = Vector2(512, 512)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -143.0
+offset_top = -256.0
+offset_right = 369.0
+offset_bottom = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+offset_transform_rotation = -0.7400196
+
+[connection signal="set_suck" from="SubViewport/ArmsOverlayInner" to="." method="_on_arms_overlay_inner_set_suck"]

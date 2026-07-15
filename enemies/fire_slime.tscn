@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c43mopu1jqdv0" path="res://enemies/types/lava_slime.gd" id="1_w5hsp"]
 [ext_resource type="PackedScene" uid="uid://5mfo3873qvty" path="res://assets/models/enemies/lava_slime.blend" id="2_7rox6"]
+[ext_resource type="Resource" uid="uid://dnxwvr16xgouf" path="res://items/enemies/lava_slime.tres" id="2_qaqv0"]
 [ext_resource type="Script" uid="uid://c7obdbhjgnuay" path="res://enemies/behaviors/enemy_chase_player.gd" id="3_4xvut"]
 [ext_resource type="Script" uid="uid://b2ldfj5ngv3ch" path="res://enemies/behaviors/enemy_melee_player.gd" id="4_nihj0"]
 [ext_resource type="Script" uid="uid://dxggsp43p5ket" path="res://enemies/behaviors/enemy_alert_friends.gd" id="5_a8v5d"]
@@ -24,7 +25,8 @@ collision_layer = 9
 collision_mask = 3
 script = ExtResource("1_w5hsp")
 enemy_name = "Lava Slime"
-capture_level = 2
+capture_level = 1
+suck_drop = ExtResource("2_qaqv0")
 max_health = 5
 damage_stun_time = 0.0
 bounding_box = NodePath("BoundingBox")

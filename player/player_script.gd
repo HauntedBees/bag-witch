@@ -15,8 +15,13 @@ var _current_targeted_enemy: EnemyDisplay
 var _in_inventory := false
 var _reloading_time_remaining := 0.0
 
+var _is_sucking := false
+var _suck_time_remaining := 0.0
+var _suck_enemy: EnemyDisplay
+
 @onready var speed_lines: ColorRect = %SpeedLines
 @onready var arms_overlay: ArmsOverlay = %ArmsOverlay
+@onready var text_container: TextContainer = %TextContainer
 
 @onready var _projectile_launch_spot: Node3D = %ProjectileSpot
 @onready var _alt_projectile_launch_spot: Node3D = %ProjectileSpot2
@@ -58,8 +63,6 @@ func _input(event: InputEvent) -> void:
 		return
 	if _try_switch_weapon(event):
 		return
-	#if _try_use_bag(event):
-	#	return
 	if _try_reload(event):
 		return
 
@@ -71,7 +74,7 @@ func _process(delta: float) -> void:
 		_reloading_time_remaining -= delta
 	_handle_non_mouse_camera_movement()
 	_handle_front_raycast()
-	_handle_bag()
+	_handle_bag(delta)
 	_handle_attack(delta)
 	if is_on_floor():
 		ready_to_glide = false
@@ -180,40 +183,46 @@ func _try_reload(event: InputEvent) -> bool:
 	alt_hand_for_attack_anim = false
 	return true
 
-func _handle_bag() -> bool:
+func _handle_bag(delta: float) -> bool:
 	if _in_inventory:
 		return false
 	if GASInput.is_action_just_pressed(&"use"):
 		if _current_targeted_item != null:
 			return _try_pick_up_item()
-		elif _current_targeted_enemy != null:
+		elif _current_targeted_enemy != null && _current_targeted_enemy.capture_level <= Player.data.bag:
 			arms_overlay.arms.play_anim(&"BagSuck")
-			return false # TODO
+			_is_sucking = true
+			_suck_time_remaining = _current_targeted_enemy.suck_time
+			_suck_enemy = _current_targeted_enemy
+			return true
 		else:
 			arms_overlay.arms.play_anim(&"BagUse")
 			return false
-	return false
-
-func _try_use_bag(event: InputEvent) -> bool:
-	if _in_inventory:
-		return false
-	if !GASInput.is_event_action_just_pressed(event, &"use"):
-		return false
-	if _current_targeted_item != null:
-		return _try_pick_up_item()
-	elif _current_targeted_enemy != null:
+	elif Input.is_action_pressed(&"use") && _is_sucking:
+		if _suck_enemy != _current_targeted_enemy:
+			_suck_enemy = null
+			_is_sucking = false
+			return false
 		arms_overlay.arms.play_anim(&"BagSuck")
-		return false # TODO
-	else:
-		arms_overlay.arms.play_anim(&"BagUse")
-		return false
+		_suck_time_remaining -= delta
+		if _suck_time_remaining <= 0.0:
+			print("GOTTEM")
+		return true
+	return false
 
 func _try_pick_up_item() -> bool:
 	arms_overlay.arms.play_anim(&"BagUse")
 	var item := _current_targeted_item.item
 	var potential_add := Player.data.inventory.get_item_if_fits(item)
 	if !potential_add:
-		print("NO ROOM!")
+		text_container.say_words(
+			"Bag Witch",
+			"I won't be able to fit this in my bag right now... I need to either get rid of something or move some things around to fit this %sx%s item in there..." % [
+				item.size.x,
+				item.size.y
+			],
+			false
+		)
 		return false
 	if _current_targeted_item.had_ammo_set:
 		potential_add.ammo = _current_targeted_item.ammo

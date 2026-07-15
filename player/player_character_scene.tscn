@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://dxckpdtgf6aa5" path="res://player/hud/equip_bar.tscn" id="19_8kajx"]
 [ext_resource type="PackedScene" uid="uid://cpmm4xyy23p80" path="res://player/hud/item_select.tscn" id="20_5ko36"]
 [ext_resource type="Script" uid="uid://clx8a6kmuy5u4" path="res://player/quest_details_container.gd" id="20_iy4o2"]
+[ext_resource type="PackedScene" uid="uid://b4obhtxbka16h" path="res://player/hud/text_container.tscn" id="21_dehhv"]
 [ext_resource type="Shader" uid="uid://chplq7fb4mgyg" path="res://assets/shaders/speed_lines.gdshader" id="21_pdci5"]
 
 [sub_resource type="Curve" id="Curve_pdci5"]
@@ -104,7 +105,7 @@ _data = {
 &"speed": SubResource("Animation_dehhv")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_iy4o2"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_dehhv"]
 viewport_path = NodePath("SubViewport")
 
 [node name="PlayerCharacter" type="CharacterBody3D" unique_id=1631114635 groups=["PlayerCharacter"]]
@@ -299,7 +300,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
-texture = SubResource("ViewportTexture_iy4o2")
+texture = SubResource("ViewportTexture_dehhv")
 
 [node name="Crosshair" type="CenterContainer" parent="HUDLayer/HUD" unique_id=1562813601]
 layout_mode = 1
@@ -340,6 +341,11 @@ layout_mode = 2
 theme_override_constants/separation = 16
 script = ExtResource("20_iy4o2")
 player = NodePath("../../../..")
+
+[node name="TextContainer" parent="HUDLayer/HUD/MainHUD" unique_id=1809074307 instance=ExtResource("21_dehhv")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
 
 [node name="ItemSelect" parent="HUDLayer/HUD" unique_id=720485576 instance=ExtResource("20_5ko36")]
 unique_name_in_owner = true

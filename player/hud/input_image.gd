@@ -5,7 +5,7 @@ enum DisplayType { CurrentInput, ForceKeyboard, ForceJoypad }
 
 const SIZE := 16
 @onready var input_texture: AtlasTexture = texture
-@export var action_name := "":
+@export var action_name: StringName = "":
 	set(value):
 		action_name = value
 		if is_inside_tree():
