@@ -36,8 +36,9 @@ func say_words(speaker: String, text: String, priority := 0, action := TextPrior
 				_add_to_queue(speaker, text, id)
 				return
 	if _is_active: # Replacing an existing one.
-		_current_tween.kill()
-		_current_tween = null
+		if _current_tween != null:
+			_current_tween.kill()
+			_current_tween = null
 	_message_waiting.visible = !_queued_messages.is_empty()
 	visible = true
 	_current_priority = priority

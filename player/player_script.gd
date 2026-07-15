@@ -190,11 +190,7 @@ func _handle_bag(delta: float) -> bool:
 		if _current_targeted_item != null:
 			return _try_pick_up_item()
 		elif _current_targeted_enemy != null && _current_targeted_enemy.capture_level <= Player.data.bag:
-			arms_overlay.arms.play_anim(&"BagSuck")
-			_is_sucking = true
-			_suck_time_remaining = _current_targeted_enemy.suck_time
-			_suck_enemy = _current_targeted_enemy
-			return true
+			return _try_start_enemy_sucking()
 		else:
 			arms_overlay.arms.play_anim(&"BagUse")
 			return false
@@ -206,15 +202,58 @@ func _handle_bag(delta: float) -> bool:
 		arms_overlay.arms.play_anim(&"BagSuck")
 		_suck_time_remaining -= delta
 		if _suck_time_remaining <= 0.0:
-			print("GOTTEM")
+			return _try_procure_enemy() # TODO: should do a little animation
 		return true
 	return false
+
+func _try_start_enemy_sucking() -> bool:
+	if Player.data.inventory.get_item_if_fits(_current_targeted_enemy.suck_drop) == null:
+		arms_overlay.arms.play_anim(&"BagUse")
+		text_container.say_words(
+			"Bag Witch",
+			"I won't be able to fit them in my bag right now... I need to either get rid of something or move some things around to fit this %sx%s %s in there..." % [
+				_current_targeted_enemy.suck_drop.size.x,
+				_current_targeted_enemy.suck_drop.size.y,
+				_current_targeted_enemy.enemy_name
+			],
+			0,
+			TextContainer.TextPriority.IgnoreIfLessImportantReplaceOtherwise
+		)
+		return false
+	arms_overlay.arms.play_anim(&"BagSuck")
+	_is_sucking = true
+	_suck_time_remaining = _current_targeted_enemy.suck_time
+	_suck_enemy = _current_targeted_enemy
+	return true
+
+func _try_procure_enemy() -> bool:
+	if _current_targeted_enemy == null:
+		return false
+	var item := _current_targeted_enemy.suck_drop
+	var added := _try_add_item(item)
+	if added == null: # this shouldn't happen, since _try_start_enemy_sucking already handles this case, but better be safe!
+		text_container.say_words(
+			"Bag Witch",
+			"I won't be able to fit them in my bag right now... I need to either get rid of something or move some things around to fit this %sx%s %s in there..." % [
+				_current_targeted_enemy.suck_drop.size.x,
+				_current_targeted_enemy.suck_drop.size.y,
+				_current_targeted_enemy.enemy_name
+			],
+			0,
+			TextContainer.TextPriority.IgnoreIfLessImportantReplaceOtherwise
+		)
+		return false
+	_current_targeted_enemy.queue_free()
+	_current_targeted_enemy = null
+	_is_sucking = false
+	_suck_enemy = null
+	return true
 
 func _try_pick_up_item() -> bool:
 	arms_overlay.arms.play_anim(&"BagUse")
 	var item := _current_targeted_item.item
-	var potential_add := Player.data.inventory.get_item_if_fits(item)
-	if !potential_add:
+	var added := _try_add_item(item)
+	if added == null:
 		text_container.say_words(
 			"Bag Witch",
 			"I won't be able to fit this in my bag right now... I need to either get rid of something or move some things around to fit this %sx%s item in there..." % [
@@ -226,11 +265,17 @@ func _try_pick_up_item() -> bool:
 		)
 		return false
 	if _current_targeted_item.had_ammo_set:
-		potential_add.ammo = _current_targeted_item.ammo
-	Player.data.inventory.add_item_detail(potential_add)
+		added.ammo = _current_targeted_item.ammo
 	_current_targeted_item.queue_free()
 	_current_targeted_item = null
 	return true
+
+func _try_add_item(item: Item) -> InventoryDetail:
+	var potential_add := Player.data.inventory.get_item_if_fits(item)
+	if !potential_add:
+		return null
+	Player.data.inventory.add_item_detail(potential_add)
+	return potential_add
 
 func _try_switch_weapon(event: InputEvent) -> bool:
 	if _in_inventory || _reloading_time_remaining > 0.0:
