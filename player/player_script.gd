@@ -221,7 +221,8 @@ func _try_pick_up_item() -> bool:
 				item.size.x,
 				item.size.y
 			],
-			false
+			0,
+			TextContainer.TextPriority.IgnoreIfLessImportantReplaceOtherwise
 		)
 		return false
 	if _current_targeted_item.had_ammo_set:

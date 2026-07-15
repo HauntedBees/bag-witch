@@ -2,22 +2,45 @@ class_name TextContainer extends MarginContainer
 
 const _TIME_PER_CHAR := 0.025
 
+enum TextPriority {
+	## If message is higher priority than the current message, replace it,
+	## otherwise, add it to the queue.
+	QueueIfLessImportantReplaceOtherwise,
+	## If message is higher priority than the current message, replace it,
+	## otherwise, ignore it.
+	IgnoreIfLessImportantReplaceOtherwise,
+	## Message is added to queue no matter what.
+	AlwaysQueueAfterCurrent
+}
+
 var _is_active := false
 var _current_tween: Tween
+var _current_priority := -1
 var _queued_messages: Array[QueuedMessage] = []
 
 @onready var _speaker: GASLabel = %Speaker
 @onready var _body: GASLabel = %Body
 @onready var _message_waiting: TextureRect = %MessageWaiting
 
-func say_words(speaker: String, text: String, important := true) -> void:
+func say_words(speaker: String, text: String, priority := 0, action := TextPriority.QueueIfLessImportantReplaceOtherwise, id := "") -> void:
 	if _is_active:
-		if important:
-			_message_waiting.visible = true
-			_queued_messages.append(QueuedMessage.new(speaker, text))
-		return
+		match action:
+			TextPriority.QueueIfLessImportantReplaceOtherwise:
+				if priority < _current_priority:
+					_add_to_queue(speaker, text, id)
+					return
+			TextPriority.IgnoreIfLessImportantReplaceOtherwise:
+				if priority < _current_priority:
+					return
+			TextPriority.AlwaysQueueAfterCurrent:
+				_add_to_queue(speaker, text, id)
+				return
+	if _is_active: # Replacing an existing one.
+		_current_tween.kill()
+		_current_tween = null
 	_message_waiting.visible = !_queued_messages.is_empty()
 	visible = true
+	_current_priority = priority
 	_is_active = true
 	_speaker.text = speaker
 	_body.text = text
@@ -26,6 +49,10 @@ func say_words(speaker: String, text: String, important := true) -> void:
 	_current_tween = create_tween()
 	_current_tween.tween_property(_body, "visible_characters", tlen, _TIME_PER_CHAR * tlen)
 	_current_tween.finished.connect(_on_tween_finished)
+
+func _add_to_queue(speaker: String, text: String, id: String) -> void:
+	_message_waiting.visible = true
+	_queued_messages.append(QueuedMessage.new(speaker, text, id))
 
 func _on_tween_finished() -> void:
 	_current_tween = null
@@ -49,6 +76,8 @@ func _input(event: InputEvent) -> void:
 class QueuedMessage extends RefCounted:
 	var speaker: String
 	var text: String
-	func _init(s: String, t: String) -> void:
+	var id: String
+	func _init(s: String, t: String, i: String) -> void:
+		id = i
 		speaker = s
 		text = t
