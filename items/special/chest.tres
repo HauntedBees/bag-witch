@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_83um6")
 name = "Quantum Chest"
-description = "This chest can contain 4 items that would normally be lost when entering a portal. The items will survive the teleportation, but the chest will not."
+description = "This chest can contain up to 4 items that would normally be lost when entering a portal. The items will survive the teleportation, but the chest will not."
 size = Vector2i(2, 3)
 icon = Rect2i(4, 1, 2, 3)
 scene_path = "uid://lsi087wm155f"
