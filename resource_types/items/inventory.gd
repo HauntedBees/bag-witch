@@ -3,7 +3,7 @@ class_name Inventory extends Resource
 signal item_added(i: InventoryDetail)
 signal item_removed(i: InventoryDetail)
 
-@export var dimensions := Vector2i(7, 4)
+@export var dimensions := Vector2i(1, 1)
 
 @export var safe_tiles: Array[Vector2i] = [Vector2i(6, 3)]
 
@@ -12,13 +12,14 @@ signal item_removed(i: InventoryDetail)
 @export var _items_list: Array[Item] = []
 
 func _init() -> void:
-	var broom := load("uid://dpgrb2fqcl3qn")
-	add_item(broom, Vector2i(2, 1), false)
-	add_item(broom, Vector2i(0, 0), false)
-	var book := load("uid://gloeqm86u5q")
-	add_item(book, Vector2i(0, 1), false)
+	#var broom := load("uid://dpgrb2fqcl3qn")
+	#add_item(broom, Vector2i(2, 1), false)
+	#add_item(broom, Vector2i(0, 0), false)
+	#var book := load("uid://gloeqm86u5q")
+	#add_item(book, Vector2i(0, 1), false)
 	var handgun := load("uid://bjf5fkot1fjp5")
-	add_item(handgun, Vector2i(1, 2), false)
+	add_item(handgun, Vector2i(0, 0), false)
+	#add_item(handgun, Vector2i(1, 2), false)
 
 func remove_item(i: InventoryDetail) -> void:
 	items.erase(i)

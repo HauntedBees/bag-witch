@@ -119,4 +119,5 @@ metadata/_custom_type_script = "uid://bn3r43bitaf3i"
 
 [node name="FireSlimeKey" parent="." unique_id=222303382 node_paths=PackedStringArray("point_collection") instance=ExtResource("7_5rrxe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 223, 13, 10)
+capture_level = 1
 point_collection = NodePath("../SlimePointsBottom")

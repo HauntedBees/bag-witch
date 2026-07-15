@@ -1,0 +1,143 @@
+[gd_scene format=3 uid="uid://b4obhtxbka16h"]
+
+[ext_resource type="Texture2D" uid="uid://csh4uwvgpetwl" path="res://assets/sprites/text_hud.png" id="1_bife6"]
+[ext_resource type="Script" uid="uid://duqr2witj3uxq" path="res://player/hud/text_container.gd" id="1_ufq3e"]
+[ext_resource type="Script" uid="uid://hafxp56l0iao" path="res://addons/gas/gas_label.gd" id="2_afi57"]
+[ext_resource type="LabelSettings" uid="uid://cv2nv0q56shf6" path="res://assets/fonts/body_text.tres" id="2_ufq3e"]
+[ext_resource type="Texture2D" uid="uid://h4au710gwfvl" path="res://assets/sprites/text_hud_name.png" id="3_ufq3e"]
+[ext_resource type="PackedScene" uid="uid://bi75tcolvv8tm" path="res://player/hud/input_image.tscn" id="6_jfapm"]
+[ext_resource type="Texture2D" uid="uid://e53a5q2hhkff" path="res://assets/sprites/misc_sprites.png" id="6_khtwh"]
+[ext_resource type="Texture2D" uid="uid://dorg26lk5rom5" path="res://assets/sprites/input_icons.png" id="7_khtwh"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dehhv"]
+texture = ExtResource("1_bife6")
+texture_margin_left = 88.0
+texture_margin_top = 88.0
+texture_margin_right = 88.0
+texture_margin_bottom = 88.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rhbnc"]
+texture = ExtResource("3_ufq3e")
+texture_margin_left = 40.0
+texture_margin_top = 36.0
+texture_margin_right = 36.0
+texture_margin_bottom = 28.0
+
+[sub_resource type="Animation" id="Animation_khtwh"]
+resource_name = "HeyListen"
+loop_mode = 1
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%MessageWaiting:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_suc22"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%MessageWaiting:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jy1mp"]
+_data = {
+&"HeyListen": SubResource("Animation_khtwh"),
+&"RESET": SubResource("Animation_suc22")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhbnc"]
+atlas = ExtResource("6_khtwh")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_suc22"]
+resource_local_to_scene = true
+atlas = ExtResource("7_khtwh")
+region = Rect2(0, 208, 16, 16)
+filter_clip = true
+
+[node name="TextContainer" type="MarginContainer" unique_id=1809074307]
+size_flags_horizontal = 4
+size_flags_vertical = 8
+script = ExtResource("1_ufq3e")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1921079895]
+custom_minimum_size = Vector2(900, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxTexture_dehhv")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=219999307]
+layout_mode = 2
+theme_override_constants/margin_left = -32
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = -32
+theme_override_constants/margin_bottom = -8
+
+[node name="Body" type="Label" parent="PanelContainer/MarginContainer" unique_id=2003096349]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(688, 0)
+layout_mode = 2
+text = "Ah, fuck. You're looking at the source code. Like what you see, my pretty? It's yours for the taking! What's the catch...? Well, it's AGPLv3 licensed, dearie, meaning if you change the code or use it in YOUR game, THAT code has to be distributed freely,  too!! Nya-ha-ha-ha-haaaa!"
+label_settings = ExtResource("2_ufq3e")
+autowrap_mode = 3
+script = ExtResource("2_afi57")
+metadata/_custom_type_script = "uid://hafxp56l0iao"
+
+[node name="PanelContainer2" type="PanelContainer" parent="." unique_id=1221580396]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_rhbnc")
+
+[node name="Speaker" type="Label" parent="PanelContainer2" unique_id=189621380]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Bag Witch"
+script = ExtResource("2_afi57")
+metadata/_custom_type_script = "uid://hafxp56l0iao"
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=764847522]
+layout_mode = 2
+theme_override_constants/margin_right = 42
+theme_override_constants/margin_bottom = 42
+
+[node name="MessageWaitingFlicker" type="AnimationPlayer" parent="MarginContainer" unique_id=1008665341]
+libraries/ = SubResource("AnimationLibrary_jy1mp")
+autoplay = &"HeyListen"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1061120057]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="MessageWaiting" type="TextureRect" parent="MarginContainer/HBoxContainer" unique_id=1790546559]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_rhbnc")
+
+[node name="InputImage" parent="MarginContainer/HBoxContainer" unique_id=1161082248 instance=ExtResource("6_jfapm")]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture = SubResource("AtlasTexture_suc22")
+action_name = "advance_text"

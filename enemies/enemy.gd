@@ -8,9 +8,17 @@ signal on_effect_applied(e: BWEnum.Effect, level: int)
 ## This should be obvious.
 @export var enemy_name := ""
 
+@export_category("Bagging")
+
 ## What level your "Bag" ability needs to be to bag this enemy. Since the maximum
 ## Bag level is 3, 4 means an enemy cannot be bagged.
 @export_range(1, 4) var capture_level := 4
+
+## The time it takes to suck this enemy into your bag.
+@export var suck_time := 1.0
+
+## The item gained when you suck this motherfucker up.
+@export var suck_drop: Item
 
 @export_category("Navigation")
 ## The nav agent for this enemy.

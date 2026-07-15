@@ -1,5 +1,7 @@
 class_name ArmsOverlayInner extends Node3D
 
+signal set_suck(on: bool)
+
 @onready var _anim: AnimationPlayer = %AnimationPlayer
 @onready var _right_hand: BoneAttachment3D = %RightHand
 @onready var _left_hand: BoneAttachment3D = %LeftHand
@@ -9,6 +11,8 @@ func _ready() -> void:
 	Player.weapon_changed.connect(_on_weapon_changed)
 
 func reset_idle() -> void:
+	_bag.visible = false
+	set_suck.emit(false)
 	var w: Weapon = Player.data.current_weapon()
 	if w == null || w.equipped_animation == "":
 		_anim.play(&"Idle")
@@ -17,10 +21,10 @@ func reset_idle() -> void:
 
 func play_anim(anim: StringName, return_to_idle := true) -> void:
 	_bag.visible = anim == &"BagUse" || anim == &"BagSuck"
+	set_suck.emit(anim == &"BagSuck")
 	_anim.play(anim)
 	if return_to_idle:
 		await _anim.animation_finished
-		_bag.visible = false
 		reset_idle()
 
 func _on_weapon_changed(id: InventoryDetail) -> void:
