@@ -160,15 +160,19 @@ func _on_item_tile_hovered(item: InventoryItemDisplay) -> void:
 	_highlighted_item = item.details
 	_highlighted_spell = null
 
-func _can_place(item: InventoryDetail, new_positions: Array[Vector2i]) -> bool:
+func _can_place(id: InventoryDetail, new_positions: Array[Vector2i]) -> bool:
 	for p in new_positions:
 		if _item_grid_info.has(p):
-			var existing_item := _item_grid_info[p].item
-			if existing_item == null:
+			if id.item is ChestItem && id.is_safe_chest_position(p):
 				continue
-			if existing_item.item.can_be_combined(existing_item, item):
+			var existing_id := _item_grid_info[p].item
+			if existing_id == null:
 				continue
-			if existing_item != item:
+			if existing_id.item is ChestItem && existing_id.is_safe_chest_position(p):
+				continue
+			if existing_id.item.can_be_combined(existing_id, id):
+				continue
+			if existing_id != id:
 				return false
 		else:
 			return false

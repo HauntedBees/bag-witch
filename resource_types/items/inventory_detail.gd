@@ -21,6 +21,18 @@ func _init(i: Item, p: Vector2i) -> void:
 	elif i is Ammo:
 		ammo = randi_range(i.initial_ammo_range.x, i.initial_ammo_range.y)
 
+func is_safe_chest_position(potential_position: Vector2i) -> bool:
+	if item is not ChestItem:
+		return false
+	var bottom_positions: Array[Vector2i] = []
+	if rotated:
+		bottom_positions.append(position + Vector2i(0, 0))
+		bottom_positions.append(position + Vector2i(0, 1))
+	else:
+		bottom_positions.append(position + Vector2i(0, 2))
+		bottom_positions.append(position + Vector2i(1, 2))
+	return get_positions(position).has(potential_position) && !bottom_positions.has(potential_position)
+
 func get_positions(base_position: Vector2i, rotation_altered := false) -> Array[Vector2i]:
 	var pos: Array[Vector2i] = []
 	var width := 0
