@@ -39,7 +39,11 @@ func _spawn_enemy() -> void:
 	if enemy_point_collection != null:
 		enemy.point_collection = enemy_point_collection
 	spawn_container.add_child(enemy)
-	enemy.global_position = _points.pick_random() + spawn_point_offset
+	enemy.global_position = _points.pick_random() + spawn_point_offset + Vector3(
+		randf_range(-2.0, 2.0),
+		0.0,
+		randf_range(-2.0, 2.0)
+	)
 
 func _get_enemy_count() -> int:
 	var count := 0

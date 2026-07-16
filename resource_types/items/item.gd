@@ -51,7 +51,7 @@ class_name Item extends Resource
 @export var equipped_scale := 1.0
 
 ## When true, the equip scene will be on both hands.
-@export var both_hands := false
+@export var add_equip_scene_to_both_hands := false
 
 ## How long you must wait to use the item again.
 @export var usage_cooldown := 0.5

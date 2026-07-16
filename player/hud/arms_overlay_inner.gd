@@ -43,7 +43,7 @@ func _on_weapon_changed(id: InventoryDetail) -> void:
 	else:
 		_anim.play(w.equipped_animation)
 	_add_to_bone(_right_hand, w)
-	if w.both_hands:
+	if w.add_equip_scene_to_both_hands:
 		_add_to_bone(_left_hand, w)
 
 func _add_to_bone(n: BoneAttachment3D, w: Item) -> void:
