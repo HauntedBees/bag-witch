@@ -6,14 +6,14 @@
 script = ExtResource("1_lg2v6")
 projectile_path = "uid://b7tgst5mfxxfd"
 velocity = 90.0
-cooldown = 0.25
 damage_range = Vector2i(25, 35)
 name = "Handgun"
-equip_sprite_offset = Vector2i(3, 0)
 scene_path = "uid://bqq68u3ntgxfx"
+equip_sprite_offset = Vector2i(3, 0)
 equipped_animation = &"Handgun"
 use_animation = &"Handgun_Use"
 reload_animation = &"Handgun_Reload"
 reload_time = 0.5
 equipped_scale = 1.25
+usage_cooldown = 0.25
 metadata/_custom_type_script = "uid://dq216hufmeoo3"
