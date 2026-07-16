@@ -249,7 +249,6 @@ func _bake_item_positions() -> void:
 func _draw_spells() -> void:
 	for c in _spell_grid.get_children():
 		c.queue_free()
-	Player.data.refresh_spell_ammo() #TODO: THIS ISN'T GREAT. BUT ALSO WHATEVER.
 	var spells := Player.data.get_available_spells()
 	var i := 0
 	for y in 3:

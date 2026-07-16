@@ -48,9 +48,8 @@ func current_equipped_item() -> Item:
 
 func _on_item_removed(id: InventoryDetail) -> void:
 	var idx := equip_slots.find(id)
-	if idx < 0:
-		if current_equipped_item() == id.item:
-			Player.try_change_weapon(equip_slots.find(current_equipped))
+	if current_equipped_item() == id.item:
+		Player.try_change_weapon(equip_slots.find(current_equipped))
 		return
 	var alt: InventoryDetail = null
 	for potential_alt in inventory.items:
@@ -60,12 +59,12 @@ func _on_item_removed(id: InventoryDetail) -> void:
 	if alt != null:
 		equip_to_slot(alt, idx)
 	elif current_equipped_item() == id.item:
-		print("clearing slot %s" % idx)
-		equip_slots[idx] = null
-		Player.try_change_weapon(idx)
+		Player.try_change_weapon(equip_slots.find(current_equipped))
+		return
 
 func _on_item_added(id: InventoryDetail) -> void:
 	if id.item is Spellbook:
+		_set_spell_ammo(id.item)
 		_handle_spell_auto_equipping()
 		return
 	if id.item is Ammo: # force ammo refresh for UI
@@ -138,13 +137,9 @@ func equip_to_slot(id: InventoryDetail, slot: int) -> void:
 	equip_slots[slot] = id
 	#item.equip(slot)
 
-func refresh_spell_ammo() -> void:
-	for id in inventory.items:
-		var i := id.item
-		if i is Spellbook:
-			for s in i.spells:
-				if _spell_ammo_remaining.has(s):
-					_spell_ammo_remaining.erase(s)
+func _set_spell_ammo(i: Spellbook) -> void:
+	for s in i.spells:
+		_spell_ammo_remaining[s as Weapon] = s.spell_ammo
 
 func get_available_spells() -> Array[Weapon]:
 	var spells: Dictionary[String, Spell] = {}
@@ -171,9 +166,16 @@ func get_available_spells() -> Array[Weapon]:
 
 func use_spell_ammo(w: Weapon) -> int:
 	if !_spell_ammo_remaining.has(w):
-		_spell_ammo_remaining[w] = w.spell_ammo
+		return 0
 	_spell_ammo_remaining[w] -= 1
-	return _spell_ammo_remaining[w]
+	if _spell_ammo_remaining[w] > 0:
+		return _spell_ammo_remaining[w]
+	else:
+		_spell_ammo_remaining.erase(w)
+		return 0
+
+func has_spell(s: Spell) -> bool:
+	return inventory.has_spell(s) || _spell_ammo_remaining.has(s)
 
 func get_loaded_ammo(id: InventoryDetail) -> int:
 	var i: Item = id.item
@@ -184,8 +186,7 @@ func get_loaded_ammo(id: InventoryDetail) -> int:
 		elif _spell_ammo_remaining.has(w):
 			return _spell_ammo_remaining[w]
 		else:
-			_spell_ammo_remaining[w] = w.spell_ammo
-			return w.spell_ammo
+			return 0
 	elif i is ProjectileWeapon:
 		return id.ammo
 	else:
