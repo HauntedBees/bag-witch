@@ -41,7 +41,7 @@ func _init() -> void:
 	for i in inventory.items: # for the default items
 		_on_item_added(i)
 
-func current_weapon() -> Weapon:
+func current_equipped_item() -> Item:
 	if current_equipped == null:
 		return null
 	return current_equipped.item
@@ -49,7 +49,7 @@ func current_weapon() -> Weapon:
 func _on_item_removed(id: InventoryDetail) -> void:
 	var idx := equip_slots.find(id)
 	if idx < 0:
-		if current_weapon() == id.item:
+		if current_equipped_item() == id.item:
 			Player.try_change_weapon(equip_slots.find(current_equipped))
 		return
 	var alt: InventoryDetail = null
@@ -59,7 +59,7 @@ func _on_item_removed(id: InventoryDetail) -> void:
 			break
 	if alt != null:
 		equip_to_slot(alt, idx)
-	elif current_weapon() == id.item:
+	elif current_equipped_item() == id.item:
 		print("clearing slot %s" % idx)
 		equip_slots[idx] = null
 		Player.try_change_weapon(idx)

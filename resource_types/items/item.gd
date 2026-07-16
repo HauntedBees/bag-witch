@@ -1,5 +1,7 @@
 class_name Item extends Resource
 
+@export_category("Basic Details")
+
 ## The item's name.
 @export var name: String
 
@@ -12,9 +14,6 @@ class_name Item extends Resource
 ## If the item persists between warps.
 @export var persistent := false
 
-## The AltasTexture's offset for the equipped sprite (in spell_sheet.png)
-@export var equip_sprite_offset := Vector2i.ZERO
-
 ## The position and size of the item's icon in item_sheet.png to be used in the inventory grid.
 @export var icon := Rect2i(0, 0, 1, 1)
 
@@ -22,9 +21,13 @@ class_name Item extends Resource
 ## rotation and stuff properly, so the quick solution I've come up with is to *not* do that, and
 ## just make those items long, too, but rotated by default so they look tall. Brilliant.
 @export var rotated_by_default := false
-
 ## The path to the 3D scene; should be a WorldItem.
 @export_custom(SRP_HINT.RESOURCE_PATH, "PackedScene") var scene_path: String
+
+@export_category("Equipping")
+
+## The AltasTexture's offset for the equipped sprite (in spell_sheet.png)
+@export var equip_sprite_offset := Vector2i.ZERO
 
 ## Mostly for use by spells; when the item is equipped, this is used instead of the regular scene.
 @export_custom(SRP_HINT.RESOURCE_PATH, "PackedScene") var custom_equip_scene: String
@@ -49,6 +52,16 @@ class_name Item extends Resource
 
 ## When true, the equip scene will be on both hands.
 @export var both_hands := false
+
+## How long you must wait to use the item again.
+@export var usage_cooldown := 0.5
+
+func use(player: BogWitch) -> void:
+	Player.use_weapon(self)
+	_inner_use(player)
+
+func _inner_use(_player: BogWitch) -> void:
+	pass
 
 func can_be_combined(_me: InventoryDetail, _them: InventoryDetail) -> bool:
 	return false
