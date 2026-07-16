@@ -72,8 +72,6 @@ func _on_item_added(id: InventoryDetail) -> void:
 		if current_equipped != null:
 			Player.ammo_changed.emit(get_loaded_ammo(current_equipped))
 		return
-	if id.item is not Weapon:
-		return
 	var first_empty := -1
 	for i in equip_slots.size():
 		var e := equip_slots[i]
@@ -109,6 +107,9 @@ func get_spell_slot(spell: Item) -> int:
 
 func get_slot(item: InventoryDetail) -> int:
 	return equip_slots.find(item)
+
+func get_first_empty_slot() -> int:
+	return equip_slots.find(null)
 
 func equip_spell_to_slot(spell: Weapon, slot: int) -> void:
 	var spell_at_different_slot := -1

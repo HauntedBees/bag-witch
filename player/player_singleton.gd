@@ -11,8 +11,8 @@ var weapon_cooldown := 0.0:
 		weapon_cooldown = value
 		weapon_cooldown_changed.emit(value)
 
-func use_weapon(w: Weapon) -> void:
-	if w.is_spell:
+func use_weapon(w: Item) -> void:
+	if w is Weapon && w.is_spell:
 		var remaining_ammo := data.get_loaded_ammo(data.current_equipped)
 		if remaining_ammo < 0: # unlimited ammo, no action needed
 			return

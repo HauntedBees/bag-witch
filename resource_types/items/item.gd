@@ -58,7 +58,12 @@ class_name Item extends Resource
 
 func use(player: BogWitch) -> void:
 	Player.use_weapon(self)
+	if player.alt_hand_for_attack_anim && alt_use_animation != &"":
+		player.arms_overlay.arms.play_anim(alt_use_animation)
+	else:
+		player.arms_overlay.arms.play_anim(use_animation)
 	_inner_use(player)
+	player.alt_hand_for_attack_anim = !player.alt_hand_for_attack_anim
 
 func _inner_use(_player: BogWitch) -> void:
 	pass
