@@ -39,5 +39,4 @@ func _behave(delta: float) -> void:
 	next.y = _parent.global_position.y
 	if _parent.global_position.distance_to(next) > 1.0:
 		_parent.look_at(next)
-	_parent.move_and_slide()
 	_parent.animation_player.play(_run_anim)

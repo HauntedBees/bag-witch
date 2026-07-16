@@ -6,8 +6,8 @@
 [ext_resource type="Shader" uid="uid://cn14y06puco1s" path="res://assets/shaders/lava.gdshader" id="3_pdg7b"]
 [ext_resource type="Script" uid="uid://bn3r43bitaf3i" path="res://environment/point_collection.gd" id="5_xfttq"]
 [ext_resource type="Script" uid="uid://b7o0pdvrytkig" path="res://levels/enemy_spawner.gd" id="6_7xo41"]
-[ext_resource type="PackedScene" uid="uid://eq158w8w1hls" path="res://enemies/key_fire_smile.tscn" id="7_5rrxe"]
-[ext_resource type="PackedScene" uid="uid://j6ijx2yvkafq" path="res://enemies/fire_slime.tscn" id="8_5rrxe"]
+[ext_resource type="PackedScene" uid="uid://eq158w8w1hls" path="res://enemies/fire/key_fire_smile.tscn" id="7_5rrxe"]
+[ext_resource type="PackedScene" uid="uid://j6ijx2yvkafq" path="res://enemies/fire/fire_slime.tscn" id="8_5rrxe"]
 [ext_resource type="Script" uid="uid://lylfqtt7t8e6" path="res://levels/level_border.gd" id="9_80h6e"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_blw58"]
