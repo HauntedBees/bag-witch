@@ -39,6 +39,14 @@ die_anims = Array[StringName]([&"Attack"])
 [node name="lava_slime" parent="." unique_id=2093597872 instance=ExtResource("2_7rox6")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.6000141, 0)
 
+[node name="Skeleton3D" parent="lava_slime/Armature" parent_id_path=PackedInt32Array(2093597872, 1267118561) index="0" unique_id=148578676]
+bones/0/rotation = Quaternion(0.0048435284, -0.7102225, -0.0048780595, 0.7039438)
+bones/0/scale = Vector3(0.999341, 0.81955504, 1)
+bones/1/rotation = Quaternion(-0.26866978, -0.652638, -0.2711477, 0.6544915)
+bones/2/rotation = Quaternion(0.56404775, 0.42643893, 0.5640479, -0.4264389)
+bones/3/rotation = Quaternion(3.7822354e-10, -6.765614e-09, 0.07148261, 0.9974418)
+bones/4/rotation = Quaternion(0.5878755, -0.3930232, -0.5878206, -0.39294052)
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1136467649]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.62778544, 0)

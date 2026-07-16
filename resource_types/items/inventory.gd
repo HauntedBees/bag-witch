@@ -9,8 +9,6 @@ signal item_removed(i: InventoryDetail)
 
 @export var items: Array[InventoryDetail] = []
 
-@export var _items_list: Array[Item] = []
-
 func _init() -> void:
 	var broom := load("uid://dpgrb2fqcl3qn")
 	add_item(broom, Vector2i(2, 1), false)
@@ -18,11 +16,10 @@ func _init() -> void:
 	var book := load("uid://gloeqm86u5q")
 	add_item(book, Vector2i(0, 1), false)
 	var handgun := load("uid://bjf5fkot1fjp5")
-	add_item(handgun, Vector2i(0, 0), false)
+	add_item(handgun, Vector2i(1, 1), false)
 
 func remove_item(i: InventoryDetail) -> void:
 	items.erase(i)
-	_items_list.erase(i.item) # TODO: this might not play nice with things like ammo?
 	item_removed.emit(i)
 
 func add_item(i: Item, pos: Vector2i, trigger_signal := true) -> void:
@@ -30,7 +27,6 @@ func add_item(i: Item, pos: Vector2i, trigger_signal := true) -> void:
 
 func add_item_detail(new_item: InventoryDetail, trigger_signal := true) -> void:
 	items.append(new_item)
-	_items_list.append(new_item.item)
 	if trigger_signal:
 		item_added.emit(new_item)
 
@@ -73,9 +69,11 @@ func _get_occupied_positions() -> Array[Vector2i]: # for small arrays, array che
 	return used_tiles
 
 func has_spell(spell: Weapon) -> bool:
-	for i in _items_list:
-		if i is Spellbook:
-			for s in i.spells:
+	for id in items:
+		if id.item is Spellbook:
+			for s in id.item.spells:
 				if spell == s:
 					return true
+	if spell.is_spell:
+		print("ASS")
 	return false

@@ -42,7 +42,7 @@ func try_change_weapon(slot: int) -> void:
 
 func _is_weapon_valid(w: Item) -> bool:
 	if w is Weapon && w.is_spell:
-		return data.inventory.has_spell(w)
+		return data.has_spell(w)
 	for id in data.inventory.items:
 		if id.item == w:
 			return true
