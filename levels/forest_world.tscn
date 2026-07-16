@@ -2,6 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://bub2sh1fg5ddq" path="res://player/player_character_scene.tscn" id="1_a716o"]
 [ext_resource type="PackedScene" uid="uid://dvlp36d51nhql" path="res://assets/levels/forest.blend" id="1_b070o"]
+[ext_resource type="PackedScene" uid="uid://joundmvt7rfv" path="res://assets/levels/common/mountain1.blend" id="2_6dhd1"]
+[ext_resource type="PackedScene" uid="uid://5bg3vm8rli0i" path="res://levels/forest_world/forest_waterfall.tscn" id="3_kqbvp"]
 [ext_resource type="Script" uid="uid://lylfqtt7t8e6" path="res://levels/level_border.gd" id="3_l6ewq"]
 [ext_resource type="PackedScene" uid="uid://cwsoyn1remkbv" path="res://assets/models/environment/grass2.blend" id="4_l6ewq"]
 [ext_resource type="PackedScene" uid="uid://drq4lytfkk67o" path="res://assets/models/environment/grass1.blend" id="5_mh8nx"]
@@ -52,6 +54,12 @@ shadow_enabled = true
 navigation_mesh = SubResource("NavigationMesh_l6ewq")
 
 [node name="forest" parent="NavigationRegion3D" unique_id=1093650407 instance=ExtResource("1_b070o")]
+
+[node name="mountain1" parent="NavigationRegion3D" unique_id=966145884 instance=ExtResource("2_6dhd1")]
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 0.7102051, 1.9567363, -108.86052)
+
+[node name="ForestWaterfall" parent="NavigationRegion3D" unique_id=1072482673 instance=ExtResource("3_kqbvp")]
+transform = Transform3D(0.4840002, -8.033029e-10, -0.87506795, 3.9525921e-10, 1, -6.9937134e-10, 0.87506795, -7.3811035e-12, 0.4840002, -20.760849, 44.0083, -104.42281)
 
 [node name="PlayerCharacter" type="Node3D" parent="." unique_id=562138108]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.902285, 46.81786, 103.69531)
