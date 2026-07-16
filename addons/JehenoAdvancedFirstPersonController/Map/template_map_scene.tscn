@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://ctf1yf3optph8" path="res://addons/JehenoAdvancedFirstPersonController/Map/MovementModifiers/gravityZone/gravity_zone_scene.tscn" id="5_y6tot"]
 [ext_resource type="PackedScene" uid="uid://d4gavwq81shmv" path="res://addons/JehenoAdvancedFirstPersonController/Map/MovementModifiers/conveyorZone/conveyor_zone_scene.tscn" id="7_q4rg5"]
 [ext_resource type="PackedScene" uid="uid://ct3rwravhrwk1" path="res://addons/JehenoAdvancedFirstPersonController/Map/MovementModifiers/jumpPads/directionalJumpPad/directional_jump_pad_scene.tscn" id="8_q4rg5"]
-[ext_resource type="PackedScene" uid="uid://djtpn6s6cdlln" path="res://enemies/knight.tscn" id="9_s1bnp"]
+[ext_resource type="PackedScene" uid="uid://djtpn6s6cdlln" path="res://enemies/common/knight.tscn" id="9_s1bnp"]
 [ext_resource type="PackedScene" uid="uid://baaev0tc1par5" path="res://items/world/spellbook.tscn" id="10_8cawr"]
 [ext_resource type="PackedScene" uid="uid://ceg3otvwnm6o8" path="res://items/world/pistol_ammo.tscn" id="11_toqqt"]
 

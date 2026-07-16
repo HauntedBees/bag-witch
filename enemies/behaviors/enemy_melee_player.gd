@@ -14,11 +14,16 @@ var _in_animation := false
 func _setup_behavior() -> void:
 	if attack_anims.size() == 0:
 		attack_anims.append(Anim.SLASH)
-	close_enough_radius.body_entered.connect(_on_player_in_range)
-	close_enough_radius.body_exited.connect(_on_player_leave_range)
+	if close_enough_radius is VisionCone3D:
+		close_enough_radius.body_sighted.connect(_on_player_in_range)
+		close_enough_radius.body_hidden.connect(_on_player_leave_range)
+	else:
+		close_enough_radius.body_entered.connect(_on_player_in_range)
+		close_enough_radius.body_exited.connect(_on_player_leave_range)
 
 func _on_player_in_range(body: Node3D) -> void:
 	if body is BogWitch:
+		_parent.target = body
 		_is_in_range = true
 		take_control()
 

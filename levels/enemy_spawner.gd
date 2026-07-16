@@ -11,6 +11,7 @@ class_name EnemySpawner extends Node3D
 
 var _points: Array[Vector3]
 var _time_to_next_spawn_check := 0.0
+var _last_spawn_point := Vector3.ZERO
 
 func _ready() -> void:
 	_points = potential_spawn_points.get_points()
@@ -39,11 +40,16 @@ func _spawn_enemy() -> void:
 	if enemy_point_collection != null:
 		enemy.point_collection = enemy_point_collection
 	spawn_container.add_child(enemy)
-	enemy.global_position = _points.pick_random() + spawn_point_offset + Vector3(
+	var point := _last_spawn_point
+	while point == _last_spawn_point:
+		point = _points.pick_random()
+	_last_spawn_point = point
+	enemy.global_position = point + spawn_point_offset + Vector3(
 		randf_range(-2.0, 2.0),
 		0.0,
 		randf_range(-2.0, 2.0)
 	)
+	enemy.rotate_y(randf_range(-PI, PI))
 
 func _get_enemy_count() -> int:
 	var count := 0

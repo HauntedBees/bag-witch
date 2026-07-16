@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cta6ya8xmoo7j" path="res://assets/levels/ice/tyrone.blend" id="1_q5p1h"]
 [ext_resource type="Script" uid="uid://b7o0pdvrytkig" path="res://levels/enemy_spawner.gd" id="2_ux1p4"]
-[ext_resource type="PackedScene" uid="uid://cphjo0ynxtgmo" path="res://enemies/ice_golem.tscn" id="3_iranh"]
+[ext_resource type="PackedScene" uid="uid://cphjo0ynxtgmo" path="res://enemies/ice/ice_golem.tscn" id="3_iranh"]
 [ext_resource type="Script" uid="uid://bn3r43bitaf3i" path="res://environment/point_collection.gd" id="4_hky4b"]
 [ext_resource type="Script" uid="uid://ctno358dmapyd" path="res://levels/ice_world/stone_circle.gd" id="5_gghxb"]
 [ext_resource type="PackedScene" uid="uid://bjm0785j3dkt6" path="res://assets/levels/common/rock1.blend" id="5_iranh"]

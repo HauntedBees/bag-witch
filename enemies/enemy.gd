@@ -100,6 +100,9 @@ func _physics_process(delta: float) -> void:
 		if _effects[e] <= 0.0:
 			_effects.erase(e)
 	# TODO: handle knockback
+	if !is_on_floor():
+		velocity.y -= 5.0
+	move_and_slide()
 
 func take_specific_damage(damage_dealt: int) -> void:
 	if _health <= 0:

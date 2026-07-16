@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://eq158w8w1hls"]
 
-[ext_resource type="Script" uid="uid://c43mopu1jqdv0" path="res://enemies/types/lava_slime.gd" id="1_irxjj"]
+[ext_resource type="Script" uid="uid://c43mopu1jqdv0" path="res://enemies/fire/lava_slime.gd" id="1_irxjj"]
 [ext_resource type="PackedScene" uid="uid://ctlgvtilkqq0j" path="res://assets/models/enemies/lava_slime_key.blend" id="2_cfx7n"]
 [ext_resource type="Script" uid="uid://c7obdbhjgnuay" path="res://enemies/behaviors/enemy_chase_player.gd" id="4_kpmbw"]
 [ext_resource type="Script" uid="uid://b2ldfj5ngv3ch" path="res://enemies/behaviors/enemy_melee_player.gd" id="5_iofec"]

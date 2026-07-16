@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c4ppwp0w8rjpq" path="res://assets/levels/ice/ice_mountain_squart.blend" id="6_kxgis"]
 [ext_resource type="Script" uid="uid://bn3r43bitaf3i" path="res://environment/point_collection.gd" id="7_pm6l3"]
 [ext_resource type="Script" uid="uid://b7o0pdvrytkig" path="res://levels/enemy_spawner.gd" id="8_hso2e"]
-[ext_resource type="PackedScene" uid="uid://cphjo0ynxtgmo" path="res://enemies/ice_golem.tscn" id="9_ipkyn"]
+[ext_resource type="PackedScene" uid="uid://cphjo0ynxtgmo" path="res://enemies/ice/ice_golem.tscn" id="9_ipkyn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kxgis"]
 size = Vector3(64.847, 10, 28.856)
