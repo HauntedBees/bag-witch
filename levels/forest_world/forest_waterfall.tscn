@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://5bg3vm8rli0i"]
+
+[ext_resource type="Script" uid="uid://d1w67o4ehuvpo" path="res://levels/ice_world/fermanagh_waterfall.gd" id="1_xddf5"]
+[ext_resource type="PackedScene" uid="uid://cymavsltcf3n7" path="res://assets/levels/common/waterfall_base.blend" id="2_y2bdg"]
+[ext_resource type="Material" uid="uid://dsgjuot0c2n6e" path="res://levels/ice_world/waterfall.tres" id="3_8qm0a"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rhbnc"]
+size = Vector3(22.983013, 41.719925, 5.536194)
+
+[node name="ForestWaterfall" type="Node3D" unique_id=1072482673]
+script = ExtResource("1_xddf5")
+frozen = false
+
+[node name="waterfall_base" parent="." unique_id=916121240 instance=ExtResource("2_y2bdg")]
+transform = Transform3D(-4.371139e-08, 0, 10, 0, 8, 0, -1, 0, -4.371139e-07, 0, 0, 0)
+
+[node name="falls_layer_0" parent="waterfall_base" index="0" unique_id=1028123365]
+surface_material_override/0 = ExtResource("3_8qm0a")
+
+[node name="falls_break_top_a" parent="waterfall_base" index="1" unique_id=1673753484]
+visible = false
+
+[node name="falls_break_bottom_a" parent="waterfall_base" index="2" unique_id=1057336818]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1862875134]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=322995865]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.50110054, -21.097878, 1.3934021)
+shape = SubResource("BoxShape3D_rhbnc")
+disabled = true
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1438134]
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1899264257]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.50110054, -20.894508, 1.3934021)
+shape = SubResource("BoxShape3D_rhbnc")
+
+[editable path="waterfall_base"]
