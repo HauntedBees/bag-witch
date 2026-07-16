@@ -1,7 +1,5 @@
 class_name Weapon extends Item
 
-@export var cooldown := 0.5
-
 ## If this weapon is a spell.
 @export var is_spell := false
 
@@ -19,10 +17,3 @@ class_name Weapon extends Item
 
 ## Various metadata properties can be increased by this attack.
 @export var metadata_increase_ranges: Dictionary[BWEnum.Effect, Vector2] = {}
-
-func use(player: BogWitch) -> void:
-	Player.use_weapon(self)
-	_inner_use(player)
-
-func _inner_use(_player: BogWitch) -> void:
-	pass

@@ -1,4 +1,4 @@
-class_name ProjectileWeapon extends Weapon
+class_name ProjectileWeapon extends ReloadableItem
 
 ## The path to the projectile's scene.
 @export_custom(SRP_HINT.RESOURCE_PATH, "PackedScene") var projectile_path: String
@@ -11,12 +11,6 @@ class_name ProjectileWeapon extends Weapon
 
 ## How long it takes for the projectile to go away if it never hits anything.
 @export var fade_time := 5.0
-
-## The amount of ammo a random weapon might have when you first pick it up.
-@export var initial_ammo_range := Vector2i(0, 6)
-
-## How much a fully loaded weapon can hold.
-@export var full_clip_size := 6
 
 var _cached_scene: PackedScene = null
 

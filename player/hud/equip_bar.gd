@@ -30,7 +30,7 @@ func _on_equip_changed(id: InventoryDetail) -> void:
 	_equip_icon.visible = true
 	_equip_icon.spell = w
 	_cooldown_bar.visible = true
-	_cooldown_bar.max_value = w.cooldown * _COOLDOWN_MULT
+	_cooldown_bar.max_value = w.usage_cooldown * _COOLDOWN_MULT
 	_cooldown_bar.value = _cooldown_bar.max_value
 	var ammo := Player.data.get_loaded_ammo(id)
 	if ammo < 0:
@@ -46,4 +46,4 @@ func _on_item_changed(_i: InventoryDetail) -> void:
 
 func _on_ammo_changed(new_amount: int) -> void:
 	_current_amount.text = str(new_amount)
-	_remaining_amount.text = "/%d" % Player.data.get_remaining_ammo(Player.data.current_weapon())
+	_remaining_amount.text = "/%d" % Player.data.get_remaining_ammo(Player.data.current_equipped_item())

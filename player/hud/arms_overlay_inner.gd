@@ -13,7 +13,7 @@ func _ready() -> void:
 func reset_idle() -> void:
 	_bag.visible = false
 	set_suck.emit(false)
-	var w: Weapon = Player.data.current_weapon()
+	var w: Item = Player.data.current_equipped_item()
 	if w == null || w.equipped_animation == "":
 		_anim.play(&"Idle")
 	else:

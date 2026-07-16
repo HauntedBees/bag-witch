@@ -103,7 +103,7 @@ func is_on_broom() -> bool:
 	return state_machine.curr_state_name == "Glide"
 
 func _on_jump_state_jumped() -> void:
-	if Player.data.current_equipped == null || Player.data.current_weapon() is not Broom:
+	if Player.data.current_equipped == null || Player.data.current_equipped_item() is not Broom:
 		return
 	var vel := velocity
 	vel.y = 0.0
@@ -152,7 +152,7 @@ func _try_reload(event: InputEvent) -> bool:
 		return false
 	if !GASInput.is_event_action_just_pressed(event, &"reload"):
 		return false
-	var w := Player.data.current_weapon()
+	var w := Player.data.current_equipped_item()
 	if w == null || w.reload_time <= 0.0:
 		return false
 	if w is not ProjectileWeapon:
@@ -285,7 +285,7 @@ func _try_switch_weapon(event: InputEvent) -> bool:
 			Player.try_change_weapon(i)
 			current_weapon_metadata.clear()
 			ready_to_glide = false
-			print("current weapon is %s" % Player.data.current_weapon())
+			print("current weapon is %s" % Player.data.current_equipped_item())
 			Player.weapon_cooldown = 0.0
 			alt_hand_for_attack_anim = false
 			return true
@@ -300,8 +300,9 @@ func _handle_attack(delta: float) -> void:
 		return
 	if Player.data.get_loaded_ammo(Player.data.current_equipped) == 0:
 		return
-	Player.data.current_weapon().use(self)
-	Player.weapon_cooldown = Player.data.current_weapon().cooldown
+	var item := Player.data.current_equipped_item()
+	item.use(self)
+	Player.weapon_cooldown = item.usage_cooldown
 
 func get_projectile_launch_point(left_hand: bool) -> Vector3:
 	if left_hand:
