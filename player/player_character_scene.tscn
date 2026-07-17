@@ -193,16 +193,16 @@ far = 1000.0
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.715, 0)
 exclude_parent = false
-target_position = Vector3(1, 0, 0)
-collision_mask = 4
+target_position = Vector3(1.5, 0, 0)
+collision_mask = 7
 debug_shape_custom_color = Color(0.91764706, 0.79607844, 0.18039216, 1)
 
 [node name="RightWallCheck" type="RayCast3D" parent="CameraHolder/Camera/CameraBasedRaycasts" unique_id=70951798]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.715, 0)
 exclude_parent = false
-target_position = Vector3(-1, 0, 0)
-collision_mask = 4
+target_position = Vector3(-1.5, 0, 0)
+collision_mask = 7
 debug_shape_custom_color = Color(0.91764706, 0.79607844, 0.18039216, 1)
 
 [node name="FrontCheck" type="RayCast3D" parent="CameraHolder/Camera/CameraBasedRaycasts" unique_id=2105455808]

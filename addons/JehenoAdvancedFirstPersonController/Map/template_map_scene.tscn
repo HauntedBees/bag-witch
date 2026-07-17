@@ -65,6 +65,7 @@ shadow_enabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.7646, 1.50542, -19.959)
 
 [node name="PlayerCharacter" parent="PlayerCharacter" unique_id=1631114635 instance=ExtResource("1_fuglf")]
+infinite_wallrun_time = true
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1797039715]
 navigation_mesh = SubResource("NavigationMesh_rhbnc")

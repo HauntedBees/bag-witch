@@ -12,15 +12,15 @@ script = ExtResource("1_xddf5")
 frozen = false
 
 [node name="waterfall_base" parent="." unique_id=916121240 instance=ExtResource("2_y2bdg")]
-transform = Transform3D(-4.371139e-08, 0, 10, 0, 8, 0, -1, 0, -4.371139e-07, 0, 0, 0)
+transform = Transform3D(-4.371139e-08, 0, 12, 0, 8, 0, -1, 0, -5.2453663e-07, 0, 0, 0)
 
 [node name="falls_layer_0" parent="waterfall_base" index="0" unique_id=1028123365]
 surface_material_override/0 = ExtResource("3_8qm0a")
 
-[node name="falls_break_top_a" parent="waterfall_base" index="1" unique_id=1673753484]
+[node name="falls_break_top_b" parent="waterfall_base" index="3" unique_id=1748047819]
 visible = false
 
-[node name="falls_break_bottom_a" parent="waterfall_base" index="2" unique_id=1057336818]
+[node name="falls_break_bottom_b" parent="waterfall_base" index="4" unique_id=168832748]
 visible = false
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1862875134]

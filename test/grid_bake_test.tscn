@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://dxfwbg0rce5hx"]
+
+[ext_resource type="MeshLibrary" uid="uid://ch757jk85l1mm" path="res://assets/levels/castle/gridmap.blend" id="1_6qa3j"]
+[ext_resource type="Script" uid="uid://bwc7becc4tx7h" path="res://levels/grid_mesh_baker.gd" id="1_wkcx4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rhbnc"]
+size = Vector3(10, 1, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6qa3j"]
+size = Vector3(12, 4, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2jx48"]
+size = Vector3(2, 4, 12)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lyabd"]
+size = Vector3(2, 4, 12)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8rnm3"]
+size = Vector3(8, 4, 2)
+
+[node name="StaticBody3D" type="StaticBody3D" unique_id=967498241]
+
+[node name="GridMap" type="GridMap" parent="." unique_id=738237912]
+mesh_library = ExtResource("1_6qa3j")
+cell_size = Vector3(4, 2, 4)
+data = {
+"cells": PackedInt32Array(65535, 65534, 655534, 0, 65534, 655534, 1, 65535, 1048750, 1, 0, 1048750, 65534, 65535, 1048750, 65534, 0, 1048750, 65535, 1, 174, 0, 1, 174, 65534, 1, 655540, 1, 1, 1441972, 1, 65534, 180, 65534, 65534, 1048756)
+}
+script = ExtResource("1_wkcx4")
+
+[node name="Floor" type="CollisionShape3D" parent="." unique_id=844306199]
+visible = false
+shape = SubResource("BoxShape3D_rhbnc")
+
+[node name="WallCollider0" type="CollisionShape3D" parent="." unique_id=1298122131]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+shape = SubResource("BoxShape3D_6qa3j")
+
+[node name="WallCollider1" type="CollisionShape3D" parent="." unique_id=1764209867]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
+shape = SubResource("BoxShape3D_2jx48")
+
+[node name="WallCollider2" type="CollisionShape3D" parent="." unique_id=1062867619]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+shape = SubResource("BoxShape3D_lyabd")
+
+[node name="WallCollider3" type="CollisionShape3D" parent="." unique_id=1685727500]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 6)
+shape = SubResource("BoxShape3D_8rnm3")
