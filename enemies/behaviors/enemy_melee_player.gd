@@ -23,12 +23,14 @@ func _setup_behavior() -> void:
 
 func _on_player_in_range(body: Node3D) -> void:
 	if body is BogWitch:
+		print("I SEE YOU")
 		_parent.target = body
 		_is_in_range = true
 		take_control()
 
 func _on_player_leave_range(body: Node3D) -> void:
 	if body is BogWitch:
+		print("NO I DON'T")
 		_is_in_range = false
 		if !_in_animation:
 			_relinquish_control()

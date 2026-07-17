@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://dkgap8kw2cyfc"]
+
+[ext_resource type="PackedScene" uid="uid://b2p0awuk5dulw" path="res://levels/castle_world/second_floor.tscn" id="1_ti3ln"]
+[ext_resource type="PackedScene" uid="uid://dprn200wgi85p" path="res://levels/castle_world/first_floor.tscn" id="2_gn5m0"]
+[ext_resource type="PackedScene" uid="uid://bub2sh1fg5ddq" path="res://player/player_character_scene.tscn" id="2_jhs48"]
+[ext_resource type="PackedScene" uid="uid://bneb8643crrt0" path="res://levels/castle_world/basement.tscn" id="3_y1m4q"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jhs48"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_43bpn"]
+sky_material = SubResource("ProceduralSkyMaterial_jhs48")
+
+[sub_resource type="Environment" id="Environment_ro2ft"]
+background_mode = 2
+sky = SubResource("Sky_43bpn")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="castle" type="Node3D" unique_id=339208180]
+
+[node name="Environment" type="Node3D" parent="." unique_id=1746693509]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment" unique_id=1865116465]
+environment = SubResource("Environment_ro2ft")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment" unique_id=1904707037]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 8.470518, 0)
+
+[node name="SecondFloor" parent="." unique_id=1076509311 instance=ExtResource("1_ti3ln")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
+
+[node name="FirstFloor" parent="." unique_id=1771725875 instance=ExtResource("2_gn5m0")]
+
+[node name="Basement" parent="." unique_id=1603193162 instance=ExtResource("3_y1m4q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -12, 0)
+
+[node name="PlayerCharacter" parent="." unique_id=1631114635 instance=ExtResource("2_jhs48")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.9769096, -1.2624178)
+visible = false

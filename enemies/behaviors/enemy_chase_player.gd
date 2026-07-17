@@ -36,12 +36,14 @@ func _on_player_sighted(body: Node3D) -> void:
 	if _parent.is_dead():
 		return
 	if body is BogWitch:
+		print("I SEE YOU")
 		_can_see_player = true
 		_parent.target = body
 		take_control()
 
 func _on_player_lost(body: Node3D) -> void:
 	if body is BogWitch:
+		print("LOST YOU")
 		_can_see_player = false
 		_time_to_give_up = give_up_time
 

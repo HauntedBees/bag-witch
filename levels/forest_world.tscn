@@ -59,7 +59,7 @@ navigation_mesh = SubResource("NavigationMesh_l6ewq")
 transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 0.7102051, 1.9567363, -108.86052)
 
 [node name="ForestWaterfall" parent="NavigationRegion3D" unique_id=1072482673 instance=ExtResource("3_kqbvp")]
-transform = Transform3D(0.4840002, -8.033029e-10, -0.87506795, 3.9525921e-10, 1, -6.9937134e-10, 0.87506795, -7.3811035e-12, 0.4840002, -20.760849, 44.0083, -104.42281)
+transform = Transform3D(0.4840002, -8.033029e-10, -0.87506795, 3.9525921e-10, 1, -6.9937134e-10, 0.87506795, -7.3811035e-12, 0.4840002, -23.69934, 44.0083, -103.83602)
 
 [node name="PlayerCharacter" type="Node3D" parent="." unique_id=562138108]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.902285, 46.81786, 103.69531)
