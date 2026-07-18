@@ -22,6 +22,8 @@ func _setup_behavior() -> void:
 		close_enough_radius.body_exited.connect(_on_player_leave_range)
 
 func _on_player_in_range(body: Node3D) -> void:
+	if _parent.is_dead():
+		return
 	if body is BogWitch:
 		print("I SEE YOU")
 		_parent.target = body
@@ -29,6 +31,8 @@ func _on_player_in_range(body: Node3D) -> void:
 		take_control()
 
 func _on_player_leave_range(body: Node3D) -> void:
+	if _parent.is_dead():
+		return
 	if body is BogWitch:
 		print("NO I DON'T")
 		_is_in_range = false

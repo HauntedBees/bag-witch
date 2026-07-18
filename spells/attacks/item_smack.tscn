@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://clws3ydptj3xx"]
+
+[ext_resource type="Script" uid="uid://epwdyh122srk" path="res://spells/attacks/player_attack.gd" id="1_thisx"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_a5iuo"]
+radius = 2.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_ss2fu"]
+
+[sub_resource type="Animation" id="Animation_thisx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Origin:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 2.0943952, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ss2fu"]
+resource_name = "Smack"
+length = 0.5
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Origin:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-1.5707964, 0, 0), Vector3(-3.1415927, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a5iuo"]
+_data = {
+&"RESET": SubResource("Animation_thisx"),
+&"Smack": SubResource("Animation_ss2fu")
+}
+
+[node name="ItemSmack" type="Node3D" unique_id=352125124 node_paths=PackedStringArray("area", "anim")]
+script = ExtResource("1_thisx")
+area = NodePath("Origin/Area3D")
+anim = NodePath("AnimationPlayer")
+knockback = 10.0
+take_knockback_and_damage_from_item = true
+
+[node name="Origin" type="Node3D" parent="." unique_id=1486040762]
+transform = Transform3D(-0.50000006, 0, 0.8660254, 0, 1, 0, -0.8660254, 0, -0.50000006, 0, 0, 0)
+
+[node name="Area3D" type="Area3D" parent="Origin" unique_id=1548538595]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -1.1920932e-07, 0, 3.3125405)
+collision_mask = 10
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Origin/Area3D" unique_id=179033265]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 2.3841858e-07, 0, -0.31024742)
+shape = SubResource("SphereShape3D_a5iuo")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Origin" unique_id=74856151]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -2.0691328e-07, 0, 2.8817568)
+visible = false
+mesh = SubResource("SphereMesh_ss2fu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1498842094]
+libraries/ = SubResource("AnimationLibrary_a5iuo")
+autoplay = &"Smack"
