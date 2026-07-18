@@ -107,7 +107,7 @@ alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 texture = SubResource("AtlasTexture_tik17")
-action_name = "use"
+action_name = &"use"
 
 [node name="ItemName" type="Label" parent="CenterContainer/MarginContainer/HBoxContainer" unique_id=1059708048]
 unique_name_in_owner = true
@@ -145,10 +145,12 @@ texture = SubResource("AtlasTexture_rhbnc")
 stretch_mode = 4
 
 [node name="TopLeftMiddle" type="TextureRect" parent="CenterContainer2/Selection/Top" unique_id=2076337462]
+custom_minimum_size = Vector2(1, 16)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 texture = SubResource("AtlasTexture_wl5c5")
+expand_mode = 1
 
 [node name="TopCenter" type="TextureRect" parent="CenterContainer2/Selection/Top" unique_id=983499456]
 layout_mode = 2
@@ -157,10 +159,12 @@ size_flags_vertical = 0
 texture = SubResource("AtlasTexture_bl386")
 
 [node name="TopRightMiddle" type="TextureRect" parent="CenterContainer2/Selection/Top" unique_id=2105638341]
+custom_minimum_size = Vector2(1, 44)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 texture = SubResource("AtlasTexture_ydryu")
+expand_mode = 1
 
 [node name="TopRightCorner" type="TextureRect" parent="CenterContainer2/Selection/Top" unique_id=2140480248]
 layout_mode = 2
@@ -206,10 +210,12 @@ texture = SubResource("AtlasTexture_n7721")
 stretch_mode = 4
 
 [node name="BottomLeftMiddle" type="TextureRect" parent="CenterContainer2/Selection/Bottom" unique_id=1806559239]
+custom_minimum_size = Vector2(1, 44)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 8
 texture = SubResource("AtlasTexture_yp5x5")
+expand_mode = 1
 
 [node name="BottomCenter" type="TextureRect" parent="CenterContainer2/Selection/Bottom" unique_id=2143239508]
 layout_mode = 2
@@ -219,10 +225,12 @@ texture = SubResource("AtlasTexture_5ugs8")
 stretch_mode = 4
 
 [node name="BottomRightMiddle" type="TextureRect" parent="CenterContainer2/Selection/Bottom" unique_id=446147060]
+custom_minimum_size = Vector2(1, 44)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 8
 texture = SubResource("AtlasTexture_5rog3")
+expand_mode = 1
 
 [node name="BottomRightCorner" type="TextureRect" parent="CenterContainer2/Selection/Bottom" unique_id=749934895]
 layout_mode = 2

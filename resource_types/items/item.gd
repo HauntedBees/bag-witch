@@ -26,6 +26,9 @@ class_name Item extends Resource
 
 @export_category("Equipping")
 
+## The maximum distance from an enemy the player must be for the Item Select to show up.
+@export_range(0.0, 30.0) var use_range := 1.0
+
 ## The AltasTexture's offset for the equipped sprite (in spell_sheet.png)
 @export var equip_sprite_offset := Vector2i.ZERO
 
