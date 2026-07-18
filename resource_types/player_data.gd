@@ -3,7 +3,7 @@ class_name PlayerData extends Resource
 signal health_changed(new_health: int)
 signal stat_changed()
 
-var mind := 1:
+var mind := 2:
 	set(value):
 		mind = value
 		stat_changed.emit()

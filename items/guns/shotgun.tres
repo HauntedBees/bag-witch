@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="ProjectileWeapon" format=3 uid="uid://dmbcf5wgvngv2"]
+
+[ext_resource type="Script" uid="uid://dq216hufmeoo3" path="res://resource_types/weapons/projectile_weapon.gd" id="1_2gy28"]
+
+[resource]
+script = ExtResource("1_2gy28")
+projectile_path = "uid://b7tgst5mfxxfd"
+velocity = 80.0
+fade_time = 0.1
+initial_ammo_range = Vector2i(0, 2)
+full_clip_size = 2
+damage_range = Vector2i(50, 60)
+knockback = 20.0
+additional_y_knockback = 20.0
+name = "Shotgun"
+description = "It goes boom boom."
+size = Vector2i(4, 2)
+icon = Rect2i(4, 0, 4, 2)
+scene_path = "uid://fiol38q8nvyr"
+use_range = 9.8
+equip_sprite_offset = Vector2i(6, 0)
+equipped_animation = &"Shotgun"
+use_animation = &"Shotgun_Use"
+reload_animation = &"Shotgun_Reload"
+reload_time = 2.0
+equipped_scale = 3.0
+metadata/_custom_type_script = "uid://dq216hufmeoo3"
