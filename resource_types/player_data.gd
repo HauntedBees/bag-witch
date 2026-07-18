@@ -33,7 +33,8 @@ var max_health := 100
 
 var completed_quests: Array[StringName] = [&"FromBog"]
 
-var _spell_ammo_remaining: Dictionary[Weapon, int] = {}
+var _remembered_spell: Spell
+var _remembered_spell_ammo := 0
 
 func _init() -> void:
 	inventory.item_added.connect(_on_item_added)
@@ -45,11 +46,18 @@ func _init() -> void:
 		_on_item_added(i)
 
 func portal_wipe() -> void:
-	var current_spell := current_equipped_item()
-	for k: Weapon in _spell_ammo_remaining.keys():
-		if k != current_spell:
-			_spell_ammo_remaining.erase(k)
+	_retain_current_spell()
 	inventory.clear_all_but_equipped() # do this second because it emits "item_purged" signal
+
+func _retain_current_spell() -> void:
+	var current_spell := current_equipped_item()
+	if current_spell != null && current_spell is Spell:
+		_remembered_spell = current_spell
+		var mult := 1
+		match mind:
+			2: mult = 2
+			3: mult = 4
+		_remembered_spell_ammo = _remembered_spell.spell_ammo * mult
 
 func current_equipped_item() -> Item:
 	if current_equipped == null:
@@ -57,6 +65,7 @@ func current_equipped_item() -> Item:
 	return current_equipped.item
 
 func _on_item_removed(id: InventoryDetail) -> void:
+	_retain_current_spell()
 	var idx := equip_slots.find(id)
 	if current_equipped_item() == id.item:
 		Player.try_change_weapon(equip_slots.find(current_equipped))
@@ -87,7 +96,6 @@ func _on_items_purged() -> void:
 
 func _on_item_added(id: InventoryDetail) -> void:
 	if id.item is Spellbook:
-		_set_spell_ammo(id.item)
 		_handle_spell_auto_equipping()
 		return
 	if id.item is Ammo: # force ammo refresh for UI
@@ -160,10 +168,6 @@ func equip_to_slot(id: InventoryDetail, slot: int) -> void:
 	equip_slots[slot] = id
 	#item.equip(slot)
 
-func _set_spell_ammo(i: Spellbook) -> void:
-	for s in i.spells:
-		_spell_ammo_remaining[s as Weapon] = s.spell_ammo
-
 func get_available_spells() -> Array[Weapon]:
 	var spells: Dictionary[String, Spell] = {}
 	for id in inventory.items:
@@ -177,28 +181,23 @@ func get_available_spells() -> Array[Weapon]:
 				spells[s.category] = s
 			elif s.magic_level_requirement > spells[s.category].magic_level_requirement:
 				spells[s.category] = s
-	for r: Weapon in _spell_ammo_remaining.keys():
-		if r is Spell:
-			if !spells.has(r.category):
-				spells[r.category] = r
-			elif r.magic_level_requirement > spells[r.category].magic_level_requirement:
-				spells[r.category] = r
+	if _remembered_spell != null:
+		if !spells.has(_remembered_spell.category):
+			spells[_remembered_spell.category] = _remembered_spell
+		elif _remembered_spell.magic_level_requirement > spells[_remembered_spell.category].magic_level_requirement:
+			spells[_remembered_spell.category] = _remembered_spell
 	var w: Array[Weapon] = []
 	w.append_array(spells.values())
 	return w
 
 func use_spell_ammo(w: Weapon) -> int:
-	if !_spell_ammo_remaining.has(w):
+	if _remembered_spell != w:
 		return 0
-	_spell_ammo_remaining[w] -= 1
-	if _spell_ammo_remaining[w] > 0:
-		return _spell_ammo_remaining[w]
-	else:
-		_spell_ammo_remaining.erase(w)
-		return 0
+	_remembered_spell_ammo -= 1
+	return _remembered_spell_ammo
 
 func has_spell(s: Spell) -> bool:
-	return inventory.has_spell_in_inventory(s) || _spell_ammo_remaining.has(s)
+	return inventory.has_spell_in_inventory(s) || _remembered_spell == s
 
 func get_loaded_ammo(id: InventoryDetail) -> int:
 	var i: Item = id.item
@@ -206,8 +205,8 @@ func get_loaded_ammo(id: InventoryDetail) -> int:
 		var w: Weapon = i
 		if inventory.has_spell_in_inventory(w):
 			return -1
-		elif _spell_ammo_remaining.has(w):
-			return _spell_ammo_remaining[w]
+		elif _remembered_spell == w:
+			return _remembered_spell_ammo
 		else:
 			return 0
 	elif i is ProjectileWeapon:
