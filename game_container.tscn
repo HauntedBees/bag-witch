@@ -12,7 +12,7 @@ script = ExtResource("1_likpg")
 [node name="PlayerCharacter" parent="." unique_id=1631114635 instance=ExtResource("2_ge4kj")]
 unique_name_in_owner = true
 process_mode = 1
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+transform = Transform3D(0.8048213, 0, -0.5935173, 0, 1, 0, 0.5935173, 0, 0.8048213, 3.652071, 6, 21.55748)
 
 [node name="WarpEffect" parent="." unique_id=1405409781 instance=ExtResource("3_aq3js")]
 unique_name_in_owner = true

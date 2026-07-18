@@ -22,6 +22,16 @@ func _init() -> void:
 func portal_wipe(even_persistent := false) -> void:
 	for idx in range(items.size() - 1, -1, -1):
 		var id := items[idx]
+		if safe_tiles.has(id.position): # don't bother checking unless at least the top is there
+			if id.item.size == Vector2i(1, 1):
+				continue
+			var my_safe_tiles := 0
+			var all_tiles := id.get_positions(id.position)
+			for t in all_tiles:
+				if safe_tiles.has(t):
+					my_safe_tiles += 1
+			if my_safe_tiles == all_tiles.size():
+				continue
 		if even_persistent || !id.item.persistent:
 			print("wiping %s" % id.item.name)
 			items.remove_at(idx)
