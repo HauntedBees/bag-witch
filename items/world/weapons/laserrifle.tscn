@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://d2toblm6xjhdq"]
+
+[ext_resource type="Script" uid="uid://b66jl5gw8dewc" path="res://items/world/world_item.gd" id="1_dx8ir"]
+[ext_resource type="Resource" uid="uid://d0pwkx5e5ntr4" path="res://items/guns/laser_rifle.tres" id="2_dx8ir"]
+[ext_resource type="PackedScene" uid="uid://b6udt5l2xtcco" path="res://assets/models/weapons/laser_gun.blend" id="3_dx8ir"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rhbnc"]
+size = Vector3(1, 0.68466187, 1.8348846)
+
+[node name="LaserRifle" type="Area3D" unique_id=458796508 node_paths=PackedStringArray("collider")]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_dx8ir")
+item = ExtResource("2_dx8ir")
+collider = NodePath("CollisionShape3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1439180978]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.07380676, 0.3297615)
+shape = SubResource("BoxShape3D_rhbnc")
+
+[node name="laser_gun" parent="." unique_id=138838807 instance=ExtResource("3_dx8ir")]
