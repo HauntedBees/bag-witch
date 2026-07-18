@@ -7,11 +7,15 @@ const _KEYS: Array[String] = [
 	"diehere",
 	"peacebro",
 	"whereami",
-	"panic"
+	"panic",
+	"rock"
 ]
 
 @export var queen: Node3D
 @export var queen_anim: AnimationPlayer
+@export var trigger_one: Area3D
+@export var guard: EnemyDisplay
+@export var blocking_wall: StaticBody3D
 
 var _state := 0
 
@@ -26,6 +30,8 @@ func _init_cutscene() -> void:
 	SignalBus.say_thing.emit("Queen Perpetua III", "Yonder portal should have aged thee by a century... Nay, I suppose thou dost not appear a day over 600! Ha ha!", _KEYS[2])
 	SignalBus.say_thing.emit("Queen Perpetua III", "No matter, thou shalt endure the remaining 600 in this prison.", _KEYS[3])
 	SignalBus.say_thing.emit("Queen Perpetua III", "God be with you, traveler!", _KEYS[4])
+	trigger_one.body_entered.connect(_on_trigger_one_entered)
+	guard.on_died.connect(_on_enemy_died)
 
 func _additional_cleanup() -> void:
 	Player.input_locked = false
@@ -58,3 +64,14 @@ func _on_text_ended() -> void:
 			SignalBus.say_thing.emit("Bag Witch", "What happened...? I can barely remember anything! What happened to all of my things?! My bag is empty!!", _KEYS[5])
 			SignalBus.say_thing.emit("Bag Witch", "This is bad... I need to find a way out of here!", _KEYS[6])
 			_state += 1
+
+func _on_trigger_one_entered(body: Node3D) -> void:
+	if body is not BogWitch:
+		return
+	SignalBus.say_thing.emit("Bag Witch", "I need to get past that guard... Maybe I can smack him with this rock while he's not looking!", _KEYS[7])
+	SignalBus.say_thing.emit("Bag Witch", "I can equip it with [input=weapon_slot_1] and attack with [input=attack].", "")
+
+func _on_enemy_died() -> void:
+	blocking_wall.queue_free()
+	SignalBus.say_thing.emit("Bag Witch", "Okay... the coast is clear now. I need to find another one of those portals and get out of here.", "")
+	Player.complete_quest(completed_key)

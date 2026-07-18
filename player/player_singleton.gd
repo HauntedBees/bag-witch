@@ -34,6 +34,9 @@ func take_damage(amount: int) -> void:
 func has_completed(quest: StringName) -> bool:
 	return data.completed_quests.has(quest)
 
+func complete_quest(quest: StringName) -> void:
+	data.completed_quests.append(quest)
+
 func try_change_weapon(slot: int) -> void:
 	weapon_cooldown = 0.0
 	if data.equip_slots.size() <= slot:
