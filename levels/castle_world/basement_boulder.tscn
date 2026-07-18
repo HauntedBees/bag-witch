@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://b6j67340mino7"]
+
+[ext_resource type="Script" uid="uid://b66jl5gw8dewc" path="res://items/world/world_item.gd" id="1_plnnx"]
+[ext_resource type="PackedScene" uid="uid://bibhq0y5pdvul" path="res://assets/levels/common/rock5.blend" id="1_thhbi"]
+[ext_resource type="Resource" uid="uid://didy3b67akl0n" path="res://items/fuckin_whatever/rock.tres" id="2_x24sf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rhbnc"]
+size = Vector3(2.5371094, 2.22406, 1.487793)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eeolf"]
+size = Vector3(8, 8, 2)
+
+[node name="BasementBoulder" type="Area3D" unique_id=1514677953 node_paths=PackedStringArray("collider")]
+collision_layer = 4
+script = ExtResource("1_plnnx")
+item = ExtResource("2_x24sf")
+collider = NodePath("CollisionShape3D")
+
+[node name="rock5" parent="." unique_id=634864392 instance=ExtResource("1_thhbi")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=449822990]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.009765625, 0.00015258789, 0.5969238)
+shape = SubResource("BoxShape3D_rhbnc")
+
+[node name="Wall" type="StaticBody3D" parent="." unique_id=1651895822]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall" unique_id=272827438]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.028320313, 0, 0)
+shape = SubResource("BoxShape3D_eeolf")

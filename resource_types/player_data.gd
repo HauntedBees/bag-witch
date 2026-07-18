@@ -31,11 +31,14 @@ var equip_slots: Array[InventoryDetail] = []
 var current_health := 100
 var max_health := 100
 
+var completed_quests: Array[StringName] = []
+
 var _spell_ammo_remaining: Dictionary[Weapon, int] = {}
 
 func _init() -> void:
 	inventory.item_added.connect(_on_item_added)
 	inventory.item_removed.connect(_on_item_removed)
+	inventory.items_purged.connect(_on_items_purged)
 	for i in 10:
 		equip_slots.append(null)
 	for i in inventory.items: # for the default items
@@ -61,6 +64,19 @@ func _on_item_removed(id: InventoryDetail) -> void:
 	elif current_equipped_item() == id.item:
 		Player.try_change_weapon(equip_slots.find(current_equipped))
 		return
+
+func _on_items_purged() -> void:
+	if current_equipped == null:
+		return
+	var idx := equip_slots.find(current_equipped)
+	var alt: InventoryDetail = null
+	for potential_alt in inventory.items:
+		if potential_alt.item == current_equipped.item:
+			alt = potential_alt
+			break
+	if alt != null:
+		equip_to_slot(alt, idx)
+	Player.try_change_weapon(equip_slots.find(current_equipped))
 
 func _on_item_added(id: InventoryDetail) -> void:
 	if id.item is Spellbook:
@@ -175,13 +191,13 @@ func use_spell_ammo(w: Weapon) -> int:
 		return 0
 
 func has_spell(s: Spell) -> bool:
-	return inventory.has_spell(s) || _spell_ammo_remaining.has(s)
+	return inventory.has_spell_in_inventory(s) || _spell_ammo_remaining.has(s)
 
 func get_loaded_ammo(id: InventoryDetail) -> int:
 	var i: Item = id.item
 	if i is Weapon && i.is_spell:
 		var w: Weapon = i
-		if inventory.has_spell(w):
+		if inventory.has_spell_in_inventory(w):
 			return -1
 		elif _spell_ammo_remaining.has(w):
 			return _spell_ammo_remaining[w]
@@ -195,7 +211,7 @@ func get_loaded_ammo(id: InventoryDetail) -> int:
 func get_remaining_ammo(w: Item) -> int:
 	if w is Weapon:
 		if w.is_spell:
-			if inventory.has_spell(w):
+			if inventory.has_spell_in_inventory(w):
 				return -1
 			else:
 				return 0

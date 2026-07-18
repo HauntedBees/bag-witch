@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://4xew5eee7k3a" path="res://assets/models/book.blend" id="2_kxga4"]
 [ext_resource type="PackedScene" uid="uid://ctlgvtilkqq0j" path="res://assets/models/enemies/lava_slime_key.blend" id="3_64tqg"]
 [ext_resource type="PackedScene" uid="uid://5mfo3873qvty" path="res://assets/models/enemies/lava_slime.blend" id="3_r0rjq"]
+[ext_resource type="PackedScene" uid="uid://bibhq0y5pdvul" path="res://assets/levels/common/rock5.blend" id="5_06n70"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eeolf"]
 shading_mode = 0
@@ -35,6 +36,9 @@ visible = false
 [node name="lava_slime" parent="ThingContainer" unique_id=571389064 instance=ExtResource("3_r0rjq")]
 transform = Transform3D(0.44418278, 0, -0.22956838, 0, 0.5, 0, 0.22956838, 0, 0.44418278, 0, -0.5259384, 0)
 visible = false
+
+[node name="rock5" parent="ThingContainer" unique_id=634864392 instance=ExtResource("5_06n70")]
+transform = Transform3D(0.5, 0, 0, 0, 0.3696465, -0.33669195, 0, 0.33669195, 0.3696465, 0, -0.25484884, 0.24344683)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=465674123]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.9159544)

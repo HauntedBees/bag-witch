@@ -22,6 +22,12 @@ var _queued_messages: Array[QueuedMessage] = []
 @onready var _body: GASLabel = %Body
 @onready var _message_waiting: TextureRect = %MessageWaiting
 
+func _ready() -> void:
+	SignalBus.say_thing.connect(_say_words_from_signal)
+
+func _say_words_from_signal(speaker: String, text: String, id: String) -> void:
+	say_words(speaker, text, 1, TextPriority.AlwaysQueueAfterCurrent, id)
+
 func say_words(speaker: String, text: String, priority := 0, action := TextPriority.QueueIfLessImportantReplaceOtherwise, id := "") -> void:
 	if _is_active:
 		match action:
@@ -66,8 +72,10 @@ func _input(event: InputEvent) -> void:
 			_is_active = false
 			if _queued_messages.size() == 0:
 				visible = false
+				SignalBus.text_ended.emit()
 			else:
 				var next: QueuedMessage = _queued_messages.pop_front()
+				SignalBus.text_advanced.emit(next.id)
 				say_words(next.speaker, next.text)
 		else:
 			_body.visible_ratio = 1.0

@@ -1,0 +1,161 @@
+[gd_scene format=3 uid="uid://ssp37cocp7km"]
+
+[ext_resource type="PackedScene" uid="uid://dj8xd4a0a701g" path="res://assets/levels/bog.blend" id="1_vjnvp"]
+[ext_resource type="Shader" uid="uid://csejch1iajbr4" path="res://assets/shaders/bog_water.gdshader" id="3_85nrh"]
+[ext_resource type="PackedScene" uid="uid://p2igx7geifib" path="res://assets/levels/bog/witch_hut.blend" id="4_f7sxh"]
+[ext_resource type="MeshLibrary" uid="uid://ch757jk85l1mm" path="res://assets/levels/castle/gridmap.blend" id="5_pkm5o"]
+[ext_resource type="PackedScene" uid="uid://b25xvdxojjqg1" path="res://assets/levels/bog/bed.blend" id="6_i4emm"]
+[ext_resource type="PackedScene" uid="uid://4snfvsmupqj0" path="res://assets/levels/bog/chair.blend" id="7_sblow"]
+[ext_resource type="PackedScene" uid="uid://cuhus7240kpa8" path="res://assets/levels/bog/cabinet.blend" id="8_tmrxh"]
+[ext_resource type="PackedScene" uid="uid://cxk6dkhrf6iy8" path="res://assets/levels/bog/books.blend" id="9_5tax8"]
+[ext_resource type="PackedScene" uid="uid://dhlu6wawyieh5" path="res://environment/portals/portal.tscn" id="10_tmrxh"]
+[ext_resource type="PackedScene" uid="uid://bichvk4lvop8g" path="res://environment/portals/portal_subviewport.tscn" id="11_5tax8"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_f7sxh"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_43bpn"]
+sky_material = SubResource("ProceduralSkyMaterial_f7sxh")
+
+[sub_resource type="Environment" id="Environment_pkm5o"]
+background_mode = 2
+sky = SubResource("Sky_43bpn")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.39
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_pkm5o"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_f7sxh"]
+generate_mipmaps = false
+noise = SubResource("FastNoiseLite_pkm5o")
+seamless = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_7ly7n"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_i4emm"]
+generate_mipmaps = false
+noise = SubResource("FastNoiseLite_7ly7n")
+seamless = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_sblow"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_85nrh"]
+generate_mipmaps = false
+noise = SubResource("FastNoiseLite_sblow")
+seamless = true
+as_normal_map = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eeolf"]
+render_priority = 0
+shader = ExtResource("3_85nrh")
+shader_parameter/speed = 0.0
+shader_parameter/noise1 = SubResource("NoiseTexture2D_f7sxh")
+shader_parameter/noise2 = SubResource("NoiseTexture2D_i4emm")
+shader_parameter/normalmap = SubResource("NoiseTexture2D_85nrh")
+shader_parameter/color = Color(0.034494232, 0.18280122, 0.15191272, 1)
+shader_parameter/edge_color = Color(0.23399386, 0.4829113, 0.35104364, 1)
+shader_parameter/edge_scale = -1.245
+shader_parameter/near = 0.1
+shader_parameter/far = 100.0
+shader_parameter/wave_strengh = Vector2(0.5, 0.25)
+shader_parameter/wave_frequency = Vector2(120, 120)
+shader_parameter/time_factor = Vector2(0.25, 0.5)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_rhbnc"]
+material = SubResource("ShaderMaterial_eeolf")
+top_radius = 75.0
+bottom_radius = 75.0
+height = 0.25
+radial_segments = 16
+rings = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rhbnc"]
+size = Vector3(2, 40, 80)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sblow"]
+size = Vector3(50, 40, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tmrxh"]
+size = Vector3(50, 10, 80)
+
+[node name="Bog" type="Node3D" unique_id=866622824]
+
+[node name="Environment" type="Node3D" parent="." unique_id=90060805]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment" unique_id=1188973693]
+environment = SubResource("Environment_pkm5o")
+
+[node name="bog" parent="." unique_id=698034200 instance=ExtResource("1_vjnvp")]
+
+[node name="Water" type="MeshInstance3D" parent="." unique_id=336165140]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8693237, 0, -9.738689)
+mesh = SubResource("CylinderMesh_rhbnc")
+
+[node name="NoGoZone" type="StaticBody3D" parent="." unique_id=790180694]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NoGoZone" unique_id=991393996]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.724075, 0, -7.6828613)
+shape = SubResource("BoxShape3D_rhbnc")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="NoGoZone" unique_id=1686315688]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.80957, 0, -7.6828613)
+shape = SubResource("BoxShape3D_rhbnc")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="NoGoZone" unique_id=412417276]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7150784, 0, 31.76432)
+shape = SubResource("BoxShape3D_sblow")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="NoGoZone" unique_id=1668087070]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7150784, 0, -46.23568)
+shape = SubResource("BoxShape3D_sblow")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="NoGoZone" unique_id=985674674]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7150784, -4.7362595, -6.958664)
+shape = SubResource("BoxShape3D_tmrxh")
+
+[node name="House" type="Node3D" parent="." unique_id=1966551354]
+
+[node name="bed" parent="House" unique_id=1097593032 instance=ExtResource("6_i4emm")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -10.055267, 0.91840637, 20.22531)
+
+[node name="chair" parent="House" unique_id=629518155 instance=ExtResource("7_sblow")]
+transform = Transform3D(-0.58858556, 0, -0.8084349, 0, 1, 0, 0.8084349, 0, -0.58858556, 3.621582, 0.91833663, 21.727661)
+
+[node name="cabinet" parent="House" unique_id=1887448272 instance=ExtResource("8_tmrxh")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -2.9762573, 0.91845703, 22.483978)
+
+[node name="books" parent="House" unique_id=2114618765 instance=ExtResource("9_5tax8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8012085, 2.8820796, 22.892914)
+
+[node name="books2" parent="House" unique_id=1336462072 instance=ExtResource("9_5tax8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5844727, 2.8820796, 22.936005)
+
+[node name="books3" parent="House" unique_id=1172967140 instance=ExtResource("9_5tax8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1228638, 3.599609, 22.903076)
+
+[node name="Floor" type="GridMap" parent="House" unique_id=972981042]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0, -0.455)
+mesh_library = ExtResource("5_pkm5o")
+data = {
+"cells": PackedInt32Array(65530, 6, 85, 65531, 6, 90, 65532, 6, 87, 65533, 6, 85, 65534, 6, 85, 65535, 6, 85, 0, 6, 86, 1, 6, 85, 2, 6, 85, 65530, 7, 87, 65530, 8, 85, 65530, 9, 85, 65530, 10, 85, 65530, 11, 85, 65531, 11, 89, 65532, 11, 89, 65533, 11, 85, 65534, 11, 85, 65535, 11, 85, 0, 11, 85, 1, 11, 85, 2, 11, 86, 2, 10, 85, 2, 9, 85, 2, 7, 85, 2, 8, 86, 1, 8, 90, 1, 7, 89, 0, 7, 85, 65535, 7, 85, 65534, 7, 89, 65533, 7, 87, 65532, 7, 85, 65531, 7, 85, 65531, 8, 85, 65532, 8, 85, 65533, 8, 85, 65534, 8, 86, 65535, 8, 85, 65532, 9, 85, 65531, 9, 86, 65532, 10, 87, 65533, 10, 85, 65534, 10, 85, 65535, 10, 90, 0, 10, 87, 1, 10, 85, 1, 9, 85, 0, 9, 85, 0, 8, 85, 65535, 9, 85, 65534, 9, 85, 65533, 9, 85, 65531, 10, 85, 3, 9, 107, 3, 8, 107)
+}
+
+[node name="witch_hut" parent="House" unique_id=1681921133 instance=ExtResource("4_f7sxh")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2.8210447, 0.7963673, 17.570993)
+
+[node name="Portal" parent="." unique_id=573598963 node_paths=PackedStringArray("subviewport") instance=ExtResource("10_tmrxh")]
+transform = Transform3D(-0.087155595, 0, 0.9961947, 0, 1, 0, -0.9961947, 0, -0.087155595, -4.157013, 0.9876709, -29)
+subviewport = NodePath("../PortalSubviewport")
+teleport_scene = "uid://dkgap8kw2cyfc"
+teleport_point_name = "FromBog"
+
+[node name="PortalSubviewport" parent="." unique_id=389194511 instance=ExtResource("11_5tax8")]
+
+[node name="FocalPoint" parent="PortalSubviewport" index="0" unique_id=1256281247]
+transform = Transform3D(-0.8660254, 0, 0.50000006, 0, 1, 0, -0.50000006, 0, -0.8660254, 9.569134, 0, -12.085274)
+
+[editable path="PortalSubviewport"]

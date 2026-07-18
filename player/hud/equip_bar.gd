@@ -14,6 +14,7 @@ func _ready() -> void:
 	Player.ammo_changed.connect(_on_ammo_changed)
 	Player.data.inventory.item_added.connect(_on_item_changed)
 	Player.data.inventory.item_removed.connect(_on_item_changed)
+	Player.data.inventory.items_purged.connect(_on_item_changed.bind(null))
 	_on_equip_changed(Player.data.current_equipped)
 
 func _on_weapon_cooldown_changed(new_amount: float) -> void:

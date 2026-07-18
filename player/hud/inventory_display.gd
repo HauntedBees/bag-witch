@@ -49,11 +49,14 @@ func _ready() -> void:
 	await get_tree().process_frame
 	_draw_items()
 	_inventory.item_added.connect(_on_item_added)
+	_inventory.items_purged.connect(_on_items_purged)
 	_drop_area.item_dropped.connect(_on_item_removed)
 	Player.data.stat_changed.connect(_refresh_stats)
 	_refresh_stats()
 
 func _input(event: InputEvent) -> void:
+	if Player.input_locked || !Player.inventory_available:
+		return
 	if GASInput.is_event_action_just_pressed(event, &"toggle_inventory"):
 		_active = !_active
 		_highlight.set_to(null)
@@ -79,6 +82,10 @@ func _on_item_added(i: InventoryDetail) -> void:
 	_bake_item_positions()
 	if i.item is Spellbook:
 		_draw_spells()
+
+func _on_items_purged() -> void:
+	_draw_items()
+	_draw_spells()
 
 func _try_equip_item(event: InputEvent) -> void:
 	if _highlighted_item == null && _highlighted_spell == null:
@@ -263,7 +270,7 @@ func _draw_spells() -> void:
 				var spell := spells[i]
 				var si: SpellIcon = _SPELL_SCENE.instantiate()
 				tile.add_child(si)
-				tile.set_highlight(Player.data.inventory.has_spell(spell))
+				tile.set_highlight(Player.data.has_spell(spell))
 				si.spell = spell
 				si.mouse_entered.connect(_on_spell_hovered, CONNECT_APPEND_SOURCE_OBJECT)
 			i += 1

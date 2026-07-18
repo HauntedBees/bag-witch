@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Bag Witch"
-run/main_scene="uid://b8knls82eve"
+run/main_scene="uid://8emggwr78gq3"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -21,6 +21,7 @@ Player="*uid://dvk07rtkr1o1w"
 GASConfig="*uid://hji8rr7jjdq1"
 GASInput="*uid://dxcu5tow6vkyq"
 GASText="*uid://b8471x5s6b0g"
+SignalBus="*uid://cu50xdg67qeks"
 
 [display]
 
@@ -45,6 +46,7 @@ folder_colors={
 
 snow=""
 ice=""
+warp=""
 
 [gui]
 

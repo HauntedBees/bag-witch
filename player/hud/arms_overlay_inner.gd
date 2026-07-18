@@ -19,10 +19,10 @@ func reset_idle() -> void:
 	else:
 		_anim.play(w.equipped_animation)
 
-func play_anim(anim: StringName, return_to_idle := true) -> void:
+func play_anim(anim: StringName, return_to_idle := true, speed := 1.0) -> void:
 	_bag.visible = anim == &"BagUse" || anim == &"BagSuck"
 	set_suck.emit(anim == &"BagSuck")
-	_anim.play(anim)
+	_anim.play(anim, -1, speed)
 	if return_to_idle:
 		await _anim.animation_finished
 		reset_idle()
