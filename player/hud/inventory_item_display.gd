@@ -99,5 +99,5 @@ func _update_display() -> void:
 
 func _make_custom_tooltip(_for_text: String) -> Object:
 	var tt: ItemTooltip = _TOOLTIP_SCENE.instantiate()
-	tt.item = details.item
+	tt.item = details
 	return tt

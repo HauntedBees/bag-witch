@@ -6,7 +6,7 @@ signal weapon_cooldown_changed(amount: int)
 signal ammo_changed(new_ammo: int)
 
 var input_locked := false
-var inventory_available := false
+var inventory_available := true#false
 
 var data := PlayerData.new()
 var weapon_cooldown := 0.0:

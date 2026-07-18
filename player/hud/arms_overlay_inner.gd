@@ -42,11 +42,9 @@ func _on_weapon_changed(id: InventoryDetail) -> void:
 		_anim.play(&"Idle")
 	else:
 		_anim.play(w.equipped_animation)
-	_add_to_bone(_right_hand, w)
+	_add_to_bone(_right_hand, id)
 	if w.add_equip_scene_to_both_hands:
-		_add_to_bone(_left_hand, w)
+		_add_to_bone(_left_hand, id)
 
-func _add_to_bone(n: BoneAttachment3D, w: Item) -> void:
-	var attachment := w.get_equip_instance()
-	attachment.scale *= w.equipped_scale
-	n.add_child(attachment)
+func _add_to_bone(n: BoneAttachment3D, id: InventoryDetail) -> void:
+	n.add_child(id.get_equip_instance())

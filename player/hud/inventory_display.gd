@@ -150,17 +150,13 @@ func _on_item_dropped(drag_details: ItemDragDetails, grid_pos: Vector2i) -> void
 			_draw_item(item)
 			_bake_item_positions()
 		else:
-			item.item.combine(item, potential_merge)
-			if potential_merge.item.is_destroyed_after_merge(potential_merge):
+			potential_merge.item.combine(potential_merge, item)
+			if Player.data.current_equipped == potential_merge:
+				Player.equip_changed.emit(potential_merge)
+			if item.item.is_destroyed_after_merge(item):
 				var old_info := _item_grid_info[item.position]
-				old_info.item_display.queue_free()
-				old_info.item_display = null
-				var item_being_replaced := _item_grid_info[potential_merge.position]
-				item_being_replaced.item_display.queue_free()
-				item_being_replaced.item_display = null
-				item.position = grid_pos
-				item.rotated = !item.rotated if _current_draggable.rotation_changed else item.rotated
-				_draw_item(item)
+				_inventory.remove_item(item)
+				old_info.empty()
 				_bake_item_positions()
 	else:
 		print("no")
@@ -174,7 +170,7 @@ func _can_place(id: InventoryDetail, new_positions: Array[Vector2i]) -> bool:
 	for p in new_positions:
 		if _item_grid_info.has(p):
 			var existing_id := _item_grid_info[p].item
-			if existing_id == null:
+			if existing_id == null || existing_id == id:
 				continue
 			if existing_id.item.can_be_combined(existing_id, id):
 				continue
@@ -304,3 +300,8 @@ class TileDetails extends RefCounted:
 	var item_display: InventoryItemDisplay
 	func _init(t: InventoryTile) -> void:
 		tile = t
+	func empty() -> void:
+		if item_display:
+			item_display.queue_free()
+		item_display = null
+		item = null

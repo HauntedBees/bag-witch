@@ -1,6 +1,6 @@
 class_name ItemTooltip extends MarginContainer
 
-var item: Item:
+var item: InventoryDetail:
 	set(value):
 		item = value
 		if !is_inside_tree():
@@ -13,5 +13,5 @@ var item: Item:
 func _update_item() -> void:
 	if item == null:
 		return
-	_title.text = item.name
-	_description.text = item.get_description()
+	_title.text = item.get_item_name()
+	_description.text = item.item.get_description(item)
