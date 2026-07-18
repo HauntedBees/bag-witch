@@ -2,6 +2,8 @@ class_name WorldItem extends Area3D
 
 @export var item: Item
 
+@export var mods: Array[ItemMod] = []
+
 ## Should have a BoxShape3D for UI reasons.
 @export var collider: CollisionShape3D
 
@@ -20,6 +22,9 @@ var _plep_dir := Vector3.ZERO
 var _plep_ray: RayCast3D
 
 func get_item_name() -> String:
+	var n := item.name
+	if mods.size() > 0:
+		n = "Modded %s" % n
 	if item.is_ammo_applicable():
 		if !had_ammo_set:
 			had_ammo_set = true
@@ -27,11 +32,11 @@ func get_item_name() -> String:
 				ammo = randi_range(item.initial_ammo_range.x, item.initial_ammo_range.y)
 			elif item is ProjectileWeapon:
 				ammo = randi_range(item.initial_ammo_range.x, item.initial_ammo_range.y)
-		return "%s (%s)" % [item.name, ammo]
+		return "%s (%s)" % [n, ammo]
 	elif item is StatCrystal:
-		return "%s Shard" % item.name
+		return "%s Shard" % n
 	else:
-		return item.name
+		return n
 
 func get_screen_bounds() -> Rect2:
 	return BWEnum.get_bounds(global_transform, _box, get_viewport().get_camera_3d())

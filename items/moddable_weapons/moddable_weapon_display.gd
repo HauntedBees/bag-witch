@@ -1,4 +1,4 @@
-class_name ModdableWeaponDisplay extends Node3D
+class_name ModdableWeaponDisplay extends WorldItem
 
 @onready var _silencer_slot: Node3D = %SilencerSlot
 @onready var _scope_slot: Node3D = %ScopeSlot

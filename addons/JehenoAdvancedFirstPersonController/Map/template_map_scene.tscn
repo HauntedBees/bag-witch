@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://ct3rwravhrwk1" path="res://addons/JehenoAdvancedFirstPersonController/Map/MovementModifiers/jumpPads/directionalJumpPad/directional_jump_pad_scene.tscn" id="8_q4rg5"]
 [ext_resource type="PackedScene" uid="uid://djtpn6s6cdlln" path="res://enemies/common/knight.tscn" id="9_s1bnp"]
 [ext_resource type="PackedScene" uid="uid://baaev0tc1par5" path="res://items/world/spellbook.tscn" id="10_8cawr"]
-[ext_resource type="PackedScene" uid="uid://ceg3otvwnm6o8" path="res://items/world/pistol_ammo.tscn" id="11_toqqt"]
+[ext_resource type="PackedScene" uid="uid://ceg3otvwnm6o8" path="res://items/world/ammo/pistol_ammo.tscn" id="11_toqqt"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fjbi6"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)

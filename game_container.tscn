@@ -4,8 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://bub2sh1fg5ddq" path="res://player/player_character_scene.tscn" id="2_ge4kj"]
 [ext_resource type="PackedScene" uid="uid://dtjtjjvwpwi2o" path="res://environment/portals/warp_effect.tscn" id="3_aq3js"]
 [ext_resource type="PackedScene" uid="uid://ssp37cocp7km" path="res://levels/bog_world.tscn" id="4_ojnl1"]
-[ext_resource type="PackedScene" uid="uid://dcbw1l051fcok" path="res://items/world/crystals/power_ruby.tscn" id="5_qin4g"]
 [ext_resource type="PackedScene" uid="uid://djtpn6s6cdlln" path="res://enemies/common/knight.tscn" id="6_dvbua"]
+[ext_resource type="PackedScene" uid="uid://fiol38q8nvyr" path="res://items/world/weapons/shotgun.tscn" id="6_shdsl"]
+[ext_resource type="PackedScene" uid="uid://di7ygh4p2y3m0" path="res://items/world/ammo/shotgun_ammo.tscn" id="7_shdsl"]
 
 [node name="GameContainer" type="Node3D" unique_id=827938429]
 process_mode = 3
@@ -25,31 +26,13 @@ process_mode = 1
 
 [node name="Bog" parent="WorldContainer" unique_id=866622824 instance=ExtResource("4_ojnl1")]
 
-[node name="PowerRuby" parent="." unique_id=951298956 instance=ExtResource("5_qin4g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.3414917, 0.91851807, -1.1121826)
-
-[node name="PowerRuby2" parent="." unique_id=1591927585 instance=ExtResource("5_qin4g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.140747, 0.91851807, -0.8536377)
-
-[node name="PowerRuby3" parent="." unique_id=1606815590 instance=ExtResource("5_qin4g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6482544, 0.91851807, -0.8536377)
-
-[node name="PowerRuby4" parent="." unique_id=1574409572 instance=ExtResource("5_qin4g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3517456, 0.91851807, -0.8536377)
-
-[node name="PowerRuby5" parent="." unique_id=868344501 instance=ExtResource("5_qin4g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.3517456, 0.91851807, -0.8536377)
-
-[node name="PowerRuby6" parent="." unique_id=993785737 instance=ExtResource("5_qin4g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.351746, 0.91851807, -0.8536377)
-
-[node name="PowerRuby7" parent="." unique_id=647583330 instance=ExtResource("5_qin4g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.351746, 0.91851807, -6.8536377)
-
-[node name="PowerRuby8" parent="." unique_id=1071592574 instance=ExtResource("5_qin4g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.351746, 0.91851807, -6.8536377)
-
 [node name="Knight" parent="." unique_id=222303382 instance=ExtResource("6_dvbua")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7209473, -15.584351)
+
+[node name="Shotgun" parent="." unique_id=458796508 instance=ExtResource("6_shdsl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.953506, 6.494995, 5.899109)
+
+[node name="ShotgunAmmo" parent="." unique_id=1893729299 instance=ExtResource("7_shdsl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.040491, 8.0807495, 8.99292)
 
 [connection signal="finished" from="WarpEffect" to="." method="_on_warp_effect_finished"]

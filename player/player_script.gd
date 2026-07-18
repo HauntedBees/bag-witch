@@ -284,6 +284,7 @@ func _try_pick_up_item() -> bool:
 		return false
 	if _current_targeted_item.had_ammo_set:
 		added.ammo = _current_targeted_item.ammo
+	added.modifications = _current_targeted_item.mods
 	_current_targeted_item.queue_free()
 	_current_targeted_item = null
 	return true
@@ -347,6 +348,9 @@ func _on_inventory_toggled(shown: bool) -> void:
 func _on_inventory_display_spawn_item(wi: WorldItem, id: InventoryDetail) -> void:
 	wi.ammo = id.ammo
 	wi.had_ammo_set = true
+	wi.mods = id.modifications
+	if wi is ModdableWeaponDisplay:
+		wi.bind(id)
 	get_parent().add_child(wi)
 	var center := get_viewport().get_visible_rect().size / 2.0
 	var to := _get_adjusted_drop_position(global_position, cam.project_ray_normal(center))

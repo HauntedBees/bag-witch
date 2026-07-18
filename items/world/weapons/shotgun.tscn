@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://fiol38q8nvyr"]
+
+[ext_resource type="Script" uid="uid://b66jl5gw8dewc" path="res://items/world/world_item.gd" id="1_nsebr"]
+[ext_resource type="Resource" uid="uid://dmbcf5wgvngv2" path="res://items/guns/shotgun.tres" id="2_nsebr"]
+[ext_resource type="PackedScene" uid="uid://bd1u571jrpdyx" path="res://assets/models/weapons/shotgun.blend" id="3_nsebr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rhbnc"]
+size = Vector3(1, 0.68466187, 1.6856384)
+
+[node name="Shotgun" type="Area3D" unique_id=458796508 node_paths=PackedStringArray("collider")]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_nsebr")
+item = ExtResource("2_nsebr")
+collider = NodePath("CollisionShape3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1439180978]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.07380676, 0.2551384)
+shape = SubResource("BoxShape3D_rhbnc")
+
+[node name="shotgun2" parent="." unique_id=1540473676 instance=ExtResource("3_nsebr")]

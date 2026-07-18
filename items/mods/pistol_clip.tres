@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="AmmoModifierMod" format=3 uid="uid://cim1n4heu8u58"]
 
-[ext_resource type="Resource" uid="uid://bjf5fkot1fjp5" path="res://items/handgun.tres" id="1_x67yv"]
+[ext_resource type="Resource" uid="uid://bjf5fkot1fjp5" path="res://items/guns/handgun.tres" id="1_x67yv"]
 [ext_resource type="Script" uid="uid://2vmww5tqoece" path="res://resource_types/items/item_mods/ammo_modifier.gd" id="2_x67yv"]
 
 [resource]
@@ -11,5 +11,6 @@ connects_to = ExtResource("1_x67yv")
 mind_requirement = 2
 name = "Handgun Mag Extension"
 description = "Can be added to a Handgun to increase ammo capacity."
+icon = Rect2i(5, 3, 1, 1)
 scene_path = "uid://2vlxxw8d6rxk"
 metadata/_custom_type_script = "uid://bu710w4vwduap"

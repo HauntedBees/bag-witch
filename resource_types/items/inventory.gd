@@ -11,9 +11,9 @@ signal items_purged()
 @export var items: Array[InventoryDetail] = []
 
 func _init() -> void:
-	var broom := load("uid://dpgrb2fqcl3qn")
-	add_item(broom, Vector2i(2, 1), false)
-	add_item(broom, Vector2i(0, 0), false)
+	#var broom := load("uid://dpgrb2fqcl3qn")
+	#add_item(broom, Vector2i(2, 1), false)
+	#add_item(broom, Vector2i(0, 0), false)
 	var book := load("uid://gloeqm86u5q")
 	add_item(book, Vector2i(0, 1), false)
 	var handgun := load("uid://bjf5fkot1fjp5")

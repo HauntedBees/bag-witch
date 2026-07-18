@@ -3,31 +3,44 @@
 [ext_resource type="Script" uid="uid://dwohh6s8y6tuf" path="res://items/moddable_weapons/moddable_weapon_display.gd" id="1_4tnqm"]
 [ext_resource type="PackedScene" uid="uid://bqq68u3ntgxfx" path="res://assets/models/weapons/pistol.blend" id="1_n6bm3"]
 [ext_resource type="PackedScene" uid="uid://ct3kh0k83gm6t" path="res://assets/models/weapons/pistol_silencer.blend" id="2_1bpja"]
+[ext_resource type="Resource" uid="uid://bjf5fkot1fjp5" path="res://items/guns/handgun.tres" id="2_kvnkd"]
 [ext_resource type="PackedScene" uid="uid://cqif74kd18byg" path="res://assets/models/weapons/scope.blend" id="3_d78h0"]
 [ext_resource type="PackedScene" uid="uid://2vlxxw8d6rxk" path="res://assets/models/weapons/clip_small.blend" id="4_pjh2h"]
 
-[node name="Pistol" type="Node3D" unique_id=924863793]
+[sub_resource type="BoxShape3D" id="BoxShape3D_v3wou"]
+size = Vector3(1.5175171, 1.0813828, 0.72615814)
+
+[node name="Pistol" type="Area3D" unique_id=1154708911 node_paths=PackedStringArray("collider")]
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("1_4tnqm")
+item = ExtResource("2_kvnkd")
+collider = NodePath("CollisionShape3D")
 
 [node name="pistol" parent="." unique_id=249497001 instance=ExtResource("1_n6bm3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42787188, 0)
 
 [node name="SilencerSlot" type="Node3D" parent="." unique_id=1670004760]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7976651, 0.37589413, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7976651, 0.803766, 0)
 visible = false
 
 [node name="pistol_silencer" parent="SilencerSlot" unique_id=471511625 instance=ExtResource("2_1bpja")]
 
 [node name="ScopeSlot" type="Node3D" parent="." unique_id=1859605355]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18932843, 0.39798057, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18932843, 0.82585245, 0)
 visible = false
 
 [node name="scope" parent="ScopeSlot" unique_id=798332488 instance=ExtResource("3_d78h0")]
 
 [node name="ClipSlot" type="Node3D" parent="." unique_id=1722716655]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.34521294, -0.6296036, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.34521294, -0.20173174, 0)
 visible = false
 
 [node name="clip_small" parent="ClipSlot" unique_id=1724566892 instance=ExtResource("4_pjh2h")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2114026376]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14151001, 0.54899997, 0.020111084)
+shape = SubResource("BoxShape3D_v3wou")

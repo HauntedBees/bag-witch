@@ -10,6 +10,13 @@
 [ext_resource type="PackedScene" uid="uid://bwv0r3muuaoa4" path="res://assets/models/crystals/speed_sapphire.blend" id="8_mneki"]
 [ext_resource type="PackedScene" uid="uid://beeseglxa6nu0" path="res://assets/models/crystals/mind_diamond.blend" id="9_cw2bq"]
 [ext_resource type="PackedScene" uid="uid://2v0uloqifgx8" path="res://assets/models/crystals/bag_crystal.blend" id="10_6fg4f"]
+[ext_resource type="PackedScene" uid="uid://bd1u571jrpdyx" path="res://assets/models/weapons/shotgun.blend" id="11_8q6ll"]
+[ext_resource type="PackedScene" uid="uid://iymsvrvrct6i" path="res://assets/models/weapons/sawed_off_shotgun.blend" id="11_q066v"]
+[ext_resource type="PackedScene" uid="uid://d1oin21lall74" path="res://assets/models/items/saw.blend" id="13_wtsej"]
+[ext_resource type="PackedScene" uid="uid://di7ygh4p2y3m0" path="res://items/world/ammo/shotgun_ammo.tscn" id="14_aj5m7"]
+[ext_resource type="PackedScene" uid="uid://ceg3otvwnm6o8" path="res://items/world/ammo/pistol_ammo.tscn" id="15_r5y7o"]
+[ext_resource type="PackedScene" uid="uid://bqq68u3ntgxfx" path="res://assets/models/weapons/pistol.blend" id="16_4j6e1"]
+[ext_resource type="PackedScene" uid="uid://2vlxxw8d6rxk" path="res://assets/models/weapons/clip_small.blend" id="17_7tem3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eeolf"]
 shading_mode = 0
@@ -64,6 +71,33 @@ visible = false
 
 [node name="bag_crystal" parent="ThingContainer" unique_id=585419644 instance=ExtResource("10_6fg4f")]
 transform = Transform3D(0.96459055, 0.26375198, 0, -0.26375198, 0.96459055, 0, 0, 0, 1, 0, 0, 0.46701908)
+visible = false
+
+[node name="sawed_off_shotgun" parent="ThingContainer" unique_id=68184837 instance=ExtResource("11_q066v")]
+transform = Transform3D(-0.1736482, 0, -0.9848077, 0, 1, 0, 0.9848077, 0, -0.1736482, 0.34778717, 0, 0.37729105)
+visible = false
+
+[node name="shotgun2" parent="ThingContainer" unique_id=1540473676 instance=ExtResource("11_8q6ll")]
+transform = Transform3D(-0.1736482, 0, -0.9848077, 0, 1, 0, 0.9848077, 0, -0.1736482, 0.34778717, 0, 0.37729105)
+visible = false
+
+[node name="saw" parent="ThingContainer" unique_id=1596698549 instance=ExtResource("13_wtsej")]
+transform = Transform3D(0.9899728, 0.14125851, 0, -0.14125851, 0.9899728, 0, 0, 0, 1, 0, 0, 1.5276117)
+visible = false
+
+[node name="ShotgunAmmo" parent="ThingContainer" unique_id=458796508 instance=ExtResource("14_aj5m7")]
+transform = Transform3D(-0.18492226, 0, -0.98275316, 0, 1, 0, 0.98275316, 0, -0.18492226, 0, -0.23487091, 0.7443552)
+visible = false
+
+[node name="PistolAmmo" parent="ThingContainer" unique_id=520100052 instance=ExtResource("15_r5y7o")]
+transform = Transform3D(0.87160933, 0, 0.4902011, 0, 1, 0, -0.4902011, 0, 0.87160933, 0, -0.2616501, 0.7558036)
+visible = false
+
+[node name="pistol" parent="ThingContainer" unique_id=249497001 instance=ExtResource("16_4j6e1")]
+visible = false
+
+[node name="clip_small" parent="ThingContainer" unique_id=767339672 instance=ExtResource("17_7tem3")]
+transform = Transform3D(0.93802315, -0.3465726, 0, 0.3465726, 0.93802315, 0, 0, 0, 1, 0.038452595, -0.10407464, 1.3732877)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=465674123]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.9159544)
@@ -73,3 +107,4 @@ transform = Transform3D(0.9717929, 0.11896129, -0.20363402, 0, 0.8634562, 0.5044
 
 [node name="StatCrystalLight" type="DirectionalLight3D" parent="." unique_id=145518352]
 transform = Transform3D(0.9717929, 0.1189613, -0.20363404, -0.23573078, 0.46418965, -0.8537911, -0.0070432792, 0.87771076, 0.479139, 0, -0.18382263, 4.9881706)
+visible = false
