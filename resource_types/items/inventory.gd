@@ -21,9 +21,11 @@ func _init() -> void:
 	var rock := load("uid://didy3b67akl0n")
 	add_item(rock, Vector2i(1, 2), false)
 
-func portal_wipe(even_persistent := false) -> void:
+func clear_all_but_equipped() -> void:
 	for idx in range(items.size() - 1, -1, -1):
 		var id := items[idx]
+		if Player.data.current_equipped == id:
+			continue
 		if safe_tiles.has(id.position): # don't bother checking unless at least the top is there
 			if id.item.size == Vector2i(1, 1):
 				continue
@@ -34,9 +36,8 @@ func portal_wipe(even_persistent := false) -> void:
 					my_safe_tiles += 1
 			if my_safe_tiles == all_tiles.size():
 				continue
-		if even_persistent || !id.item.persistent:
-			print("wiping %s" % id.item.name)
-			items.remove_at(idx)
+		print("wiping %s" % id.item.name)
+		items.remove_at(idx)
 	items_purged.emit()
 
 func remove_item(i: InventoryDetail) -> void:

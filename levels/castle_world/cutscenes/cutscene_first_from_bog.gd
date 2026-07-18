@@ -20,7 +20,6 @@ const _KEYS: Array[String] = [
 var _state := 0
 
 func _init_cutscene() -> void:
-	Player.data.inventory.portal_wipe(true)
 	Player.input_locked = true
 	queen_anim.play(&"Use_Item")
 	SignalBus.text_advanced.connect(_on_advanced_text)

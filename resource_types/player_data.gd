@@ -44,6 +44,13 @@ func _init() -> void:
 	for i in inventory.items: # for the default items
 		_on_item_added(i)
 
+func portal_wipe() -> void:
+	var current_spell := current_equipped_item()
+	for k: Weapon in _spell_ammo_remaining.keys():
+		if k != current_spell:
+			_spell_ammo_remaining.erase(k)
+	inventory.clear_all_but_equipped() # do this second because it emits "item_purged" signal
+
 func current_equipped_item() -> Item:
 	if current_equipped == null:
 		return null
