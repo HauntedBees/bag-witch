@@ -1,7 +1,10 @@
 class_name Weapon extends Item
 
-## If this weapon is a spell.
+## If this weapon is a spell. This shouldn't exist because "w is Spell" works but I don't have time to refactor.
 @export var is_spell := false
+
+## If this is a melee weapon, your Strength stat will affect its damage output.
+@export var is_melee := false
 
 ## Once you no longer have the spellbook for this spell in your inventory, you'll have this much ammo remaining.
 @export var spell_ammo := 5

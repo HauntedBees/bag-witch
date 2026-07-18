@@ -10,8 +10,8 @@ signal on_effect_applied(e: BWEnum.Effect, level: int)
 
 @export_category("Bagging")
 
-## What level your "Bag" ability needs to be to bag this enemy. Since the maximum
-## Bag level is 3, 4 means an enemy cannot be bagged.
+## What level your "Strength" ability needs to be to bag this enemy.
+## Since the maximum Strength level is 3, 4 means an enemy cannot be bagged.
 @export_range(1, 4) var capture_level := 4
 
 ## The time it takes to suck this enemy into your bag.
@@ -117,6 +117,10 @@ func receive_weapon_hit(source: Vector3, w: Weapon, has_impact_position := false
 	for e in weaknesses:
 		if effect_keys.has(e):
 			damage_mult *= 5
+	if w.is_melee:
+		match Player.data.strength:
+			2: damage_mult = 2
+			3: damage_mult = 4
 	var damage_dealt := damage_mult * randi_range(w.damage_range.x, w.damage_range.y)
 	on_hit.emit(w, source, damage_dealt, impact_position if has_impact_position else global_position)
 	if is_dead():

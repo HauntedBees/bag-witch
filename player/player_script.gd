@@ -161,6 +161,7 @@ func _handle_front_raycast() -> void:
 			_current_targeted_item = null
 			_current_targeted_enemy = obj
 	if !found_something:
+		_item_select.visible = false
 		_current_targeted_item = null
 		_current_targeted_enemy = null
 
@@ -206,7 +207,7 @@ func _handle_bag(delta: float) -> bool:
 	if GASInput.is_action_just_pressed(&"use"):
 		if _current_targeted_item != null:
 			return _try_pick_up_item()
-		elif _current_targeted_enemy != null && _current_targeted_enemy.capture_level <= Player.data.bag:
+		elif _current_targeted_enemy != null && _current_targeted_enemy.capture_level <= Player.data.strength:
 			return _try_start_enemy_sucking()
 		else:
 			arms_overlay.arms.play_anim(&"BagUse")
