@@ -180,7 +180,7 @@ func _try_reload(event: InputEvent) -> bool:
 	for id in Player.data.inventory.items:
 		if id.item is Ammo:
 			var a := id.item as Ammo
-			if a.weapon != pw:
+			if !a.is_ammo_for(pw):
 				continue
 			var amount := id.ammo
 			if amount == 0:

@@ -1,11 +1,13 @@
 [gd_resource type="Resource" script_class="Ammo" format=3 uid="uid://8cw7tywrtk5y"]
 
 [ext_resource type="Script" uid="uid://co5j381442318" path="res://resource_types/items/ammo.gd" id="1_t5v2a"]
+[ext_resource type="Resource" uid="uid://g6yhpa641la2" path="res://items/guns/sawed_off_shotgun.tres" id="2_knsy0"]
 [ext_resource type="Resource" uid="uid://dmbcf5wgvngv2" path="res://items/guns/shotgun.tres" id="2_t5v2a"]
 
 [resource]
 script = ExtResource("1_t5v2a")
 weapon = ExtResource("2_t5v2a")
+secondary_weapon = ExtResource("2_knsy0")
 initial_ammo_range = Vector2i(1, 9)
 max_amount = 12
 name = "Shotgun Ammo"

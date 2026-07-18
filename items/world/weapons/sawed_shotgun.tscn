@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bdjp2yh6jrj8e"]
+
+[ext_resource type="Script" uid="uid://b66jl5gw8dewc" path="res://items/world/world_item.gd" id="1_74lca"]
+[ext_resource type="Resource" uid="uid://g6yhpa641la2" path="res://items/guns/sawed_off_shotgun.tres" id="2_74lca"]
+[ext_resource type="PackedScene" uid="uid://iymsvrvrct6i" path="res://assets/models/weapons/sawed_off_shotgun.blend" id="3_6xe81"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rhbnc"]
+size = Vector3(1, 0.68466187, 1.0561142)
+
+[node name="SawedShotgun" type="Area3D" unique_id=458796508 node_paths=PackedStringArray("collider")]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_74lca")
+item = ExtResource("2_74lca")
+collider = NodePath("CollisionShape3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1439180978]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.07380676, 0.25527954)
+shape = SubResource("BoxShape3D_rhbnc")
+
+[node name="sawed_off_shotgun" parent="." unique_id=129863380 instance=ExtResource("3_6xe81")]

@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://brhmvisll3d2q"]
+
+[ext_resource type="Script" uid="uid://b66jl5gw8dewc" path="res://items/world/world_item.gd" id="1_vnvdo"]
+[ext_resource type="Resource" uid="uid://dllaf206rjpo0" path="res://items/mods/handsaw.tres" id="2_vnvdo"]
+[ext_resource type="PackedScene" uid="uid://d1oin21lall74" path="res://assets/models/items/saw.blend" id="3_e0wla"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rhbnc"]
+size = Vector3(1, 0.342968, 0.55184174)
+
+[node name="Saw" type="Area3D" unique_id=458796508 node_paths=PackedStringArray("collider")]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_vnvdo")
+item = ExtResource("2_vnvdo")
+collider = NodePath("CollisionShape3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1439180978]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16096687, 0.021331787)
+shape = SubResource("BoxShape3D_rhbnc")
+
+[node name="saw" parent="." unique_id=993966931 instance=ExtResource("3_e0wla")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.098630965, 0)

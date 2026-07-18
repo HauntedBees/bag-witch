@@ -27,6 +27,8 @@ func can_be_combined(me: InventoryDetail, them: InventoryDetail) -> bool:
 	var mod: ItemMod = them.item
 	if Player.data.mind < mod.mind_requirement:
 		return false
+	if mod is IsHandsawMod && can_be_sawed:
+		return true
 	if mod.connects_to != self:
 		return false
 	return !me.has_mod(mod.mod_name)
@@ -34,4 +36,7 @@ func can_be_combined(me: InventoryDetail, them: InventoryDetail) -> bool:
 func combine(me: InventoryDetail, them: InventoryDetail) -> void:
 	if !can_be_combined(me, them): # ONE MORE FOR GOOD MEASURE
 		return
-	me.add_mod(them.item)
+	if them.item is IsHandsawMod:
+		me.item = sawable_item
+	else:
+		me.add_mod(them.item)

@@ -233,7 +233,7 @@ func get_remaining_ammo(w: Item) -> int:
 		else:
 			var total := 0
 			for id in inventory.items:
-				if id.item is Ammo && (id.item as Ammo).weapon == w:
+				if id.item is Ammo && (id.item as Ammo).is_ammo_for(w):
 					total += id.ammo
 			return total
 	else:

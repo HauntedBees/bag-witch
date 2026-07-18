@@ -21,6 +21,12 @@ class_name Item extends Resource
 ## The path to the 3D scene; should be a WorldItem.
 @export_custom(SRP_HINT.RESOURCE_PATH, "PackedScene") var scene_path: String
 
+## Things that can be sawed in half.
+@export var can_be_sawed := false
+
+## What this item becomes when it is sawed in half.
+@export var sawable_item: Item
+
 @export_category("Equipping")
 
 ## The maximum distance from an enemy the player must be for the Item Select to show up.

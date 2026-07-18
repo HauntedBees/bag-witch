@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="IsHandsawMod" format=3 uid="uid://dllaf206rjpo0"]
+
+[ext_resource type="Script" uid="uid://bjji4dehurusi" path="res://resource_types/items/item_mods/saw_modifier.gd" id="1_5wakb"]
+
+[resource]
+script = ExtResource("1_5wakb")
+name = "Handsaw"
+description = "I can cut other items in my bag with this."
+size = Vector2i(2, 1)
+icon = Rect2i(0, 3, 2, 1)
+custom_equip_scene = "uid://brhmvisll3d2q"
+metadata/_custom_type_script = "uid://bjji4dehurusi"

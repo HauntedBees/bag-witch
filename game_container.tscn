@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://djtpn6s6cdlln" path="res://enemies/common/knight.tscn" id="6_dvbua"]
 [ext_resource type="PackedScene" uid="uid://fiol38q8nvyr" path="res://items/world/weapons/shotgun.tscn" id="6_shdsl"]
 [ext_resource type="PackedScene" uid="uid://di7ygh4p2y3m0" path="res://items/world/ammo/shotgun_ammo.tscn" id="7_shdsl"]
+[ext_resource type="PackedScene" uid="uid://brhmvisll3d2q" path="res://items/world/mods/saw.tscn" id="8_ul0mr"]
 
 [node name="GameContainer" type="Node3D" unique_id=827938429]
 process_mode = 3
@@ -34,5 +35,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.953506, 6.494995, 5.89910
 
 [node name="ShotgunAmmo" parent="." unique_id=1893729299 instance=ExtResource("7_shdsl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.040491, 8.0807495, 8.99292)
+
+[node name="Saw" parent="." unique_id=160933584 instance=ExtResource("8_ul0mr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.8252563, 0.9255388, -0.20825191)
 
 [connection signal="finished" from="WarpEffect" to="." method="_on_warp_effect_finished"]
