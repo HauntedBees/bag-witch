@@ -11,9 +11,6 @@ class_name Item extends Resource
 ## How much inventory space this item takes up.
 @export var size := Vector2i.ONE
 
-## If the item persists between warps.
-@export var persistent := false
-
 ## The position and size of the item's icon in item_sheet.png to be used in the inventory grid.
 @export var icon := Rect2i(0, 0, 1, 1)
 
