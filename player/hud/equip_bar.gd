@@ -39,7 +39,7 @@ func _on_equip_changed(id: InventoryDetail) -> void:
 		_remaining_amount.text = ""
 	else:
 		_current_amount.text = str(ammo)
-		_remaining_amount.text = "/%d" % Player.data.get_remaining_ammo(w)
+		_remaining_amount.text = "/%d" % Player.data.get_remaining_ammo(id)
 
 ## Trigger refresh in case ammo was acquired.
 func _on_item_changed(_i: InventoryDetail) -> void:
@@ -47,4 +47,4 @@ func _on_item_changed(_i: InventoryDetail) -> void:
 
 func _on_ammo_changed(new_amount: int) -> void:
 	_current_amount.text = str(new_amount)
-	_remaining_amount.text = "/%d" % Player.data.get_remaining_ammo(Player.data.current_equipped_item())
+	_remaining_amount.text = "/%d" % Player.data.get_remaining_ammo(Player.data.current_equipped)

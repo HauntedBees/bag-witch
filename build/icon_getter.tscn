@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://ceg3otvwnm6o8" path="res://items/world/ammo/pistol_ammo.tscn" id="15_r5y7o"]
 [ext_resource type="PackedScene" uid="uid://bqq68u3ntgxfx" path="res://assets/models/weapons/pistol.blend" id="16_4j6e1"]
 [ext_resource type="PackedScene" uid="uid://2vlxxw8d6rxk" path="res://assets/models/weapons/clip_small.blend" id="17_7tem3"]
+[ext_resource type="PackedScene" uid="uid://bigvxtmaq3x77" path="res://assets/models/ammo/power_cell.blend" id="19_318v8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eeolf"]
 shading_mode = 0
@@ -48,6 +49,7 @@ visible = false
 
 [node name="laser_gun" parent="ThingContainer" unique_id=138838807 instance=ExtResource("4_7tem3")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.2839508, 0, 1.2411884e-08)
+visible = false
 
 [node name="lava_slime_key" parent="ThingContainer" unique_id=1502183172 instance=ExtResource("3_64tqg")]
 transform = Transform3D(0.4996387, 0, 0.019005619, 0, 0.5, 0, -0.019005619, 0, 0.4996387, 0, -0.5259384, 0.12154007)
@@ -104,6 +106,9 @@ visible = false
 transform = Transform3D(0.93802315, -0.3465726, 0, 0.3465726, 0.93802315, 0, 0, 0, 1, 0.038452595, -0.10407464, 1.3732877)
 visible = false
 
+[node name="power_cell" parent="ThingContainer" unique_id=1667063616 instance=ExtResource("19_318v8")]
+transform = Transform3D(-0.73251617, 0.61064637, -0.30088395, 0.56485206, 0.79190356, 0.23201522, 0.37995028, 0, -0.9250069, -0.28892523, -0.4294654, 0)
+
 [node name="Camera3D" type="Camera3D" parent="." unique_id=465674123]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.9159544)
 
@@ -112,4 +117,3 @@ transform = Transform3D(0.9717929, 0.11896129, -0.20363402, 0, 0.8634562, 0.5044
 
 [node name="StatCrystalLight" type="DirectionalLight3D" parent="." unique_id=145518352]
 transform = Transform3D(0.9717929, 0.1189613, -0.20363404, -0.23573078, 0.46418965, -0.8537911, -0.0070432792, 0.87771076, 0.479139, 0, -0.18382263, 4.9881706)
-visible = false

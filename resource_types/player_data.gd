@@ -223,8 +223,9 @@ func get_loaded_ammo(id: InventoryDetail) -> int:
 	else:
 		return -1
 
-func get_remaining_ammo(w: Item) -> int:
-	if w is Weapon:
+func get_remaining_ammo(id: InventoryDetail) -> int:
+	if id.item is Weapon:
+		var w: Weapon = id.item
 		if w.is_spell:
 			if inventory.has_spell_in_inventory(w):
 				return -1
@@ -232,9 +233,11 @@ func get_remaining_ammo(w: Item) -> int:
 				return 0
 		else:
 			var total := 0
-			for id in inventory.items:
-				if id.item is Ammo && (id.item as Ammo).is_ammo_for(w):
-					total += id.ammo
+			for potential_ammo in inventory.items:
+				if potential_ammo.item is PowerCell && w.uses_power_cells_for_ammo:
+					total += (w as ProjectileWeapon).get_full_clip_size(id) if potential_ammo.ammo > 0 else 0
+				elif potential_ammo.item is Ammo && (potential_ammo.item as Ammo).is_ammo_for(w):
+					total += potential_ammo.ammo
 			return total
 	else:
 		return -1
