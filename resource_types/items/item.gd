@@ -6,7 +6,7 @@ class_name Item extends Resource
 @export var name: String
 
 ## You don't need me to explain what this is.
-@export var description: String
+@export_multiline() var description: String
 
 ## How much inventory space this item takes up.
 @export var size := Vector2i.ONE
@@ -81,6 +81,9 @@ func is_destroyed_after_merge(_me: InventoryDetail) -> bool:
 
 func is_ammo_applicable() -> bool:
 	return false
+
+func get_item_name(_id: InventoryDetail) -> String:
+	return name
 
 func get_description(_id: InventoryDetail) -> String:
 	return description

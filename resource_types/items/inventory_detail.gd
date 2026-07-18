@@ -21,11 +21,13 @@ func _init(i: Item, p: Vector2i) -> void:
 			ammo = randi_range(i.initial_ammo_range.x, i.initial_ammo_range.y)
 	elif i is Ammo:
 		ammo = randi_range(i.initial_ammo_range.x, i.initial_ammo_range.y)
+	elif i is StatCrystal:
+		ammo = 1
 
 func get_item_name() -> String:
 	if modifications.size() > 0:
-		return "Modded %s" % item.name
-	return item.name
+		return "Modded %s" % item.get_item_name(self)
+	return item.get_item_name(self)
 
 func add_mod(m: ItemMod) -> void:
 	modifications.append(m)

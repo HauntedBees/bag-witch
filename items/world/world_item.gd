@@ -28,6 +28,8 @@ func get_item_name() -> String:
 			elif item is ProjectileWeapon:
 				ammo = randi_range(item.initial_ammo_range.x, item.initial_ammo_range.y)
 		return "%s (%s)" % [item.name, ammo]
+	elif item is StatCrystal:
+		return "%s Shard" % item.name
 	else:
 		return item.name
 

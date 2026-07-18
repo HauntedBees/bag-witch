@@ -10,7 +10,7 @@ var strength := 1:
 	set(value):
 		strength = value
 		stat_changed.emit()
-var magic := 3:
+var magic := 1:
 	set(value):
 		magic = value
 		stat_changed.emit()
@@ -40,6 +40,7 @@ func _init() -> void:
 	inventory.item_added.connect(_on_item_added)
 	inventory.item_removed.connect(_on_item_removed)
 	inventory.items_purged.connect(_on_items_purged)
+	stat_changed.connect(inventory.recalibrate_bag_size)
 	for i in 10:
 		equip_slots.append(null)
 	for i in inventory.items: # for the default items
@@ -126,12 +127,14 @@ func _handle_spell_auto_equipping() -> void:
 		if first_empty >= 0:
 			equip_spell_to_slot(s, first_empty)
 
-func get_spell_slot(spell: Item) -> int:
+func get_spell_slot(spell: Spell) -> int:
 	for i in equip_slots.size():
 		var id := equip_slots[i]
 		if id == null:
 			continue
 		if id.item == spell:
+			return i
+		elif id.item is Spell && (id.item as Spell).category == spell.category:
 			return i
 	return -1
 
@@ -157,16 +160,11 @@ func equip_spell_to_slot(spell: Weapon, slot: int) -> void:
 
 func equip_to_slot(id: InventoryDetail, slot: int) -> void:
 	if id.item.equipped_animation == &"":
-		print("only items with equip animations can be equipped!")
 		return
-	#var current_item := equip_slots[slot]
-	#if current_item != null:
-	#	current_item.unequip()
 	var item_at_different_slot := equip_slots.find(id)
 	if item_at_different_slot >= 0:
 		equip_slots[item_at_different_slot] = null
 	equip_slots[slot] = id
-	#item.equip(slot)
 
 func get_available_spells() -> Array[Weapon]:
 	var spells: Dictionary[String, Spell] = {}

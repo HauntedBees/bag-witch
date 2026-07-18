@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="StatCrystal" format=3 uid="uid://et3im2qvxysa"]
+
+[ext_resource type="Script" uid="uid://crsmwfna86a5l" path="res://resource_types/items/stat_crystal.gd" id="1_vb36o"]
+
+[resource]
+script = ExtResource("1_vb36o")
+stat = 4
+name = "Speed Sapphire"
+description = "Speed Sapphires can increase your Speed stat, increasing your running speed, wall-running and jumping abilities, and the odds of randomly dodging enemy attacks."
+icon = Rect2i(3, 2, 1, 1)
+scene_path = "uid://busn52mwuwpd1"
+metadata/_custom_type_script = "uid://crsmwfna86a5l"
