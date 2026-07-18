@@ -9,6 +9,7 @@ velocity = 90.0
 damage_range = Vector2i(25, 35)
 name = "Handgun"
 scene_path = "uid://bqq68u3ntgxfx"
+use_range = 30.0
 equip_sprite_offset = Vector2i(3, 0)
 equipped_animation = &"Handgun"
 use_animation = &"Handgun_Use"

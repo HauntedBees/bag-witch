@@ -18,6 +18,7 @@ var _reloading_time_remaining := 0.0
 var _is_sucking := false
 var _suck_time_remaining := 0.0
 var _suck_enemy: EnemyDisplay
+var _max_grab_distance := 10.0
 
 @onready var speed_lines: ColorRect = %SpeedLines
 @onready var arms_overlay: ArmsOverlay = %ArmsOverlay
@@ -141,15 +142,25 @@ func _handle_front_raycast() -> void:
 		_current_targeted_item = null
 		_current_targeted_enemy = null
 		return
+	var found_something := false
 	if obj is WorldItem:
-		_item_select.set_from_world_item(obj)
-		_current_targeted_item = obj
-		_current_targeted_enemy = null
+		if obj.global_position.distance_to(global_position) <= _max_grab_distance:
+			found_something = true
+			_item_select.set_from_world_item(obj)
+			_current_targeted_item = obj
+			_current_targeted_enemy = null
 	elif obj is EnemyDisplay:
-		_item_select.set_from_enemy(obj)
-		_current_targeted_item = null
-		_current_targeted_enemy = obj
-	else:
+		var distance := _max_grab_distance
+		var i := Player.data.current_equipped_item()
+		if i != null && i is not Spell:
+			distance = i.use_range
+		print(obj.global_position.distance_to(global_position))
+		if obj.global_position.distance_to(global_position) <= distance:
+			found_something = true
+			_item_select.set_from_enemy(obj)
+			_current_targeted_item = null
+			_current_targeted_enemy = obj
+	if !found_something:
 		_current_targeted_item = null
 		_current_targeted_enemy = null
 

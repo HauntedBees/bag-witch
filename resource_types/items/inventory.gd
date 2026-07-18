@@ -18,6 +18,8 @@ func _init() -> void:
 	add_item(book, Vector2i(0, 1), false)
 	var handgun := load("uid://bjf5fkot1fjp5")
 	add_item(handgun, Vector2i(1, 1), false)
+	var rock := load("uid://didy3b67akl0n")
+	add_item(rock, Vector2i(1, 2), false)
 
 func portal_wipe(even_persistent := false) -> void:
 	for idx in range(items.size() - 1, -1, -1):

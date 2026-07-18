@@ -208,7 +208,7 @@ debug_shape_custom_color = Color(0.91764706, 0.79607844, 0.18039216, 1)
 [node name="FrontCheck" type="RayCast3D" parent="CameraHolder/Camera/CameraBasedRaycasts" unique_id=2105455808]
 unique_name_in_owner = true
 transform = Transform3D(1, 5.4975374e-10, 3.4567904e-12, -5.4975374e-10, 0.9999209, 0.012576897, 3.4567904e-12, -0.012576897, 0.9999209, 0, 0, 0)
-target_position = Vector3(0, 0, -10)
+target_position = Vector3(0, 0, -30)
 collision_mask = 14
 collide_with_areas = true
 

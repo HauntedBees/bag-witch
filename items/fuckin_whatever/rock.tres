@@ -4,29 +4,17 @@
 
 [resource]
 script = ExtResource("1_5ybjv")
-anim_name = null
-is_spell = null
-spell_ammo = null
 damage_range = Vector2i(10, 20)
 knockback = 15.0
-additional_y_knockback = null
-metadata_increase_ranges = null
 name = "Rock"
 description = "It's a rock."
-size = null
-persistent = null
 icon = Rect2i(0, 2, 1, 1)
-rotated_by_default = null
 scene_path = "uid://fptwiggukf88"
+use_range = 5.0
 equip_sprite_offset = Vector2i(5, 0)
 custom_equip_scene = "uid://bibhq0y5pdvul"
 equipped_animation = &"RockHold"
 use_animation = &"RockSwing"
 use_animation_speed = 0.4
-alt_use_animation = null
-reload_animation = null
-reload_time = null
-equipped_scale = null
-add_equip_scene_to_both_hands = null
 usage_cooldown = 1.5
 metadata/_custom_type_script = "uid://edpdef33uqc3"
