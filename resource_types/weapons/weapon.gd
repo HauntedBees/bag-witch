@@ -18,6 +18,9 @@ class_name Weapon extends Item
 ## How far the enemy should be knocked up (ayy lmao) when hit. Should be a small number.
 @export var additional_y_knockback := 0.0
 
+## For shattering and breaking shit.
+@export var is_high_impact := false
+
 ## Various metadata properties can be increased by this attack.
 @export var metadata_increase_ranges: Dictionary[BWEnum.Effect, Vector2] = {}
 

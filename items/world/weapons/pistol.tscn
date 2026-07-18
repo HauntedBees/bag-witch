@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bjueb1x0osj73"]
 
-[ext_resource type="Script" uid="uid://dwohh6s8y6tuf" path="res://items/moddable_weapons/moddable_weapon_display.gd" id="1_4tnqm"]
+[ext_resource type="Script" uid="uid://dwohh6s8y6tuf" path="res://items/world/weapons/moddable_weapon_display.gd" id="1_4tnqm"]
 [ext_resource type="PackedScene" uid="uid://bqq68u3ntgxfx" path="res://assets/models/weapons/pistol.blend" id="1_n6bm3"]
 [ext_resource type="PackedScene" uid="uid://ct3kh0k83gm6t" path="res://assets/models/weapons/pistol_silencer.blend" id="2_1bpja"]
 [ext_resource type="Resource" uid="uid://bjf5fkot1fjp5" path="res://items/guns/handgun.tres" id="2_kvnkd"]

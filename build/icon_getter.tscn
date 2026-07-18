@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://4xew5eee7k3a" path="res://assets/models/book.blend" id="2_kxga4"]
 [ext_resource type="PackedScene" uid="uid://ctlgvtilkqq0j" path="res://assets/models/enemies/lava_slime_key.blend" id="3_64tqg"]
 [ext_resource type="PackedScene" uid="uid://5mfo3873qvty" path="res://assets/models/enemies/lava_slime.blend" id="3_r0rjq"]
+[ext_resource type="PackedScene" uid="uid://b6udt5l2xtcco" path="res://assets/models/weapons/laser_gun.blend" id="4_7tem3"]
 [ext_resource type="PackedScene" uid="uid://bibhq0y5pdvul" path="res://assets/levels/common/rock5.blend" id="5_06n70"]
 [ext_resource type="PackedScene" uid="uid://ceqoh4vypo8gf" path="res://assets/models/crystals/power_ruby.blend" id="7_aweg0"]
 [ext_resource type="PackedScene" uid="uid://bwv0r3muuaoa4" path="res://assets/models/crystals/speed_sapphire.blend" id="8_mneki"]
@@ -44,6 +45,9 @@ visible = false
 [node name="book" parent="ThingContainer" unique_id=1558442499 instance=ExtResource("2_kxga4")]
 transform = Transform3D(1, 0, 0, 0, 0.04936305, -0.9987809, 0, 0.9987809, 0.04936305, 0, 0, 0)
 visible = false
+
+[node name="laser_gun" parent="ThingContainer" unique_id=138838807 instance=ExtResource("4_7tem3")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.2839508, 0, 1.2411884e-08)
 
 [node name="lava_slime_key" parent="ThingContainer" unique_id=1502183172 instance=ExtResource("3_64tqg")]
 transform = Transform3D(0.4996387, 0, 0.019005619, 0, 0.5, 0, -0.019005619, 0, 0.4996387, 0, -0.5259384, 0.12154007)
@@ -98,6 +102,7 @@ visible = false
 
 [node name="clip_small" parent="ThingContainer" unique_id=767339672 instance=ExtResource("17_7tem3")]
 transform = Transform3D(0.93802315, -0.3465726, 0, 0.3465726, 0.93802315, 0, 0, 0, 1, 0.038452595, -0.10407464, 1.3732877)
+visible = false
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=465674123]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.9159544)

@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://c1mjvedqwq0ku"]
+
+[ext_resource type="Script" uid="uid://dwc8gwoq7c80p" path="res://items/projectiles/laser_disc.gd" id="1_712jm"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_sddrh"]
+height = 0.05
+radius = 0.55
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eeolf"]
+shading_mode = 0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_rhbnc"]
+material = SubResource("StandardMaterial3D_eeolf")
+height = 0.01
+radial_segments = 16
+rings = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vb7ud"]
+cull_mode = 1
+shading_mode = 0
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_wakeg"]
+material = SubResource("StandardMaterial3D_vb7ud")
+top_radius = 0.55
+bottom_radius = 0.55
+height = 0.01
+radial_segments = 32
+rings = 1
+
+[node name="LaserDisc" type="Node3D" unique_id=1263134127]
+script = ExtResource("1_712jm")
+
+[node name="RotAxis" type="Node3D" parent="." unique_id=878861816]
+unique_name_in_owner = true
+
+[node name="Area3D" type="Area3D" parent="RotAxis" unique_id=268404323]
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RotAxis/Area3D" unique_id=1931484683]
+shape = SubResource("CylinderShape3D_sddrh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RotAxis" unique_id=2098737370]
+mesh = SubResource("CylinderMesh_rhbnc")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="RotAxis" unique_id=513235723]
+mesh = SubResource("CylinderMesh_wakeg")
+
+[connection signal="body_entered" from="RotAxis/Area3D" to="." method="_on_area_3d_body_entered"]
