@@ -14,10 +14,15 @@ var active := true:
 var wants_control := false
 
 var _parent: EnemyDisplay
+var _phys_ready := false
 
 func _ready() -> void:
+	set_physics_process(false)
 	_parent = get_parent()
 	_setup_behavior()
+	await get_tree().physics_frame
+	_phys_ready = true
+	set_physics_process(true)
 
 func _setup_behavior() -> void:
 	pass
@@ -26,7 +31,7 @@ func _on_active_changed() -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
-	if _parent.is_dead():
+	if !_phys_ready || _parent.is_dead():
 		return
 	if active:
 		_behave(delta)

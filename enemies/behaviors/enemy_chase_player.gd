@@ -39,6 +39,10 @@ func _on_player_sighted(body: Node3D) -> void:
 		print("I SEE YOU")
 		_can_see_player = true
 		_parent.target = body
+		_parent.nav.target_position = NavigationServer3D.map_get_closest_point(
+			_parent.nav.get_navigation_map(),
+			_parent.target.global_position
+		)
 		take_control()
 
 func _on_player_lost(body: Node3D) -> void:
@@ -65,7 +69,18 @@ func _behave(delta: float) -> void:
 			_parent.target = null
 			_parent.animation_player.play(_idle_anim)
 			return
-	_parent.nav.target_position = _parent.target.global_position
+	# none of this shit fucking works, why. why.
+	# it reduces the errors from thousands to a dozen, but WHY.
+	if _parent.nav.is_navigation_finished() || !_parent.nav.is_target_reachable():
+		_can_see_player = false
+		return
+	_parent.nav.target_position = NavigationServer3D.map_get_closest_point(
+		_parent.nav.get_navigation_map(),
+		_parent.target.global_position
+	)
+	if _parent.nav.is_navigation_finished() || !_parent.nav.is_target_reachable():
+		_can_see_player = false
+		return
 	var next := _parent.nav.get_next_path_position()
 	_parent.velocity = _parent.global_position.direction_to(next) * movement_speed
 	next.y = _parent.global_position.y
