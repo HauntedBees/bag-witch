@@ -18,7 +18,7 @@ radius = 3.0
 size = Vector3(3, 3, 3)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_eeolf"]
-radius = 100.0
+radius = 70.0
 
 [node name="FireSlime" type="CharacterBody3D" unique_id=222303382 node_paths=PackedStringArray("bounding_box", "animation_player")]
 collision_layer = 9

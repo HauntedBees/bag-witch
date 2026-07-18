@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://cmf1v1vuyggrq"]
 
 [ext_resource type="PackedScene" uid="uid://dfg7w4r0lnbck" path="res://assets/levels/fire/island.blend" id="1_blw58"]
-[ext_resource type="PackedScene" uid="uid://bub2sh1fg5ddq" path="res://player/player_character_scene.tscn" id="2_hlam1"]
 [ext_resource type="Script" uid="uid://b1dt302dnoalj" path="res://levels/fire_world/lava.gd" id="3_nm043"]
 [ext_resource type="Shader" uid="uid://cn14y06puco1s" path="res://assets/shaders/lava.gdshader" id="3_pdg7b"]
 [ext_resource type="Script" uid="uid://bn3r43bitaf3i" path="res://environment/point_collection.gd" id="5_xfttq"]
@@ -9,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://eq158w8w1hls" path="res://enemies/fire/key_fire_smile.tscn" id="7_5rrxe"]
 [ext_resource type="PackedScene" uid="uid://j6ijx2yvkafq" path="res://enemies/fire/fire_slime.tscn" id="8_5rrxe"]
 [ext_resource type="Script" uid="uid://lylfqtt7t8e6" path="res://levels/level_border.gd" id="9_80h6e"]
+[ext_resource type="Script" uid="uid://bh3e52s7bb0by" path="res://environment/portals/warp_point.gd" id="10_u8j4s"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_blw58"]
 sky_top_color = Color(0.35019627, 0.005200732, 0.010569308, 1)
@@ -87,10 +87,6 @@ navigation_mesh = SubResource("NavigationMesh_hlam1")
 
 [node name="island" parent="NavigationRegion3D" unique_id=1012633221 instance=ExtResource("1_blw58")]
 
-[node name="PlayerCharacter" parent="." unique_id=1631114635 instance=ExtResource("2_hlam1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -91.72679, 48, 64)
-jump_height = 1.0
-
 [node name="Lava" type="Area3D" parent="." unique_id=344296322]
 collision_mask = 11
 monitorable = false
@@ -133,3 +129,9 @@ script = ExtResource("9_80h6e")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Border" unique_id=1041302063]
 shape = SubResource("SphereShape3D_rhbnc")
+
+[node name="FromCastleBasement" type="RayCast3D" parent="." unique_id=181357783]
+transform = Transform3D(-3.6284725e-08, 0.5576179, -0.83009773, 2.4374252e-08, 0.83009773, 0.5576179, 1, 0, -4.371139e-08, -127.96631, 8.727783, 122.29193)
+target_position = Vector3(0, 0, -20)
+script = ExtResource("10_u8j4s")
+metadata/_custom_type_script = "uid://bh3e52s7bb0by"

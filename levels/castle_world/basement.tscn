@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://6acxbkqxmdrn" path="res://assets/models/enemies/queen_i.blend" id="6_gaayj"]
 [ext_resource type="PackedScene" uid="uid://b6j67340mino7" path="res://levels/castle_world/basement_boulder.tscn" id="7_u6fgr"]
 [ext_resource type="PackedScene" uid="uid://djtpn6s6cdlln" path="res://enemies/common/knight.tscn" id="8_jhjlu"]
+[ext_resource type="PackedScene" uid="uid://dhlu6wawyieh5" path="res://environment/portals/portal.tscn" id="9_iq887"]
+[ext_resource type="PackedScene" uid="uid://bichvk4lvop8g" path="res://environment/portals/portal_subviewport.tscn" id="10_5yjeh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rhbnc"]
 size = Vector3(150.0024, 1, 212.1731)
@@ -190,6 +192,18 @@ shape = SubResource("BoxShape3D_eeolf")
 [node name="WallCollisions" type="CollisionShape3D" parent="." unique_id=1720225773]
 shape = SubResource("ConcavePolygonShape3D_jhjlu")
 
+[node name="Portal" parent="." unique_id=573598963 node_paths=PackedStringArray("subviewport") instance=ExtResource("9_iq887")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 10, 0, -22.17051)
+subviewport = NodePath("../PortalSubviewport")
+teleport_scene = "uid://cmf1v1vuyggrq"
+teleport_point_name = "FromCastleBasement"
+
+[node name="PortalSubviewport" parent="." unique_id=389194511 instance=ExtResource("10_5yjeh")]
+
+[node name="FocalPoint" parent="PortalSubviewport" index="0" unique_id=1256281247]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.932823, 0, -22.139656)
+
 [editable path="Parts_FirstFromBog/WeakAssKnight"]
 [editable path="Parts_FirstFromBog/WeakAssKnight/knight"]
 [editable path="Parts_FirstFromBog/queen_i"]
+[editable path="PortalSubviewport"]

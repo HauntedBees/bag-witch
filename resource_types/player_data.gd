@@ -31,7 +31,7 @@ var equip_slots: Array[InventoryDetail] = []
 var current_health := 100
 var max_health := 100
 
-var completed_quests: Array[StringName] = []#[&"FromBog"]
+var completed_quests: Array[StringName] = [&"FromBog"]
 
 var _spell_ammo_remaining: Dictionary[Weapon, int] = {}
 
