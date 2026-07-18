@@ -23,7 +23,12 @@ var knockback_source := Vector3.ZERO
 ## How much damage the player should take when hit.
 @export var damage_range := Vector2i.ZERO
 
+@export var take_knockback_and_damage_from_item := false
+
 func _ready() -> void:
+	if take_knockback_and_damage_from_item:
+		damage_range = weapon.damage_range
+		knockback = weapon.knockback
 	area.body_entered.connect(_on_body_entered)
 	anim.animation_finished.connect(_on_animation_finished)
 	if flip_on_load:

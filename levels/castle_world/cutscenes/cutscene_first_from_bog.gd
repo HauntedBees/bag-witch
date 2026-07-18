@@ -27,6 +27,10 @@ func _init_cutscene() -> void:
 	SignalBus.say_thing.emit("Queen Perpetua III", "No matter, thou shalt endure the remaining 600 in this prison.", _KEYS[3])
 	SignalBus.say_thing.emit("Queen Perpetua III", "God be with you, traveler!", _KEYS[4])
 
+func _additional_cleanup() -> void:
+	Player.input_locked = false
+	Player.inventory_available = true
+
 func _on_advanced_text(new_key: String) -> void:
 	match _KEYS.find(new_key):
 		1:
@@ -49,8 +53,8 @@ func _on_text_ended() -> void:
 	match _state:
 		0:
 			Player.input_locked = false
+			Player.inventory_available = true
 			await get_tree().create_timer(1.0).timeout
 			SignalBus.say_thing.emit("Bag Witch", "What happened...? I can barely remember anything! What happened to all of my things?! My bag is empty!!", _KEYS[5])
 			SignalBus.say_thing.emit("Bag Witch", "This is bad... I need to find a way out of here!", _KEYS[6])
-			Player.inventory_available = true
 			_state += 1

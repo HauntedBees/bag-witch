@@ -14,6 +14,10 @@ func _clean_up() -> void:
 	for n in nodes_to_kill:
 		n.queue_free()
 	nodes_to_kill.clear()
+	_additional_cleanup()
+
+func _additional_cleanup() -> void:
+	pass
 
 func _init_cutscene() -> void:
 	pass
