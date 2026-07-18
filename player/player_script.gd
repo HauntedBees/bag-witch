@@ -53,6 +53,8 @@ func _adjust_movement_stats() -> void:
 			jump_height = 3.0
 
 func _input(event: InputEvent) -> void:
+	if Player.input_locked:
+		return
 	if Input.is_key_pressed(KEY_7):
 		Player.data.speed = 1
 	if Input.is_key_pressed(KEY_8):
@@ -74,8 +76,9 @@ func _process(delta: float) -> void:
 		_reloading_time_remaining -= delta
 	_handle_non_mouse_camera_movement()
 	_handle_front_raycast()
-	_handle_bag(delta)
-	_handle_attack(delta)
+	if !Player.input_locked:
+		_handle_bag(delta)
+		_handle_attack(delta)
 	if is_on_floor():
 		ready_to_glide = false
 

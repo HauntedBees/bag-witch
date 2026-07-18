@@ -32,7 +32,9 @@ func verifications() -> void:
 func physics_update(delta : float) -> void:
 	applies(delta)
 
-	input_management()
+	if Player.input_locked: return
+
+	if !Player.input_locked: input_management()
 
 	move(delta)
 
@@ -52,7 +54,7 @@ func input_management() -> void:
 		fly_deccel = play_char.fly_speed * play_char.fly_boost_multiplier if play_char.fly_boost_on else play_char.fly_deccel
 
 func move(delta : float) -> void:
-	play_char.input_direction = Input.get_vector(play_char.move_left_action, play_char.move_right_action, play_char.move_forward_action, play_char.move_backward_action)
+	play_char.input_direction = _get_movement_vector(play_char)
 	#need to get the cam reference directly, and not the cam holder one, because only the cam is rotating
 	play_char.move_direction = (play_char.cam.global_transform.basis * Vector3(play_char.input_direction.x, 0.0, play_char.input_direction.y))
 

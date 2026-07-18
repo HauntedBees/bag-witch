@@ -35,7 +35,7 @@ func verifications() -> void:
 
 func physics_update(delta: float) -> void:
 	applies(delta)
-	input_management()
+	if !Player.input_locked: input_management()
 	move(delta)
 	if play_char.is_on_floor():
 		transitioned.emit(self, "InairState")

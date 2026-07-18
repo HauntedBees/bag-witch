@@ -38,7 +38,7 @@ func physics_update(delta : float) -> void:
 
 	gravity_apply(delta)
 
-	input_management()
+	if !Player.input_locked: input_management()
 
 	move(delta)
 

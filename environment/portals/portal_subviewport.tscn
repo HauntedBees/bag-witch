@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bichvk4lvop8g"]
+
+[node name="PortalSubviewport" type="SubViewport" unique_id=389194511]
+
+[node name="FocalPoint" type="Node3D" parent="." unique_id=1256281247]
+
+[node name="Camera3D" type="Camera3D" parent="FocalPoint" unique_id=588351542]
+transform = Transform3D(1, 0, 0, 0, 0.9961947, 0.08715574, 0, -0.08715574, 0.9961947, 0, 8.5, 45)

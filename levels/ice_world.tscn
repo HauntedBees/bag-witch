@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://be51rag8tjrox" path="res://levels/ice_world/tyrone.tscn" id="9_54j0y"]
 [ext_resource type="PackedScene" uid="uid://dk7152wugld31" path="res://environment/signpost.tscn" id="10_33ahx"]
 [ext_resource type="Script" uid="uid://lylfqtt7t8e6" path="res://levels/level_border.gd" id="13_33ahx"]
-[ext_resource type="PackedScene" uid="uid://dhlu6wawyieh5" path="res://environment/portal.tscn" id="14_ffpem"]
+[ext_resource type="PackedScene" uid="uid://dhlu6wawyieh5" path="res://environment/portals/portal.tscn" id="14_ffpem"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_d6hs4"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)

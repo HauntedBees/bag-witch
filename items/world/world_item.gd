@@ -1,6 +1,8 @@
 class_name WorldItem extends Area3D
 
 @export var item: Item
+
+## Should have a BoxShape3D for UI reasons.
 @export var collider: CollisionShape3D
 
 ## The amount of ammo this item has on it. Only applies if the Item is a ProjectileWeapon

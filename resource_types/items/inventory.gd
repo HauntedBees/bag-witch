@@ -2,6 +2,7 @@ class_name Inventory extends Resource
 
 signal item_added(i: InventoryDetail)
 signal item_removed(i: InventoryDetail)
+signal items_purged()
 
 @export var dimensions := Vector2i(6, 4)
 
@@ -17,6 +18,14 @@ func _init() -> void:
 	add_item(book, Vector2i(0, 1), false)
 	var handgun := load("uid://bjf5fkot1fjp5")
 	add_item(handgun, Vector2i(1, 1), false)
+
+func portal_wipe(even_persistent := false) -> void:
+	for idx in range(items.size() - 1, -1, -1):
+		var id := items[idx]
+		if even_persistent || !id.item.persistent:
+			print("wiping %s" % id.item.name)
+			items.remove_at(idx)
+	items_purged.emit()
 
 func remove_item(i: InventoryDetail) -> void:
 	items.erase(i)
@@ -68,12 +77,10 @@ func _get_occupied_positions() -> Array[Vector2i]: # for small arrays, array che
 			used_tiles.append(p)
 	return used_tiles
 
-func has_spell(spell: Weapon) -> bool:
+func has_spell_in_inventory(spell: Weapon) -> bool:
 	for id in items:
 		if id.item is Spellbook:
 			for s in id.item.spells:
 				if spell == s:
 					return true
-	if spell.is_spell:
-		print("ASS")
 	return false

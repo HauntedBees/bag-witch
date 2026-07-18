@@ -38,6 +38,8 @@ class_name Item extends Resource
 ## The animation the hands should play when this item is actively used.
 @export var use_animation: StringName
 
+@export var use_animation_speed := 1.0
+
 ## If set, this is the animation the hands should play every other time this item is actively used.
 @export var alt_use_animation: StringName
 
@@ -59,9 +61,9 @@ class_name Item extends Resource
 func use(player: BogWitch) -> void:
 	Player.use_weapon(self)
 	if player.alt_hand_for_attack_anim && alt_use_animation != &"":
-		player.arms_overlay.arms.play_anim(alt_use_animation)
+		player.arms_overlay.arms.play_anim(alt_use_animation, true, use_animation_speed)
 	else:
-		player.arms_overlay.arms.play_anim(use_animation)
+		player.arms_overlay.arms.play_anim(use_animation, true, use_animation_speed)
 	_inner_use(player)
 	player.alt_hand_for_attack_anim = !player.alt_hand_for_attack_anim
 

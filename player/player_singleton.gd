@@ -5,6 +5,9 @@ signal equip_changed(weapon: InventoryDetail)
 signal weapon_cooldown_changed(amount: int)
 signal ammo_changed(new_ammo: int)
 
+var input_locked := false
+var inventory_available := false
+
 var data := PlayerData.new()
 var weapon_cooldown := 0.0:
 	set(value):
@@ -27,6 +30,9 @@ func take_damage(amount: int) -> void:
 	if data.current_health <= 0:
 		print("OH FUCK") #TODO: check spares
 	health_changed.emit(data.current_health)
+
+func has_completed(quest: StringName) -> bool:
+	return data.completed_quests.has(quest)
 
 func try_change_weapon(slot: int) -> void:
 	weapon_cooldown = 0.0

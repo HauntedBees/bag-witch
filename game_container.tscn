@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://8emggwr78gq3"]
+
+[ext_resource type="Script" uid="uid://cfrt3vuo16fge" path="res://game_container.gd" id="1_likpg"]
+[ext_resource type="PackedScene" uid="uid://bub2sh1fg5ddq" path="res://player/player_character_scene.tscn" id="2_ge4kj"]
+[ext_resource type="PackedScene" uid="uid://dtjtjjvwpwi2o" path="res://environment/portals/warp_effect.tscn" id="3_aq3js"]
+[ext_resource type="PackedScene" uid="uid://ssp37cocp7km" path="res://levels/bog_world.tscn" id="4_ojnl1"]
+
+[node name="GameContainer" type="Node3D" unique_id=827938429]
+process_mode = 3
+script = ExtResource("1_likpg")
+
+[node name="PlayerCharacter" parent="." unique_id=1631114635 instance=ExtResource("2_ge4kj")]
+unique_name_in_owner = true
+process_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+
+[node name="WarpEffect" parent="." unique_id=1405409781 instance=ExtResource("3_aq3js")]
+unique_name_in_owner = true
+
+[node name="WorldContainer" type="Node3D" parent="." unique_id=1945391039]
+unique_name_in_owner = true
+process_mode = 1
+
+[node name="Bog" parent="WorldContainer" unique_id=866622824 instance=ExtResource("4_ojnl1")]
+
+[connection signal="finished" from="WarpEffect" to="." method="_on_warp_effect_finished"]
