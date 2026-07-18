@@ -13,10 +13,10 @@ func can_be_combined(_me: InventoryDetail, them: InventoryDetail) -> bool:
 func combine(me: InventoryDetail, them: InventoryDetail) -> void:
 	if !can_be_combined(me, them): # ONE MORE FOR GOOD MEASURE
 		return
-	var max_add := max_amount - them.ammo
-	if me.ammo > max_add:
-		me.ammo -= max_add
-		them.ammo += max_add
+	var max_add := max_amount - me.ammo
+	if them.ammo > max_add:
+		them.ammo -= max_add
+		me.ammo += max_add
 	else:
 		me.ammo += them.ammo
 		them.ammo = 0

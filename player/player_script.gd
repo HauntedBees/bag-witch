@@ -175,7 +175,7 @@ func _try_reload(event: InputEvent) -> bool:
 	if w is not ProjectileWeapon:
 		return false
 	var pw := w as ProjectileWeapon
-	var remaining := pw.full_clip_size - Player.data.current_equipped.ammo
+	var remaining := pw.get_full_clip_size(Player.data.current_equipped) - Player.data.current_equipped.ammo
 	for id in Player.data.inventory.items:
 		if id.item is Ammo:
 			var a := id.item as Ammo

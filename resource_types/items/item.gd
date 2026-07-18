@@ -82,7 +82,7 @@ func is_destroyed_after_merge(_me: InventoryDetail) -> bool:
 func is_ammo_applicable() -> bool:
 	return false
 
-func get_description() -> String:
+func get_description(_id: InventoryDetail) -> String:
 	return description
 
 func get_equip_instance() -> Node3D:

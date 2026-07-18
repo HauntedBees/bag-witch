@@ -10,6 +10,7 @@ signal ammo_updated(new_amount: int)
 	set(value):
 		ammo = value
 		ammo_updated.emit(ammo)
+@export var modifications: Array[ItemMod] = []
 
 func _init(i: Item, p: Vector2i) -> void:
 	item = i
@@ -20,6 +21,27 @@ func _init(i: Item, p: Vector2i) -> void:
 			ammo = randi_range(i.initial_ammo_range.x, i.initial_ammo_range.y)
 	elif i is Ammo:
 		ammo = randi_range(i.initial_ammo_range.x, i.initial_ammo_range.y)
+
+func get_item_name() -> String:
+	if modifications.size() > 0:
+		return "Modded %s" % item.name
+	return item.name
+
+func add_mod(m: ItemMod) -> void:
+	modifications.append(m)
+
+func get_equip_instance() -> Node3D:
+	var i := item.get_equip_instance()
+	i.scale *= item.equipped_scale
+	if i is ModdableWeaponDisplay:
+		i.bind(self)
+	return i
+
+func has_mod(mod_name: StringName) -> bool:
+	for m in modifications:
+		if m.mod_name == mod_name:
+			return true
+	return false
 
 func get_positions(base_position: Vector2i, rotation_altered := false) -> Array[Vector2i]:
 	var pos: Array[Vector2i] = []

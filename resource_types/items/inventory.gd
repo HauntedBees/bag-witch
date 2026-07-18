@@ -20,6 +20,11 @@ func _init() -> void:
 	add_item(handgun, Vector2i(1, 1), false)
 	var rock := load("uid://didy3b67akl0n")
 	add_item(rock, Vector2i(1, 2), false)
+	var clip := load("uid://cim1n4heu8u58")
+	add_item(clip, Vector2i(2, 2), false)
+	var ammo := load("uid://d0go325edul0h")
+	add_item(ammo, Vector2i(3, 2), false)
+	add_item(ammo, Vector2i(4, 2), false)
 
 func clear_all_but_equipped() -> void:
 	for idx in range(items.size() - 1, -1, -1):
