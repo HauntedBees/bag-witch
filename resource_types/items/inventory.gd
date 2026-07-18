@@ -4,9 +4,9 @@ signal item_added(i: InventoryDetail)
 signal item_removed(i: InventoryDetail)
 signal items_purged()
 
-@export var dimensions := Vector2i(6, 4)
+@export var dimensions := Vector2i(7, 3)
 
-@export var safe_tiles: Array[Vector2i] = [Vector2i(5, 3)]
+@export var safe_tiles: Array[Vector2i] = [Vector2i(6, 2)]
 
 @export var items: Array[InventoryDetail] = []
 
@@ -25,6 +25,24 @@ func _init() -> void:
 	var ammo := load("uid://d0go325edul0h")
 	add_item(ammo, Vector2i(3, 2), false)
 	add_item(ammo, Vector2i(4, 2), false)
+
+func recalibrate_bag_size() -> void:
+	match Player.data.bag:
+		1: # 21 (1)
+			dimensions = Vector2i(7, 3)
+			safe_tiles = [Vector2i(6, 2)]
+		2: # 32 (4)   [+11, +3]
+			dimensions = Vector2i(8, 4)
+			safe_tiles = [Vector2i(7, 3), Vector2i(7, 2), Vector2i(6, 3), Vector2i(6, 2)]
+		3: #45 (10) [+13, +6]
+			dimensions = Vector2i(9, 5)
+			safe_tiles = [
+				Vector2i(8, 4), Vector2i(7, 4),
+				Vector2i(8, 3), Vector2i(7, 3),
+				Vector2i(8, 2), Vector2i(7, 2),
+				Vector2i(8, 1), Vector2i(7, 1),
+				Vector2i(8, 0), Vector2i(7, 0)
+			]
 
 func clear_all_but_equipped() -> void:
 	for idx in range(items.size() - 1, -1, -1):
@@ -95,10 +113,10 @@ func _get_occupied_positions() -> Array[Vector2i]: # for small arrays, array che
 			used_tiles.append(p)
 	return used_tiles
 
-func has_spell_in_inventory(spell: Weapon) -> bool:
+func has_spell_in_inventory(spell: Spell) -> bool:
 	for id in items:
 		if id.item is Spellbook:
-			for s in id.item.spells:
-				if spell == s:
+			for s in (id.item as Spellbook).spells:
+				if spell == s || spell.category == s.category:
 					return true
 	return false

@@ -1,10 +1,15 @@
 [gd_scene format=3 uid="uid://bm25pyymw8l2l"]
 
+[ext_resource type="PackedScene" uid="uid://oxmu4e0rixbn" path="res://assets/models/crystals/magic_emerald.blend" id="1_5vxlj"]
 [ext_resource type="PackedScene" uid="uid://4i1yaejh33ss" path="res://assets/models/broom.glb" id="1_q838r"]
 [ext_resource type="PackedScene" uid="uid://4xew5eee7k3a" path="res://assets/models/book.blend" id="2_kxga4"]
 [ext_resource type="PackedScene" uid="uid://ctlgvtilkqq0j" path="res://assets/models/enemies/lava_slime_key.blend" id="3_64tqg"]
 [ext_resource type="PackedScene" uid="uid://5mfo3873qvty" path="res://assets/models/enemies/lava_slime.blend" id="3_r0rjq"]
 [ext_resource type="PackedScene" uid="uid://bibhq0y5pdvul" path="res://assets/levels/common/rock5.blend" id="5_06n70"]
+[ext_resource type="PackedScene" uid="uid://ceqoh4vypo8gf" path="res://assets/models/crystals/power_ruby.blend" id="7_aweg0"]
+[ext_resource type="PackedScene" uid="uid://bwv0r3muuaoa4" path="res://assets/models/crystals/speed_sapphire.blend" id="8_mneki"]
+[ext_resource type="PackedScene" uid="uid://beeseglxa6nu0" path="res://assets/models/crystals/mind_diamond.blend" id="9_cw2bq"]
+[ext_resource type="PackedScene" uid="uid://2v0uloqifgx8" path="res://assets/models/crystals/bag_crystal.blend" id="10_6fg4f"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eeolf"]
 shading_mode = 0
@@ -20,6 +25,10 @@ size = Vector2(5, 5)
 mesh = SubResource("QuadMesh_rhbnc")
 
 [node name="ThingContainer" type="Node3D" parent="." unique_id=2123754959]
+
+[node name="magic_emerald" parent="ThingContainer" unique_id=643382702 instance=ExtResource("1_5vxlj")]
+transform = Transform3D(0.97571623, 0.21018934, -0.061629813, -0.21903834, 0.93629795, -0.27453282, 0, 0.28136542, 0.9596007, 0, 0, 0)
+visible = false
 
 [node name="broom" parent="ThingContainer" unique_id=93656533 instance=ExtResource("1_q838r")]
 transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
@@ -39,9 +48,28 @@ visible = false
 
 [node name="rock5" parent="ThingContainer" unique_id=634864392 instance=ExtResource("5_06n70")]
 transform = Transform3D(0.5, 0, 0, 0, 0.3696465, -0.33669195, 0, 0.33669195, 0.3696465, 0, -0.25484884, 0.24344683)
+visible = false
+
+[node name="power_ruby" parent="ThingContainer" unique_id=568320702 instance=ExtResource("7_aweg0")]
+transform = Transform3D(0.96650666, 0.0459328, -0.25249782, -3.7252903e-09, 0.9838534, 0.17897636, 0.25664172, -0.17298183, 0.9509008, 0, 0, 0)
+visible = false
+
+[node name="speed_sapphire" parent="ThingContainer" unique_id=525887702 instance=ExtResource("8_mneki")]
+transform = Transform3D(0.9791553, 0.04707611, -0.19758226, -3.7252903e-09, 0.9727699, 0.23177296, 0.20311303, -0.22694172, 0.95249283, 0, 0, 0)
+visible = false
+
+[node name="mind_diamond" parent="ThingContainer" unique_id=1588437360 instance=ExtResource("9_cw2bq")]
+transform = Transform3D(0.9102724, -0.25524613, -0.3259655, -0.19146171, 0.4385542, -0.8780732, 0.3670783, 0.86169577, 0.35033396, 0, 0, 0)
+visible = false
+
+[node name="bag_crystal" parent="ThingContainer" unique_id=585419644 instance=ExtResource("10_6fg4f")]
+transform = Transform3D(0.96459055, 0.26375198, 0, -0.26375198, 0.96459055, 0, 0, 0, 1, 0, 0, 0.46701908)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=465674123]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.9159544)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=120314320]
 transform = Transform3D(0.9717929, 0.11896129, -0.20363402, 0, 0.8634562, 0.50442386, 0.23583597, -0.4901955, 0.8391006, 0, 3.8723497, 4.9881706)
+
+[node name="StatCrystalLight" type="DirectionalLight3D" parent="." unique_id=145518352]
+transform = Transform3D(0.9717929, 0.1189613, -0.20363404, -0.23573078, 0.46418965, -0.8537911, -0.0070432792, 0.87771076, 0.479139, 0, -0.18382263, 4.9881706)

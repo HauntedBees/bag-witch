@@ -28,7 +28,7 @@ label_settings = SubResource("LabelSettings_lkw0p")
 
 [node name="Description" type="RichTextLabel" parent="VBoxContainer" unique_id=794565206]
 unique_name_in_owner = true
-custom_maximum_size = Vector2(320, -1)
+custom_maximum_size = Vector2(800, 320)
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6

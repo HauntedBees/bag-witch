@@ -32,18 +32,7 @@ var _highlighted_spell: Weapon
 
 func _ready() -> void:
 	_highlight = _HIGHLIGHT_SCENE.instantiate()
-	_item_grid.columns = _inventory.dimensions.x
-	for y in _inventory.dimensions.y:
-		for x in _inventory.dimensions.x:
-			var pos := Vector2i(x, y)
-			var tile_scene := _SAFE_TILE_SCENE if _inventory.safe_tiles.has(pos) else _TILE_SCENE
-			var tile: InventoryTile = tile_scene.instantiate()
-			tile.grid_pos = pos
-			tile.item_dropped.connect(_on_item_dropped)
-			tile.item_hovered.connect(_on_item_hovered)
-			tile.mouse_entered.connect(_on_tile_hovered, CONNECT_APPEND_SOURCE_OBJECT)
-			_item_grid_info[pos] = TileDetails.new(tile)
-			_item_grid.add_child(tile)
+	_draw_item_grid()
 	_draw_spells()
 	modulate.a = 0.0
 	await get_tree().process_frame
@@ -100,11 +89,11 @@ func _try_equip_item(event: InputEvent) -> void:
 			_bake_spell_equips()
 			return
 
-func _notification(what: int) -> void:
-	if what == NOTIFICATION_EXIT_TREE:
-		if is_instance_valid(_highlight) && !_highlight.is_inside_tree():
-			_highlight.queue_free()
-			_highlight = null
+#func _notification(what: int) -> void:
+#	if what == NOTIFICATION_EXIT_TREE:
+#		if is_instance_valid(_highlight) && !_highlight.is_inside_tree():
+#			_highlight.queue_free()
+#			_highlight = null
 
 func _on_tile_hovered(tile: InventoryTile) -> void:
 	_highlighted_item = null
@@ -119,6 +108,23 @@ func _refresh_stats() -> void:
 	_speed_label.text = "Speed: %s" % Player.data.speed
 
 #region Items
+func _draw_item_grid() -> void:
+	for i in _item_grid.get_children():
+		i.queue_free()
+	_item_grid_info.clear()
+	_item_grid.columns = _inventory.dimensions.x
+	for y in _inventory.dimensions.y:
+		for x in _inventory.dimensions.x:
+			var pos := Vector2i(x, y)
+			var tile_scene := _SAFE_TILE_SCENE if _inventory.safe_tiles.has(pos) else _TILE_SCENE
+			var tile: InventoryTile = tile_scene.instantiate()
+			tile.grid_pos = pos
+			tile.item_dropped.connect(_on_item_dropped)
+			tile.item_hovered.connect(_on_item_hovered)
+			tile.mouse_entered.connect(_on_tile_hovered, CONNECT_APPEND_SOURCE_OBJECT)
+			_item_grid_info[pos] = TileDetails.new(tile)
+			_item_grid.add_child(tile)
+
 func _on_item_hovered(drag_details: ItemDragDetails, grid_pos: Vector2i) -> void:
 	_current_draggable = drag_details
 	_drop_area.remove_highlight(false)
@@ -135,6 +141,7 @@ func _on_item_hovered(drag_details: ItemDragDetails, grid_pos: Vector2i) -> void
 				_item_grid_info[p].tile.set_highlight(false)
 
 func _on_item_dropped(drag_details: ItemDragDetails, grid_pos: Vector2i) -> void:
+	_highlight.set_to(null)
 	_drop_area.remove_highlight(true)
 	var item := drag_details.item
 	var new_positions := item.get_positions(grid_pos, _current_draggable.rotation_changed)
@@ -158,8 +165,29 @@ func _on_item_dropped(drag_details: ItemDragDetails, grid_pos: Vector2i) -> void
 				_inventory.remove_item(item)
 				old_info.empty()
 				_bake_item_positions()
+			if potential_merge.item is StatCrystal:
+				var crystal: StatCrystal = potential_merge.item
+				if crystal.is_ready(potential_merge):
+					_use_crystal(crystal, potential_merge)
 	else:
 		print("no")
+
+func _use_crystal(crystal: StatCrystal, id: InventoryDetail) -> void:
+	_highlight.set_to(null)
+	_inventory.remove_item(id)
+	_bake_item_positions()
+	crystal.activate(id)
+	print("DEEDLE EEDLE EE")
+	_refresh_stats()
+	if crystal.stat == StatCrystal.Stat.Magic:
+		_draw_spells()
+	elif crystal.stat == StatCrystal.Stat.Bag:
+		_highlight.set_to(null)
+		for i in _items.get_children():
+			i.queue_free()
+		_draw_item_grid()
+		await get_tree().process_frame
+	_draw_items()
 
 func _on_item_tile_hovered(item: InventoryItemDisplay) -> void:
 	_highlight.set_to(item)
@@ -195,6 +223,7 @@ func _get_merge_item(item: InventoryDetail, new_positions: Array[Vector2i]) -> I
 	return null
 
 func _on_item_removed(i: ItemDragDetails) -> void:
+	_highlight.set_to(null)
 	var id := i.item
 	Player.data.inventory.remove_item(id)
 	var old_info := _item_grid_info[id.position]
@@ -207,6 +236,7 @@ func _on_item_removed(i: ItemDragDetails) -> void:
 		_draw_spells()
 
 func _draw_items() -> void:
+	_highlight.set_to(null)
 	for i in _items.get_children():
 		i.queue_free()
 	for i in _inventory.items:
@@ -250,6 +280,7 @@ func _bake_item_positions() -> void:
 
 #region Spells
 func _draw_spells() -> void:
+	_highlight.set_to(null)
 	for c in _spell_grid.get_children():
 		c.queue_free()
 	var spells := Player.data.get_available_spells()

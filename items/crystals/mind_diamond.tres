@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="StatCrystal" format=3 uid="uid://dmxepru323w7a"]
+
+[ext_resource type="Script" uid="uid://crsmwfna86a5l" path="res://resource_types/items/stat_crystal.gd" id="1_s6tkl"]
+
+[resource]
+script = ExtResource("1_s6tkl")
+name = "Mind Diamond"
+description = "Mind Diamonds can increase your Mind stat, allowing you to combine more items in your inventory, and letting you remember spells longer when losing spellbooks or warping to new areas."
+icon = Rect2i(4, 2, 1, 1)
+scene_path = "uid://dq3a82bmcs37w"
+metadata/_custom_type_script = "uid://crsmwfna86a5l"
