@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d2toblm6xjhdq"]
 
-[ext_resource type="Script" uid="uid://b66jl5gw8dewc" path="res://items/world/world_item.gd" id="1_dx8ir"]
+[ext_resource type="Script" uid="uid://dwohh6s8y6tuf" path="res://items/world/weapons/moddable_weapon_display.gd" id="1_dx8ir"]
 [ext_resource type="Resource" uid="uid://d0pwkx5e5ntr4" path="res://items/guns/laser_rifle.tres" id="2_dx8ir"]
 [ext_resource type="PackedScene" uid="uid://b6udt5l2xtcco" path="res://assets/models/weapons/laser_gun.blend" id="3_dx8ir"]
 
@@ -20,3 +20,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.07380676, 0.3297615)
 shape = SubResource("BoxShape3D_rhbnc")
 
 [node name="laser_gun" parent="." unique_id=138838807 instance=ExtResource("3_dx8ir")]
+
+[node name="SilencerSlot" type="Node3D" parent="." unique_id=1605316710]
+unique_name_in_owner = true
+
+[node name="ScopeSlot" type="Node3D" parent="." unique_id=1149398813]
+unique_name_in_owner = true
+
+[node name="ClipSlot" type="Node3D" parent="." unique_id=2076284508]
+unique_name_in_owner = true
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.4420534e-09, -0.28, 0.61700964)

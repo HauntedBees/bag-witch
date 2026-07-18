@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="AmmoModifierMod" format=3 uid="uid://d1amq7dfac8gy"]
+
+[ext_resource type="Resource" uid="uid://d0pwkx5e5ntr4" path="res://items/guns/laser_rifle.tres" id="1_do1y2"]
+[ext_resource type="Script" uid="uid://2vmww5tqoece" path="res://resource_types/items/item_mods/ammo_modifier.gd" id="2_fpnr8"]
+
+[resource]
+script = ExtResource("2_fpnr8")
+multiply_amount = 2.0
+mod_name = &"Clip"
+connects_to = ExtResource("1_do1y2")
+mind_requirement = 2
+name = "Laser Booster"
+description = "Can be added to a Laser Rifle to increase the amount a Power Cell recharges it."
+icon = Rect2i(5, 3, 1, 1)
+scene_path = "uid://cl1tm1nm1dl0n"
+metadata/_custom_type_script = "uid://bu710w4vwduap"
