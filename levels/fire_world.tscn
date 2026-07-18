@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://eq158w8w1hls" path="res://enemies/fire/key_fire_smile.tscn" id="7_5rrxe"]
 [ext_resource type="PackedScene" uid="uid://j6ijx2yvkafq" path="res://enemies/fire/fire_slime.tscn" id="8_5rrxe"]
 [ext_resource type="Script" uid="uid://lylfqtt7t8e6" path="res://levels/level_border.gd" id="9_80h6e"]
+[ext_resource type="Script" uid="uid://wp1mdoed06xj" path="res://levels/quick_cutscene.gd" id="10_snvax"]
 [ext_resource type="Script" uid="uid://bh3e52s7bb0by" path="res://environment/portals/warp_point.gd" id="10_u8j4s"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_blw58"]
@@ -106,7 +107,7 @@ enemy_types = Array[PackedScene]([ExtResource("8_5rrxe")])
 potential_spawn_points = NodePath("../SlimePointsBottom")
 enemy_point_collection = NodePath("../SlimePointsBottom")
 spawn_container = NodePath("../SlimeHolderBottom")
-max_spawned = 30
+max_spawned = 10
 time_between_spawn_attempts = 5.0
 spawn_chance = 1.0
 metadata/_custom_type_script = "uid://b7o0pdvrytkig"
@@ -131,7 +132,13 @@ script = ExtResource("9_80h6e")
 shape = SubResource("SphereShape3D_rhbnc")
 
 [node name="FromCastleBasement" type="RayCast3D" parent="." unique_id=181357783]
-transform = Transform3D(-3.6284725e-08, 0.5576179, -0.83009773, 2.4374252e-08, 0.83009773, 0.5576179, 1, 0, -4.371139e-08, -127.96631, 8.727783, 122.29193)
+transform = Transform3D(-3.6284725e-08, 0.5576179, -0.83009773, 2.4374252e-08, 0.83009773, 0.5576179, 1, 0, -4.371139e-08, -74.79823, 44.777435, -0.24481201)
 target_position = Vector3(0, 0, -20)
 script = ExtResource("10_u8j4s")
 metadata/_custom_type_script = "uid://bh3e52s7bb0by"
+
+[node name="FirstEntrance" type="Node" parent="." unique_id=1011120055]
+script = ExtResource("10_snvax")
+text = "...This ain't me bog..."
+completed_key = &"enter_fire"
+metadata/_custom_type_script = "uid://wp1mdoed06xj"

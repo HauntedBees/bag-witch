@@ -38,16 +38,19 @@ func _adjust_movement_stats() -> void:
 	match Player.data.speed:
 		1:
 			max_desired_move_speed = 30.0
+			wallrun_speed = 0.0
 			run_speed = 24.0
 			run_accel = 15.0
 			jump_height = 2.2
 		2:
 			max_desired_move_speed = 35.0
+			wallrun_speed = 9.0
 			run_speed = 28.0
 			run_accel = 18.0
 			jump_height = 2.5
 		3:
 			max_desired_move_speed = 50.0
+			wallrun_speed = 18.0
 			run_speed = 40.0
 			run_accel = 25.0
 			jump_height = 3.0

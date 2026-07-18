@@ -61,17 +61,17 @@ func _on_text_ended() -> void:
 			Player.input_locked = false
 			Player.inventory_available = true
 			await get_tree().create_timer(1.0).timeout
-			SignalBus.say_thing.emit("Bag Witch", "What happened...? I can barely remember anything! What happened to all of my things?! My bag is empty!!", _KEYS[5])
-			SignalBus.say_thing.emit("Bag Witch", "This is bad... I need to find a way out of here!", _KEYS[6])
+			SignalBus.say_thing.emit("Bag Witch", "I can barely remember anything! What happened to all of my things?! My bag is empty!!", _KEYS[5])
+			SignalBus.say_thing.emit("Bag Witch", "This ain't good... I need to find a way outta here!", _KEYS[6])
 			_state += 1
 
 func _on_trigger_one_entered(body: Node3D) -> void:
 	if body is not BogWitch:
 		return
-	SignalBus.say_thing.emit("Bag Witch", "I need to get past that guard... Maybe I can smack him with this rock while he's not looking!", _KEYS[7])
+	SignalBus.say_thing.emit("Bag Witch", "A guard, huh? Maybe I can smack him with this rock while he's not looking!", _KEYS[7])
 	SignalBus.say_thing.emit("Bag Witch", "I can equip it with [input=weapon_slot_1] and attack with [input=attack].", "")
 
 func _on_enemy_died() -> void:
 	blocking_wall.queue_free()
-	SignalBus.say_thing.emit("Bag Witch", "Okay... the coast is clear now. I need to find another one of those portals and get out of here.", "")
+	SignalBus.say_thing.emit("Bag Witch", "Okay... the dust has settled. I need to find another one of them portals and get outta here.", "")
 	Player.complete_quest(completed_key)
