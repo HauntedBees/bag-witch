@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="ProjectileWeapon" format=3 uid="uid://dmbcf5wgvngv2"]
 
 [ext_resource type="Script" uid="uid://dq216hufmeoo3" path="res://resource_types/weapons/projectile_weapon.gd" id="1_2gy28"]
+[ext_resource type="Resource" uid="uid://g6yhpa641la2" path="res://items/guns/sawed_off_shotgun.tres" id="1_7dntt"]
 
 [resource]
 script = ExtResource("1_2gy28")
@@ -17,6 +18,8 @@ description = "It goes boom boom."
 size = Vector2i(4, 2)
 icon = Rect2i(4, 0, 4, 2)
 scene_path = "uid://fiol38q8nvyr"
+can_be_sawed = true
+sawable_item = ExtResource("1_7dntt")
 use_range = 9.8
 equip_sprite_offset = Vector2i(6, 0)
 equipped_animation = &"Shotgun"

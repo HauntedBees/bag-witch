@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="ProjectileWeapon" format=3 uid="uid://g6yhpa641la2"]
+
+[ext_resource type="Script" uid="uid://dq216hufmeoo3" path="res://resource_types/weapons/projectile_weapon.gd" id="1_5rsym"]
+
+[resource]
+script = ExtResource("1_5rsym")
+projectile_path = "uid://b7tgst5mfxxfd"
+velocity = 80.0
+fade_time = 0.05
+initial_ammo_range = Vector2i(0, 2)
+full_clip_size = 2
+damage_range = Vector2i(50, 60)
+knockback = 20.0
+additional_y_knockback = 20.0
+name = "Sawed-Off Shotgun"
+description = "It goes boom boom. It's been cut down to take up less space, making its range slightly lower."
+size = Vector2i(2, 2)
+icon = Rect2i(6, 2, 2, 2)
+scene_path = "uid://bdjp2yh6jrj8e"
+use_range = 5.3
+equip_sprite_offset = Vector2i(6, 0)
+equipped_animation = &"Shotgun"
+use_animation = &"Shotgun_Use"
+reload_animation = &"Shotgun_Reload"
+reload_time = 2.0
+equipped_scale = 3.0
+metadata/_custom_type_script = "uid://dq216hufmeoo3"
