@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://su2uaeypv6dr"]
+
+[ext_resource type="Script" uid="uid://b66jl5gw8dewc" path="res://items/world/world_item.gd" id="1_f0266"]
+[ext_resource type="Resource" uid="uid://bblwxtkau8lot" path="res://items/ammo/power_cell.tres" id="2_f0266"]
+[ext_resource type="PackedScene" uid="uid://bigvxtmaq3x77" path="res://assets/models/ammo/power_cell.blend" id="3_f0266"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rhbnc"]
+size = Vector3(1, 1.3066101, 0.6037655)
+
+[node name="PowerCell" type="Area3D" unique_id=458796508 node_paths=PackedStringArray("collider")]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_f0266")
+item = ExtResource("2_f0266")
+collider = NodePath("CollisionShape3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1439180978]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65715027, -0.034377098)
+shape = SubResource("BoxShape3D_rhbnc")
+
+[node name="power_cell" parent="." unique_id=754185009 instance=ExtResource("3_f0266")]

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PowerCell" format=3 uid="uid://bblwxtkau8lot"]
+
+[ext_resource type="Script" uid="uid://bfodjlwt0ww2c" path="res://resource_types/items/power_cell.gd" id="1_nqv7a"]
+
+[resource]
+script = ExtResource("1_nqv7a")
+initial_ammo_range = Vector2i(1, 1)
+max_amount = 1
+name = "Power Cell"
+description = "It can charge various futuristic devices."
+icon = Rect2i(3, 4, 1, 1)
+scene_path = "uid://su2uaeypv6dr"
+metadata/_custom_type_script = "uid://bfodjlwt0ww2c"

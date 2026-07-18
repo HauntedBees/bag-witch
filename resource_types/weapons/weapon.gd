@@ -21,6 +21,8 @@ class_name Weapon extends Item
 ## For shattering and breaking shit.
 @export var is_high_impact := false
 
+@export var uses_power_cells_for_ammo := false
+
 ## Various metadata properties can be increased by this attack.
 @export var metadata_increase_ranges: Dictionary[BWEnum.Effect, Vector2] = {}
 

@@ -176,7 +176,8 @@ func _try_reload(event: InputEvent) -> bool:
 	if w is not ProjectileWeapon:
 		return false
 	var pw := w as ProjectileWeapon
-	var remaining := pw.get_full_clip_size(Player.data.current_equipped) - Player.data.current_equipped.ammo
+	var full_size := pw.get_full_clip_size(Player.data.current_equipped)
+	var remaining := full_size - Player.data.current_equipped.ammo
 	for id in Player.data.inventory.items:
 		if id.item is Ammo:
 			var a := id.item as Ammo
@@ -185,7 +186,11 @@ func _try_reload(event: InputEvent) -> bool:
 			var amount := id.ammo
 			if amount == 0:
 				continue
-			if amount >= remaining:
+			if a is PowerCell:
+				Player.data.current_equipped.ammo = full_size
+				id.ammo = 0
+				remaining = 0
+			elif amount >= remaining:
 				id.ammo -= remaining
 				Player.data.current_equipped.ammo += remaining
 				remaining = 0

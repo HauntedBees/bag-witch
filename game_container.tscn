@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ssp37cocp7km" path="res://levels/bog_world.tscn" id="4_ojnl1"]
 [ext_resource type="PackedScene" uid="uid://djtpn6s6cdlln" path="res://enemies/common/knight.tscn" id="6_dvbua"]
 [ext_resource type="PackedScene" uid="uid://d2toblm6xjhdq" path="res://items/world/weapons/laserrifle.tscn" id="6_shdsl"]
+[ext_resource type="PackedScene" uid="uid://su2uaeypv6dr" path="res://items/world/ammo/power_cell.tscn" id="7_shdsl"]
 
 [node name="GameContainer" type="Node3D" unique_id=827938429]
 process_mode = 3
@@ -30,5 +31,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7209473, -15.584351)
 
 [node name="LaserRifle" parent="." unique_id=458796508 instance=ExtResource("6_shdsl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.641615, 1.6411133, -9.951752)
+
+[node name="PowerCell" parent="." unique_id=152960198 instance=ExtResource("7_shdsl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+
+[node name="PowerCell2" parent="." unique_id=229657299 instance=ExtResource("7_shdsl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.687622, 0, -4)
 
 [connection signal="finished" from="WarpEffect" to="." method="_on_warp_effect_finished"]
