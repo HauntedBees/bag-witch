@@ -4,7 +4,8 @@
 
 [resource]
 script = ExtResource("1_5ybjv")
-damage_range = Vector2i(10, 20)
+is_melee = true
+damage_range = Vector2i(20, 30)
 knockback = 15.0
 name = "Rock"
 description = "It's a rock."

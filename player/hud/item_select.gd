@@ -16,7 +16,7 @@ func set_from_world_item(w: WorldItem) -> void:
 	_grab_atlas.region.position = _OK_POS if can_hold else _NO_POS
 
 func set_from_enemy(e: EnemyDisplay) -> void:
-	var can_grab := Player.data.bag >= e.capture_level
+	var can_grab := Player.data.strength >= e.capture_level
 	_set_visible(e.get_screen_bounds(), e.enemy_name, can_grab)
 	if can_grab:
 		_grab_icon.visible = true

@@ -3,6 +3,13 @@
 [ext_resource type="Texture2D" uid="uid://betn02pn5nolr" path="res://assets/sprites/health_bar.png" id="1_sxd0a"]
 [ext_resource type="Texture2D" uid="uid://r2celiat71wr" path="res://assets/sprites/health_bar_fill.png" id="2_aqcie"]
 [ext_resource type="Script" uid="uid://dl65jnrgeqnsq" path="res://player/hud/health_bar.gd" id="3_aqcie"]
+[ext_resource type="Script" uid="uid://hafxp56l0iao" path="res://addons/gas/gas_label.gd" id="4_nmqmr"]
+[ext_resource type="FontFile" uid="uid://d3y651l4q0g7n" path="res://assets/fonts/Gothica-Bold.ttf" id="4_rulfl"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rhbnc"]
+font = ExtResource("4_rulfl")
+font_size = 12
+outline_color = Color(0, 0, 0, 1)
 
 [node name="HealthBar" type="TextureProgressBar" unique_id=178334899]
 texture_filter = 1
@@ -17,3 +24,24 @@ texture_over = ExtResource("1_sxd0a")
 texture_progress = ExtResource("2_aqcie")
 texture_progress_offset = Vector2(8, 4)
 script = ExtResource("3_aqcie")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1760419565]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 9
+theme_override_constants/margin_top = 8
+
+[node name="HealthCount" type="Label" parent="MarginContainer" unique_id=2146010233]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "10/10"
+label_settings = SubResource("LabelSettings_rhbnc")
+horizontal_alignment = 2
+script = ExtResource("4_nmqmr")
+metadata/_custom_type_script = "uid://hafxp56l0iao"

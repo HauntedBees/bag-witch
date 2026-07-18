@@ -4,7 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://bub2sh1fg5ddq" path="res://player/player_character_scene.tscn" id="2_ge4kj"]
 [ext_resource type="PackedScene" uid="uid://dtjtjjvwpwi2o" path="res://environment/portals/warp_effect.tscn" id="3_aq3js"]
 [ext_resource type="PackedScene" uid="uid://ssp37cocp7km" path="res://levels/bog_world.tscn" id="4_ojnl1"]
-[ext_resource type="PackedScene" uid="uid://bhoxhmha1477m" path="res://items/world/crystals/bag_crystal.tscn" id="5_qin4g"]
+[ext_resource type="PackedScene" uid="uid://dcbw1l051fcok" path="res://items/world/crystals/power_ruby.tscn" id="5_qin4g"]
+[ext_resource type="PackedScene" uid="uid://djtpn6s6cdlln" path="res://enemies/common/knight.tscn" id="6_dvbua"]
 
 [node name="GameContainer" type="Node3D" unique_id=827938429]
 process_mode = 3
@@ -24,28 +25,31 @@ process_mode = 1
 
 [node name="Bog" parent="WorldContainer" unique_id=866622824 instance=ExtResource("4_ojnl1")]
 
-[node name="BagCrystal" parent="." unique_id=951298956 instance=ExtResource("5_qin4g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2170415, 0.93622005, -3.5699432)
+[node name="PowerRuby" parent="." unique_id=951298956 instance=ExtResource("5_qin4g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.3414917, 0.91851807, -1.1121826)
 
-[node name="BagCrystal2" parent="." unique_id=1404391988 instance=ExtResource("5_qin4g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.171234, 0.93664736, -6.047852)
+[node name="PowerRuby2" parent="." unique_id=1591927585 instance=ExtResource("5_qin4g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.140747, 0.91851807, -0.8536377)
 
-[node name="BagCrystal3" parent="." unique_id=1243981193 instance=ExtResource("5_qin4g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5628967, 0.9363422, -8.842165)
+[node name="PowerRuby3" parent="." unique_id=1606815590 instance=ExtResource("5_qin4g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6482544, 0.91851807, -0.8536377)
 
-[node name="BagCrystal4" parent="." unique_id=1566240733 instance=ExtResource("5_qin4g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.1681824, 0.9365863, -6.6248784)
+[node name="PowerRuby4" parent="." unique_id=1574409572 instance=ExtResource("5_qin4g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3517456, 0.91851807, -0.8536377)
 
-[node name="BagCrystal5" parent="." unique_id=592179063 instance=ExtResource("5_qin4g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.427948, 0.93658626, -7.61023)
+[node name="PowerRuby5" parent="." unique_id=868344501 instance=ExtResource("5_qin4g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.3517456, 0.91851807, -0.8536377)
 
-[node name="BagCrystal6" parent="." unique_id=1826319125 instance=ExtResource("5_qin4g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.209778, 20.017702, -45.59375)
+[node name="PowerRuby6" parent="." unique_id=993785737 instance=ExtResource("5_qin4g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.351746, 0.91851807, -0.8536377)
 
-[node name="BagCrystal7" parent="." unique_id=384274622 instance=ExtResource("5_qin4g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.454956, 0.9365253, -5.6662602)
+[node name="PowerRuby7" parent="." unique_id=647583330 instance=ExtResource("5_qin4g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.351746, 0.91851807, -6.8536377)
 
-[node name="BagCrystal8" parent="." unique_id=1533670525 instance=ExtResource("5_qin4g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1628416, 0.9362811, -0.9698485)
+[node name="PowerRuby8" parent="." unique_id=1071592574 instance=ExtResource("5_qin4g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.351746, 0.91851807, -6.8536377)
+
+[node name="Knight" parent="." unique_id=222303382 instance=ExtResource("6_dvbua")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7209473, -15.584351)
 
 [connection signal="finished" from="WarpEffect" to="." method="_on_warp_effect_finished"]

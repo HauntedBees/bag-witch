@@ -1,5 +1,6 @@
 class_name PlayerData extends Resource
 
+signal health_changed(new_health: int)
 signal stat_changed()
 
 var mind := 1:
@@ -8,8 +9,15 @@ var mind := 1:
 		stat_changed.emit()
 var strength := 1:
 	set(value):
+		var str_changed := strength != value
 		strength = value
+		match strength:
+			1: max_health = 100
+			2: max_health = 175
+			3: max_health = 320
 		stat_changed.emit()
+		if str_changed:
+			current_health = max_health
 var magic := 1:
 	set(value):
 		magic = value
@@ -28,7 +36,10 @@ var inventory := Inventory.new()
 var current_equipped: InventoryDetail = null
 var equip_slots: Array[InventoryDetail] = []
 
-var current_health := 100
+var current_health := 100:
+	set(value):
+		current_health = value
+		health_changed.emit(value)
 var max_health := 100
 
 var completed_quests: Array[StringName] = [&"FromBog"]

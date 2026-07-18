@@ -1,6 +1,5 @@
 extends Node
 
-signal health_changed(new_health: int)
 signal equip_changed(weapon: InventoryDetail)
 signal weapon_cooldown_changed(amount: int)
 signal ammo_changed(new_ammo: int)
@@ -32,7 +31,6 @@ func take_damage(amount: int) -> void:
 	data.current_health -= amount
 	if data.current_health <= 0:
 		print("OH FUCK") #TODO: check spares
-	health_changed.emit(data.current_health)
 
 func has_completed(quest: StringName) -> bool:
 	return data.completed_quests.has(quest)
