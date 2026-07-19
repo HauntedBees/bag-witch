@@ -399,6 +399,7 @@ func _on_inventory_toggled(shown: bool) -> void:
 	_in_inventory = shown
 
 func _on_inventory_display_spawn_item(wi: WorldItem, id: InventoryDetail) -> void:
+	wi.from_inventory = true
 	wi.ammo = id.ammo
 	wi.had_ammo_set = true
 	wi.mods = id.modifications

@@ -5,6 +5,8 @@ signal picked_up()
 
 @export var item: Item
 
+@export var from_inventory := false
+
 @export var mods: Array[ItemMod] = []
 
 ## Should have a BoxShape3D for UI reasons.
