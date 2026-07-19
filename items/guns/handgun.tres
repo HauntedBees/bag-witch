@@ -7,6 +7,7 @@ script = ExtResource("1_5tsh5")
 projectile_path = "uid://b7tgst5mfxxfd"
 velocity = 90.0
 damage_range = Vector2i(25, 35)
+knockback = 10.0
 name = "Handgun"
 description = "It goes pew pew."
 type = 2
