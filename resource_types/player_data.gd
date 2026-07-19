@@ -2,6 +2,8 @@ class_name PlayerData extends Resource
 
 signal health_changed(new_health: int)
 signal stat_changed()
+signal potion_added(p: Potion)
+signal potion_removed(p: Potion)
 
 var mind := 2:
 	set(value):
@@ -57,6 +59,17 @@ func _init() -> void:
 		equip_slots.append(null)
 	for i in inventory.items: # for the default items
 		_on_item_added(i)
+
+func drink_potion(potion: Potion) -> void:
+	if active_potions.has(potion):
+		active_potions[potion] += potion.duration
+	else:
+		active_potions[potion] = potion.duration
+		potion_added.emit(potion)
+
+func remove_potion(potion: Potion) -> void:
+	active_potions.erase(potion)
+	potion_removed.emit(potion)
 
 func has_potion_ability(ability: Potion.Ability) -> bool:
 	for p: Potion in active_potions.keys():

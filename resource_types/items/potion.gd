@@ -23,7 +23,4 @@ func _inner_use(player: BogWitch) -> void:
 	if ability == Ability.HurtSelf:
 		player.take_damage(20, Vector3(0.0, 3.0, 0.0), 2.0, 2.0)
 		return
-	if Player.data.active_potions.has(self):
-		Player.data.active_potions[self] += duration
-	else:
-		Player.data.active_potions[self] = duration
+	Player.data.drink_potion(self)

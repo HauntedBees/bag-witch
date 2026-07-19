@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://b6iawfs8ct0do"]
+
+[ext_resource type="Texture2D" uid="uid://bul3g5464mpww" path="res://assets/sprites/stat_arrow.png" id="1_whttq"]
+[ext_resource type="Script" uid="uid://m8qrawkuww20" path="res://player/hud/potion_display.gd" id="2_nufin"]
+[ext_resource type="LabelSettings" uid="uid://cv2nv0q56shf6" path="res://assets/fonts/body_text.tres" id="3_3awrn"]
+[ext_resource type="Script" uid="uid://hafxp56l0iao" path="res://addons/gas/gas_label.gd" id="4_bvesw"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rhbnc"]
+texture = ExtResource("1_whttq")
+texture_margin_left = 60.0
+texture_margin_right = 92.0
+
+[node name="PotionDisplay" type="PanelContainer" unique_id=180912664]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_rhbnc")
+script = ExtResource("2_nufin")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1285654797]
+layout_mode = 2
+theme_override_constants/margin_top = 22
+theme_override_constants/margin_bottom = 22
+
+[node name="GASLabel" type="Label" parent="MarginContainer" unique_id=956915644]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Piss Out My Dick (0s)"
+label_settings = ExtResource("3_3awrn")
+script = ExtResource("4_bvesw")
+metadata/_custom_type_script = "uid://hafxp56l0iao"

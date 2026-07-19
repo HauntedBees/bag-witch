@@ -97,7 +97,7 @@ func _process(delta: float) -> void:
 	for p: Potion in Player.data.active_potions.keys():
 		Player.data.active_potions[p] -= delta
 		if Player.data.active_potions[p] <= 0.0:
-			Player.data.active_potions.erase(p)
+			Player.data.remove_potion(p)
 	for q: Quest in _quests.values():
 		q.process(delta)
 	if _reloading_time_remaining >= 0.0:
