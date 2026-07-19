@@ -1,5 +1,6 @@
 class_name InventoryItemDisplay extends Control
 
+signal drag_started()
 signal drag_ended()
 
 const DRAG_OFFSET := Vector2(-32.0, -32.0)
@@ -53,7 +54,8 @@ func _get_drag_data(_at_position: Vector2) -> Variant:
 	else:
 		drag_icon.position = DRAG_OFFSET
 	set_drag_preview(preview)
-
+	drag_started.emit()
+	
 	var d := ItemDragDetails.new()
 	d.item = details
 	d.display = self

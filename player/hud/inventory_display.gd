@@ -131,7 +131,6 @@ func _draw_item_grid() -> void:
 func _on_item_hovered(drag_details: ItemDragDetails, grid_pos: Vector2i) -> void:
 	_current_draggable = drag_details
 	_drop_area.remove_highlight(false)
-	_drop_area.visible = true
 	for i: TileDetails in _item_grid_info.values():
 		i.tile.remove_highlight()
 	var new_positions := drag_details.item.get_positions(grid_pos, _current_draggable.rotation_changed)
@@ -261,11 +260,15 @@ func _draw_item(i: InventoryDetail) -> void:
 	var id: InventoryItemDisplay = _ITEM_SCENE.instantiate()
 	_items.add_child(id)
 	id.details = i
+	id.drag_started.connect(_on_drag_started)
 	id.drag_ended.connect(_on_drag_ended)
 	id.mouse_entered.connect(_on_item_tile_hovered, CONNECT_APPEND_SOURCE_OBJECT)
 	var info := _item_grid_info[i.position]
 	id.global_position = info.tile.global_position
 	info.item_display = id
+
+func _on_drag_started() -> void:
+	_drop_area.visible = true
 
 func _on_drag_ended() -> void:
 	if _current_draggable != null:
@@ -273,6 +276,7 @@ func _on_drag_ended() -> void:
 		for i: TileDetails in _item_grid_info.values():
 			i.tile.remove_highlight()
 	_current_draggable = null
+	_drop_area.visible = false
 
 func _bake_item_positions() -> void:
 	for t: TileDetails in _item_grid_info.values():
