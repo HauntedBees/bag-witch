@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://b40thd7kw3ff5"]
+
+[ext_resource type="PackedScene" uid="uid://cjighldlnhfxi" path="res://levels/bog_world/lucky_animal.tscn" id="1_11gh1"]
+[ext_resource type="Script" uid="uid://dwnwlpovsv214" path="res://levels/bog_world/animals_and_malarkey.gd" id="1_gx0vu"]
+[ext_resource type="Texture2D" uid="uid://4uhnd1isql2t" path="res://assets/sprites/animals_and_theyre_lucky.png" id="2_gx0vu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n5xob"]
+atlas = ExtResource("2_gx0vu")
+region = Rect2(0, 0, 16, 16)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5os04"]
+atlas = ExtResource("2_gx0vu")
+region = Rect2(16, 0, 16, 16)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gx0vu"]
+atlas = ExtResource("2_gx0vu")
+region = Rect2(112, 64, 16, 16)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v2j4y"]
+atlas = ExtResource("2_gx0vu")
+region = Rect2(80, 64, 16, 16)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11gh1"]
+atlas = ExtResource("2_gx0vu")
+region = Rect2(112, 16, 16, 16)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxr4a"]
+atlas = ExtResource("2_gx0vu")
+region = Rect2(0, 32, 16, 16)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ualww"]
+atlas = ExtResource("2_gx0vu")
+region = Rect2(128, 64, 16, 16)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jsc61"]
+atlas = ExtResource("2_gx0vu")
+region = Rect2(144, 48, 16, 16)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_acn2e"]
+atlas = ExtResource("2_gx0vu")
+region = Rect2(112, 48, 16, 16)
+filter_clip = true
+
+[node name="Animals" type="Node3D" unique_id=348329954]
+script = ExtResource("1_gx0vu")
+
+[node name="Owl" parent="." unique_id=1574434058 instance=ExtResource("1_11gh1")]
+texture = SubResource("AtlasTexture_n5xob")
+animated_texture = SubResource("AtlasTexture_5os04")
+bounce_peak = 1.5
+
+[node name="Bnuuy" parent="." unique_id=1902161114 instance=ExtResource("1_11gh1")]
+transform = Transform3D(0.7071067, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, 0.7071067, 0, 0, 0)
+texture = SubResource("AtlasTexture_gx0vu")
+
+[node name="Sqorl" parent="." unique_id=724884532 instance=ExtResource("1_11gh1")]
+transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, 0, 0, 0)
+texture = SubResource("AtlasTexture_v2j4y")
+bounce_peak = 0.75
+
+[node name="Frog" parent="." unique_id=568770842 instance=ExtResource("1_11gh1")]
+transform = Transform3D(-0.7071067, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, -0.7071067, 0, 0, 0)
+texture = SubResource("AtlasTexture_11gh1")
+bounce_peak = 1.25
+
+[node name="Flicky" parent="." unique_id=2089501890 instance=ExtResource("1_11gh1")]
+transform = Transform3D(-0.99999994, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -0.99999994, 0, 0, 0)
+texture = SubResource("AtlasTexture_vxr4a")
+bounce_peak = 1.25
+
+[node name="Jimothy" parent="." unique_id=1825708138 instance=ExtResource("1_11gh1")]
+transform = Transform3D(-0.70710677, 0, -0.70710665, 0, 1, 0, 0.70710665, 0, -0.70710677, 0, 0, 0)
+texture = SubResource("AtlasTexture_ualww")
+bounce_peak = 0.25
+
+[node name="Fox" parent="." unique_id=1408381849 instance=ExtResource("1_11gh1")]
+transform = Transform3D(1.192488e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, 1.192488e-08, 0, 0, 0)
+texture = SubResource("AtlasTexture_jsc61")
+bounce_peak = 0.5
+
+[node name="Primate" parent="." unique_id=648046999 instance=ExtResource("1_11gh1")]
+transform = Transform3D(0.7071067, 0, -0.7071067, 0, 1, 0, 0.7071067, 0, 0.7071067, 0, 0, 0)
+texture = SubResource("AtlasTexture_acn2e")

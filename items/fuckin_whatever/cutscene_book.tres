@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://bo2r1oepd3xvs"]
+
+[ext_resource type="Script" uid="uid://cgt7ckkn1gh5b" path="res://resource_types/items/item.gd" id="1_ah7yf"]
+
+[resource]
+script = ExtResource("1_ah7yf")
+name = "Book"
+custom_equip_scene = "uid://cp6yrifsamb03"
+equipped_animation = &"BookHold"
+equipped_scale = 4.0
+add_equip_scene_to_both_hands = true
+metadata/_custom_type_script = "uid://cgt7ckkn1gh5b"

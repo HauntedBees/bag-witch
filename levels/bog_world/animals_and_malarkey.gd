@@ -1,0 +1,1 @@
+class_name CutsceneAnimals extends Node3D

@@ -25,6 +25,11 @@ func _ready() -> void:
 	else:
 		trigger_area.body_entered.connect(_on_body_entered)
 
+func _finish_cutscene(clean_up: bool) -> void:
+	Player.complete_quest(completed_key)
+	if clean_up:
+		_clean_up()
+
 func _on_body_entered(body: Node3D) -> void:
 	if _triggered:
 		return

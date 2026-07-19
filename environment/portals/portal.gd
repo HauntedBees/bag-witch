@@ -29,6 +29,7 @@ func _process(_delta: float):
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body is not BogWitch:
 		return
+	SignalBus.portal_entered.emit()
 	Player.data.portal_wipe()
 	if teleport_scene.is_empty():
 		_teleport_local(body)

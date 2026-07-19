@@ -1,8 +1,12 @@
 extends Node
 
 @warning_ignore("unused_signal")
+signal portal_entered()
+
+@warning_ignore("unused_signal")
 signal load_new_level(destination_uid: String, destination_point_name: String)
 
+#region Cutscene
 @warning_ignore("unused_signal")
 signal say_thing(speaker: String, text: String, id: String)
 
@@ -11,3 +15,9 @@ signal text_advanced(new_id: String)
 
 @warning_ignore("unused_signal")
 signal text_ended()
+#endregion
+
+#region Sound
+@warning_ignore("unused_signal")
+signal change_song(song_uid: String, transition_secs: float)
+#endregion
