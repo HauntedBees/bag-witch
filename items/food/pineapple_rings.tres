@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Food" format=3 uid="uid://bhc3lbevd1b0w"]
+
+[ext_resource type="Script" uid="uid://bnwn0kgj0rv42" path="res://resource_types/items/food.gd" id="1_waotj"]
+
+[resource]
+script = ExtResource("1_waotj")
+heal_range = Vector2i(6, 14)
+name = "Pineapple Slices"
+description = "Grows in hot climates. Hard to eat, but worth it."
+type = 5
+icon = Rect2i(3, 7, 1, 1)
+scene_path = "uid://cm0m2edwk6cv6"
+discard_on_use = true
+equip_sprite_offset = Vector2i(1, 1)
+equipped_animation = &"FoodHold"
+use_animation = &"FoodEat"
+metadata/_custom_type_script = "uid://bnwn0kgj0rv42"

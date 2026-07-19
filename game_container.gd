@@ -41,7 +41,8 @@ func _place_player() -> void:
 	var warps := get_tree().get_nodes_in_group(&"warp")
 	for w: WarpPoint in warps:
 		if w.name == _current_loading_scene_destination:
-			_player.velocity = _player.velocity.rotated(Vector3.UP, w.global_rotation.y)
+			_player.velocity = _player.velocity.rotated(Vector3.UP, w.global_rotation.y - _player.cam_holder.global_rotation.y)
+			_player.velocity *= w.velocity_multiplier
 			_player.cam_holder.global_rotation.y = w.global_rotation.y
 			_player.cam_holder.camera.global_rotation.x = w.global_rotation.x
 			_player.global_position = w.global_position

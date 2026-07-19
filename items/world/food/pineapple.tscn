@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://nhixgopg3rk5"]
+
+[ext_resource type="Script" uid="uid://c0qifhyf6bpxi" path="res://items/world/food/pineapple.gd" id="1_eimd1"]
+[ext_resource type="Resource" uid="uid://bank38o1johx" path="res://items/food/uncut_pineapple.tres" id="2_6d5fl"]
+[ext_resource type="PackedScene" uid="uid://dv5bpvxcayas3" path="res://assets/models/items/pineapple.blend" id="2_nvmo1"]
+[ext_resource type="PackedScene" uid="uid://cwornomg0lngf" path="res://assets/models/items/pineapple_base.blend" id="3_6d5fl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rhbnc"]
+size = Vector3(1, 1.3798828, 1)
+
+[node name="Pineapple" type="Area3D" unique_id=933644729 node_paths=PackedStringArray("collider")]
+collision_layer = 2
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_eimd1")
+item = ExtResource("2_6d5fl")
+collider = NodePath("CollisionShape3D")
+metadata/_custom_type_script = "uid://b66jl5gw8dewc"
+
+[node name="pineapple2" parent="." unique_id=1843147026 instance=ExtResource("2_nvmo1")]
+
+[node name="pineapple_base" parent="." unique_id=647936305 instance=ExtResource("3_6d5fl")]
+unique_name_in_owner = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1573789033]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6743248, 0)
+shape = SubResource("BoxShape3D_rhbnc")

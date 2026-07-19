@@ -10,6 +10,8 @@ signal items_purged()
 
 @export var items: Array[InventoryDetail] = []
 
+@export var had_item_names: Array[String] = []
+
 func recalibrate_bag_size() -> void:
 	match Player.data.bag:
 		1: # 21 (1)
@@ -55,6 +57,11 @@ func add_item(i: Item, pos: Vector2i, trigger_signal := true) -> void:
 	add_item_detail(InventoryDetail.new(i, pos), trigger_signal)
 
 func add_item_detail(new_item: InventoryDetail, trigger_signal := true) -> void:
+	if !new_item.item.first_get_text.is_empty():
+		var item_name := new_item.item.name
+		if !had_item_names.has(item_name):
+			SignalBus.say_thing.emit("Bag Witch", new_item.item.first_get_text, item_name)
+			had_item_names.append(item_name)
 	items.append(new_item)
 	if trigger_signal:
 		item_added.emit(new_item)

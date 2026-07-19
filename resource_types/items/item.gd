@@ -36,6 +36,9 @@ enum ItemType {
 ## The position and size of the item's icon in item_sheet.png to be used in the inventory grid.
 @export var icon := Rect2i(0, 0, 1, 1)
 
+## If set, the first time the player gets this item, they'll say this.
+@export_multiline() var first_get_text := ""
+
 ## For items that are tall, not long, I would've had to *think* and *write better code* to handle
 ## rotation and stuff properly, so the quick solution I've come up with is to *not* do that, and
 ## just make those items long, too, but rotated by default so they look tall. Brilliant.
