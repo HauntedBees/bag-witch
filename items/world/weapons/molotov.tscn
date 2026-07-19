@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://blcxo6dbc3d4t"]
+
+[ext_resource type="Script" uid="uid://b66jl5gw8dewc" path="res://items/world/world_item.gd" id="1_uenkn"]
+[ext_resource type="Resource" uid="uid://dwy2t5iqcrs8k" path="res://items/guns/molotov_cocktail.tres" id="2_qmun7"]
+[ext_resource type="PackedScene" uid="uid://cdspmedbltw6e" path="res://assets/models/weapons/molotov.blend" id="3_ocrn1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rhbnc"]
+size = Vector3(1, 2.0499268, 1)
+
+[node name="Molotov" type="Area3D" unique_id=1533506164 node_paths=PackedStringArray("collider")]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_uenkn")
+item = ExtResource("2_qmun7")
+collider = NodePath("CollisionShape3D")
+
+[node name="molotov" parent="." unique_id=6487806 instance=ExtResource("3_ocrn1")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1398188727]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0254929, 0)
+shape = SubResource("BoxShape3D_rhbnc")

@@ -30,12 +30,12 @@ func _ready() -> void:
 func _on_body_entered(body: Node3D) -> void:
 	if body is BogWitch:
 		if _does_attack_land():
-			var damage := randi_range(damage_range.x, damage_range.y)
-			Player.take_damage(damage)
-			if knockback > 0.0:
-				var dir := body.global_position.direction_to(knockback_source)
-				body.velocity -= dir.normalized() * knockback
-				body.velocity.y += additional_y_knockback
+			body.take_damage(
+				randi_range(damage_range.x, damage_range.y),
+				knockback_source,
+				knockback,
+				additional_y_knockback
+			)
 		else:
 			print("DODGED!")
 		if end_on_hit:

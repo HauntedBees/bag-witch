@@ -121,6 +121,21 @@ func _on_jump_state_jumped() -> void:
 	if vel_dir.dot(front_dir) >= 0.9 && vel.length() >= 14.0 && !is_on_floor():
 		ready_to_glide = true
 
+func take_damage_from_weapon(w: Weapon, knockback_source: Vector3) -> void:
+	take_damage(
+		randi_range(w.damage_range.x, w.damage_range.y),
+		knockback_source,
+		w.knockback,
+		w.additional_y_knockback
+	)
+
+func take_damage(damage: int, knockback_source: Vector3, knockback: float, additional_y_knockback := 0.0) -> void:
+		Player.take_damage(damage)
+		if knockback > 0.0:
+			var dir := global_position.direction_to(knockback_source)
+			velocity -= dir.normalized() * knockback
+			velocity.y += additional_y_knockback
+
 func get_front_direction(normalized := true) -> Vector3:
 	var dir := _front_check.to_global(_front_check.target_position) - _front_check.global_position
 	if normalized:
