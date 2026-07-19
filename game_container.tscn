@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cm0m2edwk6cv6" path="res://items/world/food/carrot.tscn" id="10_7lcu3"]
 [ext_resource type="PackedScene" uid="uid://d1vmwhy8b4jw5" path="res://items/world/food/apple.tscn" id="11_7xgre"]
 [ext_resource type="PackedScene" uid="uid://d1uajkvuwu3dn" path="res://items/world/food/mushroom.tscn" id="12_25gf6"]
-[ext_resource type="PackedScene" uid="uid://bojcp628rd3l4" path="res://environment/cauldron.tscn" id="13_25gf6"]
+[ext_resource type="PackedScene" uid="uid://bojcp628rd3l4" path="res://environment/cauldron/cauldron.tscn" id="13_25gf6"]
 
 [node name="GameContainer" type="Node3D" unique_id=827938429]
 process_mode = 3
@@ -22,6 +22,73 @@ script = ExtResource("1_likpg")
 unique_name_in_owner = true
 process_mode = 1
 transform = Transform3D(0.8048213, 0, -0.5935173, 0, 1, 0, 0.5935173, 0, 0.8048213, 3.652071, 6, 21.55748)
+max_desired_move_speed = 30.0
+hit_ground_cooldown = 0.1
+bunny_hop_dms_incre = 3.0
+auto_bunny_hop = false
+base_hitbox_height = 2.0
+base_model_height = 1.0
+height_change_duration = 0.15
+idle_deccel = 10.0
+crouch_speed = 4.5
+crouch_accel = 12.0
+crouch_deccel = 11.0
+continious_crouch = false
+backward_crouch_speed_multiplier = 0.7
+crouch_hitbox_height = 1.2
+crouch_model_height = 0.6
+backward_walk_speed_multiplier = 0.75
+jump_time_to_peak = 0.3
+jump_time_to_fall = 0.25
+jump_cooldown = 0.25
+nb_jumps_in_air_allowed = 1
+coyote_jump_cooldown = 0.3
+use_desired_move_speed = false
+slide_speed = 12.0
+slide_accel = 23.0
+slide_time = 1.2
+time_bef_can_slide_again = 1.5
+max_slope_angle = 75.0
+uphill_tolerance = 0.05
+amount_velocity_lost_per_sec = 4.0
+slope_sliding_dms_incre = 2.0
+slope_sliding_ms_incre = 2.0
+priority_over_crouch = true
+continious_slide = true
+slide_hitbox_height = 1.0
+slide_model_height = 0.5
+dash_speed = 100.0
+dash_time = 0.1
+nb_dashs_allowed = 3
+time_bef_can_dash_again = 0.8
+time_bef_reload_dash = 3.0
+use_desired_move_speed_wallrun = false
+wallrun_speed = 18.0
+wallrun_accel = 2.3
+wallrun_deccel = 7.0
+wallrun_fall_gravity_multiplier = 0.006
+wallrun_time = 3.5
+infinite_wallrun_time = false
+time_bef_can_wallrun_again = 0.2
+wallrunning_dms_incre = 1.0
+walljump_push_force = 14.0
+walljump_y_velocity = 9.0
+walljump_lock_in_air_movement_time = 0.15
+fly_speed = 20.0
+fly_accel = 15.0
+fly_deccel = 15.0
+fly_boost_multiplier = 3.0
+move_forward_action = &"play_char_move_forward_action"
+move_backward_action = &"play_char_move_backward_action"
+move_left_action = &"play_char_move_left_action"
+move_right_action = &"play_char_move_right_action"
+run_action = &"play_char_run_action"
+crouch_action = &"play_char_crouch_action"
+jump_action = &"play_char_jump_action"
+slide_action = &"play_char_slide_action"
+dash_action = &"play_char_dash_action"
+fly_action = &"play_char_fly_action"
+check_on_ready_if_inputs_registered = true
 
 [node name="WarpEffect" parent="." unique_id=1405409781 instance=ExtResource("3_aq3js")]
 unique_name_in_owner = true

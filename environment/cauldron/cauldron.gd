@@ -2,9 +2,12 @@ class_name Cauldron extends StaticBody3D
 
 const _CAPACITY := 3
 
+@export var recipes: Array[CauldronRecipe] = []
+
 var _contents: Array[WorldItem] = []
 
 @onready var _holders: Array[Node3D] = [%ItemHolder1, %ItemHolder2, %ItemHolder3]
+@onready var _brew_position: Marker3D = %BrewPosition
 
 func _ready() -> void:
 	for h in _holders:
@@ -33,7 +36,7 @@ func add_item(wi: WorldItem) -> void:
 	_contents.append(wi)
 	wi.picked_up.connect(_on_item_picked_up.bind(wi), CONNECT_ONE_SHOT)
 	if _contents.size() == _CAPACITY:
-		print("WE RIPE")
+		_concoct_brew()
 
 func _on_item_picked_up(wi: WorldItem) -> void:
 	var items: Array[WorldItem] = []
@@ -45,3 +48,24 @@ func _on_item_picked_up(wi: WorldItem) -> void:
 	_contents.erase(wi)
 	for i in items.size():
 		_holders[i].add_child(items[i])
+
+func _concoct_brew() -> void:
+	var brewed := false
+	for r in recipes:
+		if r.meets_requirements(_contents):
+			brewed = true
+			_generate_item(r.output)
+			break
+	if !brewed:
+		#TODO: generate throwable noxious if certain conditions are met
+		_generate_item("uid://c8g7e2j5ndh5h") # noxious concoctious
+	# DO CONCOTIONS
+	for c in _contents:
+		c.queue_free()
+	_contents.clear()
+
+func _generate_item(brew_uid: String) -> void:
+	var item: Item = load(brew_uid)
+	var world_item_scene: PackedScene = load(item.scene_path)
+	var world_item: WorldItem = world_item_scene.instantiate()
+	_brew_position.add_child(world_item)

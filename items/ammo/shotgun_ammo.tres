@@ -12,6 +12,7 @@ initial_ammo_range = Vector2i(1, 9)
 max_amount = 12
 name = "Shotgun Ammo"
 description = "Can be used in a shotgun."
+type = 4
 icon = Rect2i(2, 3, 1, 1)
 scene_path = "uid://di7ygh4p2y3m0"
 metadata/_custom_type_script = "uid://co5j381442318"

@@ -6,6 +6,7 @@
 script = ExtResource("1_fk4ea")
 heal_range = Vector2i(10, 15)
 name = "Mushroom"
+type = 5
 icon = Rect2i(7, 4, 1, 1)
 scene_path = "uid://d1uajkvuwu3dn"
 discard_on_use = true

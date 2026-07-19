@@ -7,6 +7,7 @@ script = ExtResource("1_0afwn")
 heal_range = Vector2i(20, 30)
 name = "Apple"
 description = "What's is apples?"
+type = 5
 icon = Rect2i(6, 4, 1, 1)
 scene_path = "uid://d1vmwhy8b4jw5"
 discard_on_use = true

@@ -10,6 +10,7 @@ initial_ammo_range = Vector2i(1, 6)
 max_amount = 24
 name = "Handgun Ammo"
 description = "Put it in a handgun to pew pew it."
+type = 4
 icon = Rect2i(3, 3, 1, 1)
 scene_path = "uid://ceg3otvwnm6o8"
 metadata/_custom_type_script = "uid://co5j381442318"

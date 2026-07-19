@@ -6,6 +6,7 @@
 script = ExtResource("1_s6tkl")
 name = "Mind Diamond"
 description = "Mind Diamonds can increase your Mind stat, allowing you to combine more items in your inventory, and letting you remember spells longer when losing spellbooks or warping to new areas."
+type = 10
 icon = Rect2i(4, 2, 1, 1)
 scene_path = "uid://dq3a82bmcs37w"
 metadata/_custom_type_script = "uid://crsmwfna86a5l"
