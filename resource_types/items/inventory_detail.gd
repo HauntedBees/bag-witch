@@ -34,6 +34,8 @@ func add_mod(m: ItemMod) -> void:
 
 func get_equip_instance() -> Node3D:
 	var i := item.get_equip_instance()
+	if i == null:
+		return null
 	i.scale *= item.equipped_scale
 	if i is ModdableWeaponDisplay:
 		i.bind(self)

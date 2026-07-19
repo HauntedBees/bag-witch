@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://d26pqwram864b"]
+
+[ext_resource type="Shader" uid="uid://brtjjaqk7pbwp" path="res://assets/shaders/zoop_ball.gdshader" id="1_hel5a"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_54r7t"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_g05q3"]
+width = 64
+height = 64
+generate_mipmaps = false
+noise = SubResource("FastNoiseLite_54r7t")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r1tj3"]
+render_priority = 0
+shader = ExtResource("1_hel5a")
+shader_parameter/time_speed = 0.25
+shader_parameter/spin = 2.0
+shader_parameter/flame_brightness = 1.0
+shader_parameter/color_intensity = 0.0
+shader_parameter/horizontal_frequency = 1.0
+shader_parameter/vertical_frequency = 1.0
+shader_parameter/size = -0.3
+shader_parameter/core_size = 0.9
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_g05q3")
+shader_parameter/color1 = Color(0, 0.35010308, 0.5462485, 1)
+shader_parameter/color2 = Color(0.90581614, 0.47870207, 0.8629624, 1)
+shader_parameter/color3 = Color(0.6729189, 0.5619961, 0.87874764, 1)
+shader_parameter/color4 = Color(1, 1, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_wv04s"]
+material = SubResource("ShaderMaterial_r1tj3")
+
+[node name="ZoopOrb" type="MeshInstance3D" unique_id=1948507667]
+mesh = SubResource("SphereMesh_wv04s")

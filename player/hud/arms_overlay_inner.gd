@@ -53,4 +53,6 @@ func _on_weapon_changed(id: InventoryDetail) -> void:
 		_add_to_bone(_left_hand, id)
 
 func _add_to_bone(n: BoneAttachment3D, id: InventoryDetail) -> void:
-	n.add_child(id.get_equip_instance())
+	var e := id.get_equip_instance()
+	if e != null:
+		n.add_child(e)
