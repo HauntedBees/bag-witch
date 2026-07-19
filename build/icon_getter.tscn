@@ -21,6 +21,8 @@
 [ext_resource type="PackedScene" uid="uid://bigvxtmaq3x77" path="res://assets/models/ammo/power_cell.blend" id="19_318v8"]
 [ext_resource type="PackedScene" uid="uid://cdspmedbltw6e" path="res://assets/models/weapons/molotov.blend" id="20_2gas7"]
 [ext_resource type="PackedScene" uid="uid://c6c6m0nr2ihf8" path="res://assets/models/items/carrot.blend" id="21_1cl67"]
+[ext_resource type="PackedScene" uid="uid://d33yciniw87eq" path="res://assets/models/items/apple.blend" id="22_61ioy"]
+[ext_resource type="PackedScene" uid="uid://qxxj07ag6n0e" path="res://assets/models/items/mushroom.blend" id="23_qnu68"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eeolf"]
 shading_mode = 0
@@ -117,7 +119,15 @@ transform = Transform3D(0.0533126, 0.2074404, 0.9767938, 0, 0.97818494, -0.20773
 visible = false
 
 [node name="carrot2" parent="ThingContainer" unique_id=1116982465 instance=ExtResource("21_1cl67")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.34123993, 1.3078737)
+transform = Transform3D(0.333, 0, 0, 0, 0.333, 0, 0, 0, 0.333, 0, -0.34123993, 1.3078737)
+visible = false
+
+[node name="apple2" parent="ThingContainer" unique_id=1314094389 instance=ExtResource("22_61ioy")]
+transform = Transform3D(0.415977, 0, -0.9093751, -0.5100408, 0.8279041, -0.23330887, 0.75287545, 0.5608695, 0.34438908, 0, 0, 0.38452244)
+visible = false
+
+[node name="mushroom2" parent="ThingContainer" unique_id=1888823098 instance=ExtResource("23_qnu68")]
+transform = Transform3D(0.5229078, 2.9802322e-08, 0.8523893, 0.36818904, 0.90189785, -0.2258697, -0.7687681, 0.43194944, 0.4716094, 0, -0.15196514, 0.54678893)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=465674123]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.9159544)
@@ -127,3 +137,4 @@ transform = Transform3D(0.9717929, 0.11896129, -0.20363402, 0, 0.8634562, 0.5044
 
 [node name="StatCrystalLight" type="DirectionalLight3D" parent="." unique_id=145518352]
 transform = Transform3D(0.9717929, 0.1189613, -0.20363404, -0.23573078, 0.46418965, -0.8537911, -0.0070432792, 0.87771076, 0.479139, 0, -0.18382263, 4.9881706)
+visible = false

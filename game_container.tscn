@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://oho74mtgm2jq" path="res://items/world/mods/laser_juicer.tscn" id="8_ul0mr"]
 [ext_resource type="PackedScene" uid="uid://blcxo6dbc3d4t" path="res://items/world/weapons/molotov.tscn" id="9_b2v4k"]
 [ext_resource type="PackedScene" uid="uid://cm0m2edwk6cv6" path="res://items/world/food/carrot.tscn" id="10_7lcu3"]
+[ext_resource type="PackedScene" uid="uid://d1vmwhy8b4jw5" path="res://items/world/food/apple.tscn" id="11_7xgre"]
+[ext_resource type="PackedScene" uid="uid://d1uajkvuwu3dn" path="res://items/world/food/mushroom.tscn" id="12_25gf6"]
 
 [node name="GameContainer" type="Node3D" unique_id=827938429]
 process_mode = 3
@@ -55,5 +57,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.7964478, 0.91851807, -6.77
 
 [node name="Carrot" parent="." unique_id=621096524 instance=ExtResource("10_7lcu3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.918032, -0.1904602, 8.437012)
+
+[node name="Carrot2" parent="." unique_id=303278605 instance=ExtResource("10_7lcu3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.860779, 7.400543, 32.831852)
+
+[node name="Apple" parent="." unique_id=1176058055 instance=ExtResource("11_7xgre")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.018501, 7.953888, 25.595337)
+
+[node name="Mushroom" parent="." unique_id=1759932068 instance=ExtResource("12_25gf6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.911366, 5.7784424, 24.334473)
 
 [connection signal="finished" from="WarpEffect" to="." method="_on_warp_effect_finished"]

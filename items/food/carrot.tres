@@ -6,8 +6,10 @@
 script = ExtResource("1_mkilq")
 heal_range = Vector2i(5, 8)
 name = "Carrot"
+icon = Rect2i(5, 4, 1, 1)
 scene_path = "uid://cm0m2edwk6cv6"
 discard_on_use = true
+equip_sprite_offset = Vector2i(1, 1)
 equipped_animation = &"FoodHold"
 use_animation = &"FoodEat"
 metadata/_custom_type_script = "uid://bnwn0kgj0rv42"
