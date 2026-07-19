@@ -22,6 +22,8 @@ func _inner_use(player: BogWitch) -> void:
 		_cached_scene = load(projectile_path)
 	var projectile: Projectile = _cached_scene.instantiate()
 	player.get_parent().add_child(projectile)
+	if projectile is ZoopBall:
+		projectile.player = player
 	if player.alt_hand_for_attack_anim && alt_use_animation != &"":
 		projectile.global_position = player.get_projectile_launch_point(true)
 	else:
