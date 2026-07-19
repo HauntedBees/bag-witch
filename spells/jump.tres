@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="JumpSpell" format=3 uid="uid://bkpo6bi22ktp7"]
+
+[ext_resource type="Script" uid="uid://ckf0bsca5oani" path="res://resource_types/spells/jump_spell.gd" id="1_mvk51"]
+
+[resource]
+script = ExtResource("1_mvk51")
+y_velocity = 15.0
+duration = 1.5
+category = "jump"
+is_spell = true
+spell_ammo = 2
+name = "Jump I"
+description = "Launches me straight up in the air leaving naught but a puff of smoke behind. Great for quickly escaping enemies or surveying the area."
+custom_equip_scene = "uid://bw4ajtv2jt8w1"
+equipped_animation = &"Spell1"
+use_animation = &"Spell1_Use"
+usage_cooldown = 10.0
+metadata/_custom_type_script = "uid://ckf0bsca5oani"
