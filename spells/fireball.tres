@@ -14,7 +14,7 @@ damage_range = Vector2i(1, 2)
 metadata_increase_ranges = Dictionary[int, Vector2]({
 2: Vector2(1, 1)
 })
-name = "Fireball"
+name = "Fireball I"
 icon = Rect2i(0, 0, -1, 0)
 equip_sprite_offset = Vector2i(2, 0)
 custom_equip_scene = "uid://bju1pcheyyg8y"
