@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bqqwytufw3nb8"]
+
+[ext_resource type="Shader" uid="uid://b4hvcwe6ebs3d" path="res://assets/shaders/lightning_no_billboard.gdshader" id="1_x2hiy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u13vt"]
+render_priority = 0
+shader = ExtResource("1_x2hiy")
+shader_parameter/Main_Color = Color(1, 1, 1, 1)
+shader_parameter/Effect_Color = Color(0.3, 0.3, 1, 1)
+shader_parameter/Octave_Count = 10
+shader_parameter/Amp_Start = 0.5
+shader_parameter/Amp_Coeff = 0.5
+shader_parameter/Freq_Coeff = 2.0
+shader_parameter/Speed = 3.0
+shader_parameter/Y_Size = 4.0
+shader_parameter/X_Size = 1.0
+shader_parameter/Emission_Power = 2.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_y2tye"]
+material = SubResource("ShaderMaterial_u13vt")
+top_radius = 0.001
+height = 4.0
+
+[node name="LightningBall" type="Node3D" unique_id=1238256814]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=531415246]
+mesh = SubResource("CylinderMesh_y2tye")

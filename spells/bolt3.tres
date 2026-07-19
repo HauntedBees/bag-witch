@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Bolt" format=3 uid="uid://bg7m1565tv25k"]
+
+[ext_resource type="Script" uid="uid://c4soa7knwxk6f" path="res://resource_types/weapons/bolt.gd" id="1_5rw10"]
+
+[resource]
+script = ExtResource("1_5rw10")
+magic_level_requirement = 3
+category = "bolt"
+projectile_path = "uid://bgaswvc24gny4"
+velocity = 0.0
+gravity = 0.02
+is_spell = true
+damage_range = Vector2i(6, 12)
+knockback = 6.0
+additional_y_knockback = 30.0
+metadata_increase_ranges = Dictionary[int, Vector2]({
+3: Vector2(1, 1)
+})
+name = "Bolt III"
+icon = Rect2i(0, 0, -1, 0)
+equip_sprite_offset = Vector2i(5, 1)
+custom_equip_scene = "uid://bqqwytufw3nb8"
+equipped_animation = &"Bolt"
+use_animation = &"BoltUse"
+metadata/_custom_type_script = "uid://dq216hufmeoo3"
