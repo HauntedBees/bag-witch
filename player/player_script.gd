@@ -3,6 +3,7 @@ class_name BogWitch extends PlayerCharacter
 signal quest_added(q: Quest)
 signal quest_removed(q: Quest)
 
+var clinging_effects: Array[ClingingEffect] = []
 var ready_to_glide := false
 var alt_hand_for_attack_anim := false
 var current_cauldron: Cauldron:
@@ -41,6 +42,13 @@ func _ready() -> void:
 	Player.data.stat_changed.connect(_adjust_movement_stats)
 	_adjust_movement_stats()
 
+func add_clinging_effect(e: ClingingEffect) -> void:
+	clinging_effects.append(e)
+	e.finished.connect(_remove_clinging_effect.bind(e), CONNECT_ONE_SHOT)
+
+func _remove_clinging_effect(e: ClingingEffect) -> void:
+	clinging_effects.erase(e)
+
 func _adjust_movement_stats() -> void:
 	print("SPEED IS %s" % Player.data.speed)
 	match Player.data.speed:
@@ -78,6 +86,11 @@ func _input(event: InputEvent) -> void:
 		return
 	if _try_reload(event):
 		return
+
+func _physics_process(delta: float) -> void:
+	super(delta)
+	for c in clinging_effects:
+		c.physics_process(delta)
 
 func _process(delta: float) -> void:
 	super(delta)
