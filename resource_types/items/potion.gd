@@ -7,11 +7,11 @@ class_name Potion extends Item
 ## fuck it, enums will do for now.
 enum Ability {
 	# these probably won't happen due to time constraints
-	Custom, 
+	Custom,
 	## Gunpowder Tonic
 	SuperGunshot,
 	## Disaster Potion
-	HurtSelf #TODO: implement
+	HurtSelf
 }
 
 @export var ability := Ability.Custom
@@ -19,7 +19,10 @@ enum Ability {
 ## In seconds.
 @export var duration := 0.0
 
-func _inner_use(_player: BogWitch) -> void:
+func _inner_use(player: BogWitch) -> void:
+	if ability == Ability.HurtSelf:
+		player.take_damage(20, Vector3(0.0, 3.0, 0.0), 2.0, 2.0)
+		return
 	if Player.data.active_potions.has(self):
 		Player.data.active_potions[self] += duration
 	else:

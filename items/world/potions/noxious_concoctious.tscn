@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bix1b5aax5f3f"]
+
+[ext_resource type="Script" uid="uid://b66jl5gw8dewc" path="res://items/world/world_item.gd" id="1_d5lew"]
+[ext_resource type="Resource" uid="uid://c8g7e2j5ndh5h" path="res://items/potions/noxious_concoctious.tres" id="2_d5lew"]
+[ext_resource type="PackedScene" uid="uid://2wqw44kgydtc" path="res://assets/models/items/potion_b.blend" id="3_d5lew"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rhbnc"]
+
+[node name="NoxiousConcoctious" type="Area3D" unique_id=951298956 node_paths=PackedStringArray("collider")]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_d5lew")
+item = ExtResource("2_d5lew")
+collider = NodePath("CollisionShape3D")
+metadata/_custom_type_script = "uid://b66jl5gw8dewc"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=270526766]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6449778, 0)
+shape = SubResource("BoxShape3D_rhbnc")
+
+[node name="potion_b" parent="." unique_id=873311048 instance=ExtResource("3_d5lew")]

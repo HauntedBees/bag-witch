@@ -241,6 +241,8 @@ func _try_reload(event: InputEvent) -> bool:
 			break
 	Player.ammo_changed.emit(Player.data.current_equipped.ammo)
 	_reloading_time_remaining = w.reload_time
+	if Player.data.has_potion_ability(Potion.Ability.SuperGunshot) && Player.data.current_equipped_item().type == Item.ItemType.Gun:
+		_reloading_time_remaining *= 0.5
 	arms_overlay.arms.play_anim(w.reload_animation)
 	alt_hand_for_attack_anim = false
 	return true
