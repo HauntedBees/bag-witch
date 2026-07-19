@@ -40,6 +40,7 @@ func _ready() -> void:
 	_inventory.item_added.connect(_on_item_added)
 	_inventory.items_purged.connect(_on_items_purged)
 	_drop_area.item_dropped.connect(_on_item_removed)
+	Player.data.inventory.item_removed.connect(_on_item_removed_externally)
 	Player.data.stat_changed.connect(_refresh_stats)
 	_refresh_stats()
 
@@ -229,14 +230,18 @@ func _get_merge_item(item: InventoryDetail, new_positions: Array[Vector2i]) -> I
 				return existing_item
 	return null
 
+func _on_item_removed_externally(id: InventoryDetail) -> void:
+	_highlight.set_to(null)
+	for t: TileDetails in _item_grid_info.values():
+		if t.item == id:
+			t.empty()
+	_bake_item_positions()
+
 func _on_item_removed(i: ItemDragDetails) -> void:
 	_highlight.set_to(null)
 	var id := i.item
 	Player.data.inventory.remove_item(id)
-	var old_info := _item_grid_info[id.position]
-	old_info.item_display.queue_free()
-	old_info.item_display = null
-	_bake_item_positions()
+	## _on_item_removed_externally handles the rest
 	var item_scene: PackedScene = load(id.item.scene_path)
 	spawn_item.emit(item_scene.instantiate(), id)
 	if id.item is Spellbook:
