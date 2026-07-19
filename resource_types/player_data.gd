@@ -44,7 +44,10 @@ var current_health := 100:
 		health_changed.emit(value)
 var max_health := 100
 
-var completed_quests: Array[StringName] = []
+var completed_quests: Array[StringName] = [
+	&"Opening",
+	&"FromBog"
+]
 var active_potions: Dictionary[Potion, float] = {}
 
 var _remembered_spell: Spell

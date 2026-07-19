@@ -191,7 +191,7 @@ convo_trigger = NodePath("../CutsceneStuff/TriggerConversation")
 portal_pos = NodePath("../CutsceneStuff/PortalPoint")
 knight1_pos = NodePath("../CutsceneStuff/Knight1Point")
 knight2_pos = NodePath("../CutsceneStuff/Knight2Point")
-completed_key = &"opening"
+completed_key = &"Opening"
 nodes_to_kill = [NodePath("../CutsceneStuff")]
 metadata/_custom_type_script = "uid://bb3v1hwgh4hs5"
 

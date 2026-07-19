@@ -1,7 +1,10 @@
 [gd_scene format=3 uid="uid://dkgap8kw2cyfc"]
 
+[ext_resource type="Script" uid="uid://dmdb8h5y6a27x" path="res://levels/level.gd" id="1_gn5m0"]
 [ext_resource type="PackedScene" uid="uid://b2p0awuk5dulw" path="res://levels/castle_world/second_floor.tscn" id="1_ti3ln"]
+[ext_resource type="AudioStream" uid="uid://d2bxuhpimcacg" path="res://assets/music/castle_start.ogg" id="2_adno7"]
 [ext_resource type="PackedScene" uid="uid://dprn200wgi85p" path="res://levels/castle_world/first_floor.tscn" id="2_gn5m0"]
+[ext_resource type="AudioStream" uid="uid://dmkfc2tpbyfvo" path="res://assets/music/castle_loop.ogg" id="3_ldany"]
 [ext_resource type="PackedScene" uid="uid://bneb8643crrt0" path="res://levels/castle_world/basement.tscn" id="3_y1m4q"]
 [ext_resource type="PackedScene" uid="uid://b3ykgnc02f66w" path="res://levels/castle_world/castle_exterior.tscn" id="5_gn5m0"]
 
@@ -19,6 +22,10 @@ tonemap_mode = 2
 glow_enabled = true
 
 [node name="castle" type="Node3D" unique_id=339208180]
+script = ExtResource("1_gn5m0")
+no_sound_if_this_cutscene_is_incomplete = &"FromBog"
+song = ExtResource("2_adno7")
+song_loop = ExtResource("3_ldany")
 
 [node name="Environment" type="Node3D" parent="." unique_id=1746693509]
 
