@@ -24,7 +24,7 @@ theme_override_constants/margin_bottom = 22
 [node name="GASLabel" type="Label" parent="MarginContainer" unique_id=956915644]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Piss Out My Dick (0s)"
+text = "Potion (0s)"
 label_settings = ExtResource("3_3awrn")
 script = ExtResource("4_bvesw")
 metadata/_custom_type_script = "uid://hafxp56l0iao"

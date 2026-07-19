@@ -8,7 +8,8 @@ const WEAPON_SLOTS: Array[StringName] = [
 enum Effect {
 	None,
 	Freeze,
-	Burn
+	Burn,
+	Shock
 }
 
 static func get_bounds(base_pos: Transform3D, box: BoxShape3D, cam: Camera3D) -> Rect2:
