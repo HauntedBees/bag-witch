@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b66jl5gw8dewc" path="res://items/world/world_item.gd" id="1_fo3ok"]
 [ext_resource type="Resource" uid="uid://diqgeut6827ix" path="res://items/potions/gunpowder_tonic.tres" id="2_ci506"]
-[ext_resource type="PackedScene" uid="uid://2v0uloqifgx8" path="res://assets/models/crystals/bag_crystal.blend" id="3_8p25m"]
+[ext_resource type="PackedScene" uid="uid://cypw40a3e0wwi" path="res://assets/models/items/potion_a.blend" id="3_ci506"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rhbnc"]
 
@@ -14,9 +14,8 @@ item = ExtResource("2_ci506")
 collider = NodePath("CollisionShape3D")
 metadata/_custom_type_script = "uid://b66jl5gw8dewc"
 
-[node name="bag_crystal" parent="." unique_id=585419644 instance=ExtResource("3_8p25m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=270526766]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6449778, 0)
 shape = SubResource("BoxShape3D_rhbnc")
+
+[node name="potion_a" parent="." unique_id=128424357 instance=ExtResource("3_ci506")]

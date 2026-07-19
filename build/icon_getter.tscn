@@ -23,6 +23,8 @@
 [ext_resource type="PackedScene" uid="uid://c6c6m0nr2ihf8" path="res://assets/models/items/carrot.blend" id="21_1cl67"]
 [ext_resource type="PackedScene" uid="uid://d33yciniw87eq" path="res://assets/models/items/apple.blend" id="22_61ioy"]
 [ext_resource type="PackedScene" uid="uid://qxxj07ag6n0e" path="res://assets/models/items/mushroom.blend" id="23_qnu68"]
+[ext_resource type="PackedScene" uid="uid://cypw40a3e0wwi" path="res://assets/models/items/potion_a.blend" id="24_m4pri"]
+[ext_resource type="PackedScene" uid="uid://2wqw44kgydtc" path="res://assets/models/items/potion_b.blend" id="25_rvohc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eeolf"]
 shading_mode = 0
@@ -128,6 +130,14 @@ visible = false
 
 [node name="mushroom2" parent="ThingContainer" unique_id=1888823098 instance=ExtResource("23_qnu68")]
 transform = Transform3D(0.5229078, 2.9802322e-08, 0.8523893, 0.36818904, 0.90189785, -0.2258697, -0.7687681, 0.43194944, 0.4716094, 0, -0.15196514, 0.54678893)
+visible = false
+
+[node name="potion_a" parent="ThingContainer" unique_id=256934327 instance=ExtResource("24_m4pri")]
+transform = Transform3D(0.87177414, 0, -0.489908, 0, 1, 0, 0.489908, 0, 0.87177414, 0, -0.45395374, 0.23199916)
+visible = false
+
+[node name="potion_b" parent="ThingContainer" unique_id=873311048 instance=ExtResource("25_rvohc")]
+transform = Transform3D(0.9285604, -0.11817334, -0.35186723, 7.450581e-09, 0.9479662, -0.318371, 0.3711812, 0.29562673, 0.88024396, 0.040811084, -0.32737947, -0.10209449)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=465674123]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.9159544)
