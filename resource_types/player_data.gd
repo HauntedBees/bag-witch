@@ -79,8 +79,8 @@ func current_equipped_item() -> Item:
 func _on_item_removed(id: InventoryDetail) -> void:
 	_retain_current_spell()
 	var idx := equip_slots.find(id)
-	if current_equipped_item() == id.item:
-		Player.try_change_weapon(equip_slots.find(current_equipped))
+	if idx < 0:
+		# not equipped, we don't need to worry about shit anywhere
 		return
 	var alt: InventoryDetail = null
 	for potential_alt in inventory.items:
@@ -89,9 +89,10 @@ func _on_item_removed(id: InventoryDetail) -> void:
 			break
 	if alt != null:
 		equip_to_slot(alt, idx)
-	elif current_equipped_item() == id.item:
-		Player.try_change_weapon(equip_slots.find(current_equipped))
-		return
+	if current_equipped == id:
+		current_equipped = alt
+		if alt == null:
+			Player.try_change_weapon(idx)
 
 func _on_items_purged() -> void:
 	if current_equipped == null:

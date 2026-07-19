@@ -46,4 +46,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4700317, -8.050842)
 [node name="Molotov" parent="." unique_id=1533506164 instance=ExtResource("9_b2v4k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.79644775, 0.91851807, -9.772095)
 
+[node name="Molotov2" parent="." unique_id=994959506 instance=ExtResource("9_b2v4k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.7964478, 0.91851807, -9.772095)
+
+[node name="Molotov3" parent="." unique_id=2034714019 instance=ExtResource("9_b2v4k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.7964478, 0.91851807, -6.7720947)
+
 [connection signal="finished" from="WarpEffect" to="." method="_on_warp_effect_finished"]

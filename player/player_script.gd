@@ -339,9 +339,14 @@ func _handle_attack(delta: float) -> void:
 		return
 	if Player.data.get_loaded_ammo(Player.data.current_equipped) == 0:
 		return
-	var item := Player.data.current_equipped_item()
+	var id := Player.data.current_equipped
+	if id == null:
+		return
+	var item := id.item
 	item.use(self)
 	Player.weapon_cooldown = item.usage_cooldown
+	if item is Throwable:
+		Player.data.inventory.remove_item(id)
 
 func get_projectile_launch_point(left_hand: bool) -> Vector3:
 	if left_hand:
