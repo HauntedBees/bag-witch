@@ -10,22 +10,6 @@ signal items_purged()
 
 @export var items: Array[InventoryDetail] = []
 
-func _init() -> void:
-	#var broom := load("uid://dpgrb2fqcl3qn")
-	#add_item(broom, Vector2i(2, 1), false)
-	#add_item(broom, Vector2i(0, 0), false)
-	var book := load("uid://gloeqm86u5q")
-	add_item(book, Vector2i(0, 1), false)
-	var handgun := load("uid://bjf5fkot1fjp5")
-	add_item(handgun, Vector2i(1, 1), false)
-	var rock := load("uid://didy3b67akl0n")
-	add_item(rock, Vector2i(1, 2), false)
-	var clip := load("uid://cim1n4heu8u58")
-	add_item(clip, Vector2i(2, 2), false)
-	var ammo := load("uid://d0go325edul0h")
-	add_item(ammo, Vector2i(3, 2), false)
-	add_item(ammo, Vector2i(4, 2), false)
-
 func recalibrate_bag_size() -> void:
 	match Player.data.bag:
 		1: # 21 (1)

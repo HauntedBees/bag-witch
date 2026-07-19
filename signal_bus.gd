@@ -19,5 +19,8 @@ signal text_ended()
 
 #region Sound
 @warning_ignore("unused_signal")
-signal change_song(song_uid: String, transition_secs: float)
+signal change_song(song: AudioStream, transition_secs: float)
+
+@warning_ignore("unused_signal")
+signal change_looping_song(open: AudioStream, loop: AudioStream, transition_secs: float)
 #endregion

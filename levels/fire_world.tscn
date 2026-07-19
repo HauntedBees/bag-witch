@@ -1,7 +1,10 @@
 [gd_scene format=3 uid="uid://cmf1v1vuyggrq"]
 
 [ext_resource type="PackedScene" uid="uid://dfg7w4r0lnbck" path="res://assets/levels/fire/island.blend" id="1_blw58"]
+[ext_resource type="Script" uid="uid://dmdb8h5y6a27x" path="res://levels/level.gd" id="1_wq31c"]
+[ext_resource type="AudioStream" uid="uid://duepuutw34sdj" path="res://assets/music/lava_start.ogg" id="2_byixx"]
 [ext_resource type="Script" uid="uid://b1dt302dnoalj" path="res://levels/fire_world/lava.gd" id="3_nm043"]
+[ext_resource type="AudioStream" uid="uid://b7qdvhqgy4p37" path="res://assets/music/lava_loop.ogg" id="3_p4ltq"]
 [ext_resource type="Shader" uid="uid://cn14y06puco1s" path="res://assets/shaders/lava.gdshader" id="3_pdg7b"]
 [ext_resource type="Script" uid="uid://bn3r43bitaf3i" path="res://environment/point_collection.gd" id="5_xfttq"]
 [ext_resource type="Script" uid="uid://b7o0pdvrytkig" path="res://levels/enemy_spawner.gd" id="6_7xo41"]
@@ -73,6 +76,9 @@ point_count = 37
 radius = 300.0
 
 [node name="FireWorld" type="Node3D" unique_id=1891173490]
+script = ExtResource("1_wq31c")
+song = ExtResource("2_byixx")
+song_loop = ExtResource("3_p4ltq")
 
 [node name="Environment" type="Node3D" parent="." unique_id=1468800557]
 
