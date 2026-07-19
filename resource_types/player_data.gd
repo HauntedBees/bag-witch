@@ -211,7 +211,9 @@ func has_spell(s: Spell) -> bool:
 
 func get_loaded_ammo(id: InventoryDetail) -> int:
 	var i: Item = id.item
-	if i is Weapon && i.is_spell:
+	if i is Throwable:
+		return 1
+	elif i is Weapon && i.is_spell:
 		var w: Weapon = i
 		if inventory.has_spell_in_inventory(w):
 			return -1
@@ -225,7 +227,13 @@ func get_loaded_ammo(id: InventoryDetail) -> int:
 		return -1
 
 func get_remaining_ammo(id: InventoryDetail) -> int:
-	if id.item is Weapon:
+	if id.item is Throwable:
+		var count := 0
+		for idi in inventory.items:
+			if idi.item == id.item && idi != id:
+				count += 1
+		return count
+	elif id.item is Weapon:
 		var w: Weapon = id.item
 		if w.is_spell:
 			if inventory.has_spell_in_inventory(w):
