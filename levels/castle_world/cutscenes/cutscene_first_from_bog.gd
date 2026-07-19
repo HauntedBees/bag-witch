@@ -73,4 +73,4 @@ func _on_trigger_one_entered(body: Node3D) -> void:
 func _on_enemy_died() -> void:
 	blocking_wall.queue_free()
 	SignalBus.say_thing.emit("Bag Witch", "Okay... the dust has settled. I need to find another one of them portals and get outta here.", "")
-	Player.complete_quest(completed_key)
+	_finish_cutscene(false)

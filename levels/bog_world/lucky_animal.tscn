@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://cjighldlnhfxi"]
+
+[ext_resource type="Texture2D" uid="uid://4uhnd1isql2t" path="res://assets/sprites/animals_and_theyre_lucky.png" id="1_gmgp3"]
+[ext_resource type="Script" uid="uid://cbrgk7avo7agn" path="res://levels/bog_world/lucky_animal.gd" id="1_n5xob"]
+[ext_resource type="Texture2D" uid="uid://4pwqiadp0p6m" path="res://assets/sprites/shadow.png" id="3_vu31r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eeolf"]
+resource_local_to_scene = true
+atlas = ExtResource("1_gmgp3")
+region = Rect2(0, 0, 16, 16)
+filter_clip = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mkopk"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+shading_mode = 0
+albedo_texture = ExtResource("3_vu31r")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_sglqa"]
+material = SubResource("StandardMaterial3D_mkopk")
+size = Vector2(0.25, 0.25)
+
+[node name="LuckyAnimal" type="Node3D" unique_id=1574434058]
+script = ExtResource("1_n5xob")
+
+[node name="Container" type="Node3D" parent="." unique_id=591091919]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="Container" unique_id=814358482]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7996957, 0.9956095, 0)
+flip_h = true
+pixel_size = 0.02
+billboard = 1
+texture_filter = 0
+texture = SubResource("AtlasTexture_eeolf")
+
+[node name="Shadow" type="MeshInstance3D" parent="Container" unique_id=1811116589]
+unique_name_in_owner = true
+transform = Transform3D(0.50219524, 0, 0, 0, 0.50219524, 0, 0, 0, 0.50219524, 0.7996957, -0.1, 0)
+mesh = SubResource("PlaneMesh_sglqa")
