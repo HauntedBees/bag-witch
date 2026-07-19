@@ -121,5 +121,7 @@ func get_description(_id: InventoryDetail) -> String:
 
 func get_equip_instance() -> Node3D:
 	var path := scene_path if custom_equip_scene == "" else custom_equip_scene
+	if path.is_empty():
+		return null
 	var scene: PackedScene = load(path)
 	return scene.instantiate()

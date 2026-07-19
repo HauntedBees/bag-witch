@@ -15,6 +15,6 @@ func initialize(w: ProjectileWeapon, attacker_pos: Vector3) -> void:
 func _physics_process(_delta: float) -> void:
 	pass
 
-func _on_rigid_body_3d_body_entered(body: Node) -> void:
+func _on_rigid_body_3d_body_entered(_body: Node) -> void:
 	player.global_position = _body_yadi_yadi_yadi.global_position
 	queue_free()

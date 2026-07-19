@@ -1,10 +1,9 @@
 [gd_scene format=3 uid="uid://b6ugvwsbxlc8"]
 
 [ext_resource type="Script" uid="uid://dq6s4qm3wvetw" path="res://spells/attacks/zoop_ball.gd" id="1_yugch"]
+[ext_resource type="PackedScene" uid="uid://d26pqwram864b" path="res://spells/attacks/zoop_orb.tscn" id="2_g2fvf"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_wv04s"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_wv04s"]
 
 [node name="ZoopBall" type="Node3D" unique_id=916241242]
 script = ExtResource("1_yugch")
@@ -19,7 +18,6 @@ max_contacts_reported = 1
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=1757235712]
 shape = SubResource("SphereShape3D_wv04s")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D" unique_id=115023752]
-mesh = SubResource("SphereMesh_wv04s")
+[node name="ZoopOrb" parent="RigidBody3D" unique_id=1948507667 instance=ExtResource("2_g2fvf")]
 
 [connection signal="body_entered" from="RigidBody3D" to="." method="_on_rigid_body_3d_body_entered"]
