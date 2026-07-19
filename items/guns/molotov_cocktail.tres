@@ -14,6 +14,7 @@ metadata_increase_ranges = Dictionary[int, Vector2]({
 })
 name = "Molotov Cocktail"
 description = "You throw it and the good times roll."
+type = 11
 icon = Rect2i(4, 4, 1, 1)
 scene_path = "uid://blcxo6dbc3d4t"
 discard_on_use = true

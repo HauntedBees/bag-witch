@@ -7,6 +7,7 @@ script = ExtResource("1_10j5m")
 stat = 1
 name = "Power Ruby"
 description = "Power Rubies can increase your Strength stat, increasing your max health, strengthening melee attacks, and allowing you to pick up heavier things to put in your bag."
+type = 10
 icon = Rect2i(2, 2, 1, 1)
 scene_path = "uid://dcbw1l051fcok"
 metadata/_custom_type_script = "uid://crsmwfna86a5l"

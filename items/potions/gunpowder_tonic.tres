@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Potion" format=3 uid="uid://diqgeut6827ix"]
+
+[ext_resource type="Script" uid="uid://ctw20egdhhpr" path="res://resource_types/items/potion.gd" id="1_m8mr5"]
+
+[resource]
+script = ExtResource("1_m8mr5")
+ability = 1
+duration = 30.0
+name = "Gunpowder Tonic"
+description = "Drinking this potion will allow you to fire guns faster for 30 seconds."
+type = 14
+scene_path = "uid://be6huj6ogq3i7"
+discard_on_use = true
+equipped_animation = &"FoodHold"
+use_animation = &"FoodEat"
+metadata/_custom_type_script = "uid://ctw20egdhhpr"

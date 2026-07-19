@@ -1,5 +1,24 @@
 class_name Item extends Resource
 
+enum ItemType {
+	Melee,
+	Book,
+	Gun,
+	GunPart,
+	Ammo,
+	Food,
+	Creature,
+	Person,
+	Machine,
+	Energy,
+	Crystal,
+	Molotov,
+	Misc,
+	# Don't assign this one to things!!
+	None,
+	Potion
+}
+
 @export_category("Basic Details")
 
 ## The item's name.
@@ -7,6 +26,9 @@ class_name Item extends Resource
 
 ## You don't need me to explain what this is.
 @export_multiline() var description: String
+
+## Used for concocting potions.
+@export var type := ItemType.Misc
 
 ## How much inventory space this item takes up.
 @export var size := Vector2i.ONE

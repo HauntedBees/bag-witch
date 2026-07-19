@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Potion" format=3 uid="uid://c8g7e2j5ndh5h"]
+
+[ext_resource type="Script" uid="uid://ctw20egdhhpr" path="res://resource_types/items/potion.gd" id="1_ojd52"]
+
+[resource]
+script = ExtResource("1_ojd52")
+ability = 2
+name = "Noxious Concoctious"
+description = "This is the result of a failed attempt at making a potion. I probably shouldn't drink this."
+type = 14
+metadata/_custom_type_script = "uid://ctw20egdhhpr"

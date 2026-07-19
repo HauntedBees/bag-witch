@@ -43,6 +43,7 @@ var current_health := 100:
 var max_health := 100
 
 var completed_quests: Array[StringName] = [&"FromBog"]
+var active_potions: Dictionary[Potion, float] = {}
 
 var _remembered_spell: Spell
 var _remembered_spell_ammo := 0
@@ -56,6 +57,12 @@ func _init() -> void:
 		equip_slots.append(null)
 	for i in inventory.items: # for the default items
 		_on_item_added(i)
+
+func has_potion_ability(ability: Potion.Ability) -> bool:
+	for p: Potion in active_potions.keys():
+		if p.ability == ability:
+			return true
+	return false
 
 func portal_wipe() -> void:
 	_retain_current_spell()

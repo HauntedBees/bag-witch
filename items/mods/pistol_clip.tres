@@ -11,6 +11,7 @@ connects_to = ExtResource("1_x67yv")
 mind_requirement = 2
 name = "Handgun Mag Extension"
 description = "Can be added to a Handgun to increase ammo capacity."
+type = 3
 icon = Rect2i(5, 3, 1, 1)
 scene_path = "uid://cl1tm1nm1dl0n"
 metadata/_custom_type_script = "uid://bu710w4vwduap"

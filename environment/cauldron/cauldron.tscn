@@ -1,9 +1,18 @@
 [gd_scene format=3 uid="uid://bojcp628rd3l4"]
 
 [ext_resource type="PackedScene" uid="uid://dj07kmeoa1jno" path="res://assets/models/cauldron.blend" id="1_sr7id"]
-[ext_resource type="Script" uid="uid://bo6iyh0lkvbjp" path="res://environment/cauldron.gd" id="1_y6hjw"]
+[ext_resource type="Script" uid="uid://bo6iyh0lkvbjp" path="res://environment/cauldron/cauldron.gd" id="1_y6hjw"]
 [ext_resource type="Shader" uid="uid://cn14y06puco1s" path="res://assets/shaders/lava.gdshader" id="2_ovluu"]
+[ext_resource type="Script" uid="uid://wbaxe261gvyn" path="res://environment/cauldron/cauldron_recipe.gd" id="2_vd1ef"]
 [ext_resource type="Script" uid="uid://wp1mdoed06xj" path="res://levels/quick_cutscene.gd" id="3_wemd6"]
+
+[sub_resource type="Resource" id="Resource_0vwwb"]
+script = ExtResource("2_vd1ef")
+output = "uid://diqgeut6827ix"
+item_1_type = 4
+item_2_type = 5
+item_3_type = 5
+metadata/_custom_type_script = "uid://wbaxe261gvyn"
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_rhbnc"]
 height = 1.2899933
@@ -34,8 +43,46 @@ radius = 8.0
 [sub_resource type="SphereShape3D" id="SphereShape3D_rhbnc"]
 radius = 8.0
 
+[sub_resource type="Animation" id="Animation_vd1ef"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BrewPosition:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_lc6h8"]
+resource_name = "rotatay"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BrewPosition:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.2831855, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_osbk2"]
+_data = {
+&"RESET": SubResource("Animation_vd1ef"),
+&"rotatay": SubResource("Animation_lc6h8")
+}
+
 [node name="Cauldron" type="StaticBody3D" unique_id=439509165]
 script = ExtResource("1_y6hjw")
+recipes = Array[ExtResource("2_vd1ef")]([SubResource("Resource_0vwwb")])
 
 [node name="cauldron" parent="." unique_id=789874657 instance=ExtResource("1_sr7id")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
@@ -81,6 +128,14 @@ transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -0.29943848, 1.06707
 [node name="ItemHolder3" type="Node3D" parent="." unique_id=1129313585]
 unique_name_in_owner = true
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.25354004, 1.0670776, -0.23265648)
+
+[node name="BrewPosition" type="Marker3D" parent="." unique_id=1436294446]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5285687, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=989031609]
+libraries/ = SubResource("AnimationLibrary_osbk2")
+autoplay = &"rotatay"
 
 [connection signal="body_entered" from="CauldronDropArea" to="." method="_on_cauldron_drop_area_body_entered"]
 [connection signal="body_exited" from="CauldronDropArea" to="." method="_on_cauldron_drop_area_body_exited"]

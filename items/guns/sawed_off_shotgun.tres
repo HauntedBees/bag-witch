@@ -15,6 +15,7 @@ additional_y_knockback = 20.0
 is_high_impact = true
 name = "Sawed-Off Shotgun"
 description = "It goes boom boom. It's been cut down to take up less space, making its range slightly lower."
+type = 2
 size = Vector2i(2, 2)
 icon = Rect2i(6, 2, 2, 2)
 scene_path = "uid://bdjp2yh6jrj8e"

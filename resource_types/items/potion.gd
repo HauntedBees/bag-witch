@@ -1,0 +1,26 @@
+class_name Potion extends Item
+
+## If this were a full-fledged big project not being rushed to get done in a few
+## days, abilities would be their own scripts hooking into things and whatnot, but
+## there are probably only going to be a dozen of these tops and they're all going
+## to be different enough that I wouldn't be able to reuse things or anything so
+## fuck it, enums will do for now.
+enum Ability {
+	# these probably won't happen due to time constraints
+	Custom, 
+	## Gunpowder Tonic
+	SuperGunshot,
+	## Disaster Potion
+	HurtSelf #TODO: implement
+}
+
+@export var ability := Ability.Custom
+
+## In seconds.
+@export var duration := 0.0
+
+func _inner_use(_player: BogWitch) -> void:
+	if Player.data.active_potions.has(self):
+		Player.data.active_potions[self] += duration
+	else:
+		Player.data.active_potions[self] = duration

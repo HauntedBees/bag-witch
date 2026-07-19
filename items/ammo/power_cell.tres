@@ -8,6 +8,7 @@ initial_ammo_range = Vector2i(1, 1)
 max_amount = 1
 name = "Power Cell"
 description = "It can charge various futuristic devices."
+type = 9
 icon = Rect2i(3, 4, 1, 1)
 scene_path = "uid://su2uaeypv6dr"
 metadata/_custom_type_script = "uid://bfodjlwt0ww2c"

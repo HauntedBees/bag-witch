@@ -14,6 +14,7 @@ knockback = 3.0
 uses_power_cells_for_ammo = true
 name = "Laser Rifle"
 description = "I'm not sure how this thing works, but it uses Power Cells to reload."
+type = 2
 size = Vector2i(3, 1)
 icon = Rect2i(0, 4, 3, 1)
 scene_path = "uid://d2toblm6xjhdq"

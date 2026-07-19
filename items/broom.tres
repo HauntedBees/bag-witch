@@ -8,6 +8,7 @@ is_melee = true
 damage_range = Vector2i(7, 15)
 name = "Broom"
 description = "You can ride on it or whack things with it."
+type = 0
 size = Vector2i(4, 1)
 icon = Rect2i(0, 0, 4, 1)
 scene_path = "uid://c0c6yem7oc5h2"

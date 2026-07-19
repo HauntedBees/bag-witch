@@ -9,6 +9,7 @@ velocity = 90.0
 damage_range = Vector2i(25, 35)
 name = "Handgun"
 description = "It goes pew pew."
+type = 2
 icon = Rect2i(4, 3, 1, 1)
 scene_path = "uid://bjueb1x0osj73"
 use_range = 30.0

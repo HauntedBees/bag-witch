@@ -4,7 +4,6 @@ signal quest_added(q: Quest)
 signal quest_removed(q: Quest)
 
 var ready_to_glide := false
-var current_weapon_metadata: Dictionary[String, int] = {}
 var alt_hand_for_attack_anim := false
 var current_cauldron: Cauldron:
 	set(value):
@@ -82,6 +81,10 @@ func _input(event: InputEvent) -> void:
 
 func _process(delta: float) -> void:
 	super(delta)
+	for p: Potion in Player.data.active_potions.keys():
+		Player.data.active_potions[p] -= delta
+		if Player.data.active_potions[p] <= 0.0:
+			Player.data.active_potions.erase(p)
 	for q: Quest in _quests.values():
 		q.process(delta)
 	if _reloading_time_remaining >= 0.0:
@@ -331,7 +334,6 @@ func _try_switch_weapon(event: InputEvent) -> bool:
 	for i in BWEnum.WEAPON_SLOTS.size():
 		if GASInput.is_event_action_just_pressed(event, BWEnum.WEAPON_SLOTS[i]):
 			Player.try_change_weapon(i)
-			current_weapon_metadata.clear()
 			ready_to_glide = false
 			print("current weapon is %s" % Player.data.current_equipped_item())
 			Player.weapon_cooldown = 0.0
@@ -354,6 +356,8 @@ func _handle_attack(delta: float) -> void:
 	var item := id.item
 	item.use(self)
 	Player.weapon_cooldown = item.usage_cooldown
+	if Player.data.has_potion_ability(Potion.Ability.SuperGunshot) && item.type == Item.ItemType.Gun:
+		Player.weapon_cooldown *= 0.5
 	if item.discard_on_use:
 		Player.data.inventory.remove_item(id)
 

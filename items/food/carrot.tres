@@ -6,6 +6,7 @@
 script = ExtResource("1_mkilq")
 heal_range = Vector2i(5, 8)
 name = "Carrot"
+type = 5
 icon = Rect2i(5, 4, 1, 1)
 scene_path = "uid://cm0m2edwk6cv6"
 discard_on_use = true
