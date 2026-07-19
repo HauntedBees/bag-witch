@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://su2uaeypv6dr" path="res://items/world/ammo/power_cell.tscn" id="7_shdsl"]
 [ext_resource type="PackedScene" uid="uid://oho74mtgm2jq" path="res://items/world/mods/laser_juicer.tscn" id="8_ul0mr"]
 [ext_resource type="PackedScene" uid="uid://blcxo6dbc3d4t" path="res://items/world/weapons/molotov.tscn" id="9_b2v4k"]
+[ext_resource type="PackedScene" uid="uid://cm0m2edwk6cv6" path="res://items/world/food/carrot.tscn" id="10_7lcu3"]
 
 [node name="GameContainer" type="Node3D" unique_id=827938429]
 process_mode = 3
@@ -51,5 +52,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.7964478, 0.91851807, -9.77
 
 [node name="Molotov3" parent="." unique_id=2034714019 instance=ExtResource("9_b2v4k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.7964478, 0.91851807, -6.7720947)
+
+[node name="Carrot" parent="." unique_id=621096524 instance=ExtResource("10_7lcu3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.918032, -0.1904602, 8.437012)
 
 [connection signal="finished" from="WarpEffect" to="." method="_on_warp_effect_finished"]

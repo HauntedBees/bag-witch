@@ -129,7 +129,7 @@ func take_damage_from_weapon(w: Weapon, knockback_source: Vector3) -> void:
 		w.additional_y_knockback
 	)
 
-func take_damage(damage: int, knockback_source: Vector3, knockback: float, additional_y_knockback := 0.0) -> void:
+func take_damage(damage: int, knockback_source := Vector3.ZERO, knockback := 0.0, additional_y_knockback := 0.0) -> void:
 		Player.take_damage(damage)
 		if knockback > 0.0:
 			var dir := global_position.direction_to(knockback_source)
@@ -345,7 +345,7 @@ func _handle_attack(delta: float) -> void:
 	var item := id.item
 	item.use(self)
 	Player.weapon_cooldown = item.usage_cooldown
-	if item is Throwable:
+	if item.discard_on_use:
 		Player.data.inventory.remove_item(id)
 
 func get_projectile_launch_point(left_hand: bool) -> Vector3:

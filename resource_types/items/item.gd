@@ -29,6 +29,9 @@ class_name Item extends Resource
 
 @export_category("Equipping")
 
+## Single-use items.
+@export var discard_on_use := false
+
 ## The maximum distance from an enemy the player must be for the Item Select to show up.
 @export_range(0.0, 30.0) var use_range := 1.0
 
