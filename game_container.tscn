@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://d2toblm6xjhdq" path="res://items/world/weapons/laserrifle.tscn" id="6_shdsl"]
 [ext_resource type="PackedScene" uid="uid://su2uaeypv6dr" path="res://items/world/ammo/power_cell.tscn" id="7_shdsl"]
 [ext_resource type="PackedScene" uid="uid://oho74mtgm2jq" path="res://items/world/mods/laser_juicer.tscn" id="8_ul0mr"]
+[ext_resource type="PackedScene" uid="uid://blcxo6dbc3d4t" path="res://items/world/weapons/molotov.tscn" id="9_b2v4k"]
 
 [node name="GameContainer" type="Node3D" unique_id=827938429]
 process_mode = 3
@@ -41,5 +42,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.687622, 1.4700317, -4)
 
 [node name="LaserJuicer" parent="." unique_id=1555573914 instance=ExtResource("8_ul0mr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4700317, -8.050842)
+
+[node name="Molotov" parent="." unique_id=1533506164 instance=ExtResource("9_b2v4k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.79644775, 0.91851807, -9.772095)
 
 [connection signal="finished" from="WarpEffect" to="." method="_on_warp_effect_finished"]

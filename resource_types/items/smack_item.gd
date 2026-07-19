@@ -3,7 +3,6 @@ class_name SmackAttack extends Weapon
 const _SMACK_ATTACK := preload("uid://clws3ydptj3xx")
 
 func _inner_use(player: BogWitch) -> void:
-	player.arms_overlay.arms.play_anim(use_animation)
 	var swipe: PlayerAttack = _SMACK_ATTACK.instantiate()
 	swipe.weapon = self
 	player.add_child(swipe)
