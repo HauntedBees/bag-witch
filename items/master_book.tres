@@ -10,10 +10,14 @@
 [ext_resource type="Resource" uid="uid://cvi4rh1y7wvjr" path="res://spells/fireball3.tres" id="8_dq1ty"]
 [ext_resource type="Resource" uid="uid://bkpo6bi22ktp7" path="res://spells/jump.tres" id="9_owy3d"]
 [ext_resource type="Resource" uid="uid://yp3rshvqltif" path="res://spells/zoop.tres" id="10_dq1ty"]
+[ext_resource type="Resource" uid="uid://cwq44ci5l5xix" path="res://spells/jump2.tres" id="11_4s5oj"]
+[ext_resource type="Resource" uid="uid://dg5r2s328ggqe" path="res://spells/jump3.tres" id="12_1ywwn"]
+[ext_resource type="Resource" uid="uid://bvv603hnf2km6" path="res://spells/zoop2.tres" id="13_xsoba"]
+[ext_resource type="Resource" uid="uid://1opxemrxamu0" path="res://spells/zoop3.tres" id="14_5pju5"]
 
 [resource]
 script = ExtResource("1_mqxu7")
-spells = Array[ExtResource("2_x0y84")]([ExtResource("3_2owhc"), ExtResource("4_x0y84"), ExtResource("5_owy3d"), ExtResource("6_oyxgk"), ExtResource("7_owy3d"), ExtResource("8_dq1ty"), ExtResource("9_owy3d"), ExtResource("10_dq1ty")])
+spells = Array[ExtResource("2_x0y84")]([ExtResource("3_2owhc"), ExtResource("4_x0y84"), ExtResource("5_owy3d"), ExtResource("6_oyxgk"), ExtResource("7_owy3d"), ExtResource("8_dq1ty"), ExtResource("9_owy3d"), ExtResource("10_dq1ty"), ExtResource("11_4s5oj"), ExtResource("12_1ywwn"), ExtResource("13_xsoba"), ExtResource("14_5pju5")])
 name = "Book of Many"
 type = 1
 size = Vector2i(2, 1)

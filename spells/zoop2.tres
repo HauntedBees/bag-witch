@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Spell" format=3 uid="uid://bvv603hnf2km6"]
+
+[ext_resource type="Script" uid="uid://bh5gblgdby5gl" path="res://resource_types/spells/spell.gd" id="1_6hb1e"]
+
+[resource]
+script = ExtResource("1_6hb1e")
+magic_level_requirement = 2
+category = "zoop"
+projectile_path = "uid://b6ugvwsbxlc8"
+velocity = 50.0
+gravity = 0.02
+is_spell = true
+spell_ammo = 1
+metadata_increase_ranges = Dictionary[int, Vector2]({
+1: Vector2(0.04, 0.08)
+})
+name = "Zoop I"
+description = "Throw a nice little zoop ball and automatically teleport to wherever it lands."
+icon = Rect2i(0, 0, -1, 0)
+equip_sprite_offset = Vector2i(3, 1)
+custom_equip_scene = "uid://d26pqwram864b"
+equipped_animation = &"ZoopHold"
+use_animation = &"ZoopThrow"
+usage_cooldown = 2.5
+metadata/_custom_type_script = "uid://dq216hufmeoo3"
