@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cm0m2edwk6cv6" path="res://items/world/food/carrot.tscn" id="10_7lcu3"]
 [ext_resource type="PackedScene" uid="uid://d1vmwhy8b4jw5" path="res://items/world/food/apple.tscn" id="11_7xgre"]
 [ext_resource type="PackedScene" uid="uid://d1uajkvuwu3dn" path="res://items/world/food/mushroom.tscn" id="12_25gf6"]
+[ext_resource type="PackedScene" uid="uid://bojcp628rd3l4" path="res://environment/cauldron.tscn" id="13_25gf6"]
 
 [node name="GameContainer" type="Node3D" unique_id=827938429]
 process_mode = 3
@@ -66,5 +67,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.018501, 7.953888, 25.5953
 
 [node name="Mushroom" parent="." unique_id=1759932068 instance=ExtResource("12_25gf6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.911366, 5.7784424, 24.334473)
+
+[node name="Cauldron" parent="." unique_id=439509165 instance=ExtResource("13_25gf6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.305664, 0.91886044, 0.06201172)
 
 [connection signal="finished" from="WarpEffect" to="." method="_on_warp_effect_finished"]

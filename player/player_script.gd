@@ -6,6 +6,13 @@ signal quest_removed(q: Quest)
 var ready_to_glide := false
 var current_weapon_metadata: Dictionary[String, int] = {}
 var alt_hand_for_attack_anim := false
+var current_cauldron: Cauldron:
+	set(value):
+		current_cauldron = value
+		if current_cauldron == null:
+			_inventory_display.drop_text.text = "Drop Item"
+		else:
+			_inventory_display.drop_text.text = "Add to Cauldron"
 
 var _quests: Dictionary[StringName, Quest] = {}
 var _already_completed_quests: Array[StringName] = []
@@ -28,6 +35,7 @@ var _max_grab_distance := 10.0
 @onready var _alt_projectile_launch_spot: Node3D = %ProjectileSpot2
 @onready var _front_check: RayCast3D = %FrontCheck
 @onready var _item_select: ItemSelect = %ItemSelect
+@onready var _inventory_display: InventoryDisplay = %InventoryDisplay
 
 func _ready() -> void:
 	super()
@@ -305,6 +313,7 @@ func _try_pick_up_item() -> bool:
 	if _current_targeted_item.had_ammo_set:
 		added.ammo = _current_targeted_item.ammo
 	added.modifications = _current_targeted_item.mods
+	_current_targeted_item.picked_up.emit()
 	_current_targeted_item.queue_free()
 	_current_targeted_item = null
 	return true
@@ -376,11 +385,14 @@ func _on_inventory_display_spawn_item(wi: WorldItem, id: InventoryDetail) -> voi
 	wi.mods = id.modifications
 	if wi is ModdableWeaponDisplay:
 		wi.bind(id)
-	get_parent().add_child(wi)
-	var center := get_viewport().get_visible_rect().size / 2.0
-	var to := _get_adjusted_drop_position(global_position, cam.project_ray_normal(center))
-	wi.global_position = global_position + to + Vector3(0.0, 0.3, 0.0)
-	wi.plep(to)
+	if current_cauldron == null:
+		get_parent().add_child(wi)
+		var center := get_viewport().get_visible_rect().size / 2.0
+		var to := _get_adjusted_drop_position(global_position, cam.project_ray_normal(center))
+		wi.global_position = global_position + to + Vector3(0.0, 0.3, 0.0)
+		wi.plep(to)
+	else:
+		current_cauldron.add_item(wi)
 
 func _get_adjusted_drop_position(from: Vector3, to: Vector3) -> Vector3:
 	var space_state := get_world_3d().direct_space_state

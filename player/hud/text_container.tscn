@@ -66,7 +66,7 @@ _data = {
 atlas = ExtResource("6_khtwh")
 region = Rect2(32, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yepvy"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_suc22"]
 resource_local_to_scene = true
 atlas = ExtResource("7_khtwh")
 region = Rect2(0, 208, 16, 16)
@@ -102,6 +102,7 @@ bbcode_enabled = true
 text = "Ah, fuck. You're looking at the source code. Like what you see, my pretty? It's yours for the taking! What's the catch...? Well, it's AGPLv3 licensed, dearie, meaning if you change the code or use it in YOUR game, THAT code has to be distributed freely,  too!! Nya-ha-ha-ha-haaaa!"
 fit_content = true
 scroll_active = false
+visible_characters_behavior = 1
 script = ExtResource("4_jy1mp")
 action_scroll_enabled = false
 metadata/_custom_type_script = "uid://om54ctnqyag0"
@@ -145,5 +146,5 @@ texture = SubResource("AtlasTexture_rhbnc")
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
-texture = SubResource("AtlasTexture_yepvy")
+texture = SubResource("AtlasTexture_suc22")
 action_name = &"advance_text"

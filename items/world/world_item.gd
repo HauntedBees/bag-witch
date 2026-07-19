@@ -1,5 +1,8 @@
 class_name WorldItem extends Area3D
 
+@warning_ignore("unused_signal")
+signal picked_up()
+
 @export var item: Item
 
 @export var mods: Array[ItemMod] = []
