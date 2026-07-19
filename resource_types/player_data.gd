@@ -18,7 +18,7 @@ var strength := 1:
 		stat_changed.emit()
 		if str_changed:
 			current_health = max_health
-var magic := 1:
+var magic := 3:
 	set(value):
 		magic = value
 		stat_changed.emit()

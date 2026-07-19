@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="JumpSpell" format=3 uid="uid://dg5r2s328ggqe"]
+
+[ext_resource type="Script" uid="uid://ckf0bsca5oani" path="res://resource_types/spells/jump_spell.gd" id="1_fcnmw"]
+
+[resource]
+script = ExtResource("1_fcnmw")
+y_velocity = 20.0
+duration = 2.5
+magic_level_requirement = 2
+category = "jump"
+is_spell = true
+spell_ammo = 4
+name = "Jump III"
+description = "Launches me straight up in the air leaving naught but a puff of smoke behind. Great for quickly escaping enemies or surveying the area."
+equip_sprite_offset = Vector2i(2, 1)
+equipped_animation = &"Jump"
+use_animation = &"JumpUse"
+usage_cooldown = 9.0
+metadata/_custom_type_script = "uid://ckf0bsca5oani"
