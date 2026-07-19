@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://2vlxxw8d6rxk" path="res://assets/models/weapons/clip_small.blend" id="17_7tem3"]
 [ext_resource type="PackedScene" uid="uid://bigvxtmaq3x77" path="res://assets/models/ammo/power_cell.blend" id="19_318v8"]
 [ext_resource type="PackedScene" uid="uid://cdspmedbltw6e" path="res://assets/models/weapons/molotov.blend" id="20_2gas7"]
+[ext_resource type="PackedScene" uid="uid://c6c6m0nr2ihf8" path="res://assets/models/items/carrot.blend" id="21_1cl67"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eeolf"]
 shading_mode = 0
@@ -113,6 +114,10 @@ visible = false
 
 [node name="molotov" parent="ThingContainer" unique_id=6487806 instance=ExtResource("20_2gas7")]
 transform = Transform3D(0.0533126, 0.2074404, 0.9767938, 0, 0.97818494, -0.20773584, -0.9985779, 0.011074937, 0.052149583, -0.01793196, -0.96167135, 0.33587658)
+visible = false
+
+[node name="carrot2" parent="ThingContainer" unique_id=1116982465 instance=ExtResource("21_1cl67")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.34123993, 1.3078737)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=465674123]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.9159544)

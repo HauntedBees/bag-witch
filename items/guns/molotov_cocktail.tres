@@ -16,6 +16,7 @@ name = "Molotov Cocktail"
 description = "You throw it and the good times roll."
 icon = Rect2i(4, 4, 1, 1)
 scene_path = "uid://blcxo6dbc3d4t"
+discard_on_use = true
 equip_sprite_offset = Vector2i(0, 1)
 custom_equip_scene = "uid://srrcgclmm48x"
 equipped_animation = &"MolotovHold"

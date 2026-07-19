@@ -7,6 +7,8 @@ signal set_suck(on: bool)
 @onready var _left_hand: BoneAttachment3D = %LeftHand
 @onready var _bag: Node3D = %bag
 
+var _waiting_on_return_to_idle := false
+
 func _ready() -> void:
 	Player.equip_changed.connect(_on_weapon_changed)
 
@@ -24,10 +26,14 @@ func play_anim(anim: StringName, return_to_idle := true, speed := 1.0) -> void:
 	set_suck.emit(anim == &"BagSuck")
 	_anim.play(anim, -1, speed)
 	if return_to_idle:
+		_waiting_on_return_to_idle = true
 		await _anim.animation_finished
+		_waiting_on_return_to_idle = false
 		reset_idle()
 
 func _on_weapon_changed(id: InventoryDetail) -> void:
+	if _waiting_on_return_to_idle:
+		await _anim.animation_finished
 	for n in _right_hand.get_children():
 		if n == _bag:
 			continue

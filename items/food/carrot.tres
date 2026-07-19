@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Food" format=3 uid="uid://7u7qquf88cla"]
+
+[ext_resource type="Script" uid="uid://bnwn0kgj0rv42" path="res://resource_types/items/food.gd" id="1_mkilq"]
+
+[resource]
+script = ExtResource("1_mkilq")
+heal_range = Vector2i(5, 8)
+name = "Carrot"
+scene_path = "uid://cm0m2edwk6cv6"
+discard_on_use = true
+equipped_animation = &"FoodHold"
+use_animation = &"FoodEat"
+metadata/_custom_type_script = "uid://bnwn0kgj0rv42"

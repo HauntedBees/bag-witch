@@ -28,7 +28,10 @@ func use_weapon(w: Item) -> void:
 		ammo_changed.emit(data.current_equipped.ammo)
 
 func take_damage(amount: int) -> void:
-	data.current_health -= amount
+	data.current_health = maxi(
+		0,
+		mini(data.current_health - amount, data.max_health)
+	)
 	if data.current_health <= 0:
 		print("OH FUCK") #TODO: check spares
 
