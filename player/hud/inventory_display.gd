@@ -17,6 +17,8 @@ var _highlight: Highlight
 var _highlighted_item: InventoryDetail
 var _highlighted_spell: Weapon
 
+@onready var drop_text: GASLabel = %DropText
+
 @onready var _mind_label: GASLabel = %MindLabel
 @onready var _strength_label: GASLabel = %StrengthLabel
 @onready var _magic_label: GASLabel = %MagicLabel
