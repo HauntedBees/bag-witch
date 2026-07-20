@@ -454,15 +454,7 @@ func get_mouse_center() -> Vector3: #TODO: maybe replace now that _front_check e
 func _on_inventory_toggled(shown: bool) -> void:
 	_in_inventory = shown
 
-func _on_inventory_display_spawn_item(wi: WorldItem, id: InventoryDetail) -> void:
-	wi.from_inventory = true
-	wi.ammo = id.ammo
-	wi.had_ammo_set = true
-	wi.mods = id.modifications
-	if wi is ModdableWeaponDisplay:
-		wi.bind(id)
-	elif wi is PortalWisp:
-		wi.bind_from_inventory_portal(id.item)
+func _on_inventory_display_spawn_item(wi: WorldItem) -> void:
 	if current_cauldron == null:
 		get_parent().add_child(wi)
 		var center := get_viewport().get_visible_rect().size / 2.0
