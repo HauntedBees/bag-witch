@@ -16,16 +16,21 @@ func _setup_behavior() -> void:
 	priority = _DAMAGED_PRIORITY
 	_parent.on_hit.connect(_on_hit)
 
-func _on_hit(w: Weapon, source: Vector3, damage_dealt: int, impact_position: Vector3) -> void:
+func _on_hit(w: Weapon, source: Vector3, damage_dealt: int, impact_position: Vector3, sneak_attack: bool) -> void:
 	var freezes := _stun_time > 0.0 && !w.no_stun
 	if !active:
 		return
 	if freezes:
 		take_control()
 		_time_stunned = _stun_time
-	if w.knockback > 0.0:
+	var knockback := w.knockback
+	if sneak_attack:
+		knockback *= 3.0
+		if knockback == 0.0:
+			knockback = 5.0
+	if knockback > 0.0:
 		var dir := _parent.global_position.direction_to(source)
-		_parent.velocity -= dir.normalized() * w.knockback
+		_parent.velocity -= dir.normalized() * knockback
 		_parent.velocity.y += w.additional_y_knockback
 	if _parent.is_dead(): # can still knock around a dead body but it won't look at you
 		return

@@ -22,7 +22,7 @@ func _on_active_changed() -> void:
 	if !active:
 		_kill_cube()
 
-func _on_hit(w: Weapon, source: Vector3, damage_dealt: int, impact_position: Vector3) -> void:
+func _on_hit(w: Weapon, source: Vector3, damage_dealt: int, impact_position: Vector3, _sneak_attack: bool) -> void:
 	if !active:
 		return
 	if damage_dealt >= (_parent.max_health * 0.5):
@@ -30,7 +30,7 @@ func _on_hit(w: Weapon, source: Vector3, damage_dealt: int, impact_position: Vec
 		_kill_cube()
 		var new_damage := roundi(_parent.max_health * 0.25)
 		_parent.take_specific_damage(new_damage)
-		_parent.on_hit.emit(w, source, new_damage, impact_position)
+		_parent.on_hit.emit(w, source, new_damage, impact_position, false)
 	else:
 		_damage_remaining -= damage_dealt
 		if _damage_remaining <= 0:
