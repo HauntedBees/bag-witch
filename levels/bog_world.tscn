@@ -22,6 +22,7 @@
 [ext_resource type="Script" uid="uid://bpjdbd3v8hbkm" path="res://levels/lazy_anim.gd" id="20_0yn3c"]
 [ext_resource type="AnimationLibrary" uid="uid://ce56a4127anc5" path="res://assets/animations/Rig_Medium_General.glb" id="20_t35t8"]
 [ext_resource type="AnimationLibrary" uid="uid://ntjgewrphs02" path="res://assets/animations/Rig_Medium_MovementBasic.glb" id="21_0yn3c"]
+[ext_resource type="Script" uid="uid://bh3e52s7bb0by" path="res://environment/portals/warp_point.gd" id="23_moaa7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_f7sxh"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -439,6 +440,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7960396, 4, -21.82061)
 
 [node name="Knight2Point" type="Marker3D" parent="CutsceneStuff" unique_id=115597819]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7960396, 4, -18.227179)
+
+[node name="FromDeath" type="RayCast3D" parent="." unique_id=1321842224]
+transform = Transform3D(0.5643303, 0, 0.8255491, 0, 1, 0, -0.8255491, 0, 0.5643303, 2.6593018, 2.718933, 20.662388)
+target_position = Vector3(0, 0, -20)
+script = ExtResource("23_moaa7")
+metadata/_custom_type_script = "uid://bh3e52s7bb0by"
 
 [editable path="PortalSubviewport"]
 [editable path="CutsceneStuff/queen_i"]

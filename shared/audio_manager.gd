@@ -3,14 +3,37 @@ class_name AudioManager extends Node
 @onready var _music1: AudioStreamPlayer = %Music1
 @onready var _music2: AudioStreamPlayer = %Music2
 
+@onready var _sounds: Array[AudioStreamPlayer] = [
+	%Sound1, %Sound2, %Sound3, %Sound4, %Sound5, %Sound6
+]
+
 var _current_music_player: AudioStreamPlayer = null
 var _next_music_loop: AudioStream = null
+var _sound_idx := 0
 
 func _ready() -> void:
 	SignalBus.change_song.connect(_change_song)
 	SignalBus.change_looping_song.connect(_change_looping_song)
+	SignalBus.stop_all_sounds.connect(silence_all_sounds)
+	SignalBus.play_sound.connect(play_sound)
 	_music1.finished.connect(_on_song_finished)
 	_music2.finished.connect(_on_song_finished)
+
+func silence_all_sounds() -> void:
+	for s in _sounds:
+		s.stop()
+	_sound_idx = 0
+
+func play_sound(s: AudioStream) -> void:
+	var p := _sounds[_sound_idx]
+	p.stream = s
+	p.play()
+	_sound_idx = (_sound_idx + 1) % _sounds.size()
+
+func fade_out_music() -> Signal:
+	var t := create_tween()
+	t.tween_property(_current_music_player, "volume_linear", 0.0, 0.125)
+	return t.finished
 
 func _on_song_finished() -> void:
 	if _next_music_loop == null:
@@ -41,7 +64,6 @@ func _change_looping_song(start: AudioStream, loop: AudioStream, fade_time: floa
 		prev_player.stop()
 	)
 	pass
-
 
 func _set_and_play_stream(player: AudioStreamPlayer, song: AudioStream, volume: float) -> void:
 	_current_music_player = player
