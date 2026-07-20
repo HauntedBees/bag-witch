@@ -5,7 +5,9 @@
 [resource]
 script = ExtResource("1_tj7ko")
 is_melee = true
-damage_range = Vector2i(7, 15)
+damage_range = Vector2i(5, 10)
+knockback = 2.0
+additional_y_knockback = 1.0
 name = "Broom"
 description = "You can ride on it or whack things with it."
 type = 0
@@ -16,6 +18,7 @@ scene_path = "uid://c0c6yem7oc5h2"
 use_range = 7.75
 equip_sprite_offset = Vector2i(1, 0)
 equipped_animation = &"Broom"
+use_animation = &"BroomSwing1"
 equipped_scale = 6.0
 usage_cooldown = 0.4
 metadata/_custom_type_script = "uid://cgt7ckkn1gh5b"

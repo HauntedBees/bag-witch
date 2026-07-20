@@ -14,12 +14,14 @@ var knockback_source := Vector3.ZERO
 func _ready() -> void:
 	area.body_entered.connect(_on_body_entered)
 	anim.animation_finished.connect(_on_animation_finished)
+	if weapon is SwingItem:
+		anim.speed_scale = weapon.swing_animation_speed
 
 func _on_body_entered(body: Node3D) -> void:
 	if body is EnemyDisplay:
 		var space_state := get_world_3d().direct_space_state
 		var dir := -global_transform.basis.z.normalized()
-		var query := PhysicsRayQueryParameters3D.create(global_position - dir * 2.0, global_position + dir * 100.0)
+		var query := PhysicsRayQueryParameters3D.create(global_position - dir * 2.0, global_position + dir * 100.0, 4)
 		var result := space_state.intersect_ray(query)
 		if result.is_empty():
 			body.receive_weapon_hit(global_position, weapon)

@@ -38,7 +38,7 @@ var inventory := Inventory.new()
 var current_equipped: InventoryDetail = null
 var equip_slots: Array[InventoryDetail] = []
 
-var current_health := 5:
+var current_health := 100:
 	set(value):
 		current_health = value
 		health_changed.emit(value)
@@ -80,9 +80,14 @@ func has_potion_ability(ability: Potion.Ability) -> bool:
 			return true
 	return false
 
+func death_wipe() -> void:
+	_remembered_spell = null
+	_remembered_spell_ammo = 0
+	inventory.clear_all_but_safe(false)
+
 func portal_wipe() -> void:
 	_retain_current_spell()
-	inventory.clear_all_but_equipped() # do this second because it emits "item_purged" signal
+	inventory.clear_all_but_safe() # do this second because it emits "item_purged" signal
 
 func _retain_current_spell() -> void:
 	var current_spell := current_equipped_item()

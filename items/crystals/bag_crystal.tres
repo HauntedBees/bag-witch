@@ -9,5 +9,6 @@ name = "Bag Crystal"
 description = "Bag Crystals can increase your Bag stat, increasing your magic bag's carrying capacity and warp-safe pouch size."
 type = 10
 icon = Rect2i(5, 2, 1, 1)
+first_get_text = "If I combine enough of these shards, I can permanently improve my Bag..."
 scene_path = "uid://bhoxhmha1477m"
 metadata/_custom_type_script = "uid://crsmwfna86a5l"

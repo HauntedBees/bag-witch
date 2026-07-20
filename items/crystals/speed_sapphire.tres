@@ -9,5 +9,6 @@ name = "Speed Sapphire"
 description = "Speed Sapphires can increase your Speed stat, increasing your running speed, wall-running and jumping abilities, and the odds of randomly dodging enemy attacks."
 type = 10
 icon = Rect2i(3, 2, 1, 1)
+first_get_text = "If I combine enough of these shards, I can permanently improve my Speed..."
 scene_path = "uid://busn52mwuwpd1"
 metadata/_custom_type_script = "uid://crsmwfna86a5l"

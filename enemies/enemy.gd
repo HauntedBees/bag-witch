@@ -8,6 +8,10 @@ signal on_effect_applied(e: BWEnum.Effect, level: int)
 ## This should be obvious.
 @export var enemy_name := ""
 
+@export var potential_drops: Array[Item] = []
+
+@export var potential_drop_chance := 0.5
+
 @export_category("Bagging")
 
 ## What level your "Strength" ability needs to be to bag this enemy.
@@ -145,8 +149,22 @@ func receive_weapon_hit(source: Vector3, w: Weapon, has_impact_position := false
 		_die()
 
 func _die() -> void:
+	_try_drop()
 	set_collision_layer_value(4, false)
 	on_died.emit()
+
+func _try_drop() -> void:
+	if potential_drops.size() == 0:
+		return
+	if randf() > potential_drop_chance:
+		return
+	# slightly prioritize the first item
+	var item: Item = potential_drops[0] if randf() <= 0.2 else potential_drops.pick_random()
+	var item_scene: PackedScene = load(item.scene_path)
+	var wi: WorldItem = item_scene.instantiate()
+	get_parent().get_parent().add_child(wi)
+	wi.global_position = global_position + Vector3.UP
+	wi.plep(Vector3(randf_range(-1.0, 1.0), 0.0, randf_range(-1.0, 1.0)))
 
 func is_about_to_die(damage: int) -> bool:
 	return damage >= _health

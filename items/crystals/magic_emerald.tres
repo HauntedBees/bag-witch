@@ -9,5 +9,6 @@ name = "Magic Emerald"
 description = "Magic Emeralds can increase your Magic stat, making your spells more powerful and allowing you to learn advanced versions of spells."
 type = 10
 icon = Rect2i(1, 2, 1, 1)
+first_get_text = "If I combine enough of these shards, I can permanently improve my Magic..."
 scene_path = "uid://1fdon1rwvb7i"
 metadata/_custom_type_script = "uid://crsmwfna86a5l"
