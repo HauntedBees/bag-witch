@@ -15,6 +15,8 @@
 [ext_resource type="Script" uid="uid://wp1mdoed06xj" path="res://levels/quick_cutscene.gd" id="10_snvax"]
 [ext_resource type="Script" uid="uid://bh3e52s7bb0by" path="res://environment/portals/warp_point.gd" id="10_u8j4s"]
 [ext_resource type="PackedScene" uid="uid://nhixgopg3rk5" path="res://items/world/food/pineapple.tscn" id="15_p4ltq"]
+[ext_resource type="PackedScene" uid="uid://djtpn6s6cdlln" path="res://enemies/common/knight.tscn" id="16_4c5ur"]
+[ext_resource type="PackedScene" uid="uid://c0c6yem7oc5h2" path="res://items/world/broom.tscn" id="17_b05w2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_blw58"]
 sky_top_color = Color(0.35019627, 0.005200732, 0.010569308, 1)
@@ -76,6 +78,13 @@ point_count = 37
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_rhbnc"]
 radius = 300.0
+
+[sub_resource type="Curve3D" id="Curve3D_b05w2"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 73.71057, 41.321045, 31.170593, 0, 0, 0, 0, 0, 0, 33.39392, 41.323242, 48.578796, 0, 0, 0, 0, 0, 0, 36.254272, 41.324707, 19.364136, 0, 0, 0, 0, 0, 0, -7.480957, 41.323975, 41.831055, 0, 0, 0, 0, 0, 0, -0.83361816, 41.32312, 23.120422, 0, 0, 0, 0, 0, 0, -37.76587, 41.31897, 40.378174, 0, 0, 0, 0, 0, 0, -24.789185, 41.3208, 22.14093, 0, 0, 0, 0, 0, 0, -57.55188, 41.324585, 20.90503, 0, 0, 0, 0, 0, 0, -34.892822, 41.324463, 9.526855, 0, 0, 0, 0, 0, 0, -79.2229, 41.32666, 16.006775, 0, 0, 0, 0, 0, 0, -31.84961, 41.320923, -57.273743, 0, 0, 0, 0, 0, 0, -70.24182, 41.32483, -62.611084),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 12
 
 [node name="FireWorld" type="Node3D" unique_id=1891173490]
 script = ExtResource("1_wq31c")
@@ -178,3 +187,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.0956726, -0.36911392, 5.09
 
 [node name="Pineapple7" parent="PineappleRing" unique_id=858750334 instance=ExtResource("15_p4ltq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.518463, -0.36935806, 0.10902023)
+
+[node name="KnightSpawner" type="Node3D" parent="." unique_id=1693841192 node_paths=PackedStringArray("potential_spawn_points", "enemy_point_collection", "spawn_container")]
+script = ExtResource("6_7xo41")
+enemy_types = Array[PackedScene]([ExtResource("16_4c5ur")])
+potential_spawn_points = NodePath("../KnightPoints")
+enemy_point_collection = NodePath("../KnightPoints")
+spawn_container = NodePath(".")
+metadata/_custom_type_script = "uid://b7o0pdvrytkig"
+
+[node name="KnightHolder" type="Node3D" parent="." unique_id=1689804143]
+
+[node name="KnightPoints" type="Path3D" parent="." unique_id=1815503012]
+curve = SubResource("Curve3D_b05w2")
+script = ExtResource("5_xfttq")
+metadata/_custom_type_script = "uid://bn3r43bitaf3i"
+
+[node name="Broom" parent="." unique_id=458796508 instance=ExtResource("17_b05w2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.067017, 45.314312, -31.695496)

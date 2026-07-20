@@ -27,6 +27,7 @@ var _regex := RegEx.new()
 
 func _ready() -> void:
 	SignalBus.say_thing.connect(_say_words_from_signal)
+	SignalBus.say_new_item_text.connect(_say_new_item_words_from_signal)
 	SignalBus.portal_entered.connect(_on_entered_portal)
 
 func _on_entered_portal() -> void:
@@ -37,6 +38,9 @@ func _on_entered_portal() -> void:
 	_current_priority = -1
 	visible = false
 	_is_active = false
+
+func _say_new_item_words_from_signal(speaker: String, text: String, id: String) -> void:
+	say_words(speaker, text, 1, TextPriority.IgnoreIfLessImportantReplaceOtherwise, id)
 
 func _say_words_from_signal(speaker: String, text: String, id: String) -> void:
 	say_words(speaker, text, 1, TextPriority.AlwaysQueueAfterCurrent, id)

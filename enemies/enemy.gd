@@ -99,9 +99,18 @@ func _physics_process(delta: float) -> void:
 		_effects[e] -= delta
 		if _effects[e] <= 0.0:
 			_effects.erase(e)
-	# TODO: handle knockback
 	if !is_on_floor():
 		velocity.y -= 5.0
+	if is_dead():
+		velocity = lerp(
+			velocity,
+			Vector3(velocity.x * 0.5, velocity.y, velocity.z),
+			delta
+		)
+		if abs(velocity.x) <= 0.25:
+			velocity.x = 0.0
+		if abs(velocity.z) <= 0.25:
+			velocity.z = 0.0
 	move_and_slide()
 
 func take_specific_damage(damage_dealt: int) -> void:
