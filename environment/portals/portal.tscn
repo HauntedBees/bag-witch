@@ -5,6 +5,7 @@
 [ext_resource type="Shader" uid="uid://bxvg24o86je3n" path="res://assets/shaders/portal.gdshader" id="2_i0tqa"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_33ahx"]
+resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_i0tqa")
 shader_parameter/sway_amount = 0.0800000038
@@ -18,6 +19,7 @@ shader_parameter/specular = 0.0
 shader_parameter/opacity = 1.0
 
 [sub_resource type="QuadMesh" id="QuadMesh_i0tqa"]
+resource_local_to_scene = true
 material = SubResource("ShaderMaterial_33ahx")
 size = Vector2(6, 6)
 subdivide_width = 32
@@ -47,6 +49,7 @@ shape = SubResource("BoxShape3D_rhbnc")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1759484764]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3924389, 3.244154, 0)
+collision_layer = 15
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=2074378575]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28798676, -0.1471405, -0.097076416)

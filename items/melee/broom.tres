@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_r5fb5")
+swing_animation_speed = 1.5
 is_melee = true
 damage_range = Vector2i(5, 10)
 knockback = 2.0

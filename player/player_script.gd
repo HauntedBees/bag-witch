@@ -17,14 +17,20 @@ var current_cauldron: Cauldron:
 var _quests: Dictionary[StringName, Quest] = {}
 var _already_completed_quests: Array[StringName] = []
 var _mouse_ray_length := 50.0
+
+# yeah yeah yeah, if GDscript supported interfaces or traits or something
+# I wouldn't have to half-ass this ugly mess.
 var _current_targeted_item: WorldItem
 var _current_targeted_enemy: EnemyDisplay
+var _current_targeted_portal: Portal
+
 var _in_inventory := false
 var _reloading_time_remaining := 0.0
 
 var _is_sucking := false
 var _suck_time_remaining := 0.0
 var _suck_enemy: EnemyDisplay
+var _suck_portal: Portal
 var _max_grab_distance := 10.0
 
 @onready var speed_lines: ColorRect = %SpeedLines
@@ -180,7 +186,11 @@ func _handle_front_raycast() -> void:
 		_item_select.visible = false
 		_current_targeted_item = null
 		_current_targeted_enemy = null
+		_current_targeted_portal = null
 		return
+	if obj is not Node:
+		return
+	var obj_parent := (obj as Node).get_parent()
 	var found_something := false
 	if obj is WorldItem:
 		if obj.global_position.distance_to(global_position) <= _max_grab_distance:
@@ -188,6 +198,7 @@ func _handle_front_raycast() -> void:
 			_item_select.set_from_world_item(obj)
 			_current_targeted_item = obj
 			_current_targeted_enemy = null
+			_current_targeted_portal = null
 	elif obj is EnemyDisplay:
 		var distance := _max_grab_distance
 		var i := Player.data.current_equipped_item()
@@ -199,10 +210,19 @@ func _handle_front_raycast() -> void:
 			_item_select.set_from_enemy(obj)
 			_current_targeted_item = null
 			_current_targeted_enemy = obj
+			_current_targeted_portal = null
+	elif obj_parent != null && obj_parent is Portal:
+		if obj_parent.global_position.distance_to(global_position) <= _max_grab_distance:
+			found_something = true
+			_item_select.set_from_portal(obj_parent)
+			_current_targeted_item = null
+			_current_targeted_enemy = null
+			_current_targeted_portal = obj_parent
 	if !found_something:
 		_item_select.visible = false
 		_current_targeted_item = null
 		_current_targeted_enemy = null
+		_current_targeted_portal = null
 
 func _try_reload(event: InputEvent) -> bool:
 	if _in_inventory || _reloading_time_remaining > 0.0:
@@ -255,18 +275,26 @@ func _handle_bag(delta: float) -> bool:
 			return _try_pick_up_item()
 		elif _current_targeted_enemy != null && _current_targeted_enemy.capture_level <= Player.data.strength:
 			return _try_start_enemy_sucking()
+		elif _current_targeted_portal != null:
+			_try_start_portal_sucking()
 		else:
 			arms_overlay.arms.play_anim(&"BagUse")
 			return false
 	elif Input.is_action_pressed(&"use") && _is_sucking:
-		if _suck_enemy != _current_targeted_enemy:
+		if _suck_enemy != _current_targeted_enemy && _suck_portal != _current_targeted_portal:
 			_suck_enemy = null
+			_suck_portal = null
 			_is_sucking = false
 			return false
 		arms_overlay.arms.play_anim(&"BagSuck")
 		_suck_time_remaining -= delta
 		if _suck_time_remaining <= 0.0:
-			return _try_procure_enemy() # TODO: should do a little animation
+			if _suck_enemy != null:
+				return _try_procure_enemy() # TODO: should do a little animation
+			elif _suck_portal != null:
+				return _try_procure_portal()
+			else:
+				return false
 		return true
 	return false
 
@@ -290,6 +318,22 @@ func _try_start_enemy_sucking() -> bool:
 	_suck_enemy = _current_targeted_enemy
 	return true
 
+func _try_start_portal_sucking() -> bool:
+	if Player.data.inventory.get_item_if_fits(PortalItem.new()) == null:
+		arms_overlay.arms.play_anim(&"BagUse")
+		text_container.say_words(
+			"Bag Witch",
+			"I won't be able to fit this in my bag right now... I need to either get rid of something or move some things around to fit this 1x1 portal in there...",
+			0,
+			TextContainer.TextPriority.IgnoreIfLessImportantReplaceOtherwise
+		)
+		return false
+	arms_overlay.arms.play_anim(&"BagSuck")
+	_is_sucking = true
+	_suck_time_remaining = 0.75
+	_suck_portal = _current_targeted_portal
+	return true
+
 func _try_procure_enemy() -> bool:
 	if _current_targeted_enemy == null:
 		return false
@@ -311,6 +355,18 @@ func _try_procure_enemy() -> bool:
 	_current_targeted_enemy = null
 	_is_sucking = false
 	_suck_enemy = null
+	return true
+
+func _try_procure_portal() -> bool:
+	if _current_targeted_portal == null:
+		return false
+	var item := PortalItem.new(_current_targeted_portal)
+	var added := _try_add_item(item)
+	if added == null:
+		return false
+	_current_targeted_portal = null
+	_is_sucking = false
+	_suck_portal = null
 	return true
 
 func _try_pick_up_item() -> bool:
@@ -405,6 +461,8 @@ func _on_inventory_display_spawn_item(wi: WorldItem, id: InventoryDetail) -> voi
 	wi.mods = id.modifications
 	if wi is ModdableWeaponDisplay:
 		wi.bind(id)
+	elif wi is PortalWisp:
+		wi.bind_from_inventory_portal(id.item)
 	if current_cauldron == null:
 		get_parent().add_child(wi)
 		var center := get_viewport().get_visible_rect().size / 2.0

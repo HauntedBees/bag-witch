@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bub2sh1fg5ddq" path="res://player/player_character_scene.tscn" id="2_ge4kj"]
 [ext_resource type="Script" uid="uid://b2papb24j7l2j" path="res://shared/audio_manager.gd" id="2_owbqv"]
 [ext_resource type="PackedScene" uid="uid://dtjtjjvwpwi2o" path="res://environment/portals/warp_effect.tscn" id="3_aq3js"]
-[ext_resource type="PackedScene" uid="uid://ssp37cocp7km" path="res://levels/bog_world.tscn" id="4_ojnl1"]
+[ext_resource type="PackedScene" uid="uid://b8ihm5mdma5nd" path="res://levels/test_world.tscn" id="4_qin4g"]
 
 [node name="GameContainer" type="Node3D" unique_id=827938429]
 process_mode = 3
@@ -13,7 +13,7 @@ script = ExtResource("1_likpg")
 [node name="PlayerCharacter" parent="." unique_id=1631114635 instance=ExtResource("2_ge4kj")]
 unique_name_in_owner = true
 process_mode = 1
-transform = Transform3D(0.8048213, 0, -0.5935173, 0, 1, 0, 0.5935173, 0, 0.8048213, 3.652071, 6, 21.55748)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 2.6796637, 0)
 
 [node name="WarpEffect" parent="." unique_id=1405409781 instance=ExtResource("3_aq3js")]
 unique_name_in_owner = true
@@ -22,7 +22,7 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 process_mode = 1
 
-[node name="Bog" parent="WorldContainer" unique_id=866622824 instance=ExtResource("4_ojnl1")]
+[node name="TestWorld" parent="WorldContainer" unique_id=1758695836 instance=ExtResource("4_qin4g")]
 
 [node name="AudioManager" type="Node" parent="." unique_id=451424379]
 unique_name_in_owner = true

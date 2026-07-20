@@ -15,6 +15,12 @@ func set_from_world_item(w: WorldItem) -> void:
 	var can_hold := Player.data.inventory.get_item_if_fits(w.item)
 	_grab_atlas.region.position = _OK_POS if can_hold else _NO_POS
 
+func set_from_portal(p: Portal) -> void:
+	_set_visible(p.get_screen_bounds(), "Portal", true)
+	_grab_icon.visible = true
+	var can_hold := Player.data.inventory.get_item_if_fits(PortalItem.new())
+	_grab_atlas.region.position = _OK_POS if can_hold else _NO_POS
+
 func set_from_enemy(e: EnemyDisplay) -> void:
 	var can_grab := Player.data.strength >= e.capture_level
 	_set_visible(e.get_screen_bounds(), e.enemy_name, can_grab)

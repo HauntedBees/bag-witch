@@ -48,11 +48,14 @@ func _on_weapon_changed(id: InventoryDetail) -> void:
 		_anim.play(&"Idle")
 	else:
 		_anim.play(w.equipped_animation)
-	_add_to_bone(_right_hand, id)
+	var equip := _add_to_bone(_right_hand, id)
+	if equip is PortalWisp:
+		equip.bind_from_inventory_portal(id.item)
 	if w.add_equip_scene_to_both_hands:
 		_add_to_bone(_left_hand, id)
 
-func _add_to_bone(n: BoneAttachment3D, id: InventoryDetail) -> void:
+func _add_to_bone(n: BoneAttachment3D, id: InventoryDetail) -> Node3D:
 	var e := id.get_equip_instance()
 	if e != null:
 		n.add_child(e)
+	return e

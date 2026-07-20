@@ -8,15 +8,17 @@ class_name Portal extends Node3D
 ## Leave blank if teleporting to same area.
 @export var teleport_point_name: String
 
-var _base_position: Vector3
+var _viewport_cam: Node3D
 
 @onready var _inside: MeshInstance3D = %Inside
 @onready var _inside_material: ShaderMaterial = _inside.get_active_material(0)
-@onready var _viewport_cam: Node3D = subviewport.get_child(0)
+
+@onready var _collider: CollisionShape3D = $StaticBody3D/CollisionShape3D
+@onready var _box: BoxShape3D = _collider.shape
 
 func _ready() -> void:
+	_viewport_cam = subviewport.get_child(0)
 	_inside_material.set_shader_parameter(&"texture_albedo", subviewport.get_texture())
-	_base_position = _viewport_cam.position
 
 func _process(_delta: float):
 	var cam := get_viewport().get_camera_3d()
@@ -24,7 +26,8 @@ func _process(_delta: float):
 		return
 	var local := to_local(cam.global_position)
 	local.y = 0
-	_viewport_cam.rotation.y = atan2(local.x, -local.z) * 0.25
+	if _viewport_cam != null:
+		_viewport_cam.rotation.y = atan2(local.x, -local.z) * 0.25
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body is not BogWitch:
@@ -36,6 +39,9 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 	else:
 		_teleport_distant()
 
+func get_screen_bounds() -> Rect2:
+	return BWEnum.get_bounds(global_transform, _box, get_viewport().get_camera_3d())
+
 func _teleport_distant() -> void:
 	SignalBus.load_new_level.emit(teleport_scene, teleport_point_name)
 
@@ -46,10 +52,3 @@ func _teleport_local(player: BogWitch) -> void:
 	player.cam_holder.global_rotation.y = target_cam.global_rotation.y
 	player.cam_holder.camera.global_rotation.x = target_cam.global_rotation.x
 	player.global_position = target_cam.global_position
-	#var new_direction := (_viewport_cam.global_position - (_viewport_cam.get_child(0) as Node3D).global_position).normalized()
-	#var new_basis := Basis.looking_at(-new_direction, Vector3.UP)
-	#var old_basis := bw.global_transform.basis
-	#var delta := new_basis * old_basis.inverse()
-	#bw.velocity = delta * bw.velocity
-	#bw.global_position = _viewport_cam.global_position
-	#bw.global_basis = new_basis
