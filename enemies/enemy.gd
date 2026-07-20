@@ -63,10 +63,12 @@ var target: BogWitch
 
 var _health := 100
 var _effects: Dictionary[BWEnum.Effect, float] = {}
+
+@onready var _frozen_state := EnemyFrozen.new()
 @onready var _common_states: Array[EnemyBehavior] = [
 	EnemyReceiveDamage.new(damage_stun_time, hit_anim, big_hit_anim),
 	EnemyDead.new(die_anims),
-	EnemyFrozen.new()
+	_frozen_state
 ]
 
 @onready var alive_collider: CollisionShape3D = %CollisionShape3D
@@ -127,13 +129,15 @@ func take_specific_damage(damage_dealt: int) -> void:
 func receive_weapon_hit(source: Vector3, w: Weapon, has_impact_position := false, impact_position := Vector3.ZERO) -> void:
 	var damage_mult := 1
 	var effect_keys := w.metadata_increase_ranges.keys()
-	for e in weaknesses:
-		if effect_keys.has(e):
-			damage_mult *= 5
 	if w.is_melee:
 		match Player.data.strength:
 			2: damage_mult = 2
 			3: damage_mult = 4
+	for e in weaknesses:
+		if effect_keys.has(e):
+			damage_mult *= 4
+	if _is_frozen() && w.is_high_impact:
+		damage_mult *= 2
 	var damage_dealt := damage_mult * randi_range(w.damage_range.x, w.damage_range.y)
 	on_hit.emit(w, source, damage_dealt, impact_position if has_impact_position else global_position)
 	if is_dead():
@@ -183,3 +187,6 @@ func apply_effect(effect: BWEnum.Effect, amount: float, weapon_magic_level: int)
 	if randf() <= apply_chance:
 		_effects.erase(effect)
 		on_effect_applied.emit(effect, weapon_magic_level)
+
+func _is_frozen() -> bool:
+	return _frozen_state.is_frozen()
