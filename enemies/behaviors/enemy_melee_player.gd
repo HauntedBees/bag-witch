@@ -4,6 +4,7 @@ class_name EnemyMeleePlayer extends EnemyBehavior
 @export var close_enough_radius: Area3D
 @export var attack_frequency := 1.0
 @export var attack_y_offset := 0.5
+@export var damage_range := Vector2i.ZERO
 @export_custom(SRP_HINT.RESOURCE_PATH, "PackedScene") var attack_scene: String
 
 var _time_to_next_attack := 0.0
@@ -47,6 +48,8 @@ func _behave(delta: float) -> void:
 		if _cached_attack_scene == null:
 			_cached_attack_scene = load(attack_scene)
 		var attack: EnemyAttack = _cached_attack_scene.instantiate()
+		if damage_range != Vector2i.ZERO:
+			attack.damage_range = damage_range
 		attack.knockback_source = _parent.global_position
 		_parent.look_at(_get_look_pos())
 		_parent.add_child(attack)
