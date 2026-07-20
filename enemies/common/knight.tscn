@@ -28,7 +28,8 @@ collision_layer = 9
 collision_mask = 3
 script = ExtResource("1_fgu83")
 enemy_name = "Knight"
-max_health = 1000
+capture_level = 2
+max_health = 80
 bounding_box = NodePath("BoundingBox")
 animation_player = NodePath("knight/AnimationPlayer")
 
