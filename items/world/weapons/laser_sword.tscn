@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://b8gphm85s4mof"]
+
+[ext_resource type="Script" uid="uid://b66jl5gw8dewc" path="res://items/world/world_item.gd" id="1_4dh3f"]
+[ext_resource type="Resource" uid="uid://w0thup23ageh" path="res://items/melee/laser_sword.tres" id="2_4dh3f"]
+[ext_resource type="PackedScene" uid="uid://bqkdcbh8ymj41" path="res://assets/models/weapons/laser_sword.blend" id="3_4dh3f"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rhbnc"]
+size = Vector3(1, 0.6401367, 1.878479)
+
+[node name="LaserSword" type="Area3D" unique_id=823143601 node_paths=PackedStringArray("collider")]
+collision_layer = 2
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_4dh3f")
+item = ExtResource("2_4dh3f")
+collider = NodePath("CollisionShape3D")
+metadata/_custom_type_script = "uid://b66jl5gw8dewc"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2008358244]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17993164, 0.4782449)
+shape = SubResource("BoxShape3D_rhbnc")
+
+[node name="laser_sword" parent="." unique_id=1094746878 instance=ExtResource("3_4dh3f")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.10494971, 0)

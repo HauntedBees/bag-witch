@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cjlidc7juluwi" path="res://enemies/enemy.gd" id="1_g6d6x"]
 [ext_resource type="Script" uid="uid://cgt7ckkn1gh5b" path="res://resource_types/items/item.gd" id="2_nvqwy"]
 [ext_resource type="Resource" uid="uid://bblwxtkau8lot" path="res://items/ammo/power_cell.tres" id="3_86ifg"]
-[ext_resource type="Resource" uid="uid://d0pwkx5e5ntr4" path="res://items/guns/laser_rifle.tres" id="4_t1c57"]
+[ext_resource type="Resource" uid="uid://w0thup23ageh" path="res://items/melee/laser_sword.tres" id="3_t1c57"]
 [ext_resource type="Resource" uid="uid://dkq75or5ap7mf" path="res://items/food/apple.tres" id="5_d70d5"]
 [ext_resource type="PackedScene" uid="uid://d4bc43lmk8cto" path="res://assets/models/enemies/space_knight.blend" id="7_t1c57"]
 [ext_resource type="PackedScene" uid="uid://bqkdcbh8ymj41" path="res://assets/models/weapons/laser_sword.blend" id="7_tp7j6"]
@@ -30,7 +30,7 @@ collision_layer = 9
 collision_mask = 3
 script = ExtResource("1_g6d6x")
 enemy_name = "Space Knight"
-potential_drops = Array[ExtResource("2_nvqwy")]([ExtResource("3_86ifg"), ExtResource("4_t1c57"), ExtResource("5_d70d5")])
+potential_drops = Array[ExtResource("2_nvqwy")]([ExtResource("3_t1c57"), ExtResource("3_86ifg"), ExtResource("5_d70d5")])
 potential_drop_chance = 0.4
 capture_level = 2
 max_health = 250

@@ -18,6 +18,7 @@ first_get_text = "I bet if I drag and drop this over some other things in my bag
 scene_path = "uid://dvs7xaq0u4w4n"
 is_saw = true
 use_range = 7.5
+equip_sprite_offset = Vector2i(7, 1)
 equipped_animation = &"MeleeOneHand"
 use_animation = &"MeleeOneHand_Use"
 use_animation_speed = 2.0

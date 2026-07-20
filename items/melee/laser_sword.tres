@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="SwingItem" format=3 uid="uid://w0thup23ageh"]
+
+[ext_resource type="Script" uid="uid://bmq8xwl1vjc1b" path="res://resource_types/items/swing_item.gd" id="1_q5swb"]
+
+[resource]
+script = ExtResource("1_q5swb")
+swing_animation_speed = 1.5
+is_melee = true
+damage_range = Vector2i(40, 50)
+knockback = 40.0
+additional_y_knockback = 10.0
+name = "Laser Sword"
+description = "I know what a sword is, but I don't know what a \"laser\" is."
+type = 0
+size = Vector2i(3, 1)
+icon = Rect2i(1, 6, 3, 1)
+scene_path = "uid://b8gphm85s4mof"
+is_saw = true
+use_range = 7.5
+equip_sprite_offset = Vector2i(7, 1)
+equipped_animation = &"MeleeOneHand"
+use_animation = &"MeleeOneHand_Use"
+use_animation_speed = 2.0
+equipped_scale = 2.0
+metadata/_custom_type_script = "uid://cgt7ckkn1gh5b"

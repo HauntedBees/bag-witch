@@ -1,9 +1,12 @@
 class_name EnemyMeleePlayer extends EnemyBehavior
 
+const _CLOSE_ENOUGH_AIM_DIR = PI / 4.0
+
 @export var attack_anims: Array[StringName] = []
 @export var close_enough_radius: Area3D
 @export var attack_frequency := 1.0
 @export var attack_y_offset := 0.5
+@export var rotation_speed := 2.0
 ## Makes the attack position vary slightly with each attack, increasing odds of missing.
 @export var wiggle_attack := false
 @export var damage_range := Vector2i.ZERO
@@ -46,6 +49,17 @@ func _behave(delta: float) -> void:
 	if _parent.target == null || !_is_in_range:
 		return
 	_time_to_next_attack -= delta
+	var my_dir := -_parent.transform.basis.z
+	var player_dir := _parent.global_position.direction_to(_parent.target.global_position)
+	player_dir.y = 0.0
+	var angle_diff := my_dir.angle_to(player_dir)
+	if angle_diff >= _CLOSE_ENOUGH_AIM_DIR:
+		_parent.rotation.y = lerp_angle(
+			_parent.rotation.y,
+			atan2(-player_dir.x, -player_dir.z),
+			rotation_speed * delta
+		)
+		return
 	if _time_to_next_attack <= 0.0:
 		if _cached_attack_scene == null:
 			_cached_attack_scene = load(attack_scene)
