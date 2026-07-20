@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="SwingItem" format=3 uid="uid://sbrt245q0iwi"]
 
-[ext_resource type="Script" uid="uid://bmq8xwl1vjc1b" path="res://resource_types/items/swing_item.gd" id="1_es5ut"]
+[ext_resource type="Script" uid="uid://bmq8xwl1vjc1b" path="res://resource_types/items/swing_item.gd" id="1_4yo2h"]
 
 [resource]
-script = ExtResource("1_es5ut")
+script = ExtResource("1_4yo2h")
 swing_animation_speed = 1.5
 is_melee = true
 damage_range = Vector2i(15, 20)
@@ -12,9 +12,11 @@ additional_y_knockback = 10.0
 name = "Sword"
 description = "I know what a sword is."
 type = 0
-size = Vector2i(4, 1)
-icon = Rect2i(0, 0, 4, 1)
+size = Vector2i(3, 1)
+icon = Rect2i(4, 5, 3, 1)
+first_get_text = "I bet if I drag and drop this over some other things in my bag, I can cut them!"
 scene_path = "uid://dvs7xaq0u4w4n"
+is_saw = true
 use_range = 7.5
 equipped_animation = &"MeleeOneHand"
 use_animation = &"MeleeOneHand_Use"

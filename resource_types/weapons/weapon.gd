@@ -27,13 +27,13 @@ class_name Weapon extends Item
 @export var metadata_increase_ranges: Dictionary[BWEnum.Effect, Vector2] = {}
 
 func can_be_combined(me: InventoryDetail, them: InventoryDetail) -> bool:
+	if them.item.is_saw && can_be_sawed:
+		return true
 	if them.item is not ItemMod:
 		return false
 	var mod: ItemMod = them.item
 	if Player.data.mind < mod.mind_requirement:
 		return false
-	if mod is IsHandsawMod && can_be_sawed:
-		return true
 	if mod.connects_to != self:
 		return false
 	return !me.has_mod(mod.mod_name)
@@ -41,7 +41,7 @@ func can_be_combined(me: InventoryDetail, them: InventoryDetail) -> bool:
 func combine(me: InventoryDetail, them: InventoryDetail) -> void:
 	if !can_be_combined(me, them): # ONE MORE FOR GOOD MEASURE
 		return
-	if them.item is IsHandsawMod:
+	if them.item.is_saw:
 		me.item = sawable_item
 	else:
 		me.add_mod(them.item)

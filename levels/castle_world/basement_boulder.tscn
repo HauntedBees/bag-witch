@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b66jl5gw8dewc" path="res://items/world/world_item.gd" id="1_plnnx"]
 [ext_resource type="PackedScene" uid="uid://bibhq0y5pdvul" path="res://assets/levels/common/rock5.blend" id="1_thhbi"]
-[ext_resource type="Resource" uid="uid://didy3b67akl0n" path="res://items/fuckin_whatever/rock.tres" id="2_x24sf"]
+[ext_resource type="Resource" uid="uid://didy3b67akl0n" path="res://items/melee/rock.tres" id="2_x24sf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rhbnc"]
 size = Vector3(2.5371094, 2.22406, 1.487793)

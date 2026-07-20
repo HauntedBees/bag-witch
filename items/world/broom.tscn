@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c0c6yem7oc5h2"]
 
 [ext_resource type="Script" uid="uid://b66jl5gw8dewc" path="res://items/world/world_item.gd" id="1_1mpuf"]
-[ext_resource type="Resource" uid="uid://dpgrb2fqcl3qn" path="res://items/broom.tres" id="2_fufuf"]
+[ext_resource type="Resource" uid="uid://dpgrb2fqcl3qn" path="res://items/melee/broom.tres" id="2_fufuf"]
 [ext_resource type="PackedScene" uid="uid://4i1yaejh33ss" path="res://assets/models/broom.glb" id="3_dddjd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rhbnc"]
