@@ -178,8 +178,7 @@ func _try_drop() -> void:
 		return
 	# slightly prioritize the first item
 	var item: Item = potential_drops[0] if randf() <= 0.2 else potential_drops.pick_random()
-	var item_scene: PackedScene = load(item.scene_path)
-	var wi: WorldItem = item_scene.instantiate()
+	var wi := item.get_world_item()
 	get_parent().get_parent().add_child(wi)
 	wi.global_position = global_position + Vector3.UP
 	wi.plep(Vector3(randf_range(-1.0, 1.0), 0.0, randf_range(-1.0, 1.0)))

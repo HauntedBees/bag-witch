@@ -129,8 +129,23 @@ func get_description(_id: InventoryDetail) -> String:
 	return description
 
 func get_equip_instance() -> Node3D:
-	var path := scene_path if custom_equip_scene == "" else custom_equip_scene
+	var path := scene_path if custom_equip_scene.is_empty() else custom_equip_scene
 	if path.is_empty():
 		return null
 	var scene: PackedScene = load(path)
 	return scene.instantiate()
+
+func get_world_item(id: InventoryDetail = null, from_inventory := false) -> WorldItem:
+	var wi_scene: PackedScene = load(scene_path)
+	var wi: WorldItem = wi_scene.instantiate()
+	wi.from_inventory = from_inventory
+	wi.from_inventory = true
+	if id != null:
+		wi.ammo = id.ammo
+		wi.had_ammo_set = true
+		wi.mods = id.modifications
+	if wi is ModdableWeaponDisplay:
+		wi.bind(id)
+	elif wi is PortalWisp:
+		wi.bind_from_inventory_portal(id.item)
+	return wi

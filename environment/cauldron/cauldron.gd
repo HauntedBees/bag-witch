@@ -66,7 +66,5 @@ func _concoct_brew() -> void:
 
 func _generate_item(brew_uid: String) -> void:
 	var item: Item = load(brew_uid)
-	var world_item_scene: PackedScene = load(item.scene_path)
-	var world_item: WorldItem = world_item_scene.instantiate()
-	world_item.from_inventory = true
+	var world_item := item.get_world_item(null, false)
 	_brew_position.add_child(world_item)

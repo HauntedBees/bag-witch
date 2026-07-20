@@ -1,7 +1,7 @@
 class_name InventoryDisplay extends VBoxContainer
 
 signal inventory_toggled(shown: bool)
-signal spawn_item(wi: WorldItem, id: InventoryDetail)
+signal spawn_item(wi: WorldItem)
 
 const _TILE_SCENE := preload("uid://chbbyih2rlm8q")
 const _SAFE_TILE_SCENE := preload("uid://bydfttoq33xk3")
@@ -243,8 +243,7 @@ func _on_item_removed(i: ItemDragDetails) -> void:
 	var id := i.item
 	Player.data.inventory.remove_item(id)
 	## _on_item_removed_externally handles the rest
-	var item_scene: PackedScene = load(id.item.scene_path)
-	spawn_item.emit(item_scene.instantiate(), id)
+	spawn_item.emit(id.item.get_world_item(id, true))
 	if id.item is Spellbook:
 		_draw_spells()
 
