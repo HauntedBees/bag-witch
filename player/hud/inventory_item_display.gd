@@ -22,6 +22,7 @@ const _TOOLTIP_SCENE := preload("uid://bdcwnvc7nfxv3")
 @onready var _item: TextureRect = %Item
 @onready var _texture := _item.texture as AtlasTexture
 @onready var _ammo_count: GASLabel = %AmmoCount
+@onready var _portal_bg: TextureRect = %PortalBG
 
 func _ready() -> void:
 	_equip_slot.visible = false
@@ -55,7 +56,7 @@ func _get_drag_data(_at_position: Vector2) -> Variant:
 		drag_icon.position = DRAG_OFFSET
 	set_drag_preview(preview)
 	drag_started.emit()
-	
+
 	var d := ItemDragDetails.new()
 	d.item = details
 	d.display = self
@@ -90,6 +91,11 @@ func _update_display() -> void:
 	)
 	_item.rotation_degrees = 90.0 if details.rotated else 0.0
 	_item.pivot_offset = item.size.y * (_TILE_SIZE / 2.0) * Vector2.ONE
+	if item is PortalItem:
+		_portal_bg.visible = true
+		_portal_bg.texture = item.portal_image
+		return
+	_portal_bg.visible = false
 	if item is Ammo:
 		_ammo_count.visible = true
 		_ammo_count.text = str(details.ammo)

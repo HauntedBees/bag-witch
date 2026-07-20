@@ -106,7 +106,7 @@ _data = {
 &"speed": SubResource("Animation_dehhv")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_dehhv"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_wyo4h"]
 viewport_path = NodePath("SubViewport")
 
 [node name="PlayerCharacter" type="CharacterBody3D" unique_id=1631114635 groups=["PlayerCharacter"]]
@@ -301,7 +301,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
-texture = SubResource("ViewportTexture_dehhv")
+texture = SubResource("ViewportTexture_wyo4h")
 
 [node name="Crosshair" type="CenterContainer" parent="HUDLayer/HUD" unique_id=1562813601]
 layout_mode = 1
@@ -314,6 +314,14 @@ grow_vertical = 2
 [node name="TextureRect" type="TextureRect" parent="HUDLayer/HUD/Crosshair" unique_id=1412273142]
 layout_mode = 2
 texture = ExtResource("17_g2747")
+
+[node name="ItemSelect" parent="HUDLayer/HUD" unique_id=720485576 instance=ExtResource("20_5ko36")]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = -217.0
+offset_top = -213.0
+offset_right = 217.0
+offset_bottom = 213.0
 
 [node name="MainHUD" type="MarginContainer" parent="HUDLayer/HUD" unique_id=2099340369]
 layout_mode = 1
@@ -356,14 +364,6 @@ player = NodePath("../../../..")
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
-
-[node name="ItemSelect" parent="HUDLayer/HUD" unique_id=720485576 instance=ExtResource("20_5ko36")]
-unique_name_in_owner = true
-layout_mode = 1
-offset_left = -197.0
-offset_top = -213.0
-offset_right = 197.0
-offset_bottom = 213.0
 
 [node name="InventoryDisplay" parent="HUDLayer/HUD" unique_id=53194332 instance=ExtResource("16_200os")]
 unique_name_in_owner = true

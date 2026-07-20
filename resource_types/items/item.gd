@@ -16,7 +16,8 @@ enum ItemType {
 	Misc,
 	# Don't assign this one to things!!
 	None,
-	Potion
+	Potion,
+	Portal
 }
 
 @export_category("Basic Details")

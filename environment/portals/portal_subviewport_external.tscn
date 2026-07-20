@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://d8qagseewo6x"]
+
+[ext_resource type="Texture2D" uid="uid://b468d6ayq7u4d" path="res://assets/sprites/warps.png" id="1_48n4e"]
+
+[sub_resource type="Environment" id="Environment_u7iwl"]
+
+[sub_resource type="World3D" id="World3D_48n4e"]
+resource_local_to_scene = true
+environment = SubResource("Environment_u7iwl")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u7iwl"]
+resource_local_to_scene = true
+atlas = ExtResource("1_48n4e")
+region = Rect2(0, 0, 256, 256)
+filter_clip = true
+
+[node name="PortalSubviewportExternal" type="SubViewport" unique_id=389194511]
+world_3d = SubResource("World3D_48n4e")
+size = Vector2i(256, 256)
+
+[node name="FocalPoint" type="Node3D" parent="." unique_id=1256281247]
+
+[node name="Camera3D" type="Camera3D" parent="FocalPoint" unique_id=588351542]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 45)
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=923265973]
+pixel_size = 0.3
+texture = SubResource("AtlasTexture_u7iwl")

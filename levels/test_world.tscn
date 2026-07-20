@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://b8ihm5mdma5nd"]
+
+[ext_resource type="Material" uid="uid://3ub3li5nvjsw" path="res://addons/JehenoAdvancedFirstPersonController/Map/Materials/not_floor_structure_material.tres" id="1_piha8"]
+[ext_resource type="PackedScene" uid="uid://dhlu6wawyieh5" path="res://environment/portals/portal.tscn" id="2_c576j"]
+[ext_resource type="PackedScene" uid="uid://d8qagseewo6x" path="res://environment/portals/portal_subviewport_external.tscn" id="3_lqt7o"]
+[ext_resource type="Texture2D" uid="uid://b468d6ayq7u4d" path="res://assets/sprites/warps.png" id="4_lqt7o"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lqt7o"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_43bpn"]
+sky_material = SubResource("ProceduralSkyMaterial_lqt7o")
+
+[sub_resource type="Environment" id="Environment_vytw3"]
+background_mode = 2
+sky = SubResource("Sky_43bpn")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.39
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_rhbnc"]
+material = ExtResource("1_piha8")
+top_radius = 20.0
+bottom_radius = 20.0
+height = 0.5
+radial_segments = 8
+rings = 1
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_rhbnc"]
+height = 0.5
+radius = 20.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lqt7o"]
+resource_local_to_scene = true
+atlas = ExtResource("4_lqt7o")
+region = Rect2(0, 0, 256, 256)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vytw3"]
+resource_local_to_scene = true
+atlas = ExtResource("4_lqt7o")
+region = Rect2(256, 0, 256, 256)
+filter_clip = true
+
+[node name="TestWorld" type="Node3D" unique_id=1758695836]
+
+[node name="Environment" type="Node3D" parent="." unique_id=612935024]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment" unique_id=779654789]
+environment = SubResource("Environment_vytw3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=81976621]
+mesh = SubResource("CylinderMesh_rhbnc")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1366236538]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1881306258]
+shape = SubResource("CylinderShape3D_rhbnc")
+
+[node name="PortalCastlePrison" parent="." unique_id=573598963 node_paths=PackedStringArray("subviewport") instance=ExtResource("2_c576j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5, 0, 0)
+subviewport = NodePath("../ViewCastlePrison")
+teleport_scene = "uid://dkgap8kw2cyfc"
+teleport_point_name = "FromBog"
+
+[node name="ViewCastlePrison" parent="." unique_id=389194511 instance=ExtResource("3_lqt7o")]
+
+[node name="Sprite3D" parent="ViewCastlePrison" index="1" unique_id=923265973]
+texture = SubResource("AtlasTexture_lqt7o")
+
+[node name="PortalFirePineRing" parent="." unique_id=1269224502 node_paths=PackedStringArray("subviewport") instance=ExtResource("2_c576j")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 10, 0, -10)
+subviewport = NodePath("../ViewFirePineRing")
+teleport_scene = "uid://cmf1v1vuyggrq"
+teleport_point_name = "FromCastleBasement"
+
+[node name="ViewFirePineRing" parent="." unique_id=451018157 instance=ExtResource("3_lqt7o")]
+
+[node name="Sprite3D" parent="ViewFirePineRing" index="1" unique_id=923265973]
+texture = SubResource("AtlasTexture_vytw3")
+
+[editable path="ViewCastlePrison"]
+[editable path="ViewFirePineRing"]

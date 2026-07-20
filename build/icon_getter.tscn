@@ -28,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://dv5bpvxcayas3" path="res://assets/models/items/pineapple.blend" id="26_rvohc"]
 [ext_resource type="PackedScene" uid="uid://rhnukpur7vae" path="res://assets/models/items/pineapple_rings.blend" id="27_rjuyh"]
 [ext_resource type="PackedScene" uid="uid://bu3vkhiaaxv6i" path="res://assets/models/weapons/sword.blend" id="28_5dpil"]
+[ext_resource type="PackedScene" uid="uid://dhlu6wawyieh5" path="res://environment/portals/portal.tscn" id="29_38d1y"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eeolf"]
 shading_mode = 0
@@ -153,6 +154,10 @@ visible = false
 
 [node name="sword" parent="ThingContainer" unique_id=857736752 instance=ExtResource("28_5dpil")]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0.7062378, 3.0870638e-08, 0)
+visible = false
+
+[node name="Portal" parent="ThingContainer" unique_id=573598963 instance=ExtResource("29_38d1y")]
+transform = Transform3D(-4.371139e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.371139e-09, 2.186924e-08, -0.3526225, 0.50030994)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=465674123]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.9159544)

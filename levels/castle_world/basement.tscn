@@ -9,7 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://b6j67340mino7" path="res://levels/castle_world/basement_boulder.tscn" id="7_u6fgr"]
 [ext_resource type="PackedScene" uid="uid://djtpn6s6cdlln" path="res://enemies/common/knight.tscn" id="8_jhjlu"]
 [ext_resource type="PackedScene" uid="uid://dhlu6wawyieh5" path="res://environment/portals/portal.tscn" id="9_iq887"]
-[ext_resource type="PackedScene" uid="uid://bichvk4lvop8g" path="res://environment/portals/portal_subviewport.tscn" id="10_5yjeh"]
+[ext_resource type="PackedScene" uid="uid://d8qagseewo6x" path="res://environment/portals/portal_subviewport_external.tscn" id="10_8toge"]
+[ext_resource type="Texture2D" uid="uid://b468d6ayq7u4d" path="res://assets/sprites/warps.png" id="11_irjus"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rhbnc"]
 size = Vector3(150.0024, 1, 212.1731)
@@ -42,6 +43,12 @@ material = SubResource("StandardMaterial3D_5yjeh")
 top_radius = 0.1
 bottom_radius = 0.1
 height = 15.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3ft5"]
+resource_local_to_scene = true
+atlas = ExtResource("11_irjus")
+region = Rect2(256, 0, 256, 256)
+filter_clip = true
 
 [node name="Basement" type="StaticBody3D" unique_id=1603193162]
 
@@ -200,14 +207,9 @@ shape = SubResource("BoxShape3D_eeolf")
 
 [node name="Portal" parent="." unique_id=573598963 node_paths=PackedStringArray("subviewport") instance=ExtResource("9_iq887")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 10, 0, -22.17051)
-subviewport = NodePath("../PortalSubviewport")
+subviewport = NodePath("../PortalSubviewportExternal")
 teleport_scene = "uid://cmf1v1vuyggrq"
 teleport_point_name = "FromCastleBasement"
-
-[node name="PortalSubviewport" parent="." unique_id=389194511 instance=ExtResource("10_5yjeh")]
-
-[node name="FocalPoint" parent="PortalSubviewport" index="0" unique_id=1256281247]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.932823, 0, -22.139656)
 
 [node name="WallCollisions" type="CollisionShape3D" parent="." unique_id=1142200740]
 shape = SubResource("ConcavePolygonShape3D_5yjeh")
@@ -234,7 +236,12 @@ mesh = SubResource("CylinderMesh_rhbnc")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 mesh = SubResource("CylinderMesh_rhbnc")
 
+[node name="PortalSubviewportExternal" parent="." unique_id=389194511 instance=ExtResource("10_8toge")]
+
+[node name="Sprite3D" parent="PortalSubviewportExternal" index="1" unique_id=923265973]
+texture = SubResource("AtlasTexture_q3ft5")
+
 [editable path="Parts_FirstFromBog/WeakAssKnight"]
 [editable path="Parts_FirstFromBog/WeakAssKnight/knight"]
 [editable path="Parts_FirstFromBog/queen_i"]
-[editable path="PortalSubviewport"]
+[editable path="PortalSubviewportExternal"]

@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://dtrdt6myagqjf"]
+
+[ext_resource type="Script" uid="uid://bca1toyccahst" path="res://items/world/portal_wisp.gd" id="1_57wec"]
+[ext_resource type="Shader" uid="uid://bxvg24o86je3n" path="res://assets/shaders/portal.gdshader" id="2_1scm8"]
+[ext_resource type="Texture2D" uid="uid://b468d6ayq7u4d" path="res://assets/sprites/warps.png" id="3_e3y1b"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sglqa"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_1scm8")
+shader_parameter/sway_amount = 0.1
+shader_parameter/sway_scale = 5.0000002375
+shader_parameter/sway_duration = 2.0
+shader_parameter/sway_direction = Vector3(1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("3_e3y1b")
+shader_parameter/albedo_color = Color(1, 0.3372549, 1, 1)
+shader_parameter/metallic = 0.83200003952
+shader_parameter/roughness = 1.0
+shader_parameter/specular = 0.5
+shader_parameter/opacity = 1.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_wyeuk"]
+resource_local_to_scene = true
+material = SubResource("ShaderMaterial_sglqa")
+radial_segments = 16
+rings = 8
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rhbnc"]
+
+[sub_resource type="Animation" id="Animation_57wec"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WarpOrb:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1scm8"]
+resource_name = "rotat"
+length = 5.0
+loop_mode = 1
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WarpOrb:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.2831855, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e3y1b"]
+_data = {
+&"RESET": SubResource("Animation_57wec"),
+&"rotat": SubResource("Animation_1scm8")
+}
+
+[node name="PortalWisp" type="Area3D" unique_id=13676022 node_paths=PackedStringArray("collider")]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_57wec")
+from_inventory = true
+collider = NodePath("CollisionShape3D")
+
+[node name="WarpOrb" type="MeshInstance3D" parent="." unique_id=1813403154]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49510765, 0)
+mesh = SubResource("SphereMesh_wyeuk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=725061932]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.480345, 0)
+shape = SubResource("BoxShape3D_rhbnc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1399450121]
+libraries/ = SubResource("AnimationLibrary_e3y1b")
+autoplay = &"rotat"
