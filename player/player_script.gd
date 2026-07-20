@@ -230,7 +230,7 @@ func _try_reload(event: InputEvent) -> bool:
 	if !GASInput.is_event_action_just_pressed(event, &"reload"):
 		return false
 	var w := Player.data.current_equipped_item()
-	if w == null || w.reload_time <= 0.0:
+	if w == null || w.reload_time <= 0.0 || Player.data.get_remaining_ammo(Player.data.current_equipped) == 0:
 		return false
 	if w is not ProjectileWeapon:
 		return false
