@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="Broom" format=3 uid="uid://dpgrb2fqcl3qn"]
 
-[ext_resource type="Script" uid="uid://cnsy5yd5id8mg" path="res://resource_types/items/broom.gd" id="1_tj7ko"]
+[ext_resource type="Script" uid="uid://cnsy5yd5id8mg" path="res://resource_types/items/broom.gd" id="1_r5fb5"]
 
 [resource]
-script = ExtResource("1_tj7ko")
+script = ExtResource("1_r5fb5")
 is_melee = true
 damage_range = Vector2i(5, 10)
 knockback = 2.0
@@ -13,7 +13,7 @@ description = "You can ride on it or whack things with it."
 type = 0
 size = Vector2i(4, 1)
 icon = Rect2i(0, 0, 4, 1)
-first_get_text = "Now this is something I can work with!"
+first_get_text = "Now this is something I can work with! If I double jump while running forward with my broom equipped, I'll be able to glide!"
 scene_path = "uid://c0c6yem7oc5h2"
 use_range = 7.75
 equip_sprite_offset = Vector2i(1, 0)

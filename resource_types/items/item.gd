@@ -46,6 +46,9 @@ enum ItemType {
 ## The path to the 3D scene; should be a WorldItem.
 @export_custom(SRP_HINT.RESOURCE_PATH, "PackedScene") var scene_path: String
 
+## This thing *is* a saw.
+@export var is_saw := false
+
 ## Things that can be sawed in half.
 @export var can_be_sawed := false
 
@@ -104,14 +107,16 @@ func use(player: BogWitch) -> void:
 func _inner_use(_player: BogWitch) -> void:
 	pass
 
-func can_be_combined(_me: InventoryDetail, _them: InventoryDetail) -> bool:
-	return false
+func can_be_combined(_me: InventoryDetail, them: InventoryDetail) -> bool:
+	return them.item.is_saw && can_be_sawed
 
-func combine(_me: InventoryDetail, _them: InventoryDetail) -> void:
-	pass
+func combine(me: InventoryDetail, them: InventoryDetail) -> void:
+	if !can_be_combined(me, them): # ONE MORE FOR GOOD MEASURE
+		return
+	me.item = sawable_item
 
 func is_destroyed_after_merge(_me: InventoryDetail) -> bool:
-	return true
+	return !is_saw
 
 func is_ammo_applicable() -> bool:
 	return false

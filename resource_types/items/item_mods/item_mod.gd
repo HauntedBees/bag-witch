@@ -10,6 +10,3 @@ func get_description(_id: InventoryDetail) -> String:
 	if Player.data.mind < mind_requirement:
 		return "If my Mind stat were higher I might know how to use this..."
 	return description
-
-func is_destroyed_after_merge(_me: InventoryDetail) -> bool:
-	return true

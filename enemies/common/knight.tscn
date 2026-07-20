@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cjlidc7juluwi" path="res://enemies/enemy.gd" id="1_fgu83"]
 [ext_resource type="Script" uid="uid://cgt7ckkn1gh5b" path="res://resource_types/items/item.gd" id="2_bwbqn"]
 [ext_resource type="PackedScene" uid="uid://ci7mbtq4xt4qi" path="res://assets/models/knight.tscn" id="2_gwjxy"]
-[ext_resource type="Resource" uid="uid://sbrt245q0iwi" path="res://items/sword.tres" id="3_m38u8"]
+[ext_resource type="Resource" uid="uid://sbrt245q0iwi" path="res://items/melee/sword.tres" id="3_m38u8"]
 [ext_resource type="AnimationLibrary" uid="uid://xlv4s4pm7msn" path="res://assets/animations/Rig_Medium_CombatMelee.glb" id="3_nbc5u"]
 [ext_resource type="Script" uid="uid://c7obdbhjgnuay" path="res://enemies/behaviors/enemy_chase_player.gd" id="3_oimey"]
 [ext_resource type="Script" uid="uid://cmgcelj1qxg8o" path="res://addons/tattomoosa.vision_cone_3d/src/VisionCone3D.gd" id="4_7hoow"]

@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://2wqw44kgydtc" path="res://assets/models/items/potion_b.blend" id="25_rvohc"]
 [ext_resource type="PackedScene" uid="uid://dv5bpvxcayas3" path="res://assets/models/items/pineapple.blend" id="26_rvohc"]
 [ext_resource type="PackedScene" uid="uid://rhnukpur7vae" path="res://assets/models/items/pineapple_rings.blend" id="27_rjuyh"]
+[ext_resource type="PackedScene" uid="uid://bu3vkhiaaxv6i" path="res://assets/models/weapons/sword.blend" id="28_5dpil"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eeolf"]
 shading_mode = 0
@@ -148,6 +149,10 @@ visible = false
 
 [node name="pineapple_rings" parent="ThingContainer" unique_id=1258483484 instance=ExtResource("27_rjuyh")]
 transform = Transform3D(0.79734975, 0, 0.60351753, 0.59646755, 0.15240315, -0.7880354, -0.091977976, 0.9883184, 0.12151858, -1.3757884e-10, -0.090054505, 0.0824582)
+visible = false
+
+[node name="sword" parent="ThingContainer" unique_id=857736752 instance=ExtResource("28_5dpil")]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0.7062378, 3.0870638e-08, 0)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=465674123]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.9159544)

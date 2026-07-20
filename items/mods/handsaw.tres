@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="IsHandsawMod" format=3 uid="uid://dllaf206rjpo0"]
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://dllaf206rjpo0"]
 
-[ext_resource type="Script" uid="uid://bjji4dehurusi" path="res://resource_types/items/item_mods/saw_modifier.gd" id="1_5wakb"]
+[ext_resource type="Script" uid="uid://cgt7ckkn1gh5b" path="res://resource_types/items/item.gd" id="1_5wakb"]
 
 [resource]
 script = ExtResource("1_5wakb")
