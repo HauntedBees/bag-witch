@@ -3,9 +3,6 @@ class_name PlayerAttack extends Node3D
 @export var area: Area3D
 @export var anim: AnimationPlayer
 
-## If the node should be rotated 180 degrees at startup.
-@export var flip_on_load := true
-
 ## If the attack should end if it hits the player.
 @export var end_on_hit := false
 
@@ -17,8 +14,6 @@ var knockback_source := Vector3.ZERO
 func _ready() -> void:
 	area.body_entered.connect(_on_body_entered)
 	anim.animation_finished.connect(_on_animation_finished)
-	if flip_on_load:
-		rotate_y(PI)
 
 func _on_body_entered(body: Node3D) -> void:
 	if body is EnemyDisplay:

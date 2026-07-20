@@ -5,7 +5,11 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_a5iuo"]
 radius = 2.0
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ul0mr"]
+albedo_color = Color(1, 1, 0, 1)
+
 [sub_resource type="SphereMesh" id="SphereMesh_ss2fu"]
+material = SubResource("StandardMaterial3D_ul0mr")
 
 [sub_resource type="Animation" id="Animation_thisx"]
 length = 0.001
@@ -49,8 +53,6 @@ _data = {
 script = ExtResource("1_thisx")
 area = NodePath("Origin/Area3D")
 anim = NodePath("AnimationPlayer")
-knockback = 10.0
-take_knockback_and_damage_from_item = true
 
 [node name="Origin" type="Node3D" parent="." unique_id=1486040762]
 transform = Transform3D(-0.50000006, 0, 0.8660254, 0, 1, 0, -0.8660254, 0, -0.50000006, 0, 0, 0)
@@ -65,7 +67,6 @@ shape = SubResource("SphereShape3D_a5iuo")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Origin" unique_id=74856151]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -2.0691328e-07, 0, 2.8817568)
-visible = false
 mesh = SubResource("SphereMesh_ss2fu")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1498842094]

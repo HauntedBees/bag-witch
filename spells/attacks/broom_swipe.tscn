@@ -26,7 +26,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Origin:rotation")
+tracks/0/path = NodePath("OriginCorrector/Origin:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -42,7 +42,7 @@ step = 0.0333333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Origin:rotation")
+tracks/0/path = NodePath("OriginCorrector/Origin:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -60,25 +60,28 @@ _data = {
 
 [node name="BroomSwipe" type="Node3D" unique_id=1705384131 node_paths=PackedStringArray("area", "anim")]
 script = ExtResource("1_i2pkq")
-area = NodePath("Origin/Area3D")
+area = NodePath("OriginCorrector/Origin/Area3D")
 anim = NodePath("AnimationPlayer")
 
-[node name="Origin" type="Node3D" parent="." unique_id=1575766521]
+[node name="OriginCorrector" type="Node3D" parent="." unique_id=1788280403]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="Origin" type="Node3D" parent="OriginCorrector" unique_id=1575766521]
 transform = Transform3D(-0.50000006, 0, 0.8660254, 0, 1, 0, -0.8660254, 0, -0.50000006, 0, 0, 0)
 
-[node name="Area3D" type="Area3D" parent="Origin" unique_id=1403038794]
+[node name="Area3D" type="Area3D" parent="OriginCorrector/Origin" unique_id=1403038794]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -1.1920932e-07, 0, 3.3125405)
 collision_mask = 10
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Origin/Area3D" unique_id=1247505996]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OriginCorrector/Origin/Area3D" unique_id=1247505996]
 transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0.11450577, 0, 0.88388777)
 shape = SubResource("CylinderShape3D_i2pkq")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Origin/Area3D" unique_id=916679136]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="OriginCorrector/Origin/Area3D" unique_id=916679136]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3841864e-07, 0, -1.6485314)
 shape = SubResource("CylinderShape3D_rhbnc")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Origin" unique_id=1573618629]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="OriginCorrector/Origin" unique_id=1573618629]
 transform = Transform3D(2.5, 0, 0, 0, 2, 0, 0, 0, 2, -3.0111153e-07, 0, 5.943246)
 mesh = SubResource("PlaneMesh_eeolf")
 
