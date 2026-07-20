@@ -18,6 +18,7 @@ var _cached_attack_scene: PackedScene = null
 var _in_animation := false
 
 func _setup_behavior() -> void:
+	_parent.animation_player.animation_finished.connect(_on_anim_finished)
 	if attack_anims.size() == 0:
 		attack_anims.append(Anim.SLASH)
 	if close_enough_radius is VisionCone3D:
@@ -46,6 +47,11 @@ func _on_player_leave_range(body: Node3D) -> void:
 func _behave(delta: float) -> void:
 	if _parent.target == null || !_is_in_range:
 		return
+	_parent.velocity = lerp(
+		_parent.velocity,
+		Vector3(0.0, _parent.velocity.y, 0.0),
+		3.0 * delta
+	)
 	_time_to_next_attack -= delta
 	var my_dir := -_parent.transform.basis.z
 	var player_dir := _parent.global_position.direction_to(_parent.target.global_position)
@@ -65,12 +71,17 @@ func _behave(delta: float) -> void:
 		if damage_range != Vector2i.ZERO:
 			attack.damage_range = damage_range
 		attack.knockback_source = _parent.global_position
-		_parent.look_at(_get_look_pos())
-		_parent.add_child(attack)
+		var target_pos := _get_look_pos()
+		_parent.look_at(target_pos)
+		if attack is EnemyProjectileAttack:
+			_parent.get_parent().get_parent().add_child(attack)
+			attack.global_position = _parent.global_position
+			attack.look_at(target_pos)
+		else:
+			_parent.add_child(attack)
 		attack.position.y += attack_y_offset
 		_in_animation = true
 		_parent.animation_player.play(attack_anims.pick_random(), -1.0, 3.0)
-		_parent.animation_player.animation_finished.connect(_on_anim_finished, CONNECT_ONE_SHOT)
 		_time_to_next_attack = attack_frequency
 
 func _get_look_pos() -> Vector3:
