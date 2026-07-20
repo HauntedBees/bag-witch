@@ -161,7 +161,7 @@ metadata/_custom_type_script = "uid://bh3e52s7bb0by"
 [node name="FirstEntrance" type="Node" parent="." unique_id=1011120055]
 script = ExtResource("10_snvax")
 text = "...This ain't me bog..."
-completed_key = &"enter_fire"
+completed_key = &"GameFullyBegun"
 metadata/_custom_type_script = "uid://wp1mdoed06xj"
 
 [node name="PineappleRing" type="Node3D" parent="." unique_id=909285743]
