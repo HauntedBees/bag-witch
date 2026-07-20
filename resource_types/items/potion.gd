@@ -6,7 +6,7 @@ class_name Potion extends Item
 ## to be different enough that I wouldn't be able to reuse things or anything so
 ## fuck it, enums will do for now.
 enum Ability {
-	# these probably won't happen due to time constraints
+	## For classes that inherit from Potion and do their own thing.
 	Custom,
 	## Gunpowder Tonic
 	SuperGunshot,

@@ -14,6 +14,14 @@ item_2_type = 5
 item_3_type = 5
 metadata/_custom_type_script = "uid://wbaxe261gvyn"
 
+[sub_resource type="Resource" id="Resource_eav75"]
+script = ExtResource("2_vd1ef")
+output = "uid://mbu0okiovudq"
+item_1_type = 5
+item_2_type = 5
+item_3_type = 5
+metadata/_custom_type_script = "uid://wbaxe261gvyn"
+
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_rhbnc"]
 height = 1.2899933
 radius = 0.87109375
@@ -82,7 +90,7 @@ _data = {
 
 [node name="Cauldron" type="StaticBody3D" unique_id=439509165]
 script = ExtResource("1_y6hjw")
-recipes = Array[ExtResource("2_vd1ef")]([SubResource("Resource_0vwwb")])
+recipes = Array[ExtResource("2_vd1ef")]([SubResource("Resource_0vwwb"), SubResource("Resource_eav75")])
 
 [node name="cauldron" parent="." unique_id=789874657 instance=ExtResource("1_sr7id")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)

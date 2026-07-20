@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="LifeRestoringPotion" format=3 uid="uid://mbu0okiovudq"]
+
+[ext_resource type="Script" uid="uid://dg3n80bhsikyf" path="res://resource_types/items/life_restoring_potion.gd" id="1_eav75"]
+
+[resource]
+script = ExtResource("1_eav75")
+drinking_percentage_healed = 1.0
+name = "Potion of Life"
+description = "This potion will recover all of my health if I drink it. If I die while it's in my posession, it will automatically recover half of my health."
+type = 14
+icon = Rect2i(7, 5, 1, 1)
+first_get_text = "I should definitely keep these on hand... Life in a bottle!"
+scene_path = "uid://bwxgynt16u860"
+discard_on_use = true
+equip_sprite_offset = Vector2i(4, 1)
+equipped_animation = &"FoodHold"
+use_animation = &"FoodEat"
+metadata/_custom_type_script = "uid://dg3n80bhsikyf"
