@@ -20,6 +20,6 @@ use_range = 7.75
 equip_sprite_offset = Vector2i(1, 0)
 equipped_animation = &"Broom"
 use_animation = &"BroomSwing1"
-equipped_scale = 6.0
+equipped_scale = 2.0
 usage_cooldown = 0.4
 metadata/_custom_type_script = "uid://cgt7ckkn1gh5b"
