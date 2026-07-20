@@ -7,6 +7,7 @@ script = ExtResource("1_5ybjv")
 is_melee = true
 damage_range = Vector2i(20, 30)
 knockback = 15.0
+is_high_impact = true
 name = "Rock"
 description = "It's a rock."
 icon = Rect2i(0, 2, 1, 1)

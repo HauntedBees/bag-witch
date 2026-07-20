@@ -5,15 +5,7 @@ const _MAX_SCALE := 5.0
 
 @export var has_key := false
 
-var _frozen_state: EnemyFrozen
 var _current_scale := 1.0
-
-func _addtl_enemy_setup() -> void:
-	for c in get_children():
-		if c is EnemyFrozen:
-			_frozen_state = c
-	if _frozen_state == null:
-		print("erm... what the frick?")
 
 func _die() -> void:
 	set_collision_layer_value(4, false)
@@ -43,7 +35,9 @@ func receive_weapon_hit(source: Vector3, w: Weapon, has_impact_position := false
 			_current_scale = minf(_MAX_SCALE, _current_scale * 1.1)
 			scale = _current_scale * Vector3.ONE
 			break
-	var damage_dealt := randi_range(w.damage_range.x, w.damage_range.y) if !is_ice_attack && _is_frozen() else 0
+	var damage_dealt := 0
+	if !is_ice_attack && _is_frozen() && w.is_high_impact:
+		damage_dealt = randi_range(w.damage_range.x, w.damage_range.y)
 	on_hit.emit(w, source, damage_dealt, impact_position if has_impact_position else global_position)
 	if is_dead():
 		return
@@ -58,6 +52,3 @@ func receive_weapon_hit(source: Vector3, w: Weapon, has_impact_position := false
 		apply_effect(e, randf_range(r.x, r.y) * 0.75, magic_level)
 	if _health <= 0:
 		_die()
-
-func _is_frozen() -> bool:
-	return _frozen_state.is_frozen()
