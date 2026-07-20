@@ -7,3 +7,6 @@ func _inner_use(player: BogWitch) -> void:
 	var swipe: PlayerAttack = _SWIPE_ATTACK.instantiate()
 	swipe.weapon = self
 	player.add_child(swipe)
+	var pos := player.get_mouse_center()
+	pos.y = swipe.global_position.y
+	swipe.look_at(pos)
