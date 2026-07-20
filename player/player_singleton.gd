@@ -34,6 +34,7 @@ func take_damage(amount: int) -> void:
 	)
 	if data.current_health <= 0:
 		print("OH FUCK") #TODO: check spares
+		SignalBus.game_over.emit()
 
 func has_completed(quest: StringName) -> bool:
 	return data.completed_quests.has(quest)

@@ -25,12 +25,31 @@ process_mode = 1
 [node name="Bog" parent="WorldContainer" unique_id=866622824 instance=ExtResource("4_ojnl1")]
 
 [node name="AudioManager" type="Node" parent="." unique_id=451424379]
+unique_name_in_owner = true
 script = ExtResource("2_owbqv")
 
 [node name="Music1" type="AudioStreamPlayer" parent="AudioManager" unique_id=577649259]
 unique_name_in_owner = true
 
 [node name="Music2" type="AudioStreamPlayer" parent="AudioManager" unique_id=1703617632]
+unique_name_in_owner = true
+
+[node name="Sound1" type="AudioStreamPlayer" parent="AudioManager" unique_id=1558120502]
+unique_name_in_owner = true
+
+[node name="Sound2" type="AudioStreamPlayer" parent="AudioManager" unique_id=1555166941]
+unique_name_in_owner = true
+
+[node name="Sound3" type="AudioStreamPlayer" parent="AudioManager" unique_id=795944409]
+unique_name_in_owner = true
+
+[node name="Sound4" type="AudioStreamPlayer" parent="AudioManager" unique_id=572368635]
+unique_name_in_owner = true
+
+[node name="Sound5" type="AudioStreamPlayer" parent="AudioManager" unique_id=171920232]
+unique_name_in_owner = true
+
+[node name="Sound6" type="AudioStreamPlayer" parent="AudioManager" unique_id=1025081884]
 unique_name_in_owner = true
 
 [connection signal="finished" from="WarpEffect" to="." method="_on_warp_effect_finished"]

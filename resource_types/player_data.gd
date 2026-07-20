@@ -38,7 +38,7 @@ var inventory := Inventory.new()
 var current_equipped: InventoryDetail = null
 var equip_slots: Array[InventoryDetail] = []
 
-var current_health := 100:
+var current_health := 5:
 	set(value):
 		current_health = value
 		health_changed.emit(value)

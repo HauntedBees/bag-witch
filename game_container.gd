@@ -1,5 +1,8 @@
 extends Node3D
 
+const _GAME_OVER_SOUND := preload("uid://bnj7gqfldkufl")
+
+@onready var _audio_manager: AudioManager = %AudioManager
 @onready var _player: BogWitch = %PlayerCharacter
 @onready var _warp: WarpEffect = %WarpEffect
 @onready var _world: Node3D = %WorldContainer
@@ -10,6 +13,21 @@ var _current_loading_scene_destination: String
 
 func _ready() -> void:
 	SignalBus.load_new_level.connect(_on_load_new_level)
+	SignalBus.game_over.connect(_on_game_over)
+
+func _on_game_over() -> void:
+	_warp.begin()
+	get_tree().paused = true
+	_is_warping = true
+	await _audio_manager.fade_out_music()
+	_audio_manager.silence_all_sounds()
+	_audio_manager.play_sound(_GAME_OVER_SOUND)
+	await get_tree().create_timer(_GAME_OVER_SOUND.get_length() - 0.5).timeout
+	Player.data.current_health = roundi(Player.data.max_health * 0.6)
+	_load_level_inner(
+		"uid://ssp37cocp7km", # Bog World
+		"FromDeath"
+	)
 
 func _on_load_new_level(destination_uid: String, destination_point_name: String) -> void:
 	if _is_warping:
@@ -18,6 +36,9 @@ func _on_load_new_level(destination_uid: String, destination_point_name: String)
 	_warp.begin()
 	get_tree().paused = true
 	_is_warping = true
+	_load_level_inner(destination_uid, destination_point_name)
+
+func _load_level_inner(destination_uid: String, destination_point_name: String) -> void:
 	_current_loading_scene_path = ResourceUID.uid_to_path(destination_uid)
 	print("loading %s" % _current_loading_scene_path)
 	ResourceLoader.load_threaded_request(_current_loading_scene_path, "PackedScene", true)
