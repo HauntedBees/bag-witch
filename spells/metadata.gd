@@ -1,5 +1,8 @@
 class_name BWEnum extends Object
 
+const GEN_MID := 4
+const GEN_LATE := 10
+
 const WEAPON_SLOTS: Array[StringName] = [
 	&"weapon_slot_1", &"weapon_slot_2", &"weapon_slot_3", &"weapon_slot_4", &"weapon_slot_5",
 	&"weapon_slot_6", &"weapon_slot_7", &"weapon_slot_8", &"weapon_slot_9", &"weapon_slot_0"

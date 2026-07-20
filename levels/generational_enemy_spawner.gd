@@ -17,8 +17,8 @@ const _LATE_GEN_ENEMIES: Array[PackedScene] = [
 func _pick_enemy() -> PackedScene:
 	var potential_enemies: Array[PackedScene] = []
 	potential_enemies.append_array(_EARLY_GEN_ENEMIES)
-	if debug || Player.data.generations_elapsed >= 3:
+	if debug || Player.data.generations_elapsed >= BWEnum.GEN_MID:
 		potential_enemies.append_array(_MID_GEN_ENEMIES)
-		if debug || Player.data.generations_elapsed >= 10:
+		if debug || Player.data.generations_elapsed >= BWEnum.GEN_LATE:
 			potential_enemies.append_array(_LATE_GEN_ENEMIES)
 	return potential_enemies.pick_random()
