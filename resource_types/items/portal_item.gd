@@ -17,6 +17,7 @@ func _init(portal: Portal = null) -> void:
 	portal_image = ImageTexture.create_from_image(img)
 	portal_dest_uid = portal.teleport_scene
 	portal_dest_point = portal.teleport_point_name
+	equip_sprite_offset = Vector2i(6, 1)
 	equipped_animation = &"WispHold"
 	use_animation = &"CreatureOffer"
 	use_animation_speed = 9.0
