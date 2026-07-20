@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bwxgynt16u860"]
+
+[ext_resource type="Script" uid="uid://b66jl5gw8dewc" path="res://items/world/world_item.gd" id="1_wmiyc"]
+[ext_resource type="Resource" uid="uid://mbu0okiovudq" path="res://items/potions/potion_of_life.tres" id="2_wmiyc"]
+[ext_resource type="PackedScene" uid="uid://c4eehlhqu23r8" path="res://assets/models/items/potion_c.blend" id="3_wmiyc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rhbnc"]
+
+[node name="PotionOfLife" type="Area3D" unique_id=951298956 node_paths=PackedStringArray("collider")]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_wmiyc")
+item = ExtResource("2_wmiyc")
+collider = NodePath("CollisionShape3D")
+metadata/_custom_type_script = "uid://b66jl5gw8dewc"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=270526766]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6449778, 0)
+shape = SubResource("BoxShape3D_rhbnc")
+
+[node name="potion_c" parent="." unique_id=1602908828 instance=ExtResource("3_wmiyc")]

@@ -39,7 +39,7 @@ var current_equipped: InventoryDetail = null
 var equip_slots: Array[InventoryDetail] = []
 var generations_elapsed := 0
 
-var current_health := 100:
+var current_health := 10:
 	set(value):
 		current_health = value
 		health_changed.emit(value)

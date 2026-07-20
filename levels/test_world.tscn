@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://b8gphm85s4mof" path="res://items/world/weapons/laser_sword.tscn" id="5_vytw3"]
 [ext_resource type="PackedScene" uid="uid://d2toblm6xjhdq" path="res://items/world/weapons/laserrifle.tscn" id="6_37vfl"]
 [ext_resource type="PackedScene" uid="uid://bi4xkvw3vnaus" path="res://items/world/weapons/big_sword.tscn" id="7_edsus"]
+[ext_resource type="PackedScene" uid="uid://bojcp628rd3l4" path="res://environment/cauldron/cauldron.tscn" id="8_bi2y1"]
+[ext_resource type="PackedScene" uid="uid://d1vmwhy8b4jw5" path="res://items/world/food/apple.tscn" id="9_6q451"]
+[ext_resource type="PackedScene" uid="uid://bwxgynt16u860" path="res://items/world/potions/potion_of_life.tscn" id="10_6q451"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lqt7o"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -38,21 +41,21 @@ radius = 20.0
 
 [sub_resource type="Environment" id="Environment_u7iwl"]
 
-[sub_resource type="World3D" id="World3D_iophl"]
+[sub_resource type="World3D" id="World3D_lbfdw"]
 resource_local_to_scene = true
 environment = SubResource("Environment_u7iwl")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bi2y1"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_5odyp"]
 resource_local_to_scene = true
 atlas = ExtResource("4_lqt7o")
 region = Rect2(0, 0, 256, 256)
 filter_clip = true
 
-[sub_resource type="World3D" id="World3D_6q451"]
+[sub_resource type="World3D" id="World3D_1vc8c"]
 resource_local_to_scene = true
 environment = SubResource("Environment_u7iwl")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lbfdw"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_tjunk"]
 resource_local_to_scene = true
 atlas = ExtResource("4_lqt7o")
 region = Rect2(256, 0, 256, 256)
@@ -80,10 +83,10 @@ teleport_scene = "uid://dkgap8kw2cyfc"
 teleport_point_name = "FromBog"
 
 [node name="ViewCastlePrison" parent="." unique_id=389194511 instance=ExtResource("3_lqt7o")]
-world_3d = SubResource("World3D_iophl")
+world_3d = SubResource("World3D_lbfdw")
 
 [node name="Sprite3D" parent="ViewCastlePrison" index="1" unique_id=923265973]
-texture = SubResource("AtlasTexture_bi2y1")
+texture = SubResource("AtlasTexture_5odyp")
 
 [node name="PortalFirePineRing" parent="." unique_id=1269224502 node_paths=PackedStringArray("subviewport") instance=ExtResource("2_c576j")]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 10, 0, -10)
@@ -92,10 +95,10 @@ teleport_scene = "uid://cmf1v1vuyggrq"
 teleport_point_name = "FromCastleBasement"
 
 [node name="ViewFirePineRing" parent="." unique_id=451018157 instance=ExtResource("3_lqt7o")]
-world_3d = SubResource("World3D_6q451")
+world_3d = SubResource("World3D_1vc8c")
 
 [node name="Sprite3D" parent="ViewFirePineRing" index="1" unique_id=923265973]
-texture = SubResource("AtlasTexture_lbfdw")
+texture = SubResource("AtlasTexture_tjunk")
 
 [node name="LaserSword" parent="." unique_id=823143601 instance=ExtResource("5_vytw3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.8774405, 0.25169817, -7.6883154)
@@ -105,6 +108,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.335191, 0.53, -1.9568214)
 
 [node name="BigSword" parent="." unique_id=1235506777 instance=ExtResource("7_edsus")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.202715, 0.52622986, 6.7403483)
+
+[node name="Cauldron" parent="." unique_id=439509165 instance=ExtResource("8_bi2y1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.053501, 0.2500558, -4.9536233)
+
+[node name="Apple" parent="." unique_id=621096524 instance=ExtResource("9_6q451")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.0788965, 0.25, -0.815269)
+
+[node name="Apple2" parent="." unique_id=11662136 instance=ExtResource("9_6q451")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.382463, 0.25, 1.9817703)
+
+[node name="Apple3" parent="." unique_id=1887045240 instance=ExtResource("9_6q451")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.089878, 0.25, 5.3635597)
+
+[node name="PotionOfLife" parent="." unique_id=951298956 instance=ExtResource("10_6q451")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.120905, 0.25784582, -7.017446)
 
 [editable path="ViewCastlePrison"]
 [editable path="ViewFirePineRing"]

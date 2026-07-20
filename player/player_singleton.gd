@@ -33,7 +33,14 @@ func take_damage(amount: int) -> void:
 		mini(data.current_health - amount, data.max_health)
 	)
 	if data.current_health <= 0:
-		print("OH FUCK") #TODO: check spares
+		for id in Player.data.inventory.items:
+			if id.item is LifeRestoringPotion:
+				var lrp: LifeRestoringPotion = id.item
+				var amt := roundi(Player.data.max_health * lrp.dying_percentage_healed)
+				data.current_health = amt
+				Player.data.inventory.remove_item(id)
+				# TODO: a jingle or something?
+				return
 		SignalBus.game_over.emit()
 
 func has_completed(quest: StringName) -> bool:
