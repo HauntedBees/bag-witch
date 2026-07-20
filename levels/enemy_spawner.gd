@@ -34,7 +34,7 @@ func _process(delta: float) -> void:
 		_time_to_next_spawn_check = time_between_spawn_attempts
 
 func _spawn_enemy() -> void:
-	var enemy_scene: PackedScene = enemy_types.pick_random()
+	var enemy_scene: PackedScene = _pick_enemy()
 	var enemy: EnemyDisplay = enemy_scene.instantiate()
 	enemy.name = "%s%s" % [enemy.enemy_name, randi()]
 	if enemy_point_collection != null:
@@ -50,6 +50,9 @@ func _spawn_enemy() -> void:
 		randf_range(-2.0, 2.0)
 	)
 	enemy.rotate_y(randf_range(-PI, PI))
+
+func _pick_enemy() -> PackedScene:
+	return enemy_types.pick_random()
 
 func _get_enemy_count() -> int:
 	var count := 0

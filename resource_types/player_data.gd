@@ -37,6 +37,7 @@ var inventory := Inventory.new()
 
 var current_equipped: InventoryDetail = null
 var equip_slots: Array[InventoryDetail] = []
+var generations_elapsed := 0
 
 var current_health := 100:
 	set(value):
