@@ -30,10 +30,10 @@ func recalibrate_bag_size() -> void:
 				Vector2i(8, 0), Vector2i(7, 0)
 			]
 
-func clear_all_but_equipped() -> void:
+func clear_all_but_safe(keep_equipped := true) -> void:
 	for idx in range(items.size() - 1, -1, -1):
 		var id := items[idx]
-		if Player.data.current_equipped == id:
+		if keep_equipped && Player.data.current_equipped == id:
 			continue
 		if safe_tiles.has(id.position): # don't bother checking unless at least the top is there
 			if id.item.size == Vector2i(1, 1):

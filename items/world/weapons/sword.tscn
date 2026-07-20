@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dvs7xaq0u4w4n"]
+
+[ext_resource type="Script" uid="uid://b66jl5gw8dewc" path="res://items/world/world_item.gd" id="1_g1brl"]
+[ext_resource type="PackedScene" uid="uid://bu3vkhiaaxv6i" path="res://assets/models/weapons/sword.blend" id="2_nty28"]
+[ext_resource type="Resource" uid="uid://sbrt245q0iwi" path="res://items/sword.tres" id="2_ot2yl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rhbnc"]
+size = Vector3(1, 0.6401367, 2.4544678)
+
+[node name="WorldItem" type="Area3D" unique_id=823143601 node_paths=PackedStringArray("collider")]
+collision_layer = 2
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_g1brl")
+item = ExtResource("2_ot2yl")
+collider = NodePath("CollisionShape3D")
+metadata/_custom_type_script = "uid://b66jl5gw8dewc"
+
+[node name="sword" parent="." unique_id=857736752 instance=ExtResource("2_nty28")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.08586073, 0.002087772)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2008358244]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17993164, 0.7662393)
+shape = SubResource("BoxShape3D_rhbnc")

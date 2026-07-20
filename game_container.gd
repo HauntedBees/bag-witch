@@ -19,6 +19,7 @@ func _on_game_over() -> void:
 	_warp.begin()
 	get_tree().paused = true
 	_is_warping = true
+	Player.data.death_wipe()
 	await _audio_manager.fade_out_music()
 	_audio_manager.silence_all_sounds()
 	_audio_manager.play_sound(_GAME_OVER_SOUND)
