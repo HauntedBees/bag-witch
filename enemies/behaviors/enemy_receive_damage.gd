@@ -17,7 +17,7 @@ func _setup_behavior() -> void:
 	_parent.on_hit.connect(_on_hit)
 
 func _on_hit(w: Weapon, source: Vector3, damage_dealt: int, impact_position: Vector3) -> void:
-	var freezes := _stun_time > 0.0
+	var freezes := _stun_time > 0.0 && !w.no_stun
 	if !active:
 		return
 	if freezes:
