@@ -4,6 +4,8 @@ class_name EnemyMeleePlayer extends EnemyBehavior
 @export var close_enough_radius: Area3D
 @export var attack_frequency := 1.0
 @export var attack_y_offset := 0.5
+## Makes the attack position vary slightly with each attack, increasing odds of missing.
+@export var wiggle_attack := false
 @export var damage_range := Vector2i.ZERO
 @export_custom(SRP_HINT.RESOURCE_PATH, "PackedScene") var attack_scene: String
 
@@ -62,6 +64,9 @@ func _behave(delta: float) -> void:
 func _get_look_pos() -> Vector3:
 	var p := _parent.target.global_position
 	p.y = _parent.global_position.y
+	if wiggle_attack:
+		p.x += randf_range(-2.0, 2.0)
+		p.z += randf_range(-2.0, 2.0)
 	return p
 
 func _on_anim_finished(_anim: StringName) -> void:

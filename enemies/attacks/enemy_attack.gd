@@ -46,6 +46,6 @@ func _on_animation_finished(_name: StringName) -> void:
 
 func _does_attack_land() -> bool:
 	match Player.data.speed:
-		3: return randf() <= 0.75
-		2: return randf() <= 0.9
-	return randf() <= 0.99
+		3: return randf() <= 0.72
+		2: return randf() <= 0.88
+	return randf() <= 0.95

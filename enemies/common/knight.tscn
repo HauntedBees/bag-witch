@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://b2ldfj5ngv3ch" path="res://enemies/behaviors/enemy_melee_player.gd" id="5_e6v1h"]
 [ext_resource type="AnimationLibrary" uid="uid://ntjgewrphs02" path="res://assets/animations/Rig_Medium_MovementBasic.glb" id="5_kgpmu"]
 [ext_resource type="Resource" uid="uid://csnhgb33a82l1" path="res://items/crystals/power_ruby.tres" id="6_6shv7"]
+[ext_resource type="PackedScene" uid="uid://dvs7xaq0u4w4n" path="res://items/world/weapons/sword.tscn" id="8_5mpsl"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rhbnc"]
 radius = 0.75
@@ -74,6 +75,14 @@ bones/19/rotation = Quaternion(0.99732214, -0.02945736, 0.03152927, 0.05904831)
 bones/20/rotation = Quaternion(0.27400813, -6.3812955e-08, 1.9276068e-07, 0.96172744)
 bones/21/rotation = Quaternion(-0.5590394, 0.11451277, -0.0086276345, 0.82115006)
 bones/22/rotation = Quaternion(-8.93489e-05, 0.9202217, -0.39139768, 2.029099e-05)
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="knight/Rig_Medium/Skeleton3D" index="8" unique_id=2087715613]
+transform = Transform3D(3.0525698e-07, -0.14989458, -0.9887018, -0.9999995, -1.4901164e-07, -5.48512e-08, -3.1498368e-07, 0.98870164, -0.14989471, -0.4910612, 0.6410294, 0.10659545)
+bone_name = "handslot.r"
+bone_idx = 13
+
+[node name="Sword" parent="knight/Rig_Medium/Skeleton3D/BoneAttachment3D" unique_id=823143601 instance=ExtResource("8_5mpsl")]
+transform = Transform3D(0.75, 1.8571423e-07, -3.8926355e-08, 1.0039008e-07, -0.2577976, 0.70430136, 1.6101822e-07, -0.70430136, -0.2577976, 0, 0.021520004, 0.14194539)
 
 [node name="AnimationPlayer" parent="knight" index="1" unique_id=1107206194]
 libraries/Rig_Medium_CombatMelee = ExtResource("3_nbc5u")

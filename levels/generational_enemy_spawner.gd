@@ -8,7 +8,8 @@ const _EARLY_GEN_ENEMIES: Array[PackedScene] = [
 const _MID_GEN_ENEMIES: Array[PackedScene] = [
 ]
 const _LATE_GEN_ENEMIES: Array[PackedScene] = [
-	preload("uid://dp2i4li76xmtp") # space knight
+	preload("uid://dp2i4li76xmtp"), # space knight
+	preload("uid://cje7l4xc2coy4") # laser space knight
 ]
 
 func _pick_enemy() -> PackedScene:
