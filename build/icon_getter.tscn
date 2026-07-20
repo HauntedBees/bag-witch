@@ -30,6 +30,7 @@
 [ext_resource type="PackedScene" uid="uid://bu3vkhiaaxv6i" path="res://assets/models/weapons/sword.blend" id="28_5dpil"]
 [ext_resource type="PackedScene" uid="uid://dhlu6wawyieh5" path="res://environment/portals/portal.tscn" id="29_38d1y"]
 [ext_resource type="PackedScene" uid="uid://bqkdcbh8ymj41" path="res://assets/models/weapons/laser_sword.blend" id="30_q8ewj"]
+[ext_resource type="PackedScene" uid="uid://dbwqxpym38n74" path="res://assets/models/weapons/big_sword.blend" id="31_0mser"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eeolf"]
 shading_mode = 0
@@ -40,6 +41,9 @@ material = SubResource("StandardMaterial3D_eeolf")
 size = Vector2(5, 5)
 
 [node name="Node3D" type="Node3D" unique_id=1875861316]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=465674123]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.9159544)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1142949169]
 mesh = SubResource("QuadMesh_rhbnc")
@@ -163,9 +167,10 @@ visible = false
 
 [node name="laser_sword" parent="ThingContainer" unique_id=1094746878 instance=ExtResource("30_q8ewj")]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0.5064106, 2.213591e-08, 0)
+visible = false
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=465674123]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.9159544)
+[node name="big_sword" parent="ThingContainer" unique_id=265808847 instance=ExtResource("31_0mser")]
+transform = Transform3D(-2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, 0, 0, 0, 0.5, 0.5386343, -0.047632933, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=120314320]
 transform = Transform3D(0.9717929, 0.11896129, -0.20363402, 0, 0.8634562, 0.50442386, 0.23583597, -0.4901955, 0.8391006, 0, 3.8723497, 4.9881706)

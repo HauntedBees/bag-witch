@@ -18,7 +18,6 @@ var _cached_attack_scene: PackedScene = null
 var _in_animation := false
 
 func _setup_behavior() -> void:
-	_parent.animation_player.animation_finished.connect(_on_anim_finished)
 	if attack_anims.size() == 0:
 		attack_anims.append(Anim.SLASH)
 	if close_enough_radius is VisionCone3D:
@@ -27,6 +26,7 @@ func _setup_behavior() -> void:
 	else:
 		close_enough_radius.body_entered.connect(_on_player_in_range)
 		close_enough_radius.body_exited.connect(_on_player_leave_range)
+	_parent.animation_player.animation_finished.connect(_on_anim_finished)
 
 func _on_player_in_range(body: Node3D) -> void:
 	if _parent.is_dead():

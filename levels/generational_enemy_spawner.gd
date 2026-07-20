@@ -4,7 +4,8 @@ class_name GenerationalEnemySpawner extends EnemySpawner
 
 const _EARLY_GEN_ENEMIES: Array[PackedScene] = [
 	preload("uid://djtpn6s6cdlln"), # knight
-	preload("uid://dv5y1llmnu8nh") # mage
+	preload("uid://dv5y1llmnu8nh"), # mage
+	preload("uid://cvrxto4jxqgxk") # cleric
 ]
 const _MID_GEN_ENEMIES: Array[PackedScene] = [
 ]

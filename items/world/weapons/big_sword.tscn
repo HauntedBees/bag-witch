@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bi4xkvw3vnaus"]
+
+[ext_resource type="Script" uid="uid://b66jl5gw8dewc" path="res://items/world/world_item.gd" id="1_0rhd5"]
+[ext_resource type="Resource" uid="uid://dc0rwto4q8lbf" path="res://items/melee/big_sword.tres" id="2_0rhd5"]
+[ext_resource type="PackedScene" uid="uid://dbwqxpym38n74" path="res://assets/models/weapons/big_sword.blend" id="3_0rhd5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rhbnc"]
+size = Vector3(1, 0.6401367, 2.4544678)
+
+[node name="BigSword" type="Area3D" unique_id=823143601 node_paths=PackedStringArray("collider")]
+collision_layer = 2
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_0rhd5")
+item = ExtResource("2_0rhd5")
+collider = NodePath("CollisionShape3D")
+metadata/_custom_type_script = "uid://b66jl5gw8dewc"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2008358244]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17993164, 0.7662393)
+shape = SubResource("BoxShape3D_rhbnc")
+
+[node name="big_sword" parent="." unique_id=265808847 instance=ExtResource("3_0rhd5")]
+transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 0, 0, 0)
