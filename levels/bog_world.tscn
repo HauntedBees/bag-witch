@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cxk6dkhrf6iy8" path="res://assets/levels/bog/books.blend" id="9_5tax8"]
 [ext_resource type="PackedScene" uid="uid://dhlu6wawyieh5" path="res://environment/portals/portal.tscn" id="10_tmrxh"]
 [ext_resource type="Script" uid="uid://bb3v1hwgh4hs5" path="res://levels/bog_world/cutscenes/opening_cutscene.gd" id="13_8w6s2"]
+[ext_resource type="Texture2D" uid="uid://b468d6ayq7u4d" path="res://assets/sprites/warps.png" id="13_n8ycd"]
 [ext_resource type="AudioStream" uid="uid://6vlbkpbsonkh" path="res://assets/music/dehydrated water.mp3" id="14_qsvkf"]
 [ext_resource type="PackedScene" uid="uid://b40thd7kw3ff5" path="res://levels/bog_world/animals_and_malarkey.tscn" id="15_82h8y"]
 [ext_resource type="Resource" uid="uid://bo2r1oepd3xvs" path="res://items/fuckin_whatever/cutscene_book.tres" id="15_vkem0"]
@@ -106,17 +107,29 @@ size = Vector3(50, 40, 2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_tmrxh"]
 size = Vector3(50, 10, 80)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_eeolf"]
-size = Vector3(30, 50, 5)
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_rhbnc"]
-radius = 10.0
-
 [sub_resource type="Environment" id="Environment_6q451"]
 
 [sub_resource type="World3D" id="World3D_fc1lq"]
 resource_local_to_scene = true
 environment = SubResource("Environment_6q451")
+
+[sub_resource type="Environment" id="Environment_u7iwl"]
+
+[sub_resource type="World3D" id="World3D_ak1fh"]
+resource_local_to_scene = true
+environment = SubResource("Environment_u7iwl")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8d1p"]
+resource_local_to_scene = true
+atlas = ExtResource("13_n8ycd")
+region = Rect2(256, 0, 256, 256)
+filter_clip = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eeolf"]
+size = Vector3(30, 50, 5)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_rhbnc"]
+radius = 10.0
 
 [node name="Bog" type="Node3D" unique_id=866622824]
 script = ExtResource("1_5tax8")
@@ -185,11 +198,27 @@ data = {
 [node name="witch_hut" parent="House" unique_id=1681921133 instance=ExtResource("4_f7sxh")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2.8210447, 0.7963673, 17.570993)
 
-[node name="Portal" parent="." unique_id=573598963 node_paths=PackedStringArray("subviewport") instance=ExtResource("10_tmrxh")]
+[node name="PortalToCastle" parent="." unique_id=573598963 node_paths=PackedStringArray("subviewport") instance=ExtResource("10_tmrxh")]
 transform = Transform3D(-0.087155595, 0, 0.9961947, 0, 1, 0, -0.9961947, 0, -0.087155595, -4.157013, 0.9876709, -29)
-subviewport = NodePath("../PortalSubviewportExternal")
+subviewport = NodePath("../ViewPortalToCastle")
 teleport_scene = "uid://dkgap8kw2cyfc"
 teleport_point_name = "FromBog"
+
+[node name="ViewPortalToCastle" parent="." unique_id=389194511 instance=ExtResource("23_xvnqo")]
+world_3d = SubResource("World3D_fc1lq")
+
+[node name="PortalFirePineRing" parent="." unique_id=789452907 node_paths=PackedStringArray("subviewport") instance=ExtResource("10_tmrxh")]
+transform = Transform3D(-0.08715576, 0, 0.99619466, 0, 1, 0, -0.99619466, 0, -0.08715576, -4.157, 0.988, -29)
+subviewport = NodePath("../ViewPortalFirePineRing")
+teleport_scene = "uid://cmf1v1vuyggrq"
+teleport_point_name = "FromCastleBasement"
+
+[node name="ViewPortalFirePineRing" parent="." unique_id=1926226445 instance=ExtResource("23_xvnqo")]
+world_3d = SubResource("World3D_ak1fh")
+
+[node name="Sprite3D" parent="ViewPortalFirePineRing" index="1" unique_id=923265973]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
+texture = SubResource("AtlasTexture_i8d1p")
 
 [node name="OpeningCutscene" type="Node" parent="." unique_id=353323456 node_paths=PackedStringArray("animals", "arm", "queen", "knight1", "knight2", "convo_trigger", "portal_pos", "knight1_pos", "knight2_pos", "nodes_to_kill")]
 script = ExtResource("13_8w6s2")
@@ -459,13 +488,10 @@ target_position = Vector3(0, 0, -20)
 script = ExtResource("23_moaa7")
 metadata/_custom_type_script = "uid://bh3e52s7bb0by"
 
-[node name="PortalSubviewportExternal" parent="." unique_id=389194511 instance=ExtResource("23_xvnqo")]
-world_3d = SubResource("World3D_fc1lq")
-
 [node name="PostOpeningContentTrigger" type="Node" parent="." unique_id=1112385551 node_paths=PackedStringArray("nodes_to_kill")]
 script = ExtResource("24_s4mc1")
 required_key = &"GameFullyBegun"
-nodes_to_kill = [NodePath("../PostOpeningContent")]
+nodes_to_kill = [NodePath("../PostOpeningContent"), NodePath("../ViewPortalFirePineRing"), NodePath("../PortalFirePineRing")]
 metadata/_custom_type_script = "uid://brqbfvifsa78d"
 
 [node name="PostOpeningContent" type="Node3D" parent="." unique_id=1542532113]
@@ -488,6 +514,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2048321, 0, 0.7044277)
 [node name="Marker3D2" type="Marker3D" parent="PostOpeningContent/PotentialStartItems" unique_id=172871341]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.516901, 0, 0)
 
+[node name="PreOpeningContentTrigger" type="Node" parent="." unique_id=1321322200 node_paths=PackedStringArray("nodes_to_kill")]
+script = ExtResource("24_s4mc1")
+completed_key = &"GameFullyBegun"
+nodes_to_kill = [NodePath("../ViewPortalToCastle"), NodePath("../PortalToCastle")]
+metadata/_custom_type_script = "uid://brqbfvifsa78d"
+
+[editable path="ViewPortalFirePineRing"]
 [editable path="CutsceneStuff/queen_i"]
 [editable path="CutsceneStuff/bottomknight"]
 [editable path="CutsceneStuff/topknight"]
