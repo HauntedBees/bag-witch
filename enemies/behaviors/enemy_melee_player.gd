@@ -6,7 +6,7 @@ const _CLOSE_ENOUGH_AIM_DIR = PI / 4.0
 @export var close_enough_radius: Area3D
 @export var attack_frequency := 1.0
 @export var attack_y_offset := 0.5
-@export var rotation_speed := 2.0
+@export var rotation_speed := 4.0
 ## Makes the attack position vary slightly with each attack, increasing odds of missing.
 @export var wiggle_attack := false
 @export var damage_range := Vector2i.ZERO
@@ -31,7 +31,6 @@ func _on_player_in_range(body: Node3D) -> void:
 	if _parent.is_dead():
 		return
 	if body is BogWitch:
-		print("I SEE YOU")
 		_parent.target = body
 		_is_in_range = true
 		take_control()
@@ -40,7 +39,6 @@ func _on_player_leave_range(body: Node3D) -> void:
 	if _parent.is_dead():
 		return
 	if body is BogWitch:
-		print("NO I DON'T")
 		_is_in_range = false
 		if !_in_animation:
 			_relinquish_control()

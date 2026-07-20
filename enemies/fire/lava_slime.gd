@@ -38,7 +38,7 @@ func receive_weapon_hit(source: Vector3, w: Weapon, has_impact_position := false
 	var damage_dealt := 0
 	if !is_ice_attack && _is_frozen() && w.is_high_impact:
 		damage_dealt = randi_range(w.damage_range.x, w.damage_range.y)
-	on_hit.emit(w, source, damage_dealt, impact_position if has_impact_position else global_position)
+	on_hit.emit(w, source, damage_dealt, impact_position if has_impact_position else global_position, false)
 	if is_dead():
 		return
 	_health -= damage_dealt

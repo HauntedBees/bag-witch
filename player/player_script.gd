@@ -204,7 +204,7 @@ func _handle_front_raycast() -> void:
 		var i := Player.data.current_equipped_item()
 		if i != null && i is not Spell:
 			distance = i.use_range
-		print(obj.global_position.distance_to(global_position))
+		#print(obj.global_position.distance_to(global_position))
 		if obj.global_position.distance_to(global_position) <= distance:
 			found_something = true
 			_item_select.set_from_enemy(obj)
