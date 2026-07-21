@@ -57,12 +57,12 @@ transform = Transform3D(-0.008784329, 0.0012554657, -0.9999606, 0.10325881, 0.81
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1136467649]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4427687, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6607412, 0)
 shape = SubResource("SphereShape3D_wf1cx")
 
 [node name="DeathCollisionShape3D" type="CollisionShape3D" parent="." unique_id=1992371214]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1840761, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4020486, 0)
 shape = SubResource("SphereShape3D_wf1cx")
 disabled = true
 

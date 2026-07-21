@@ -27,7 +27,7 @@ radius = 3.0
 [sub_resource type="BoxShape3D" id="BoxShape3D_rhbnc"]
 size = Vector3(1, 2.4128723, 1)
 
-[node name="Gunner" type="CharacterBody3D" unique_id=222303382 node_paths=PackedStringArray("bounding_box", "animation_player")]
+[node name="Gunner" type="CharacterBody3D" unique_id=222303382 node_paths=PackedStringArray("bounding_box")]
 collision_layer = 9
 collision_mask = 3
 script = ExtResource("1_oy03o")
@@ -39,7 +39,6 @@ max_health = 250
 weaknesses = Array[int]([3])
 resistances = Array[int]([1])
 bounding_box = NodePath("BoundingBox")
-animation_player = NodePath("")
 idle_anims = Array[StringName]([&"Idle", &"Idle_B", &"Idle_Combat"])
 hit_anim = &"Hit_A"
 big_hit_anim = &"Hit_B"
@@ -131,12 +130,12 @@ transform = Transform3D(0.5, 0, -9.329153e-16, 0, 0.5, -7.1054274e-15, 1.5671024
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1136467649]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1882875, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.310385, 0)
 shape = SubResource("CapsuleShape3D_rhbnc")
 
 [node name="DeathCollisionShape3D" type="CollisionShape3D" parent="." unique_id=1988389680]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5043886, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.62648606, 0)
 shape = SubResource("CapsuleShape3D_gwjxy")
 disabled = true
 

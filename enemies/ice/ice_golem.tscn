@@ -150,12 +150,12 @@ bones/40/rotation = Quaternion(-4.857212e-17, 9.912367e-17, -1.9466906e-08, 1)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1136467649]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.0732973, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3038938, 0)
 shape = SubResource("CapsuleShape3D_rhbnc")
 
 [node name="DeathCollisionShape3D" type="CollisionShape3D" parent="." unique_id=1992371214]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1840761, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3634288, 0)
 shape = SubResource("CapsuleShape3D_pblh2")
 disabled = true
 
