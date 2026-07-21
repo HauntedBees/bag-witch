@@ -1,6 +1,6 @@
 # Credits
 
-- [Speed Effect](https://godotshaders.com/shader/speed-effect/) by (IHaveUsefullShaders)[https://godotshaders.com/author/ihaveusefullshaders/] is licensed under the [GNU GPLv3 license](https://choosealicense.com/licenses/gpl-3.0/).
+- [Speed Effect](https://godotshaders.com/shader/speed-effect/) by [IHaveUsefullShaders](https://godotshaders.com/author/ihaveusefullshaders/) is licensed under the [GNU GPLv3 license](https://choosealicense.com/licenses/gpl-3.0/).
 - [Volcano Lava Floor](https://opengameart.org/content/volcano-lava-floor) by [Dakal](https://opengameart.org/users/dakal) is licensed under the [CC-BY 3.0 license](https://creativecommons.org/licenses/by/3.0/).
 - [Unfinished Business](https://opengameart.org/content/unfinished-business) by [Mega Pixel Music Lab](https://opengameart.org/users/mega-pixel-music-lab) is licensed under the [CC-BY 3.0 license](https://creativecommons.org/licenses/by/3.0/).
 - ["Crisis! You're Dehydrated!"](https://opengameart.org/content/crisis-youre-dehydrated) by [Spring Spring](https://opengameart.org/users/spring-spring) is licensed under the [CC-BY 3.0 license](https://creativecommons.org/licenses/by/3.0/).
