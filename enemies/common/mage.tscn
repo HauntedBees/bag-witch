@@ -111,12 +111,12 @@ libraries/Rig_Medium_MovementBasic = ExtResource("10_7145n")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1136467649]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1882875, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3147745, 0)
 shape = SubResource("CapsuleShape3D_rhbnc")
 
 [node name="DeathCollisionShape3D" type="CollisionShape3D" parent="." unique_id=1988389680]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5043886, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6177907, 0)
 shape = SubResource("CapsuleShape3D_gwjxy")
 disabled = true
 

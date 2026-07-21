@@ -137,7 +137,7 @@ transform = Transform3D(-0.29282054, 0.008011129, 0.956134, 0.012574032, 0.99991
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1136467649]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1882875, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3094437, 0)
 shape = SubResource("CapsuleShape3D_rhbnc")
 
 [node name="DeathCollisionShape3D" type="CollisionShape3D" parent="." unique_id=1988389680]

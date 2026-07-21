@@ -88,6 +88,28 @@ _data = {
 }
 point_count = 12
 
+[sub_resource type="Environment" id="Environment_u7iwl"]
+
+[sub_resource type="World3D" id="World3D_euduq"]
+resource_local_to_scene = true
+environment = SubResource("Environment_u7iwl")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1yfyx"]
+resource_local_to_scene = true
+atlas = ExtResource("19_ht1gs")
+region = Rect2(512, 256, 256, 256)
+filter_clip = true
+
+[sub_resource type="World3D" id="World3D_1yfyx"]
+resource_local_to_scene = true
+environment = SubResource("Environment_u7iwl")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kbimt"]
+resource_local_to_scene = true
+atlas = ExtResource("19_ht1gs")
+region = Rect2(768, 256, 256, 256)
+filter_clip = true
+
 [sub_resource type="Environment" id="Environment_4bsba"]
 
 [sub_resource type="World3D" id="World3D_ht1gs"]
@@ -213,7 +235,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.518463, -0.36935806, 0.109
 
 [node name="KnightSpawner" type="Node3D" parent="." unique_id=1063913308 node_paths=PackedStringArray("potential_spawn_points", "enemy_point_collection", "spawn_container")]
 script = ExtResource("16_1swv2")
-debug = true
 potential_spawn_points = NodePath("../KnightPoints")
 enemy_point_collection = NodePath("../KnightPoints")
 spawn_container = NodePath("../KnightHolder")
@@ -229,18 +250,49 @@ metadata/_custom_type_script = "uid://bn3r43bitaf3i"
 [node name="Broom" parent="." unique_id=458796508 instance=ExtResource("17_b05w2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.067017, 45.314312, -31.695496)
 
-[node name="IceWarp1" parent="." unique_id=1775018926 instance=ExtResource("18_1swv2")]
+[node name="CastleWarp_SideRoom" parent="." unique_id=1775018926 instance=ExtResource("18_1swv2")]
+transform = Transform3D(0.9848944, 0, 0.17315607, 0, 1, 0, -0.17315607, 0, 0.9848944, 242.03055, 12.430866, -24.709625)
+
+[node name="Portal" parent="CastleWarp_SideRoom" index="0" unique_id=573598963]
+teleport_scene = "uid://dkgap8kw2cyfc"
+teleport_point_name = "SideRoom"
+
+[node name="PortalSubviewportExternal" parent="CastleWarp_SideRoom" index="1" unique_id=389194511]
+world_3d = SubResource("World3D_euduq")
+
+[node name="Sprite3D" parent="CastleWarp_SideRoom/PortalSubviewportExternal" index="1" unique_id=923265973]
+texture = SubResource("AtlasTexture_1yfyx")
+
+[node name="CastleWarp_TopArea" parent="." unique_id=870096478 instance=ExtResource("18_1swv2")]
+transform = Transform3D(0.481663, 0, 0.87635654, 0, 1, 0, -0.87635654, 0, 0.481663, -19.76175, 43.768524, -69.499374)
+
+[node name="Portal" parent="CastleWarp_TopArea" index="0" unique_id=573598963]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.625122, 0)
+teleport_scene = "uid://dkgap8kw2cyfc"
+teleport_point_name = "TopArea"
+
+[node name="PortalSubviewportExternal" parent="CastleWarp_TopArea" index="1" unique_id=389194511]
+world_3d = SubResource("World3D_1yfyx")
+
+[node name="Sprite3D" parent="CastleWarp_TopArea/PortalSubviewportExternal" index="1" unique_id=923265973]
+texture = SubResource("AtlasTexture_kbimt")
+
+[node name="IceWarp_Ferm" parent="." unique_id=1843832751 instance=ExtResource("18_1swv2")]
 transform = Transform3D(0.42261824, 0, -0.9063078, 0, 1, 0, 0.9063078, 0, 0.42261824, -107.720894, 7.2894516, 129.68338)
 
-[node name="Portal" parent="IceWarp1" index="0" unique_id=573598963]
+[node name="Portal" parent="IceWarp_Ferm" index="0" unique_id=573598963]
 teleport_scene = "uid://b8knls82eve"
 teleport_point_name = "FermanaghWarp"
 
-[node name="PortalSubviewportExternal" parent="IceWarp1" index="1" unique_id=389194511]
+[node name="PortalSubviewportExternal" parent="IceWarp_Ferm" index="1" unique_id=389194511]
 world_3d = SubResource("World3D_ht1gs")
 
-[node name="Sprite3D" parent="IceWarp1/PortalSubviewportExternal" index="1" unique_id=923265973]
+[node name="Sprite3D" parent="IceWarp_Ferm/PortalSubviewportExternal" index="1" unique_id=923265973]
 texture = SubResource("AtlasTexture_euduq")
 
-[editable path="IceWarp1"]
-[editable path="IceWarp1/PortalSubviewportExternal"]
+[editable path="CastleWarp_SideRoom"]
+[editable path="CastleWarp_SideRoom/PortalSubviewportExternal"]
+[editable path="CastleWarp_TopArea"]
+[editable path="CastleWarp_TopArea/PortalSubviewportExternal"]
+[editable path="IceWarp_Ferm"]
+[editable path="IceWarp_Ferm/PortalSubviewportExternal"]
