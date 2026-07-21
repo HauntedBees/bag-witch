@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bfanwkrm7utnm"
 path.s3tc="res://.godot/imported/bulletpew_color.png-04e0b508a42c3b33612bdad296385b55.s3tc.ctex"
+path.etc2="res://.godot/imported/bulletpew_color.png-04e0b508a42c3b33612bdad296385b55.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={}
@@ -13,7 +14,7 @@ generator_parameters={}
 [deps]
 
 source_file="res://assets/models/weapons/textures/bulletpew_color.png"
-dest_files=["res://.godot/imported/bulletpew_color.png-04e0b508a42c3b33612bdad296385b55.s3tc.ctex"]
+dest_files=["res://.godot/imported/bulletpew_color.png-04e0b508a42c3b33612bdad296385b55.s3tc.ctex", "res://.godot/imported/bulletpew_color.png-04e0b508a42c3b33612bdad296385b55.etc2.ctex"]
 
 [params]
 

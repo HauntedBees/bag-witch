@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dsst0il5omyuh"
 path.s3tc="res://.godot/imported/sawed_off_shotgun_engineer_texture.png-5867a894c4bb47808b9f41d6f8f21bb3.s3tc.ctex"
+path.etc2="res://.godot/imported/sawed_off_shotgun_engineer_texture.png-5867a894c4bb47808b9f41d6f8f21bb3.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/weapons/sawed_off_shotgun_engineer_texture.png"
-dest_files=["res://.godot/imported/sawed_off_shotgun_engineer_texture.png-5867a894c4bb47808b9f41d6f8f21bb3.s3tc.ctex"]
+dest_files=["res://.godot/imported/sawed_off_shotgun_engineer_texture.png-5867a894c4bb47808b9f41d6f8f21bb3.s3tc.ctex", "res://.godot/imported/sawed_off_shotgun_engineer_texture.png-5867a894c4bb47808b9f41d6f8f21bb3.etc2.ctex"]
 
 [params]
 

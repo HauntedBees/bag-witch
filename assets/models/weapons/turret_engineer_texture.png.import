@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bd5df7wdvim4r"
 path.s3tc="res://.godot/imported/turret_engineer_texture.png-f92a12e295644d17b0fce0c80f4fe34d.s3tc.ctex"
+path.etc2="res://.godot/imported/turret_engineer_texture.png-f92a12e295644d17b0fce0c80f4fe34d.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/weapons/turret_engineer_texture.png"
-dest_files=["res://.godot/imported/turret_engineer_texture.png-f92a12e295644d17b0fce0c80f4fe34d.s3tc.ctex"]
+dest_files=["res://.godot/imported/turret_engineer_texture.png-f92a12e295644d17b0fce0c80f4fe34d.s3tc.ctex", "res://.godot/imported/turret_engineer_texture.png-f92a12e295644d17b0fce0c80f4fe34d.etc2.ctex"]
 
 [params]
 

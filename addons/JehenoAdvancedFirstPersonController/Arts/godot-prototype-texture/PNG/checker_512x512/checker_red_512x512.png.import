@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bon4mtbhvo3qo"
 path.s3tc="res://.godot/imported/checker_red_512x512.png-51853dc215117f039ca9b9eabca709b2.s3tc.ctex"
+path.etc2="res://.godot/imported/checker_red_512x512.png-51853dc215117f039ca9b9eabca709b2.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://addons/JehenoAdvancedFirstPersonController/Arts/godot-prototype-texture/PNG/checker_512x512/checker_red_512x512.png"
-dest_files=["res://.godot/imported/checker_red_512x512.png-51853dc215117f039ca9b9eabca709b2.s3tc.ctex"]
+dest_files=["res://.godot/imported/checker_red_512x512.png-51853dc215117f039ca9b9eabca709b2.s3tc.ctex", "res://.godot/imported/checker_red_512x512.png-51853dc215117f039ca9b9eabca709b2.etc2.ctex"]
 
 [params]
 

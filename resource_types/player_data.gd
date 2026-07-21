@@ -32,7 +32,7 @@ signal potion_removed(p: Potion)
 	set(value):
 		bag = value
 		stat_changed.emit()
-@export var speed := 3:
+@export var speed := 1:
 	set(value):
 		speed = value
 		stat_changed.emit()

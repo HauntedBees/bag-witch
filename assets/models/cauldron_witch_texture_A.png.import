@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://1tlemq00wgrx"
 path.s3tc="res://.godot/imported/cauldron_witch_texture_A.png-1b3d0cfa29ae4249837c00c35acb05cf.s3tc.ctex"
+path.etc2="res://.godot/imported/cauldron_witch_texture_A.png-1b3d0cfa29ae4249837c00c35acb05cf.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/cauldron_witch_texture_A.png"
-dest_files=["res://.godot/imported/cauldron_witch_texture_A.png-1b3d0cfa29ae4249837c00c35acb05cf.s3tc.ctex"]
+dest_files=["res://.godot/imported/cauldron_witch_texture_A.png-1b3d0cfa29ae4249837c00c35acb05cf.s3tc.ctex", "res://.godot/imported/cauldron_witch_texture_A.png-1b3d0cfa29ae4249837c00c35acb05cf.etc2.ctex"]
 
 [params]
 

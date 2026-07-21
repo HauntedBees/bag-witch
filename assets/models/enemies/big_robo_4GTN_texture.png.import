@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://valmycwchfuq"
 path.s3tc="res://.godot/imported/big_robo_4GTN_texture.png-583c0c2b5d4e60092b2bee59133ab693.s3tc.ctex"
+path.etc2="res://.godot/imported/big_robo_4GTN_texture.png-583c0c2b5d4e60092b2bee59133ab693.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/enemies/big_robo_4GTN_texture.png"
-dest_files=["res://.godot/imported/big_robo_4GTN_texture.png-583c0c2b5d4e60092b2bee59133ab693.s3tc.ctex"]
+dest_files=["res://.godot/imported/big_robo_4GTN_texture.png-583c0c2b5d4e60092b2bee59133ab693.s3tc.ctex", "res://.godot/imported/big_robo_4GTN_texture.png-583c0c2b5d4e60092b2bee59133ab693.etc2.ctex"]
 
 [params]
 

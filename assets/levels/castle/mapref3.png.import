@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://btynphxtamflp"
 path.s3tc="res://.godot/imported/mapref3.png-0d81c10d2c0dcf084e8604a12c896780.s3tc.ctex"
+path.etc2="res://.godot/imported/mapref3.png-0d81c10d2c0dcf084e8604a12c896780.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/levels/castle/mapref3.png"
-dest_files=["res://.godot/imported/mapref3.png-0d81c10d2c0dcf084e8604a12c896780.s3tc.ctex"]
+dest_files=["res://.godot/imported/mapref3.png-0d81c10d2c0dcf084e8604a12c896780.s3tc.ctex", "res://.godot/imported/mapref3.png-0d81c10d2c0dcf084e8604a12c896780.etc2.ctex"]
 
 [params]
 

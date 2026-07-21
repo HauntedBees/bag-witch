@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cj2ram1q57spk"
 path.s3tc="res://.godot/imported/MetalnessLow.png-7104c4f16e08dcce24a9aa0560cb814f.s3tc.ctex"
+path.etc2="res://.godot/imported/MetalnessLow.png-7104c4f16e08dcce24a9aa0560cb814f.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={}
@@ -13,7 +14,7 @@ generator_parameters={}
 [deps]
 
 source_file="res://assets/models/items/textures/MetalnessLow.png"
-dest_files=["res://.godot/imported/MetalnessLow.png-7104c4f16e08dcce24a9aa0560cb814f.s3tc.ctex"]
+dest_files=["res://.godot/imported/MetalnessLow.png-7104c4f16e08dcce24a9aa0560cb814f.s3tc.ctex", "res://.godot/imported/MetalnessLow.png-7104c4f16e08dcce24a9aa0560cb814f.etc2.ctex"]
 
 [params]
 

@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://r5d7d4cknrrn"
 path.s3tc="res://.godot/imported/orc_orc_texture_A.png-b7ebeb18517ca67883b68a26a5c45744.s3tc.ctex"
+path.etc2="res://.godot/imported/orc_orc_texture_A.png-b7ebeb18517ca67883b68a26a5c45744.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/enemies/orc_orc_texture_A.png"
-dest_files=["res://.godot/imported/orc_orc_texture_A.png-b7ebeb18517ca67883b68a26a5c45744.s3tc.ctex"]
+dest_files=["res://.godot/imported/orc_orc_texture_A.png-b7ebeb18517ca67883b68a26a5c45744.s3tc.ctex", "res://.godot/imported/orc_orc_texture_A.png-b7ebeb18517ca67883b68a26a5c45744.etc2.ctex"]
 
 [params]
 

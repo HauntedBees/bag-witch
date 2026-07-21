@@ -3,7 +3,7 @@ class_name BogWitch extends PlayerCharacter
 signal quest_added(q: Quest)
 signal quest_removed(q: Quest)
 
-var grace_period := 0.0
+var grace_period := 1.0
 var clinging_effects: Array[ClingingEffect] = []
 var ready_to_glide := false
 var alt_hand_for_attack_anim := false

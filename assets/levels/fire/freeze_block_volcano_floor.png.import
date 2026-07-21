@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dybt3gpv45k55"
 path.s3tc="res://.godot/imported/freeze_block_volcano_floor.png-fee3c411b6b412af8d13f4fc8efc71b0.s3tc.ctex"
+path.etc2="res://.godot/imported/freeze_block_volcano_floor.png-fee3c411b6b412af8d13f4fc8efc71b0.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/levels/fire/freeze_block_volcano_floor.png"
-dest_files=["res://.godot/imported/freeze_block_volcano_floor.png-fee3c411b6b412af8d13f4fc8efc71b0.s3tc.ctex"]
+dest_files=["res://.godot/imported/freeze_block_volcano_floor.png-fee3c411b6b412af8d13f4fc8efc71b0.s3tc.ctex", "res://.godot/imported/freeze_block_volcano_floor.png-fee3c411b6b412af8d13f4fc8efc71b0.etc2.ctex"]
 
 [params]
 

@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://rk050uq4angj"
 path.s3tc="res://.godot/imported/big_wand_mage_texture.png-d5288b0c2274193244d0dab5971e6511.s3tc.ctex"
+path.etc2="res://.godot/imported/big_wand_mage_texture.png-d5288b0c2274193244d0dab5971e6511.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/weapons/big_wand_mage_texture.png"
-dest_files=["res://.godot/imported/big_wand_mage_texture.png-d5288b0c2274193244d0dab5971e6511.s3tc.ctex"]
+dest_files=["res://.godot/imported/big_wand_mage_texture.png-d5288b0c2274193244d0dab5971e6511.s3tc.ctex", "res://.godot/imported/big_wand_mage_texture.png-d5288b0c2274193244d0dab5971e6511.etc2.ctex"]
 
 [params]
 

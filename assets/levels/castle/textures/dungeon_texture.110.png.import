@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://y3vkwg3ki0qm"
 path.s3tc="res://.godot/imported/dungeon_texture.110.png-daa076f5f78ae82419ea359eb0c6efb3.s3tc.ctex"
+path.etc2="res://.godot/imported/dungeon_texture.110.png-daa076f5f78ae82419ea359eb0c6efb3.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/levels/castle/textures/dungeon_texture.110.png"
-dest_files=["res://.godot/imported/dungeon_texture.110.png-daa076f5f78ae82419ea359eb0c6efb3.s3tc.ctex"]
+dest_files=["res://.godot/imported/dungeon_texture.110.png-daa076f5f78ae82419ea359eb0c6efb3.s3tc.ctex", "res://.godot/imported/dungeon_texture.110.png-daa076f5f78ae82419ea359eb0c6efb3.etc2.ctex"]
 
 [params]
 
