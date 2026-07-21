@@ -170,7 +170,9 @@ func _on_item_dropped(drag_details: ItemDragDetails, grid_pos: Vector2i) -> void
 				_inventory.remove_item(item)
 				old_info.empty()
 				_bake_item_positions()
-			if potential_merge.item is StatCrystal:
+			if potential_merge.item is Spellbook:
+				_draw_spells()
+			elif potential_merge.item is StatCrystal:
 				var crystal: StatCrystal = potential_merge.item
 				if crystal.is_ready(potential_merge):
 					_use_crystal(crystal, potential_merge)

@@ -4,10 +4,12 @@
 [ext_resource type="Script" uid="uid://bh5gblgdby5gl" path="res://resource_types/spells/spell.gd" id="2_a8ugg"]
 [ext_resource type="Resource" uid="uid://dn56uhy46vn32" path="res://spells/icicle.tres" id="3_le3ku"]
 [ext_resource type="Resource" uid="uid://dnft5khdupabw" path="res://spells/icicle2.tres" id="4_3de0r"]
+[ext_resource type="Resource" uid="uid://dc8e456a32hwk" path="res://spells/icicle3.tres" id="5_3de0r"]
 
 [resource]
 script = ExtResource("1_2tdtb")
 spells = Array[ExtResource("2_a8ugg")]([ExtResource("3_le3ku"), ExtResource("4_3de0r")])
+unlockable_spells = Array[ExtResource("2_a8ugg")]([ExtResource("5_3de0r")])
 name = "Book of Ice"
 description = "This book has runes for the \"Icicle I\" and \"Icicle II\" spells."
 type = 1
