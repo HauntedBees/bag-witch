@@ -12,6 +12,8 @@
 [ext_resource type="Script" uid="uid://bh3e52s7bb0by" path="res://environment/portals/warp_point.gd" id="10_hso2e"]
 [ext_resource type="PackedScene" uid="uid://cm0m2edwk6cv6" path="res://items/world/food/carrot.tscn" id="11_ipkyn"]
 [ext_resource type="PackedScene" uid="uid://fptwiggukf88" path="res://items/world/weapons/rock.tscn" id="12_tlsib"]
+[ext_resource type="PackedScene" uid="uid://8pmjrnhr3wew" path="res://environment/portals/portal_subviewport_pair.tscn" id="13_d1xi5"]
+[ext_resource type="Texture2D" uid="uid://b468d6ayq7u4d" path="res://assets/sprites/warps.png" id="14_pfai5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kxgis"]
 size = Vector3(64.847, 10, 28.856)
@@ -34,6 +36,18 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 11
+
+[sub_resource type="Environment" id="Environment_u7iwl"]
+
+[sub_resource type="World3D" id="World3D_pjvrk"]
+resource_local_to_scene = true
+environment = SubResource("Environment_u7iwl")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3qq6y"]
+resource_local_to_scene = true
+atlas = ExtResource("14_pfai5")
+region = Rect2(256, 256, 256, 256)
+filter_clip = true
 
 [node name="Fermanagh" type="Node3D" unique_id=1402286213]
 script = ExtResource("1_of8ud")
@@ -138,10 +152,10 @@ transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 168.
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 83.10835, -1.9183044, 38.512)
 
 [node name="ice_mountain_squart4" parent="Squarts" unique_id=380843074 instance=ExtResource("6_kxgis")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 89.37894, 8.859207, 66.23881)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 89.37894, 5.030838, 63.398727)
 
 [node name="ice_mountain_squart5" parent="Squarts" unique_id=374529507 instance=ExtResource("6_kxgis")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 89.773, 9.388168, 123.61331)
+transform = Transform3D(-2, 0, 3.019916e-07, 0, 1, 0, -3.019916e-07, 0, -2, 89.773, 1.1843109, 123.61331)
 
 [node name="FermPoints" type="Path3D" parent="." unique_id=432790770]
 curve = SubResource("Curve3D_tlsib")
@@ -185,3 +199,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.756714, -17.179932, -47.99
 
 [node name="Rock" parent="." unique_id=1514677953 instance=ExtResource("12_tlsib")]
 transform = Transform3D(1, 0, 0, 0, -0.1736482, 0.9848077, 0, -0.9848077, -0.1736482, -78.65681, -17.382166, -11.933126)
+
+[node name="PortalCameraPair" parent="." unique_id=1775018926 instance=ExtResource("13_d1xi5")]
+transform = Transform3D(0.42261824, 0, -0.9063078, 0, 1, 0, 0.9063078, 0, 0.42261824, 91.67688, 4.2855225, 127.51526)
+
+[node name="Portal" parent="PortalCameraPair" index="0" unique_id=573598963]
+teleport_scene = "uid://dkgap8kw2cyfc"
+teleport_point_name = "SecretRoom"
+
+[node name="PortalSubviewportExternal" parent="PortalCameraPair" index="1" unique_id=389194511]
+world_3d = SubResource("World3D_pjvrk")
+
+[node name="Sprite3D" parent="PortalCameraPair/PortalSubviewportExternal" index="1" unique_id=923265973]
+texture = SubResource("AtlasTexture_3qq6y")
+
+[editable path="PortalCameraPair"]
+[editable path="PortalCameraPair/PortalSubviewportExternal"]
