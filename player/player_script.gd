@@ -408,6 +408,26 @@ func _try_add_item(item: Item) -> InventoryDetail:
 func _try_switch_weapon(event: InputEvent) -> bool:
 	if _in_inventory || _reloading_time_remaining > 0.0:
 		return false
+	if GASInput.is_event_action_just_pressed(event, &"cycle_weapon_right"):
+		if Player.data.current_equipped == null:
+			Player.try_change_weapon(0)
+			return true
+		var slots := 10
+		var idx := (Player.data.equip_slots.find(Player.data.current_equipped) + 1) % slots
+		while Player.data.equip_slots[idx] == null:
+			idx = (idx + 1) % slots
+		Player.try_change_weapon(idx)
+		return true
+	if GASInput.is_event_action_just_pressed(event, &"cycle_weapon_left"):
+		if Player.data.current_equipped == null:
+			Player.try_change_weapon(0)
+			return true
+		var slots := 10
+		var idx := posmod(Player.data.equip_slots.find(Player.data.current_equipped) - 1, slots)
+		while Player.data.equip_slots[idx] == null:
+			idx = posmod(idx - 1, slots)
+		Player.try_change_weapon(idx)
+		return true
 	for i in BWEnum.WEAPON_SLOTS.size():
 		if GASInput.is_event_action_just_pressed(event, BWEnum.WEAPON_SLOTS[i]):
 			Player.try_change_weapon(i)

@@ -66,7 +66,7 @@ func input_management() -> void:
 		if play_char.time_bef_can_dash_again <= 0.0 and play_char.nb_dashs_allowed > 0:
 			transitioned.emit(self, "DashState")
 
-	if Input.is_action_just_pressed(play_char.fly_action):
+	if Input.is_action_just_pressed(play_char.fly_action) && BWEnum.ALLOW_FLIGHT:
 		transitioned.emit(self, "FlyState")
 
 	if Input.is_action_just_pressed(play_char.slide_action):
