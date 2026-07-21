@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://bas7v8xeta3wi"]
+
+[ext_resource type="Script" uid="uid://bilnrkrpjitk8" path="res://items/world/prepopulated_world_item.gd" id="1_7kk5i"]
+[ext_resource type="PackedScene" uid="uid://md4neqx20w8h" path="res://assets/models/items/key.blend" id="2_7kk5i"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rhbnc"]
+size = Vector3(3.1794434, 2.4077148, 2.5692139)
+
+[sub_resource type="Animation" id="Animation_7kk5i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node3D/key:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.21797252, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node3D/key:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jbug5"]
+resource_name = "key"
+length = 3.0000000000000004
+loop_mode = 1
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node3D/key:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.21797252, 0), Vector3(0, 0.93766916, 0), Vector3(0, 0.21797252, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node3D/key:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 12.566371, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8fbdk"]
+_data = {
+&"RESET": SubResource("Animation_7kk5i"),
+&"key": SubResource("Animation_jbug5")
+}
+
+[node name="Key" type="Area3D" unique_id=458796508 node_paths=PackedStringArray("collider")]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_7kk5i")
+collider = NodePath("CollisionShape3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1439180978]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23693848, 1.187456, 0.10473633)
+shape = SubResource("BoxShape3D_rhbnc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1853737725]
+libraries/ = SubResource("AnimationLibrary_8fbdk")
+autoplay = &"key"
+
+[node name="Node3D" type="Node3D" parent="." unique_id=1666916881]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5557151, 0)
+
+[node name="key" parent="Node3D" unique_id=238245948 instance=ExtResource("2_7kk5i")]
+transform = Transform3D(3.0000002, 0, 0, 0, 3, 0, 0, 0, 3.0000002, 0, 0.21797252, 0)

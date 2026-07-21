@@ -33,6 +33,7 @@
 [ext_resource type="PackedScene" uid="uid://dbwqxpym38n74" path="res://assets/models/weapons/big_sword.blend" id="31_0mser"]
 [ext_resource type="PackedScene" uid="uid://c4eehlhqu23r8" path="res://assets/models/items/potion_c.blend" id="32_3jek5"]
 [ext_resource type="PackedScene" uid="uid://c77cqokcrngbg" path="res://assets/models/weapons/book_closed.blend" id="33_j7t2d"]
+[ext_resource type="PackedScene" uid="uid://md4neqx20w8h" path="res://assets/models/items/key.blend" id="34_jpsqj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eeolf"]
 shading_mode = 0
@@ -181,6 +182,10 @@ visible = false
 
 [node name="book_closed" parent="ThingContainer" unique_id=1729289132 instance=ExtResource("33_j7t2d")]
 transform = Transform3D(-3.809701e-09, -1, -4.3545054e-08, 0.087155804, -4.371139e-08, 0.9961947, -0.9961947, 0, 0.087155804, 0, 0, 0)
+visible = false
+
+[node name="key" parent="ThingContainer" unique_id=238245948 instance=ExtResource("34_jpsqj")]
+transform = Transform3D(0.7265342, -0.6871304, 0, 0.6871304, 0.7265342, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=120314320]
 transform = Transform3D(0.9717929, 0.11896129, -0.20363402, 0, 0.8634562, 0.50442386, 0.23583597, -0.4901955, 0.8391006, 0, 3.8723497, 4.9881706)

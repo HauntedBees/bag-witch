@@ -88,11 +88,11 @@ _data = {
 }
 point_count = 12
 
-[sub_resource type="Environment" id="Environment_u7iwl"]
+[sub_resource type="Environment" id="Environment_4bsba"]
 
 [sub_resource type="World3D" id="World3D_ht1gs"]
 resource_local_to_scene = true
-environment = SubResource("Environment_u7iwl")
+environment = SubResource("Environment_4bsba")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_euduq"]
 resource_local_to_scene = true
@@ -132,6 +132,15 @@ mesh = SubResource("CylinderMesh_mkopk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Lava" unique_id=930664306]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -14, 0)
+shape = SubResource("CylinderShape3D_rhbnc")
+
+[node name="LavaFloor" type="StaticBody3D" parent="." unique_id=1627340149]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.7625237, 0)
+collision_layer = 15
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LavaFloor" unique_id=932867734]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -19.733871, 0)
 shape = SubResource("CylinderShape3D_rhbnc")
 
 [node name="SlimeSpawnerBottom" type="Node3D" parent="." unique_id=1913732965 node_paths=PackedStringArray("potential_spawn_points", "enemy_point_collection", "spawn_container")]

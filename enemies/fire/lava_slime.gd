@@ -1,13 +1,16 @@
-extends EnemyDisplay
+class_name LavaSlime extends EnemyDisplay
 
 const _SMOKE_SCENE := preload("uid://bce761tpdiksy")
 const _MAX_SCALE := 5.0
+const _MAX_LAVA_SCALE := 50.0
 
 @export var has_key := false
 
 var _current_scale := 1.0
+var _soaked_in_lava := false
 
 func _die() -> void:
+	_try_drop()
 	set_collision_layer_value(4, false)
 	on_died.emit()
 	var smoke: SmokeCloud = _SMOKE_SCENE.instantiate()
@@ -20,6 +23,13 @@ func _die() -> void:
 	t.tween_property(self, "rotation_degrees:y", 3600.0, 5.0)
 	t.set_parallel(false)
 	t.tween_callback(queue_free)
+
+func lava_up() -> void:
+	if _soaked_in_lava:
+		return
+	_soaked_in_lava = true
+	var t := create_tween()
+	t.tween_property(self, "scale", _MAX_LAVA_SCALE * Vector3.ONE, 3.0)
 
 func take_specific_damage(_damage_dealt: int) -> void:
 	return
@@ -36,7 +46,7 @@ func receive_weapon_hit(source: Vector3, w: Weapon, has_impact_position := false
 			scale = _current_scale * Vector3.ONE
 			break
 	var damage_dealt := 0
-	if !is_ice_attack && _is_frozen() && w.is_high_impact:
+	if !is_ice_attack && _is_frozen():
 		damage_dealt = randi_range(w.damage_range.x, w.damage_range.y)
 	on_hit.emit(w, source, damage_dealt, impact_position if has_impact_position else global_position, false)
 	if is_dead():

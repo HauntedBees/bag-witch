@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="KeyItem" format=3 uid="uid://sg2acn24uog7"]
+
+[ext_resource type="Script" uid="uid://2r8b3uihv0w2" path="res://resource_types/items/key.gd" id="1_y3fy2"]
+
+[resource]
+script = ExtResource("1_y3fy2")
+door_id = &"lava_slime"
+name = "Lava Slime's Key"
+description = "I got this from the belly of a slime."
+icon = Rect2i(3, 7, 1, 1)
+scene_path = "uid://bas7v8xeta3wi"
+metadata/_custom_type_script = "uid://2r8b3uihv0w2"

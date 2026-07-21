@@ -1,11 +1,15 @@
 [gd_scene format=3 uid="uid://j6ijx2yvkafq"]
 
 [ext_resource type="Script" uid="uid://c43mopu1jqdv0" path="res://enemies/fire/lava_slime.gd" id="1_w5hsp"]
+[ext_resource type="Script" uid="uid://cgt7ckkn1gh5b" path="res://resource_types/items/item.gd" id="2_6crcg"]
 [ext_resource type="PackedScene" uid="uid://5mfo3873qvty" path="res://assets/models/enemies/lava_slime.blend" id="2_7rox6"]
 [ext_resource type="Resource" uid="uid://dnxwvr16xgouf" path="res://items/enemies/lava_slime.tres" id="2_qaqv0"]
 [ext_resource type="Script" uid="uid://c7obdbhjgnuay" path="res://enemies/behaviors/enemy_chase_player.gd" id="3_4xvut"]
+[ext_resource type="Resource" uid="uid://dkq75or5ap7mf" path="res://items/food/apple.tres" id="3_xnbry"]
+[ext_resource type="Resource" uid="uid://et3im2qvxysa" path="res://items/crystals/speed_sapphire.tres" id="4_45kdf"]
 [ext_resource type="Script" uid="uid://b2ldfj5ngv3ch" path="res://enemies/behaviors/enemy_melee_player.gd" id="4_nihj0"]
 [ext_resource type="Script" uid="uid://dxggsp43p5ket" path="res://enemies/behaviors/enemy_alert_friends.gd" id="5_a8v5d"]
+[ext_resource type="Resource" uid="uid://drbkhbnqy2d58" path="res://items/spellbooks/book_of_fire.tres" id="5_xagjh"]
 [ext_resource type="Script" uid="uid://cw1pwskvve6sn" path="res://enemies/behaviors/enemy_walk_between_points.gd" id="6_6sqvx"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_wf1cx"]
@@ -26,6 +30,7 @@ collision_layer = 9
 collision_mask = 3
 script = ExtResource("1_w5hsp")
 enemy_name = "Lava Slime"
+potential_drops = Array[ExtResource("2_6crcg")]([ExtResource("3_xnbry"), ExtResource("4_45kdf"), ExtResource("5_xagjh")])
 capture_level = 1
 suck_drop = ExtResource("2_qaqv0")
 max_health = 5
