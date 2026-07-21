@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Spellbook" format=3 uid="uid://drbkhbnqy2d58"]
+
+[ext_resource type="Script" uid="uid://cbas7jc82h2rj" path="res://resource_types/items/spell_book.gd" id="1_iqp6v"]
+[ext_resource type="Script" uid="uid://bh5gblgdby5gl" path="res://resource_types/spells/spell.gd" id="2_c4qij"]
+[ext_resource type="Resource" uid="uid://w2fsdi0pdqtq" path="res://spells/fireball.tres" id="3_iqp6v"]
+[ext_resource type="Resource" uid="uid://7pq7lupy2ii0" path="res://spells/fireball2.tres" id="4_c4qij"]
+
+[resource]
+script = ExtResource("1_iqp6v")
+spells = Array[ExtResource("2_c4qij")]([ExtResource("3_iqp6v"), ExtResource("4_c4qij")])
+name = "Book of Fire"
+description = "This book has runes for the \"Fireball I\" and \"Fireball II\" spells."
+type = 1
+size = Vector2i(2, 1)
+icon = Rect2i(0, 1, 2, 1)
+rotated_by_default = true
+metadata/_custom_type_script = "uid://cbas7jc82h2rj"

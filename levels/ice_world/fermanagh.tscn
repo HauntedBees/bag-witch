@@ -9,6 +9,9 @@
 [ext_resource type="Script" uid="uid://bn3r43bitaf3i" path="res://environment/point_collection.gd" id="7_pm6l3"]
 [ext_resource type="Script" uid="uid://b7o0pdvrytkig" path="res://levels/enemy_spawner.gd" id="8_hso2e"]
 [ext_resource type="PackedScene" uid="uid://cphjo0ynxtgmo" path="res://enemies/ice/ice_golem.tscn" id="9_ipkyn"]
+[ext_resource type="Script" uid="uid://bh3e52s7bb0by" path="res://environment/portals/warp_point.gd" id="10_hso2e"]
+[ext_resource type="PackedScene" uid="uid://cm0m2edwk6cv6" path="res://items/world/food/carrot.tscn" id="11_ipkyn"]
+[ext_resource type="PackedScene" uid="uid://fptwiggukf88" path="res://items/world/weapons/rock.tscn" id="12_tlsib"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kxgis"]
 size = Vector3(64.847, 10, 28.856)
@@ -138,7 +141,7 @@ transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 83.1
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 89.37894, 8.859207, 66.23881)
 
 [node name="ice_mountain_squart5" parent="Squarts" unique_id=374529507 instance=ExtResource("6_kxgis")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 89.773, 13.15834, 97.57512)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 89.773, 9.388168, 123.61331)
 
 [node name="FermPoints" type="Path3D" parent="." unique_id=432790770]
 curve = SubResource("Curve3D_tlsib")
@@ -155,3 +158,30 @@ max_spawned = 2
 metadata/_custom_type_script = "uid://b7o0pdvrytkig"
 
 [node name="FermEnemies" type="Node3D" parent="." unique_id=1005139542]
+
+[node name="FermanaghWarp" type="RayCast3D" parent="." unique_id=1141459165]
+transform = Transform3D(0.49999997, 0, -0.86602545, 0, 1, 0, 0.86602545, 0, 0.49999997, -49.55517, -16.586975, 0)
+target_position = Vector3(0, 0, -20)
+script = ExtResource("10_hso2e")
+metadata/_custom_type_script = "uid://bh3e52s7bb0by"
+
+[node name="CarrotPatch" type="Node3D" parent="." unique_id=569571162]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.085083, -0.9388428, 0)
+
+[node name="Carrot" parent="CarrotPatch" unique_id=621096524 instance=ExtResource("11_ipkyn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.143921, -17.179932, -49.107765)
+
+[node name="Carrot2" parent="CarrotPatch" unique_id=663822 instance=ExtResource("11_ipkyn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.143921, -17.179932, -46.7749)
+
+[node name="Carrot3" parent="CarrotPatch" unique_id=781481783 instance=ExtResource("11_ipkyn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.6077576, -17.179932, -49.107765)
+
+[node name="Carrot4" parent="CarrotPatch" unique_id=1327205939 instance=ExtResource("11_ipkyn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.6077576, -17.179932, -46.7749)
+
+[node name="Carrot5" parent="CarrotPatch" unique_id=2046542961 instance=ExtResource("11_ipkyn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.756714, -17.179932, -47.999863)
+
+[node name="Rock" parent="." unique_id=1514677953 instance=ExtResource("12_tlsib")]
+transform = Transform3D(1, 0, 0, 0, -0.1736482, 0.9848077, 0, -0.9848077, -0.1736482, -78.65681, -17.382166, -11.933126)

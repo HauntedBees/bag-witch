@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cjlidc7juluwi" path="res://enemies/enemy.gd" id="1_7iucr"]
 [ext_resource type="Script" uid="uid://cgt7ckkn1gh5b" path="res://resource_types/items/item.gd" id="2_i1770"]
+[ext_resource type="Resource" uid="uid://drbkhbnqy2d58" path="res://items/spellbooks/book_of_fire.tres" id="3_7145n"]
 [ext_resource type="Resource" uid="uid://cjykdl4q3h120" path="res://items/food/mushroom.tres" id="4_ihryr"]
 [ext_resource type="Resource" uid="uid://7u7qquf88cla" path="res://items/food/carrot.tres" id="5_7145n"]
 [ext_resource type="Resource" uid="uid://dkq75or5ap7mf" path="res://items/food/apple.tres" id="5_ys3eq"]
@@ -36,7 +37,7 @@ collision_layer = 9
 collision_mask = 3
 script = ExtResource("1_7iucr")
 enemy_name = "Mage"
-potential_drops = Array[ExtResource("2_i1770")]([ExtResource("5_ys3eq"), ExtResource("4_ihryr"), ExtResource("5_7145n"), ExtResource("6_w7r65"), ExtResource("7_j5grf")])
+potential_drops = Array[ExtResource("2_i1770")]([ExtResource("3_7145n"), ExtResource("5_ys3eq"), ExtResource("4_ihryr"), ExtResource("5_7145n"), ExtResource("6_w7r65"), ExtResource("7_j5grf")])
 potential_drop_chance = 0.4
 capture_level = 2
 max_health = 65
@@ -125,7 +126,6 @@ collision_mask = 2
 script = ExtResource("8_w7r65")
 range = 15.0
 angle = 70.0
-debug_draw = true
 collision_mask_ = 2
 metadata/_custom_type_script = "uid://cmgcelj1qxg8o"
 

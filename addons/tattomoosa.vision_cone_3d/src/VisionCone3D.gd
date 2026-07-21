@@ -14,6 +14,8 @@ signal body_hidden(body: Node3D)
 ## Emitted when the cone shape changes
 signal shape_changed
 
+const _DEBUG_LOCK := true
+
 #region VisionCone3D
 
 #region members
@@ -45,6 +47,8 @@ const VisionConeDebugVisualizer3D := preload("./debug/VisionConeDebugVisualizer3
 ## Whether or not to draw debug information
 @export var debug_draw := false:
 	set(v):
+		if _DEBUG_LOCK:
+			return
 		debug_draw = v
 		if debug_draw and !_debug_visualizer:
 			_debug_visualizer = VisionConeDebugVisualizer3D.new()

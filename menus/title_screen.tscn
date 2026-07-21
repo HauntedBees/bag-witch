@@ -1,10 +1,17 @@
 [gd_scene format=3 uid="uid://dgyjtcymhrpkp"]
 
 [ext_resource type="Texture2D" uid="uid://bfdpdlx4xpjkt" path="res://assets/sprites/title_bg.png" id="1_2pwrd"]
+[ext_resource type="Script" uid="uid://x2hdkno58pwu" path="res://menus/title_screen.gd" id="1_76gmy"]
 [ext_resource type="Texture2D" uid="uid://bwnffv4l4cch0" path="res://assets/sprites/title_bog_witch.png" id="1_dpr3f"]
 [ext_resource type="Texture2D" uid="uid://6agx0cj4cikc" path="res://assets/menus/ring.png" id="1_i63b8"]
 [ext_resource type="Texture2D" uid="uid://d0c7so5rfj4g1" path="res://assets/menus/game_logo.png" id="1_m4alt"]
 [ext_resource type="Script" uid="uid://bb18ytpeulyhh" path="res://menus/bog_witch_title.gd" id="3_vw2mf"]
+[ext_resource type="Texture2D" uid="uid://c1jditcnn7st6" path="res://assets/sprites/buttons.png" id="6_vppps"]
+[ext_resource type="LabelSettings" uid="uid://cv2nv0q56shf6" path="res://assets/fonts/body_text.tres" id="7_76gmy"]
+[ext_resource type="Script" uid="uid://hafxp56l0iao" path="res://addons/gas/gas_label.gd" id="8_ctf6r"]
+[ext_resource type="AudioStream" uid="uid://ckeigba41ani3" path="res://assets/music/title.ogg" id="10_ctf6r"]
+[ext_resource type="PackedScene" uid="uid://q31nttrkbxcg" path="res://menus/options_menu.tscn" id="11_dbvjn"]
+[ext_resource type="PackedScene" uid="uid://85ebibl4e8nh" path="res://menus/save/save_screen.tscn" id="12_eujrm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dpr3f"]
 atlas = ExtResource("1_dpr3f")
@@ -49,6 +56,75 @@ _data = {
 &"bg_move": SubResource("Animation_kc2cy")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_dbvjn"]
+atlas = ExtResource("6_vppps")
+region = Rect2(0, 0, 200, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eujrm"]
+atlas = ExtResource("6_vppps")
+region = Rect2(200, 0, 200, 70)
+
+[sub_resource type="Animation" id="Animation_eujrm"]
+resource_name = "FadeToBlack"
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/FadeToBlack:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.01),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/FadeToBlack:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_cqggn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/FadeToBlack:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/FadeToBlack:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cqggn"]
+_data = {
+&"FadeToBlack": SubResource("Animation_eujrm"),
+&"RESET": SubResource("Animation_cqggn")
+}
+
 [node name="TitleScreen" type="Control" unique_id=1594711524]
 layout_mode = 3
 anchors_preset = 15
@@ -56,6 +132,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_76gmy")
 
 [node name="BG" type="TextureRect" parent="." unique_id=1089301640]
 custom_minimum_size = Vector2(3840, 1080)
@@ -114,3 +191,131 @@ texture = ExtResource("1_m4alt")
 libraries/ = SubResource("AnimationLibrary_823ok")
 autoplay = &"bg_move"
 speed_scale = 0.01
+
+[node name="MarginContainer3" type="MarginContainer" parent="." unique_id=1875935249]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_bottom = 128
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer3" unique_id=1039278385]
+layout_mode = 2
+size_flags_vertical = 8
+alignment = 1
+
+[node name="NewGame" type="TextureButton" parent="MarginContainer3/HBoxContainer" unique_id=321950212]
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = SubResource("AtlasTexture_dbvjn")
+texture_hover = SubResource("AtlasTexture_eujrm")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer3/HBoxContainer/NewGame" unique_id=2118254961]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GASLabel" type="Label" parent="MarginContainer3/HBoxContainer/NewGame/MarginContainer" unique_id=460429312]
+layout_mode = 2
+text = "New Game"
+label_settings = ExtResource("7_76gmy")
+horizontal_alignment = 1
+script = ExtResource("8_ctf6r")
+metadata/_custom_type_script = "uid://hafxp56l0iao"
+
+[node name="Continue" type="TextureButton" parent="MarginContainer3/HBoxContainer" unique_id=712321993]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = SubResource("AtlasTexture_dbvjn")
+texture_hover = SubResource("AtlasTexture_eujrm")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer3/HBoxContainer/Continue" unique_id=730183451]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GASLabel" type="Label" parent="MarginContainer3/HBoxContainer/Continue/MarginContainer" unique_id=2049629690]
+layout_mode = 2
+text = "Continue"
+label_settings = ExtResource("7_76gmy")
+horizontal_alignment = 1
+script = ExtResource("8_ctf6r")
+metadata/_custom_type_script = "uid://hafxp56l0iao"
+
+[node name="Options" type="TextureButton" parent="MarginContainer3/HBoxContainer" unique_id=1365479226]
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = SubResource("AtlasTexture_dbvjn")
+texture_hover = SubResource("AtlasTexture_eujrm")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer3/HBoxContainer/Options" unique_id=1974448925]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GASLabel" type="Label" parent="MarginContainer3/HBoxContainer/Options/MarginContainer" unique_id=518370715]
+layout_mode = 2
+text = "Options"
+label_settings = ExtResource("7_76gmy")
+horizontal_alignment = 1
+script = ExtResource("8_ctf6r")
+metadata/_custom_type_script = "uid://hafxp56l0iao"
+
+[node name="TitleMusic" type="AudioStreamPlayer" parent="." unique_id=356629531]
+unique_name_in_owner = true
+stream = ExtResource("10_ctf6r")
+
+[node name="OptionsMenu" parent="." unique_id=960938909 instance=ExtResource("11_dbvjn")]
+unique_name_in_owner = true
+visible = false
+active = false
+
+[node name="SaveScreen" parent="." unique_id=1113695259 instance=ExtResource("12_eujrm")]
+unique_name_in_owner = true
+visible = false
+is_load = true
+active = false
+
+[node name="FadePlayer" type="AnimationPlayer" parent="." unique_id=1784063499]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_cqggn")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1005735634]
+layer = 1000
+
+[node name="FadeToBlack" type="ColorRect" parent="CanvasLayer" unique_id=1230587199]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[connection signal="pressed" from="MarginContainer3/HBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="MarginContainer3/HBoxContainer/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="MarginContainer3/HBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="closed" from="OptionsMenu" to="." method="_on_options_menu_closed"]
+[connection signal="closed" from="SaveScreen" to="." method="_on_save_screen_closed"]
+[connection signal="load_save" from="SaveScreen" to="." method="_on_save_screen_load_save"]

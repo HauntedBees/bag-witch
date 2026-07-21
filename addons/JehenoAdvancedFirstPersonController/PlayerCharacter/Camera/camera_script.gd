@@ -78,7 +78,7 @@ var state : String
 
 #references variables
 @onready var camera : Camera3D = $Camera
-@onready var play_char : PlayerCharacter = $".."
+@onready var play_char : BogWitch = $".."
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED) #set mouse mode as captured
@@ -296,3 +296,6 @@ func _toggle_mouse_mode(new_value: bool) -> void:
 	mouse_free = new_value
 	if !mouse_free: Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	else: Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
+func _on_pause_menu_pause_toggled(paused: bool) -> void:
+	_toggle_mouse_mode(paused || play_char.is_inventory_open())

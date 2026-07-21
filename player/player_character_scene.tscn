@@ -24,6 +24,7 @@
 [ext_resource type="Script" uid="uid://clx8a6kmuy5u4" path="res://player/quest_details_container.gd" id="20_iy4o2"]
 [ext_resource type="PackedScene" uid="uid://b4obhtxbka16h" path="res://player/hud/text_container.tscn" id="21_dehhv"]
 [ext_resource type="Shader" uid="uid://chplq7fb4mgyg" path="res://assets/shaders/speed_lines.gdshader" id="21_pdci5"]
+[ext_resource type="PackedScene" uid="uid://bhkdonapr77nk" path="res://menus/pause_menu.tscn" id="25_85h7n"]
 
 [sub_resource type="Curve" id="Curve_pdci5"]
 _limits = [10.0, 30.0, 0.0, 60.0]
@@ -106,7 +107,7 @@ _data = {
 &"speed": SubResource("Animation_dehhv")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_wyo4h"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_85h7n"]
 viewport_path = NodePath("SubViewport")
 
 [node name="PlayerCharacter" type="CharacterBody3D" unique_id=1631114635 groups=["PlayerCharacter"]]
@@ -219,6 +220,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2658556, -1.070638, -1.6036
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CameraHolder/ProjectileSpot" unique_id=1010615469]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.57214355, 0)
+visible = false
 mesh = SubResource("BoxMesh_rhbnc")
 
 [node name="ProjectileSpot2" type="Node3D" parent="CameraHolder" unique_id=2133596762]
@@ -227,6 +229,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.266, -1.071, -1.604)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CameraHolder/ProjectileSpot2" unique_id=1105527693]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.57214355, 0)
+visible = false
 mesh = SubResource("BoxMesh_rhbnc")
 
 [node name="Hitbox" type="CollisionShape3D" parent="." unique_id=795912197]
@@ -264,7 +267,7 @@ exclude_parent = false
 target_position = Vector3(0, -3, 0)
 debug_shape_custom_color = Color(0, 0.823529, 0.956863, 1)
 
-[node name="HUDLayer" type="CanvasLayer" parent="." unique_id=1289413728]
+[node name="HUDLayer" type="CanvasLayer" parent="." unique_id=1289413728 groups=["hud"]]
 follow_viewport_enabled = true
 
 [node name="HUD" type="Control" parent="HUDLayer" unique_id=530175044]
@@ -301,7 +304,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
-texture = SubResource("ViewportTexture_wyo4h")
+texture = SubResource("ViewportTexture_85h7n")
 
 [node name="Crosshair" type="CenterContainer" parent="HUDLayer/HUD" unique_id=1562813601]
 layout_mode = 1
@@ -369,8 +372,11 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 1
 
+[node name="PauseMenu" parent="." unique_id=706857508 instance=ExtResource("25_85h7n")]
+
 [connection signal="change_fov" from="StateMachine" to="CameraHolder" method="change_fov"]
 [connection signal="jumped" from="StateMachine/JumpState" to="." method="_on_jump_state_jumped"]
 [connection signal="inventory_toggled" from="HUDLayer/HUD/InventoryDisplay" to="." method="_on_inventory_toggled"]
 [connection signal="inventory_toggled" from="HUDLayer/HUD/InventoryDisplay" to="CameraHolder" method="_on_inventory_toggled"]
 [connection signal="spawn_item" from="HUDLayer/HUD/InventoryDisplay" to="." method="_on_inventory_display_spawn_item"]
+[connection signal="pause_toggled" from="PauseMenu" to="CameraHolder" method="_on_pause_menu_pause_toggled"]

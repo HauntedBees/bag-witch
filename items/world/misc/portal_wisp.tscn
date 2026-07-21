@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dtrdt6myagqjf"]
 
-[ext_resource type="Script" uid="uid://bca1toyccahst" path="res://items/world/portal_wisp.gd" id="1_57wec"]
+[ext_resource type="Script" uid="uid://bca1toyccahst" path="res://items/world/misc/portal_wisp.gd" id="1_57wec"]
 [ext_resource type="Shader" uid="uid://bxvg24o86je3n" path="res://assets/shaders/portal.gdshader" id="2_1scm8"]
 [ext_resource type="Texture2D" uid="uid://b468d6ayq7u4d" path="res://assets/sprites/warps.png" id="3_e3y1b"]
 

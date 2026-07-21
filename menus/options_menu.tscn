@@ -1,0 +1,266 @@
+[gd_scene format=3 uid="uid://q31nttrkbxcg"]
+
+[ext_resource type="Script" uid="uid://lk4pbsvxpnwh" path="res://menus/options_menu.gd" id="1_1vpws"]
+[ext_resource type="FontFile" uid="uid://d3y651l4q0g7n" path="res://assets/fonts/Gothica-Bold.ttf" id="1_6r3ve"]
+[ext_resource type="Script" uid="uid://hafxp56l0iao" path="res://addons/gas/gas_label.gd" id="2_wyyb7"]
+[ext_resource type="PackedScene" uid="uid://5h7udfpmrrfq" path="res://menus/options/option.tscn" id="3_cet7k"]
+[ext_resource type="Texture2D" uid="uid://c1jditcnn7st6" path="res://assets/sprites/buttons.png" id="5_l4xqj"]
+[ext_resource type="LabelSettings" uid="uid://cv2nv0q56shf6" path="res://assets/fonts/body_text.tres" id="6_eeh4p"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rhbnc"]
+font = ExtResource("1_6r3ve")
+font_size = 72
+font_color = Color(0, 0, 0.72156864, 1)
+shadow_color = Color(0, 0, 0.43137255, 1)
+shadow_offset = Vector2(0, -2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_eeolf"]
+font_size = 64
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rhbnc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhbnc"]
+atlas = ExtResource("5_l4xqj")
+region = Rect2(0, 0, 200, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eeolf"]
+atlas = ExtResource("5_l4xqj")
+region = Rect2(200, 0, 200, 70)
+
+[node name="OptionsMenu" type="CanvasLayer" unique_id=960938909 groups=["hud"]]
+layer = 999
+script = ExtResource("1_1vpws")
+
+[node name="Background" type="MarginContainer" parent="." unique_id=1175559333]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Background" unique_id=1621972708]
+layout_mode = 2
+color = Color(0, 0.14117648, 0.8666667, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="Background" unique_id=1364203620]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/MarginContainer" unique_id=707169189]
+layout_mode = 2
+size_flags_vertical = 0
+offset_transform_enabled = true
+
+[node name="Label" type="Label" parent="Background/MarginContainer/VBoxContainer" unique_id=459306656]
+layout_mode = 2
+text = "BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH"
+label_settings = SubResource("LabelSettings_rhbnc")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Background/MarginContainer/VBoxContainer" unique_id=2028508666]
+layout_mode = 2
+text = "BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH"
+label_settings = SubResource("LabelSettings_rhbnc")
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="Background/MarginContainer/VBoxContainer" unique_id=331775069]
+layout_mode = 2
+text = "BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH"
+label_settings = SubResource("LabelSettings_rhbnc")
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="Background/MarginContainer/VBoxContainer" unique_id=724841189]
+layout_mode = 2
+text = "BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH"
+label_settings = SubResource("LabelSettings_rhbnc")
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="Background/MarginContainer/VBoxContainer" unique_id=1501002820]
+layout_mode = 2
+text = "BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH"
+label_settings = SubResource("LabelSettings_rhbnc")
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="Background/MarginContainer/VBoxContainer" unique_id=1471021352]
+layout_mode = 2
+text = "BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH"
+label_settings = SubResource("LabelSettings_rhbnc")
+horizontal_alignment = 1
+
+[node name="Label7" type="Label" parent="Background/MarginContainer/VBoxContainer" unique_id=625192898]
+layout_mode = 2
+text = "BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH"
+label_settings = SubResource("LabelSettings_rhbnc")
+horizontal_alignment = 1
+
+[node name="Label8" type="Label" parent="Background/MarginContainer/VBoxContainer" unique_id=175938166]
+layout_mode = 2
+text = "BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH"
+label_settings = SubResource("LabelSettings_rhbnc")
+horizontal_alignment = 1
+
+[node name="Label9" type="Label" parent="Background/MarginContainer/VBoxContainer" unique_id=1869909602]
+layout_mode = 2
+text = "BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH"
+label_settings = SubResource("LabelSettings_rhbnc")
+horizontal_alignment = 1
+
+[node name="Label10" type="Label" parent="Background/MarginContainer/VBoxContainer" unique_id=236709210]
+layout_mode = 2
+text = "BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH"
+label_settings = SubResource("LabelSettings_rhbnc")
+horizontal_alignment = 1
+
+[node name="Label11" type="Label" parent="Background/MarginContainer/VBoxContainer" unique_id=1217669178]
+layout_mode = 2
+text = "BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH"
+label_settings = SubResource("LabelSettings_rhbnc")
+horizontal_alignment = 1
+
+[node name="Label12" type="Label" parent="Background/MarginContainer/VBoxContainer" unique_id=1101321687]
+layout_mode = 2
+text = "BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH"
+label_settings = SubResource("LabelSettings_rhbnc")
+horizontal_alignment = 1
+
+[node name="Label13" type="Label" parent="Background/MarginContainer/VBoxContainer" unique_id=1616967769]
+layout_mode = 2
+text = "BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH"
+label_settings = SubResource("LabelSettings_rhbnc")
+horizontal_alignment = 1
+
+[node name="Label14" type="Label" parent="Background/MarginContainer/VBoxContainer" unique_id=1273975020]
+layout_mode = 2
+text = "BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH"
+label_settings = SubResource("LabelSettings_rhbnc")
+horizontal_alignment = 1
+
+[node name="Label15" type="Label" parent="Background/MarginContainer/VBoxContainer" unique_id=693037370]
+layout_mode = 2
+text = "BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH"
+label_settings = SubResource("LabelSettings_rhbnc")
+horizontal_alignment = 1
+
+[node name="Label16" type="Label" parent="Background/MarginContainer/VBoxContainer" unique_id=560432948]
+layout_mode = 2
+text = "BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH"
+label_settings = SubResource("LabelSettings_rhbnc")
+horizontal_alignment = 1
+
+[node name="Foreground" type="MarginContainer" parent="." unique_id=1881788391]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Foreground" unique_id=1860079804]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Heading" type="Label" parent="Foreground/VBoxContainer" unique_id=2133847160]
+layout_mode = 2
+text = "Options"
+label_settings = SubResource("LabelSettings_eeolf")
+horizontal_alignment = 1
+script = ExtResource("2_wyyb7")
+metadata/_custom_type_script = "uid://hafxp56l0iao"
+
+[node name="HSeparator" type="HSeparator" parent="Foreground/VBoxContainer" unique_id=1410331619]
+layout_mode = 2
+theme_override_constants/separation = 16
+theme_override_styles/separator = SubResource("StyleBoxEmpty_rhbnc")
+
+[node name="MusicVolume" parent="Foreground/VBoxContainer" unique_id=57488810 instance=ExtResource("3_cet7k")]
+unique_name_in_owner = true
+layout_mode = 2
+values = Array[String](["Off", "25%", "50%", "75%", "100%"])
+label = "Music Volume"
+
+[node name="SoundVolume" parent="Foreground/VBoxContainer" unique_id=1779003349 instance=ExtResource("3_cet7k")]
+unique_name_in_owner = true
+layout_mode = 2
+values = Array[String](["Off", "25%", "50%", "75%", "100%"])
+label = "Sound Volume"
+
+[node name="FontSize" parent="Foreground/VBoxContainer" unique_id=225192925 instance=ExtResource("3_cet7k")]
+unique_name_in_owner = true
+layout_mode = 2
+values = Array[String](["Normal", "Larger", "Largest"])
+label = "Font Size"
+
+[node name="InfoText" parent="Foreground/VBoxContainer" unique_id=1172147498 instance=ExtResource("3_cet7k")]
+unique_name_in_owner = true
+layout_mode = 2
+values = Array[String](["Off", "On"])
+info_texts = Array[String](["Only plot-related dialogue will be shown.", "The Bag Witch will comment about how new items can be used and offer other context-dependent advice."])
+label = "Info Messages"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Foreground/VBoxContainer" unique_id=408714549]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+alignment = 1
+
+[node name="SaveButton" type="TextureButton" parent="Foreground/VBoxContainer/HBoxContainer" unique_id=2135243435]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = SubResource("AtlasTexture_rhbnc")
+texture_hover = SubResource("AtlasTexture_eeolf")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Foreground/VBoxContainer/HBoxContainer/SaveButton" unique_id=1823186991]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GASLabel" type="Label" parent="Foreground/VBoxContainer/HBoxContainer/SaveButton/MarginContainer" unique_id=1841037049]
+layout_mode = 2
+text = "Save"
+label_settings = ExtResource("6_eeh4p")
+horizontal_alignment = 1
+script = ExtResource("2_wyyb7")
+metadata/_custom_type_script = "uid://hafxp56l0iao"
+
+[node name="CancelButton" type="TextureButton" parent="Foreground/VBoxContainer/HBoxContainer" unique_id=1008364173]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = SubResource("AtlasTexture_rhbnc")
+texture_hover = SubResource("AtlasTexture_eeolf")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Foreground/VBoxContainer/HBoxContainer/CancelButton" unique_id=944187803]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GASLabel" type="Label" parent="Foreground/VBoxContainer/HBoxContainer/CancelButton/MarginContainer" unique_id=133734904]
+layout_mode = 2
+text = "Cancel"
+label_settings = ExtResource("6_eeh4p")
+horizontal_alignment = 1
+script = ExtResource("2_wyyb7")
+metadata/_custom_type_script = "uid://hafxp56l0iao"
+
+[connection signal="changed" from="Foreground/VBoxContainer/MusicVolume" to="." method="_on_music_volume_changed"]
+[connection signal="changed" from="Foreground/VBoxContainer/SoundVolume" to="." method="_on_sound_volume_changed"]
+[connection signal="changed" from="Foreground/VBoxContainer/FontSize" to="." method="_on_font_size_changed"]
+[connection signal="changed" from="Foreground/VBoxContainer/InfoText" to="." method="_on_info_text_changed"]
+[connection signal="pressed" from="Foreground/VBoxContainer/HBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="Foreground/VBoxContainer/HBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]

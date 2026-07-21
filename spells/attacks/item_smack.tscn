@@ -67,6 +67,7 @@ shape = SubResource("SphereShape3D_a5iuo")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Origin" unique_id=74856151]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -2.0691328e-07, 0, 2.8817568)
+visible = false
 mesh = SubResource("SphereMesh_ss2fu")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1498842094]

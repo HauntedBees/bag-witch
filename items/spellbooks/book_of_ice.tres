@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Spellbook" format=3 uid="uid://dg7n54458bcvk"]
+
+[ext_resource type="Script" uid="uid://cbas7jc82h2rj" path="res://resource_types/items/spell_book.gd" id="1_2tdtb"]
+[ext_resource type="Script" uid="uid://bh5gblgdby5gl" path="res://resource_types/spells/spell.gd" id="2_a8ugg"]
+[ext_resource type="Resource" uid="uid://dn56uhy46vn32" path="res://spells/icicle.tres" id="3_le3ku"]
+[ext_resource type="Resource" uid="uid://dnft5khdupabw" path="res://spells/icicle2.tres" id="4_3de0r"]
+
+[resource]
+script = ExtResource("1_2tdtb")
+spells = Array[ExtResource("2_a8ugg")]([ExtResource("3_le3ku"), ExtResource("4_3de0r")])
+name = "Book of Ice"
+description = "This book has runes for the \"Icicle I\" and \"Icicle II\" spells."
+type = 1
+size = Vector2i(2, 1)
+icon = Rect2i(0, 1, 2, 1)
+rotated_by_default = true
+metadata/_custom_type_script = "uid://cbas7jc82h2rj"

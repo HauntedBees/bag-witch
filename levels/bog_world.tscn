@@ -25,7 +25,7 @@
 [ext_resource type="Script" uid="uid://bh3e52s7bb0by" path="res://environment/portals/warp_point.gd" id="23_moaa7"]
 [ext_resource type="PackedScene" uid="uid://d8qagseewo6x" path="res://environment/portals/portal_subviewport_external.tscn" id="23_xvnqo"]
 [ext_resource type="Script" uid="uid://brqbfvifsa78d" path="res://levels/cutscene.gd" id="24_s4mc1"]
-[ext_resource type="PackedScene" uid="uid://c0c6yem7oc5h2" path="res://items/world/broom.tscn" id="25_7tahu"]
+[ext_resource type="PackedScene" uid="uid://c0c6yem7oc5h2" path="res://items/world/weapons/broom.tscn" id="25_7tahu"]
 [ext_resource type="Script" uid="uid://id23r6gejl17" path="res://levels/bog_world/potential_start_items.gd" id="26_7tahu"]
 [ext_resource type="Script" uid="uid://cgt7ckkn1gh5b" path="res://resource_types/items/item.gd" id="27_lm6kn"]
 [ext_resource type="Resource" uid="uid://dkq75or5ap7mf" path="res://items/food/apple.tres" id="28_wl48i"]

@@ -1,13 +1,15 @@
 class_name BeaghmoreQuest extends Quest
 
-const _RESET_TIME := 5.0
+const QUEST_NAME := &"beaghmore"
+
+const _RESET_TIME := 4.0
 const _DETAIL_STRING := "Circles Remaining: %d\nTime Remaining: %s"
 
 var _stones_touched: Array[int] = []
-var _time_remaining := 5.0
+var _time_remaining := _RESET_TIME
 
-func _do_success_thing() -> void:
-	print("cool you did it I should spawn an item or something")
+func _init() -> void:
+	super(QUEST_NAME)
 
 func get_stones_touched() -> int:
 	return _stones_touched.size()

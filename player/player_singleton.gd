@@ -16,6 +16,9 @@ var weapon_cooldown := 0.0:
 func _ready() -> void:
 	data.inventory.recalibrate_bag_size()
 
+func _process(delta: float) -> void:
+	data.playtime += delta
+
 func use_weapon(w: Item) -> void:
 	if w is Weapon && w.is_spell:
 		var remaining_ammo := data.get_loaded_ammo(data.current_equipped)

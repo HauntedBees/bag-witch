@@ -16,7 +16,9 @@
 [ext_resource type="Script" uid="uid://bh3e52s7bb0by" path="res://environment/portals/warp_point.gd" id="10_u8j4s"]
 [ext_resource type="PackedScene" uid="uid://nhixgopg3rk5" path="res://items/world/food/pineapple.tscn" id="15_p4ltq"]
 [ext_resource type="Script" uid="uid://xdrcn075jkic" path="res://levels/generational_enemy_spawner.gd" id="16_1swv2"]
-[ext_resource type="PackedScene" uid="uid://c0c6yem7oc5h2" path="res://items/world/broom.tscn" id="17_b05w2"]
+[ext_resource type="PackedScene" uid="uid://c0c6yem7oc5h2" path="res://items/world/weapons/broom.tscn" id="17_b05w2"]
+[ext_resource type="PackedScene" uid="uid://8pmjrnhr3wew" path="res://environment/portals/portal_subviewport_pair.tscn" id="18_1swv2"]
+[ext_resource type="Texture2D" uid="uid://b468d6ayq7u4d" path="res://assets/sprites/warps.png" id="19_ht1gs"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_blw58"]
 sky_top_color = Color(0.35019627, 0.005200732, 0.010569308, 1)
@@ -85,6 +87,18 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 12
+
+[sub_resource type="Environment" id="Environment_u7iwl"]
+
+[sub_resource type="World3D" id="World3D_ht1gs"]
+resource_local_to_scene = true
+environment = SubResource("Environment_u7iwl")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_euduq"]
+resource_local_to_scene = true
+atlas = ExtResource("19_ht1gs")
+region = Rect2(512, 0, 256, 256)
+filter_clip = true
 
 [node name="FireWorld" type="Node3D" unique_id=1891173490]
 script = ExtResource("1_wq31c")
@@ -205,3 +219,19 @@ metadata/_custom_type_script = "uid://bn3r43bitaf3i"
 
 [node name="Broom" parent="." unique_id=458796508 instance=ExtResource("17_b05w2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.067017, 45.314312, -31.695496)
+
+[node name="IceWarp1" parent="." unique_id=1775018926 instance=ExtResource("18_1swv2")]
+transform = Transform3D(0.42261824, 0, -0.9063078, 0, 1, 0, 0.9063078, 0, 0.42261824, -107.720894, 7.2894516, 129.68338)
+
+[node name="Portal" parent="IceWarp1" index="0" unique_id=573598963]
+teleport_scene = "uid://b8knls82eve"
+teleport_point_name = "FermanaghWarp"
+
+[node name="PortalSubviewportExternal" parent="IceWarp1" index="1" unique_id=389194511]
+world_3d = SubResource("World3D_ht1gs")
+
+[node name="Sprite3D" parent="IceWarp1/PortalSubviewportExternal" index="1" unique_id=923265973]
+texture = SubResource("AtlasTexture_euduq")
+
+[editable path="IceWarp1"]
+[editable path="IceWarp1/PortalSubviewportExternal"]

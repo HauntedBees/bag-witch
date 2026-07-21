@@ -5,6 +5,12 @@ signal picked_up()
 
 @export var item: Item
 
+## If true, this instance won't appear below a certain generation.
+@export var remove_if_below_generation := false
+
+## This is the certain generation.
+@export var generation_to_remove := BWEnum.Gen.Mid
+
 @export var from_inventory := false
 
 @export var mods: Array[ItemMod] = []
@@ -25,6 +31,14 @@ signal picked_up()
 var _plepping := false
 var _plep_dir := Vector3.ZERO
 var _plep_ray: RayCast3D
+
+func _ready() -> void:
+	if remove_if_below_generation:
+		# doesn't factor in Early because why the fuck would I do that
+		var remove_gen := BWEnum.GEN_LATE if generation_to_remove == BWEnum.Gen.Late else BWEnum.GEN_MID
+		if Player.data.generations_elapsed < remove_gen:
+			print("freeing %s" % name)
+			queue_free()
 
 func get_item_name() -> String:
 	var n := item.name
