@@ -51,6 +51,7 @@ func _on_load_new_level(destination_uid: String, destination_point_name: String)
 	_is_warping = true
 	Player.data.last_warped_scene_uid = destination_uid
 	Player.data.last_warped_warp_point_name = destination_point_name
+	_player.grace_period = 1.0
 	_load_level_inner(destination_uid, destination_point_name)
 
 func _load_level_inner(destination_uid: String, destination_point_name: String) -> void:

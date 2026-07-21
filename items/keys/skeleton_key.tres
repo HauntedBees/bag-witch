@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="KeyItem" format=3 uid="uid://do1jwf5icgroo"]
+
+[ext_resource type="Script" uid="uid://2r8b3uihv0w2" path="res://resource_types/items/key.gd" id="1_d07ef"]
+
+[resource]
+script = ExtResource("1_d07ef")
+door_id = &"skeleton"
+name = "Skeleton Key"
+description = "This can probably open any number of doors in the castle."
+icon = Rect2i(3, 7, 1, 1)
+scene_path = "uid://bas7v8xeta3wi"
+metadata/_custom_type_script = "uid://2r8b3uihv0w2"

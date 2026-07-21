@@ -3,6 +3,7 @@ class_name BogWitch extends PlayerCharacter
 signal quest_added(q: Quest)
 signal quest_removed(q: Quest)
 
+var grace_period := 0.0
 var clinging_effects: Array[ClingingEffect] = []
 var ready_to_glide := false
 var alt_hand_for_attack_anim := false
@@ -102,6 +103,8 @@ func _physics_process(delta: float) -> void:
 
 func _process(delta: float) -> void:
 	super(delta)
+	if grace_period > 0.0:
+		grace_period -= delta
 	for p: Potion in Player.data.active_potions.keys():
 		Player.data.active_potions[p] -= delta
 		if Player.data.active_potions[p] <= 0.0:
@@ -159,11 +162,13 @@ func take_damage_from_weapon(w: Weapon, knockback_source: Vector3) -> void:
 	)
 
 func take_damage(damage: int, knockback_source := Vector3.ZERO, knockback := 0.0, additional_y_knockback := 0.0) -> void:
-		Player.take_damage(damage)
-		if knockback > 0.0:
-			var dir := global_position.direction_to(knockback_source)
-			velocity -= dir.normalized() * knockback
-			velocity.y += additional_y_knockback
+	if grace_period > 0.01:
+		return
+	Player.take_damage(damage)
+	if knockback > 0.0:
+		var dir := global_position.direction_to(knockback_source)
+		velocity -= dir.normalized() * knockback
+		velocity.y += additional_y_knockback
 
 func get_front_direction(normalized := true) -> Vector3:
 	var dir := _front_check.to_global(_front_check.target_position) - _front_check.global_position

@@ -37,6 +37,7 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 8
 
 [node name="SecondFloor" parent="." unique_id=1076509311 instance=ExtResource("1_ti3ln")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.5, 0)
+visible = false
 
 [node name="FirstFloor" parent="." unique_id=1771725875 instance=ExtResource("2_gn5m0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
@@ -45,3 +46,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -12.5, 0)
 
 [node name="CastleExterior" parent="." unique_id=562561074 instance=ExtResource("5_gn5m0")]
+visible = false

@@ -36,6 +36,9 @@ static func get_bounds(base_pos: Transform3D, box: BoxShape3D, cam: Camera3D) ->
 			continue
 		screen_corners.append(cam.unproject_position(pos))
 
+	if screen_corners.size() == 0:
+		return Rect2(0.0, 0.0, 1.0, 1.0)
+
 	var c_min := screen_corners[0]
 	var c_max := screen_corners[0]
 	for p in screen_corners:
