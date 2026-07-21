@@ -59,6 +59,7 @@ func _on_effect_applied(e: BWEnum.Effect, level: int) -> void:
 func _behave(delta: float) -> void:
 	if _time_stunned <= 0.0:
 		return
+	_parent.velocity = Vector3.ZERO
 	_time_stunned -= delta
 	if _time_stunned <= 0:
 		_relinquish_control()

@@ -8,6 +8,12 @@ func _ready() -> void:
 	area_entered.connect(_on_area_entered)
 
 func _on_body_entered(body: Node3D) -> void:
+	if body is BogWitch:
+		body.take_damage(999)
+	elif body is LavaSlime:
+		body.lava_up()
+	elif body is EnemyDisplay:
+		body.take_specific_damage(9999)
 	print("LAVA BODY %s" % body.name)
 
 func _on_area_entered(area: Area3D) -> void:

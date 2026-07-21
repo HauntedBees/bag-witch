@@ -1,8 +1,11 @@
 [gd_scene format=3 uid="uid://eq158w8w1hls"]
 
 [ext_resource type="Script" uid="uid://c43mopu1jqdv0" path="res://enemies/fire/lava_slime.gd" id="1_irxjj"]
+[ext_resource type="Script" uid="uid://cgt7ckkn1gh5b" path="res://resource_types/items/item.gd" id="2_8lx7a"]
 [ext_resource type="PackedScene" uid="uid://ctlgvtilkqq0j" path="res://assets/models/enemies/lava_slime_key.blend" id="2_cfx7n"]
+[ext_resource type="Resource" uid="uid://sg2acn24uog7" path="res://items/keys/lava_slime_key.tres" id="3_obngk"]
 [ext_resource type="Script" uid="uid://c7obdbhjgnuay" path="res://enemies/behaviors/enemy_chase_player.gd" id="4_kpmbw"]
+[ext_resource type="Resource" uid="uid://dnxwvr16xgouf" path="res://items/enemies/lava_slime.tres" id="4_obngk"]
 [ext_resource type="Script" uid="uid://b2ldfj5ngv3ch" path="res://enemies/behaviors/enemy_melee_player.gd" id="5_iofec"]
 [ext_resource type="Script" uid="uid://dxggsp43p5ket" path="res://enemies/behaviors/enemy_alert_friends.gd" id="6_5ietn"]
 [ext_resource type="Script" uid="uid://cw1pwskvve6sn" path="res://enemies/behaviors/enemy_walk_between_points.gd" id="7_i2d11"]
@@ -25,7 +28,10 @@ collision_mask = 3
 script = ExtResource("1_irxjj")
 has_key = true
 enemy_name = "Lava Slime"
+potential_drops = Array[ExtResource("2_8lx7a")]([ExtResource("3_obngk")])
+potential_drop_chance = 1.0
 capture_level = 2
+suck_drop = ExtResource("4_obngk")
 max_health = 5
 damage_stun_time = 0.0
 bounding_box = NodePath("BoundingBox")
@@ -37,6 +43,17 @@ die_anims = Array[StringName]([&"Attack"])
 
 [node name="lava_slime_key" parent="." unique_id=1954922517 instance=ExtResource("2_cfx7n")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.771225, 0)
+
+[node name="Skeleton3D" parent="lava_slime_key/Armature" parent_id_path=PackedInt32Array(1954922517, 76237435) index="0" unique_id=1677628604]
+bones/0/rotation = Quaternion(0.0048435284, -0.7102225, -0.0048780595, 0.7039438)
+bones/0/scale = Vector3(0.999341, 0.81955504, 1)
+bones/1/rotation = Quaternion(-0.26866978, -0.652638, -0.2711477, 0.6544915)
+bones/2/rotation = Quaternion(0.56404775, 0.42643893, 0.5640479, -0.4264389)
+bones/3/rotation = Quaternion(3.7822354e-10, -6.765614e-09, 0.07148261, 0.9974418)
+bones/4/rotation = Quaternion(0.5878755, -0.3930232, -0.5878206, -0.39294052)
+
+[node name="Bone_003" parent="lava_slime_key/Armature/Skeleton3D" index="0" unique_id=676046647]
+transform = Transform3D(-0.008784329, 0.0012554657, -0.9999606, 0.10325881, 0.813062, 0.000109870154, 0.9906024, -0.1313342, -0.00887884, -8.370033e-06, 0.68567103, 0.009427605)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1136467649]
 unique_name_in_owner = true
