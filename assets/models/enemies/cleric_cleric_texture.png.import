@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c8ltpnxacu43c"
 path.s3tc="res://.godot/imported/cleric_cleric_texture.png-4f219ec38ac6b3509432c91256a3f54c.s3tc.ctex"
+path.etc2="res://.godot/imported/cleric_cleric_texture.png-4f219ec38ac6b3509432c91256a3f54c.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/enemies/cleric_cleric_texture.png"
-dest_files=["res://.godot/imported/cleric_cleric_texture.png-4f219ec38ac6b3509432c91256a3f54c.s3tc.ctex"]
+dest_files=["res://.godot/imported/cleric_cleric_texture.png-4f219ec38ac6b3509432c91256a3f54c.s3tc.ctex", "res://.godot/imported/cleric_cleric_texture.png-4f219ec38ac6b3509432c91256a3f54c.etc2.ctex"]
 
 [params]
 

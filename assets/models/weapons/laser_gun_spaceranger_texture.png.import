@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://0jjucwq3bicq"
 path.s3tc="res://.godot/imported/laser_gun_spaceranger_texture.png-39f0ef81077c7d61cb06854d2726b0f7.s3tc.ctex"
+path.etc2="res://.godot/imported/laser_gun_spaceranger_texture.png-39f0ef81077c7d61cb06854d2726b0f7.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/weapons/laser_gun_spaceranger_texture.png"
-dest_files=["res://.godot/imported/laser_gun_spaceranger_texture.png-39f0ef81077c7d61cb06854d2726b0f7.s3tc.ctex"]
+dest_files=["res://.godot/imported/laser_gun_spaceranger_texture.png-39f0ef81077c7d61cb06854d2726b0f7.s3tc.ctex", "res://.godot/imported/laser_gun_spaceranger_texture.png-39f0ef81077c7d61cb06854d2726b0f7.etc2.ctex"]
 
 [params]
 

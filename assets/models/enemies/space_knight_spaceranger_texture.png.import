@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bpldskbo1du7d"
 path.s3tc="res://.godot/imported/space_knight_spaceranger_texture.png-a2a2044571478f6c75d470f767d3af17.s3tc.ctex"
+path.etc2="res://.godot/imported/space_knight_spaceranger_texture.png-a2a2044571478f6c75d470f767d3af17.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/enemies/space_knight_spaceranger_texture.png"
-dest_files=["res://.godot/imported/space_knight_spaceranger_texture.png-a2a2044571478f6c75d470f767d3af17.s3tc.ctex"]
+dest_files=["res://.godot/imported/space_knight_spaceranger_texture.png-a2a2044571478f6c75d470f767d3af17.s3tc.ctex", "res://.godot/imported/space_knight_spaceranger_texture.png-a2a2044571478f6c75d470f767d3af17.etc2.ctex"]
 
 [params]
 

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://o1pkx5p4gmem"
 path.s3tc="res://.godot/imported/GizmoVisionCone.svg-ea8f76460bf35030690548bcee239273.s3tc.ctex"
+path.etc2="res://.godot/imported/GizmoVisionCone.svg-ea8f76460bf35030690548bcee239273.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://addons/tattomoosa.vision_cone_3d/icons/GizmoVisionCone.svg"
-dest_files=["res://.godot/imported/GizmoVisionCone.svg-ea8f76460bf35030690548bcee239273.s3tc.ctex"]
+dest_files=["res://.godot/imported/GizmoVisionCone.svg-ea8f76460bf35030690548bcee239273.s3tc.ctex", "res://.godot/imported/GizmoVisionCone.svg-ea8f76460bf35030690548bcee239273.etc2.ctex"]
 
 [params]
 

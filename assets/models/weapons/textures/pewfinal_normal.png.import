@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dnjpstycgy4xv"
 path.s3tc="res://.godot/imported/pewfinal_normal.png-c95567b28c1b879d0086e3f1f1e6d6e1.s3tc.ctex"
+path.etc2="res://.godot/imported/pewfinal_normal.png-c95567b28c1b879d0086e3f1f1e6d6e1.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/models/weapons/textures/pewfinal_normal.png"
-dest_files=["res://.godot/imported/pewfinal_normal.png-c95567b28c1b879d0086e3f1f1e6d6e1.s3tc.ctex"]
+dest_files=["res://.godot/imported/pewfinal_normal.png-c95567b28c1b879d0086e3f1f1e6d6e1.s3tc.ctex", "res://.godot/imported/pewfinal_normal.png-c95567b28c1b879d0086e3f1f1e6d6e1.etc2.ctex"]
 
 [params]
 

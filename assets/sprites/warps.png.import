@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://b468d6ayq7u4d"
 path.s3tc="res://.godot/imported/warps.png-19419211fb8a3b5927ae41491253d883.s3tc.ctex"
+path.etc2="res://.godot/imported/warps.png-19419211fb8a3b5927ae41491253d883.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/sprites/warps.png"
-dest_files=["res://.godot/imported/warps.png-19419211fb8a3b5927ae41491253d883.s3tc.ctex"]
+dest_files=["res://.godot/imported/warps.png-19419211fb8a3b5927ae41491253d883.s3tc.ctex", "res://.godot/imported/warps.png-19419211fb8a3b5927ae41491253d883.etc2.ctex"]
 
 [params]
 

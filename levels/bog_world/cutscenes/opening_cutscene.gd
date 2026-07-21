@@ -21,6 +21,8 @@ func _init_cutscene() -> void:
 	Player.equip_changed.emit(InventoryDetail.new(book, Vector2i.ZERO))
 	convo_trigger.body_entered.connect(func(b: Node3D) -> void:
 		if b is BogWitch:
+			if b.grace_period > 0.01:
+				return
 			_on_start_conversation()
 	)
 	queen.set_anim(&"Idle", true)

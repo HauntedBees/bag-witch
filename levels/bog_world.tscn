@@ -109,7 +109,7 @@ size = Vector3(50, 10, 80)
 
 [sub_resource type="Environment" id="Environment_6q451"]
 
-[sub_resource type="World3D" id="World3D_fc1lq"]
+[sub_resource type="World3D" id="World3D_n8ycd"]
 resource_local_to_scene = true
 environment = SubResource("Environment_6q451")
 
@@ -205,7 +205,7 @@ teleport_scene = "uid://dkgap8kw2cyfc"
 teleport_point_name = "FromBog"
 
 [node name="ViewPortalToCastle" parent="." unique_id=389194511 instance=ExtResource("23_xvnqo")]
-world_3d = SubResource("World3D_fc1lq")
+world_3d = SubResource("World3D_n8ycd")
 
 [node name="PortalFirePineRing" parent="." unique_id=789452907 node_paths=PackedStringArray("subviewport") instance=ExtResource("10_tmrxh")]
 transform = Transform3D(-0.08715576, 0, 0.99619466, 0, 1, 0, -0.99619466, 0, -0.08715576, -4.157, 0.988, -29)

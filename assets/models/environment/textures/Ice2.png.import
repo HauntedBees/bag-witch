@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ckyin0givj25s"
 path.s3tc="res://.godot/imported/Ice2.png-5a0ef737f2da2a506c5f7368e7cc89f5.s3tc.ctex"
+path.etc2="res://.godot/imported/Ice2.png-5a0ef737f2da2a506c5f7368e7cc89f5.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/models/environment/textures/Ice2.png"
-dest_files=["res://.godot/imported/Ice2.png-5a0ef737f2da2a506c5f7368e7cc89f5.s3tc.ctex"]
+dest_files=["res://.godot/imported/Ice2.png-5a0ef737f2da2a506c5f7368e7cc89f5.s3tc.ctex", "res://.godot/imported/Ice2.png-5a0ef737f2da2a506c5f7368e7cc89f5.etc2.ctex"]
 
 [params]
 

@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dcta7d6aw3gj1"
 path.s3tc="res://.godot/imported/molotov_Molotov.png-a9ffafffbdab7605c6b02ddb470e3983.s3tc.ctex"
+path.etc2="res://.godot/imported/molotov_Molotov.png-a9ffafffbdab7605c6b02ddb470e3983.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/weapons/molotov_Molotov.png"
-dest_files=["res://.godot/imported/molotov_Molotov.png-a9ffafffbdab7605c6b02ddb470e3983.s3tc.ctex"]
+dest_files=["res://.godot/imported/molotov_Molotov.png-a9ffafffbdab7605c6b02ddb470e3983.s3tc.ctex", "res://.godot/imported/molotov_Molotov.png-a9ffafffbdab7605c6b02ddb470e3983.etc2.ctex"]
 
 [params]
 

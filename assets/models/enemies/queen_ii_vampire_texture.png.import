@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dhetfgnbap3t4"
 path.s3tc="res://.godot/imported/queen_ii_vampire_texture.png-4e51e4897b5c787363050b51bc6f8f2d.s3tc.ctex"
+path.etc2="res://.godot/imported/queen_ii_vampire_texture.png-4e51e4897b5c787363050b51bc6f8f2d.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/enemies/queen_ii_vampire_texture.png"
-dest_files=["res://.godot/imported/queen_ii_vampire_texture.png-4e51e4897b5c787363050b51bc6f8f2d.s3tc.ctex"]
+dest_files=["res://.godot/imported/queen_ii_vampire_texture.png-4e51e4897b5c787363050b51bc6f8f2d.s3tc.ctex", "res://.godot/imported/queen_ii_vampire_texture.png-4e51e4897b5c787363050b51bc6f8f2d.etc2.ctex"]
 
 [params]
 

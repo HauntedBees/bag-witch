@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dyyl5cxsop442"
 path.s3tc="res://.godot/imported/survivalist_texture.png-0b348b5412781eef1d470743ac006011.s3tc.ctex"
+path.etc2="res://.godot/imported/survivalist_texture.png-0b348b5412781eef1d470743ac006011.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/models/enemies/textures/survivalist_texture.png"
-dest_files=["res://.godot/imported/survivalist_texture.png-0b348b5412781eef1d470743ac006011.s3tc.ctex"]
+dest_files=["res://.godot/imported/survivalist_texture.png-0b348b5412781eef1d470743ac006011.s3tc.ctex", "res://.godot/imported/survivalist_texture.png-0b348b5412781eef1d470743ac006011.etc2.ctex"]
 
 [params]
 
