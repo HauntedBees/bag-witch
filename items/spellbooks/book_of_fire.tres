@@ -4,10 +4,12 @@
 [ext_resource type="Script" uid="uid://bh5gblgdby5gl" path="res://resource_types/spells/spell.gd" id="2_c4qij"]
 [ext_resource type="Resource" uid="uid://w2fsdi0pdqtq" path="res://spells/fireball.tres" id="3_iqp6v"]
 [ext_resource type="Resource" uid="uid://7pq7lupy2ii0" path="res://spells/fireball2.tres" id="4_c4qij"]
+[ext_resource type="Resource" uid="uid://cvi4rh1y7wvjr" path="res://spells/fireball3.tres" id="5_c4qij"]
 
 [resource]
 script = ExtResource("1_iqp6v")
 spells = Array[ExtResource("2_c4qij")]([ExtResource("3_iqp6v"), ExtResource("4_c4qij")])
+unlockable_spells = Array[ExtResource("2_c4qij")]([ExtResource("5_c4qij")])
 name = "Book of Fire"
 description = "This book has runes for the \"Fireball I\" and \"Fireball II\" spells."
 type = 1

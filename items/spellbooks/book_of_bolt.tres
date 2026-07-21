@@ -4,10 +4,12 @@
 [ext_resource type="Script" uid="uid://bh5gblgdby5gl" path="res://resource_types/spells/spell.gd" id="2_3joiy"]
 [ext_resource type="Resource" uid="uid://d40ivg6wp8mf" path="res://spells/bolt.tres" id="3_ruajy"]
 [ext_resource type="Resource" uid="uid://b1hnme3li32ld" path="res://spells/bolt2.tres" id="4_7pw68"]
+[ext_resource type="Resource" uid="uid://bg7m1565tv25k" path="res://spells/bolt3.tres" id="5_7pw68"]
 
 [resource]
 script = ExtResource("1_q1dbx")
 spells = Array[ExtResource("2_3joiy")]([ExtResource("3_ruajy"), ExtResource("4_7pw68")])
+unlockable_spells = Array[ExtResource("2_3joiy")]([ExtResource("5_7pw68")])
 name = "Book of Bolt"
 description = "This book has runes for the \"Bolt I\" and \"Bolt II\" spells."
 type = 1
