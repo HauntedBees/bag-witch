@@ -1,14 +1,16 @@
-[gd_scene format=3 uid="uid://0tg0hdlwo3y3"]
+[gd_scene format=3 uid="uid://wfskyskqk7kw"]
 
-[ext_resource type="Script" uid="uid://cjlidc7juluwi" path="res://enemies/enemy.gd" id="1_bqm1d"]
-[ext_resource type="Script" uid="uid://cgt7ckkn1gh5b" path="res://resource_types/items/item.gd" id="2_b1lr1"]
-[ext_resource type="Resource" uid="uid://b3y7d3n0tgplr" path="res://items/keys/big_knight_key.tres" id="3_kt7ya"]
-[ext_resource type="PackedScene" uid="uid://dbwqxpym38n74" path="res://assets/models/weapons/big_sword.blend" id="3_q0brv"]
-[ext_resource type="Script" uid="uid://cw1pwskvve6sn" path="res://enemies/behaviors/enemy_walk_between_points.gd" id="4_cjrje"]
-[ext_resource type="PackedScene" uid="uid://b7plk8a3qa88c" path="res://assets/models/enemies/big_knight.blend" id="7_kt7ya"]
-[ext_resource type="Script" uid="uid://cmgcelj1qxg8o" path="res://addons/tattomoosa.vision_cone_3d/src/VisionCone3D.gd" id="12_6dehl"]
-[ext_resource type="Script" uid="uid://c7obdbhjgnuay" path="res://enemies/behaviors/enemy_chase_player.gd" id="13_4s2t8"]
-[ext_resource type="Script" uid="uid://b2ldfj5ngv3ch" path="res://enemies/behaviors/enemy_melee_player.gd" id="14_obw3y"]
+[ext_resource type="Script" uid="uid://cjlidc7juluwi" path="res://enemies/enemy.gd" id="1_umcfa"]
+[ext_resource type="PackedScene" uid="uid://b7plk8a3qa88c" path="res://assets/models/enemies/big_knight.blend" id="2_8q2wj"]
+[ext_resource type="Script" uid="uid://cgt7ckkn1gh5b" path="res://resource_types/items/item.gd" id="2_y1xop"]
+[ext_resource type="Resource" uid="uid://dc0rwto4q8lbf" path="res://items/melee/big_sword.tres" id="3_52mo6"]
+[ext_resource type="PackedScene" uid="uid://dbwqxpym38n74" path="res://assets/models/weapons/big_sword.blend" id="3_thxax"]
+[ext_resource type="Script" uid="uid://cmgcelj1qxg8o" path="res://addons/tattomoosa.vision_cone_3d/src/VisionCone3D.gd" id="4_88lwa"]
+[ext_resource type="Resource" uid="uid://mbu0okiovudq" path="res://items/potions/potion_of_life.tres" id="4_wjtcw"]
+[ext_resource type="Resource" uid="uid://b2ckj75uwnit2" path="res://items/crystals/bag_crystal.tres" id="5_llm1v"]
+[ext_resource type="Script" uid="uid://cw1pwskvve6sn" path="res://enemies/behaviors/enemy_walk_between_points.gd" id="5_y1xop"]
+[ext_resource type="Script" uid="uid://c7obdbhjgnuay" path="res://enemies/behaviors/enemy_chase_player.gd" id="6_52mo6"]
+[ext_resource type="Script" uid="uid://b2ldfj5ngv3ch" path="res://enemies/behaviors/enemy_melee_player.gd" id="7_wjtcw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rhbnc"]
 radius = 1.1
@@ -24,12 +26,12 @@ radius = 4.0
 [sub_resource type="BoxShape3D" id="BoxShape3D_rhbnc"]
 size = Vector3(1, 2.4128723, 1)
 
-[node name="BigKnight" type="CharacterBody3D" unique_id=222303382 node_paths=PackedStringArray("bounding_box", "animation_player")]
+[node name="BigKnightNoKey" type="CharacterBody3D" unique_id=222303382 node_paths=PackedStringArray("bounding_box", "animation_player")]
 collision_layer = 9
 collision_mask = 3
-script = ExtResource("1_bqm1d")
+script = ExtResource("1_umcfa")
 enemy_name = "Black Knight"
-potential_drops = Array[ExtResource("2_b1lr1")]([ExtResource("3_kt7ya")])
+potential_drops = Array[ExtResource("2_y1xop")]([ExtResource("3_52mo6"), ExtResource("4_wjtcw"), ExtResource("5_llm1v")])
 potential_drop_chance = 1.0
 capture_level = 3
 suck_time = 4.0
@@ -44,7 +46,7 @@ hit_anim = &"Hit_A"
 big_hit_anim = &"Hit_B"
 die_anims = Array[StringName]([&"Death_A"])
 
-[node name="big_knight" parent="." unique_id=803165191 instance=ExtResource("7_kt7ya")]
+[node name="big_knight" parent="." unique_id=803165191 instance=ExtResource("2_8q2wj")]
 transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
 
 [node name="Skeleton3D" parent="big_knight/Rig" parent_id_path=PackedInt32Array(803165191, 356012277) index="0" unique_id=987586369]
@@ -125,7 +127,7 @@ transform = Transform3D(0.06526537, -0.07926795, -0.9947144, -0.07877791, -0.994
 bone_name = "hand.r"
 bone_idx = 12
 
-[node name="big_sword" parent="big_knight/Rig/Skeleton3D/BoneAttachment3D" unique_id=265808847 instance=ExtResource("3_q0brv")]
+[node name="big_sword" parent="big_knight/Rig/Skeleton3D/BoneAttachment3D" unique_id=265808847 instance=ExtResource("3_thxax")]
 transform = Transform3D(0.3834256, -0.64218086, -0.055575307, 0.64218086, 0.375, 0.09735888, -0.055575028, -0.09735904, 0.74157447, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1136467649]
@@ -144,7 +146,7 @@ disabled = true
 [node name="VisionCone3D" type="Area3D" parent="." unique_id=762140472]
 transform = Transform3D(1, 0, 0, 0, 0.9961947, 0.08715574, 0, -0.08715574, 0.9961947, 0, 3.5323029, 0)
 collision_mask = 2
-script = ExtResource("12_6dehl")
+script = ExtResource("4_88lwa")
 range = 15.0
 angle = 70.0
 collision_mask_ = 2
@@ -158,20 +160,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2713928, 0)
 shape = SubResource("SphereShape3D_rhbnc")
 
 [node name="EnemyWalkBetweenPoints" type="Node" parent="." unique_id=1646451506]
-script = ExtResource("4_cjrje")
+script = ExtResource("5_y1xop")
 idle_anims = Array[StringName]([&"Idle", &"Idle_B", &"Idle_Combat"])
 run_anims = Array[StringName]([&"Walking_D_Skeletons", &"Walking_C", &"Walking_B", &"Walking_A"])
 metadata/_custom_type_script = "uid://cw1pwskvve6sn"
 
 [node name="EnemyChasePlayer" type="Node" parent="." unique_id=612944538 node_paths=PackedStringArray("vision")]
-script = ExtResource("13_4s2t8")
+script = ExtResource("6_52mo6")
 vision = NodePath("../VisionCone3D")
 idle_anims = Array[StringName]([&"Idle", &"Idle_B", &"Idle_Combat"])
 run_anims = Array[StringName]([&"Walking_D_Skeletons", &"Walking_C", &"Walking_B", &"Walking_A"])
 priority = 1
 
 [node name="EnemyMeleePlayer" type="Node" parent="." unique_id=1780040447 node_paths=PackedStringArray("close_enough_radius")]
-script = ExtResource("14_obw3y")
+script = ExtResource("7_wjtcw")
 attack_anims = Array[StringName]([&"1H_Melee_Attack_Slice_Horizontal"])
 close_enough_radius = NodePath("../CloseEnough")
 attack_frequency = 4.0
