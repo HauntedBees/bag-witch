@@ -129,7 +129,7 @@ shape = SubResource("CylinderShape3D_rhbnc")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5, 0, 0)
 subviewport = NodePath("../ViewCastlePrison")
 teleport_scene = "uid://dkgap8kw2cyfc"
-teleport_point_name = "FromBog"
+teleport_point_name = "SideRoom"
 
 [node name="PortalCastleEnd" parent="." unique_id=719460365 node_paths=PackedStringArray("subviewport") instance=ExtResource("2_c576j")]
 transform = Transform3D(-0.64278764, 0, -0.76604444, 0, 1, 0, 0.76604444, 0, -0.64278764, -10.0814, 0, 11.583496)
