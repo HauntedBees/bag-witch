@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://b7o0pdvrytkig" path="res://levels/enemy_spawner.gd" id="2_yaj60"]
 [ext_resource type="PackedScene" uid="uid://cphjo0ynxtgmo" path="res://enemies/ice/ice_golem.tscn" id="3_iby2y"]
 [ext_resource type="Script" uid="uid://bn3r43bitaf3i" path="res://environment/point_collection.gd" id="4_w1q5b"]
+[ext_resource type="Script" uid="uid://bh3e52s7bb0by" path="res://environment/portals/warp_point.gd" id="5_iby2y"]
 
 [sub_resource type="Curve3D" id="Curve3D_ffpem"]
 _data = {
@@ -22,7 +23,7 @@ enemy_types = Array[PackedScene]([ExtResource("3_iby2y")])
 potential_spawn_points = NodePath("../DownPoints")
 enemy_point_collection = NodePath("../DownPoints")
 spawn_container = NodePath(".")
-max_spawned = 8
+max_spawned = 12
 
 [node name="DownEnemies" type="Node3D" parent="." unique_id=395981537]
 
@@ -31,3 +32,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.58593, 43.92521, -20.4612
 curve = SubResource("Curve3D_ffpem")
 script = ExtResource("4_w1q5b")
 metadata/_custom_type_script = "uid://bn3r43bitaf3i"
+
+[node name="BadTime" type="RayCast3D" parent="." unique_id=1510755322]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 44.900024, 0)
+target_position = Vector3(0, 0, -20)
+script = ExtResource("5_iby2y")
+metadata/_custom_type_script = "uid://bh3e52s7bb0by"

@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://d1uajkvuwu3dn"]
+
+[ext_resource type="Script" uid="uid://b66jl5gw8dewc" path="res://items/world/world_item.gd" id="1_4ug3b"]
+[ext_resource type="Resource" uid="uid://cjykdl4q3h120" path="res://items/food/mushroom.tres" id="2_4ug3b"]
+[ext_resource type="PackedScene" uid="uid://qxxj07ag6n0e" path="res://assets/models/items/mushroom.blend" id="3_4ug3b"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rhbnc"]
+
+[node name="Mushroom" type="Area3D" unique_id=621096524 node_paths=PackedStringArray("collider")]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_4ug3b")
+item = ExtResource("2_4ug3b")
+collider = NodePath("CollisionShape3D")
+metadata/_custom_type_script = "uid://b66jl5gw8dewc"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1276759177]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5328218, 0)
+shape = SubResource("BoxShape3D_rhbnc")
+
+[node name="mushroom2" parent="." unique_id=1888823098 instance=ExtResource("3_4ug3b")]

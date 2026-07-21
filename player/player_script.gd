@@ -103,7 +103,7 @@ func _physics_process(delta: float) -> void:
 
 func _process(delta: float) -> void:
 	super(delta)
-	if global_position.y <= -25.0:
+	if global_position.y <= -42.0:
 		take_damage(1)
 	if grace_period > 0.0:
 		grace_period -= delta

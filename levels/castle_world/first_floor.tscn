@@ -22,7 +22,7 @@ size = Vector3(156.2884, 1, 48.22296)
 size = Vector3(107.81461, 1, 4.9104767)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6yumn"]
-size = Vector3(20.07908, 1, 4.9104767)
+size = Vector3(43.47594, 1, 4.9104767)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_adno7"]
 size = Vector3(37.52923, 1, 27.760952)
@@ -52,10 +52,10 @@ radius = 75.0
 
 [sub_resource type="Curve3D" id="Curve3D_b53l7"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 11.860718, 0.71606445, -116.553604, 0, 0, 0, 0, 0, 0, 13.232056, 0.71606445, -30.041477, 0, 0, 0, 0, 0, 0, -41.83667, 0.3223877, -26.726551, 0, 0, 0, 0, 0, 0, -40.201416, 0.3223877, -9.786011, 0, 0, 0, 0, 0, 0, -77.69495, 0.3223877, -9.236389, 0, 0, 0, 0, 0, 0, -42.700073, 0.32226563, 17.05265, 0, 0, 0, 0, 0, 0, -38.730713, 0.3223877, 55.974045, 0, 0, 0, 0, 0, 0, -23.987305, 0.3223877, 16.853783, 0, 0, 0, 0, 0, 0, 12.750122, 0.3223877, 38.419914, 0, 0, 0, 0, 0, 0, 22.124512, 0.32226563, 15.517593, 0, 0, 0, 0, 0, 0, 46.36435, 0.32226563, 12.979797, 0, 0, 0, 0, 0, 0, 46.706207, 0.3223877, -11.453232, 0, 0, 0, 0, 0, 0, 13.360794, 0.32226563, -8.897446, 0, 0, 0, 0, 0, 0, 80.71274, 0.32226563, -6.0839386, 0, 0, 0, 0, 0, 0, 86.65181, -1.6097412, 16.381851, 0, 0, 0, 0, 0, 0, 86.62363, 0.32226563, -36.218613),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 11.860718, 0.71606445, -116.553604, 0, 0, 0, 0, 0, 0, 13.232056, 0.71606445, -30.041477, 0, 0, 0, 0, 0, 0, -41.83667, 0.3223877, -26.726551, 0, 0, 0, 0, 0, 0, -40.201416, 0.3223877, -9.786011, 0, 0, 0, 0, 0, 0, -77.69495, 0.3223877, -9.236389, 0, 0, 0, 0, 0, 0, -42.700073, 0.32226563, 17.05265, 0, 0, 0, 0, 0, 0, -38.730713, 0.3223877, 55.974045, 0, 0, 0, 0, 0, 0, -23.987305, 0.3223877, 16.853783, 0, 0, 0, 0, 0, 0, 12.750122, 0.3223877, 38.419914, 0, 0, 0, 0, 0, 0, 22.124512, 0.32226563, 15.517593, 0, 0, 0, 0, 0, 0, 46.36435, 0.32226563, 12.979797, 0, 0, 0, 0, 0, 0, 13.360794, 0.32226563, -8.897446, 0, 0, 0, 0, 0, 0, 80.71274, 0.32226563, -6.0839386, 0, 0, 0, 0, 0, 0, 86.65181, -1.6097412, 16.381851, 0, 0, 0, 0, 0, 0, 86.62363, 0.32226563, -36.218613),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
-point_count = 16
+point_count = 15
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rhbnc"]
 size = Vector3(2, 13.762146, 4)
@@ -88,27 +88,27 @@ data = {
 script = ExtResource("2_51vxg")
 
 [node name="GroundCol" type="CollisionShape3D" parent="." unique_id=1705380115]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.78025, 0, -17.643482)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.78025, 1.2046204, -17.643482)
 shape = SubResource("BoxShape3D_ti3ln")
 
 [node name="GroundCol2" type="CollisionShape3D" parent="." unique_id=1443302718]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.152657, 0, 44.141937)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.152657, 1.2046204, 44.141937)
 shape = SubResource("BoxShape3D_eeolf")
 
 [node name="GroundCol3" type="CollisionShape3D" parent="." unique_id=78178799]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.08424, 0, 17.925789)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.08424, 1.2046204, 17.925789)
 shape = SubResource("BoxShape3D_sxeee")
 
 [node name="GroundCol4" type="CollisionShape3D" parent="." unique_id=481138550]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.020424, 0, 17.925789)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.71886, 1.2046204, 17.925789)
 shape = SubResource("BoxShape3D_6yumn")
 
 [node name="SideRoomCol" type="CollisionShape3D" parent="." unique_id=1760601242]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.22352, 0, -7.5545444)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.22352, 1.2046204, -7.5545444)
 shape = SubResource("BoxShape3D_adno7")
 
 [node name="EntranceCol" type="CollisionShape3D" parent="." unique_id=638285267]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.853988, 0, -60.91153)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.853988, 1.2046204, -60.91153)
 shape = SubResource("BoxShape3D_fjba4")
 
 [node name="ReferenceImage" type="MeshInstance3D" parent="." unique_id=2013924673]
@@ -144,7 +144,7 @@ script = ExtResource("11_pmp6n")
 dont_spawn_if_quest_is_not_met = &"FromBog"
 enemy_types = Array[PackedScene]([ExtResource("12_nprii")])
 potential_spawn_points = NodePath("../1FPath")
-spawn_point_offset = Vector3(0, 2, 0)
+spawn_point_offset = Vector3(0, 4, 0)
 enemy_point_collection = NodePath("../1FPath")
 spawn_container = NodePath("../1FSpawnPoint")
 max_spawned = 14
@@ -159,6 +159,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54, 1, 18)
 
 [node name="WallGlue" type="CollisionShape3D" parent="." unique_id=185633805]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.960699, 6.381073, 12.091648)
+shape = SubResource("BoxShape3D_rhbnc")
+
+[node name="WallGlue2" type="CollisionShape3D" parent="." unique_id=1251797223]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.9607, 6.381073, 8.091648)
 shape = SubResource("BoxShape3D_rhbnc")
 
 [node name="OutsideCastle" type="RayCast3D" parent="." unique_id=1415762162]

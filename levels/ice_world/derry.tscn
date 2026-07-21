@@ -29,6 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://0tg0hdlwo3y3" path="res://enemies/common/big_knight.tscn" id="27_7pt63"]
 [ext_resource type="PackedScene" uid="uid://8pmjrnhr3wew" path="res://environment/portals/portal_subviewport_pair.tscn" id="28_l8wme"]
 [ext_resource type="Texture2D" uid="uid://b468d6ayq7u4d" path="res://assets/sprites/warps.png" id="29_nov03"]
+[ext_resource type="Script" uid="uid://bh3e52s7bb0by" path="res://environment/portals/warp_point.gd" id="30_tekmr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p63pa"]
 albedo_color = Color(0.9843137, 0.8745098, 0.7411765, 1)
@@ -65,11 +66,11 @@ data = PackedVector3Array(-58, -7.5, 0.5, -58, -7.5, 3.2071068, -57.5, -7.5, 0.5
 
 [sub_resource type="Environment" id="Environment_u7iwl"]
 
-[sub_resource type="World3D" id="World3D_tekmr"]
+[sub_resource type="World3D" id="World3D_lt3dp"]
 resource_local_to_scene = true
 environment = SubResource("Environment_u7iwl")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lt3dp"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_er0ov"]
 resource_local_to_scene = true
 atlas = ExtResource("29_nov03")
 region = Rect2(0, 256, 256, 256)
@@ -501,10 +502,16 @@ teleport_scene = "uid://dkgap8kw2cyfc"
 teleport_point_name = "OutsideCastle"
 
 [node name="PortalSubviewportExternal" parent="PortalCameraPair" index="1" unique_id=389194511]
-world_3d = SubResource("World3D_tekmr")
+world_3d = SubResource("World3D_lt3dp")
 
 [node name="Sprite3D" parent="PortalCameraPair/PortalSubviewportExternal" index="1" unique_id=923265973]
-texture = SubResource("AtlasTexture_lt3dp")
+texture = SubResource("AtlasTexture_er0ov")
+
+[node name="DerryEntrance" type="RayCast3D" parent="." unique_id=2103415278]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 41, 68)
+target_position = Vector3(0, 0, -20)
+script = ExtResource("30_tekmr")
+metadata/_custom_type_script = "uid://bh3e52s7bb0by"
 
 [editable path="PortalCameraPair"]
 [editable path="PortalCameraPair/PortalSubviewportExternal"]

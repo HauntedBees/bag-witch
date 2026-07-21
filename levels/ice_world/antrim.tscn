@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://chlicquyef0kv"]
+
+[ext_resource type="PackedScene" uid="uid://b0ef4yh7jr0un" path="res://assets/levels/ice/antrim.blend" id="1_sojvq"]
+[ext_resource type="PackedScene" uid="uid://d1uajkvuwu3dn" path="res://items/world/food/mushroom.tscn" id="2_28mov"]
+[ext_resource type="PackedScene" uid="uid://cm0m2edwk6cv6" path="res://items/world/food/carrot.tscn" id="3_ece0n"]
+[ext_resource type="PackedScene" uid="uid://bojcp628rd3l4" path="res://environment/cauldron/cauldron.tscn" id="4_ece0n"]
+[ext_resource type="Script" uid="uid://wp1mdoed06xj" path="res://levels/quick_cutscene.gd" id="5_ni1jw"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_rhbnc"]
+radius = 6.0
+
+[node name="Antrim" type="Node3D" unique_id=109399680]
+
+[node name="antrim" parent="." unique_id=2047710497 instance=ExtResource("1_sojvq")]
+
+[node name="Cauldron" parent="." unique_id=439509165 instance=ExtResource("4_ece0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 25, 75)
+
+[node name="Shrooms" type="Node3D" parent="." unique_id=974820186]
+
+[node name="Mushroom" parent="Shrooms" unique_id=621096524 instance=ExtResource("2_28mov")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24.75, 107)
+
+[node name="Mushroom2" parent="Shrooms" unique_id=920650905 instance=ExtResource("2_28mov")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 24.75, 103)
+
+[node name="Mushroom3" parent="Shrooms" unique_id=15874414 instance=ExtResource("2_28mov")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43, 24.75, 88)
+
+[node name="Carrot" parent="Shrooms" unique_id=1388594384 instance=ExtResource("3_ece0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58, 24.75, 68)
+
+[node name="Carrot2" parent="Shrooms" unique_id=390144027 instance=ExtResource("3_ece0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69, 24.75, 48)
+
+[node name="Carrot3" parent="Shrooms" unique_id=1371593610 instance=ExtResource("3_ece0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92, 24.75, 37)
+
+[node name="QuickCutscene" type="Node" parent="." unique_id=1600532525 node_paths=PackedStringArray("trigger_area")]
+script = ExtResource("5_ni1jw")
+is_tutorial = true
+text = "I vaguely remember being able to make some sort of potion with three vegetables..."
+trigger_area = NodePath("../CauldronTriger")
+completed_key = &"make_potions"
+metadata/_custom_type_script = "uid://wp1mdoed06xj"
+
+[node name="CauldronTriger" type="Area3D" parent="." unique_id=286099029]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 26, 75)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CauldronTriger" unique_id=1549225056]
+shape = SubResource("SphereShape3D_rhbnc")

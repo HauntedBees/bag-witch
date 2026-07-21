@@ -39,7 +39,8 @@ func _on_body_entered(body: Node3D) -> void:
 
 func _clean_up() -> void:
 	for n in nodes_to_kill:
-		n.queue_free()
+		if n != null && is_instance_valid(n):
+			n.queue_free()
 	nodes_to_kill.clear()
 	_additional_cleanup()
 

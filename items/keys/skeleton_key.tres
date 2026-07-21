@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_d07ef")
-door_id = &"skeleton"
+door_id = &"skeleton_key"
 name = "Skeleton Key"
 description = "This can probably open any number of doors in the castle."
 icon = Rect2i(3, 7, 1, 1)

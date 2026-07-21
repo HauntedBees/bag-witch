@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://mhc05n27vjvq" path="res://assets/levels/common/rock2.blend" id="7_gghxb"]
 [ext_resource type="PackedScene" uid="uid://bb2mbjijl17d5" path="res://assets/levels/common/rock4.blend" id="8_seomq"]
 [ext_resource type="PackedScene" uid="uid://bibhq0y5pdvul" path="res://assets/levels/common/rock5.blend" id="9_ff2of"]
-[ext_resource type="PackedScene" uid="uid://d1uajkvuwu3dn" path="res://items/world/food/mushroom.tscn" id="11_seomq"]
+[ext_resource type="PackedScene" uid="uid://d1uajkvuwu3dn" path="res://assets/models/items/food/mushroom.tscn" id="11_seomq"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_eeolf"]
 height = 8.2109375

@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://cm0m2edwk6cv6"]
+
+[ext_resource type="Script" uid="uid://b66jl5gw8dewc" path="res://items/world/world_item.gd" id="1_a1wff"]
+[ext_resource type="Resource" uid="uid://7u7qquf88cla" path="res://items/food/carrot.tres" id="2_7skhk"]
+[ext_resource type="PackedScene" uid="uid://c6c6m0nr2ihf8" path="res://assets/models/items/carrot.blend" id="3_ib6u2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rhbnc"]
+size = Vector3(1, 2.3325806, 1)
+
+[node name="Carrot" type="Area3D" unique_id=621096524 node_paths=PackedStringArray("collider")]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_a1wff")
+item = ExtResource("2_7skhk")
+collider = NodePath("CollisionShape3D")
+metadata/_custom_type_script = "uid://b66jl5gw8dewc"
+
+[node name="carrot2" parent="." unique_id=1116982465 instance=ExtResource("3_ib6u2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14665258, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1276759177]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.199112, 0)
+shape = SubResource("BoxShape3D_rhbnc")

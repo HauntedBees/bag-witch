@@ -5,15 +5,17 @@
 [ext_resource type="AudioStream" uid="uid://7aari3k4iyax" path="res://assets/music/ice_loop.ogg" id="3_2ujki"]
 [ext_resource type="Script" uid="uid://ln2dmsedw0ev" path="res://levels/ice_world/snowifier.gd" id="3_hcls4"]
 [ext_resource type="PackedScene" uid="uid://bwnsfbcm24m4a" path="res://levels/ice_world/fermanagh.tscn" id="5_bue5n"]
-[ext_resource type="PackedScene" uid="uid://b0ef4yh7jr0un" path="res://assets/levels/ice/antrim.blend" id="5_jobve"]
 [ext_resource type="Script" uid="uid://cpe3jrnwinlxh" path="res://addons/JehenoAdvancedFirstPersonController/Map/MovementModifiers/slipperyZone/slippery_zone_script.gd" id="5_w165o"]
 [ext_resource type="PackedScene" uid="uid://cels0ivc77mq4" path="res://assets/levels/ice/armagh.blend" id="6_33ahx"]
+[ext_resource type="PackedScene" uid="uid://chlicquyef0kv" path="res://levels/ice_world/antrim.tscn" id="6_ffpem"]
 [ext_resource type="Texture2D" uid="uid://c054yo85hklkh" path="res://assets/models/environment/textures/Icefloor.png" id="9_6nvvy"]
 [ext_resource type="PackedScene" uid="uid://be51rag8tjrox" path="res://levels/ice_world/tyrone.tscn" id="9_54j0y"]
 [ext_resource type="PackedScene" uid="uid://dk7152wugld31" path="res://environment/signpost.tscn" id="10_33ahx"]
 [ext_resource type="PackedScene" uid="uid://1athgt8vxf6d" path="res://levels/ice_world/down.tscn" id="10_ffpem"]
 [ext_resource type="PackedScene" uid="uid://p4aws6kum3ih" path="res://levels/ice_world/derry.tscn" id="10_vcxes"]
 [ext_resource type="Script" uid="uid://lylfqtt7t8e6" path="res://levels/level_border.gd" id="13_33ahx"]
+[ext_resource type="PackedScene" uid="uid://8pmjrnhr3wew" path="res://environment/portals/portal_subviewport_pair.tscn" id="15_2ujki"]
+[ext_resource type="Texture2D" uid="uid://b468d6ayq7u4d" path="res://assets/sprites/warps.png" id="16_lf0o5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_d6hs4"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -53,8 +55,32 @@ rings = 1
 height = 5.0
 radius = 400.0
 
+[sub_resource type="Environment" id="Environment_u7iwl"]
+
+[sub_resource type="World3D" id="World3D_2ujki"]
+resource_local_to_scene = true
+environment = SubResource("Environment_u7iwl")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lf0o5"]
+resource_local_to_scene = true
+atlas = ExtResource("16_lf0o5")
+region = Rect2(768, 0, 256, 256)
+filter_clip = true
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_ffpem"]
 radius = 400.0
+
+[sub_resource type="Environment" id="Environment_wx74s"]
+
+[sub_resource type="World3D" id="World3D_kr3gg"]
+resource_local_to_scene = true
+environment = SubResource("Environment_wx74s")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i2y12"]
+resource_local_to_scene = true
+atlas = ExtResource("16_lf0o5")
+region = Rect2(0, 512, 256, 256)
+filter_clip = true
 
 [node name="IceWorld" type="Node3D" unique_id=1012043430]
 script = ExtResource("1_ffpem")
@@ -73,27 +99,28 @@ shadow_enabled = true
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1537048412]
 navigation_mesh = SubResource("NavigationMesh_rhbnc")
 
-[node name="Parts" type="Node3D" parent="NavigationRegion3D" unique_id=1336669156]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.53046, 0, -16.510944)
+[node name="armagh" parent="NavigationRegion3D" unique_id=234494284 instance=ExtResource("6_33ahx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.46954, -45.570774, 185.22057)
 script = ExtResource("3_hcls4")
 
-[node name="antrim" parent="NavigationRegion3D/Parts" unique_id=2047710497 instance=ExtResource("5_jobve")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 364, -45.570774, -62.999996)
-
-[node name="armagh" parent="NavigationRegion3D/Parts" unique_id=234494284 instance=ExtResource("6_33ahx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 247, -45.570774, 201.7315)
+[node name="Antrim" parent="NavigationRegion3D" unique_id=109399680 instance=ExtResource("6_ffpem")]
+transform = Transform3D(0.9659258, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.9659258, 274.46954, -42, -102.51094)
+script = ExtResource("3_hcls4")
 
 [node name="Fermanagh" parent="NavigationRegion3D" unique_id=1402286213 instance=ExtResource("5_bue5n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84.78412, 0, 112.78749)
 
 [node name="Tyrone" parent="NavigationRegion3D" unique_id=1970826866 instance=ExtResource("9_54j0y")]
 transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 39.449585, -42.85141, 19)
+script = ExtResource("3_hcls4")
 
 [node name="Down" parent="NavigationRegion3D" unique_id=40287013 instance=ExtResource("10_ffpem")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 381, -44, 143)
+script = ExtResource("3_hcls4")
 
 [node name="Derry" parent="NavigationRegion3D" unique_id=713716897 instance=ExtResource("10_vcxes")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, -46, -133)
+script = ExtResource("3_hcls4")
 
 [node name="MainIce" type="Node3D" parent="NavigationRegion3D" unique_id=1327711812]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 160.27446, -43.33628, 55.09117)
@@ -162,6 +189,19 @@ transform = Transform3D(-0.63835156, 0, -0.76974493, 0, 1, 0, 0.76974493, 0, -0.
 [node name="Signpost3" parent="NavigationRegion3D/SignPosts" unique_id=973870298 instance=ExtResource("10_33ahx")]
 transform = Transform3D(0.6214323, 0, -0.7834678, 0, 1, 0, 0.7834678, 0, 0.6214323, -66.9635, -40.836304, 74.85663)
 
+[node name="BackToTheBog" parent="NavigationRegion3D" unique_id=1775018926 instance=ExtResource("15_2ujki")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 205, 8, 172)
+
+[node name="Portal" parent="NavigationRegion3D/BackToTheBog" index="0" unique_id=573598963]
+teleport_scene = "uid://ssp37cocp7km"
+teleport_point_name = "FromDeath"
+
+[node name="PortalSubviewportExternal" parent="NavigationRegion3D/BackToTheBog" index="1" unique_id=389194511]
+world_3d = SubResource("World3D_2ujki")
+
+[node name="Sprite3D" parent="NavigationRegion3D/BackToTheBog/PortalSubviewportExternal" index="1" unique_id=923265973]
+texture = SubResource("AtlasTexture_lf0o5")
+
 [node name="Paths" type="Node3D" parent="." unique_id=1038295414]
 
 [node name="Border" type="Area3D" parent="." unique_id=1198607242]
@@ -171,3 +211,21 @@ script = ExtResource("13_33ahx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Border" unique_id=330067576]
 shape = SubResource("SphereShape3D_ffpem")
+
+[node name="Warp-Forest" parent="." unique_id=197693276 instance=ExtResource("15_2ujki")]
+transform = Transform3D(0.9659258, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.9659258, 362, -41, 42)
+
+[node name="Portal" parent="Warp-Forest" index="0" unique_id=573598963]
+teleport_scene = "uid://c5pqvv86efxau"
+teleport_point_name = "Entryway"
+
+[node name="PortalSubviewportExternal" parent="Warp-Forest" index="1" unique_id=389194511]
+world_3d = SubResource("World3D_kr3gg")
+
+[node name="Sprite3D" parent="Warp-Forest/PortalSubviewportExternal" index="1" unique_id=923265973]
+texture = SubResource("AtlasTexture_i2y12")
+
+[editable path="NavigationRegion3D/BackToTheBog"]
+[editable path="NavigationRegion3D/BackToTheBog/PortalSubviewportExternal"]
+[editable path="Warp-Forest"]
+[editable path="Warp-Forest/PortalSubviewportExternal"]

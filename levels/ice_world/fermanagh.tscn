@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://b7o0pdvrytkig" path="res://levels/enemy_spawner.gd" id="8_hso2e"]
 [ext_resource type="PackedScene" uid="uid://cphjo0ynxtgmo" path="res://enemies/ice/ice_golem.tscn" id="9_ipkyn"]
 [ext_resource type="Script" uid="uid://bh3e52s7bb0by" path="res://environment/portals/warp_point.gd" id="10_hso2e"]
-[ext_resource type="PackedScene" uid="uid://cm0m2edwk6cv6" path="res://items/world/food/carrot.tscn" id="11_ipkyn"]
+[ext_resource type="PackedScene" uid="uid://cm0m2edwk6cv6" path="res://items/world/carrot.tscn" id="11_ipkyn"]
 [ext_resource type="PackedScene" uid="uid://fptwiggukf88" path="res://items/world/weapons/rock.tscn" id="12_tlsib"]
 [ext_resource type="PackedScene" uid="uid://8pmjrnhr3wew" path="res://environment/portals/portal_subviewport_pair.tscn" id="13_d1xi5"]
 [ext_resource type="Texture2D" uid="uid://b468d6ayq7u4d" path="res://assets/sprites/warps.png" id="14_pfai5"]
@@ -39,11 +39,11 @@ point_count = 11
 
 [sub_resource type="Environment" id="Environment_u7iwl"]
 
-[sub_resource type="World3D" id="World3D_pjvrk"]
+[sub_resource type="World3D" id="World3D_pfai5"]
 resource_local_to_scene = true
 environment = SubResource("Environment_u7iwl")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3qq6y"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_pjvrk"]
 resource_local_to_scene = true
 atlas = ExtResource("14_pfai5")
 region = Rect2(256, 256, 256, 256)
@@ -208,10 +208,10 @@ teleport_scene = "uid://dkgap8kw2cyfc"
 teleport_point_name = "SecretRoom"
 
 [node name="PortalSubviewportExternal" parent="PortalCameraPair" index="1" unique_id=389194511]
-world_3d = SubResource("World3D_pjvrk")
+world_3d = SubResource("World3D_pfai5")
 
 [node name="Sprite3D" parent="PortalCameraPair/PortalSubviewportExternal" index="1" unique_id=923265973]
-texture = SubResource("AtlasTexture_3qq6y")
+texture = SubResource("AtlasTexture_pjvrk")
 
 [editable path="PortalCameraPair"]
 [editable path="PortalCameraPair/PortalSubviewportExternal"]
