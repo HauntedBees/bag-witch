@@ -14,8 +14,7 @@ var current_cauldron: Cauldron:
 		else:
 			_inventory_display.drop_text.text = "Add to Cauldron"
 
-var _quests: Dictionary[StringName, Quest] = {}
-var _already_completed_quests: Array[StringName] = []
+var _active_trials: Dictionary[StringName, Quest] = {}
 var _mouse_ray_length := 50.0
 
 # yeah yeah yeah, if GDscript supported interfaces or traits or something
@@ -47,6 +46,9 @@ func _ready() -> void:
 	super()
 	Player.data.stat_changed.connect(_adjust_movement_stats)
 	_adjust_movement_stats()
+
+func is_inventory_open() -> bool:
+	return _inventory_display.is_open()
 
 func add_clinging_effect(e: ClingingEffect) -> void:
 	clinging_effects.append(e)
@@ -104,7 +106,7 @@ func _process(delta: float) -> void:
 		Player.data.active_potions[p] -= delta
 		if Player.data.active_potions[p] <= 0.0:
 			Player.data.remove_potion(p)
-	for q: Quest in _quests.values():
+	for q: Quest in _active_trials.values():
 		q.process(delta)
 	if _reloading_time_remaining >= 0.0:
 		_reloading_time_remaining -= delta
@@ -116,25 +118,22 @@ func _process(delta: float) -> void:
 	if is_on_floor():
 		ready_to_glide = false
 
-func already_beat_quest(key: StringName) -> bool:
-	return _already_completed_quests.has(key)
-
-func get_quest(key: StringName) -> Quest:
-	if _quests.has(key):
-		return _quests[key]
+func get_active_trial(key: StringName) -> Quest:
+	if _active_trials.has(key):
+		return _active_trials[key]
 	return null
 
-func set_quest(key: StringName, quest: Quest) -> void:
-	_quests[key] = quest
-	quest.ended.connect(_on_quest_ended.bind(key))
+func set_active_trial(key: StringName, quest: Quest) -> void:
+	_active_trials[key] = quest
+	quest.ended.connect(_on_trial_ended.bind(key))
 	quest_added.emit(quest)
 
-func _on_quest_ended(key: StringName) -> void:
-	if !_quests.has(key):
+func _on_trial_ended(key: StringName) -> void:
+	if !_active_trials.has(key):
 		return # shouldn't happen
-	var quest := _quests[key]
+	var quest := _active_trials[key]
 	quest_removed.emit(quest)
-	_quests.erase(key)
+	_active_trials.erase(key)
 
 func is_on_broom() -> bool:
 	return state_machine.curr_state_name == "Glide"

@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://1athgt8vxf6d"]
+
+[ext_resource type="PackedScene" uid="uid://byx674h0vhxb7" path="res://assets/levels/ice/down.blend" id="1_leibx"]
+[ext_resource type="Script" uid="uid://b7o0pdvrytkig" path="res://levels/enemy_spawner.gd" id="2_yaj60"]
+[ext_resource type="PackedScene" uid="uid://cphjo0ynxtgmo" path="res://enemies/ice/ice_golem.tscn" id="3_iby2y"]
+[ext_resource type="Script" uid="uid://bn3r43bitaf3i" path="res://environment/point_collection.gd" id="4_w1q5b"]
+
+[sub_resource type="Curve3D" id="Curve3D_ffpem"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 126.90197, -10.057167, 43.642384, 0, 0, 0, 0, 0, 0, 100.11492, -10.057289, 50.85428, 0, 0, 0, 0, 0, 0, 94.44842, -10.056801, 29.733715, 0, 0, 0, 0, 0, 0, 120.72036, -10.056923, 25.097492, 0, 0, 0, 0, 0, 0, 70.23702, -10.057045, 44.67265, 0, 0, 0, 0, 0, 0, 55.813225, -10.056435, 75.58081, 0, 0, 0, 0, 0, 0, 43.449944, -10.057411, 100.82245, 0, 0, 0, 0, 0, 0, 21.299126, -10.056923, 84.338104, 0, 0, 0, 0, 0, 0, -6.518196, -10.056679, 33.339672, 0, 0, 0, 0, 0, 0, -10.63929, -10.056679, -6.325796, 0, 0, 0, 0, 0, 0, 66.11593, -10.056801, -37.23394, 0, 0, 0, 0, 0, 0, 30.05645, -10.056679, -13.537689, 0, 0, 0, 0, 0, 0, 35.207787, -10.056068, 29.733715, 0, 0, 0, 0, 0, 0, 74.358086, -10.057045, 10.1585455, 0, 0, 0, 0, 0, 0, 92.90301, -10.056801, -17.658783, 0, 0, 0, 0, 0, 0, 90.327324, -10.057045, -54.233425, 0, 0, 0, 0, 0, 0, 105.26626, -10.056801, -77.92967),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 17
+
+[node name="Down" type="Node3D" unique_id=40287013]
+
+[node name="down" parent="." unique_id=1613173525 instance=ExtResource("1_leibx")]
+
+[node name="DownSpawner" type="Node3D" parent="." unique_id=1753632406 node_paths=PackedStringArray("potential_spawn_points", "enemy_point_collection", "spawn_container")]
+script = ExtResource("2_yaj60")
+enemy_types = Array[PackedScene]([ExtResource("3_iby2y")])
+potential_spawn_points = NodePath("../DownPoints")
+enemy_point_collection = NodePath("../DownPoints")
+spawn_container = NodePath(".")
+max_spawned = 8
+
+[node name="DownEnemies" type="Node3D" parent="." unique_id=395981537]
+
+[node name="DownPoints" type="Path3D" parent="." unique_id=773390913]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.58593, 43.92521, -20.46127)
+curve = SubResource("Curve3D_ffpem")
+script = ExtResource("4_w1q5b")
+metadata/_custom_type_script = "uid://bn3r43bitaf3i"

@@ -46,6 +46,9 @@ func _ready() -> void:
 	Player.data.stat_changed.connect(_refresh_stats)
 	_refresh_stats()
 
+func is_open() -> bool:
+	return _active
+
 func _input(event: InputEvent) -> void:
 	if Player.input_locked || !Player.inventory_available:
 		return

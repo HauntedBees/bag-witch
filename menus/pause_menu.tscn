@@ -1,0 +1,270 @@
+[gd_scene format=3 uid="uid://bhkdonapr77nk"]
+
+[ext_resource type="LabelSettings" uid="uid://3m6tmar5mykf" path="res://menus/pause_label_settings.tres" id="1_0wv6w"]
+[ext_resource type="Script" uid="uid://blk6vhl2qmd1g" path="res://menus/pause_menu.gd" id="1_qlf07"]
+[ext_resource type="Script" uid="uid://hafxp56l0iao" path="res://addons/gas/gas_label.gd" id="2_0wv6w"]
+[ext_resource type="FontFile" uid="uid://d3y651l4q0g7n" path="res://assets/fonts/Gothica-Bold.ttf" id="3_qlf07"]
+[ext_resource type="PackedScene" uid="uid://q31nttrkbxcg" path="res://menus/options_menu.tscn" id="5_ybqm1"]
+[ext_resource type="PackedScene" uid="uid://85ebibl4e8nh" path="res://menus/save/save_screen.tscn" id="6_mtdpf"]
+
+[sub_resource type="Gradient" id="Gradient_p1qj3"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0.5, 0.5)
+colors = PackedColorArray(0.80784315, 0, 0.6745098, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rhbnc"]
+gradient = SubResource("Gradient_p1qj3")
+width = 48
+height = 48
+fill_to = Vector2(1, 1)
+
+[sub_resource type="Gradient" id="Gradient_qlf07"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0.5, 0.5)
+colors = PackedColorArray(0.80784315, 0.34117648, 0.34117648, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_p1qj3"]
+gradient = SubResource("Gradient_qlf07")
+width = 257
+height = 257
+fill_from = Vector2(1, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rhbnc"]
+content_margin_left = 42.0
+content_margin_top = 16.0
+content_margin_right = 42.0
+content_margin_bottom = 16.0
+bg_color = Color(0.80784315, 0, 0.6745098, 1)
+skew = Vector2(0.667, 0)
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_offset = Vector2(8, 8)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0wv6w"]
+content_margin_left = 42.0
+content_margin_top = 16.0
+content_margin_right = 42.0
+content_margin_bottom = 16.0
+bg_color = Color(0.58, 0, 0.4833334, 1)
+skew = Vector2(0.667, 0)
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_offset = Vector2(8, 8)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qlf07"]
+content_margin_left = 42.0
+content_margin_top = 16.0
+content_margin_right = 42.0
+content_margin_bottom = 16.0
+bg_color = Color(0.48, 0.1728, 0.40831992, 1)
+skew = Vector2(0.667, 0)
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_offset = Vector2(8, 8)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ybqm1"]
+content_margin_left = 42.0
+content_margin_top = 16.0
+content_margin_right = 42.0
+content_margin_bottom = 16.0
+bg_color = Color(0.49747366, 0.49747372, 0.49747342, 1)
+skew = Vector2(0.667, 0)
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_offset = Vector2(8, 8)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mtdpf"]
+content_margin_left = 42.0
+content_margin_top = 16.0
+content_margin_right = 42.0
+content_margin_bottom = 16.0
+bg_color = Color(0.80784315, 0, 0.6745098, 1)
+skew = Vector2(0.667, 0)
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_offset = Vector2(8, 8)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rhbnc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eeolf"]
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=706857508 groups=["hud"]]
+process_mode = 3
+layer = 998
+script = ExtResource("1_qlf07")
+
+[node name="TopCorner" type="HBoxContainer" parent="." unique_id=1943856508]
+unique_name_in_owner = true
+offset_right = 40.0
+offset_bottom = 40.0
+offset_transform_enabled = true
+theme_override_constants/separation = 0
+
+[node name="ColorRect" type="ColorRect" parent="TopCorner" unique_id=1965127833]
+custom_minimum_size = Vector2(720, 0)
+layout_mode = 2
+color = Color(0.80784315, 0, 0.6745098, 1)
+
+[node name="GASLabel" type="Label" parent="TopCorner/ColorRect" unique_id=520952598]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Paused"
+label_settings = ExtResource("1_0wv6w")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_0wv6w")
+metadata/_custom_type_script = "uid://hafxp56l0iao"
+
+[node name="TextureRect" type="TextureRect" parent="TopCorner" unique_id=579827921]
+custom_minimum_size = Vector2(192, 192)
+layout_mode = 2
+texture = SubResource("GradientTexture2D_rhbnc")
+
+[node name="BottomCorner" type="TextureRect" parent="." unique_id=1600352648]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(1028, 1082)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1028.0
+offset_top = -1082.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+offset_transform_enabled = true
+texture = SubResource("GradientTexture2D_p1qj3")
+
+[node name="Options" type="MarginContainer" parent="." unique_id=170714082]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+theme_override_constants/margin_right = 128
+theme_override_constants/margin_bottom = 128
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Options" unique_id=384349734]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 64
+alignment = 2
+
+[node name="ContinueButton" type="Button" parent="Options/VBoxContainer" unique_id=1464713561]
+layout_mode = 2
+size_flags_horizontal = 8
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0.66, 0.66, 0.66, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("3_qlf07")
+theme_override_font_sizes/font_size = 76
+theme_override_styles/normal = SubResource("StyleBoxFlat_rhbnc")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0wv6w")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qlf07")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ybqm1")
+theme_override_styles/focus = SubResource("StyleBoxFlat_mtdpf")
+text = "Continue"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Options/VBoxContainer" unique_id=353640552]
+layout_mode = 2
+accessibility_region = true
+alignment = 2
+
+[node name="OptionsButton" type="Button" parent="Options/VBoxContainer/HBoxContainer" unique_id=354395663]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0.66, 0.66, 0.66, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("3_qlf07")
+theme_override_font_sizes/font_size = 76
+theme_override_styles/normal = SubResource("StyleBoxFlat_rhbnc")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0wv6w")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qlf07")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ybqm1")
+theme_override_styles/focus = SubResource("StyleBoxFlat_mtdpf")
+text = "Options"
+
+[node name="VSeparator" type="VSeparator" parent="Options/VBoxContainer/HBoxContainer" unique_id=1095902336]
+layout_mode = 2
+theme_override_constants/separation = 118
+theme_override_styles/separator = SubResource("StyleBoxEmpty_rhbnc")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Options/VBoxContainer" unique_id=1425488668]
+layout_mode = 2
+accessibility_region = true
+alignment = 2
+
+[node name="SaveButton" type="Button" parent="Options/VBoxContainer/HBoxContainer2" unique_id=322656497]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0.66, 0.66, 0.66, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("3_qlf07")
+theme_override_font_sizes/font_size = 76
+theme_override_styles/normal = SubResource("StyleBoxFlat_rhbnc")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0wv6w")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qlf07")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ybqm1")
+theme_override_styles/focus = SubResource("StyleBoxFlat_mtdpf")
+text = "Save"
+
+[node name="VSeparator" type="VSeparator" parent="Options/VBoxContainer/HBoxContainer2" unique_id=990777706]
+layout_mode = 2
+theme_override_constants/separation = 242
+theme_override_styles/separator = SubResource("StyleBoxEmpty_rhbnc")
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Options/VBoxContainer" unique_id=972588677]
+layout_mode = 2
+alignment = 2
+
+[node name="QuitToTitleButton" type="Button" parent="Options/VBoxContainer/HBoxContainer3" unique_id=554643147]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0.66, 0.66, 0.66, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("3_qlf07")
+theme_override_font_sizes/font_size = 76
+theme_override_styles/normal = SubResource("StyleBoxFlat_rhbnc")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0wv6w")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qlf07")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ybqm1")
+theme_override_styles/focus = SubResource("StyleBoxFlat_mtdpf")
+text = "Quit to Title"
+
+[node name="VSeparator" type="VSeparator" parent="Options/VBoxContainer/HBoxContainer3" unique_id=1589432632]
+layout_mode = 2
+theme_override_constants/separation = 368
+theme_override_styles/separator = SubResource("StyleBoxEmpty_eeolf")
+
+[node name="OptionsMenu" parent="." unique_id=960938909 instance=ExtResource("5_ybqm1")]
+unique_name_in_owner = true
+visible = false
+active = false
+
+[node name="SaveScreen" parent="." unique_id=1113695259 instance=ExtResource("6_mtdpf")]
+unique_name_in_owner = true
+visible = false
+active = false
+
+[connection signal="pressed" from="Options/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="Options/VBoxContainer/HBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="Options/VBoxContainer/HBoxContainer2/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="Options/VBoxContainer/HBoxContainer3/QuitToTitleButton" to="." method="_on_quit_to_title_button_pressed"]
+[connection signal="closed" from="OptionsMenu" to="." method="_on_options_menu_closed"]
+[connection signal="closed" from="SaveScreen" to="." method="_on_save_screen_closed"]
+
+[editable path="OptionsMenu"]

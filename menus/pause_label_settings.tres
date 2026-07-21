@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://3m6tmar5mykf"]
+
+[ext_resource type="FontFile" uid="uid://bt4dviyx754lv" path="res://assets/fonts/Celtica-Bold.ttf" id="1_tjvfm"]
+
+[resource]
+font = ExtResource("1_tjvfm")
+font_size = 72
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)

@@ -2,11 +2,19 @@
 
 [ext_resource type="Script" uid="uid://cjlidc7juluwi" path="res://enemies/enemy.gd" id="1_idi53"]
 [ext_resource type="PackedScene" uid="uid://bkp5hliwkeaq7" path="res://assets/models/enemies/frost_golem.blend" id="2_i4csc"]
+[ext_resource type="Script" uid="uid://cgt7ckkn1gh5b" path="res://resource_types/items/item.gd" id="2_lqmub"]
+[ext_resource type="Resource" uid="uid://7u7qquf88cla" path="res://items/food/carrot.tres" id="3_lf8w2"]
+[ext_resource type="Resource" uid="uid://cjykdl4q3h120" path="res://items/food/mushroom.tres" id="4_p1p11"]
+[ext_resource type="Resource" uid="uid://b2ckj75uwnit2" path="res://items/crystals/bag_crystal.tres" id="5_3t6dk"]
 [ext_resource type="Script" uid="uid://cw1pwskvve6sn" path="res://enemies/behaviors/enemy_walk_between_points.gd" id="6_5tyy8"]
 [ext_resource type="Script" uid="uid://dxggsp43p5ket" path="res://enemies/behaviors/enemy_alert_friends.gd" id="6_pblh2"]
+[ext_resource type="Resource" uid="uid://et3im2qvxysa" path="res://items/crystals/speed_sapphire.tres" id="6_soene"]
 [ext_resource type="Script" uid="uid://cmgcelj1qxg8o" path="res://addons/tattomoosa.vision_cone_3d/src/VisionCone3D.gd" id="6_w1tp2"]
 [ext_resource type="Script" uid="uid://c7obdbhjgnuay" path="res://enemies/behaviors/enemy_chase_player.gd" id="7_673mu"]
+[ext_resource type="Resource" uid="uid://mbu0okiovudq" path="res://items/potions/potion_of_life.tres" id="7_p1p11"]
+[ext_resource type="Resource" uid="uid://sbrt245q0iwi" path="res://items/melee/sword.tres" id="8_3t6dk"]
 [ext_resource type="Script" uid="uid://b2ldfj5ngv3ch" path="res://enemies/behaviors/enemy_melee_player.gd" id="8_hyjxu"]
+[ext_resource type="Resource" uid="uid://dg7n54458bcvk" path="res://items/spellbooks/book_of_ice.tres" id="9_3t6dk"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rhbnc"]
 radius = 1.612793
@@ -22,21 +30,24 @@ radius = 3.0
 [sub_resource type="BoxShape3D" id="BoxShape3D_rhbnc"]
 size = Vector3(5.9612427, 6.637581, 3.620346)
 
-[node name="IceGolem" type="CharacterBody3D" unique_id=222303382 node_paths=PackedStringArray("animation_player", "bounding_box")]
+[node name="IceGolem" type="CharacterBody3D" unique_id=222303382 node_paths=PackedStringArray("bounding_box", "animation_player")]
 collision_layer = 9
 collision_mask = 3
 script = ExtResource("1_idi53")
 enemy_name = "Ice Golem"
-max_health = 1000
+potential_drops = Array[ExtResource("2_lqmub")]([ExtResource("9_3t6dk"), ExtResource("3_lf8w2"), ExtResource("4_p1p11"), ExtResource("5_3t6dk"), ExtResource("6_soene"), ExtResource("7_p1p11"), ExtResource("8_3t6dk")])
+potential_drop_chance = 1.0
+max_health = 350
+damage_stun_time = 0.0
+weaknesses = Array[int]([2])
+resistances = Array[int]([1])
+weakness_multiplier = 10
+bounding_box = NodePath("BoundingBox")
+animation_player = NodePath("frost_golem/AnimationPlayer")
 idle_anims = Array[StringName]([&"Idle", &"Idle_B"])
 hit_anim = &"Hit_A"
 big_hit_anim = &"Hit_B"
 die_anims = Array[StringName]([&"Death_A", &"Death_C_Skeletons"])
-damage_stun_time = 0.0
-animation_player = NodePath("frost_golem/AnimationPlayer")
-bounding_box = NodePath("BoundingBox")
-weaknesses = Array[int]([2])
-resistances = Array[int]([1])
 
 [node name="frost_golem" parent="." unique_id=455426502 instance=ExtResource("2_i4csc")]
 transform = Transform3D(-3, 0, -4.5298742e-07, 0, 3, 0, 4.5298742e-07, 0, -3, 0, 0, 0)

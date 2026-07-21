@@ -112,6 +112,7 @@ shape = SubResource("CylinderShape3D_eeolf")
 
 [node name="CauldronCutscene" type="Node" parent="." unique_id=930911265 node_paths=PackedStringArray("trigger_area", "nodes_to_kill")]
 script = ExtResource("3_wemd6")
+is_tutorial = true
 text = "I can drop a few things in this cauldron to make potions... I wonder what I should make..."
 trigger_area = NodePath("../CauldronExplanation")
 completed_key = &"first_cauldron"

@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://baaev0tc1par5"]
+
+[ext_resource type="Script" uid="uid://bilnrkrpjitk8" path="res://items/world/prepopulated_world_item.gd" id="1_lywwn"]
+[ext_resource type="PackedScene" uid="uid://c77cqokcrngbg" path="res://assets/models/weapons/book_closed.blend" id="3_greb1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rhbnc"]
+size = Vector3(1, 0.5074158, 1.4127197)
+
+[node name="Spellbook" type="Area3D" unique_id=458796508 node_paths=PackedStringArray("collider")]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_lywwn")
+collider = NodePath("CollisionShape3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1439180978]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2575531, 0.0115356445)
+shape = SubResource("BoxShape3D_rhbnc")
+
+[node name="book_closed" parent="." unique_id=1729289132 instance=ExtResource("3_greb1")]
+transform = Transform3D(3.821371e-15, 8.742278e-08, 2, 2, -8.742278e-08, 0, 8.742278e-08, 2, -8.742278e-08, 0, 0.22838318, 0)

@@ -1,5 +1,7 @@
 class_name BWEnum extends Object
 
+enum Gen { Early, Mid, Late }
+
 const GEN_MID := 4
 const GEN_LATE := 10
 

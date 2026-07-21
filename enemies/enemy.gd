@@ -46,6 +46,8 @@ signal on_effect_applied(e: BWEnum.Effect, level: int)
 ## Effects that don't apply to them.
 @export var resistances: Array[BWEnum.Effect] = []
 
+@export var weakness_multiplier := 4
+
 @export_category("Visuals")
 ## For the HUD.
 @export var bounding_box: CollisionShape3D
@@ -138,7 +140,10 @@ func receive_weapon_hit(source: Vector3, w: Weapon, has_impact_position := false
 			3: damage_mult = 4
 	for e in weaknesses:
 		if effect_keys.has(e):
-			damage_mult *= 4
+			damage_mult *= weakness_multiplier
+	for e in resistances:
+		if effect_keys.has(e):
+			damage_mult /= 2
 	if _is_frozen() && w.is_high_impact:
 		damage_mult *= 2
 	if w.is_melee:

@@ -12,7 +12,9 @@ signal ammo_updated(new_amount: int)
 		ammo_updated.emit(ammo)
 @export var modifications: Array[ItemMod] = []
 
-func _init(i: Item, p: Vector2i) -> void:
+func _init(i: Item = null, p := Vector2i.ZERO) -> void:
+	if i == null:
+		return
 	item = i
 	position = p
 	rotated = i.rotated_by_default

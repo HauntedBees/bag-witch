@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://8pmjrnhr3wew"]
+
+[ext_resource type="PackedScene" uid="uid://dhlu6wawyieh5" path="res://environment/portals/portal.tscn" id="1_sengj"]
+[ext_resource type="PackedScene" uid="uid://d8qagseewo6x" path="res://environment/portals/portal_subviewport_external.tscn" id="2_lxco8"]
+[ext_resource type="Texture2D" uid="uid://b468d6ayq7u4d" path="res://assets/sprites/warps.png" id="3_lxco8"]
+
+[sub_resource type="Environment" id="Environment_u7iwl"]
+
+[sub_resource type="World3D" id="World3D_nnp7r"]
+resource_local_to_scene = true
+environment = SubResource("Environment_u7iwl")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nnp7r"]
+resource_local_to_scene = true
+atlas = ExtResource("3_lxco8")
+region = Rect2(0, 0, 256, 256)
+filter_clip = true
+
+[node name="PortalCameraPair" type="Node3D" unique_id=1775018926]
+
+[node name="Portal" parent="." unique_id=573598963 node_paths=PackedStringArray("subviewport") instance=ExtResource("1_sengj")]
+subviewport = NodePath("../PortalSubviewportExternal")
+
+[node name="PortalSubviewportExternal" parent="." unique_id=389194511 instance=ExtResource("2_lxco8")]
+world_3d = SubResource("World3D_nnp7r")
+
+[node name="Sprite3D" parent="PortalSubviewportExternal" index="1" unique_id=923265973]
+texture = SubResource("AtlasTexture_nnp7r")
+
+[editable path="PortalSubviewportExternal"]

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Spellbook" format=3 uid="uid://d0ybewc2hbwkv"]
+
+[ext_resource type="Script" uid="uid://cbas7jc82h2rj" path="res://resource_types/items/spell_book.gd" id="1_c4frq"]
+[ext_resource type="Script" uid="uid://bh5gblgdby5gl" path="res://resource_types/spells/spell.gd" id="2_w1i7u"]
+[ext_resource type="Resource" uid="uid://bkpo6bi22ktp7" path="res://spells/jump.tres" id="3_51dr2"]
+[ext_resource type="Resource" uid="uid://cwq44ci5l5xix" path="res://spells/jump2.tres" id="4_vt2yq"]
+[ext_resource type="Resource" uid="uid://bvv603hnf2km6" path="res://spells/zoop2.tres" id="5_84s64"]
+[ext_resource type="Resource" uid="uid://yp3rshvqltif" path="res://spells/zoop.tres" id="6_mvfe8"]
+
+[resource]
+script = ExtResource("1_c4frq")
+spells = Array[ExtResource("2_w1i7u")]([ExtResource("3_51dr2"), ExtResource("4_vt2yq"), ExtResource("5_84s64"), ExtResource("6_mvfe8")])
+name = "Book of Movement"
+description = "This book has runes for the \"Jump I\", \"Jump II\", \"Zoop I\" and \"Zoop II\" spells."
+type = 1
+size = Vector2i(2, 1)
+icon = Rect2i(0, 1, 2, 1)
+rotated_by_default = true
+metadata/_custom_type_script = "uid://cbas7jc82h2rj"

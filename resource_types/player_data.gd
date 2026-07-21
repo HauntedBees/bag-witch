@@ -5,11 +5,15 @@ signal stat_changed()
 signal potion_added(p: Potion)
 signal potion_removed(p: Potion)
 
-var mind := 2:
+@export var options := PlayerOptions.new()
+
+@export var playtime := 0.0
+
+@export var mind := 1:
 	set(value):
 		mind = value
 		stat_changed.emit()
-var strength := 1:
+@export var strength := 1:
 	set(value):
 		var str_changed := strength != value
 		strength = value
@@ -20,39 +24,42 @@ var strength := 1:
 		stat_changed.emit()
 		if str_changed:
 			current_health = max_health
-var magic := 3:
+@export var magic := 1:
 	set(value):
 		magic = value
 		stat_changed.emit()
-var bag := 1:
+@export var bag := 1:
 	set(value):
 		bag = value
 		stat_changed.emit()
-var speed := 1:
+@export var speed := 3:
 	set(value):
 		speed = value
 		stat_changed.emit()
 
-var inventory := Inventory.new()
+@export var inventory := Inventory.new()
 
-var current_equipped: InventoryDetail = null
-var equip_slots: Array[InventoryDetail] = []
-var generations_elapsed := 0
+@export var current_equipped: InventoryDetail = null
+@export var equip_slots: Array[InventoryDetail] = []
+@export var generations_elapsed := 0
 
-var current_health := 10:
+@export var last_warped_scene_uid := "uid://ssp37cocp7km" # bog_world.tscn
+@export var last_warped_warp_point_name := "FromDeath"
+
+@export var current_health := 100:
 	set(value):
 		current_health = value
 		health_changed.emit(value)
-var max_health := 100
+@export var max_health := 100
 
-var completed_quests: Array[StringName] = [
+@export var completed_quests: Array[StringName] = [
 	&"Opening",
 	&"FromBog"
 ]
-var active_potions: Dictionary[Potion, float] = {}
+@export var active_potions: Dictionary[Potion, float] = {}
 
-var _remembered_spell: Spell
-var _remembered_spell_ammo := 0
+@export var _remembered_spell: Spell
+@export var _remembered_spell_ammo := 0
 
 func _init() -> void:
 	inventory.item_added.connect(_on_item_added)

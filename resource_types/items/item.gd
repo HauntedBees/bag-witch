@@ -139,7 +139,8 @@ func get_world_item(id: InventoryDetail = null, from_inventory := false) -> Worl
 	var wi_scene: PackedScene = load(scene_path)
 	var wi: WorldItem = wi_scene.instantiate()
 	wi.from_inventory = from_inventory
-	wi.from_inventory = true
+	if wi is PrepopulatedWorldItem:
+		wi.item = self
 	if id != null:
 		wi.ammo = id.ammo
 		wi.had_ammo_set = true

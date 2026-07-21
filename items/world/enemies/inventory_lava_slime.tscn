@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ba8a81r3bakjl"]
 
-[ext_resource type="Script" uid="uid://do1linfxq7l8j" path="res://items/world/inventory_lava_slime.gd" id="1_4ons7"]
+[ext_resource type="Script" uid="uid://do1linfxq7l8j" path="res://items/world/enemies/inventory_lava_slime.gd" id="1_4ons7"]
 [ext_resource type="PackedScene" uid="uid://5mfo3873qvty" path="res://assets/models/enemies/lava_slime.blend" id="1_7js3m"]
 
 [node name="InventoryLavaSlime" type="Node3D" unique_id=597440801]

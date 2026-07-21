@@ -58,10 +58,10 @@ func add_item(i: Item, pos: Vector2i, trigger_signal := true) -> void:
 
 func add_item_detail(new_item: InventoryDetail, trigger_signal := true) -> void:
 	if !new_item.item.first_get_text.is_empty():
-		var item_name := new_item.item.name
-		if !had_item_names.has(item_name):
-			SignalBus.say_new_item_text.emit("Bag Witch", new_item.item.first_get_text, item_name)
-			had_item_names.append(item_name)
+		var item_key := "spellbook" if new_item.item.type == Item.ItemType.Book else new_item.item.name
+		if !had_item_names.has(item_key) && Player.data.options.tooltips:
+			SignalBus.say_new_item_text.emit("Bag Witch", new_item.item.first_get_text, item_key)
+			had_item_names.append(item_key)
 	items.append(new_item)
 	if trigger_signal:
 		item_added.emit(new_item)

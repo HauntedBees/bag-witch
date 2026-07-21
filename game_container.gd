@@ -1,6 +1,8 @@
-extends Node3D
+class_name GameContainer extends Node3D
 
 const _GAME_OVER_SOUND := preload("uid://bnj7gqfldkufl")
+
+var is_loading_from_file := false
 
 @onready var _audio_manager: AudioManager = %AudioManager
 @onready var _player: BogWitch = %PlayerCharacter
@@ -14,6 +16,16 @@ var _current_loading_scene_destination: String
 func _ready() -> void:
 	SignalBus.load_new_level.connect(_on_load_new_level)
 	SignalBus.game_over.connect(_on_game_over)
+	if !is_loading_from_file:
+		var b: PackedScene = load("uid://b8ihm5mdma5nd")
+		set_from_save(b.instantiate(), "TestPoint")
+
+func set_from_save(world: Node3D, warp_pos: String) -> void:
+	if !is_inside_tree():
+		await ready
+	_current_loading_scene_destination = warp_pos
+	_world.add_child(world)
+	_place_player.call_deferred()
 
 func _on_game_over() -> void:
 	_warp.begin()
@@ -37,6 +49,8 @@ func _on_load_new_level(destination_uid: String, destination_point_name: String)
 	_warp.begin()
 	get_tree().paused = true
 	_is_warping = true
+	Player.data.last_warped_scene_uid = destination_uid
+	Player.data.last_warped_warp_point_name = destination_point_name
 	_load_level_inner(destination_uid, destination_point_name)
 
 func _load_level_inner(destination_uid: String, destination_point_name: String) -> void:

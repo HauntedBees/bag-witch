@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Spellbook" format=3 uid="uid://cbalo40kwro1e"]
+
+[ext_resource type="Script" uid="uid://cbas7jc82h2rj" path="res://resource_types/items/spell_book.gd" id="1_q1dbx"]
+[ext_resource type="Script" uid="uid://bh5gblgdby5gl" path="res://resource_types/spells/spell.gd" id="2_3joiy"]
+[ext_resource type="Resource" uid="uid://d40ivg6wp8mf" path="res://spells/bolt.tres" id="3_ruajy"]
+[ext_resource type="Resource" uid="uid://b1hnme3li32ld" path="res://spells/bolt2.tres" id="4_7pw68"]
+
+[resource]
+script = ExtResource("1_q1dbx")
+spells = Array[ExtResource("2_3joiy")]([ExtResource("3_ruajy"), ExtResource("4_7pw68")])
+name = "Book of Bolt"
+description = "This book has runes for the \"Bolt I\" and \"Bolt II\" spells."
+type = 1
+size = Vector2i(2, 1)
+icon = Rect2i(0, 1, 2, 1)
+rotated_by_default = true
+metadata/_custom_type_script = "uid://cbas7jc82h2rj"

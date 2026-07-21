@@ -10,7 +10,7 @@ func initialize(w: ProjectileWeapon, attacker_pos: Vector3) -> void:
 	var dir := -global_transform.basis.z.normalized()
 	if !is_inside_tree():
 		await ready
-	_body_yadi_yadi_yadi.apply_impulse(dir * w.vel)
+	_body_yadi_yadi_yadi.apply_impulse(dir * w.velocity)
 
 func _physics_process(_delta: float) -> void:
 	pass
