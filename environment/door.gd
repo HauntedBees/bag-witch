@@ -12,7 +12,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		return
 	if body is not BogWitch:
 		return
-	if _has_key():
+	if _has_key(): # TODO: get rid of key
 		_body_collider.disabled = true
 		_opened = true
 		if animation != null:

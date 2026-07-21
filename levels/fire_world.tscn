@@ -14,7 +14,7 @@
 [ext_resource type="Script" uid="uid://lylfqtt7t8e6" path="res://levels/level_border.gd" id="9_80h6e"]
 [ext_resource type="Script" uid="uid://wp1mdoed06xj" path="res://levels/quick_cutscene.gd" id="10_snvax"]
 [ext_resource type="Script" uid="uid://bh3e52s7bb0by" path="res://environment/portals/warp_point.gd" id="10_u8j4s"]
-[ext_resource type="PackedScene" uid="uid://nhixgopg3rk5" path="res://items/world/food/pineapple.tscn" id="15_p4ltq"]
+[ext_resource type="PackedScene" uid="uid://nhixgopg3rk5" path="res://assets/models/items/food/pineapple.tscn" id="15_p4ltq"]
 [ext_resource type="Script" uid="uid://xdrcn075jkic" path="res://levels/generational_enemy_spawner.gd" id="16_1swv2"]
 [ext_resource type="PackedScene" uid="uid://c0c6yem7oc5h2" path="res://items/world/weapons/broom.tscn" id="17_b05w2"]
 [ext_resource type="PackedScene" uid="uid://8pmjrnhr3wew" path="res://environment/portals/portal_subviewport_pair.tscn" id="18_1swv2"]
@@ -90,11 +90,11 @@ point_count = 12
 
 [sub_resource type="Environment" id="Environment_u7iwl"]
 
-[sub_resource type="World3D" id="World3D_euduq"]
+[sub_resource type="World3D" id="World3D_ht1gs"]
 resource_local_to_scene = true
 environment = SubResource("Environment_u7iwl")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1yfyx"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_euduq"]
 resource_local_to_scene = true
 atlas = ExtResource("19_ht1gs")
 region = Rect2(512, 256, 256, 256)
@@ -112,11 +112,11 @@ filter_clip = true
 
 [sub_resource type="Environment" id="Environment_4bsba"]
 
-[sub_resource type="World3D" id="World3D_ht1gs"]
+[sub_resource type="World3D" id="World3D_twyxu"]
 resource_local_to_scene = true
 environment = SubResource("Environment_4bsba")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_euduq"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_vqai3"]
 resource_local_to_scene = true
 atlas = ExtResource("19_ht1gs")
 region = Rect2(512, 0, 256, 256)
@@ -258,10 +258,10 @@ teleport_scene = "uid://dkgap8kw2cyfc"
 teleport_point_name = "SideRoom"
 
 [node name="PortalSubviewportExternal" parent="CastleWarp_SideRoom" index="1" unique_id=389194511]
-world_3d = SubResource("World3D_euduq")
+world_3d = SubResource("World3D_ht1gs")
 
 [node name="Sprite3D" parent="CastleWarp_SideRoom/PortalSubviewportExternal" index="1" unique_id=923265973]
-texture = SubResource("AtlasTexture_1yfyx")
+texture = SubResource("AtlasTexture_euduq")
 
 [node name="CastleWarp_TopArea" parent="." unique_id=870096478 instance=ExtResource("18_1swv2")]
 transform = Transform3D(0.481663, 0, 0.87635654, 0, 1, 0, -0.87635654, 0, 0.481663, -19.76175, 43.768524, -69.499374)
@@ -285,10 +285,16 @@ teleport_scene = "uid://b8knls82eve"
 teleport_point_name = "FermanaghWarp"
 
 [node name="PortalSubviewportExternal" parent="IceWarp_Ferm" index="1" unique_id=389194511]
-world_3d = SubResource("World3D_ht1gs")
+world_3d = SubResource("World3D_twyxu")
 
 [node name="Sprite3D" parent="IceWarp_Ferm/PortalSubviewportExternal" index="1" unique_id=923265973]
-texture = SubResource("AtlasTexture_euduq")
+texture = SubResource("AtlasTexture_vqai3")
+
+[node name="TheGround" type="RayCast3D" parent="." unique_id=989709324]
+transform = Transform3D(-0.57357645, 0, -0.819152, 0, 1, 0, 0.819152, 0, -0.57357645, -112.67836, 17.920715, -120.414566)
+target_position = Vector3(0, 0, -20)
+script = ExtResource("10_u8j4s")
+metadata/_custom_type_script = "uid://bh3e52s7bb0by"
 
 [editable path="CastleWarp_SideRoom"]
 [editable path="CastleWarp_SideRoom/PortalSubviewportExternal"]
