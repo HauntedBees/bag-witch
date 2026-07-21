@@ -3,8 +3,7 @@
 [ext_resource type="MeshLibrary" uid="uid://ch757jk85l1mm" path="res://assets/levels/castle/gridmap.blend" id="1_fjba4"]
 [ext_resource type="Script" uid="uid://bwc7becc4tx7h" path="res://levels/grid_mesh_baker.gd" id="2_51vxg"]
 [ext_resource type="Texture2D" uid="uid://ds08dps0j80v1" path="res://assets/levels/castle/mapref.png" id="3_20vpm"]
-[ext_resource type="PackedScene" uid="uid://bkkdwla7pwp3s" path="res://environment/door.tscn" id="4_51vxg"]
-[ext_resource type="PackedScene" uid="uid://dgsi18ril37qr" path="res://assets/models/skull.blend" id="5_20vpm"]
+[ext_resource type="PackedScene" uid="uid://cxo2r2jswnrc0" path="res://environment/skeleton_door.tscn" id="6_36d1m"]
 [ext_resource type="PackedScene" uid="uid://bas7v8xeta3wi" path="res://items/world/misc/key.tscn" id="6_sxeee"]
 [ext_resource type="Resource" uid="uid://do1jwf5icgroo" path="res://items/keys/skeleton_key.tres" id="7_6yumn"]
 [ext_resource type="PackedScene" uid="uid://u3yb2cnfgrfc" path="res://assets/models/environment/stairs.blend" id="8_6yumn"]
@@ -120,12 +119,8 @@ mesh = SubResource("QuadMesh_y1m4q")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.451057, 1.9390869, 17.907898)
 item = ExtResource("7_6yumn")
 
-[node name="Door" parent="." unique_id=1671042890 instance=ExtResource("4_51vxg")]
+[node name="SkeletonDoor" parent="." unique_id=1670362905 instance=ExtResource("6_36d1m")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 50, 0, 31.771008)
-door_id = &"skeleton_key"
-
-[node name="skull" parent="Door" unique_id=1658269457 instance=ExtResource("5_20vpm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.978638, -0.16125488)
 
 [node name="stairs" parent="." unique_id=2110541689 instance=ExtResource("8_6yumn")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -11, 0, 36)

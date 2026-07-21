@@ -174,6 +174,9 @@ func receive_weapon_hit(source: Vector3, w: Weapon, has_impact_position := false
 	on_hit.emit(w, source, damage_dealt, impact_position if has_impact_position else global_position, sneak_attack)
 	if is_dead():
 		return
+	if damage_dealt >= floori(max_health * 0.2) && randf() <= 0.75: # in addition to regular potential drop check
+		print("OUCH ME RINGS!") # TODO: sound
+		_try_drop(true)
 	_health -= damage_dealt
 	var magic_level := 1
 	if w is Spell:
@@ -195,7 +198,7 @@ func _die() -> void:
 	set_collision_layer_value(4, false)
 	on_died.emit()
 
-func _try_drop() -> void:
+func _try_drop(forced := false) -> void:
 	if potential_drops.size() == 0:
 		return
 	if randf() > potential_drop_chance:
@@ -205,7 +208,8 @@ func _try_drop() -> void:
 	var wi := item.get_world_item()
 	get_parent().get_parent().add_child(wi)
 	wi.global_position = global_position + Vector3.UP
-	wi.plep(Vector3(randf_range(-1.0, 1.0), 0.0, randf_range(-1.0, 1.0)))
+	var drop_range := 4.0 if forced else 1.0
+	wi.plep(Vector3(randf_range(-drop_range, drop_range), 0.0, randf_range(-drop_range, drop_range)))
 
 func is_about_to_die(damage: int) -> bool:
 	return damage >= _health

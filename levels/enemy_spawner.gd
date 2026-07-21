@@ -45,11 +45,10 @@ func _spawn_enemy() -> void:
 	var enemy_scene: PackedScene = _pick_enemy()
 	var enemy: EnemyDisplay = enemy_scene.instantiate()
 	enemy.name = "%s%s" % [enemy.enemy_name, randi()]
-	if include_skeleton_keys:
-		enemy.potential_drops.append(_SKELETON_KEY)
-		enemy.potential_drops.append(_SKELETON_KEY)
-		enemy.potential_drops.append(_SKELETON_KEY)
-		enemy.potential_drops.append(_SKELETON_KEY)
+	if include_skeleton_keys || Player.data.generations_elapsed >= BWEnum.GEN_MID:
+		var keys := randi_range(0, 6)
+		for i in keys:
+			enemy.potential_drops.append(_SKELETON_KEY)
 	if enemy_point_collection != null:
 		enemy.point_collection = enemy_point_collection
 	spawn_container.add_child(enemy)
