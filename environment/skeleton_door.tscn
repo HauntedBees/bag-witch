@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://cxo2r2jswnrc0"]
+
+[ext_resource type="PackedScene" uid="uid://bkkdwla7pwp3s" path="res://environment/door.tscn" id="1_cu1nf"]
+[ext_resource type="PackedScene" uid="uid://dgsi18ril37qr" path="res://assets/models/skull.blend" id="2_r6swp"]
+
+[node name="SkeletonDoor" type="Node3D" unique_id=1670362905]
+
+[node name="Door" parent="." unique_id=1671042890 instance=ExtResource("1_cu1nf")]
+door_id = &"skeleton_key"
+
+[node name="skull" parent="Door" unique_id=1081693848 instance=ExtResource("2_r6swp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.978638, -0.16125488)

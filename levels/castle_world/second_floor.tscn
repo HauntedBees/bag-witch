@@ -7,9 +7,16 @@
 [ext_resource type="Script" uid="uid://xdrcn075jkic" path="res://levels/generational_enemy_spawner.gd" id="5_y12kl"]
 [ext_resource type="PackedScene" uid="uid://cphjo0ynxtgmo" path="res://enemies/ice/ice_golem.tscn" id="6_5swdx"]
 [ext_resource type="PackedScene" uid="uid://wfskyskqk7kw" path="res://enemies/common/big_knight_no_key.tscn" id="7_y12kl"]
+[ext_resource type="PackedScene" uid="uid://bkkdwla7pwp3s" path="res://environment/door.tscn" id="8_5swdx"]
+[ext_resource type="PackedScene" uid="uid://5mfo3873qvty" path="res://assets/models/enemies/lava_slime.blend" id="9_7crhq"]
+[ext_resource type="PackedScene" uid="uid://b7plk8a3qa88c" path="res://assets/models/enemies/big_knight.blend" id="11_8s0nt"]
+[ext_resource type="PackedScene" uid="uid://cxo2r2jswnrc0" path="res://environment/skeleton_door.tscn" id="11_uwxc3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gn5m0"]
 size = Vector3(146.53122, 1, 87.184685)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uwxc3"]
+size = Vector3(146.53122, 1, 149.21356)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y1m4q"]
 size = Vector3(82.29003, 1, 62.40582)
@@ -33,6 +40,24 @@ _data = {
 }
 point_count = 8
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_7crhq"]
+resource_local_to_scene = true
+size = Vector3(15.76062, 11.901978, 1)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_78k2u"]
+resource_local_to_scene = true
+height = 10.0
+radius = 5.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_78k2u"]
+resource_local_to_scene = true
+size = Vector3(15.76062, 11.901978, 1)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_uwxc3"]
+resource_local_to_scene = true
+height = 10.0
+radius = 5.0
+
 [node name="SecondFloor" type="StaticBody3D" unique_id=1076509311]
 
 [node name="Ground" type="GridMap" parent="." unique_id=552384766]
@@ -53,6 +78,10 @@ script = ExtResource("2_iiepq")
 [node name="GroundCol" type="CollisionShape3D" parent="." unique_id=1286576862]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.711, 0, -28.35323)
 shape = SubResource("BoxShape3D_gn5m0")
+
+[node name="CeilingCol" type="CollisionShape3D" parent="." unique_id=944404028]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.711, 11.960266, 2.6612072)
+shape = SubResource("BoxShape3D_uwxc3")
 
 [node name="GroundCol2" type="CollisionShape3D" parent="." unique_id=212689050]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.15582, 0, 45.524345)
@@ -85,3 +114,77 @@ spawn_container = NodePath("../2FSpawnPoint")
 max_spawned = 5
 include_skeleton_keys = true
 metadata/_custom_type_script = "uid://xdrcn075jkic"
+
+[node name="LavaSlimeDoor" parent="." unique_id=1671042890 instance=ExtResource("8_5swdx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -86, 0, 14)
+door_id = &"lava_slime"
+
+[node name="BodyCollider" parent="LavaSlimeDoor/StaticBody3D" parent_id_path=PackedInt32Array(1671042890, 582976258) index="0" unique_id=1295175397]
+shape = SubResource("BoxShape3D_7crhq")
+
+[node name="CollisionShape3D" parent="LavaSlimeDoor/Area3D" parent_id_path=PackedInt32Array(1671042890, 1516045126) index="0" unique_id=164786398]
+shape = SubResource("CylinderShape3D_78k2u")
+
+[node name="sides" parent="LavaSlimeDoor/door" parent_id_path=PackedInt32Array(1671042890, 431683063) index="1" unique_id=759749775]
+visible = false
+
+[node name="scaffold" parent="LavaSlimeDoor/door" parent_id_path=PackedInt32Array(1671042890, 431683063) index="2" unique_id=458521724]
+visible = true
+
+[node name="lava_slimeDoorway" parent="." unique_id=571389064 instance=ExtResource("9_7crhq")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, -86.03912, 8.463013, 14.385376)
+
+[node name="KnightDoor" parent="." unique_id=1470618222 instance=ExtResource("8_5swdx")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -56, 0, -14)
+door_id = &"black_knight"
+
+[node name="BodyCollider" parent="KnightDoor/StaticBody3D" parent_id_path=PackedInt32Array(1470618222, 582976258) index="0" unique_id=1295175397]
+shape = SubResource("BoxShape3D_78k2u")
+
+[node name="CollisionShape3D" parent="KnightDoor/Area3D" parent_id_path=PackedInt32Array(1470618222, 1516045126) index="0" unique_id=164786398]
+shape = SubResource("CylinderShape3D_uwxc3")
+
+[node name="t-split" parent="KnightDoor/door" parent_id_path=PackedInt32Array(1470618222, 431683063) index="0" unique_id=2041066680]
+visible = true
+
+[node name="scaffold" parent="KnightDoor/door" parent_id_path=PackedInt32Array(1470618222, 431683063) index="2" unique_id=458521724]
+visible = true
+
+[node name="KnightDoorway" parent="." unique_id=803165191 instance=ExtResource("11_8s0nt")]
+transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, -55.468872, 6.3446655, -13.895996)
+
+[node name="BlackKnight_ArmLeft" parent="KnightDoorway/Rig/Skeleton3D" parent_id_path=PackedInt32Array(803165191, 987586369) index="0" unique_id=1934236692]
+visible = false
+
+[node name="BlackKnight_ArmRight" parent="KnightDoorway/Rig/Skeleton3D" parent_id_path=PackedInt32Array(803165191, 987586369) index="1" unique_id=629038251]
+visible = false
+
+[node name="BlackKnight_Body" parent="KnightDoorway/Rig/Skeleton3D" parent_id_path=PackedInt32Array(803165191, 987586369) index="2" unique_id=856013819]
+visible = false
+
+[node name="BlackKnight_Cape" parent="KnightDoorway/Rig/Skeleton3D" parent_id_path=PackedInt32Array(803165191, 987586369) index="3" unique_id=2073645030]
+visible = false
+
+[node name="BlackKnight_LegLeft" parent="KnightDoorway/Rig/Skeleton3D" parent_id_path=PackedInt32Array(803165191, 987586369) index="5" unique_id=1102126297]
+visible = false
+
+[node name="BlackKnight_LegRight" parent="KnightDoorway/Rig/Skeleton3D" parent_id_path=PackedInt32Array(803165191, 987586369) index="6" unique_id=1571761158]
+visible = false
+
+[node name="BlackKnight_ShoulderLeft" parent="KnightDoorway/Rig/Skeleton3D" parent_id_path=PackedInt32Array(803165191, 987586369) index="7" unique_id=1843483481]
+visible = false
+
+[node name="BlackKnight_ShoulderRight" parent="KnightDoorway/Rig/Skeleton3D" parent_id_path=PackedInt32Array(803165191, 987586369) index="8" unique_id=577039233]
+visible = false
+
+[node name="SkeletonDoor" parent="." unique_id=1670362905 instance=ExtResource("11_uwxc3")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -14, 0, 60)
+
+[node name="SkeletonDoor2" parent="." unique_id=1798670467 instance=ExtResource("11_uwxc3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0, 16)
+
+[editable path="LavaSlimeDoor"]
+[editable path="LavaSlimeDoor/door"]
+[editable path="KnightDoor"]
+[editable path="KnightDoor/door"]
+[editable path="KnightDoorway"]
