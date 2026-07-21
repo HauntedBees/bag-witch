@@ -30,7 +30,13 @@
 [ext_resource type="PackedScene" uid="uid://8pmjrnhr3wew" path="res://environment/portals/portal_subviewport_pair.tscn" id="28_it0wf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rhbnc"]
-size = Vector3(174.09018, 1, 212.1731)
+size = Vector3(109.2568, 1, 208.39337)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_it0wf"]
+size = Vector3(39.574516, 1, 37.10878)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8sy40"]
+size = Vector3(61.88163, 1, 120.296555)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eeolf"]
 albedo_color = Color(0.38928655, 0.38928664, 0.38928658, 1)
@@ -60,11 +66,11 @@ height = 15.0
 
 [sub_resource type="Environment" id="Environment_4bsba"]
 
-[sub_resource type="World3D" id="World3D_it0wf"]
+[sub_resource type="World3D" id="World3D_ved7y"]
 resource_local_to_scene = true
 environment = SubResource("Environment_4bsba")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8sy40"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_0bc3k"]
 resource_local_to_scene = true
 atlas = ExtResource("11_irjus")
 region = Rect2(256, 0, 256, 256)
@@ -82,21 +88,21 @@ data = PackedVector3Array(-14, 1, -139, -14, 1, -138, 14, 1, -139, -14, 1, -138,
 
 [sub_resource type="Environment" id="Environment_u7iwl"]
 
-[sub_resource type="World3D" id="World3D_ved7y"]
-resource_local_to_scene = true
-environment = SubResource("Environment_u7iwl")
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0bc3k"]
-resource_local_to_scene = true
-atlas = ExtResource("11_irjus")
-region = Rect2(768, 512, 256, 256)
-filter_clip = true
-
 [sub_resource type="World3D" id="World3D_wewbk"]
 resource_local_to_scene = true
 environment = SubResource("Environment_u7iwl")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jtgdr"]
+resource_local_to_scene = true
+atlas = ExtResource("11_irjus")
+region = Rect2(768, 512, 256, 256)
+filter_clip = true
+
+[sub_resource type="World3D" id="World3D_fcunm"]
+resource_local_to_scene = true
+environment = SubResource("Environment_u7iwl")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yx53r"]
 resource_local_to_scene = true
 atlas = ExtResource("11_irjus")
 region = Rect2(0, 768, 256, 256)
@@ -127,8 +133,16 @@ data = {
 script = ExtResource("2_21wa6")
 
 [node name="GroundCol" type="CollisionShape3D" parent="." unique_id=688040269]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.270315, 1.1910791, -35.627316)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.687008, 1.1910791, -33.737453)
 shape = SubResource("BoxShape3D_rhbnc")
+
+[node name="GroundCol2" type="CollisionShape3D" parent="." unique_id=1412754226]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.201645, 1.1910791, 19.658474)
+shape = SubResource("BoxShape3D_it0wf")
+
+[node name="GroundCol3" type="CollisionShape3D" parent="." unique_id=1764995539]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.506313, 1.1910791, -77.06979)
+shape = SubResource("BoxShape3D_8sy40")
 
 [node name="ReferenceImage" type="MeshInstance3D" parent="." unique_id=478066029]
 transform = Transform3D(0.99999994, -1.7320508, -7.5710346e-08, 0, -8.742278e-08, 2, -1.7320508, -0.99999994, -4.3711385e-08, -39.298492, 1.3209229, -42.201084)
@@ -252,10 +266,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 mesh = SubResource("CylinderMesh_rhbnc")
 
 [node name="PortalSubviewportExternal" parent="." unique_id=389194511 instance=ExtResource("10_8toge")]
-world_3d = SubResource("World3D_it0wf")
+world_3d = SubResource("World3D_ved7y")
 
 [node name="Sprite3D" parent="PortalSubviewportExternal" index="1" unique_id=923265973]
-texture = SubResource("AtlasTexture_8sy40")
+texture = SubResource("AtlasTexture_0bc3k")
 
 [node name="stairs" parent="." unique_id=1224569819 instance=ExtResource("12_irjus")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -52, 1, 40)
@@ -346,10 +360,10 @@ teleport_scene = "uid://c5pqvv86efxau"
 teleport_point_name = "TheTree"
 
 [node name="PortalSubviewportExternal" parent="Portal-ForestTree" index="1" unique_id=389194511]
-world_3d = SubResource("World3D_ved7y")
+world_3d = SubResource("World3D_wewbk")
 
 [node name="Sprite3D" parent="Portal-ForestTree/PortalSubviewportExternal" index="1" unique_id=923265973]
-texture = SubResource("AtlasTexture_0bc3k")
+texture = SubResource("AtlasTexture_jtgdr")
 
 [node name="Portal-IceBad" parent="." unique_id=199534222 instance=ExtResource("28_it0wf")]
 transform = Transform3D(0.3770786, 0, -0.92618126, 0, 1, 0, 0.92618126, 0, 0.3770786, 57.139435, 1.0947037, 29.531784)
@@ -359,10 +373,10 @@ teleport_scene = "uid://b8knls82eve"
 teleport_point_name = "BadTime"
 
 [node name="PortalSubviewportExternal" parent="Portal-IceBad" index="1" unique_id=389194511]
-world_3d = SubResource("World3D_wewbk")
+world_3d = SubResource("World3D_fcunm")
 
 [node name="Sprite3D" parent="Portal-IceBad/PortalSubviewportExternal" index="1" unique_id=923265973]
-texture = SubResource("AtlasTexture_jtgdr")
+texture = SubResource("AtlasTexture_yx53r")
 
 [editable path="Parts_FirstFromBog/WeakAssKnight"]
 [editable path="Parts_FirstFromBog/WeakAssKnight/knight"]
