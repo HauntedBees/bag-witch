@@ -41,6 +41,7 @@ capture_level = 2
 max_health = 80
 bounding_box = NodePath("BoundingBox")
 animation_player = NodePath("knight/AnimationPlayer")
+die_anims = Array[StringName]([&"Rig_Medium_General/Death_A"])
 
 [node name="knight" parent="." unique_id=1607028048 instance=ExtResource("2_gwjxy")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)

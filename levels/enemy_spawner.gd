@@ -1,5 +1,7 @@
 class_name EnemySpawner extends Node3D
 
+const _SKELETON_KEY := preload("uid://do1jwf5icgroo")
+
 @export var dont_spawn_if_quest_is_not_met: StringName
 
 @export var enemy_types: Array[PackedScene] = []
@@ -10,6 +12,7 @@ class_name EnemySpawner extends Node3D
 @export var max_spawned := 6
 @export var time_between_spawn_attempts := 30.0
 @export var spawn_chance := 0.8
+@export var include_skeleton_keys := false
 
 var _points: Array[Vector3]
 var _time_to_next_spawn_check := 0.0
@@ -17,7 +20,6 @@ var _last_spawn_point := Vector3.ZERO
 
 func _ready() -> void:
 	if !dont_spawn_if_quest_is_not_met.is_empty() && !Player.has_completed(dont_spawn_if_quest_is_not_met):
-		print("I'm not real today")
 		visible = false
 		return
 	_points = potential_spawn_points.get_points()
@@ -43,6 +45,11 @@ func _spawn_enemy() -> void:
 	var enemy_scene: PackedScene = _pick_enemy()
 	var enemy: EnemyDisplay = enemy_scene.instantiate()
 	enemy.name = "%s%s" % [enemy.enemy_name, randi()]
+	if include_skeleton_keys:
+		enemy.potential_drops.append(_SKELETON_KEY)
+		enemy.potential_drops.append(_SKELETON_KEY)
+		enemy.potential_drops.append(_SKELETON_KEY)
+		enemy.potential_drops.append(_SKELETON_KEY)
 	if enemy_point_collection != null:
 		enemy.point_collection = enemy_point_collection
 	spawn_container.add_child(enemy)
