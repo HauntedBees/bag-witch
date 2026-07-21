@@ -4,11 +4,10 @@
 [ext_resource type="Script" uid="uid://bwc7becc4tx7h" path="res://levels/grid_mesh_baker.gd" id="2_51vxg"]
 [ext_resource type="Texture2D" uid="uid://ds08dps0j80v1" path="res://assets/levels/castle/mapref.png" id="3_20vpm"]
 [ext_resource type="PackedScene" uid="uid://cxo2r2jswnrc0" path="res://environment/skeleton_door.tscn" id="6_36d1m"]
-[ext_resource type="PackedScene" uid="uid://bas7v8xeta3wi" path="res://items/world/misc/key.tscn" id="6_sxeee"]
-[ext_resource type="Resource" uid="uid://do1jwf5icgroo" path="res://items/keys/skeleton_key.tres" id="7_6yumn"]
 [ext_resource type="PackedScene" uid="uid://u3yb2cnfgrfc" path="res://assets/models/environment/stairs.blend" id="8_6yumn"]
 [ext_resource type="Texture2D" uid="uid://cuvbttq88b7l2" path="res://assets/models/textures/forest_floor.png" id="9_potmk"]
 [ext_resource type="Script" uid="uid://bn3r43bitaf3i" path="res://environment/point_collection.gd" id="10_b53l7"]
+[ext_resource type="PackedScene" uid="uid://crj0idaeo4e7n" path="res://levels/castle_world/grate.tscn" id="10_bgvrv"]
 [ext_resource type="Script" uid="uid://xdrcn075jkic" path="res://levels/generational_enemy_spawner.gd" id="11_pmp6n"]
 [ext_resource type="PackedScene" uid="uid://cphjo0ynxtgmo" path="res://enemies/ice/ice_golem.tscn" id="12_nprii"]
 
@@ -115,10 +114,6 @@ visible = false
 layers = 16384
 mesh = SubResource("QuadMesh_y1m4q")
 
-[node name="Key" parent="." unique_id=458796508 instance=ExtResource("6_sxeee")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.451057, 1.9390869, 17.907898)
-item = ExtResource("7_6yumn")
-
 [node name="SkeletonDoor" parent="." unique_id=1670362905 instance=ExtResource("6_36d1m")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 50, 0, 31.771008)
 
@@ -149,8 +144,15 @@ script = ExtResource("11_pmp6n")
 dont_spawn_if_quest_is_not_met = &"FromBog"
 enemy_types = Array[PackedScene]([ExtResource("12_nprii")])
 potential_spawn_points = NodePath("../1FPath")
+spawn_point_offset = Vector3(0, 2, 0)
 enemy_point_collection = NodePath("../1FPath")
 spawn_container = NodePath("../1FSpawnPoint")
 max_spawned = 14
 include_skeleton_keys = true
 metadata/_custom_type_script = "uid://xdrcn075jkic"
+
+[node name="SkeletonDoor2" parent="." unique_id=548062802 instance=ExtResource("6_36d1m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 9)
+
+[node name="Grate" parent="." unique_id=424573104 instance=ExtResource("10_bgvrv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54, 1, 18)

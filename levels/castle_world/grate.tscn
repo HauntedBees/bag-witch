@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://crj0idaeo4e7n"]
+
+[ext_resource type="PackedScene" uid="uid://v5lflbm6nsad" path="res://assets/levels/castle/grate.blend" id="1_86fn7"]
+[ext_resource type="Script" uid="uid://dt0ntrdx6jlcu" path="res://levels/castle_world/grate.gd" id="1_hrqgt"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hrqgt"]
+albedo_color = Color(0.32, 0.32, 0.32, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rhbnc"]
+size = Vector3(4.25, 0.5, 4.25)
+
+[node name="Grate" type="Node3D" unique_id=424573104]
+script = ExtResource("1_hrqgt")
+
+[node name="grate2" parent="." unique_id=1970843038 instance=ExtResource("1_86fn7")]
+
+[node name="grate" parent="grate2" index="1" unique_id=804561364]
+surface_material_override/0 = SubResource("StandardMaterial3D_hrqgt")
+
+[node name="GrateBody" type="StaticBody3D" parent="." unique_id=1103976906]
+unique_name_in_owner = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GrateBody" unique_id=1727925233]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.237854, 0)
+shape = SubResource("BoxShape3D_rhbnc")
+
+[editable path="grate2"]
