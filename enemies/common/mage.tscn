@@ -16,6 +16,7 @@
 [ext_resource type="Script" uid="uid://c7obdbhjgnuay" path="res://enemies/behaviors/enemy_chase_player.gd" id="9_j5grf"]
 [ext_resource type="Script" uid="uid://b2ldfj5ngv3ch" path="res://enemies/behaviors/enemy_melee_player.gd" id="10_2mwsu"]
 [ext_resource type="AnimationLibrary" uid="uid://ntjgewrphs02" path="res://assets/animations/Rig_Medium_MovementBasic.glb" id="10_7145n"]
+[ext_resource type="Script" uid="uid://cw1pwskvve6sn" path="res://enemies/behaviors/enemy_walk_between_points.gd" id="15_w7r65"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rhbnc"]
 radius = 0.75
@@ -37,6 +38,7 @@ collision_layer = 9
 collision_mask = 3
 script = ExtResource("1_7iucr")
 enemy_name = "Mage"
+is_new_anims = true
 potential_drops = Array[ExtResource("2_i1770")]([ExtResource("3_7145n"), ExtResource("5_ys3eq"), ExtResource("4_ihryr"), ExtResource("5_7145n"), ExtResource("6_w7r65"), ExtResource("7_j5grf")])
 potential_drop_chance = 0.4
 capture_level = 2
@@ -136,6 +138,10 @@ collision_mask = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2713928, 0)
 shape = SubResource("CylinderShape3D_8rrch")
 
+[node name="EnemyWalkBetweenPoints" type="Node" parent="." unique_id=644259283]
+script = ExtResource("15_w7r65")
+metadata/_custom_type_script = "uid://cw1pwskvve6sn"
+
 [node name="EnemyChasePlayer" type="Node" parent="." unique_id=612944538 node_paths=PackedStringArray("vision")]
 script = ExtResource("9_j5grf")
 vision = NodePath("../VisionCone3D")
@@ -143,6 +149,7 @@ movement_speed = 10.0
 give_up_time = 20.0
 idle_anims = Array[StringName]([&"Rig_Medium_General/Idle_A", &"Rig_Medium_General/Idle_B"])
 run_anims = Array[StringName]([&"Rig_Medium_MovementBasic/Running_A", &"Rig_Medium_MovementBasic/Running_B"])
+priority = 1
 
 [node name="EnemyMeleePlayer" type="Node" parent="." unique_id=1780040447 node_paths=PackedStringArray("close_enough_radius")]
 script = ExtResource("10_2mwsu")
@@ -152,7 +159,7 @@ attack_y_offset = 1.25
 rotation_speed = 6.0
 damage_range = Vector2i(2, 3)
 attack_scene = "uid://c260d40mxeatc"
-priority = 1
+priority = 2
 
 [node name="BoundingBox" type="CollisionShape3D" parent="." unique_id=1812678119]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2008884, 0)

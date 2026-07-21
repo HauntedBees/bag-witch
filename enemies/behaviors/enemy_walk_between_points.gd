@@ -7,21 +7,31 @@ class_name EnemyWalkBetweenPoints extends EnemyBehavior
 @export var idle_anims: Array[StringName] = []
 @export var run_anims: Array[StringName] = []
 
-var _idle_anim := Anim.IDLE
-var _run_anim := Anim.RUN
+var _idle_anim: StringName
+var _run_anim: StringName
 var _points: Array[Vector3] = []
 var _target_point: Vector3
 var _delay := 0.0
+var _off := false
 
 func _setup_behavior() -> void:
 	if idle_anims.size() > 0:
 		_idle_anim = idle_anims.pick_random()
+	else:
+		_idle_anim = Anim.NewKayKit.IDLE if _parent.is_new_anims else Anim.OldKayKit.IDLE
 	if run_anims.size() > 0:
 		_run_anim = run_anims.pick_random()
+	else:
+		_run_anim = Anim.NewKayKit.RUN if _parent.is_new_anims else Anim.OldKayKit.RUN
+	if _parent.point_collection == null:
+		_off = true
+		return
 	_points = _parent.point_collection.get_points()
 	_target_point = _points.pick_random()
 
 func _behave(delta: float) -> void:
+	if _off:
+		return
 	var tp := _target_point
 	tp.y = _parent.global_position.y
 	if _parent.global_position.distance_to(tp) <= 1.0:

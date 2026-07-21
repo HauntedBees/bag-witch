@@ -10,15 +10,19 @@ class_name EnemyChasePlayer extends EnemyBehavior
 var _can_see_player := false
 var _time_to_give_up := 0.0
 
-var _idle_anim := Anim.IDLE
-var _run_anim := Anim.RUN
+var _idle_anim: StringName
+var _run_anim: StringName
 
 func _setup_behavior() -> void:
 	_parent.on_target_identified.connect(_on_target_identified_from_another_source)
 	if idle_anims.size() > 0:
 		_idle_anim = idle_anims.pick_random()
+	else:
+		_idle_anim = Anim.NewKayKit.IDLE if _parent.is_new_anims else Anim.OldKayKit.IDLE
 	if run_anims.size() > 0:
 		_run_anim = run_anims.pick_random()
+	else:
+		_run_anim = Anim.NewKayKit.RUN if _parent.is_new_anims else Anim.OldKayKit.IDLE
 	_parent.on_effect_applied.connect(_on_effect_applied)
 	if vision is VisionCone3D:
 		vision.body_sighted.connect(_on_player_sighted)

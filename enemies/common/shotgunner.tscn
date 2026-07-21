@@ -1,16 +1,18 @@
-[gd_scene format=3 uid="uid://dp2i4li76xmtp"]
+[gd_scene format=3 uid="uid://dbjlmc8bdm7se"]
 
-[ext_resource type="Script" uid="uid://cjlidc7juluwi" path="res://enemies/enemy.gd" id="1_g6d6x"]
-[ext_resource type="Script" uid="uid://cgt7ckkn1gh5b" path="res://resource_types/items/item.gd" id="2_nvqwy"]
-[ext_resource type="Resource" uid="uid://bblwxtkau8lot" path="res://items/ammo/power_cell.tres" id="3_86ifg"]
-[ext_resource type="Resource" uid="uid://w0thup23ageh" path="res://items/melee/laser_sword.tres" id="3_t1c57"]
-[ext_resource type="Resource" uid="uid://dkq75or5ap7mf" path="res://items/food/apple.tres" id="5_d70d5"]
-[ext_resource type="PackedScene" uid="uid://d4bc43lmk8cto" path="res://assets/models/enemies/space_knight.blend" id="7_t1c57"]
-[ext_resource type="PackedScene" uid="uid://bqkdcbh8ymj41" path="res://assets/models/weapons/laser_sword.blend" id="7_tp7j6"]
-[ext_resource type="Script" uid="uid://cw1pwskvve6sn" path="res://enemies/behaviors/enemy_walk_between_points.gd" id="9_tp7j6"]
-[ext_resource type="Script" uid="uid://cmgcelj1qxg8o" path="res://addons/tattomoosa.vision_cone_3d/src/VisionCone3D.gd" id="11_kcp0f"]
-[ext_resource type="Script" uid="uid://c7obdbhjgnuay" path="res://enemies/behaviors/enemy_chase_player.gd" id="12_t5fxi"]
-[ext_resource type="Script" uid="uid://b2ldfj5ngv3ch" path="res://enemies/behaviors/enemy_melee_player.gd" id="13_f0uya"]
+[ext_resource type="Script" uid="uid://cjlidc7juluwi" path="res://enemies/enemy.gd" id="1_wgx7l"]
+[ext_resource type="Script" uid="uid://cgt7ckkn1gh5b" path="res://resource_types/items/item.gd" id="2_s7vat"]
+[ext_resource type="Resource" uid="uid://8cw7tywrtk5y" path="res://items/ammo/shotgun_ammo.tres" id="3_s7vat"]
+[ext_resource type="Resource" uid="uid://dmbcf5wgvngv2" path="res://items/guns/shotgun.tres" id="4_8x8a4"]
+[ext_resource type="Resource" uid="uid://dllaf206rjpo0" path="res://items/mods/handsaw.tres" id="5_5jq0v"]
+[ext_resource type="Resource" uid="uid://et3im2qvxysa" path="res://items/crystals/speed_sapphire.tres" id="6_xgnvx"]
+[ext_resource type="PackedScene" uid="uid://khfhpmh75iv4" path="res://assets/models/enemies/survivalist.blend" id="7_6h4c3"]
+[ext_resource type="Resource" uid="uid://dwy2t5iqcrs8k" path="res://items/guns/molotov_cocktail.tres" id="7_u624i"]
+[ext_resource type="PackedScene" uid="uid://bd1u571jrpdyx" path="res://assets/models/weapons/shotgun.blend" id="8_wgx7l"]
+[ext_resource type="Script" uid="uid://cmgcelj1qxg8o" path="res://addons/tattomoosa.vision_cone_3d/src/VisionCone3D.gd" id="9_oag8x"]
+[ext_resource type="Script" uid="uid://cw1pwskvve6sn" path="res://enemies/behaviors/enemy_walk_between_points.gd" id="10_6pdh3"]
+[ext_resource type="Script" uid="uid://c7obdbhjgnuay" path="res://enemies/behaviors/enemy_chase_player.gd" id="11_2pttr"]
+[ext_resource type="Script" uid="uid://b2ldfj5ngv3ch" path="res://enemies/behaviors/enemy_melee_player.gd" id="12_0ghs3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rhbnc"]
 radius = 0.75
@@ -26,28 +28,27 @@ radius = 3.0
 [sub_resource type="BoxShape3D" id="BoxShape3D_rhbnc"]
 size = Vector3(1, 2.4128723, 1)
 
-[node name="SpaceKnight" type="CharacterBody3D" unique_id=222303382 node_paths=PackedStringArray("bounding_box", "animation_player")]
+[node name="Shotgunner" type="CharacterBody3D" unique_id=222303382 node_paths=PackedStringArray("bounding_box")]
 collision_layer = 9
 collision_mask = 3
-script = ExtResource("1_g6d6x")
+script = ExtResource("1_wgx7l")
 enemy_name = "Space Knight"
-potential_drops = Array[ExtResource("2_nvqwy")]([ExtResource("3_t1c57"), ExtResource("3_86ifg"), ExtResource("5_d70d5")])
+potential_drops = Array[ExtResource("2_s7vat")]([ExtResource("3_s7vat"), ExtResource("4_8x8a4"), ExtResource("5_5jq0v"), ExtResource("6_xgnvx"), ExtResource("7_u624i")])
 potential_drop_chance = 0.4
 capture_level = 2
 max_health = 250
 weaknesses = Array[int]([3])
 resistances = Array[int]([1])
 bounding_box = NodePath("BoundingBox")
-animation_player = NodePath("space_knight/AnimationPlayer")
 idle_anims = Array[StringName]([&"Idle", &"Idle_B", &"Idle_Combat"])
 hit_anim = &"Hit_A"
 big_hit_anim = &"Hit_B"
 die_anims = Array[StringName]([&"Death_A"])
 
-[node name="space_knight" parent="." unique_id=799971212 instance=ExtResource("7_t1c57")]
+[node name="survivalist" parent="." unique_id=816779941 instance=ExtResource("7_6h4c3")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
-[node name="Skeleton3D" parent="space_knight/Rig" parent_id_path=PackedInt32Array(799971212, 1316407994) index="0" unique_id=1828853340]
+[node name="Skeleton3D" parent="survivalist/Rig" parent_id_path=PackedInt32Array(816779941, 931751658) index="0" unique_id=1084773010]
 bones/1/position = Vector3(0, 0.39179382, 0)
 bones/1/rotation = Quaternion(-1.11122646e-10, 0.043157756, 2.57241e-09, 0.9990683)
 bones/2/position = Vector3(3.0172547e-16, 0.1919775, -1.2613247e-17)
@@ -119,18 +120,13 @@ bones/39/rotation = Quaternion(-0.7071068, -7.279511e-08, -7.279509e-08, 0.70710
 bones/40/position = Vector3(-0.5108437, 0.7881963, 0.059736922)
 bones/40/rotation = Quaternion(-0.7582528, -1.0803343e-07, 0.6519608, 4.842878e-08)
 
-[node name="head" parent="space_knight/Rig/Skeleton3D" index="0" unique_id=1774041748]
-transform = Transform3D(0.9997204, -1.4014344e-09, 0.023646597, 1.3934143e-09, 0.99999994, 3.5568645e-10, -0.023646597, -3.2263747e-10, 0.9997204, -4.3038537e-09, 1.2275558, 1.5659704e-15)
-
-[node name="chest" parent="space_knight/Rig/Skeleton3D" index="1" unique_id=1673453853]
-transform = Transform3D(0.9962748, -5.1496163e-09, 0.08623532, 5.130434e-09, 0.99999994, 4.440771e-10, -0.08623532, 1.8196805e-15, 0.9962748, -2.9196547e-09, 0.9587593, 1.0186816e-15)
-
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="space_knight/Rig/Skeleton3D" index="8" unique_id=103519957]
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="survivalist/Rig/Skeleton3D" index="6" unique_id=686138970]
 transform = Transform3D(1.8373226e-05, -0.14997411, -0.9886898, -0.9999997, -7.70986e-05, -6.7938927e-06, -7.531837e-05, 0.9886895, -0.14997408, -0.49105215, 0.6409241, 0.1066189)
 bone_name = "handslot.r"
 bone_idx = 13
 
-[node name="laser_sword" parent="space_knight/Rig/Skeleton3D/BoneAttachment3D" unique_id=1094746878 instance=ExtResource("7_tp7j6")]
+[node name="shotgun2" parent="survivalist/Rig/Skeleton3D/BoneAttachment3D" unique_id=1540473676 instance=ExtResource("8_wgx7l")]
+transform = Transform3D(-0.064135134, 0.14326848, 0.73339, -0.08065175, 0.7304592, -0.14974897, -0.7428876, -0.091671176, -0.047057647, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1136467649]
 unique_name_in_owner = true
@@ -148,7 +144,7 @@ disabled = true
 [node name="VisionCone3D" type="Area3D" parent="." unique_id=762140472]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5323029, 0)
 collision_mask = 2
-script = ExtResource("11_kcp0f")
+script = ExtResource("9_oag8x")
 range = 15.0
 angle = 70.0
 collision_mask_ = 2
@@ -162,11 +158,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2713928, 0)
 shape = SubResource("SphereShape3D_rhbnc")
 
 [node name="EnemyWalkBetweenPoints" type="Node" parent="." unique_id=1804358231]
-script = ExtResource("9_tp7j6")
+script = ExtResource("10_6pdh3")
 metadata/_custom_type_script = "uid://cw1pwskvve6sn"
 
 [node name="EnemyChasePlayer" type="Node" parent="." unique_id=612944538 node_paths=PackedStringArray("vision")]
-script = ExtResource("12_t5fxi")
+script = ExtResource("11_2pttr")
 vision = NodePath("../VisionCone3D")
 movement_speed = 10.0
 give_up_time = 15.0
@@ -175,16 +171,16 @@ run_anims = Array[StringName]([&"Jump_Idle", &"Running_B"])
 priority = 1
 
 [node name="EnemyMeleePlayer" type="Node" parent="." unique_id=1780040447 node_paths=PackedStringArray("close_enough_radius")]
-script = ExtResource("13_f0uya")
-attack_anims = Array[StringName]([&"1H_Melee_Attack_Slice_Horizontal", &"1H_Melee_Attack_Slice_Diagonal"])
+script = ExtResource("12_0ghs3")
+attack_anims = Array[StringName]([&"2H_Ranged_Shoot"])
 close_enough_radius = NodePath("../CloseEnough")
 attack_y_offset = 0.8
-damage_range = Vector2i(10, 15)
-attack_scene = "uid://b550rngva186a"
+damage_range = Vector2i(50, 60)
+attack_scene = "uid://c2winsajb5lal"
 priority = 2
 
 [node name="BoundingBox" type="CollisionShape3D" parent="." unique_id=1812678119]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2008884, 0)
 shape = SubResource("BoxShape3D_rhbnc")
 
-[editable path="space_knight"]
+[editable path="survivalist"]

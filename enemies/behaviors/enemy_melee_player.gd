@@ -19,7 +19,7 @@ var _in_animation := false
 
 func _setup_behavior() -> void:
 	if attack_anims.size() == 0:
-		attack_anims.append(Anim.SLASH)
+		attack_anims.append(Anim.NewKayKit.SLASH if _parent.is_new_anims else Anim.OldKayKit.SLASH)
 	if close_enough_radius is VisionCone3D:
 		close_enough_radius.body_sighted.connect(_on_player_in_range)
 		close_enough_radius.body_hidden.connect(_on_player_leave_range)

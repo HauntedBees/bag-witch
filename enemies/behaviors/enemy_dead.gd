@@ -5,7 +5,10 @@ var _death_anim: StringName
 var _time_to_fade := 120.0
 
 func _init(die_anims: Array[StringName]) -> void:
-	_death_anim = die_anims.pick_random()
+	if die_anims.size() == 0:
+		_death_anim = Anim.NewKayKit.DIE if _parent.is_new_anims else Anim.OldKayKit.DIE
+	else:
+		_death_anim = die_anims.pick_random()
 
 func _setup_behavior() -> void:
 	priority = _DEAD_PRIORITY
