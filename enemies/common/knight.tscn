@@ -14,6 +14,7 @@
 [ext_resource type="AnimationLibrary" uid="uid://ntjgewrphs02" path="res://assets/animations/Rig_Medium_MovementBasic.glb" id="5_kgpmu"]
 [ext_resource type="Resource" uid="uid://csnhgb33a82l1" path="res://items/crystals/power_ruby.tres" id="6_6shv7"]
 [ext_resource type="PackedScene" uid="uid://dvs7xaq0u4w4n" path="res://items/world/weapons/sword.tscn" id="8_5mpsl"]
+[ext_resource type="Script" uid="uid://cw1pwskvve6sn" path="res://enemies/behaviors/enemy_walk_between_points.gd" id="13_6shv7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rhbnc"]
 radius = 0.75
@@ -34,6 +35,7 @@ collision_layer = 9
 collision_mask = 3
 script = ExtResource("1_fgu83")
 enemy_name = "Knight"
+is_new_anims = true
 potential_drops = Array[ExtResource("2_bwbqn")]([ExtResource("3_m38u8"), ExtResource("4_iet4e"), ExtResource("5_5mpsl"), ExtResource("6_6shv7")])
 capture_level = 2
 max_health = 80
@@ -108,7 +110,6 @@ collision_mask = 2
 script = ExtResource("4_7hoow")
 range = 15.0
 angle = 70.0
-debug_draw = true
 collision_mask_ = 2
 metadata/_custom_type_script = "uid://cmgcelj1qxg8o"
 
@@ -119,16 +120,21 @@ collision_mask = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2713928, 0)
 shape = SubResource("SphereShape3D_rhbnc")
 
+[node name="EnemyWalkBetweenPoints" type="Node" parent="." unique_id=1847962268]
+script = ExtResource("13_6shv7")
+metadata/_custom_type_script = "uid://cw1pwskvve6sn"
+
 [node name="EnemyChasePlayer" type="Node" parent="." unique_id=612944538 node_paths=PackedStringArray("vision")]
 script = ExtResource("3_oimey")
 vision = NodePath("../VisionCone3D")
+priority = 1
 
 [node name="EnemyMeleePlayer" type="Node" parent="." unique_id=1780040447 node_paths=PackedStringArray("close_enough_radius")]
 script = ExtResource("5_e6v1h")
 close_enough_radius = NodePath("../CloseEnough")
 attack_y_offset = 0.8
 attack_scene = "uid://b550rngva186a"
-priority = 1
+priority = 2
 
 [node name="BoundingBox" type="CollisionShape3D" parent="." unique_id=1812678119]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2008884, 0)

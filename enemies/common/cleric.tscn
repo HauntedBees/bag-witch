@@ -11,6 +11,7 @@
 [ext_resource type="Resource" uid="uid://csnhgb33a82l1" path="res://items/crystals/power_ruby.tres" id="9_yh6ef"]
 [ext_resource type="PackedScene" uid="uid://dbwqxpym38n74" path="res://assets/models/weapons/big_sword.blend" id="10_alvs5"]
 [ext_resource type="PackedScene" uid="uid://cvl5y7rb8dn5x" path="res://assets/models/enemies/cleric.blend" id="11_dqe4y"]
+[ext_resource type="Script" uid="uid://cw1pwskvve6sn" path="res://enemies/behaviors/enemy_walk_between_points.gd" id="13_5vnnh"]
 [ext_resource type="Script" uid="uid://cmgcelj1qxg8o" path="res://addons/tattomoosa.vision_cone_3d/src/VisionCone3D.gd" id="13_m7b44"]
 [ext_resource type="Script" uid="uid://c7obdbhjgnuay" path="res://enemies/behaviors/enemy_chase_player.gd" id="14_3yyk5"]
 [ext_resource type="Script" uid="uid://b2ldfj5ngv3ch" path="res://enemies/behaviors/enemy_melee_player.gd" id="15_bj4iu"]
@@ -150,7 +151,6 @@ collision_mask = 2
 script = ExtResource("13_m7b44")
 range = 15.0
 angle = 70.0
-debug_draw = true
 collision_mask_ = 2
 metadata/_custom_type_script = "uid://cmgcelj1qxg8o"
 
@@ -168,6 +168,10 @@ collision_mask = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2713928, 0)
 shape = SubResource("SphereShape3D_alvs5")
 
+[node name="EnemyWalkBetweenPoints" type="Node" parent="." unique_id=2050922027]
+script = ExtResource("13_5vnnh")
+metadata/_custom_type_script = "uid://cw1pwskvve6sn"
+
 [node name="EnemyChasePlayer" type="Node" parent="." unique_id=612944538 node_paths=PackedStringArray("vision")]
 script = ExtResource("14_3yyk5")
 vision = NodePath("../VisionCone3D")
@@ -175,6 +179,7 @@ movement_speed = 10.0
 give_up_time = 20.0
 idle_anims = Array[StringName]([&"Idle", &"Idle_B"])
 run_anims = Array[StringName]([&"Walking_B", &"Walking_C"])
+priority = 1
 
 [node name="EnemyFireBallAttack" type="Node" parent="." unique_id=1780040447 node_paths=PackedStringArray("close_enough_radius")]
 script = ExtResource("15_bj4iu")
@@ -185,7 +190,7 @@ attack_y_offset = 1.25
 rotation_speed = 6.0
 damage_range = Vector2i(4, 5)
 attack_scene = "uid://c260d40mxeatc"
-priority = 1
+priority = 2
 
 [node name="EnemyMeleeAttack" type="Node" parent="." unique_id=1741138667 node_paths=PackedStringArray("close_enough_radius")]
 script = ExtResource("15_bj4iu")
@@ -196,7 +201,7 @@ attack_y_offset = 0.75
 rotation_speed = 10.0
 damage_range = Vector2i(40, 50)
 attack_scene = "uid://b550rngva186a"
-priority = 2
+priority = 3
 
 [node name="BoundingBox" type="CollisionShape3D" parent="." unique_id=1812678119]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2008884, 0)

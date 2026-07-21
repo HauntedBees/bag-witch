@@ -10,6 +10,9 @@ signal on_effect_applied(e: BWEnum.Effect, level: int)
 ## This should be obvious.
 @export var enemy_name := ""
 
+## Whether to use "Rig_Medium_etc_etc" as the default animation values or not.
+@export var is_new_anims := false
+
 @export var potential_drops: Array[Item] = []
 
 @export var potential_drop_chance := 0.5
@@ -55,18 +58,19 @@ signal on_effect_applied(e: BWEnum.Effect, level: int)
 ## The animation player for this enemy.
 @export var animation_player: AnimationPlayer
 
-@export var idle_anims: Array[StringName] = [Anim.IDLE]
+@export var idle_anims: Array[StringName] = []
 
-@export var hit_anim := Anim.HIT
+@export var hit_anim: StringName
 
-@export var big_hit_anim := Anim.BIG_HIT
+@export var big_hit_anim: StringName
 
-@export var die_anims: Array[StringName] = [Anim.DIE]
+@export var die_anims: Array[StringName] = []
 
 var target: BogWitch
 
 var _health := 100
 var _effects: Dictionary[BWEnum.Effect, float] = {}
+var _player_for_distance_checks: Node3D
 
 @onready var _frozen_state := EnemyFrozen.new()
 @onready var _common_states: Array[EnemyBehavior] = [
@@ -79,11 +83,22 @@ var _effects: Dictionary[BWEnum.Effect, float] = {}
 @onready var death_collider: CollisionShape3D = %DeathCollisionShape3D
 @onready var _box: BoxShape3D = bounding_box.shape
 
+func _init() -> void:
+	if die_anims.size() == 0:
+		die_anims.append(Anim.NewKayKit.DIE if is_new_anims else Anim.OldKayKit.DIE)
+
 func _ready() -> void:
 	add_to_group(&"enemy")
+	_player_for_distance_checks = get_tree().get_first_node_in_group(&"PlayerCharacter")
 	for c in _common_states:
 		add_child(c)
 	_health = max_health
+	if idle_anims.size() == 0:
+		idle_anims.append(Anim.NewKayKit.IDLE if is_new_anims else Anim.OldKayKit.IDLE)
+	if hit_anim.is_empty():
+		hit_anim = Anim.NewKayKit.HIT if is_new_anims else Anim.OldKayKit.HIT
+	if big_hit_anim.is_empty():
+		big_hit_anim = Anim.NewKayKit.BIG_HIT if is_new_anims else Anim.OldKayKit.BIG_HIT
 	if animation_player != null:
 		animation_player.play(idle_anims.pick_random())
 	_addtl_enemy_setup()
@@ -105,6 +120,10 @@ func is_dead() -> bool:
 	return _health <= 0
 
 func _physics_process(delta: float) -> void:
+	#if _player_for_distance_checks != null:
+	#	var dist := global_position.distance_squared_to(_player_for_distance_checks.global_position)
+	#	if dist > 4900.0:
+	#		return
 	for e: BWEnum.Effect in _effects.keys():
 		_effects[e] -= delta
 		if _effects[e] <= 0.0:

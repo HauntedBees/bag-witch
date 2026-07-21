@@ -1,5 +1,7 @@
 class_name EnemySpawner extends Node3D
 
+@export var dont_spawn_if_quest_is_not_met: StringName
+
 @export var enemy_types: Array[PackedScene] = []
 @export var potential_spawn_points: PointCollection3D
 @export var spawn_point_offset := Vector3(0.0, 1.0, 0.0)
@@ -14,6 +16,10 @@ var _time_to_next_spawn_check := 0.0
 var _last_spawn_point := Vector3.ZERO
 
 func _ready() -> void:
+	if !dont_spawn_if_quest_is_not_met.is_empty() && !Player.has_completed(dont_spawn_if_quest_is_not_met):
+		print("I'm not real today")
+		visible = false
+		return
 	_points = potential_spawn_points.get_points()
 	if !visible:
 		return

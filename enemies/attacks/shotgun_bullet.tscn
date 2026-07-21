@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://c2winsajb5lal"]
+
+[ext_resource type="Script" uid="uid://clflaicajgqgs" path="res://enemies/attacks/enemy_projectile_attack.gd" id="1_mh3v4"]
+[ext_resource type="Shader" uid="uid://vwoxfwonv22e" path="res://assets/shaders/fire.gdshader" id="2_hg2vd"]
+
+[sub_resource type="Animation" id="Animation_hoap2"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_8no1o"]
+resource_name = "Shoot"
+length = 0.4
+step = 0.0333333
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tscq5"]
+_data = {
+&"RESET": SubResource("Animation_hoap2"),
+&"Shoot": SubResource("Animation_8no1o")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hwng4"]
+render_priority = 0
+shader = ExtResource("2_hg2vd")
+shader_parameter/apply_shape_deform = false
+shader_parameter/top_radius = 0.0
+shader_parameter/bottom_radius = 0.0
+shader_parameter/center_radius = 0.0
+shader_parameter/center_position = 0.0
+shader_parameter/cylinder_height = 1.0
+shader_parameter/bottom_curve = 0.4
+shader_parameter/_vibrate_amplitude = 0.015
+shader_parameter/_vibrate_frequency = 200.0
+shader_parameter/_speed = 0.25
+shader_parameter/_scale = 1.0
+shader_parameter/color_inner = Color(0.35955974, 0.35956004, 0.35955992, 0)
+shader_parameter/color_outer = Color(0, 0, 0, 1)
+shader_parameter/color_threshold = 0.5
+shader_parameter/flame_height = 1.0
+shader_parameter/flame_height_offset = -0.09
+shader_parameter/pattern_scale = 2.5
+shader_parameter/use_additional_texture = false
+shader_parameter/texture_scale = 1.0
+shader_parameter/texture_blend = 1.0
+shader_parameter/outline_enabled = true
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/outline_thickness = 0.04
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_xbift"]
+material = SubResource("ShaderMaterial_hwng4")
+radius = 0.3
+height = 1.5
+radial_segments = 16
+rings = 4
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_86uo3"]
+height = 1.979248
+radius = 1.0
+
+[node name="ShotgunBullet" type="Node3D" unique_id=669474006 node_paths=PackedStringArray("area", "anim")]
+script = ExtResource("1_mh3v4")
+velocity = 25.0
+lifespan = 0.5
+area = NodePath("Area3D")
+anim = NodePath("AnimationPlayer")
+flip_on_load = false
+end_on_hit = true
+knockback = 30.0
+additional_y_knockback = 2.0
+damage_range = Vector2i(5, 15)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=958486120]
+libraries/ = SubResource("AnimationLibrary_tscq5")
+autoplay = &"Shoot"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1910918441]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.6606255, 0, 0.31782532)
+mesh = SubResource("CapsuleMesh_xbift")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=638475731]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.6117082, 0, 0.31782532)
+mesh = SubResource("CapsuleMesh_xbift")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=157307043]
+collision_layer = 2
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1985843808]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -1.2875434e-08, 0.66529083)
+shape = SubResource("CylinderShape3D_86uo3")
