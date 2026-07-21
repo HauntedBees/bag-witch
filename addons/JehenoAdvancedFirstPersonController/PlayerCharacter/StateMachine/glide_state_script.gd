@@ -47,7 +47,7 @@ func applies(delta: float) -> void:
 		play_char.hit_ground_cooldown -= delta
 
 func input_management() -> void:
-	if Input.is_action_just_pressed(play_char.fly_action):
+	if Input.is_action_just_pressed(play_char.fly_action) && BWEnum.ALLOW_FLIGHT:
 		transitioned.emit(self, "InairState")
 
 func move(delta: float) -> void:

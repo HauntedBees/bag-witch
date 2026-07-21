@@ -4,6 +4,7 @@ enum Gen { Early, Mid, Late }
 
 const GEN_MID := 4
 const GEN_LATE := 10
+const ALLOW_FLIGHT := false
 
 const WEAPON_SLOTS: Array[StringName] = [
 	&"weapon_slot_1", &"weapon_slot_2", &"weapon_slot_3", &"weapon_slot_4", &"weapon_slot_5",
