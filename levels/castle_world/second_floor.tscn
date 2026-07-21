@@ -11,6 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://5mfo3873qvty" path="res://assets/models/enemies/lava_slime.blend" id="9_7crhq"]
 [ext_resource type="PackedScene" uid="uid://b7plk8a3qa88c" path="res://assets/models/enemies/big_knight.blend" id="11_8s0nt"]
 [ext_resource type="PackedScene" uid="uid://cxo2r2jswnrc0" path="res://environment/skeleton_door.tscn" id="11_uwxc3"]
+[ext_resource type="PackedScene" uid="uid://cpfqpt76eyygg" path="res://assets/models/enemies/queen_ii.blend" id="12_w2n6k"]
+[ext_resource type="Script" uid="uid://blxwq37gmvty3" path="res://levels/castle_world/cutscenes/final_cutscene.gd" id="13_xfgg5"]
+[ext_resource type="Script" uid="uid://bh3e52s7bb0by" path="res://environment/portals/warp_point.gd" id="14_xfgg5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gn5m0"]
 size = Vector3(146.53122, 1, 87.184685)
@@ -40,23 +43,27 @@ _data = {
 }
 point_count = 8
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_7crhq"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_8s0nt"]
 resource_local_to_scene = true
 size = Vector3(15.76062, 11.901978, 1)
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_78k2u"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_w2n6k"]
 resource_local_to_scene = true
 height = 10.0
 radius = 5.0
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_78k2u"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_xfgg5"]
 resource_local_to_scene = true
 size = Vector3(15.76062, 11.901978, 1)
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_uwxc3"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_t0d1b"]
 resource_local_to_scene = true
 height = 10.0
 radius = 5.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_rhbnc"]
+height = 5.0
+radius = 10.0
 
 [node name="SecondFloor" type="StaticBody3D" unique_id=1076509311]
 
@@ -120,10 +127,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -86, 0, 14)
 door_id = &"lava_slime"
 
 [node name="BodyCollider" parent="LavaSlimeDoor/StaticBody3D" parent_id_path=PackedInt32Array(1671042890, 582976258) index="0" unique_id=1295175397]
-shape = SubResource("BoxShape3D_7crhq")
+shape = SubResource("BoxShape3D_8s0nt")
 
 [node name="CollisionShape3D" parent="LavaSlimeDoor/Area3D" parent_id_path=PackedInt32Array(1671042890, 1516045126) index="0" unique_id=164786398]
-shape = SubResource("CylinderShape3D_78k2u")
+shape = SubResource("CylinderShape3D_w2n6k")
 
 [node name="sides" parent="LavaSlimeDoor/door" parent_id_path=PackedInt32Array(1671042890, 431683063) index="1" unique_id=759749775]
 visible = false
@@ -139,10 +146,10 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -56,
 door_id = &"black_knight"
 
 [node name="BodyCollider" parent="KnightDoor/StaticBody3D" parent_id_path=PackedInt32Array(1470618222, 582976258) index="0" unique_id=1295175397]
-shape = SubResource("BoxShape3D_78k2u")
+shape = SubResource("BoxShape3D_xfgg5")
 
 [node name="CollisionShape3D" parent="KnightDoor/Area3D" parent_id_path=PackedInt32Array(1470618222, 1516045126) index="0" unique_id=164786398]
-shape = SubResource("CylinderShape3D_uwxc3")
+shape = SubResource("CylinderShape3D_t0d1b")
 
 [node name="t-split" parent="KnightDoor/door" parent_id_path=PackedInt32Array(1470618222, 431683063) index="0" unique_id=2041066680]
 visible = true
@@ -183,8 +190,109 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -14,
 [node name="SkeletonDoor2" parent="." unique_id=1798670467 instance=ExtResource("11_uwxc3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0, 16)
 
+[node name="EndCutsceneTrigger" type="Area3D" parent="." unique_id=375960023]
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EndCutsceneTrigger" unique_id=2011657579]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -103.18494, 3.6501465, -15.109276)
+shape = SubResource("CylinderShape3D_rhbnc")
+
+[node name="EndCutsceneStuff" type="Node3D" parent="." unique_id=1548026122]
+
+[node name="queen_ii" parent="EndCutsceneStuff" unique_id=2004494330 instance=ExtResource("12_w2n6k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -102.85864, 1.1381836, -14.799683)
+
+[node name="Skeleton3D" parent="EndCutsceneStuff/queen_ii/Rig" parent_id_path=PackedInt32Array(2004494330, 1343115875) index="0" unique_id=1058231448]
+bones/1/position = Vector3(0, 0.37306216, 0)
+bones/1/rotation = Quaternion(-1.11122646e-10, 0.043157756, 2.57241e-09, 0.9990683)
+bones/2/position = Vector3(3.0172547e-16, 0.1919775, -1.2613247e-17)
+bones/2/rotation = Quaternion(-1.2390451e-17, 7.1054274e-15, -1.1209479e-16, 1)
+bones/3/rotation = Quaternion(-5.451663e-18, -4.2351647e-22, -1.120948e-16, 1)
+bones/4/position = Vector3(0.21200736, 0.13413203, 7.962105e-08)
+bones/4/rotation = Quaternion(-0.55320954, -0.056809053, -0.63727003, 0.53349674)
+bones/5/position = Vector3(4.9026568e-08, 0.24189733, -2.0881258e-07)
+bones/5/rotation = Quaternion(3.2059084e-08, -3.6385188e-08, -0.515398, 0.856951)
+bones/6/position = Vector3(-3.4892018e-09, 0.2600439, 8.9468244e-08)
+bones/6/rotation = Quaternion(5.922646e-09, -1.0865183e-08, 0.026658107, 0.99964464)
+bones/7/rotation = Quaternion(-0.32181904, -0.33679637, 0.15053308, 0.8719751)
+bones/8/position = Vector3(2.9901628e-08, 0.09612522, -0.057500046)
+bones/8/rotation = Quaternion(0.000727809, 0.0007278099, -0.70443004, 0.70977277)
+bones/9/position = Vector3(-0.21200739, 0.13413203, 8.3198785e-08)
+bones/9/rotation = Quaternion(-0.6116633, 0.077240214, 0.61279494, 0.49435252)
+bones/10/position = Vector3(-7.679432e-08, 0.24189746, -1.9204876e-07)
+bones/10/rotation = Quaternion(4.1076106e-08, 6.324569e-08, 0.5377721, 0.84309036)
+bones/11/position = Vector3(2.1446674e-08, 0.26004395, 5.03527e-08)
+bones/11/rotation = Quaternion(7.697738e-09, 7.557058e-09, -0.02665808, 0.99964464)
+bones/12/rotation = Quaternion(-0.32077575, 0.31302702, -0.23270796, 0.863113)
+bones/13/position = Vector3(-2.3427088e-08, 0.096125156, -0.05750004)
+bones/13/rotation = Quaternion(0.0023317137, 0.002746413, 0.7046814, 0.70951474)
+bones/14/position = Vector3(-5.805322e-16, 0.26879644, 8.132999e-18)
+bones/14/rotation = Quaternion(-5.80608e-11, -0.031341746, -1.880125e-09, 0.99950874)
+bones/15/position = Vector3(0.17094505, 0.11358722, 1.0606204e-08)
+bones/15/rotation = Quaternion(0.9904278, 0.083446555, 0.07811705, 0.07737799)
+bones/16/position = Vector3(9.167806e-09, 0.22707756, 7.2516766e-09)
+bones/16/rotation = Quaternion(0.36942488, 6.0941545e-08, -2.5227777e-07, 0.9292607)
+bones/17/rotation = Quaternion(-0.60807246, -0.20234554, 0.07208735, 0.7642693)
+bones/18/position = Vector3(-4.263384e-08, 0.16565001, 1.9567499e-09)
+bones/18/rotation = Quaternion(-6.2045247e-06, 0.9201525, -0.3915601, 1.4661143e-06)
+bones/19/position = Vector3(-0.17094505, 0.11358722, 1.5203383e-08)
+bones/19/rotation = Quaternion(0.99246407, -0.032762043, 0.030050237, 0.11418722)
+bones/20/rotation = Quaternion(0.41628727, -6.138672e-08, 2.8644882e-07, 0.90923315)
+bones/21/position = Vector3(4.2115214e-09, 0.14943695, 1.5603298e-08)
+bones/21/rotation = Quaternion(-0.6351244, 0.11289497, -0.021174615, 0.7638216)
+bones/22/position = Vector3(7.8670395e-09, 0.16565001, 1.4707147e-09)
+bones/22/rotation = Quaternion(-8.834629e-05, 0.9202199, -0.3914018, 2.0103436e-05)
+bones/23/position = Vector3(0.17094491, 0.2923103, 0.5758125)
+bones/23/rotation = Quaternion(0.7071068, -2.2930234e-07, -4.6055156e-08, 0.7071068)
+bones/24/position = Vector3(0.20218208, 0.025990263, 0.20518115)
+bones/24/rotation = Quaternion(-0.7071068, -7.052851e-08, -7.0528486e-08, 0.7071068)
+bones/25/position = Vector3(2.5596094e-08, 0.36283267, -2.4286129e-15)
+bones/25/rotation = Quaternion(9.6579225e-09, 1.7795516e-09, 0.98571914, -0.1683977)
+bones/26/position = Vector3(-1.5574136e-08, 0.21343614, -1.0534966e-08)
+bones/26/rotation = Quaternion(-1.02578326e-07, 0.39108434, 0.92035484, -3.295464e-08)
+bones/27/position = Vector3(2.5820102e-09, 0.16565005, -1.960292e-08)
+bones/27/rotation = Quaternion(-0.3910844, -6.0235486e-08, -4.500332e-08, 0.92035484)
+bones/28/position = Vector3(1.0398893e-08, 0.16565005, -1.2541945e-08)
+bones/28/rotation = Quaternion(1, 1.0206753e-09, 1.9196605e-07, 1.0244548e-08)
+bones/29/rotation = Quaternion(-4.857212e-17, 9.912326e-17, -1.9466935e-08, 1)
+bones/30/position = Vector3(-0.17094518, 0.2923103, 0.5758124)
+bones/30/rotation = Quaternion(0.7071068, -3.82385e-08, 1.4500867e-07, 0.7071068)
+bones/31/position = Vector3(-0.1709451, 0.025990263, 0.2457893)
+bones/31/rotation = Quaternion(-0.7071068, -7.0528515e-08, -7.05285e-08, 0.7071068)
+bones/32/position = Vector3(2.4015051e-08, 0.36283267, 2.4286129e-15)
+bones/32/rotation = Quaternion(-5.8358944e-09, 6.4383693e-10, 0.9948094, 0.10175614)
+bones/33/position = Vector3(5.9619847e-09, 0.21343614, -3.9266137e-09)
+bones/33/rotation = Quaternion(-1.0060663e-07, 0.39108434, 0.92035484, -2.8069156e-08)
+bones/34/position = Vector3(1.9620735e-08, 0.16565004, 2.8212537e-09)
+bones/34/rotation = Quaternion(-0.39108434, -6.477917e-08, -6.735857e-08, 0.92035484)
+bones/35/rotation = Quaternion(1, -4.058572e-09, 1.907939e-07, -6.519259e-09)
+bones/36/rotation = Quaternion(1.0408354e-16, -3.96547e-17, -1.946692e-08, 1)
+bones/37/rotation = Quaternion(-0.7071068, -7.279511e-08, -7.279509e-08, 0.7071068)
+bones/38/position = Vector3(0.5208407, 0.77807534, -0.057637356)
+bones/38/rotation = Quaternion(-0.7946268, 1.2665987e-07, -0.60709834, 2.2351742e-08)
+bones/39/rotation = Quaternion(-0.7071068, -7.279511e-08, -7.279509e-08, 0.7071068)
+bones/40/position = Vector3(-0.5108437, 0.7780752, 0.059736915)
+bones/40/rotation = Quaternion(-0.7582528, -1.0803343e-07, 0.6519608, 4.842878e-08)
+
+[node name="head" parent="EndCutsceneStuff/queen_ii/Rig/Skeleton3D" index="0" unique_id=1097922912]
+transform = Transform3D(0.9997204, -1.4014344e-09, 0.023646597, 1.3934143e-09, 0.99999994, 3.5568645e-10, -0.023646597, -3.2263747e-10, 0.9997204, -4.3038537e-09, 1.208824, 1.5659704e-15)
+
+[node name="FinalCutscene" type="Node" parent="." unique_id=673129374 node_paths=PackedStringArray("queen", "trigger_area", "nodes_to_kill")]
+script = ExtResource("13_xfgg5")
+queen = NodePath("../EndCutsceneStuff/queen_ii")
+trigger_area = NodePath("../EndCutsceneTrigger")
+completed_key = &"TheEnd"
+nodes_to_kill = [NodePath("../EndCutsceneStuff")]
+metadata/_custom_type_script = "uid://blxwq37gmvty3"
+
+[node name="CheatBoss" type="RayCast3D" parent="." unique_id=1155580287]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.034485, 9.499321, 0)
+script = ExtResource("14_xfgg5")
+metadata/_custom_type_script = "uid://bh3e52s7bb0by"
+
 [editable path="LavaSlimeDoor"]
 [editable path="LavaSlimeDoor/door"]
 [editable path="KnightDoor"]
 [editable path="KnightDoor/door"]
 [editable path="KnightDoorway"]
+[editable path="EndCutsceneStuff/queen_ii"]
