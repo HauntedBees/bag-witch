@@ -12,16 +12,18 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		return
 	if body is not BogWitch:
 		return
-	if _has_key(): # TODO: get rid of key
+	var key := _get_key()
+	if key != null:
+		Player.data.inventory.remove_item(key)
 		_body_collider.disabled = true
 		_opened = true
 		if animation != null:
 			animation.play(&"open")
 
-func _has_key() -> bool:
+func _get_key() -> InventoryDetail:
 	for id in Player.data.inventory.items:
 		var i := id.item
 		if i is KeyItem:
 			if i.door_id == door_id:
-				return true
-	return false
+				return id
+	return null
