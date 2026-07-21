@@ -38,6 +38,11 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 			var wf := body_parent as Waterfall
 			if effect == BWEnum.Effect.Burn && wf.frozen:
 				wf.frozen = false # TODO: play a sound
+		elif body_parent is Grate:
+			if effect == BWEnum.Effect.Burn:
+				body_parent.receive_hit(5 * randi_range(_weapon.damage_range.x, _weapon.damage_range.y))
+			elif _weapon.is_high_impact:
+				body_parent.receive_hit(randi_range(_weapon.damage_range.x, _weapon.damage_range.y))
 	queue_free()
 
 func _on_area_3d_area_entered(area: Area3D) -> void:
