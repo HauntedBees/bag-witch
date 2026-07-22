@@ -22,10 +22,16 @@ func emit_signal_if_click(s: Signal, i: InputEvent, button := MOUSE_BUTTON_LEFT)
 	if is_click(i, button):
 		s.emit()
 
+func get_vector2i_custom(event: InputEvent, left: StringName, right: StringName, up: StringName, down: StringName, echo := false) -> Vector2i:
+	return Vector2i(
+		_bool_to_int(event.is_action_pressed(right, echo)) - _bool_to_int(event.is_action_pressed(left, echo)),
+		_bool_to_int(event.is_action_pressed(down, echo)) - _bool_to_int(event.is_action_pressed(up, echo))
+	)
+
 func get_vector2i(event: InputEvent, echo := false) -> Vector2i:
 	return Vector2i(
-		_bool_to_int(event.is_action_pressed("ui_right", echo)) - _bool_to_int(event.is_action_pressed("ui_left", echo)),
-		_bool_to_int(event.is_action_pressed("ui_down", echo)) - _bool_to_int(event.is_action_pressed("ui_up", echo))
+		_bool_to_int(event.is_action_pressed(&"ui_right", echo)) - _bool_to_int(event.is_action_pressed(&"ui_left", echo)),
+		_bool_to_int(event.is_action_pressed(&"ui_down", echo)) - _bool_to_int(event.is_action_pressed(&"ui_up", echo))
 	)
 func _bool_to_int(b: bool) -> int: return 1 if b else 0
 

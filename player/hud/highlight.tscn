@@ -2,6 +2,14 @@
 
 [ext_resource type="Texture2D" uid="uid://drkgwweuv4vwb" path="res://assets/sprites/highlight.png" id="1_wdpcm"]
 [ext_resource type="Script" uid="uid://bemsuhte3sa6y" path="res://player/hud/highlight.gd" id="2_0eu0d"]
+[ext_resource type="PackedScene" uid="uid://bi75tcolvv8tm" path="res://player/hud/input_image.tscn" id="3_i03do"]
+[ext_resource type="Texture2D" uid="uid://dorg26lk5rom5" path="res://assets/sprites/input_icons.png" id="4_xpo1r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_38k30"]
+resource_local_to_scene = true
+atlas = ExtResource("4_xpo1r")
+region = Rect2(0, 208, 16, 16)
+filter_clip = true
 
 [node name="Highlight" type="NinePatchRect" unique_id=524059628]
 anchors_preset = 15
@@ -12,8 +20,28 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource("1_wdpcm")
-patch_margin_left = 18
-patch_margin_top = 18
-patch_margin_right = 18
-patch_margin_bottom = 18
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
 script = ExtResource("2_0eu0d")
+
+[node name="RotateIcon" parent="." unique_id=1161082248 instance=ExtResource("3_i03do")]
+visible = false
+z_index = 4096
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -20.0
+offset_right = 0.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(48, 0)
+texture = SubResource("AtlasTexture_38k30")
+action_name = &"rotate_item"
