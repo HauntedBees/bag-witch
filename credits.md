@@ -33,6 +33,7 @@ The following assets used are in the public domain but are listed here for refer
 - https://godotshaders.com/shader/swaying-material/ 
 - https://godotshaders.com/shader/3d-pixelated-fire-shader/ 
 - https://opengameart.org/content/tiny-rpg-dark-dwellers-gui 
+- https://opengameart.org/content/tiny-rpg-mana-soul-gui
 - https://opengameart.org/content/particle-pack-80-sprites 
 - https://opengameart.org/content/tiny-rpg-dragon-regalia-gui 
 - https://kenney.nl/assets/input-prompts-pixel 
@@ -69,4 +70,7 @@ The following assets used are in the public domain but are listed here for refer
 - https://kaylousberg.itch.io/kaykit-series-5
 - https://kaylousberg.itch.io/kaykit-series-6
 
-
+need the game-icons in here!!
+https://game-icons.net/1x1/lorc/jigsaw-piece.html
+https://game-icons.net/1x1/delapouite/heavy-bullets.html
+https://game-icons.net/1x1/sbed/cancel.html

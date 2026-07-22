@@ -16,6 +16,7 @@ var _current_draggable: ItemDragDetails
 var _highlight: Highlight
 var _highlighted_item: InventoryDetail
 var _highlighted_spell: Weapon
+var _highlight_pos := Vector2i.ZERO
 
 @onready var drop_text: GASLabel = %DropText
 
@@ -52,9 +53,25 @@ func is_open() -> bool:
 func _input(event: InputEvent) -> void:
 	if Player.input_locked || !Player.inventory_available:
 		return
+	var dir := GASInput.get_vector2i_custom(
+		event,
+		&"inventory_left", &"inventory_right", &"inventory_up", &"inventory_down"
+	)
+	if dir != Vector2i.ZERO:
+		var current_selected_item := _item_grid_info[_highlight_pos].item
+		var new_pos := _modulo_move_tile(_highlight_pos, dir)
+		while current_selected_item != null \
+			&& _item_grid_info[new_pos].item == current_selected_item \
+			&& new_pos != _highlight_pos:
+			new_pos = _modulo_move_tile(new_pos, dir)
+		_try_select_tile(new_pos)
+		return
 	if GASInput.is_event_action_just_pressed(event, &"toggle_inventory"):
 		_active = !_active
-		_highlight.set_to(null)
+		if _active:
+			_try_select_tile(Vector2i.ZERO)
+		else:
+			_highlight.set_to(null)
 		modulate.a = 1.0 if _active else 0.0
 		inventory_toggled.emit(_active)
 	if !_active:
@@ -71,6 +88,25 @@ func _input(event: InputEvent) -> void:
 			_current_draggable.preview.rotation_degrees = 0.0
 			_current_draggable.preview.position = InventoryItemDisplay.DRAG_OFFSET
 	_try_equip_item(event)
+
+func _try_select_tile(v: Vector2i) -> void:
+	_highlight_pos = v
+	var corner := _item_grid_info[v]
+	if corner.item:
+		_highlight_pos = corner.item.position
+		corner = _item_grid_info[_highlight_pos]
+	if corner.item_display:
+		_highlight.set_to(corner.item_display)
+	else:
+		_highlight.set_to(corner.tile)
+	_highlighted_item = corner.item
+
+func _modulo_move_tile(pos: Vector2i, dir: Vector2i) -> Vector2i:
+	var new_pos := pos + dir
+	return Vector2i(
+		posmod(new_pos.x, Player.data.inventory.dimensions.x),
+		posmod(new_pos.y, Player.data.inventory.dimensions.y)
+	)
 
 func _on_item_added(i: InventoryDetail) -> void:
 	_draw_item(i)

@@ -1,39 +1,129 @@
 [gd_scene format=3 uid="uid://bdcwnvc7nfxv3"]
 
 [ext_resource type="Script" uid="uid://bcjlliulmtajp" path="res://player/hud/item_tooltip.gd" id="1_o28ls"]
+[ext_resource type="Script" uid="uid://hafxp56l0iao" path="res://addons/gas/gas_label.gd" id="2_bavyx"]
+[ext_resource type="Texture2D" uid="uid://b7eia8kbs1qii" path="res://assets/sprites/spell_sheet.png" id="2_lkw0p"]
 [ext_resource type="FontFile" uid="uid://d3y651l4q0g7n" path="res://assets/fonts/Gothica-Bold.ttf" id="2_oyp7t"]
+[ext_resource type="Script" uid="uid://om54ctnqyag0" path="res://addons/gas/gas_richtextlabel.gd" id="5_gtr6n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bavyx"]
+atlas = ExtResource("2_lkw0p")
+region = Rect2(32, 32, 16, 16)
+filter_clip = true
 
 [sub_resource type="LabelSettings" id="LabelSettings_lkw0p"]
-font_size = 32
+font_size = 48
 outline_size = 8
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eeolf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gtr6n"]
+atlas = ExtResource("2_lkw0p")
+region = Rect2(16, 32, 16, 16)
+filter_clip = true
+
+[sub_resource type="LabelSettings" id="LabelSettings_gtr6n"]
+font = ExtResource("2_oyp7t")
+font_size = 48
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhbnc"]
+atlas = ExtResource("2_lkw0p")
+region = Rect2(0, 32, 16, 16)
+filter_clip = true
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rhbnc"]
+
 [node name="ItemTooltip" type="MarginContainer" unique_id=978229327]
-offset_right = 203.0
+custom_maximum_size = Vector2(900, -1)
+offset_right = 354.0
 offset_bottom = 66.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
+theme_override_constants/margin_right = -8
+theme_override_constants/margin_bottom = -16
 script = ExtResource("1_o28ls")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1712662938]
 layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 16
 
-[node name="Title" type="Label" parent="VBoxContainer" unique_id=629503335]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=2136152960]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="TypeIcon" type="TextureRect" parent="VBoxContainer/HBoxContainer" unique_id=875428118]
+unique_name_in_owner = true
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = SubResource("AtlasTexture_bavyx")
+stretch_mode = 5
+
+[node name="Title" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=1103325224]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Placeholder"
 label_settings = SubResource("LabelSettings_lkw0p")
+script = ExtResource("2_bavyx")
+metadata/_custom_type_script = "uid://hafxp56l0iao"
 
-[node name="Description" type="RichTextLabel" parent="VBoxContainer" unique_id=794565206]
-unique_name_in_owner = true
-custom_maximum_size = Vector2(800, 320)
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/HBoxContainer" unique_id=2100970289]
 layout_mode = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+size_flags_horizontal = 3
+theme_override_constants/separation = 64
+theme_override_styles/separator = SubResource("StyleBoxEmpty_eeolf")
+
+[node name="AmmoIcon" type="TextureRect" parent="VBoxContainer/HBoxContainer" unique_id=520553923]
+unique_name_in_owner = true
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = SubResource("AtlasTexture_gtr6n")
+stretch_mode = 5
+
+[node name="AmmoCount" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=647926459]
+unique_name_in_owner = true
+layout_mode = 2
+text = "500"
+label_settings = SubResource("LabelSettings_gtr6n")
+script = ExtResource("2_bavyx")
+metadata/_custom_type_script = "uid://hafxp56l0iao"
+
+[node name="VSeparator2" type="VSeparator" parent="VBoxContainer/HBoxContainer" unique_id=1491331029]
+layout_mode = 2
+theme_override_constants/separation = 42
+theme_override_styles/separator = SubResource("StyleBoxEmpty_eeolf")
+
+[node name="IsMergeable" type="TextureRect" parent="VBoxContainer/HBoxContainer" unique_id=877700396]
+unique_name_in_owner = true
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = SubResource("AtlasTexture_rhbnc")
+stretch_mode = 5
+
+[node name="Description" type="RichTextLabel" parent="VBoxContainer" unique_id=952511831]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
 theme_override_constants/outline_size = 6
 theme_override_fonts/normal_font = ExtResource("2_oyp7t")
-theme_override_font_sizes/normal_font_size = 28
+theme_override_font_sizes/normal_font_size = 36
 bbcode_enabled = true
 text = "Placeholder placeholder"
 fit_content = true
+scroll_active = false
+script = ExtResource("5_gtr6n")
+action_scroll_enabled = false
+metadata/_custom_type_script = "uid://om54ctnqyag0"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer" unique_id=194115845]
+layout_mode = 2
+theme_override_constants/separation = 6
+theme_override_styles/separator = SubResource("StyleBoxEmpty_rhbnc")

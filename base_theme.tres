@@ -1,6 +1,7 @@
 [gd_resource type="Theme" format=4 uid="uid://cvdqmdn56kxau"]
 
 [ext_resource type="FontFile" uid="uid://bt4dviyx754lv" path="res://assets/fonts/Celtica-Bold.ttf" id="1_6qegq"]
+[ext_resource type="StyleBox" uid="uid://by17rwwc2af68" path="res://player/hud/tooltip_style.tres" id="2_hjn8r"]
 
 [sub_resource type="Image" id="Image_6qegq"]
 data = {
@@ -881,3 +882,4 @@ ProgressBar/font_sizes/font_size = 16
 ProgressBar/fonts/font = SubResource("FontFile_ju8y4")
 ProgressBar/styles/background = SubResource("StyleBoxFlat_rhbnc")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_sglqa")
+TooltipPanel/styles/panel = ExtResource("2_hjn8r")
