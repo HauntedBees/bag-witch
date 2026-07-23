@@ -59,7 +59,6 @@ func _remove_clinging_effect(e: ClingingEffect) -> void:
 	clinging_effects.erase(e)
 
 func _adjust_movement_stats() -> void:
-	print("SPEED IS %s" % Player.data.speed)
 	match Player.data.speed:
 		1:
 			max_desired_move_speed = 30.0
