@@ -1,5 +1,6 @@
 class_name InventoryItemDisplay extends Control
 
+signal fake_drag_started(c: Control)
 signal drag_started()
 signal drag_ended()
 
@@ -61,6 +62,36 @@ func _get_drag_data(_at_position: Vector2) -> Variant:
 	d.item = details
 	d.display = self
 	d.preview = drag_icon
+	d.drag_size = size
+	d.from_mouse = true
+	return d
+
+func get_keyboard_gamepad_drag_data() -> ItemDragDetails:
+	var drag_icon := TextureRect.new()
+	drag_icon.texture = _texture
+	drag_icon.custom_minimum_size = _item.custom_minimum_size
+	drag_icon.modulate.a = 0.5
+
+	var preview = Control.new()
+	preview.add_child(drag_icon)
+	preview.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	drag_icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	drag_icon.pivot_offset = pivot_offset
+	if details.rotated:
+		drag_icon.position = DRAG_OFFSET_ROTATED
+		drag_icon.rotation_degrees = 90.0
+	else:
+		drag_icon.position = DRAG_OFFSET
+	#set_drag_preview(preview)
+	#drag_started.emit()
+	fake_drag_started.emit(drag_icon)
+
+	var d := ItemDragDetails.new()
+	d.item = details
+	d.display = self
+	d.preview = drag_icon
+	d.drag_size = size
+	d.from_mouse = false
 	return d
 
 func _notification(what: int) -> void:
