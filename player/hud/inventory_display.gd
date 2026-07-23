@@ -47,12 +47,17 @@ func _ready() -> void:
 	Player.data.stat_changed.connect(_refresh_stats)
 	_refresh_stats()
 
-func is_open() -> bool:
-	return _active
-
 func _input(event: InputEvent) -> void:
 	if Player.input_locked || !Player.inventory_available:
 		return
+	_toggle_inventory(event)
+	if !_active:
+		return
+	_handle_keyboard_gamepad_input(event)
+	_try_rotate_item(event)
+	_try_equip_item(event)
+
+func _handle_keyboard_gamepad_input(event: InputEvent) -> void:
 	var dir := GASInput.get_vector2i_custom(
 		event,
 		&"inventory_left", &"inventory_right", &"inventory_up", &"inventory_down"
@@ -64,42 +69,40 @@ func _input(event: InputEvent) -> void:
 			&& _item_grid_info[new_pos].item == current_selected_item \
 			&& new_pos != _highlight_pos:
 			new_pos = _modulo_move_tile(new_pos, dir)
-		_try_select_tile(new_pos)
+		_try_hover_tile_input(new_pos)
 		return
-	if GASInput.is_event_action_just_pressed(event, &"toggle_inventory"):
-		_active = !_active
-		if _active:
-			_try_select_tile(Vector2i.ZERO)
-		else:
-			_highlight.set_to(null)
-		modulate.a = 1.0 if _active else 0.0
-		inventory_toggled.emit(_active)
-	if !_active:
-		return
-	if GASInput.is_event_action_just_pressed(event, &"rotate_item"):
-		if _current_draggable == null:
-			return
-		_current_draggable.rotation_changed = !_current_draggable.rotation_changed
-		var rotated := _current_draggable.item.rotated != _current_draggable.rotation_changed
-		if rotated:
-			_current_draggable.preview.rotation_degrees = 90.0
-			_current_draggable.preview.position = InventoryItemDisplay.DRAG_OFFSET_ROTATED
-		else:
-			_current_draggable.preview.rotation_degrees = 0.0
-			_current_draggable.preview.position = InventoryItemDisplay.DRAG_OFFSET
-	_try_equip_item(event)
 
-func _try_select_tile(v: Vector2i) -> void:
+func _try_rotate_item(event: InputEvent) -> void:
+	if !GASInput.is_event_action_just_pressed(event, &"rotate_item"):
+		return
+	if _current_draggable == null:
+		return
+	_current_draggable.rotation_changed = !_current_draggable.rotation_changed
+	var rotated := _current_draggable.item.rotated != _current_draggable.rotation_changed
+	if rotated:
+		_current_draggable.preview.rotation_degrees = 90.0
+		_current_draggable.preview.position = InventoryItemDisplay.DRAG_OFFSET_ROTATED
+	else:
+		_current_draggable.preview.rotation_degrees = 0.0
+		_current_draggable.preview.position = InventoryItemDisplay.DRAG_OFFSET
+
+func _try_hover_tile_input(v: Vector2i) -> void:
 	_highlight_pos = v
 	var corner := _item_grid_info[v]
 	if corner.item:
 		_highlight_pos = corner.item.position
-		corner = _item_grid_info[_highlight_pos]
-	if corner.item_display:
-		_highlight.set_to(corner.item_display)
+		_fully_select_item(_item_grid_info[_highlight_pos], false)
 	else:
-		_highlight.set_to(corner.tile)
-	_highlighted_item = corner.item
+		_fully_select_item(corner, false)
+
+func _fully_select_item(t: TileDetails, use_mouse: bool) -> void:
+	_highlighted_item = t.item
+	if t.item_display:
+		_highlight.set_to(t.item_display)
+		_highlight.show_select_icon(true, use_mouse)
+	else:
+		_highlight.set_to(t.tile)
+		_highlight.show_select_icon(false)
 
 func _modulo_move_tile(pos: Vector2i, dir: Vector2i) -> Vector2i:
 	var new_pos := pos + dir
@@ -107,16 +110,6 @@ func _modulo_move_tile(pos: Vector2i, dir: Vector2i) -> Vector2i:
 		posmod(new_pos.x, Player.data.inventory.dimensions.x),
 		posmod(new_pos.y, Player.data.inventory.dimensions.y)
 	)
-
-func _on_item_added(i: InventoryDetail) -> void:
-	_draw_item(i)
-	_bake_item_positions()
-	if i.item is Spellbook:
-		_draw_spells()
-
-func _on_items_purged() -> void:
-	_draw_items()
-	_draw_spells()
 
 func _try_equip_item(event: InputEvent) -> void:
 	if _highlighted_item == null && _highlighted_spell == null:
@@ -131,16 +124,30 @@ func _try_equip_item(event: InputEvent) -> void:
 			_bake_spell_equips()
 			return
 
-#func _notification(what: int) -> void:
-#	if what == NOTIFICATION_EXIT_TREE:
-#		if is_instance_valid(_highlight) && !_highlight.is_inside_tree():
-#			_highlight.queue_free()
-#			_highlight = null
-
 func _on_tile_hovered(tile: InventoryTile) -> void:
 	_highlighted_item = null
 	_highlighted_spell = null
 	_highlight.set_to(tile)
+	if _current_draggable:
+		_highlight.show_rotate_icon(true)
+		_highlight.set_size(_current_draggable.drag_size) # not working
+	else:
+		_highlight.show_select_icon(true, true)
+
+#region Refreshing
+func is_open() -> bool:
+	return _active
+
+func _toggle_inventory(event: InputEvent) -> void:
+	if !GASInput.is_event_action_just_pressed(event, &"toggle_inventory"):
+		return
+	_active = !_active
+	if _active:
+		_try_hover_tile_input(Vector2i.ZERO)
+	else:
+		_highlight.set_to(null)
+	modulate.a = 1.0 if _active else 0.0
+	inventory_toggled.emit(_active)
 
 func _refresh_stats() -> void:
 	_mind_label.text = "Mind: %s" % Player.data.mind
@@ -148,6 +155,17 @@ func _refresh_stats() -> void:
 	_magic_label.text = "Magic: %s" % Player.data.magic
 	_bag_label.text = "Bag: %s" % Player.data.bag
 	_speed_label.text = "Speed: %s" % Player.data.speed
+
+func _on_item_added(i: InventoryDetail) -> void:
+	_draw_item(i)
+	_bake_item_positions()
+	if i.item is Spellbook:
+		_draw_spells()
+
+func _on_items_purged() -> void:
+	_draw_items()
+	_draw_spells()
+#endregion
 
 #region Items
 func _draw_item_grid() -> void:

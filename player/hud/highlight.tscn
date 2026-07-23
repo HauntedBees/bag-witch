@@ -11,6 +11,18 @@ atlas = ExtResource("4_xpo1r")
 region = Rect2(0, 208, 16, 16)
 filter_clip = true
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_xpo1r"]
+resource_local_to_scene = true
+atlas = ExtResource("4_xpo1r")
+region = Rect2(0, 208, 16, 16)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i03do"]
+resource_local_to_scene = true
+atlas = ExtResource("4_xpo1r")
+region = Rect2(48, 0, 16, 16)
+filter_clip = true
+
 [node name="Highlight" type="NinePatchRect" unique_id=524059628]
 anchors_preset = 15
 anchor_right = 1.0
@@ -27,7 +39,7 @@ patch_margin_bottom = 20
 script = ExtResource("2_0eu0d")
 
 [node name="RotateIcon" parent="." unique_id=1161082248 instance=ExtResource("3_i03do")]
-visible = false
+unique_name_in_owner = true
 z_index = 4096
 layout_mode = 1
 anchors_preset = 6
@@ -45,3 +57,44 @@ offset_transform_enabled = true
 offset_transform_position = Vector2(48, 0)
 texture = SubResource("AtlasTexture_38k30")
 action_name = &"rotate_item"
+
+[node name="ButtonSelectIcon" parent="." unique_id=1595881388 instance=ExtResource("3_i03do")]
+unique_name_in_owner = true
+visible = false
+z_index = 4096
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, 48)
+texture = SubResource("AtlasTexture_xpo1r")
+action_name = &"inventory_select"
+
+[node name="MouseSelectIcon" type="TextureRect" parent="." unique_id=1684801742]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, 48)
+texture = SubResource("AtlasTexture_i03do")
+
+[editable path="RotateIcon"]
+[editable path="ButtonSelectIcon"]
