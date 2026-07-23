@@ -1,12 +1,15 @@
 [gd_scene format=3 uid="uid://bywgp3qcs36cg"]
 
 [ext_resource type="StyleBox" uid="uid://by17rwwc2af68" path="res://player/hud/tooltip_style.tres" id="1_1h6aj"]
+[ext_resource type="Script" uid="uid://dax5onacy5q17" path="res://player/hud/tooltip_panel.gd" id="2_5xnfj"]
 [ext_resource type="PackedScene" uid="uid://bdcwnvc7nfxv3" path="res://player/hud/item_tooltip.tscn" id="2_8y1ls"]
 
 [node name="TooltipPanel" type="PanelContainer" unique_id=1240632570]
 offset_right = 40.0
 offset_bottom = 40.0
 theme_override_styles/panel = ExtResource("1_1h6aj")
+script = ExtResource("2_5xnfj")
 
 [node name="ItemTooltip" parent="." unique_id=978229327 instance=ExtResource("2_8y1ls")]
+unique_name_in_owner = true
 layout_mode = 2

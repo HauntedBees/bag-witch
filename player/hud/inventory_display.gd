@@ -8,6 +8,8 @@ const _SAFE_TILE_SCENE := preload("uid://bydfttoq33xk3")
 const _ITEM_SCENE := preload("uid://cdd6epqw6450l")
 const _SPELL_SCENE := preload("uid://dd6i8p1qr32o4")
 const _HIGHLIGHT_SCENE := preload("uid://8un54pjusa0y")
+const _TIME_TO_TOOLTIP := 0.5
+const _TOOLTIP_OFFSET := Vector2(32.0, 32.0)
 
 var _item_grid_info: Dictionary[Vector2i, TileDetails] = {}
 
@@ -16,9 +18,12 @@ var _current_draggable: ItemDragDetails
 var _highlighted_item: InventoryDetail
 var _highlighted_spell: Weapon
 
+var _tooltip_timer := 0.0
+
 @onready var drop_text: GASLabel = %DropText
 
 @onready var _highlight: Highlight = %Highlight
+@onready var _tooltip_panel: TooltipPanel = %TooltipPanel
 
 @onready var _mind_label: GASLabel = %MindLabel
 @onready var _strength_label: GASLabel = %StrengthLabel
@@ -47,6 +52,29 @@ func _ready() -> void:
 	Player.data.inventory.item_removed.connect(_on_item_removed_externally)
 	Player.data.stat_changed.connect(_refresh_stats)
 	_refresh_stats()
+
+func _process(delta: float) -> void:
+	if _highlighted_item == null && _highlighted_spell == null:
+		return
+	if _tooltip_timer <= 0.0:
+		return
+	_tooltip_timer -= delta
+	if _tooltip_timer <= 0.0:
+		var td := _item_grid_info[_highlight.grid_pos]
+		_tooltip_panel.visible = true
+		var id := td.item_display
+		if id == null:
+			if td.item == null:
+				return
+			id = _item_grid_info[td.item.position].item_display
+		_tooltip_panel.global_position = id.global_position + _TOOLTIP_OFFSET
+		_tooltip_panel.set_item(td.item)
+		await get_tree().process_frame
+		var x_end := _tooltip_panel.global_position.x + _tooltip_panel.size.x
+		var rect := get_viewport_rect()
+		if x_end > rect.size.x:
+			var diff := x_end - rect.size.x
+			_tooltip_panel.global_position.x -= diff
 
 func _input(event: InputEvent) -> void:
 	if Player.input_locked || !Player.inventory_available:
@@ -112,6 +140,8 @@ func _select_item_tile_by_position(v: Vector2i, from_mouse: bool) -> void:
 	var corner := _item_grid_info[v]
 	if corner.item && _current_draggable == null:
 		_select_item_tile(_item_grid_info[corner.item.position], from_mouse)
+		if !from_mouse:
+			_tooltip_timer = _TIME_TO_TOOLTIP
 	else:
 		_select_item_tile(corner, from_mouse)
 
@@ -123,12 +153,14 @@ func _modulo_move_tile(pos: Vector2i, dir: Vector2i) -> Vector2i:
 	)
 
 func _select_item_tile(t: TileDetails, use_mouse: bool) -> void:
+	_tooltip_panel.visible = false
 	_highlighted_item = t.item
 	_highlight.set_to(t, use_mouse)
 	if _current_draggable:
 		_highlight.set_to_dragging_object(_current_draggable, t.tile)
 
 func _select_empty_tile(tile: InventoryTile) -> void:
+	_tooltip_panel.visible = false
 	_highlighted_item = null
 	_highlighted_spell = null
 	_highlight.set_to_tile(tile)
