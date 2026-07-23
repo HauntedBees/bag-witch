@@ -80,7 +80,8 @@ func _handle_keyboard_gamepad_input(event: InputEvent) -> void:
 			_on_drag_dropped(_current_draggable, _highlight.grid_pos)
 			_current_draggable.preview_parent.queue_free()
 			_current_draggable = null
-			# TODO: the tile highlights don't get reset here
+			_cleanup_highlights()
+			_select_item_tile_by_position(_highlight.grid_pos, false)
 		else:
 			var td := _item_grid_info[_highlight.grid_pos]
 			var current_selected_item := td.item_display
@@ -184,9 +185,7 @@ func _draw_item_grid() -> void:
 
 func _on_potential_drag(drag_details: ItemDragDetails, grid_pos: Vector2i) -> void:
 	_current_draggable = drag_details
-	_drop_area.remove_highlight(false)
-	for i: TileDetails in _item_grid_info.values():
-		i.tile.remove_highlight()
+	_cleanup_highlights()
 	var new_positions := drag_details.item.get_positions(grid_pos, _current_draggable.rotation_changed)
 	if _can_place(drag_details.item, new_positions):
 		for p in new_positions:
@@ -196,45 +195,50 @@ func _on_potential_drag(drag_details: ItemDragDetails, grid_pos: Vector2i) -> vo
 			if _item_grid_info.has(p):
 				_item_grid_info[p].tile.set_highlight(false)
 
+func _cleanup_highlights() -> void:
+	_drop_area.remove_highlight(false)
+	for i: TileDetails in _item_grid_info.values():
+		i.tile.remove_highlight()
+
 func _on_drag_dropped(drag_details: ItemDragDetails, grid_pos: Vector2i) -> void:
 	_drop_area.remove_highlight(true)
 	var item := drag_details.item
 	var new_positions := item.get_positions(grid_pos, _current_draggable.rotation_changed)
-	if _can_place(item, new_positions):
-		var potential_merge := _get_merge_item(item, new_positions)
-		if potential_merge == null:
-			var old_info := _item_grid_info[item.position]
-			if old_info.item_display:
-				old_info.item_display.queue_free()
-				old_info.item_display = null
-			item.position = grid_pos
-			item.rotated = !item.rotated if _current_draggable.rotation_changed else item.rotated
-			_draw_item(item)
-			_bake_item_positions()
-		else:
-			potential_merge.item.combine(potential_merge, item)
-			if Player.data.current_equipped == potential_merge:
-				Player.equip_changed.emit(potential_merge)
-			if item.item.is_destroyed_after_merge(item):
-				var old_info := _item_grid_info[item.position]
-				_inventory.remove_item(item)
-				old_info.empty()
-				_bake_item_positions()
-			if potential_merge.item is Spellbook:
-				_draw_spells()
-			elif potential_merge.item is StatCrystal:
-				var crystal: StatCrystal = potential_merge.item
-				if crystal.is_ready(potential_merge):
-					_use_crystal(crystal, potential_merge)
-			if item.item.is_saw:
-				Player.equip_changed.emit(Player.data.current_equipped)
-				var old_info := _item_grid_info[potential_merge.position]
-				old_info.item_display.queue_free()
-				old_info.item_display = null
-				_draw_item(potential_merge)
-				_bake_item_positions()
-	else:
+	if !_can_place(item, new_positions):
 		print("no")
+		return
+	var potential_merge := _get_merge_item(item, new_positions)
+	if potential_merge == null:
+		var old_info := _item_grid_info[item.position]
+		if old_info.item_display:
+			old_info.item_display.queue_free()
+			old_info.item_display = null
+		item.position = grid_pos
+		item.rotated = !item.rotated if _current_draggable.rotation_changed else item.rotated
+		_draw_item(item)
+		_bake_item_positions()
+	else:
+		potential_merge.item.combine(potential_merge, item)
+		if Player.data.current_equipped == potential_merge:
+			Player.equip_changed.emit(potential_merge)
+		if item.item.is_destroyed_after_merge(item):
+			var old_info := _item_grid_info[item.position]
+			_inventory.remove_item(item)
+			old_info.empty()
+			_bake_item_positions()
+		if potential_merge.item is Spellbook:
+			_draw_spells()
+		elif potential_merge.item is StatCrystal:
+			var crystal: StatCrystal = potential_merge.item
+			if crystal.is_ready(potential_merge):
+				_use_crystal(crystal, potential_merge)
+		if item.item.is_saw:
+			Player.equip_changed.emit(Player.data.current_equipped)
+			var old_info := _item_grid_info[potential_merge.position]
+			old_info.item_display.queue_free()
+			old_info.item_display = null
+			_draw_item(potential_merge)
+			_bake_item_positions()
 
 func _try_equip_item(event: InputEvent) -> void:
 	if _highlighted_item == null && _highlighted_spell == null:
