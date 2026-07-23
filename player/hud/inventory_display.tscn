@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://8un54pjusa0y" path="res://player/hud/highlight.tscn" id="5_fxpk6"]
 [ext_resource type="Texture2D" uid="uid://163nincqpsl3" path="res://assets/sprites/item_frame_disallowed.png" id="5_krq55"]
 [ext_resource type="Script" uid="uid://domfixmdm8pfn" path="res://player/hud/drop_area.gd" id="6_a1n3b"]
+[ext_resource type="PackedScene" uid="uid://bywgp3qcs36cg" path="res://player/hud/tooltip_panel.tscn" id="6_qchit"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rhbnc"]
 
@@ -196,6 +197,16 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 2
+
+[node name="TooltipContainer" type="Control" parent="HBoxContainer/YourBag/MarginContainer/MarginContainer" unique_id=545005303]
+top_level = true
+z_index = 4096
+layout_mode = 2
+
+[node name="TooltipPanel" parent="HBoxContainer/YourBag/MarginContainer/MarginContainer/TooltipContainer" unique_id=1240632570 instance=ExtResource("6_qchit")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
 
 [node name="Spells" type="VBoxContainer" parent="HBoxContainer" unique_id=1983746555]
 layout_mode = 2
