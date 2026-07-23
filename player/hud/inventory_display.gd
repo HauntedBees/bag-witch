@@ -137,6 +137,7 @@ func _try_rotate_item(event: InputEvent) -> void:
 		_highlight.set_to_dragging_object(_current_draggable, null)
 
 func _select_item_tile_by_position(v: Vector2i, from_mouse: bool) -> void:
+	_tooltip_panel.visible = false
 	var corner := _item_grid_info[v]
 	if corner.item && _current_draggable == null:
 		_select_item_tile(_item_grid_info[corner.item.position], from_mouse)
@@ -176,6 +177,7 @@ func _toggle_inventory(event: InputEvent) -> void:
 		return
 	_active = !_active
 	_select_item_tile_by_position(Vector2i.ZERO, false)
+	_tooltip_timer = 0.0
 	modulate.a = 1.0 if _active else 0.0
 	inventory_toggled.emit(_active)
 
