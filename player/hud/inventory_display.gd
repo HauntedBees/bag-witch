@@ -13,12 +13,12 @@ var _item_grid_info: Dictionary[Vector2i, TileDetails] = {}
 
 var _active := false
 var _current_draggable: ItemDragDetails
-var _highlight: Highlight
 var _highlighted_item: InventoryDetail
 var _highlighted_spell: Weapon
-var _highlight_pos := Vector2i.ZERO
 
 @onready var drop_text: GASLabel = %DropText
+
+@onready var _highlight: Highlight = %Highlight
 
 @onready var _mind_label: GASLabel = %MindLabel
 @onready var _strength_label: GASLabel = %StrengthLabel
@@ -27,6 +27,8 @@ var _highlight_pos := Vector2i.ZERO
 @onready var _speed_label: GASLabel = %SpeedLabel
 
 @onready var _drop_area: ItemDropArea = %DropArea
+@onready var _drag_container: Control = %DragContainer
+
 @onready var _item_grid: GridContainer = %ItemGridContainer
 @onready var _items: Control = %ItemBucket
 @onready var _inventory := Player.data.inventory
@@ -34,7 +36,6 @@ var _highlight_pos := Vector2i.ZERO
 @onready var _spell_grid: GridContainer = %SpellGridContainer
 
 func _ready() -> void:
-	_highlight = _HIGHLIGHT_SCENE.instantiate()
 	_draw_item_grid()
 	_draw_spells()
 	modulate.a = 0.0
@@ -63,14 +64,32 @@ func _handle_keyboard_gamepad_input(event: InputEvent) -> void:
 		&"inventory_left", &"inventory_right", &"inventory_up", &"inventory_down"
 	)
 	if dir != Vector2i.ZERO:
-		var current_selected_item := _item_grid_info[_highlight_pos].item
-		var new_pos := _modulo_move_tile(_highlight_pos, dir)
-		while current_selected_item != null \
-			&& _item_grid_info[new_pos].item == current_selected_item \
-			&& new_pos != _highlight_pos:
-			new_pos = _modulo_move_tile(new_pos, dir)
-		_try_hover_tile_input(new_pos)
+		var current_selected_item := _item_grid_info[_highlight.grid_pos].item
+		var new_pos := _modulo_move_tile(_highlight.grid_pos, dir)
+		if _current_draggable == null: # allow moving into same item if dragging something
+			while current_selected_item != null \
+				&& _item_grid_info[new_pos].item == current_selected_item \
+				&& new_pos != _highlight.grid_pos:
+				new_pos = _modulo_move_tile(new_pos, dir)
+		_select_item_tile_by_position(new_pos, false)
+		if _current_draggable:
+			_on_potential_drag(_current_draggable, new_pos)
 		return
+	if GASInput.is_event_action_just_pressed(event, &"inventory_select"):
+		if _current_draggable:
+			_on_drag_dropped(_current_draggable, _highlight.grid_pos)
+			_current_draggable.preview_parent.queue_free()
+			_current_draggable = null
+			# TODO: the tile highlights don't get reset here
+		else:
+			var td := _item_grid_info[_highlight.grid_pos]
+			var current_selected_item := td.item_display
+			if current_selected_item == null:
+				return #TODO: souuund
+			var dd := current_selected_item.get_keyboard_gamepad_drag_data()
+			_current_draggable = dd
+			_drag_container.add_child(dd.preview_parent)
+			_highlight.set_to_dragging_object(dd, td.tile)
 
 func _try_rotate_item(event: InputEvent) -> void:
 	if !GASInput.is_event_action_just_pressed(event, &"rotate_item"):
@@ -85,24 +104,15 @@ func _try_rotate_item(event: InputEvent) -> void:
 	else:
 		_current_draggable.preview.rotation_degrees = 0.0
 		_current_draggable.preview.position = InventoryItemDisplay.DRAG_OFFSET
+	if !_current_draggable.from_mouse:
+		_highlight.set_to_dragging_object(_current_draggable, null)
 
-func _try_hover_tile_input(v: Vector2i) -> void:
-	_highlight_pos = v
+func _select_item_tile_by_position(v: Vector2i, from_mouse: bool) -> void:
 	var corner := _item_grid_info[v]
-	if corner.item:
-		_highlight_pos = corner.item.position
-		_fully_select_item(_item_grid_info[_highlight_pos], false)
+	if corner.item && _current_draggable == null:
+		_select_item_tile(_item_grid_info[corner.item.position], from_mouse)
 	else:
-		_fully_select_item(corner, false)
-
-func _fully_select_item(t: TileDetails, use_mouse: bool) -> void:
-	_highlighted_item = t.item
-	if t.item_display:
-		_highlight.set_to(t.item_display)
-		_highlight.show_select_icon(true, use_mouse)
-	else:
-		_highlight.set_to(t.tile)
-		_highlight.show_select_icon(false)
+		_select_item_tile(corner, from_mouse)
 
 func _modulo_move_tile(pos: Vector2i, dir: Vector2i) -> Vector2i:
 	var new_pos := pos + dir
@@ -111,28 +121,18 @@ func _modulo_move_tile(pos: Vector2i, dir: Vector2i) -> Vector2i:
 		posmod(new_pos.y, Player.data.inventory.dimensions.y)
 	)
 
-func _try_equip_item(event: InputEvent) -> void:
-	if _highlighted_item == null && _highlighted_spell == null:
-		return
-	for i in BWEnum.WEAPON_SLOTS.size():
-		if GASInput.is_event_action_just_pressed(event, BWEnum.WEAPON_SLOTS[i]):
-			if _highlighted_item != null:
-				Player.data.equip_to_slot(_highlighted_item, i)
-			else:
-				Player.data.equip_spell_to_slot(_highlighted_spell, i)
-			_bake_item_positions()
-			_bake_spell_equips()
-			return
+func _select_item_tile(t: TileDetails, use_mouse: bool) -> void:
+	_highlighted_item = t.item
+	_highlight.set_to(t, use_mouse)
+	if _current_draggable:
+		_highlight.set_to_dragging_object(_current_draggable, t.tile)
 
-func _on_tile_hovered(tile: InventoryTile) -> void:
+func _select_empty_tile(tile: InventoryTile) -> void:
 	_highlighted_item = null
 	_highlighted_spell = null
-	_highlight.set_to(tile)
+	_highlight.set_to_tile(tile)
 	if _current_draggable:
-		_highlight.show_rotate_icon(true)
-		_highlight.set_size(_current_draggable.drag_size) # not working
-	else:
-		_highlight.show_select_icon(true, true)
+		_highlight.set_to_dragging_object(_current_draggable, tile)
 
 #region Refreshing
 func is_open() -> bool:
@@ -142,10 +142,7 @@ func _toggle_inventory(event: InputEvent) -> void:
 	if !GASInput.is_event_action_just_pressed(event, &"toggle_inventory"):
 		return
 	_active = !_active
-	if _active:
-		_try_hover_tile_input(Vector2i.ZERO)
-	else:
-		_highlight.set_to(null)
+	_select_item_tile_by_position(Vector2i.ZERO, false)
 	modulate.a = 1.0 if _active else 0.0
 	inventory_toggled.emit(_active)
 
@@ -179,13 +176,13 @@ func _draw_item_grid() -> void:
 			var tile_scene := _SAFE_TILE_SCENE if _inventory.safe_tiles.has(pos) else _TILE_SCENE
 			var tile: InventoryTile = tile_scene.instantiate()
 			tile.grid_pos = pos
-			tile.item_dropped.connect(_on_item_dropped)
-			tile.item_hovered.connect(_on_item_hovered)
-			tile.mouse_entered.connect(_on_tile_hovered, CONNECT_APPEND_SOURCE_OBJECT)
+			tile.dragged_item_over.connect(_on_potential_drag)
+			tile.dragged_item_dropped.connect(_on_drag_dropped)
+			tile.mouse_entered.connect(_select_item_tile_by_position.bind(pos, true))
 			_item_grid_info[pos] = TileDetails.new(tile)
 			_item_grid.add_child(tile)
 
-func _on_item_hovered(drag_details: ItemDragDetails, grid_pos: Vector2i) -> void:
+func _on_potential_drag(drag_details: ItemDragDetails, grid_pos: Vector2i) -> void:
 	_current_draggable = drag_details
 	_drop_area.remove_highlight(false)
 	for i: TileDetails in _item_grid_info.values():
@@ -199,8 +196,7 @@ func _on_item_hovered(drag_details: ItemDragDetails, grid_pos: Vector2i) -> void
 			if _item_grid_info.has(p):
 				_item_grid_info[p].tile.set_highlight(false)
 
-func _on_item_dropped(drag_details: ItemDragDetails, grid_pos: Vector2i) -> void:
-	_highlight.set_to(null)
+func _on_drag_dropped(drag_details: ItemDragDetails, grid_pos: Vector2i) -> void:
 	_drop_area.remove_highlight(true)
 	var item := drag_details.item
 	var new_positions := item.get_positions(grid_pos, _current_draggable.rotation_changed)
@@ -240,8 +236,20 @@ func _on_item_dropped(drag_details: ItemDragDetails, grid_pos: Vector2i) -> void
 	else:
 		print("no")
 
+func _try_equip_item(event: InputEvent) -> void:
+	if _highlighted_item == null && _highlighted_spell == null:
+		return
+	for i in BWEnum.WEAPON_SLOTS.size():
+		if GASInput.is_event_action_just_pressed(event, BWEnum.WEAPON_SLOTS[i]):
+			if _highlighted_item != null:
+				Player.data.equip_to_slot(_highlighted_item, i)
+			else:
+				Player.data.equip_spell_to_slot(_highlighted_spell, i)
+			_bake_item_positions()
+			_bake_spell_equips()
+			return
+
 func _use_crystal(crystal: StatCrystal, id: InventoryDetail) -> void:
-	_highlight.set_to(null)
 	_inventory.remove_item(id)
 	_bake_item_positions()
 	crystal.activate(id)
@@ -250,7 +258,6 @@ func _use_crystal(crystal: StatCrystal, id: InventoryDetail) -> void:
 	if crystal.stat == StatCrystal.Stat.Magic:
 		_draw_spells()
 	elif crystal.stat == StatCrystal.Stat.Bag:
-		_highlight.set_to(null)
 		for i in _items.get_children():
 			i.queue_free()
 		_draw_item_grid()
@@ -258,7 +265,7 @@ func _use_crystal(crystal: StatCrystal, id: InventoryDetail) -> void:
 	_draw_items()
 
 func _on_item_tile_hovered(item: InventoryItemDisplay) -> void:
-	_highlight.set_to(item)
+	_highlight.set_to_item(item, true)
 	_highlighted_item = item.details
 	_highlighted_spell = null
 
@@ -291,14 +298,16 @@ func _get_merge_item(item: InventoryDetail, new_positions: Array[Vector2i]) -> I
 	return null
 
 func _on_item_removed_externally(id: InventoryDetail) -> void:
-	_highlight.set_to(null)
+	var tile: InventoryTile = null
 	for t: TileDetails in _item_grid_info.values():
 		if t.item == id:
 			t.empty()
+			if tile == null:
+				tile = t.tile
+	_select_empty_tile(tile)
 	_bake_item_positions()
 
 func _on_item_removed(i: ItemDragDetails) -> void:
-	_highlight.set_to(null)
 	var id := i.item
 	Player.data.inventory.remove_item(id)
 	## _on_item_removed_externally handles the rest
@@ -307,7 +316,6 @@ func _on_item_removed(i: ItemDragDetails) -> void:
 		_draw_spells()
 
 func _draw_items() -> void:
-	_highlight.set_to(null)
 	for i in _items.get_children():
 		i.queue_free()
 	for i in _inventory.items:
@@ -356,7 +364,6 @@ func _bake_item_positions() -> void:
 
 #region Spells
 func _draw_spells() -> void:
-	_highlight.set_to(null)
 	for c in _spell_grid.get_children():
 		c.queue_free()
 	var spells := Player.data.get_available_spells()
@@ -365,7 +372,7 @@ func _draw_spells() -> void:
 		for x in 3:
 			var pos := Vector2i(x, y)
 			var tile: InventoryTile = _TILE_SCENE.instantiate()
-			tile.mouse_entered.connect(_on_tile_hovered, CONNECT_APPEND_SOURCE_OBJECT)
+			tile.mouse_entered.connect(_select_empty_tile, CONNECT_APPEND_SOURCE_OBJECT)
 			tile.idx = i
 			tile.grid_pos = pos
 			_spell_grid.add_child(tile)
@@ -400,15 +407,3 @@ func _on_spell_hovered(si: SpellIcon) -> void:
 	_highlighted_item = null
 	_highlighted_spell = si.spell
 #endregion
-
-class TileDetails extends RefCounted:
-	var tile: InventoryTile
-	var item: InventoryDetail
-	var item_display: InventoryItemDisplay
-	func _init(t: InventoryTile) -> void:
-		tile = t
-	func empty() -> void:
-		if item_display:
-			item_display.queue_free()
-		item_display = null
-		item = null

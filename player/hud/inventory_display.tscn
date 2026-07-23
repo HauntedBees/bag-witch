@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://druk4uk8sgd5o" path="res://assets/sprites/heading.png" id="2_njn6f"]
 [ext_resource type="Script" uid="uid://hafxp56l0iao" path="res://addons/gas/gas_label.gd" id="3_krq55"]
 [ext_resource type="Texture2D" uid="uid://drv7ir1iktivu" path="res://assets/sprites/scroll.png" id="4_a1n3b"]
+[ext_resource type="PackedScene" uid="uid://8un54pjusa0y" path="res://player/hud/highlight.tscn" id="5_fxpk6"]
 [ext_resource type="Texture2D" uid="uid://163nincqpsl3" path="res://assets/sprites/item_frame_disallowed.png" id="5_krq55"]
 [ext_resource type="Script" uid="uid://domfixmdm8pfn" path="res://player/hud/drop_area.gd" id="6_a1n3b"]
 
@@ -183,6 +184,15 @@ theme_override_constants/v_separation = 0
 columns = 8
 
 [node name="ItemBucket" type="Control" parent="HBoxContainer/YourBag/MarginContainer/MarginContainer" unique_id=1897343714]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Highlight" parent="HBoxContainer/YourBag/MarginContainer/MarginContainer" unique_id=524059628 instance=ExtResource("5_fxpk6")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="DragContainer" type="Control" parent="HBoxContainer/YourBag/MarginContainer/MarginContainer" unique_id=894238867]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 2

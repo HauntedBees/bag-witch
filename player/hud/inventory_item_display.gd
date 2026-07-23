@@ -1,6 +1,5 @@
 class_name InventoryItemDisplay extends Control
 
-signal fake_drag_started(c: Control)
 signal drag_started()
 signal drag_ended()
 
@@ -28,6 +27,11 @@ const _TOOLTIP_SCENE := preload("uid://bdcwnvc7nfxv3")
 func _ready() -> void:
 	_equip_slot.visible = false
 	_ammo_count.visible = false
+
+func get_grid_pos() -> Vector2i:
+	if details == null:
+		return Vector2i.ZERO
+	return details.position
 
 func _on_ammo_changed(new_amount: int) -> void:
 	_ammo_count.text = str(new_amount)
@@ -62,7 +66,7 @@ func _get_drag_data(_at_position: Vector2) -> Variant:
 	d.item = details
 	d.display = self
 	d.preview = drag_icon
-	d.drag_size = size
+	d.preview_parent = preview
 	d.from_mouse = true
 	return d
 
@@ -82,15 +86,12 @@ func get_keyboard_gamepad_drag_data() -> ItemDragDetails:
 		drag_icon.rotation_degrees = 90.0
 	else:
 		drag_icon.position = DRAG_OFFSET
-	#set_drag_preview(preview)
-	#drag_started.emit()
-	fake_drag_started.emit(drag_icon)
 
 	var d := ItemDragDetails.new()
 	d.item = details
 	d.display = self
 	d.preview = drag_icon
-	d.drag_size = size
+	d.preview_parent = preview
 	d.from_mouse = false
 	return d
 

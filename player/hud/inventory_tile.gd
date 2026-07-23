@@ -1,7 +1,7 @@
 class_name InventoryTile extends MarginContainer
 
-signal item_hovered(i: ItemDragDetails, p: Vector2i)
-signal item_dropped(i: ItemDragDetails, p: Vector2i)
+signal dragged_item_over(i: ItemDragDetails, p: Vector2i)
+signal dragged_item_dropped(i: ItemDragDetails, p: Vector2i)
 
 var grid_pos: Vector2i
 var idx := 0
@@ -25,10 +25,10 @@ func remove_highlight() -> void:
 
 func _can_drop_data(_pos: Vector2, data: Variant) -> bool:
 	if data is ItemDragDetails:
-		item_hovered.emit(data, grid_pos)
+		dragged_item_over.emit(data, grid_pos)
 		return true
 	else:
 		return false
 
 func _drop_data(_pos: Vector2, data: Variant):
-	item_dropped.emit(data, grid_pos)
+	dragged_item_dropped.emit(data, grid_pos)
