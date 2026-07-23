@@ -81,7 +81,6 @@ func _handle_keyboard_gamepad_input(event: InputEvent) -> void:
 			_current_draggable.preview_parent.queue_free()
 			_current_draggable = null
 			_cleanup_highlights()
-			_select_item_tile_by_position(_highlight.grid_pos, false)
 		else:
 			var td := _item_grid_info[_highlight.grid_pos]
 			var current_selected_item := td.item_display
@@ -302,19 +301,16 @@ func _get_merge_item(item: InventoryDetail, new_positions: Array[Vector2i]) -> I
 	return null
 
 func _on_item_removed_externally(id: InventoryDetail) -> void:
-	var tile: InventoryTile = null
 	for t: TileDetails in _item_grid_info.values():
 		if t.item == id:
 			t.empty()
-			if tile == null:
-				tile = t.tile
-	_select_empty_tile(tile)
 	_bake_item_positions()
 
 func _on_item_removed(i: ItemDragDetails) -> void:
 	var id := i.item
 	Player.data.inventory.remove_item(id)
 	## _on_item_removed_externally handles the rest
+	_select_item_tile_by_position(i.item.position, false)
 	spawn_item.emit(id.item.get_world_item(id, true))
 	if id.item is Spellbook:
 		_draw_spells()

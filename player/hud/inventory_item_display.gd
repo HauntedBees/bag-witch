@@ -44,33 +44,15 @@ func set_slot(action_name: StringName) -> void:
 	_equip_slot.action_name = action_name
 
 func _get_drag_data(_at_position: Vector2) -> Variant:
-	var drag_icon := TextureRect.new()
-	drag_icon.texture = _texture
-	drag_icon.custom_minimum_size = _item.custom_minimum_size
-	drag_icon.modulate.a = 0.5
-
-	var preview = Control.new()
-	preview.add_child(drag_icon)
-	preview.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	drag_icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	drag_icon.pivot_offset = pivot_offset
-	if details.rotated:
-		drag_icon.position = DRAG_OFFSET_ROTATED
-		drag_icon.rotation_degrees = 90.0
-	else:
-		drag_icon.position = DRAG_OFFSET
-	set_drag_preview(preview)
+	var d := _get_drag_details(true)
+	set_drag_preview(d.preview_parent)
 	drag_started.emit()
-
-	var d := ItemDragDetails.new()
-	d.item = details
-	d.display = self
-	d.preview = drag_icon
-	d.preview_parent = preview
-	d.from_mouse = true
 	return d
 
 func get_keyboard_gamepad_drag_data() -> ItemDragDetails:
+	return _get_drag_details(false)
+
+func _get_drag_details(from_mouse: bool) -> ItemDragDetails:
 	var drag_icon := TextureRect.new()
 	drag_icon.texture = _texture
 	drag_icon.custom_minimum_size = _item.custom_minimum_size
@@ -87,12 +69,14 @@ func get_keyboard_gamepad_drag_data() -> ItemDragDetails:
 	else:
 		drag_icon.position = DRAG_OFFSET
 
+	modulate.a = 0.25
+	
 	var d := ItemDragDetails.new()
 	d.item = details
 	d.display = self
 	d.preview = drag_icon
 	d.preview_parent = preview
-	d.from_mouse = false
+	d.from_mouse = from_mouse
 	return d
 
 func _notification(what: int) -> void:
@@ -103,6 +87,7 @@ func _notification(what: int) -> void:
 		NOTIFICATION_DRAG_END:
 			mouse_filter = Control.MOUSE_FILTER_STOP
 			_item.mouse_filter = Control.MOUSE_FILTER_PASS
+			modulate.a = 1.0
 			drag_ended.emit()
 
 func _update_display() -> void:
