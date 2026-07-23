@@ -80,6 +80,7 @@ func _handle_keyboard_gamepad_input(event: InputEvent) -> void:
 			_on_drag_dropped(_current_draggable, _highlight.grid_pos)
 			_current_draggable.preview_parent.queue_free()
 			_current_draggable = null
+			get_viewport().gui_cancel_drag()
 			_cleanup_highlights()
 		else:
 			var td := _item_grid_info[_highlight.grid_pos]
