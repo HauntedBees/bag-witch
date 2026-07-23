@@ -43,7 +43,7 @@ func set_to_dragging_object(d: ItemDragDetails, t: InventoryTile) -> void:
 		size = Vector2(size.y, size.x)
 	if t != null:
 		d.preview_parent.global_position = t.global_position + _FAKE_DRAG_OFFSET
-	_toggle_select_button(true, false)
+	_toggle_select_button(!d.from_mouse, false)
 
 func _set_to_control(n: Control, is_item: bool, using_mouse: bool) -> void:
 	visible = true
