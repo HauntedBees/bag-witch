@@ -4,6 +4,7 @@
 [ext_resource type="FontFile" uid="uid://d3y651l4q0g7n" path="res://assets/fonts/Gothica-Bold.ttf" id="1_6r3ve"]
 [ext_resource type="Script" uid="uid://hafxp56l0iao" path="res://addons/gas/gas_label.gd" id="2_wyyb7"]
 [ext_resource type="PackedScene" uid="uid://5h7udfpmrrfq" path="res://menus/options/option.tscn" id="3_cet7k"]
+[ext_resource type="PackedScene" uid="uid://csjw2t6nfx8xc" path="res://menus/options/input_option.tscn" id="5_eeh4p"]
 [ext_resource type="Texture2D" uid="uid://c1jditcnn7st6" path="res://assets/sprites/buttons.png" id="5_l4xqj"]
 [ext_resource type="LabelSettings" uid="uid://cv2nv0q56shf6" path="res://assets/fonts/body_text.tres" id="6_eeh4p"]
 
@@ -164,7 +165,16 @@ theme_override_constants/margin_bottom = 64
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="Heading" type="Label" parent="Foreground/VBoxContainer" unique_id=2133847160]
+[node name="ScrollContainer" type="ScrollContainer" parent="Foreground/VBoxContainer" unique_id=361869536]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Foreground/VBoxContainer/ScrollContainer" unique_id=285542933]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Heading" type="Label" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=2133847160]
 layout_mode = 2
 text = "Options"
 label_settings = SubResource("LabelSettings_eeolf")
@@ -172,40 +182,73 @@ horizontal_alignment = 1
 script = ExtResource("2_wyyb7")
 metadata/_custom_type_script = "uid://hafxp56l0iao"
 
-[node name="HSeparator" type="HSeparator" parent="Foreground/VBoxContainer" unique_id=1410331619]
+[node name="HSeparator" type="HSeparator" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1410331619]
 layout_mode = 2
 theme_override_constants/separation = 16
 theme_override_styles/separator = SubResource("StyleBoxEmpty_rhbnc")
 
-[node name="MusicVolume" parent="Foreground/VBoxContainer" unique_id=57488810 instance=ExtResource("3_cet7k")]
+[node name="MusicVolume" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=57488810 instance=ExtResource("3_cet7k")]
 unique_name_in_owner = true
 layout_mode = 2
 values = Array[String](["Off", "25%", "50%", "75%", "100%"])
 label = "Music Volume"
 
-[node name="SoundVolume" parent="Foreground/VBoxContainer" unique_id=1779003349 instance=ExtResource("3_cet7k")]
+[node name="SoundVolume" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1779003349 instance=ExtResource("3_cet7k")]
 unique_name_in_owner = true
 layout_mode = 2
 values = Array[String](["Off", "25%", "50%", "75%", "100%"])
 label = "Sound Volume"
 
-[node name="FontSize" parent="Foreground/VBoxContainer" unique_id=225192925 instance=ExtResource("3_cet7k")]
+[node name="FontSize" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=225192925 instance=ExtResource("3_cet7k")]
 unique_name_in_owner = true
 layout_mode = 2
 values = Array[String](["Normal", "Larger", "Largest"])
 label = "Font Size"
 
-[node name="InfoText" parent="Foreground/VBoxContainer" unique_id=1172147498 instance=ExtResource("3_cet7k")]
+[node name="InfoText" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1172147498 instance=ExtResource("3_cet7k")]
 unique_name_in_owner = true
 layout_mode = 2
 values = Array[String](["Off", "On"])
 info_texts = Array[String](["Only plot-related dialogue will be shown.", "The Bag Witch will comment about how new items can be used and offer other context-dependent advice."])
 label = "Info Messages"
 
+[node name="HSeparator2" type="HSeparator" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=814070940]
+layout_mode = 2
+theme_override_constants/separation = 16
+theme_override_styles/separator = SubResource("StyleBoxEmpty_rhbnc")
+
+[node name="Heading2" type="Label" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=266568326]
+layout_mode = 2
+text = "Controls"
+label_settings = SubResource("LabelSettings_eeolf")
+horizontal_alignment = 1
+script = ExtResource("2_wyyb7")
+metadata/_custom_type_script = "uid://hafxp56l0iao"
+
+[node name="InputOption" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=922843524 instance=ExtResource("5_eeh4p")]
+layout_mode = 2
+action = "play_char_move_forward_action"
+label = "Walk Forward"
+
+[node name="InputOption3" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1275879044 instance=ExtResource("5_eeh4p")]
+layout_mode = 2
+action = "play_char_move_left_action"
+label = "Crabwalk Left"
+
+[node name="InputOption2" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1465798751 instance=ExtResource("5_eeh4p")]
+layout_mode = 2
+action = "play_char_move_backward_action"
+label = "Walk Backward"
+
+[node name="InputOption4" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=690450340 instance=ExtResource("5_eeh4p")]
+layout_mode = 2
+action = "play_char_move_right_action"
+label = "Crabwalk Right"
+
 [node name="HBoxContainer" type="HBoxContainer" parent="Foreground/VBoxContainer" unique_id=408714549]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 10
+size_flags_vertical = 8
 alignment = 1
 
 [node name="SaveButton" type="TextureButton" parent="Foreground/VBoxContainer/HBoxContainer" unique_id=2135243435]
@@ -258,9 +301,9 @@ horizontal_alignment = 1
 script = ExtResource("2_wyyb7")
 metadata/_custom_type_script = "uid://hafxp56l0iao"
 
-[connection signal="changed" from="Foreground/VBoxContainer/MusicVolume" to="." method="_on_music_volume_changed"]
-[connection signal="changed" from="Foreground/VBoxContainer/SoundVolume" to="." method="_on_sound_volume_changed"]
-[connection signal="changed" from="Foreground/VBoxContainer/FontSize" to="." method="_on_font_size_changed"]
-[connection signal="changed" from="Foreground/VBoxContainer/InfoText" to="." method="_on_info_text_changed"]
+[connection signal="changed" from="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/MusicVolume" to="." method="_on_music_volume_changed"]
+[connection signal="changed" from="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/SoundVolume" to="." method="_on_sound_volume_changed"]
+[connection signal="changed" from="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/FontSize" to="." method="_on_font_size_changed"]
+[connection signal="changed" from="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/InfoText" to="." method="_on_info_text_changed"]
 [connection signal="pressed" from="Foreground/VBoxContainer/HBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]
 [connection signal="pressed" from="Foreground/VBoxContainer/HBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
