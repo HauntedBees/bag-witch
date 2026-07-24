@@ -36,7 +36,8 @@ The following assets used are in the public domain but are listed here for refer
 - https://opengameart.org/content/tiny-rpg-mana-soul-gui
 - https://opengameart.org/content/particle-pack-80-sprites 
 - https://opengameart.org/content/tiny-rpg-dragon-regalia-gui 
-- https://kenney.nl/assets/input-prompts-pixel 
+- https://kenney.nl/assets/input-prompts-pixel
+- https://kenney.nl/assets/cursor-pixel-pack
 - https://opengameart.org/content/hit-animation-2-frame-by-frame 
 - https://styloo.itch.io/guns-asset-pack 
 - https://wriks.itch.io/wrad-arms 

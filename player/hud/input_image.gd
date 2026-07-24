@@ -28,7 +28,7 @@ func _set_icon() -> void:
 	var action := _get_appropriate_input_event()
 	var idx := 0
 	if action == null:
-		idx = 208
+		idx = 241
 	elif action is InputEventMouseButton:
 		var am := action as InputEventMouseButton
 		if am.button_index > 8:
@@ -80,9 +80,9 @@ func _get_appropriate_input_event() -> InputEvent:
 	for a in actions:
 		if using_joypad && (a is InputEventJoypadButton || a is InputEventJoypadMotion):
 			return a
-		elif !using_joypad && a is InputEventKey:
+		elif !using_joypad && (a is InputEventKey|| a is InputEventMouseButton):
 			return a
-	return actions[0]
+	return actions[0] if display_type == DisplayType.CurrentInput else null
 
 func _get_console_offset(joy_name: String, joycon_different_icon: bool) -> int:
 	if joy_name.begins_with("ps4") || joy_name.begins_with("ps5") || joy_name.find("sony") >= 0 || joy_name.find("dualshock") >= 0:

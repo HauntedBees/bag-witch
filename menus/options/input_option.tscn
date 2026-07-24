@@ -8,12 +8,12 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k8bra"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_k8bra"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ligcp"]
 resource_local_to_scene = true
 atlas = ExtResource("2_2nfn2")
 region = Rect2(0, 208, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ligcp"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_yiihc"]
 resource_local_to_scene = true
 atlas = ExtResource("2_2nfn2")
 region = Rect2(0, 208, 16, 16)
@@ -52,11 +52,11 @@ theme_override_constants/separation = 16
 [node name="KeyboardInput" parent="HBoxContainer" unique_id=976508041 instance=ExtResource("1_nvl55")]
 unique_name_in_owner = true
 layout_mode = 2
-texture = SubResource("AtlasTexture_k8bra")
+texture = SubResource("AtlasTexture_ligcp")
 display_type = 1
 
 [node name="JoypadInput" parent="HBoxContainer" unique_id=1466184367 instance=ExtResource("1_nvl55")]
 unique_name_in_owner = true
 layout_mode = 2
-texture = SubResource("AtlasTexture_ligcp")
+texture = SubResource("AtlasTexture_yiihc")
 display_type = 2
