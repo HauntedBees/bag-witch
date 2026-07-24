@@ -1,12 +1,14 @@
 class_name PlayerStateMachine extends Node
 
+const _LOCKED_STATES := ["JumpState", "CrouchState"]
+
 @export var initial_state : State
 
 var curr_state : State
 var curr_state_name  : String
 var states : Dictionary[String, State] = {}
 
-@onready var play_char : CharacterBody3D = $".."
+@onready var play_char : BogWitch = $".."
 
 signal change_fov
 
@@ -41,6 +43,10 @@ func on_state_child_transition(state : State, new_state_name : String) -> void:
 
 	var new_state = states.get(new_state_name.to_lower())
 	if !new_state: return
+
+	if play_char.is_action_locked() && _LOCKED_STATES.has(new_state_name):
+		print("blocking stte")
+		return
 
 	#exit the current state
 	if curr_state: curr_state.exit()

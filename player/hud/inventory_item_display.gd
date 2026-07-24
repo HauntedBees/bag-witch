@@ -70,7 +70,7 @@ func _get_drag_details(from_mouse: bool) -> ItemDragDetails:
 		drag_icon.position = DRAG_OFFSET
 
 	modulate.a = 0.25
-	
+
 	var d := ItemDragDetails.new()
 	d.item = details
 	d.display = self

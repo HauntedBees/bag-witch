@@ -479,6 +479,9 @@ func get_mouse_center() -> Vector3: #TODO: maybe replace now that _front_check e
 func _on_inventory_toggled(shown: bool) -> void:
 	_in_inventory = shown
 
+func is_action_locked() -> bool:
+	return _in_inventory
+
 func _on_inventory_display_spawn_item(wi: WorldItem) -> void:
 	if current_cauldron == null:
 		get_parent().add_child(wi)
