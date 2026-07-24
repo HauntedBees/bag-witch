@@ -30,11 +30,11 @@ func set_to_item(n: InventoryItemDisplay, using_mouse := false) -> void:
 	grid_pos = n.get_grid_pos()
 	_set_to_control(n, true, using_mouse)
 
-func set_to_tile(n: InventoryTile) -> void:
+func set_to_tile(n: InventoryTile, using_mouse := false) -> void:
 	if _is_invalid(n):
 		return
 	grid_pos = n.grid_pos
-	_set_to_control(n, false, false)
+	_set_to_control(n, false, using_mouse)
 
 func set_to_dragging_object(d: ItemDragDetails, t: InventoryTile) -> void:
 	_rotate_icon.visible = true

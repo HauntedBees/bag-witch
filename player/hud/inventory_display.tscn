@@ -189,10 +189,6 @@ unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Highlight" parent="HBoxContainer/YourBag/MarginContainer/MarginContainer" unique_id=524059628 instance=ExtResource("5_fxpk6")]
-unique_name_in_owner = true
-layout_mode = 2
-
 [node name="DragContainer" type="Control" parent="HBoxContainer/YourBag/MarginContainer/MarginContainer" unique_id=894238867]
 unique_name_in_owner = true
 layout_mode = 2
@@ -301,3 +297,16 @@ layout_mode = 2
 text = "Drop Item"
 script = ExtResource("3_krq55")
 metadata/_custom_type_script = "uid://hafxp56l0iao"
+
+[node name="HighlightContainer" type="Control" parent="MarginContainer" unique_id=1379864058]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Highlight" parent="MarginContainer/HighlightContainer" unique_id=524059628 instance=ExtResource("5_fxpk6")]
+unique_name_in_owner = true
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 1664.0
+offset_bottom = 509.0
