@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://csjw2t6nfx8xc"]
+
+[ext_resource type="PackedScene" uid="uid://bi75tcolvv8tm" path="res://player/hud/input_image.tscn" id="1_nvl55"]
+[ext_resource type="Script" uid="uid://chh5en8q05u4f" path="res://menus/options/input_option.gd" id="1_rmp58"]
+[ext_resource type="Texture2D" uid="uid://dorg26lk5rom5" path="res://assets/sprites/input_icons.png" id="2_2nfn2"]
+[ext_resource type="Script" uid="uid://hafxp56l0iao" path="res://addons/gas/gas_label.gd" id="2_l01iy"]
+[ext_resource type="LabelSettings" uid="uid://blavrmkmtbh10" path="res://menus/options/options_label_settings.tres" id="2_ligcp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k8bra"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k8bra"]
+resource_local_to_scene = true
+atlas = ExtResource("2_2nfn2")
+region = Rect2(0, 208, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ligcp"]
+resource_local_to_scene = true
+atlas = ExtResource("2_2nfn2")
+region = Rect2(0, 208, 16, 16)
+
+[node name="InputOption" type="BoxContainer" unique_id=922843524]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 64.0
+grow_horizontal = 2
+theme_override_constants/separation = 32
+script = ExtResource("1_rmp58")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="." unique_id=336312790]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="CursorPosition" type="VSeparator" parent="HBoxContainer2" unique_id=1343321910]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_k8bra")
+
+[node name="Name" type="Label" parent="HBoxContainer2" unique_id=1760766071]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Option"
+label_settings = ExtResource("2_ligcp")
+horizontal_alignment = 2
+script = ExtResource("2_l01iy")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1381548442]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="KeyboardInput" parent="HBoxContainer" unique_id=976508041 instance=ExtResource("1_nvl55")]
+unique_name_in_owner = true
+layout_mode = 2
+texture = SubResource("AtlasTexture_k8bra")
+display_type = 1
+
+[node name="JoypadInput" parent="HBoxContainer" unique_id=1466184367 instance=ExtResource("1_nvl55")]
+unique_name_in_owner = true
+layout_mode = 2
+texture = SubResource("AtlasTexture_ligcp")
+display_type = 2
