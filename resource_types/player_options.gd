@@ -19,3 +19,7 @@ signal sound_volume_changed(new_value: float)
 		GASText.override_font_scale = font_scale
 
 @export var tooltips := true
+
+@export var hold_to_bag_enemies := true
+
+@export var actions_json: String = ""

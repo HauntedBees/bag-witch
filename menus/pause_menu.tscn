@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://d3y651l4q0g7n" path="res://assets/fonts/Gothica-Bold.ttf" id="3_qlf07"]
 [ext_resource type="PackedScene" uid="uid://q31nttrkbxcg" path="res://menus/options_menu.tscn" id="5_ybqm1"]
 [ext_resource type="PackedScene" uid="uid://85ebibl4e8nh" path="res://menus/save/save_screen.tscn" id="6_mtdpf"]
+[ext_resource type="PackedScene" uid="uid://d1wsjpjk170dr" path="res://menus/nav_cursor.tscn" id="7_emjh3"]
 
 [sub_resource type="Gradient" id="Gradient_p1qj3"]
 interpolation_mode = 1
@@ -164,10 +165,11 @@ size_flags_horizontal = 8
 theme_override_constants/separation = 64
 alignment = 2
 
-[node name="ContinueButton" type="Button" parent="Options/VBoxContainer" unique_id=1464713561]
+[node name="ContinueButton" type="Button" parent="Options/VBoxContainer" unique_id=1464713561 groups=["cursor_button", "trigger_nav_cursor"]]
 layout_mode = 2
 size_flags_horizontal = 8
 focus_mode = 0
+mouse_default_cursor_shape = 2
 theme_override_colors/font_hover_color = Color(0.66, 0.66, 0.66, 1)
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("3_qlf07")
@@ -184,9 +186,10 @@ layout_mode = 2
 accessibility_region = true
 alignment = 2
 
-[node name="OptionsButton" type="Button" parent="Options/VBoxContainer/HBoxContainer" unique_id=354395663]
+[node name="OptionsButton" type="Button" parent="Options/VBoxContainer/HBoxContainer" unique_id=354395663 groups=["cursor_button", "trigger_nav_cursor"]]
 layout_mode = 2
 focus_mode = 0
+mouse_default_cursor_shape = 2
 theme_override_colors/font_hover_color = Color(0.66, 0.66, 0.66, 1)
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("3_qlf07")
@@ -208,9 +211,10 @@ layout_mode = 2
 accessibility_region = true
 alignment = 2
 
-[node name="SaveButton" type="Button" parent="Options/VBoxContainer/HBoxContainer2" unique_id=322656497]
+[node name="SaveButton" type="Button" parent="Options/VBoxContainer/HBoxContainer2" unique_id=322656497 groups=["cursor_button", "trigger_nav_cursor"]]
 layout_mode = 2
 focus_mode = 0
+mouse_default_cursor_shape = 2
 theme_override_colors/font_hover_color = Color(0.66, 0.66, 0.66, 1)
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("3_qlf07")
@@ -231,9 +235,10 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_rhbnc")
 layout_mode = 2
 alignment = 2
 
-[node name="QuitToTitleButton" type="Button" parent="Options/VBoxContainer/HBoxContainer3" unique_id=554643147]
+[node name="QuitToTitleButton" type="Button" parent="Options/VBoxContainer/HBoxContainer3" unique_id=554643147 groups=["cursor_button", "trigger_nav_cursor"]]
 layout_mode = 2
 focus_mode = 0
+mouse_default_cursor_shape = 2
 theme_override_colors/font_hover_color = Color(0.66, 0.66, 0.66, 1)
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("3_qlf07")
@@ -259,6 +264,8 @@ active = false
 unique_name_in_owner = true
 visible = false
 active = false
+
+[node name="NavCursor" parent="." unique_id=850882829 instance=ExtResource("7_emjh3")]
 
 [connection signal="pressed" from="Options/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="Options/VBoxContainer/HBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]

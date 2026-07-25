@@ -39,9 +39,9 @@ func _process(_delta: float) -> void:
 		return
 	if !is_highlighted:
 		return
-	if GASInput.is_action_just_pressed("ui_left"):
+	if GASInput.is_action_just_pressed(&"inventory_left") || GASInput.is_action_just_pressed(&"play_char_move_left_action"):
 		_on_left_selected()
-	elif GASInput.is_action_just_pressed("ui_right"):
+	elif GASInput.is_action_just_pressed(&"inventory_right") || GASInput.is_action_just_pressed(&"play_char_move_right_action"):
 		_on_right_selected()
 
 func _update_values() -> void:

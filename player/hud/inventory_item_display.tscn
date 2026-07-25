@@ -15,7 +15,7 @@ filter_clip = true
 [sub_resource type="AtlasTexture" id="AtlasTexture_g5htb"]
 resource_local_to_scene = true
 atlas = ExtResource("4_c52qj")
-region = Rect2(0, 208, 16, 16)
+region = Rect2(16, 240, 16, 16)
 filter_clip = true
 
 [node name="InventoryItemDisplay" type="Control" unique_id=1956193385]
@@ -24,6 +24,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 64.0
 offset_bottom = 64.0
+mouse_default_cursor_shape = 2
 script = ExtResource("2_b7tql")
 
 [node name="PortalBGMargin" type="MarginContainer" parent="." unique_id=590976358]

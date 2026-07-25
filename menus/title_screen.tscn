@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://q31nttrkbxcg" path="res://menus/options_menu.tscn" id="11_dbvjn"]
 [ext_resource type="PackedScene" uid="uid://85ebibl4e8nh" path="res://menus/save/save_screen.tscn" id="12_eujrm"]
 [ext_resource type="PackedScene" uid="uid://bd5jlp8u85ngj" path="res://menus/controls_list.tscn" id="13_cqggn"]
+[ext_resource type="PackedScene" uid="uid://d1wsjpjk170dr" path="res://menus/nav_cursor.tscn" id="14_fuwux"]
+[ext_resource type="Script" uid="uid://cmghej4edfl76" path="res://menus/mouse_cursor_binding.gd" id="15_h3epy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dpr3f"]
 atlas = ExtResource("1_dpr3f")
@@ -207,7 +209,7 @@ layout_mode = 2
 size_flags_vertical = 8
 alignment = 1
 
-[node name="NewGame" type="TextureButton" parent="MarginContainer3/HBoxContainer" unique_id=321950212]
+[node name="NewGame" type="TextureButton" parent="MarginContainer3/HBoxContainer" unique_id=321950212 groups=["cursor_button", "trigger_nav_cursor"]]
 custom_minimum_size = Vector2(300, 80)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -223,6 +225,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_default_cursor_shape = 2
 
 [node name="GASLabel" type="Label" parent="MarginContainer3/HBoxContainer/NewGame/MarginContainer" unique_id=460429312]
 layout_mode = 2
@@ -232,11 +235,12 @@ horizontal_alignment = 1
 script = ExtResource("8_ctf6r")
 metadata/_custom_type_script = "uid://hafxp56l0iao"
 
-[node name="Continue" type="TextureButton" parent="MarginContainer3/HBoxContainer" unique_id=712321993]
+[node name="Continue" type="TextureButton" parent="MarginContainer3/HBoxContainer" unique_id=712321993 groups=["cursor_button", "trigger_nav_cursor"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 80)
 layout_mode = 2
 size_flags_horizontal = 4
+mouse_default_cursor_shape = 2
 texture_normal = SubResource("AtlasTexture_dbvjn")
 texture_hover = SubResource("AtlasTexture_eujrm")
 ignore_texture_size = true
@@ -258,10 +262,11 @@ horizontal_alignment = 1
 script = ExtResource("8_ctf6r")
 metadata/_custom_type_script = "uid://hafxp56l0iao"
 
-[node name="Controls" type="TextureButton" parent="MarginContainer3/HBoxContainer" unique_id=578193091]
+[node name="Controls" type="TextureButton" parent="MarginContainer3/HBoxContainer" unique_id=578193091 groups=["cursor_button", "trigger_nav_cursor"]]
 custom_minimum_size = Vector2(300, 80)
 layout_mode = 2
 size_flags_horizontal = 4
+mouse_default_cursor_shape = 2
 texture_normal = SubResource("AtlasTexture_dbvjn")
 texture_hover = SubResource("AtlasTexture_eujrm")
 ignore_texture_size = true
@@ -283,10 +288,11 @@ horizontal_alignment = 1
 script = ExtResource("8_ctf6r")
 metadata/_custom_type_script = "uid://hafxp56l0iao"
 
-[node name="Options" type="TextureButton" parent="MarginContainer3/HBoxContainer" unique_id=1365479226]
+[node name="Options" type="TextureButton" parent="MarginContainer3/HBoxContainer" unique_id=1365479226 groups=["cursor_button", "trigger_nav_cursor"]]
 custom_minimum_size = Vector2(300, 80)
 layout_mode = 2
 size_flags_horizontal = 4
+mouse_default_cursor_shape = 2
 texture_normal = SubResource("AtlasTexture_dbvjn")
 texture_hover = SubResource("AtlasTexture_eujrm")
 ignore_texture_size = true
@@ -342,6 +348,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0)
+
+[node name="NavCursor" parent="." unique_id=850882829 instance=ExtResource("14_fuwux")]
+layout_mode = 0
+offset_right = 1.0
+offset_bottom = 1.0
+
+[node name="MouseCursorBinding" type="Node" parent="." unique_id=1534705468]
+script = ExtResource("15_h3epy")
 
 [connection signal="pressed" from="MarginContainer3/HBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="MarginContainer3/HBoxContainer/Continue" to="." method="_on_continue_pressed"]

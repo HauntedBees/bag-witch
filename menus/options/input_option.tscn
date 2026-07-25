@@ -8,6 +8,11 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k8bra"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhbnc"]
+atlas = ExtResource("2_2nfn2")
+region = Rect2(0, 240, 16, 16)
+filter_clip = true
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ligcp"]
 resource_local_to_scene = true
 atlas = ExtResource("2_2nfn2")
@@ -18,7 +23,7 @@ resource_local_to_scene = true
 atlas = ExtResource("2_2nfn2")
 region = Rect2(0, 208, 16, 16)
 
-[node name="InputOption" type="BoxContainer" unique_id=922843524]
+[node name="InputOption" type="BoxContainer" unique_id=922843524 groups=["trigger_nav_cursor"]]
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 64.0
@@ -33,6 +38,7 @@ size_flags_horizontal = 10
 [node name="CursorPosition" type="VSeparator" parent="HBoxContainer2" unique_id=1343321910]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 4
 theme_override_styles/separator = SubResource("StyleBoxEmpty_k8bra")
 
 [node name="Name" type="Label" parent="HBoxContainer2" unique_id=1760766071]
@@ -49,14 +55,27 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 16
 
+[node name="InputQ" type="TextureRect" parent="HBoxContainer" unique_id=880985331]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(80, 32)
+custom_maximum_size = Vector2(-1, 32)
+layout_mode = 2
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_rhbnc")
+expand_mode = 4
+stretch_mode = 5
+
 [node name="KeyboardInput" parent="HBoxContainer" unique_id=976508041 instance=ExtResource("1_nvl55")]
 unique_name_in_owner = true
 layout_mode = 2
+mouse_default_cursor_shape = 2
 texture = SubResource("AtlasTexture_ligcp")
 display_type = 1
 
 [node name="JoypadInput" parent="HBoxContainer" unique_id=1466184367 instance=ExtResource("1_nvl55")]
 unique_name_in_owner = true
 layout_mode = 2
+mouse_default_cursor_shape = 2
 texture = SubResource("AtlasTexture_yiihc")
 display_type = 2

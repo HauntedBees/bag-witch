@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://csjw2t6nfx8xc" path="res://menus/options/input_option.tscn" id="5_eeh4p"]
 [ext_resource type="Texture2D" uid="uid://c1jditcnn7st6" path="res://assets/sprites/buttons.png" id="5_l4xqj"]
 [ext_resource type="LabelSettings" uid="uid://cv2nv0q56shf6" path="res://assets/fonts/body_text.tres" id="6_eeh4p"]
+[ext_resource type="PackedScene" uid="uid://d1wsjpjk170dr" path="res://menus/nav_cursor.tscn" id="8_t77c5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_rhbnc"]
 font = ExtResource("1_6r3ve")
@@ -40,6 +41,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_lock_ = true
 
 [node name="ColorRect" type="ColorRect" parent="Background" unique_id=1621972708]
 layout_mode = 2
@@ -166,16 +168,18 @@ layout_mode = 2
 theme_override_constants/separation = 16
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Foreground/VBoxContainer" unique_id=361869536]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 follow_focus = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Foreground/VBoxContainer/ScrollContainer" unique_id=285542933]
+[node name="OptionContainer" type="VBoxContainer" parent="Foreground/VBoxContainer/ScrollContainer" unique_id=285542933]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Heading" type="Label" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=2133847160]
+[node name="Heading" type="Label" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=2133847160]
 layout_mode = 2
 text = "Options"
 label_settings = SubResource("LabelSettings_eeolf")
@@ -183,42 +187,42 @@ horizontal_alignment = 1
 script = ExtResource("2_wyyb7")
 metadata/_custom_type_script = "uid://hafxp56l0iao"
 
-[node name="HSeparator" type="HSeparator" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1410331619]
+[node name="HSeparator" type="HSeparator" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=1410331619]
 layout_mode = 2
 theme_override_constants/separation = 16
 theme_override_styles/separator = SubResource("StyleBoxEmpty_rhbnc")
 
-[node name="MusicVolume" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=57488810 instance=ExtResource("3_cet7k")]
+[node name="MusicVolume" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=57488810 groups=["trigger_nav_cursor"] instance=ExtResource("3_cet7k")]
 unique_name_in_owner = true
 layout_mode = 2
 values = Array[String](["Off", "25%", "50%", "75%", "100%"])
 label = "Music Volume"
 
-[node name="SoundVolume" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1779003349 instance=ExtResource("3_cet7k")]
+[node name="SoundVolume" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=1779003349 groups=["trigger_nav_cursor"] instance=ExtResource("3_cet7k")]
 unique_name_in_owner = true
 layout_mode = 2
 values = Array[String](["Off", "25%", "50%", "75%", "100%"])
 label = "Sound Volume"
 
-[node name="FontSize" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=225192925 instance=ExtResource("3_cet7k")]
+[node name="FontSize" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=225192925 groups=["trigger_nav_cursor"] instance=ExtResource("3_cet7k")]
 unique_name_in_owner = true
 layout_mode = 2
 values = Array[String](["Normal", "Larger", "Largest"])
 label = "Font Size"
 
-[node name="InfoText" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1172147498 instance=ExtResource("3_cet7k")]
+[node name="InfoText" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=1172147498 groups=["trigger_nav_cursor"] instance=ExtResource("3_cet7k")]
 unique_name_in_owner = true
 layout_mode = 2
 values = Array[String](["Off", "On"])
 info_texts = Array[String](["Only plot-related dialogue will be shown.", "The Bag Witch will comment about how new items can be used and offer other context-dependent advice."])
 label = "Info Messages"
 
-[node name="HSeparator2" type="HSeparator" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=814070940]
+[node name="HSeparator2" type="HSeparator" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=814070940]
 layout_mode = 2
 theme_override_constants/separation = 16
 theme_override_styles/separator = SubResource("StyleBoxEmpty_rhbnc")
 
-[node name="Heading2" type="Label" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=266568326]
+[node name="Heading2" type="Label" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=266568326]
 layout_mode = 2
 text = "In-Game Controls"
 label_settings = SubResource("LabelSettings_eeolf")
@@ -226,103 +230,104 @@ horizontal_alignment = 1
 script = ExtResource("2_wyyb7")
 metadata/_custom_type_script = "uid://hafxp56l0iao"
 
-[node name="HSeparator3" type="HSeparator" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1623150470]
+[node name="HSeparator3" type="HSeparator" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=1623150470]
 layout_mode = 2
 theme_override_constants/separation = 16
 theme_override_styles/separator = SubResource("StyleBoxEmpty_rhbnc")
 
-[node name="InputOption" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=922843524 instance=ExtResource("5_eeh4p")]
+[node name="InputOption" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=922843524 instance=ExtResource("5_eeh4p")]
 layout_mode = 2
 action = "play_char_move_forward_action"
 label = "Walk Forward"
 
-[node name="InputOption3" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1275879044 instance=ExtResource("5_eeh4p")]
+[node name="InputOption3" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=1275879044 instance=ExtResource("5_eeh4p")]
 layout_mode = 2
 action = "play_char_move_left_action"
 label = "Crabwalk Left"
 
-[node name="InputOption2" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1465798751 instance=ExtResource("5_eeh4p")]
+[node name="InputOption2" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=1465798751 instance=ExtResource("5_eeh4p")]
 layout_mode = 2
 action = "play_char_move_backward_action"
 label = "Walk Backward"
 
-[node name="InputOption4" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=690450340 instance=ExtResource("5_eeh4p")]
+[node name="InputOption4" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=690450340 instance=ExtResource("5_eeh4p")]
 layout_mode = 2
 action = "play_char_move_right_action"
 label = "Crabwalk Right"
 
-[node name="InputOption5" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=541233592 instance=ExtResource("5_eeh4p")]
+[node name="InputOption5" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=541233592 instance=ExtResource("5_eeh4p")]
 layout_mode = 2
 action = "play_char_jump_action"
 label = "Jump"
 
-[node name="InputOption6" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1548648832 instance=ExtResource("5_eeh4p")]
+[node name="InputOption6" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=1548648832 instance=ExtResource("5_eeh4p")]
 layout_mode = 2
 action = "attack"
 label = "Use"
 
-[node name="InputOption7" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1749431743 instance=ExtResource("5_eeh4p")]
+[node name="InputOption7" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=1749431743 instance=ExtResource("5_eeh4p")]
 layout_mode = 2
 action = "reload"
 label = "Reload"
 
-[node name="InputOption8" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=820831966 instance=ExtResource("5_eeh4p")]
+[node name="InputOption8" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=820831966 instance=ExtResource("5_eeh4p")]
 layout_mode = 2
 action = "use"
 label = "Use Bag / Pick Up Item"
 
-[node name="Option" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=634665975 instance=ExtResource("3_cet7k")]
+[node name="BagHold" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=634665975 groups=["trigger_nav_cursor"] instance=ExtResource("3_cet7k")]
+unique_name_in_owner = true
 layout_mode = 2
 values = Array[String](["Hold \"Use Bag\" Control", "Toggle \"Use Bag\" Control"])
 info_texts = Array[String](["You must hold down the \"Use Bag\" control until the large thing is pulled into your bag. You will need to be facing and close enough to the thing for the duration of the bagging.", "When facing a large thing, press the \"Use Bag\" control once to start sucking, and again to stop. If you stop facing the thing or move too far away from it, the sucking will also stop automatically."])
 label = "Bagging Large Things"
 
-[node name="InputOption9" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1437116136 instance=ExtResource("5_eeh4p")]
+[node name="InputOption9" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=1437116136 instance=ExtResource("5_eeh4p")]
 layout_mode = 2
 action = "play_char_run_action"
 label = "Run (Toggle)"
 
-[node name="InputOption33" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=724049292 instance=ExtResource("5_eeh4p")]
+[node name="InputOption33" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=724049292 instance=ExtResource("5_eeh4p")]
 layout_mode = 2
 action = "play_char_crouch_action"
 label = "Crouch"
 
-[node name="InputOption34" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=484093557 instance=ExtResource("5_eeh4p")]
+[node name="InputOption34" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=484093557 instance=ExtResource("5_eeh4p")]
 layout_mode = 2
 action = "play_char_slide_action"
 label = "Slide"
 
-[node name="InputOption35" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=85500433 instance=ExtResource("5_eeh4p")]
+[node name="InputOption35" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=85500433 instance=ExtResource("5_eeh4p")]
 layout_mode = 2
 action = "play_char_dash_action"
 label = "Dash"
 
-[node name="InputOption10" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=665788691 instance=ExtResource("5_eeh4p")]
+[node name="InputOption10" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=665788691 instance=ExtResource("5_eeh4p")]
 layout_mode = 2
 action = "advance_text"
 label = "Advance Dialog"
 
-[node name="InputOption36" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1860925891 instance=ExtResource("5_eeh4p")]
+[node name="InputOption36" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=1860925891 instance=ExtResource("5_eeh4p")]
 layout_mode = 2
 action = "camera_up"
 label = "Look Up"
 
-[node name="InputOption37" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=810119777 instance=ExtResource("5_eeh4p")]
+[node name="InputOption37" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=810119777 instance=ExtResource("5_eeh4p")]
 layout_mode = 2
 action = "camera_left"
 label = "Look Left"
 
-[node name="InputOption38" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=240029519 instance=ExtResource("5_eeh4p")]
+[node name="InputOption38" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=240029519 instance=ExtResource("5_eeh4p")]
 layout_mode = 2
 action = "camera_down"
 label = "Look Down"
 
-[node name="InputOption39" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1491423250 instance=ExtResource("5_eeh4p")]
+[node name="InputOption39" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=1491423250 instance=ExtResource("5_eeh4p")]
 layout_mode = 2
 action = "camera_right"
 label = "Look Right"
 
-[node name="InfoText2" type="Label" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=2122107351]
+[node name="InfoText2" type="Label" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=2122107351]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(320, 0)
 layout_mode = 2
@@ -332,72 +337,72 @@ horizontal_alignment = 1
 autowrap_mode = 3
 script = ExtResource("2_wyyb7")
 
-[node name="InputOption13" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=85720235 instance=ExtResource("5_eeh4p")]
+[node name="InputOption13" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=85720235 instance=ExtResource("5_eeh4p")]
 layout_mode = 2
 action = "cycle_weapon_right"
 label = "Equip Next Item"
 
-[node name="InputOption23" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=340802293 instance=ExtResource("5_eeh4p")]
+[node name="InputOption23" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=340802293 instance=ExtResource("5_eeh4p")]
 layout_mode = 2
 action = "cycle_weapon_left"
 label = "Equip Previous Item"
 
-[node name="InputOption24" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1128120937 instance=ExtResource("5_eeh4p")]
+[node name="InputOption24" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=1128120937 instance=ExtResource("5_eeh4p")]
 layout_mode = 2
 action = "weapon_slot_1"
 label = "Select / Equip Item Slot 1"
 
-[node name="InputOption14" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1561248723 instance=ExtResource("5_eeh4p")]
+[node name="InputOption14" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=1561248723 instance=ExtResource("5_eeh4p")]
 layout_mode = 2
 action = "weapon_slot_2"
 label = "Select / Equip Item Slot 2"
 
-[node name="InputOption15" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1647343589 instance=ExtResource("5_eeh4p")]
+[node name="InputOption15" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=1647343589 instance=ExtResource("5_eeh4p")]
 layout_mode = 2
 action = "weapon_slot_3"
 label = "Select / Equip Item Slot 3"
 
-[node name="InputOption16" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1315801574 instance=ExtResource("5_eeh4p")]
+[node name="InputOption16" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=1315801574 instance=ExtResource("5_eeh4p")]
 layout_mode = 2
 action = "weapon_slot_4"
 label = "Select / Equip Item Slot 4"
 
-[node name="InputOption17" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1814150053 instance=ExtResource("5_eeh4p")]
+[node name="InputOption17" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=1814150053 instance=ExtResource("5_eeh4p")]
 layout_mode = 2
 action = "weapon_slot_5"
 label = "Select / Equip Item Slot 5"
 
-[node name="InputOption18" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1994718571 instance=ExtResource("5_eeh4p")]
+[node name="InputOption18" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=1994718571 instance=ExtResource("5_eeh4p")]
 layout_mode = 2
 action = "weapon_slot_6"
 label = "Select / Equip Item Slot 6"
 
-[node name="InputOption19" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=125978446 instance=ExtResource("5_eeh4p")]
+[node name="InputOption19" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=125978446 instance=ExtResource("5_eeh4p")]
 layout_mode = 2
 action = "weapon_slot_7"
 label = "Select / Equip Item Slot 7"
 
-[node name="InputOption20" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=706509746 instance=ExtResource("5_eeh4p")]
+[node name="InputOption20" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=706509746 instance=ExtResource("5_eeh4p")]
 layout_mode = 2
 action = "weapon_slot_8"
 label = "Select / Equip Item Slot 8"
 
-[node name="InputOption21" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=768220025 instance=ExtResource("5_eeh4p")]
+[node name="InputOption21" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=768220025 instance=ExtResource("5_eeh4p")]
 layout_mode = 2
 action = "weapon_slot_9"
 label = "Select / Equip Item Slot 9"
 
-[node name="InputOption22" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=839567369 instance=ExtResource("5_eeh4p")]
+[node name="InputOption22" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=839567369 instance=ExtResource("5_eeh4p")]
 layout_mode = 2
 action = "weapon_slot_0"
 label = "Select / Equip Item Slot 10"
 
-[node name="HSeparator4" type="HSeparator" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=788437268]
+[node name="HSeparator4" type="HSeparator" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=788437268]
 layout_mode = 2
 theme_override_constants/separation = 16
 theme_override_styles/separator = SubResource("StyleBoxEmpty_rhbnc")
 
-[node name="Heading3" type="Label" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=991546156]
+[node name="Heading3" type="Label" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=991546156]
 layout_mode = 2
 text = "Menu Controls"
 label_settings = SubResource("LabelSettings_eeolf")
@@ -405,52 +410,57 @@ horizontal_alignment = 1
 script = ExtResource("2_wyyb7")
 metadata/_custom_type_script = "uid://hafxp56l0iao"
 
-[node name="HSeparator5" type="HSeparator" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=722540928]
+[node name="HSeparator5" type="HSeparator" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=722540928]
 layout_mode = 2
 theme_override_constants/separation = 16
 theme_override_styles/separator = SubResource("StyleBoxEmpty_rhbnc")
 
-[node name="InputOption12" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1068464777 instance=ExtResource("5_eeh4p")]
+[node name="InputOption12" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=1068464777 instance=ExtResource("5_eeh4p")]
 layout_mode = 2
 action = "action_pause"
 label = "Pause / Unpause"
 
-[node name="InputOption11" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1427469554 instance=ExtResource("5_eeh4p")]
+[node name="InputOption40" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=1115957560 instance=ExtResource("5_eeh4p")]
+layout_mode = 2
+action = "menu_confirm"
+label = "Confirm Menu Choice"
+
+[node name="InputOption11" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=1427469554 instance=ExtResource("5_eeh4p")]
 layout_mode = 2
 action = "toggle_inventory"
 label = "Open / Close Inventory"
 
-[node name="InputOption25" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1077115916 instance=ExtResource("5_eeh4p")]
+[node name="InputOption25" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=1077115916 instance=ExtResource("5_eeh4p")]
 layout_mode = 2
 action = "toggle_weapon_equip"
 label = "Toggle Item Equip"
 
-[node name="InputOption26" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1027547332 instance=ExtResource("5_eeh4p")]
+[node name="InputOption26" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=1027547332 instance=ExtResource("5_eeh4p")]
 layout_mode = 2
 action = "inventory_up"
 label = "Move Inventory Cursor Up"
 
-[node name="InputOption30" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=490982752 instance=ExtResource("5_eeh4p")]
+[node name="InputOption30" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=490982752 instance=ExtResource("5_eeh4p")]
 layout_mode = 2
 action = "inventory_left"
 label = "Move Inventory Cursor Left"
 
-[node name="InputOption31" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1613998116 instance=ExtResource("5_eeh4p")]
+[node name="InputOption31" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=1613998116 instance=ExtResource("5_eeh4p")]
 layout_mode = 2
 action = "inventory_down"
 label = "Move Inventory Cursor Down"
 
-[node name="InputOption32" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=56774786 instance=ExtResource("5_eeh4p")]
+[node name="InputOption32" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=56774786 instance=ExtResource("5_eeh4p")]
 layout_mode = 2
 action = "inventory_right"
 label = "Move Inventory Cursor Right"
 
-[node name="InputOption27" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=2114355022 instance=ExtResource("5_eeh4p")]
+[node name="InputOption27" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=2114355022 instance=ExtResource("5_eeh4p")]
 layout_mode = 2
 action = "inventory_select"
 label = "Pick Up / Place Inventory Item"
 
-[node name="InfoText3" type="Label" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=748945140]
+[node name="InfoText3" type="Label" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=748945140]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(320, 0)
 layout_mode = 2
@@ -460,12 +470,12 @@ horizontal_alignment = 1
 autowrap_mode = 3
 script = ExtResource("2_wyyb7")
 
-[node name="InputOption28" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=2020880474 instance=ExtResource("5_eeh4p")]
+[node name="InputOption28" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=2020880474 instance=ExtResource("5_eeh4p")]
 layout_mode = 2
 action = "rotate_item"
 label = "Rotate Current Inventory Item"
 
-[node name="InputOption29" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1827727458 instance=ExtResource("5_eeh4p")]
+[node name="InputOption29" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=1827727458 instance=ExtResource("5_eeh4p")]
 layout_mode = 2
 action = "toggle_weapon_equip"
 label = "Toggle Item Equip"
@@ -480,6 +490,7 @@ alignment = 1
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
 size_flags_horizontal = 4
+mouse_default_cursor_shape = 2
 texture_normal = SubResource("AtlasTexture_rhbnc")
 texture_hover = SubResource("AtlasTexture_eeolf")
 ignore_texture_size = true
@@ -495,7 +506,7 @@ grow_vertical = 2
 
 [node name="GASLabel" type="Label" parent="Foreground/VBoxContainer/HBoxContainer/SaveButton/MarginContainer" unique_id=1841037049]
 layout_mode = 2
-text = "Save"
+text = "Back"
 label_settings = ExtResource("6_eeh4p")
 horizontal_alignment = 1
 script = ExtResource("2_wyyb7")
@@ -505,6 +516,7 @@ metadata/_custom_type_script = "uid://hafxp56l0iao"
 custom_minimum_size = Vector2(400, 100)
 layout_mode = 2
 size_flags_horizontal = 4
+mouse_default_cursor_shape = 2
 texture_normal = SubResource("AtlasTexture_rhbnc")
 texture_hover = SubResource("AtlasTexture_eeolf")
 ignore_texture_size = true
@@ -526,16 +538,17 @@ horizontal_alignment = 1
 script = ExtResource("2_wyyb7")
 metadata/_custom_type_script = "uid://hafxp56l0iao"
 
-[node name="CancelButton" type="TextureButton" parent="Foreground/VBoxContainer/HBoxContainer" unique_id=1008364173]
+[node name="CancelButton" type="TextureButton" parent="Foreground/VBoxContainer/HBoxContainer" unique_id=522947607]
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
 size_flags_horizontal = 4
+mouse_default_cursor_shape = 2
 texture_normal = SubResource("AtlasTexture_rhbnc")
 texture_hover = SubResource("AtlasTexture_eeolf")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="Foreground/VBoxContainer/HBoxContainer/CancelButton" unique_id=944187803]
+[node name="MarginContainer" type="MarginContainer" parent="Foreground/VBoxContainer/HBoxContainer/CancelButton" unique_id=505750822]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -543,7 +556,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="GASLabel" type="Label" parent="Foreground/VBoxContainer/HBoxContainer/CancelButton/MarginContainer" unique_id=133734904]
+[node name="GASLabel" type="Label" parent="Foreground/VBoxContainer/HBoxContainer/CancelButton/MarginContainer" unique_id=1178663598]
 layout_mode = 2
 text = "Cancel"
 label_settings = ExtResource("6_eeh4p")
@@ -551,9 +564,14 @@ horizontal_alignment = 1
 script = ExtResource("2_wyyb7")
 metadata/_custom_type_script = "uid://hafxp56l0iao"
 
-[connection signal="changed" from="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/MusicVolume" to="." method="_on_music_volume_changed"]
-[connection signal="changed" from="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/SoundVolume" to="." method="_on_sound_volume_changed"]
-[connection signal="changed" from="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/FontSize" to="." method="_on_font_size_changed"]
-[connection signal="changed" from="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/InfoText" to="." method="_on_info_text_changed"]
+[node name="NavCursor" parent="." unique_id=850882829 instance=ExtResource("8_t77c5")]
+unique_name_in_owner = true
+
+[connection signal="changed" from="Foreground/VBoxContainer/ScrollContainer/OptionContainer/MusicVolume" to="." method="_on_music_volume_changed"]
+[connection signal="changed" from="Foreground/VBoxContainer/ScrollContainer/OptionContainer/SoundVolume" to="." method="_on_sound_volume_changed"]
+[connection signal="changed" from="Foreground/VBoxContainer/ScrollContainer/OptionContainer/FontSize" to="." method="_on_font_size_changed"]
+[connection signal="changed" from="Foreground/VBoxContainer/ScrollContainer/OptionContainer/InfoText" to="." method="_on_info_text_changed"]
+[connection signal="changed" from="Foreground/VBoxContainer/ScrollContainer/OptionContainer/BagHold" to="." method="_on_bag_hold_changed"]
 [connection signal="pressed" from="Foreground/VBoxContainer/HBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="Foreground/VBoxContainer/HBoxContainer/ResetButton" to="." method="_on_reset_button_pressed"]
 [connection signal="pressed" from="Foreground/VBoxContainer/HBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]

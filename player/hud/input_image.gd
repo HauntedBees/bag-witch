@@ -24,6 +24,9 @@ func _ready() -> void:
 func _on_input_method_changed(_new_method: GASInput.InputMethodType) -> void:
 	_set_icon()
 
+func refresh() -> void:
+	_set_icon()
+
 func _set_icon() -> void:
 	var action := _get_appropriate_input_event()
 	var idx := 0
