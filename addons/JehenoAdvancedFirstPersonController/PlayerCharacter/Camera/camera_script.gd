@@ -125,8 +125,12 @@ func input_actions_check() -> void:
 func _unhandled_input(event) -> void:
 	#manage camera rotation (360 on x axis, blocked at specified values on y axis, to not having the character do a complete head turn, which will be kinda weird)
 	if event is InputEventMouseMotion && !mouse_free:
-		rotate_y(-event.relative.x * (x_axis_sensibility / 10))
-		camera.rotate_x(-event.relative.y * (y_axis_sensibility / 10))
+		var sensibilities := Player.data.options.look_sensitivity * Vector2(
+			x_axis_sensibility / 10.0,
+			y_axis_sensibility / 10.0
+		)
+		rotate_y(-event.relative.x * sensibilities.x)
+		camera.rotate_x(-event.relative.y * sensibilities.y)
 		#use of deg_to_rad, because we change the x axis rotation with rotation,x, which use radians instead of degrees
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(max_up_angle_view), deg_to_rad(max_down_angle_view))
 

@@ -3,6 +3,8 @@ class_name PlayerOptions extends Resource
 signal music_volume_changed(new_value: float)
 signal sound_volume_changed(new_value: float)
 
+enum EquipType { AutomaticPersist, AutomaticCurrent, Manual }
+
 @export var music_volume := 1.0:
 	set(value):
 		music_volume = value
@@ -21,5 +23,9 @@ signal sound_volume_changed(new_value: float)
 @export var tooltips := true
 
 @export var hold_to_bag_enemies := true
+
+@export var equip_type := EquipType.AutomaticPersist
+
+@export var look_sensitivity := 1.0
 
 @export var actions_json: String = ""

@@ -178,7 +178,8 @@ func get_front_direction(normalized := true) -> Vector3:
 	return dir
 
 func _handle_non_mouse_camera_movement() -> void:
-	var mouse_dir := 0.5 * Vector2(
+	var look_sensitivity := Player.data.options.look_sensitivity * 0.5
+	var mouse_dir := look_sensitivity * Vector2(
 		Input.get_action_strength(&"camera_left") - Input.get_action_strength(&"camera_right"),
 		Input.get_action_strength(&"camera_up") - Input.get_action_strength(&"camera_down") #TODO: invert axis option?
 	)

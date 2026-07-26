@@ -217,6 +217,13 @@ values = Array[String](["Off", "On"])
 info_texts = Array[String](["Only plot-related dialogue will be shown.", "The Bag Witch will comment about how new items can be used and offer other context-dependent advice."])
 label = "Info Messages"
 
+[node name="ItemEquip" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=141637698 groups=["trigger_nav_cursor"] instance=ExtResource("3_cet7k")]
+unique_name_in_owner = true
+layout_mode = 2
+values = Array[String](["Automatic (Persistent)", "Automatic (Current)", "Manual"])
+info_texts = Array[String](["Once you get a new item, it will be automatically set to an equipment slot if any are available. If you drop an item, it will not be removed from the equipment slot, so when you pick up an item of the same type later, it will still be accessible from the same equip slot. This is best if you're playing with a keyboard and mouse and have specific items you'll want to equip regularly. You can always manually specify equip slots of items from the Inventory.", "implement toggle_weapon_equip and \"bagging large things\"    and turn sensitivityneed to make input for drop an itemOnce you get a new item, it will be automatically set to an equipment slot if any are available. If you drop an item, it will be removed from the equipment slot, so when you pick up an item of the same type later, it may not be in the same equip slot it was before. This is best if you're playing with a controller. You can always manually specify equip slots of items from the Inventory.", "Once you get a new item, you will need to manually go into your Inventory and assign it to an equip slot with one of the \"Equip Item Slot #\" or \"Toggle Equip\" control options described below."])
+label = "Item Equip Mode"
+
 [node name="HSeparator2" type="HSeparator" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=814070940]
 layout_mode = 2
 theme_override_constants/separation = 16
@@ -327,11 +334,17 @@ layout_mode = 2
 action = "camera_right"
 label = "Look Right"
 
+[node name="LookSensitivity" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=1936817907 groups=["trigger_nav_cursor"] instance=ExtResource("3_cet7k")]
+unique_name_in_owner = true
+layout_mode = 2
+values = Array[String](["0.25", "0.5", "1.0", "1.25", "1.5"])
+label = "Look Sensitivity"
+
 [node name="InfoText2" type="Label" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=2122107351]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(320, 0)
 layout_mode = 2
-text = "You can always use the mouse to look around."
+text = "You can always use the mouse to look around. This option affects your mouse sensivity as well as the \"Look\" inputs above."
 label_settings = ExtResource("6_eeh4p")
 horizontal_alignment = 1
 autowrap_mode = 3
@@ -480,6 +493,11 @@ layout_mode = 2
 action = "toggle_weapon_equip"
 label = "Toggle Item Equip"
 
+[node name="InputOption41" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=837116079 instance=ExtResource("5_eeh4p")]
+layout_mode = 2
+action = "inventory_drop_item"
+label = "Drop Selected Item"
+
 [node name="HBoxContainer" type="HBoxContainer" parent="Foreground/VBoxContainer" unique_id=408714549]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -574,7 +592,9 @@ unique_name_in_owner = true
 [connection signal="changed" from="Foreground/VBoxContainer/ScrollContainer/OptionContainer/SoundVolume" to="." method="_on_sound_volume_changed"]
 [connection signal="changed" from="Foreground/VBoxContainer/ScrollContainer/OptionContainer/FontSize" to="." method="_on_font_size_changed"]
 [connection signal="changed" from="Foreground/VBoxContainer/ScrollContainer/OptionContainer/InfoText" to="." method="_on_info_text_changed"]
+[connection signal="changed" from="Foreground/VBoxContainer/ScrollContainer/OptionContainer/ItemEquip" to="." method="_on_item_equip_changed"]
 [connection signal="changed" from="Foreground/VBoxContainer/ScrollContainer/OptionContainer/BagHold" to="." method="_on_bag_hold_changed"]
+[connection signal="changed" from="Foreground/VBoxContainer/ScrollContainer/OptionContainer/LookSensitivity" to="." method="_on_look_sensitivity_changed"]
 [connection signal="pressed" from="Foreground/VBoxContainer/HBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]
 [connection signal="pressed" from="Foreground/VBoxContainer/HBoxContainer/ResetButton" to="." method="_on_reset_button_pressed"]
 [connection signal="pressed" from="Foreground/VBoxContainer/HBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]

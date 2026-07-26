@@ -4,6 +4,7 @@ signal closed()
 
 const _SOUND_SCALES := [0.0, 0.25, 0.50, 0.75, 1.0]
 const _FONT_SCALES := [1.0, 1.25, 1.5]
+const _LOOK_SENSITIVITY_SCALES := [0.25, 0.5, 1.0, 1.25, 1.5]
 
 @export var active := true:
 	set(value):
@@ -18,7 +19,9 @@ const _FONT_SCALES := [1.0, 1.25, 1.5]
 @onready var _sound_volume: Option = %SoundVolume
 @onready var _font_size: Option = %FontSize
 @onready var _info_text: Option = %InfoText
+@onready var _item_equip: Option = %ItemEquip
 @onready var _bag_hold: Option = %BagHold
+@onready var _look_sensitivity: Option = %LookSensitivity
 
 @onready var _option_container: VBoxContainer = %OptionContainer
 @onready var _scroll_container: ScrollContainer = %ScrollContainer
@@ -101,6 +104,8 @@ func _load_from_options() -> void:
 	_font_size.value_idx = _FONT_SCALES.find(_original_settings.font_scale)
 	_info_text.value_idx = 1 if _original_settings.tooltips else 0
 	_bag_hold.value_idx = 0 if _original_settings.hold_to_bag_enemies else 1
+	_item_equip.value_idx = _original_settings.equip_type
+	_look_sensitivity.value_idx = _LOOK_SENSITIVITY_SCALES.find(_original_settings.look_sensitivity)
 	_current_idx = Vector2i.ZERO
 	if _options.size() > 0:
 		_toggle_highlight(_options[0], true)
@@ -120,6 +125,12 @@ func _on_info_text_changed(_new_value: String, new_idx: int) -> void:
 
 func _on_bag_hold_changed(_new_value: String, new_idx: int) -> void:
 	Player.data.options.hold_to_bag_enemies = new_idx == 0
+
+func _on_item_equip_changed(_new_value: String, new_idx: int) -> void:
+	Player.data.options.equip_type = new_idx as PlayerOptions.EquipType
+
+func _on_look_sensitivity_changed(_new_value: String, new_idx: int) -> void:
+	Player.data.options.look_sensitivity = _LOOK_SENSITIVITY_SCALES[new_idx]
 
 func _on_save_button_pressed() -> void:
 	Player.data.options.actions_json = GASInput.get_actions_as_json()
