@@ -41,6 +41,7 @@ signal potion_removed(p: Potion)
 
 @export var current_equipped: InventoryDetail = null
 @export var equip_slots: Array[InventoryDetail] = []
+@export var last_equipped_idx := 0
 @export var generations_elapsed := 0
 
 @export var last_warped_scene_uid := "uid://ssp37cocp7km" # bog_world.tscn
@@ -127,6 +128,7 @@ func _on_item_removed(id: InventoryDetail) -> void:
 		equip_to_slot(alt, idx)
 	if current_equipped == id:
 		current_equipped = alt
+		last_equipped_idx = equip_slots.find(alt)
 		if alt == null:
 			Player.try_change_weapon(idx)
 

@@ -61,8 +61,15 @@ func try_change_weapon(slot: int) -> void:
 		if obj == null || !_is_weapon_valid(obj.item):
 			data.current_equipped = null
 		else:
+			data.last_equipped_idx = slot
 			data.current_equipped = obj
 	equip_changed.emit(data.current_equipped)
+
+func is_valid_slot(slot: int) -> bool:
+	if data.equip_slots.size() <= slot:
+		return false
+	var obj := data.equip_slots[slot]
+	return obj != null && _is_weapon_valid(obj.item)
 
 func _is_weapon_valid(w: Item) -> bool:
 	if w is Weapon && w.is_spell:
