@@ -293,10 +293,6 @@ func _handle_bag(delta: float) -> bool:
 			return false
 	elif _is_sucking:
 		if _is_performing_suck_action():
-			print(_suck_enemy)
-			print(_current_targeted_enemy)
-			print(_suck_portal)
-			print(_current_targeted_portal)
 			if (_suck_enemy != null && _suck_enemy != _current_targeted_enemy) \
 				|| (_suck_portal != null && _suck_portal != _current_targeted_portal):
 				_suck_enemy = null

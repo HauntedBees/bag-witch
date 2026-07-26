@@ -133,16 +133,20 @@ func _on_item_removed(id: InventoryDetail) -> void:
 			Player.try_change_weapon(idx)
 
 func _on_items_purged() -> void:
-	if current_equipped == null:
-		return
-	var idx := equip_slots.find(current_equipped)
-	var alt: InventoryDetail = null
-	for potential_alt in inventory.items:
-		if potential_alt.item == current_equipped.item:
-			alt = potential_alt
-			break
-	if alt != null:
-		equip_to_slot(alt, idx)
+	if Player.data.options.equip_type == PlayerOptions.EquipType.AutomaticPersist:
+		if current_equipped == null:
+			return
+		var idx := equip_slots.find(current_equipped)
+		var alt: InventoryDetail = null
+		for potential_alt in inventory.items:
+			if potential_alt.item == current_equipped.item:
+				alt = potential_alt
+				break
+		if alt != null:
+			equip_to_slot(alt, idx)
+	else:
+		for i in equip_slots.size():
+			equip_slots[i] = null
 	Player.try_change_weapon(equip_slots.find(current_equipped))
 
 func _on_item_added(id: InventoryDetail) -> void:
@@ -153,16 +157,23 @@ func _on_item_added(id: InventoryDetail) -> void:
 		if current_equipped != null:
 			Player.ammo_changed.emit(get_loaded_ammo(current_equipped))
 		return
-	var first_empty := -1
-	for i in equip_slots.size():
-		var e := equip_slots[i]
-		if e == null:
-			if first_empty < 0:
-				first_empty = i
-		elif e.item == id.item: # don't need to equip the same item twice
-			return
-	if first_empty >= 0:
-		equip_to_slot(id, first_empty)
+	if Player.data.options.equip_type != PlayerOptions.EquipType.Manual:
+		var first_empty := -1
+		for i in equip_slots.size():
+			var e := equip_slots[i]
+			var valid_slot := false
+			match Player.data.options.equip_type:
+				PlayerOptions.EquipType.AutomaticPersist:
+					valid_slot = e == null
+				PlayerOptions.EquipType.AutomaticCurrent:
+					valid_slot = !Player.is_valid_slot(i)
+			if valid_slot:
+				if first_empty < 0:
+					first_empty = i
+			elif e.item == id.item: # don't need to equip the same item twice
+				return
+		if first_empty >= 0:
+			equip_to_slot(id, first_empty)
 
 func _handle_spell_auto_equipping() -> void:
 	for s in get_available_spells():
