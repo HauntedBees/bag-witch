@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://163nincqpsl3" path="res://assets/sprites/item_frame_disallowed.png" id="5_krq55"]
 [ext_resource type="Script" uid="uid://domfixmdm8pfn" path="res://player/hud/drop_area.gd" id="6_a1n3b"]
 [ext_resource type="PackedScene" uid="uid://bywgp3qcs36cg" path="res://player/hud/tooltip_panel.tscn" id="6_qchit"]
+[ext_resource type="PackedScene" uid="uid://bi75tcolvv8tm" path="res://player/hud/input_image.tscn" id="8_i6h10"]
+[ext_resource type="Texture2D" uid="uid://dorg26lk5rom5" path="res://assets/sprites/input_icons.png" id="9_kvxqu"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rhbnc"]
 
@@ -17,6 +19,12 @@ texture_margin_left = 130.0
 texture_margin_top = 120.0
 texture_margin_right = 130.0
 texture_margin_bottom = 120.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l8skf"]
+resource_local_to_scene = true
+atlas = ExtResource("9_kvxqu")
+region = Rect2(16, 240, 16, 16)
+filter_clip = true
 
 [node name="InventoryDisplay" type="VBoxContainer" unique_id=1940503669]
 anchors_preset = 15
@@ -277,10 +285,10 @@ visible = false
 self_modulate = Color(1, 1, 1, 0.49803922)
 layout_mode = 2
 texture = ExtResource("5_krq55")
-patch_margin_left = 16
-patch_margin_top = 16
-patch_margin_right = 16
-patch_margin_bottom = 16
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
 script = ExtResource("6_a1n3b")
 
 [node name="CenterContainer" type="CenterContainer" parent="MarginContainer/DropArea" unique_id=198912382]
@@ -291,7 +299,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="DropText" type="Label" parent="MarginContainer/DropArea/CenterContainer" unique_id=1095560996]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/DropArea/CenterContainer" unique_id=384414983]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="InputImage" parent="MarginContainer/DropArea/CenterContainer/HBoxContainer" unique_id=1161082248 instance=ExtResource("8_i6h10")]
+layout_mode = 2
+texture = SubResource("AtlasTexture_l8skf")
+action_name = &"inventory_drop_item"
+
+[node name="DropText" type="Label" parent="MarginContainer/DropArea/CenterContainer/HBoxContainer" unique_id=1095560996]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Drop Item"

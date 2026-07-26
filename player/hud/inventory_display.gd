@@ -139,14 +139,16 @@ func _handle_keyboard_gamepad_input(event: InputEvent) -> void:
 				)
 				_select_spell_tile_by_position(new_pos, false)
 		return
+	if GASInput.is_event_action_just_pressed(event, &"inventory_drop_item"):
+		if !_current_draggable:
+			return
+		_on_item_removed(_current_draggable)
+		_clean_up_keyboard_drag()
+		_select_item_tile_by_position(_highlight.grid_pos, false)
 	if GASInput.is_event_action_just_pressed(event, &"inventory_select"):
 		if _current_draggable:
 			_on_drag_dropped(_current_draggable, _highlight.grid_pos)
-			_current_draggable.preview_parent.queue_free()
-			_current_draggable.display.modulate.a = 1.0
-			_current_draggable = null
-			get_viewport().gui_cancel_drag()
-			_cleanup_highlights()
+			_clean_up_keyboard_drag()
 		else:
 			var td := _item_grid_info[_highlight.grid_pos]
 			var current_selected_item := td.item_display
@@ -156,6 +158,7 @@ func _handle_keyboard_gamepad_input(event: InputEvent) -> void:
 			_current_draggable = dd
 			_drag_container.add_child(dd.preview_parent)
 			_highlight.set_to_dragging_object(dd, td.tile)
+			_drop_area.visible = true
 
 #region Refreshing
 func is_open() -> bool:
@@ -169,6 +172,13 @@ func _toggle_inventory(event: InputEvent) -> void:
 	_tooltip_timer = 0.0
 	modulate.a = 1.0 if _active else 0.0
 	inventory_toggled.emit(_active)
+	if _current_draggable:
+		_current_draggable.preview_parent.queue_free()
+		_current_draggable.display.modulate.a = 1.0
+		_current_draggable = null
+		_drop_area.visible = false
+		get_viewport().gui_cancel_drag()
+		_cleanup_highlights()
 
 func _refresh_stats() -> void:
 	_mind_label.text = "Mind: %s" % Player.data.mind
@@ -189,6 +199,14 @@ func _on_items_purged() -> void:
 #endregion
 
 #region Items
+func _clean_up_keyboard_drag() -> void:
+	_current_draggable.preview_parent.queue_free()
+	_current_draggable.display.modulate.a = 1.0
+	_current_draggable = null
+	get_viewport().gui_cancel_drag()
+	_cleanup_highlights()
+	_drop_area.visible = false
+
 func _draw_item_grid() -> void:
 	for i in _item_grid.get_children():
 		i.queue_free()
