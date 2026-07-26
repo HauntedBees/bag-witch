@@ -20,7 +20,7 @@ texture_margin_top = 120.0
 texture_margin_right = 130.0
 texture_margin_bottom = 120.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l8skf"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_i6h10"]
 resource_local_to_scene = true
 atlas = ExtResource("9_kvxqu")
 region = Rect2(16, 240, 16, 16)
@@ -305,7 +305,7 @@ theme_override_constants/separation = 16
 
 [node name="InputImage" parent="MarginContainer/DropArea/CenterContainer/HBoxContainer" unique_id=1161082248 instance=ExtResource("8_i6h10")]
 layout_mode = 2
-texture = SubResource("AtlasTexture_l8skf")
+texture = SubResource("AtlasTexture_i6h10")
 action_name = &"inventory_drop_item"
 
 [node name="DropText" type="Label" parent="MarginContainer/DropArea/CenterContainer/HBoxContainer" unique_id=1095560996]

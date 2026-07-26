@@ -13,9 +13,9 @@ var _btn_idx := 0
 @onready var _title_music: AudioStreamPlayer = %TitleMusic
 @onready var _options_menu: OptionsMenu = %OptionsMenu
 @onready var _save_screen: SaveScreen = %SaveScreen
+@onready var _credits_menu: CreditsMenu = %CreditsMenu
 @onready var _fade_player: AnimationPlayer = %FadePlayer
-@onready var _controls_list: CanvasLayer = %ControlsList
-@onready var _buttons: Array[TextureButton] = [%NewGame, %Continue, %Options]
+@onready var _buttons: Array[TextureButton] = [%NewGame, %Continue, %Options, %Credits]
 
 func _ready() -> void:
 	var last_data: LastSaveDetails = null
@@ -52,6 +52,17 @@ func _on_options_pressed() -> void:
 	if _is_loading_game:
 		return
 	_options_menu.active = true
+
+func _on_credits_pressed() -> void:
+	if _is_loading_game:
+		return
+	_credits_menu.active = true
+
+func _on_credits_menu_closed() -> void:
+	if _is_loading_game:
+		return
+	_credits_menu.active = false
+	_buttons[3].mouse_entered.emit()
 
 func _on_options_menu_closed() -> void:
 	if _is_loading_game:
@@ -104,6 +115,3 @@ func _process(delta: float) -> void:
 		var level: Node3D = _level_scene.instantiate()
 		get_tree().change_scene_to_node(game_container)
 		#game_container.set_from_save(level, Player.data.last_warped_warp_point_name)
-
-func _on_controls_pressed() -> void:
-	_controls_list.visible = true

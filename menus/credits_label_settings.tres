@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://d3fgf6aofyfc4"]
+
+[ext_resource type="FontFile" uid="uid://d3y651l4q0g7n" path="res://assets/fonts/Gothica-Bold.ttf" id="1_e8pjd"]
+
+[resource]
+font = ExtResource("1_e8pjd")
+font_size = 32
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
