@@ -40,6 +40,8 @@ func _on_body_entered(body: Node3D) -> void:
 			print("DODGED!")
 		if end_on_hit:
 			queue_free()
+	elif body is StaticBody3D:
+		queue_free()
 
 func _on_animation_finished(_name: StringName) -> void:
 	queue_free()

@@ -76,7 +76,7 @@ mesh = SubResource("CapsuleMesh_xbift")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=157307043]
 collision_layer = 2
-collision_mask = 2
+collision_mask = 3
 monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1985843808]
