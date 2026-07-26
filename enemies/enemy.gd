@@ -133,13 +133,9 @@ func _physics_process(delta: float) -> void:
 	if is_dead():
 		velocity = lerp(
 			velocity,
-			Vector3(velocity.x * 0.5, velocity.y, velocity.z),
+			Vector3(0.0, velocity.y, 0.0),
 			delta
 		)
-		if abs(velocity.x) <= 0.25:
-			velocity.x = 0.0
-		if abs(velocity.z) <= 0.25:
-			velocity.z = 0.0
 	move_and_slide()
 
 func take_specific_damage(damage_dealt: int) -> void:
