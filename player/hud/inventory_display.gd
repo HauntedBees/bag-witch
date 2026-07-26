@@ -266,6 +266,28 @@ func _on_drag_dropped(drag_details: ItemDragDetails, grid_pos: Vector2i) -> void
 func _try_equip_item(event: InputEvent) -> void:
 	if _highlighted_item == null && _highlighted_spell == null:
 		return
+	if GASInput.is_event_action_just_pressed(event, &"toggle_weapon_equip"):
+		if _highlighted_item != null:
+			var equipped_idx := Player.data.get_slot(_highlighted_item)
+			if equipped_idx < 0:
+				var first_slot := Player.data.get_first_empty_slot()
+				if first_slot < 0:
+					return # TODO: error sound
+				Player.data.equip_to_slot(_highlighted_item, first_slot)
+			else:
+				Player.data.equip_slots[equipped_idx] = null
+		elif _highlighted_spell != null:
+			var equipped_idx := Player.data.get_spell_slot(_highlighted_spell)
+			if equipped_idx < 0:
+				var first_slot := Player.data.get_first_empty_slot()
+				if first_slot < 0:
+					return # TODO: error sound
+				Player.data.equip_spell_to_slot(_highlighted_spell, first_slot)
+			else:
+				Player.data.equip_slots[equipped_idx] = null
+		_bake_item_positions()
+		_bake_spell_equips()
+		return
 	for i in BWEnum.WEAPON_SLOTS.size():
 		if GASInput.is_event_action_just_pressed(event, BWEnum.WEAPON_SLOTS[i]):
 			if _highlighted_item != null:
