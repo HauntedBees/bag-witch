@@ -427,7 +427,7 @@ func _try_add_item(item: Item) -> InventoryDetail:
 	return potential_add
 
 func _try_switch_weapon(event: InputEvent) -> bool:
-	if _in_inventory || _reloading_time_remaining > 0.0:
+	if _in_inventory || _reloading_time_remaining > 0.0 || Player.weapon_cooldown > 0.0:
 		return false
 	if GASInput.is_event_action_just_pressed(event, &"cycle_weapon_right"):
 		var slots := 10
