@@ -277,6 +277,11 @@ func _handle_bag(delta: float) -> bool:
 	if _in_inventory:
 		return false
 	if GASInput.is_action_just_pressed(&"use"):
+		if _is_sucking && !Player.data.options.hold_to_bag_enemies:
+			_suck_enemy = null
+			_suck_portal = null
+			_is_sucking = false
+			return false
 		if _current_targeted_item != null:
 			return _try_pick_up_item()
 		elif _current_targeted_enemy != null && _current_targeted_enemy.capture_level <= Player.data.strength:
@@ -286,23 +291,37 @@ func _handle_bag(delta: float) -> bool:
 		else:
 			arms_overlay.arms.play_anim(&"BagUse")
 			return false
-	elif Input.is_action_pressed(&"use") && _is_sucking:
-		if _suck_enemy != _current_targeted_enemy && _suck_portal != _current_targeted_portal:
+	elif _is_sucking:
+		if _is_performing_suck_action():
+			print(_suck_enemy)
+			print(_current_targeted_enemy)
+			print(_suck_portal)
+			print(_current_targeted_portal)
+			if (_suck_enemy != null && _suck_enemy != _current_targeted_enemy) \
+				|| (_suck_portal != null && _suck_portal != _current_targeted_portal):
+				_suck_enemy = null
+				_suck_portal = null
+				_is_sucking = false
+				return false
+			arms_overlay.arms.play_anim(&"BagSuck")
+			_suck_time_remaining -= delta
+			if _suck_time_remaining <= 0.0:
+				if _suck_enemy != null:
+					return _try_procure_enemy() # TODO: should do a little animation
+				elif _suck_portal != null:
+					return _try_procure_portal()
+				else:
+					return false
+			return true
+		else:
 			_suck_enemy = null
 			_suck_portal = null
 			_is_sucking = false
 			return false
-		arms_overlay.arms.play_anim(&"BagSuck")
-		_suck_time_remaining -= delta
-		if _suck_time_remaining <= 0.0:
-			if _suck_enemy != null:
-				return _try_procure_enemy() # TODO: should do a little animation
-			elif _suck_portal != null:
-				return _try_procure_portal()
-			else:
-				return false
-		return true
 	return false
+
+func _is_performing_suck_action() -> bool:
+	return Input.is_action_pressed(&"use") || !Player.data.options.hold_to_bag_enemies
 
 func _try_start_enemy_sucking() -> bool:
 	if Player.data.inventory.get_item_if_fits(_current_targeted_enemy.suck_drop) == null:
