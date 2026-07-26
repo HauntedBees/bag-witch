@@ -18,6 +18,25 @@ enum Effect {
 	Shock
 }
 
+static func is_menu_action_pressed(event: InputEvent) -> bool:
+	if event is InputEventMouseButton: # a mouse clicking on a button will trigger "pressed" on its own
+		return false
+	return GASInput.is_event_action_just_pressed(event, &"menu_confirm") \
+		|| GASInput.is_event_action_just_pressed(event, &"attack")
+
+static func get_input_dir(event: InputEvent) -> Vector2i:
+	var dir := GASInput.get_vector2i_custom(
+		event,
+		&"play_char_move_left_action", &"play_char_move_right_action",
+		&"play_char_move_forward_action", &"play_char_move_backward_action"
+	)
+	if dir == Vector2i.ZERO:
+		dir = GASInput.get_vector2i_custom(
+			event,
+			&"inventory_left", &"inventory_right", &"inventory_up", &"inventory_down"
+		)
+	return dir
+
 static func get_bounds(base_pos: Transform3D, box: BoxShape3D, cam: Camera3D) -> Rect2:
 	var extents := box.size / 2.0
 	var corners: Array[Vector3] = [

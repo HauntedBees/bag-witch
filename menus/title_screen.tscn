@@ -210,6 +210,7 @@ size_flags_vertical = 8
 alignment = 1
 
 [node name="NewGame" type="TextureButton" parent="MarginContainer3/HBoxContainer" unique_id=321950212 groups=["cursor_button", "trigger_nav_cursor"]]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 80)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -262,33 +263,8 @@ horizontal_alignment = 1
 script = ExtResource("8_ctf6r")
 metadata/_custom_type_script = "uid://hafxp56l0iao"
 
-[node name="Controls" type="TextureButton" parent="MarginContainer3/HBoxContainer" unique_id=578193091 groups=["cursor_button", "trigger_nav_cursor"]]
-custom_minimum_size = Vector2(300, 80)
-layout_mode = 2
-size_flags_horizontal = 4
-mouse_default_cursor_shape = 2
-texture_normal = SubResource("AtlasTexture_dbvjn")
-texture_hover = SubResource("AtlasTexture_eujrm")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer3/HBoxContainer/Controls" unique_id=1524732435]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="GASLabel" type="Label" parent="MarginContainer3/HBoxContainer/Controls/MarginContainer" unique_id=439991190]
-layout_mode = 2
-text = "Controls"
-label_settings = ExtResource("7_76gmy")
-horizontal_alignment = 1
-script = ExtResource("8_ctf6r")
-metadata/_custom_type_script = "uid://hafxp56l0iao"
-
 [node name="Options" type="TextureButton" parent="MarginContainer3/HBoxContainer" unique_id=1365479226 groups=["cursor_button", "trigger_nav_cursor"]]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 80)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -317,6 +293,7 @@ metadata/_custom_type_script = "uid://hafxp56l0iao"
 [node name="TitleMusic" type="AudioStreamPlayer" parent="." unique_id=356629531]
 unique_name_in_owner = true
 stream = ExtResource("10_ctf6r")
+autoplay = true
 
 [node name="OptionsMenu" parent="." unique_id=960938909 instance=ExtResource("11_dbvjn")]
 unique_name_in_owner = true
@@ -359,7 +336,6 @@ script = ExtResource("15_h3epy")
 
 [connection signal="pressed" from="MarginContainer3/HBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="MarginContainer3/HBoxContainer/Continue" to="." method="_on_continue_pressed"]
-[connection signal="pressed" from="MarginContainer3/HBoxContainer/Controls" to="." method="_on_controls_pressed"]
 [connection signal="pressed" from="MarginContainer3/HBoxContainer/Options" to="." method="_on_options_pressed"]
 [connection signal="closed" from="OptionsMenu" to="." method="_on_options_menu_closed"]
 [connection signal="closed" from="SaveScreen" to="." method="_on_save_screen_closed"]

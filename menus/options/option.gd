@@ -37,7 +37,7 @@ var value_idx := 0:
 func _process(_delta: float) -> void:
 	if Engine.is_editor_hint():
 		return
-	if !is_highlighted:
+	if !is_highlighted || !is_visible_in_tree():
 		return
 	if GASInput.is_action_just_pressed(&"inventory_left") || GASInput.is_action_just_pressed(&"play_char_move_left_action"):
 		_on_left_selected()

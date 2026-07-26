@@ -7,6 +7,7 @@ var _is_loading_game := false
 var _level_scene_path: String
 var _game_scene: PackedScene = null
 var _level_scene: PackedScene = null
+var _btn_idx := 0
 
 @onready var _continue_btn: TextureButton = %Continue
 @onready var _title_music: AudioStreamPlayer = %TitleMusic
@@ -14,6 +15,7 @@ var _level_scene: PackedScene = null
 @onready var _save_screen: SaveScreen = %SaveScreen
 @onready var _fade_player: AnimationPlayer = %FadePlayer
 @onready var _controls_list: CanvasLayer = %ControlsList
+@onready var _buttons: Array[TextureButton] = [%NewGame, %Continue, %Options]
 
 func _ready() -> void:
 	var last_data: LastSaveDetails = null
@@ -24,7 +26,22 @@ func _ready() -> void:
 	_continue_btn.visible = last_data != null
 	_title_music.volume_linear = Player.data.options.music_volume
 	Player.data.options.music_volume_changed.connect(_on_music_volume_changed)
-	_title_music.play()
+	for b in _buttons:
+		b.mouse_entered.connect(_on_button_hovered, CONNECT_APPEND_SOURCE_OBJECT)
+	_buttons[0].mouse_entered.emit.call_deferred()
+
+func _unhandled_input(event: InputEvent) -> void:
+	if BWEnum.is_menu_action_pressed(event):
+		_buttons[_btn_idx].pressed.emit()
+		return
+	var dir := BWEnum.get_input_dir(event)
+	if dir == Vector2i.ZERO || dir.x == 0:
+		return
+	var next_btn := posmod(_btn_idx + dir.x, _buttons.size())
+	_buttons[next_btn].mouse_entered.emit()
+
+func _on_button_hovered(b: TextureButton) -> void:
+	_btn_idx = _buttons.find(b)
 
 func _on_music_volume_changed(new_value: float) -> void:
 	if _is_loading_game:
@@ -40,6 +57,7 @@ func _on_options_menu_closed() -> void:
 	if _is_loading_game:
 		return
 	_options_menu.active = false
+	_buttons[2].mouse_entered.emit()
 
 func _on_continue_pressed() -> void:
 	if _is_loading_game:
@@ -50,6 +68,7 @@ func _on_save_screen_closed() -> void:
 	if _is_loading_game:
 		return
 	_save_screen.active = false
+	_buttons[1].mouse_entered.emit()
 
 func _on_new_game_pressed() -> void:
 	if _is_loading_game:

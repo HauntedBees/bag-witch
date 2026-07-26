@@ -23,10 +23,13 @@ const _FONT_SCALES := [1.0, 1.25, 1.5]
 @onready var _option_container: VBoxContainer = %OptionContainer
 @onready var _scroll_container: ScrollContainer = %ScrollContainer
 
+@onready var _buttons: Array[TextureButton] = [%SaveButton, %ResetButton, %CancelButton]
+
 var _original_settings: PlayerOptions
 var _options: Array[BaseOption] = []
-var _current_idx := 0
+var _current_idx := Vector2i.ZERO
 var _current_editing_input: InputOption = null
+var _buttons_y := 0
 
 func _ready() -> void:
 	_load_from_options()
@@ -36,33 +39,49 @@ func _ready() -> void:
 			o.mouse_entered.connect(_on_option_selected, CONNECT_APPEND_SOURCE_OBJECT)
 			if o is InputOption:
 				o.pressed.connect(_on_option_pressed, CONNECT_APPEND_SOURCE_OBJECT)
+	_buttons_y = _options.size()
 	_toggle_highlight(_options[0], true)
 
 func _on_option_pressed(o: InputOption) -> void:
 	_current_editing_input = o
 
 func _on_option_selected(o: BaseOption) -> void:
-	_toggle_highlight(_options[_current_idx], false)
-	_current_idx = _options.find(o)
-	_toggle_highlight(_options[_current_idx], true, false)
+	if _current_idx.y == _buttons_y:
+		_toggle_button_highlight(_buttons[_current_idx.x], false)
+	else:
+		_toggle_highlight(_options[_current_idx.y], false)
+	_current_idx.y = _options.find(o)
+	_toggle_highlight(_options[_current_idx.y], true, false)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if !active:
 		return
+	get_viewport().set_input_as_handled()
 	if _current_editing_input != null:
-		# TODO
+		if _current_editing_input.try_set_new_input(event):
+			_current_editing_input = null
 		return
-	var dir := GASInput.get_vector2i(event)
+	if _current_idx.y == _buttons_y && BWEnum.is_menu_action_pressed(event):
+		_buttons[_current_idx.x].pressed.emit()
+		return
+	var dir := BWEnum.get_input_dir(event)
 	if dir == Vector2i.ZERO:
-		dir = GASInput.get_vector2i_custom(
-			event,
-			&"inventory_left", &"inventory_right", &"inventory_up", &"inventory_down"
-		)
-	if dir == Vector2i.ZERO || dir.y == 0:
 		return
-	_toggle_highlight(_options[_current_idx], false)
-	_current_idx = clampi(_current_idx + dir.y, 0, _options.size() - 1)
-	_toggle_highlight(_options[_current_idx], true)
+	if dir.y == 0 && _current_idx.y != _buttons_y:
+		return
+	if _current_idx.y == _buttons_y:
+		_toggle_button_highlight(_buttons[_current_idx.x], false)
+	else:
+		_toggle_highlight(_options[_current_idx.y], false)
+	_current_idx = Vector2i(
+		posmod(_current_idx.x + dir.x, 3),
+		posmod(_current_idx.y + dir.y, _buttons_y + 1)
+	)
+	print(_current_idx)
+	if _current_idx.y == _buttons_y:
+		_toggle_button_highlight(_buttons[_current_idx.x], true)
+	else:
+		_toggle_highlight(_options[_current_idx.y], true)
 
 func _toggle_highlight(o: BaseOption, is_highlighted: bool, move_mouse := true) -> void:
 	o.is_highlighted = is_highlighted
@@ -71,6 +90,10 @@ func _toggle_highlight(o: BaseOption, is_highlighted: bool, move_mouse := true) 
 		if move_mouse:
 			o.mouse_entered.emit.call_deferred() # lmao
 
+func _toggle_button_highlight(b: TextureButton, is_highlighted: bool) -> void:
+	if is_highlighted:
+		b.mouse_entered.emit.call_deferred()
+
 func _load_from_options() -> void:
 	_original_settings = Player.data.options.duplicate()
 	_music_volume.value_idx = _SOUND_SCALES.find(_original_settings.music_volume)
@@ -78,7 +101,10 @@ func _load_from_options() -> void:
 	_font_size.value_idx = _FONT_SCALES.find(_original_settings.font_scale)
 	_info_text.value_idx = 1 if _original_settings.tooltips else 0
 	_bag_hold.value_idx = 0 if _original_settings.hold_to_bag_enemies else 1
-	_current_idx = 0
+	_current_idx = Vector2i.ZERO
+	if _options.size() > 0:
+		_toggle_highlight(_options[0], true)
+	_scroll_container.set_deferred(&"scroll_vertical", 0)
 
 func _on_music_volume_changed(_new_value: String, new_idx: int) -> void:
 	Player.data.options.music_volume = _SOUND_SCALES[new_idx]
@@ -96,6 +122,7 @@ func _on_bag_hold_changed(_new_value: String, new_idx: int) -> void:
 	Player.data.options.hold_to_bag_enemies = new_idx == 0
 
 func _on_save_button_pressed() -> void:
+	Player.data.options.actions_json = GASInput.get_actions_as_json()
 	closed.emit()
 
 func _on_reset_button_pressed() -> void:
@@ -114,6 +141,9 @@ func _on_cancel_button_pressed() -> void:
 	Player.data.options.font_scale = _original_settings.font_scale
 	Player.data.options.tooltips = _original_settings.tooltips
 	Player.data.options.hold_to_bag_enemies = _original_settings.hold_to_bag_enemies
-	GASInput.restore_actions_from_json(_original_settings.actions_json)
+	if _original_settings.actions_json.is_empty():
+		InputMap.load_from_project_settings()
+	else:
+		GASInput.restore_actions_from_json(_original_settings.actions_json)
 	_original_settings = null
 	closed.emit()

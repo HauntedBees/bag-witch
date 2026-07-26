@@ -166,6 +166,7 @@ theme_override_constants/separation = 64
 alignment = 2
 
 [node name="ContinueButton" type="Button" parent="Options/VBoxContainer" unique_id=1464713561 groups=["cursor_button", "trigger_nav_cursor"]]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
 focus_mode = 0
@@ -187,6 +188,7 @@ accessibility_region = true
 alignment = 2
 
 [node name="OptionsButton" type="Button" parent="Options/VBoxContainer/HBoxContainer" unique_id=354395663 groups=["cursor_button", "trigger_nav_cursor"]]
+unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
 mouse_default_cursor_shape = 2
@@ -212,6 +214,7 @@ accessibility_region = true
 alignment = 2
 
 [node name="SaveButton" type="Button" parent="Options/VBoxContainer/HBoxContainer2" unique_id=322656497 groups=["cursor_button", "trigger_nav_cursor"]]
+unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
 mouse_default_cursor_shape = 2
@@ -236,6 +239,7 @@ layout_mode = 2
 alignment = 2
 
 [node name="QuitToTitleButton" type="Button" parent="Options/VBoxContainer/HBoxContainer3" unique_id=554643147 groups=["cursor_button", "trigger_nav_cursor"]]
+unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
 mouse_default_cursor_shape = 2
