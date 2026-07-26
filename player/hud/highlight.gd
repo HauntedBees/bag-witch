@@ -9,7 +9,7 @@ var grid_pos: Vector2i
 @onready var _mouse_select_icon: TextureRect = %MouseSelectIcon
 
 func set_to(td: TileDetails, using_mouse := false) -> void:
-	if td == null:
+	if td == null || td.item_display == null:
 		visible = false
 		return
 	var n: Control = td.item_display

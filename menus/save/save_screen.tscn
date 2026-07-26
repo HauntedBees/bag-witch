@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ddy820tu6x2lj" path="res://menus/save/save_option.tscn" id="1_pmq7g"]
 [ext_resource type="Script" uid="uid://hafxp56l0iao" path="res://addons/gas/gas_label.gd" id="3_ew3pt"]
 [ext_resource type="Texture2D" uid="uid://c1jditcnn7st6" path="res://assets/sprites/buttons.png" id="5_po2uy"]
+[ext_resource type="PackedScene" uid="uid://d1wsjpjk170dr" path="res://menus/nav_cursor.tscn" id="6_po2uy"]
 [ext_resource type="LabelSettings" uid="uid://cv2nv0q56shf6" path="res://assets/fonts/body_text.tres" id="6_w46yw"]
 
 [sub_resource type="Gradient" id="Gradient_bus0j"]
@@ -56,22 +57,38 @@ size_flags_vertical = 3
 theme_override_constants/separation = 64
 alignment = 1
 
-[node name="SaveOption" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1626678537 instance=ExtResource("1_pmq7g")]
+[node name="SaveOption" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1626678537 groups=["trigger_nav_cursor"] instance=ExtResource("1_pmq7g")]
 unique_name_in_owner = true
 layout_mode = 2
+focus_neighbor_left = NodePath("../SaveOption3")
+focus_neighbor_top = NodePath("../../BackButton")
+focus_neighbor_right = NodePath("../SaveOption2")
+focus_neighbor_bottom = NodePath("../../BackButton")
 
-[node name="SaveOption2" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1761982206 instance=ExtResource("1_pmq7g")]
+[node name="SaveOption2" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1761982206 groups=["trigger_nav_cursor"] instance=ExtResource("1_pmq7g")]
 unique_name_in_owner = true
 layout_mode = 2
+focus_neighbor_left = NodePath("../SaveOption")
+focus_neighbor_top = NodePath("../../BackButton")
+focus_neighbor_right = NodePath("../SaveOption3")
+focus_neighbor_bottom = NodePath("../../BackButton")
 
-[node name="SaveOption3" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1560303677 instance=ExtResource("1_pmq7g")]
+[node name="SaveOption3" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1560303677 groups=["trigger_nav_cursor"] instance=ExtResource("1_pmq7g")]
 unique_name_in_owner = true
 layout_mode = 2
+focus_neighbor_left = NodePath("../SaveOption2")
+focus_neighbor_top = NodePath("../../BackButton")
+focus_neighbor_right = NodePath("../SaveOption")
+focus_neighbor_bottom = NodePath("../../BackButton")
 
-[node name="BackButton" type="TextureButton" parent="MarginContainer/VBoxContainer" unique_id=50018175]
+[node name="BackButton" type="TextureButton" parent="MarginContainer/VBoxContainer" unique_id=50018175 groups=["trigger_nav_cursor"]]
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
 size_flags_horizontal = 4
+focus_neighbor_left = NodePath("../HBoxContainer/SaveOption")
+focus_neighbor_top = NodePath("../HBoxContainer/SaveOption2")
+focus_neighbor_right = NodePath("../HBoxContainer/SaveOption3")
+focus_neighbor_bottom = NodePath("../HBoxContainer/SaveOption2")
 texture_normal = SubResource("AtlasTexture_s1gs3")
 texture_hover = SubResource("AtlasTexture_ucao8")
 ignore_texture_size = true
@@ -93,4 +110,9 @@ horizontal_alignment = 1
 script = ExtResource("3_ew3pt")
 metadata/_custom_type_script = "uid://hafxp56l0iao"
 
+[node name="NavCursor" parent="." unique_id=850882829 instance=ExtResource("6_po2uy")]
+offset_right = 1.0
+offset_bottom = 1.0
+
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/BackButton" to="." method="_on_mouse_entered" flags=18]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
