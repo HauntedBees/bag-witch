@@ -3,7 +3,7 @@ class_name BogWitch extends PlayerCharacter
 signal quest_added(q: Quest)
 signal quest_removed(q: Quest)
 
-var grace_period := 1.0
+var _grace_period := 1.0
 var clinging_effects: Array[ClingingEffect] = []
 var ready_to_glide := false
 var alt_hand_for_attack_anim := false
@@ -47,6 +47,10 @@ func _ready() -> void:
 	super()
 	Player.data.stat_changed.connect(_adjust_movement_stats)
 	_adjust_movement_stats()
+
+func set_warp_grace_period() -> void:
+	hitbox.disabled = true
+	_grace_period = 0.25
 
 func is_inventory_open() -> bool:
 	return _inventory_display.is_open()
@@ -96,6 +100,8 @@ func _input(event: InputEvent) -> void:
 		return
 
 func _physics_process(delta: float) -> void:
+	if _grace_period > 0.0:
+		return
 	super(delta)
 	for c in clinging_effects:
 		c.physics_process(delta)
@@ -104,8 +110,10 @@ func _process(delta: float) -> void:
 	super(delta)
 	if global_position.y <= -42.0:
 		take_damage(1)
-	if grace_period > 0.0:
-		grace_period -= delta
+	if _grace_period > 0.0:
+		_grace_period -= delta
+		if _grace_period <= 0.0:
+			hitbox.disabled = false
 	for p: Potion in Player.data.active_potions.keys():
 		Player.data.active_potions[p] -= delta
 		if Player.data.active_potions[p] <= 0.0:
@@ -163,8 +171,6 @@ func take_damage_from_weapon(w: Weapon, knockback_source: Vector3) -> void:
 	)
 
 func take_damage(damage: int, knockback_source := Vector3.ZERO, knockback := 0.0, additional_y_knockback := 0.0) -> void:
-	if grace_period > 0.01:
-		return
 	Player.take_damage(damage)
 	if knockback > 0.0:
 		var dir := global_position.direction_to(knockback_source)

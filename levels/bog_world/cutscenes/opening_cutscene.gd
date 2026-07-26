@@ -21,8 +21,6 @@ func _init_cutscene() -> void:
 	Player.equip_changed.emit(InventoryDetail.new(book, Vector2i.ZERO))
 	convo_trigger.body_entered.connect(func(b: Node3D) -> void:
 		if b is BogWitch:
-			if b.grace_period > 0.01:
-				return
 			_on_start_conversation()
 	)
 	queen.set_anim(&"Idle", true)
@@ -54,6 +52,14 @@ func _on_start_conversation() -> void:
 	SignalBus.say_thing.emit("Queen Perpetua I", "Bryng them thru. We shal make good use of them.", "QP2")
 
 func _on_finish_queen_dialog() -> void:
+	if queen == null || !is_instance_valid(queen):
+		if knight1 != null && is_instance_valid(knight1):
+			knight1.queue_free()
+		if knight2 != null && is_instance_valid(knight2):
+			knight2.queue_free()
+		_finish_cutscene(true)
+		SignalBus.say_thing.emit("Bag Witch", "How dare that pompous royal take those animals! I need ta' put a stop to this!", "BW1")
+		return
 	queen.set_anim(&"Walking_A", true)
 	var dest := _clamp_to_y(portal_pos, queen)
 	var k1_dest := _clamp_to_y(knight1_pos, knight1)

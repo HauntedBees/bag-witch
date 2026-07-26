@@ -54,8 +54,8 @@ signal potion_removed(p: Potion)
 @export var max_health := 100
 
 @export var completed_quests: Array[StringName] = [
-	&"Opening",
-	&"FromBog"
+	#&"Opening",
+	#&"FromBog"
 ]
 @export var active_potions: Dictionary[Potion, float] = {}
 
