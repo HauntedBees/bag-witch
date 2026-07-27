@@ -25,6 +25,7 @@ func set_from_save(world: Node3D, warp_pos: String) -> void:
 		await ready
 	_current_loading_scene_destination = warp_pos
 	_world.add_child(world)
+	_player.set_warp_grace_period()
 	_place_player.call_deferred()
 
 func _on_game_over() -> void:

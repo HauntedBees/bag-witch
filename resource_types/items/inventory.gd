@@ -45,7 +45,6 @@ func clear_all_but_safe(keep_equipped := true) -> void:
 					my_safe_tiles += 1
 			if my_safe_tiles == all_tiles.size():
 				continue
-		print("wiping %s" % id.item.name)
 		items.remove_at(idx)
 	items_purged.emit()
 

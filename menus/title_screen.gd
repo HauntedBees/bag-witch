@@ -111,7 +111,10 @@ func _process(delta: float) -> void:
 		_level_scene = ResourceLoader.load_threaded_get(_level_scene_path)
 	if _game_scene != null && _level_scene != null:
 		var game_container: GameContainer = _game_scene.instantiate()
-		#game_container.is_loading_from_file = true
-		var level: Node3D = _level_scene.instantiate()
-		get_tree().change_scene_to_node(game_container)
-		#game_container.set_from_save(level, Player.data.last_warped_warp_point_name)
+		if !OS.has_feature("dev"):
+			var level: Node3D = _level_scene.instantiate()
+			game_container.is_loading_from_file = true
+			get_tree().change_scene_to_node(game_container)
+			game_container.set_from_save(level, Player.data.last_warped_warp_point_name)
+		else:
+			get_tree().change_scene_to_node(game_container)

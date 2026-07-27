@@ -256,7 +256,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7, 3, 3.5)
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2.9926062, 0.9944458, -19.992554)
 script = ExtResource("20_0yn3c")
 
-[node name="Skeleton3D" parent="CutsceneStuff/queen_i/Rig" parent_id_path=PackedInt32Array(846327425, 1997583111) index="0" unique_id=26862544]
+[node name="Skeleton3D" parent="CutsceneStuff/queen_i/Rig" parent_id_path=PackedInt32Array(846327425, 609108865) index="0" unique_id=1995757498]
 bones/1/position = Vector3(4.3561184e-18, 0.35486197, 1.0385796e-24)
 bones/2/rotation = Quaternion(1.1352066e-10, 8.460934e-09, -0.04264146, 0.99909043)
 bones/3/rotation = Quaternion(1.12655045e-10, -8.441139e-09, 0.042641457, 0.99909043)
@@ -327,14 +327,14 @@ bones/39/rotation = Quaternion(-0.7071068, -7.279511e-08, -7.279509e-08, 0.70710
 bones/40/position = Vector3(-0.5131816, 0.94119525, 0.21463525)
 bones/40/rotation = Quaternion(-0.5542642, 0.43908, 0.55426407, -0.4390801)
 
-[node name="head" parent="CutsceneStuff/queen_i/Rig/Skeleton3D" index="0" unique_id=2010536329]
+[node name="head" parent="CutsceneStuff/queen_i/Rig/Skeleton3D" index="0" unique_id=1696486789]
 transform = Transform3D(1, 7.450581e-09, 2.0264679e-11, -7.450581e-09, 0.99999994, -4.5362802e-10, -2.0262902e-11, 4.5362802e-10, 1, 0.031950984, 1.1892602, -6.35873e-11)
 
 [node name="bottomknight" parent="CutsceneStuff" unique_id=1607028048 instance=ExtResource("19_6yunu")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -6.948619, 0.9944458, -18.186111)
 script = ExtResource("20_0yn3c")
 
-[node name="Skeleton3D" parent="CutsceneStuff/bottomknight/Rig_Medium" parent_id_path=PackedInt32Array(1607028048, 1645285198) index="0" unique_id=938991813]
+[node name="Skeleton3D" parent="CutsceneStuff/bottomknight/Rig_Medium" parent_id_path=PackedInt32Array(1607028048, 1055075399) index="0" unique_id=2093083127]
 bones/1/position = Vector3(0, 0.39206383, 0)
 bones/1/rotation = Quaternion(-1.11122625e-10, 0.043157753, 2.5724098e-09, 0.9990683)
 bones/1/scale = Vector3(0.99999994, 1, 0.99999994)
@@ -395,7 +395,7 @@ libraries/Rig_Medium_MovementBasic = ExtResource("21_0yn3c")
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -6.948619, 0.9944458, -21.659508)
 script = ExtResource("20_0yn3c")
 
-[node name="Skeleton3D" parent="CutsceneStuff/topknight/Rig_Medium" parent_id_path=PackedInt32Array(725271147, 1645285198) index="0" unique_id=938991813]
+[node name="Skeleton3D" parent="CutsceneStuff/topknight/Rig_Medium" parent_id_path=PackedInt32Array(725271147, 1055075399) index="0" unique_id=2093083127]
 bones/1/position = Vector3(0, 0.39206383, 0)
 bones/1/rotation = Quaternion(-1.11122625e-10, 0.043157753, 2.5724098e-09, 0.9990683)
 bones/1/scale = Vector3(0.99999994, 1, 0.99999994)

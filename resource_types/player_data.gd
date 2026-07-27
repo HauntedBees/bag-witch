@@ -53,16 +53,18 @@ signal potion_removed(p: Potion)
 		health_changed.emit(value)
 @export var max_health := 100
 
-@export var completed_quests: Array[StringName] = [
-	#&"Opening",
-	#&"FromBog"
-]
+@export var completed_quests: Array[StringName] = []
 @export var active_potions: Dictionary[Potion, float] = {}
 
 @export var _remembered_spell: Spell
 @export var _remembered_spell_ammo := 0
 
 func _init() -> void:
+	if OS.has_feature("dev"):
+		completed_quests.append(&"Opening")
+		completed_quests.append(&"FromBog")
+		bag = 3
+		strength = 3
 	inventory.item_added.connect(_on_item_added)
 	inventory.item_removed.connect(_on_item_removed)
 	inventory.items_purged.connect(_on_items_purged)
