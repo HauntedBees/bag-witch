@@ -5,7 +5,6 @@
 [resource]
 script = ExtResource("1_c160o")
 hold_speed_multiplier = 1.0
-dead_hold_speed_multiplier = 1.0
 name = "Lava Slime"
 description = "It's hot and gooey. Like s'mores!"
 type = 6

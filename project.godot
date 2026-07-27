@@ -38,6 +38,7 @@ enabled=PackedStringArray("res://addons/gas/plugin.cfg", "res://addons/safe_reso
 [file_customization]
 
 folder_colors={
+"res://enemies/": "red",
 "res://items/": "green",
 "res://resource_types/": "teal",
 "res://spells/": "green"

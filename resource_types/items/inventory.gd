@@ -57,11 +57,17 @@ func add_item(i: Item, pos: Vector2i, trigger_signal := true) -> void:
 	add_item_detail(InventoryDetail.new(i, pos), trigger_signal)
 
 func add_item_detail(new_item: InventoryDetail, trigger_signal := true) -> void:
-	if !new_item.item.first_get_text.is_empty():
-		var item_key := "spellbook" if new_item.item.type == Item.ItemType.Book else new_item.item.name
-		if !had_item_names.has(item_key) && Player.data.options.tooltips:
-			SignalBus.say_new_item_text.emit("Bag Witch", new_item.item.first_get_text, item_key)
-			had_item_names.append(item_key)
+	var item_key := new_item.item.name
+	var item_text := new_item.item.first_get_text
+	if new_item.item.type == Item.ItemType.Book:
+		item_key = "spellbook"
+		item_text = "Woah, a spellbook! I can use different spells now. If I get multiple spellbooks, I can combine them into one!"
+	elif new_item.item.type == Item.ItemType.Creature:
+		item_key = "creature"
+		item_text = "I can truly fit anything in my bag, can't I? I bet I could use them as a shield!"
+	if !item_text.is_empty() && !had_item_names.has(item_key) && Player.data.options.tooltips:
+		SignalBus.say_new_item_text.emit("Bag Witch", item_text, item_key)
+		had_item_names.append(item_key)
 	items.append(new_item)
 	if trigger_signal:
 		item_added.emit(new_item)

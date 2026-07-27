@@ -9,7 +9,7 @@ class_name EnemyItem extends Item
 func get_item_name(id: InventoryDetail) -> String:
 	if id.ammo <= 0:
 		return "%s Corpse" % name
-	return name
+	return "%s (%dHP)" % [name, id.ammo]
 
 func get_enemy_detail(id: InventoryDetail = null, _from_inventory := false) -> EnemyDisplay:
 	var wi_scene: PackedScene = load(scene_path)

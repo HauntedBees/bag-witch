@@ -14,3 +14,6 @@ transform = Transform3D(1.7320508, 0, -1, 0, 2, 0, 1, 0, 1.7320508, 0, -1.3, 0)
 unique_name_in_owner = true
 visible = false
 single_use = false
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=438974645]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1.8524542, 0)

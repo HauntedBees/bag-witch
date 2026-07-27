@@ -191,14 +191,17 @@ func take_damage(damage: int, knockback_source := Vector3.ZERO, knockback := 0.0
 		if get_front_direction(true).dot(knockback_dir) >= 0.8:
 			var meat := Player.data.current_equipped
 			if meat.ammo > 0:
+				damage *= 3
 				meat.ammo -= damage
 				arms_overlay.arms.show_enemy_damage(damage, meat.ammo <= 0, false)
-				return
+				knockback *= 0.25
+				damage = 0
 			else:
 				damage = ceili(damage / 2.0)
 				arms_overlay.arms.show_enemy_damage(damage, true, true)
-				knockback *= 0.25
-	Player.take_damage(damage)
+				knockback *= 0.5
+	if damage > 0:
+		Player.take_damage(damage)
 	if knockback > 0.0:
 		var dir := global_position.direction_to(knockback_source)
 		velocity -= dir * knockback

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cvrxto4jxqgxk"]
 
-[ext_resource type="Script" uid="uid://cjlidc7juluwi" path="res://enemies/enemy.gd" id="1_5vnnh"]
+[ext_resource type="Script" uid="uid://dgfhd5hqkiak0" path="res://enemies/common/cleric.gd" id="1_bfifl"]
 [ext_resource type="Script" uid="uid://cgt7ckkn1gh5b" path="res://resource_types/items/item.gd" id="2_bfifl"]
 [ext_resource type="Resource" uid="uid://dkq75or5ap7mf" path="res://items/food/apple.tres" id="3_5dusm"]
 [ext_resource type="Resource" uid="uid://cjykdl4q3h120" path="res://items/food/mushroom.tres" id="4_tbksx"]
@@ -10,6 +10,7 @@
 [ext_resource type="Resource" uid="uid://dc0rwto4q8lbf" path="res://items/melee/big_sword.tres" id="8_alvs5"]
 [ext_resource type="Resource" uid="uid://csnhgb33a82l1" path="res://items/crystals/power_ruby.tres" id="9_yh6ef"]
 [ext_resource type="PackedScene" uid="uid://dbwqxpym38n74" path="res://assets/models/weapons/big_sword.blend" id="10_alvs5"]
+[ext_resource type="Resource" uid="uid://cupxusyrxai4k" path="res://items/enemies/cleric.tres" id="10_bfifl"]
 [ext_resource type="PackedScene" uid="uid://cvl5y7rb8dn5x" path="res://assets/models/enemies/cleric.blend" id="11_dqe4y"]
 [ext_resource type="Script" uid="uid://cw1pwskvve6sn" path="res://enemies/behaviors/enemy_walk_between_points.gd" id="13_5vnnh"]
 [ext_resource type="Script" uid="uid://cmgcelj1qxg8o" path="res://addons/tattomoosa.vision_cone_3d/src/VisionCone3D.gd" id="13_m7b44"]
@@ -34,14 +35,16 @@ radius = 4.0
 [sub_resource type="BoxShape3D" id="BoxShape3D_rhbnc"]
 size = Vector3(1, 2.4128723, 1)
 
-[node name="Cleric" type="CharacterBody3D" unique_id=222303382 node_paths=PackedStringArray("bounding_box", "animation_player")]
-collision_layer = 9
+[node name="Cleric" type="CharacterBody3D" unique_id=222303382 node_paths=PackedStringArray("sabbath_actions", "bounding_box", "animation_player")]
+collision_layer = 13
 collision_mask = 3
-script = ExtResource("1_5vnnh")
+script = ExtResource("1_bfifl")
+sabbath_actions = [NodePath("EnemyChasePlayer"), NodePath("EnemyFireBallAttack"), NodePath("EnemyMeleeAttack")]
 enemy_name = "Cleric"
 potential_drops = Array[ExtResource("2_bfifl")]([ExtResource("3_5dusm"), ExtResource("4_tbksx"), ExtResource("5_btf45"), ExtResource("6_wf0ab"), ExtResource("7_uw5q3"), ExtResource("8_alvs5"), ExtResource("9_yh6ef")])
 potential_drop_chance = 0.4
 capture_level = 2
+suck_drop = ExtResource("10_bfifl")
 max_health = 65
 resistances = Array[int]([2])
 bounding_box = NodePath("BoundingBox")
@@ -54,7 +57,7 @@ die_anims = Array[StringName]([&"Death_A"])
 [node name="cleric" parent="." unique_id=2124217926 instance=ExtResource("11_dqe4y")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
-[node name="Skeleton3D" parent="cleric/Rig" parent_id_path=PackedInt32Array(2124217926, 231440580) index="0" unique_id=1651808815]
+[node name="Skeleton3D" parent="cleric/Rig" parent_id_path=PackedInt32Array(2124217926, 230919338) index="0" unique_id=1604489408]
 bones/1/position = Vector3(7.1671886e-09, 0.3052199, -0.030061372)
 bones/1/rotation = Quaternion(2.255949e-10, 0.17319314, 2.5649072e-09, 0.9848879)
 bones/2/position = Vector3(-6.70789e-11, 0.1919775, 1.8316362e-10)
@@ -125,7 +128,7 @@ bones/39/rotation = Quaternion(-0.7071068, -7.279511e-08, -7.279509e-08, 0.70710
 bones/40/position = Vector3(-0.5442452, 0.74524903, -0.04110357)
 bones/40/rotation = Quaternion(-0.8932757, 0.026557937, 0.43408206, 0.11369245)
 
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="cleric/Rig/Skeleton3D" index="7" unique_id=1428467053]
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="cleric/Rig/Skeleton3D" index="6" unique_id=1428467053]
 transform = Transform3D(-0.14615098, -0.6217344, -0.76947093, -0.9727371, -0.05125603, 0.22617413, -0.18006039, 0.7815487, -0.5972931, -0.5703677, 0.5915669, -0.031491365)
 bone_name = "handslot.r"
 bone_idx = 13
