@@ -29,6 +29,8 @@ signal on_effect_applied(e: BWEnum.Effect, level: int)
 ## The item gained when you suck this motherfucker up.
 @export var suck_drop: Item
 
+@export var can_be_picked_up_while_dead := true
+
 @export_category("Navigation")
 ## The nav agent for this enemy.
 @onready var nav: NavigationAgent3D = $NavigationAgent3D
@@ -69,6 +71,7 @@ signal on_effect_applied(e: BWEnum.Effect, level: int)
 var target: BogWitch
 
 var health := 100
+var suck_time_remaining := 1.0
 var _effects: Dictionary[BWEnum.Effect, float] = {}
 var _player_for_distance_checks: Node3D
 
@@ -89,6 +92,7 @@ func _init() -> void:
 
 func _ready() -> void:
 	add_to_group(&"enemy")
+	suck_time_remaining = suck_time
 	_player_for_distance_checks = get_tree().get_first_node_in_group(&"PlayerCharacter")
 	for c in _common_states:
 		add_child(c)
@@ -121,15 +125,18 @@ func is_in_danger() -> bool:
 func is_dead() -> bool:
 	return health <= 0
 
+func _process(delta: float) -> void:
+	for e: BWEnum.Effect in _effects.keys():
+		_effects[e] -= delta
+		if _effects[e] <= 0.0:
+			_effects.erase(e)
+	suck_time_remaining = minf(suck_time_remaining + 0.25 * delta, suck_time)
+
 func _physics_process(delta: float) -> void:
 	#if _player_for_distance_checks != null:
 	#	var dist := global_position.distance_squared_to(_player_for_distance_checks.global_position)
 	#	if dist > 4900.0:
 	#		return
-	for e: BWEnum.Effect in _effects.keys():
-		_effects[e] -= delta
-		if _effects[e] <= 0.0:
-			_effects.erase(e)
 	if !is_on_floor():
 		velocity.y -= 5.0
 	if is_dead():
