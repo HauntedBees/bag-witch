@@ -35,7 +35,7 @@ radius = 15.0
 size = Vector3(1, 2.4128723, 1)
 
 [node name="Mage" type="CharacterBody3D" unique_id=222303382 node_paths=PackedStringArray("bounding_box", "animation_player")]
-collision_layer = 9
+collision_layer = 13
 collision_mask = 3
 script = ExtResource("1_7iucr")
 enemy_name = "Mage"
@@ -56,7 +56,7 @@ die_anims = Array[StringName]([&"Rig_Medium_General/Death_A"])
 [node name="mage" parent="." unique_id=1969943047 instance=ExtResource("6_hqbju")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
-[node name="Skeleton3D" parent="mage/Rig_Medium" parent_id_path=PackedInt32Array(1969943047, 1184479250) index="0" unique_id=1454012543]
+[node name="Skeleton3D" parent="mage/Rig_Medium" parent_id_path=PackedInt32Array(1969943047, 626136759) index="0" unique_id=1025969913]
 bones/1/position = Vector3(0, 0.39206383, 0)
 bones/1/rotation = Quaternion(-1.11122625e-10, 0.043157753, 2.5724098e-09, 0.9990683)
 bones/1/scale = Vector3(0.99999994, 1, 0.99999994)

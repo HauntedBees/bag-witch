@@ -26,7 +26,7 @@ height = 20.0
 radius = 70.0
 
 [node name="FireSlime" type="CharacterBody3D" unique_id=222303382 node_paths=PackedStringArray("bounding_box", "animation_player")]
-collision_layer = 9
+collision_layer = 13
 collision_mask = 3
 script = ExtResource("1_w5hsp")
 enemy_name = "Lava Slime"
@@ -45,7 +45,7 @@ die_anims = Array[StringName]([&"Attack"])
 [node name="lava_slime" parent="." unique_id=2093597872 instance=ExtResource("2_7rox6")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.6000141, 0)
 
-[node name="Skeleton3D" parent="lava_slime/Armature" parent_id_path=PackedInt32Array(2093597872, 1267118561) index="0" unique_id=148578676]
+[node name="Skeleton3D" parent="lava_slime/Armature" parent_id_path=PackedInt32Array(2093597872, 1096119059) index="0" unique_id=1922570970]
 bones/0/rotation = Quaternion(0.0048435284, -0.7102225, -0.0048780595, 0.7039438)
 bones/0/scale = Vector3(0.999341, 0.81955504, 1)
 bones/1/rotation = Quaternion(-0.26866978, -0.652638, -0.2711477, 0.6544915)

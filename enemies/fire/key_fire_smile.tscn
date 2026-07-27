@@ -23,7 +23,7 @@ size = Vector3(3, 3, 3)
 radius = 100.0
 
 [node name="FireSlimeKey" type="CharacterBody3D" unique_id=222303382 node_paths=PackedStringArray("bounding_box", "animation_player")]
-collision_layer = 9
+collision_layer = 13
 collision_mask = 3
 script = ExtResource("1_irxjj")
 has_key = true
@@ -44,7 +44,7 @@ die_anims = Array[StringName]([&"Attack"])
 [node name="lava_slime_key" parent="." unique_id=1954922517 instance=ExtResource("2_cfx7n")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.771225, 0)
 
-[node name="Skeleton3D" parent="lava_slime_key/Armature" parent_id_path=PackedInt32Array(1954922517, 76237435) index="0" unique_id=1677628604]
+[node name="Skeleton3D" parent="lava_slime_key/Armature" parent_id_path=PackedInt32Array(1954922517, 996411631) index="0" unique_id=1728782455]
 bones/0/rotation = Quaternion(0.0048435284, -0.7102225, -0.0048780595, 0.7039438)
 bones/0/scale = Vector3(0.999341, 0.81955504, 1)
 bones/1/rotation = Quaternion(-0.26866978, -0.652638, -0.2711477, 0.6544915)
@@ -52,7 +52,7 @@ bones/2/rotation = Quaternion(0.56404775, 0.42643893, 0.5640479, -0.4264389)
 bones/3/rotation = Quaternion(3.7822354e-10, -6.765614e-09, 0.07148261, 0.9974418)
 bones/4/rotation = Quaternion(0.5878755, -0.3930232, -0.5878206, -0.39294052)
 
-[node name="Bone_003" parent="lava_slime_key/Armature/Skeleton3D" index="0" unique_id=676046647]
+[node name="Bone_003" parent="lava_slime_key/Armature/Skeleton3D" index="0" unique_id=807606570]
 transform = Transform3D(-0.008784329, 0.0012554657, -0.9999606, 0.10325881, 0.813062, 0.000109870154, 0.9906024, -0.1313342, -0.00887884, -8.370033e-06, 0.68567103, 0.009427605)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1136467649]

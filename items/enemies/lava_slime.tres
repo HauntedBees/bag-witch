@@ -5,13 +5,17 @@
 [resource]
 script = ExtResource("1_c160o")
 hold_speed_multiplier = 1.0
+dead_hold_speed_multiplier = 1.0
+damage_multiplier = 0
 name = "Lava Slime"
 description = "It's hot and gooey. Like s'mores!"
 type = 6
 icon = Rect2i(2, 1, 1, 1)
 scene_path = "uid://j6ijx2yvkafq"
 equip_sprite_offset = Vector2i(4, 0)
-custom_equip_scene = "uid://ba8a81r3bakjl"
+custom_equip_scene = "uid://kse5kvv8viih"
+custom_equip_scene_inner = "uid://5mfo3873qvty"
 equipped_animation = &"CreatureHold"
 use_animation = &"CreatureOffer"
+equipped_scale = 0.5
 metadata/_custom_type_script = "uid://cgt7ckkn1gh5b"

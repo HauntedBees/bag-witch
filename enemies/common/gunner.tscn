@@ -28,11 +28,11 @@ radius = 3.0
 [sub_resource type="BoxShape3D" id="BoxShape3D_rhbnc"]
 size = Vector3(1, 2.4128723, 1)
 
-[node name="Gunner" type="CharacterBody3D" unique_id=222303382 node_paths=PackedStringArray("bounding_box")]
-collision_layer = 9
+[node name="Gunner" type="CharacterBody3D" unique_id=222303382 node_paths=PackedStringArray("bounding_box", "animation_player")]
+collision_layer = 13
 collision_mask = 3
 script = ExtResource("1_oy03o")
-enemy_name = "Space Knight"
+enemy_name = "Gunner"
 potential_drops = Array[ExtResource("2_uykqh")]([ExtResource("3_uykqh"), ExtResource("4_pjbff"), ExtResource("5_exxb2"), ExtResource("6_ff6yc")])
 potential_drop_chance = 0.4
 capture_level = 2
@@ -41,6 +41,7 @@ max_health = 250
 weaknesses = Array[int]([3])
 resistances = Array[int]([1])
 bounding_box = NodePath("BoundingBox")
+animation_player = NodePath("survivalist/AnimationPlayer")
 idle_anims = Array[StringName]([&"Idle", &"Idle_B", &"Idle_Combat"])
 hit_anim = &"Hit_A"
 big_hit_anim = &"Hit_B"

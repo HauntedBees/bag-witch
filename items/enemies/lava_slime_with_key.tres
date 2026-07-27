@@ -6,13 +6,15 @@
 script = ExtResource("1_pxlyn")
 hold_speed_multiplier = 1.2
 dead_hold_speed_multiplier = 1.0
+damage_multiplier = 0
 name = "Lava Slime"
 description = "There appears to be a key stuck inside this thing... how do I get it out?"
 type = 6
 icon = Rect2i(3, 1, 1, 1)
 scene_path = "uid://eq158w8w1hls"
 equip_sprite_offset = Vector2i(4, 0)
-custom_equip_scene = "uid://ba8a81r3bakjl"
+custom_equip_scene = "uid://kse5kvv8viih"
+custom_equip_scene_inner = "uid://ctlgvtilkqq0j"
 equipped_animation = &"CreatureHold"
 use_animation = &"CreatureOffer"
 metadata/_custom_type_script = "uid://cgt7ckkn1gh5b"

@@ -6,6 +6,8 @@ class_name EnemyItem extends Item
 ## When holding this enemy as a corpse, your movement speed will be multiplied by this.
 @export_range(0.0, 1.0) var dead_hold_speed_multiplier := 0.4
 
+@export var damage_multiplier := 3
+
 func get_item_name(id: InventoryDetail) -> String:
 	if id.ammo <= 0:
 		return "%s Corpse" % name

@@ -33,7 +33,7 @@ height = 1.157898
 size = Vector3(1, 1.6117096, 2.8477783)
 
 [node name="Marksman" type="CharacterBody3D" unique_id=222303382 node_paths=PackedStringArray("bounding_box", "animation_player")]
-collision_layer = 9
+collision_layer = 13
 collision_mask = 3
 script = ExtResource("1_4o51p")
 enemy_name = "Marksman"
