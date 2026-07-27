@@ -198,6 +198,7 @@ exclude_parent = false
 target_position = Vector3(1.5, 0, 0)
 collision_mask = 7
 debug_shape_custom_color = Color(0.91764706, 0.79607844, 0.18039216, 1)
+debug_shape_thickness = 1
 
 [node name="RightWallCheck" type="RayCast3D" parent="CameraHolder/Camera/CameraBasedRaycasts" unique_id=70951798]
 unique_name_in_owner = true
@@ -206,6 +207,7 @@ exclude_parent = false
 target_position = Vector3(-1.5, 0, 0)
 collision_mask = 7
 debug_shape_custom_color = Color(0.91764706, 0.79607844, 0.18039216, 1)
+debug_shape_thickness = 1
 
 [node name="FrontCheck" type="RayCast3D" parent="CameraHolder/Camera/CameraBasedRaycasts" unique_id=2105455808]
 unique_name_in_owner = true
@@ -213,6 +215,7 @@ transform = Transform3D(1, 5.4975374e-10, 3.4567904e-12, -5.4975374e-10, 0.99992
 target_position = Vector3(0, 0, -30)
 collision_mask = 14
 collide_with_areas = true
+debug_shape_thickness = 1
 
 [node name="ProjectileSpot" type="Node3D" parent="CameraHolder" unique_id=1165267181]
 unique_name_in_owner = true
@@ -247,13 +250,14 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.758088, 0)
 exclude_parent = false
 target_position = Vector3(0, 3, 0)
-debug_shape_custom_color = Color(1, 0, 0, 1)
+debug_shape_thickness = 1
 
 [node name="FloorCheck" type="RayCast3D" parent="Raycasts" unique_id=79485809]
 unique_name_in_owner = true
 exclude_parent = false
 target_position = Vector3(0, -3, 0)
 debug_shape_custom_color = Color(0, 0.823529, 0.956863, 1)
+debug_shape_thickness = 1
 
 [node name="WallrunFloorCheck" type="RayCast3D" parent="Raycasts" unique_id=1930692116]
 unique_name_in_owner = true

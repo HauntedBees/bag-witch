@@ -41,7 +41,10 @@ func play_sound(s: AudioStream) -> void:
 
 func fade_out_music() -> Signal:
 	var t := create_tween()
-	t.tween_property(_current_music_player, "volume_linear", 0.0, 0.125)
+	if _current_music_player == null:
+		t.tween_interval(0.1)
+	else:
+		t.tween_property(_current_music_player, "volume_linear", 0.0, 0.125)
 	return t.finished
 
 func _on_song_finished() -> void:
