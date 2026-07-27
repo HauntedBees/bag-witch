@@ -7,14 +7,18 @@ const _ICE_SCENE := preload("uid://brjmi7v2y6hgo")
 var _damage_remaining := 0
 var _time_stunned := 0.0
 var _cube: IceCube = null
+var _perma_frozen := false
 
 func _setup_behavior() -> void:
 	priority = _DAMAGED_PRIORITY + 1
 	_parent.on_effect_applied.connect(_on_effect_applied)
 	_parent.on_hit.connect(_on_hit)
+	if _parent is LavaSlime && get_tree().get_nodes_in_group(&"ice_world").size() > 0:
+		_do_icey()
+		_perma_frozen = true
 
 func is_frozen() -> bool:
-	return active && _time_stunned > 0.0
+	return active && (_perma_frozen || _time_stunned > 0.0)
 
 func _on_active_changed() -> void:
 	_damage_remaining = 0
@@ -47,9 +51,12 @@ func _on_effect_applied(e: BWEnum.Effect, level: int) -> void:
 		return
 	if _time_stunned > 0.0: # no double freezies
 		return
-	take_control()
 	_time_stunned = _STUN_TIMES[level - 1]
 	_damage_remaining = _RELEASE_DAMAGES[level - 1]
+	_do_icey()
+
+func _do_icey() -> void:
+	take_control()
 	_cube = _ICE_SCENE.instantiate()
 	_parent.add_child(_cube)
 	_parent.animation_player.pause()

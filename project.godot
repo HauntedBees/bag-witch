@@ -52,6 +52,8 @@ warp=""
 hud=""
 trigger_nav_cursor="Moves the NavCursor object to this item"
 cursor_button="Items that should show the pointing hand cursor, like buttons."
+ice_world=""
+heat_world=""
 
 [gui]
 

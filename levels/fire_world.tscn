@@ -14,7 +14,7 @@
 [ext_resource type="Script" uid="uid://lylfqtt7t8e6" path="res://levels/level_border.gd" id="9_80h6e"]
 [ext_resource type="Script" uid="uid://wp1mdoed06xj" path="res://levels/quick_cutscene.gd" id="10_snvax"]
 [ext_resource type="Script" uid="uid://bh3e52s7bb0by" path="res://environment/portals/warp_point.gd" id="10_u8j4s"]
-[ext_resource type="PackedScene" uid="uid://nhixgopg3rk5" path="res://assets/models/items/food/pineapple.tscn" id="15_p4ltq"]
+[ext_resource type="PackedScene" uid="uid://nhixgopg3rk5" path="res://items/world/food/pineapple.tscn" id="15_p4ltq"]
 [ext_resource type="Script" uid="uid://xdrcn075jkic" path="res://levels/generational_enemy_spawner.gd" id="16_1swv2"]
 [ext_resource type="PackedScene" uid="uid://c0c6yem7oc5h2" path="res://items/world/weapons/broom.tscn" id="17_b05w2"]
 [ext_resource type="PackedScene" uid="uid://8pmjrnhr3wew" path="res://environment/portals/portal_subviewport_pair.tscn" id="18_1swv2"]
@@ -122,7 +122,7 @@ atlas = ExtResource("19_ht1gs")
 region = Rect2(512, 0, 256, 256)
 filter_clip = true
 
-[node name="FireWorld" type="Node3D" unique_id=1891173490]
+[node name="FireWorld" type="Node3D" unique_id=1891173490 groups=["heat_world"]]
 script = ExtResource("1_wq31c")
 song = ExtResource("2_byixx")
 song_loop = ExtResource("3_p4ltq")

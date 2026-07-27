@@ -28,7 +28,6 @@ var _in_inventory := false
 var _reloading_time_remaining := 0.0
 
 var _is_sucking := false
-var _suck_time_remaining := 0.0
 var _suck_enemy: EnemyDisplay
 var _suck_portal: Portal
 var _max_grab_distance := 10.0
@@ -320,7 +319,7 @@ func _handle_bag(delta: float) -> bool:
 			return false
 		if _current_targeted_item != null:
 			return _try_pick_up_item()
-		elif _current_targeted_enemy != null && _current_targeted_enemy.capture_level <= Player.data.strength:
+		elif _current_targeted_enemy != null && _current_targeted_enemy.capture_level <= Player.data.strength && (!_current_targeted_enemy.is_dead() || _current_targeted_enemy.can_be_picked_up_while_dead):
 			return _try_start_enemy_sucking()
 		elif _current_targeted_portal != null:
 			_try_start_portal_sucking()
@@ -336,15 +335,15 @@ func _handle_bag(delta: float) -> bool:
 				_is_sucking = false
 				return false
 			arms_overlay.arms.play_anim(&"BagSuck")
-			_suck_time_remaining -= delta
-			if _suck_time_remaining <= 0.0:
-				if _suck_enemy != null:
+			if _suck_enemy != null:
+				_suck_enemy.suck_time_remaining -= delta
+				if _suck_enemy.suck_time_remaining <= 0.0:
 					return _try_procure_enemy() # TODO: should do a little animation
-				elif _suck_portal != null:
+			elif _suck_portal != null:
+				_suck_portal.suck_time_remaining -= delta
+				if _suck_portal.suck_time_remaining <= 0.0:
 					return _try_procure_portal()
-				else:
-					return false
-			return true
+			return false
 		else:
 			_suck_enemy = null
 			_suck_portal = null
@@ -371,7 +370,8 @@ func _try_start_enemy_sucking() -> bool:
 		return false
 	arms_overlay.arms.play_anim(&"BagSuck")
 	_is_sucking = true
-	_suck_time_remaining = _current_targeted_enemy.suck_time
+	if Player.data.bag == 3:
+		_current_targeted_enemy.suck_time_remaining *= 0.1
 	_suck_enemy = _current_targeted_enemy
 	return true
 
@@ -387,7 +387,6 @@ func _try_start_portal_sucking() -> bool:
 		return false
 	arms_overlay.arms.play_anim(&"BagSuck")
 	_is_sucking = true
-	_suck_time_remaining = 0.75
 	_suck_portal = _current_targeted_portal
 	return true
 

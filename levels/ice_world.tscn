@@ -72,17 +72,17 @@ radius = 400.0
 
 [sub_resource type="Environment" id="Environment_wx74s"]
 
-[sub_resource type="World3D" id="World3D_kr3gg"]
+[sub_resource type="World3D" id="World3D_wx74s"]
 resource_local_to_scene = true
 environment = SubResource("Environment_wx74s")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_i2y12"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_kr3gg"]
 resource_local_to_scene = true
 atlas = ExtResource("16_lf0o5")
 region = Rect2(0, 512, 256, 256)
 filter_clip = true
 
-[node name="IceWorld" type="Node3D" unique_id=1012043430]
+[node name="IceWorld" type="Node3D" unique_id=1012043430 groups=["ice_world"]]
 script = ExtResource("1_ffpem")
 song = ExtResource("2_vcxes")
 song_loop = ExtResource("3_2ujki")
@@ -220,10 +220,10 @@ teleport_scene = "uid://c5pqvv86efxau"
 teleport_point_name = "Entryway"
 
 [node name="PortalSubviewportExternal" parent="Warp-Forest" index="1" unique_id=389194511]
-world_3d = SubResource("World3D_kr3gg")
+world_3d = SubResource("World3D_wx74s")
 
 [node name="Sprite3D" parent="Warp-Forest/PortalSubviewportExternal" index="1" unique_id=923265973]
-texture = SubResource("AtlasTexture_i2y12")
+texture = SubResource("AtlasTexture_kr3gg")
 
 [editable path="NavigationRegion3D/BackToTheBog"]
 [editable path="NavigationRegion3D/BackToTheBog/PortalSubviewportExternal"]

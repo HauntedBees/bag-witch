@@ -33,6 +33,7 @@ enemy_name = "Lava Slime"
 potential_drops = Array[ExtResource("2_6crcg")]([ExtResource("3_xnbry"), ExtResource("4_45kdf"), ExtResource("5_xagjh")])
 capture_level = 1
 suck_drop = ExtResource("2_qaqv0")
+can_be_picked_up_while_dead = false
 max_health = 5
 damage_stun_time = 0.0
 bounding_box = NodePath("BoundingBox")

@@ -1,5 +1,7 @@
 class_name Portal extends Node3D
 
+const _SUCK_TIME := 0.75
+
 @export var subviewport: SubViewport
 
 ## Leave blank if teleporting to same area.
@@ -7,6 +9,8 @@ class_name Portal extends Node3D
 
 ## Leave blank if teleporting to same area.
 @export var teleport_point_name: String
+
+var suck_time_remaining := _SUCK_TIME
 
 var _viewport_cam: Node3D
 
@@ -20,7 +24,8 @@ func _ready() -> void:
 	_viewport_cam = subviewport.get_child(0)
 	_inside_material.set_shader_parameter(&"texture_albedo", subviewport.get_texture())
 
-func _process(_delta: float):
+func _process(delta: float):
+	suck_time_remaining = minf(suck_time_remaining + 0.25 * delta, _SUCK_TIME)
 	var cam := get_viewport().get_camera_3d()
 	if cam == null:
 		return

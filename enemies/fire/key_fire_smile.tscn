@@ -32,6 +32,7 @@ potential_drops = Array[ExtResource("2_8lx7a")]([ExtResource("3_obngk")])
 potential_drop_chance = 1.0
 capture_level = 2
 suck_drop = ExtResource("4_obngk")
+can_be_picked_up_while_dead = false
 max_health = 5
 damage_stun_time = 0.0
 bounding_box = NodePath("BoundingBox")
