@@ -9,6 +9,9 @@ signal load_new_level(destination_uid: String, destination_point_name: String)
 @warning_ignore("unused_signal")
 signal game_over()
 
+@warning_ignore("unused_signal")
+signal take_damage_from_hands(amount: int)
+
 #region Cutscene
 @warning_ignore("unused_signal")
 signal say_thing(speaker: String, text: String, id: String)

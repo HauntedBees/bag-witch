@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_7uq5o")
 name = "The Black Knight"
-description = "A deadly defender of the Perpetual Empire. How tall are they?!"
+description = "A deadly defender of the Perpetual Empire. I can hear a key dangling inside their armor..."
 type = 6
 size = Vector2i(5, 4)
 icon = Rect2i(11, 0, 5, 4)

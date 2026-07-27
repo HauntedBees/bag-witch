@@ -45,6 +45,7 @@ var _max_grab_distance := 10.0
 func _ready() -> void:
 	super()
 	Player.data.stat_changed.connect(_adjust_movement_stats)
+	SignalBus.take_damage_from_hands.connect(_on_hand_damage)
 	_adjust_movement_stats()
 
 func set_warp_grace_period() -> void:
@@ -183,6 +184,11 @@ func take_damage_from_weapon(w: Weapon, knockback_source: Vector3) -> void:
 		w.knockback,
 		w.additional_y_knockback
 	)
+
+# Look, it was this or write a whole bunch of correct code just so the slime could
+# burn your hands when you hold it and I just don't have the time for that lads and ladettes.
+func _on_hand_damage(amount: int) -> void:
+	take_damage(amount)
 
 func take_damage(damage: int, knockback_source := Vector3.ZERO, knockback := 0.0, additional_y_knockback := 0.0) -> void:
 	if knockback_source != Vector3.ZERO && Player.data.current_equipped != null && Player.data.current_equipped_item() is EnemyItem:
