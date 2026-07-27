@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="EnemyItem" format=3 uid="uid://btsw0hluu4773"]
+
+[ext_resource type="Script" uid="uid://b7btwieeq2g52" path="res://resource_types/items/enemy_item.gd" id="1_svmu3"]
+
+[resource]
+script = ExtResource("1_svmu3")
+name = "Ice Golem"
+description = "An animated beast made of ice and snow. If you can get some flavorings in there, it'd probably taste pretty good."
+type = 6
+size = Vector2i(4, 4)
+icon = Rect2i(11, 4, 4, 4)
+rotated_by_default = true
+scene_path = "uid://cphjo0ynxtgmo"
+equip_sprite_offset = Vector2i(4, 0)
+custom_equip_scene = "uid://kse5kvv8viih"
+custom_equip_scene_inner = "uid://bkp5hliwkeaq7"
+equipped_animation = &"StandardEnemyHold"
+use_animation = &"StandardEnemyUse"
+metadata/_custom_type_script = "uid://cgt7ckkn1gh5b"

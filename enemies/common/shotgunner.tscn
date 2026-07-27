@@ -8,6 +8,7 @@
 [ext_resource type="Resource" uid="uid://et3im2qvxysa" path="res://items/crystals/speed_sapphire.tres" id="6_xgnvx"]
 [ext_resource type="PackedScene" uid="uid://khfhpmh75iv4" path="res://assets/models/enemies/survivalist.blend" id="7_6h4c3"]
 [ext_resource type="Resource" uid="uid://dwy2t5iqcrs8k" path="res://items/guns/molotov_cocktail.tres" id="7_u624i"]
+[ext_resource type="Resource" uid="uid://jetnpsld8umu" path="res://items/enemies/shotgunner.tres" id="8_8x8a4"]
 [ext_resource type="PackedScene" uid="uid://bd1u571jrpdyx" path="res://assets/models/weapons/shotgun.blend" id="8_wgx7l"]
 [ext_resource type="Script" uid="uid://cmgcelj1qxg8o" path="res://addons/tattomoosa.vision_cone_3d/src/VisionCone3D.gd" id="9_oag8x"]
 [ext_resource type="Script" uid="uid://cw1pwskvve6sn" path="res://enemies/behaviors/enemy_walk_between_points.gd" id="10_6pdh3"]
@@ -36,6 +37,7 @@ enemy_name = "Space Knight"
 potential_drops = Array[ExtResource("2_s7vat")]([ExtResource("3_s7vat"), ExtResource("4_8x8a4"), ExtResource("5_5jq0v"), ExtResource("6_xgnvx"), ExtResource("7_u624i")])
 potential_drop_chance = 0.4
 capture_level = 2
+suck_drop = ExtResource("8_8x8a4")
 max_health = 250
 weaknesses = Array[int]([3])
 resistances = Array[int]([1])
@@ -48,7 +50,7 @@ die_anims = Array[StringName]([&"Death_A"])
 [node name="survivalist" parent="." unique_id=816779941 instance=ExtResource("7_6h4c3")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
-[node name="Skeleton3D" parent="survivalist/Rig" parent_id_path=PackedInt32Array(816779941, 931751658) index="0" unique_id=1084773010]
+[node name="Skeleton3D" parent="survivalist/Rig" parent_id_path=PackedInt32Array(816779941, 2050921771) index="0" unique_id=107167948]
 bones/1/position = Vector3(0, 0.39179382, 0)
 bones/1/rotation = Quaternion(-1.11122646e-10, 0.043157756, 2.57241e-09, 0.9990683)
 bones/2/position = Vector3(3.0172547e-16, 0.1919775, -1.2613247e-17)

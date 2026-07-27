@@ -5,6 +5,7 @@
 [ext_resource type="Resource" uid="uid://b3y7d3n0tgplr" path="res://items/keys/big_knight_key.tres" id="3_kt7ya"]
 [ext_resource type="PackedScene" uid="uid://dbwqxpym38n74" path="res://assets/models/weapons/big_sword.blend" id="3_q0brv"]
 [ext_resource type="Script" uid="uid://cw1pwskvve6sn" path="res://enemies/behaviors/enemy_walk_between_points.gd" id="4_cjrje"]
+[ext_resource type="Resource" uid="uid://cws2pe4kuus3l" path="res://items/enemies/big_knight.tres" id="4_kt7ya"]
 [ext_resource type="PackedScene" uid="uid://b7plk8a3qa88c" path="res://assets/models/enemies/big_knight.blend" id="7_kt7ya"]
 [ext_resource type="Script" uid="uid://cmgcelj1qxg8o" path="res://addons/tattomoosa.vision_cone_3d/src/VisionCone3D.gd" id="12_6dehl"]
 [ext_resource type="Script" uid="uid://c7obdbhjgnuay" path="res://enemies/behaviors/enemy_chase_player.gd" id="13_4s2t8"]
@@ -32,7 +33,8 @@ enemy_name = "Black Knight"
 potential_drops = Array[ExtResource("2_b1lr1")]([ExtResource("3_kt7ya")])
 potential_drop_chance = 1.0
 capture_level = 3
-suck_time = 4.0
+suck_time = 5.0
+suck_drop = ExtResource("4_kt7ya")
 max_health = 500
 damage_stun_time = 0.1
 weaknesses = Array[int]([2])
@@ -47,7 +49,7 @@ die_anims = Array[StringName]([&"Death_A"])
 [node name="big_knight" parent="." unique_id=803165191 instance=ExtResource("7_kt7ya")]
 transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
 
-[node name="Skeleton3D" parent="big_knight/Rig" parent_id_path=PackedInt32Array(803165191, 356012277) index="0" unique_id=987586369]
+[node name="Skeleton3D" parent="big_knight/Rig" parent_id_path=PackedInt32Array(803165191, 1066649459) index="0" unique_id=446880449]
 bones/1/position = Vector3(1.9302107e-09, 0.50706387, -0.008095892)
 bones/1/rotation = Quaternion(-1.11630385e-10, 0.06973603, 2.5841644e-09, 0.99756557)
 bones/2/rotation = Quaternion(2.0816682e-17, 1.1920926e-07, 8.6735926e-19, 1)

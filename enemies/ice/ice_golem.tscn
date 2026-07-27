@@ -15,6 +15,7 @@
 [ext_resource type="Resource" uid="uid://sbrt245q0iwi" path="res://items/melee/sword.tres" id="8_3t6dk"]
 [ext_resource type="Script" uid="uid://b2ldfj5ngv3ch" path="res://enemies/behaviors/enemy_melee_player.gd" id="8_hyjxu"]
 [ext_resource type="Resource" uid="uid://dg7n54458bcvk" path="res://items/spellbooks/book_of_ice.tres" id="9_3t6dk"]
+[ext_resource type="Resource" uid="uid://btsw0hluu4773" path="res://items/enemies/ice_golem.tres" id="10_soene"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rhbnc"]
 radius = 1.612793
@@ -37,6 +38,9 @@ script = ExtResource("1_idi53")
 enemy_name = "Ice Golem"
 potential_drops = Array[ExtResource("2_lqmub")]([ExtResource("9_3t6dk"), ExtResource("3_lf8w2"), ExtResource("4_p1p11"), ExtResource("5_3t6dk"), ExtResource("6_soene"), ExtResource("7_p1p11"), ExtResource("8_3t6dk")])
 potential_drop_chance = 1.0
+capture_level = 3
+suck_time = 5.0
+suck_drop = ExtResource("10_soene")
 max_health = 350
 damage_stun_time = 0.0
 weaknesses = Array[int]([2])
@@ -52,7 +56,7 @@ die_anims = Array[StringName]([&"Death_A", &"Death_C_Skeletons"])
 [node name="frost_golem" parent="." unique_id=455426502 instance=ExtResource("2_i4csc")]
 transform = Transform3D(-3, 0, -4.5298742e-07, 0, 3, 0, 4.5298742e-07, 0, -3, 0, 0, 0)
 
-[node name="Skeleton3D" parent="frost_golem/Rig" parent_id_path=PackedInt32Array(455426502, 70734546) index="0" unique_id=727298783]
+[node name="Skeleton3D" parent="frost_golem/Rig" parent_id_path=PackedInt32Array(455426502, 570026013) index="0" unique_id=729556426]
 bones/1/position = Vector3(0, 0.50706387, 0)
 bones/1/rotation = Quaternion(-1.11122646e-10, 0.043157756, 2.57241e-09, 0.9990683)
 bones/1/scale = Vector3(0.99999994, 1, 0.99999994)

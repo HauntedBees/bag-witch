@@ -5,6 +5,7 @@
 [ext_resource type="Resource" uid="uid://bblwxtkau8lot" path="res://items/ammo/power_cell.tres" id="3_86ifg"]
 [ext_resource type="Resource" uid="uid://w0thup23ageh" path="res://items/melee/laser_sword.tres" id="3_t1c57"]
 [ext_resource type="Resource" uid="uid://dkq75or5ap7mf" path="res://items/food/apple.tres" id="5_d70d5"]
+[ext_resource type="Resource" uid="uid://bc5qere6de60q" path="res://items/enemies/space_knight.tres" id="6_gsqtb"]
 [ext_resource type="PackedScene" uid="uid://d4bc43lmk8cto" path="res://assets/models/enemies/space_knight.blend" id="7_t1c57"]
 [ext_resource type="PackedScene" uid="uid://bqkdcbh8ymj41" path="res://assets/models/weapons/laser_sword.blend" id="7_tp7j6"]
 [ext_resource type="Script" uid="uid://cw1pwskvve6sn" path="res://enemies/behaviors/enemy_walk_between_points.gd" id="9_tp7j6"]
@@ -34,6 +35,7 @@ enemy_name = "Space Knight"
 potential_drops = Array[ExtResource("2_nvqwy")]([ExtResource("3_t1c57"), ExtResource("3_86ifg"), ExtResource("5_d70d5")])
 potential_drop_chance = 0.4
 capture_level = 2
+suck_drop = ExtResource("6_gsqtb")
 max_health = 250
 weaknesses = Array[int]([3])
 resistances = Array[int]([1])
@@ -47,7 +49,7 @@ die_anims = Array[StringName]([&"Death_A"])
 [node name="space_knight" parent="." unique_id=799971212 instance=ExtResource("7_t1c57")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
-[node name="Skeleton3D" parent="space_knight/Rig" parent_id_path=PackedInt32Array(799971212, 1316407994) index="0" unique_id=1828853340]
+[node name="Skeleton3D" parent="space_knight/Rig" parent_id_path=PackedInt32Array(799971212, 451994219) index="0" unique_id=1488851190]
 bones/1/position = Vector3(0, 0.39179382, 0)
 bones/1/rotation = Quaternion(-1.11122646e-10, 0.043157756, 2.57241e-09, 0.9990683)
 bones/2/position = Vector3(3.0172547e-16, 0.1919775, -1.2613247e-17)
@@ -119,10 +121,10 @@ bones/39/rotation = Quaternion(-0.7071068, -7.279511e-08, -7.279509e-08, 0.70710
 bones/40/position = Vector3(-0.5108437, 0.7881963, 0.059736922)
 bones/40/rotation = Quaternion(-0.7582528, -1.0803343e-07, 0.6519608, 4.842878e-08)
 
-[node name="head" parent="space_knight/Rig/Skeleton3D" index="0" unique_id=1774041748]
+[node name="head" parent="space_knight/Rig/Skeleton3D" index="0" unique_id=1728956244]
 transform = Transform3D(0.9997204, -1.4014344e-09, 0.023646597, 1.3934143e-09, 0.99999994, 3.5568645e-10, -0.023646597, -3.2263747e-10, 0.9997204, -4.3038537e-09, 1.2275558, 1.5659704e-15)
 
-[node name="chest" parent="space_knight/Rig/Skeleton3D" index="1" unique_id=1673453853]
+[node name="chest" parent="space_knight/Rig/Skeleton3D" index="1" unique_id=1726951524]
 transform = Transform3D(0.9962748, -5.1496163e-09, 0.08623532, 5.130434e-09, 0.99999994, 4.440771e-10, -0.08623532, 1.8196805e-15, 0.9962748, -2.9196547e-09, 0.9587593, 1.0186816e-15)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="space_knight/Rig/Skeleton3D" index="8" unique_id=103519957]

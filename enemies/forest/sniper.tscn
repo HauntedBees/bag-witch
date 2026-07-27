@@ -17,6 +17,7 @@
 [ext_resource type="Resource" uid="uid://bhc3lbevd1b0w" path="res://items/food/pineapple_rings.tres" id="8_fsqkb"]
 [ext_resource type="Script" uid="uid://b2ldfj5ngv3ch" path="res://enemies/behaviors/enemy_melee_player.gd" id="8_osfaj"]
 [ext_resource type="AnimationLibrary" uid="uid://yovbfvy4t8bn" path="res://assets/animations/Rig_Medium_Simulation.glb" id="8_stm8m"]
+[ext_resource type="Resource" uid="uid://bdrra0knu0ei5" path="res://items/enemies/sniper.tres" id="9_u4vqe"]
 [ext_resource type="AnimationLibrary" uid="uid://coyvknponvdv7" path="res://assets/animations/Rig_Medium_Special.glb" id="9_wrjfl"]
 [ext_resource type="Script" uid="uid://1e87efshibqt" path="res://enemies/behaviors/enemy_rotate_randomly.gd" id="11_5j7r4"]
 
@@ -37,6 +38,9 @@ collision_mask = 3
 script = ExtResource("1_4o51p")
 enemy_name = "Marksman"
 potential_drops = Array[ExtResource("2_f63th")]([ExtResource("3_u4vqe"), ExtResource("4_kabfk"), ExtResource("5_n3k7v"), ExtResource("6_tfv00"), ExtResource("7_bpe30"), ExtResource("8_fsqkb")])
+capture_level = 2
+suck_time = 3.0
+suck_drop = ExtResource("9_u4vqe")
 max_health = 400
 bounding_box = NodePath("BoundingBox")
 animation_player = NodePath("marksman/AnimationPlayer")
@@ -45,7 +49,7 @@ idle_anims = Array[StringName]([&"Rig_Medium_General/Death_B_Pose"])
 [node name="marksman" parent="." unique_id=555136812 instance=ExtResource("5_fk44x")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
-[node name="Skeleton3D" parent="marksman/Rig_Medium" parent_id_path=PackedInt32Array(555136812, 1513052673) index="0" unique_id=134636084]
+[node name="Skeleton3D" parent="marksman/Rig_Medium" parent_id_path=PackedInt32Array(555136812, 1930975865) index="0" unique_id=639049598]
 bones/1/position = Vector3(-0.052612856, 0.2691251, -0.14560263)
 bones/1/rotation = Quaternion(0.67896795, -0.028240988, 0.19468886, 0.70731974)
 bones/2/rotation = Quaternion(-0.12141846, 0.03330778, -0.18889804, 0.9738921)

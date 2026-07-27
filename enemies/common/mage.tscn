@@ -12,6 +12,7 @@
 [ext_resource type="Resource" uid="uid://dmxepru323w7a" path="res://items/crystals/mind_diamond.tres" id="7_j5grf"]
 [ext_resource type="Script" uid="uid://cmgcelj1qxg8o" path="res://addons/tattomoosa.vision_cone_3d/src/VisionCone3D.gd" id="8_w7r65"]
 [ext_resource type="AnimationLibrary" uid="uid://ce56a4127anc5" path="res://assets/animations/Rig_Medium_General.glb" id="8_ys3eq"]
+[ext_resource type="Resource" uid="uid://dlvd6e0cjc8m0" path="res://items/enemies/mage.tres" id="9_2mwsu"]
 [ext_resource type="AnimationLibrary" uid="uid://bkw4xokbjypsb" path="res://assets/animations/Rig_Medium_MovementAdvanced.glb" id="9_ihryr"]
 [ext_resource type="Script" uid="uid://c7obdbhjgnuay" path="res://enemies/behaviors/enemy_chase_player.gd" id="9_j5grf"]
 [ext_resource type="Script" uid="uid://b2ldfj5ngv3ch" path="res://enemies/behaviors/enemy_melee_player.gd" id="10_2mwsu"]
@@ -42,6 +43,7 @@ is_new_anims = true
 potential_drops = Array[ExtResource("2_i1770")]([ExtResource("3_7145n"), ExtResource("5_ys3eq"), ExtResource("4_ihryr"), ExtResource("5_7145n"), ExtResource("6_w7r65"), ExtResource("7_j5grf")])
 potential_drop_chance = 0.4
 capture_level = 2
+suck_drop = ExtResource("9_2mwsu")
 max_health = 65
 resistances = Array[int]([2])
 bounding_box = NodePath("BoundingBox")
@@ -54,7 +56,7 @@ die_anims = Array[StringName]([&"Rig_Medium_General/Death_A"])
 [node name="mage" parent="." unique_id=1969943047 instance=ExtResource("6_hqbju")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
-[node name="Skeleton3D" parent="mage/Rig_Medium" parent_id_path=PackedInt32Array(1969943047, 1214851111) index="0" unique_id=1052856643]
+[node name="Skeleton3D" parent="mage/Rig_Medium" parent_id_path=PackedInt32Array(1969943047, 1184479250) index="0" unique_id=1454012543]
 bones/1/position = Vector3(0, 0.39206383, 0)
 bones/1/rotation = Quaternion(-1.11122625e-10, 0.043157753, 2.5724098e-09, 0.9990683)
 bones/1/scale = Vector3(0.99999994, 1, 0.99999994)
