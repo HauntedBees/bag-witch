@@ -1,6 +1,7 @@
 class_name SmokeCloud extends Node3D
 
 @export var from_wooden := false
+@export var permanent := false
 
 var extreme := false
 
@@ -10,7 +11,7 @@ var _boost_cooldown := 0.0
 @onready var _smoke: GPUParticles3D = %Smoke2
 
 func _ready() -> void:
-	_smoke.one_shot = true
+	_smoke.one_shot = !permanent
 	_smoke.emitting = true
 	if extreme:
 		_smoke.amount *= 3

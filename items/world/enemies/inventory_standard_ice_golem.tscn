@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dnss6kw1vjqu5"]
+
+[ext_resource type="Script" uid="uid://b7epmmjm5ni42" path="res://items/world/enemies/inventory_standard_ice_golem.gd" id="1_1hvc0"]
+[ext_resource type="PackedScene" uid="uid://ni2oyb1sktk0" path="res://enemies/hit_particle.tscn" id="2_o6i4y"]
+[ext_resource type="PackedScene" uid="uid://bce761tpdiksy" path="res://spells/visuals/smoke/smoke.tscn" id="3_o6i4y"]
+
+[node name="InventoryStandardIceGolem" type="Node3D" unique_id=597440801]
+script = ExtResource("1_1hvc0")
+
+[node name="CharacterContainer" type="Node3D" parent="." unique_id=778294016]
+unique_name_in_owner = true
+transform = Transform3D(1.7320508, 0, -1, 0, 2, 0, 1, 0, 1.7320508, 0, -1.3, 0)
+
+[node name="HitParticle" parent="." unique_id=614540662 instance=ExtResource("2_o6i4y")]
+unique_name_in_owner = true
+visible = false
+single_use = false
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=438974645]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1.8524542, 0)
+
+[node name="SmokeCloud" parent="." unique_id=1242530226 instance=ExtResource("3_o6i4y")]
+unique_name_in_owner = true
+visible = false
+from_wooden = true
+permanent = true
