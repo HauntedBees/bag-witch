@@ -27,4 +27,5 @@ reload_animation = &"Shotgun_Reload"
 reload_time = 3.0
 equipped_scale = 3.0
 usage_cooldown = 0.05
+usage_sound = "uid://dktb8xxdr8tlo"
 metadata/_custom_type_script = "uid://dq216hufmeoo3"

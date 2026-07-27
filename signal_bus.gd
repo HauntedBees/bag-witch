@@ -34,7 +34,7 @@ signal change_song(song: AudioStream, transition_secs: float)
 signal change_looping_song(open: AudioStream, loop: AudioStream, transition_secs: float)
 
 @warning_ignore("unused_signal")
-signal play_sound(sound: AudioStream)
+signal play_sound(sound: AudioStream, vary_pitch: bool)
 
 @warning_ignore("unused_signal")
 signal stop_all_sounds()

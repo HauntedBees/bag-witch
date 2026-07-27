@@ -33,9 +33,13 @@ func silence_all_sounds() -> void:
 		s.stop()
 	_sound_idx = 0
 
-func play_sound(s: AudioStream) -> void:
+func play_sound(s: AudioStream, vary_pitch: bool) -> void:
 	var p := _sounds[_sound_idx]
 	p.stream = s
+	if vary_pitch:
+		p.pitch_scale = randf_range(0.6, 1.4)
+	else:
+		p.pitch_scale = 1.0
 	p.play()
 	_sound_idx = (_sound_idx + 1) % _sounds.size()
 

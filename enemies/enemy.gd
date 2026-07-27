@@ -68,12 +68,21 @@ signal on_effect_applied(e: BWEnum.Effect, level: int)
 
 @export var die_anims: Array[StringName] = []
 
+@export_category("Sounds")
+
+@export var attack_sound: AudioStream
+
+@export var hit_sound: AudioStream
+
+@export var death_sound: AudioStream
+
 var target: BogWitch
 
 var health := 100
 var suck_time_remaining := 1.0
 var _effects: Dictionary[BWEnum.Effect, float] = {}
 var _player_for_distance_checks: Node3D
+var _sound := AudioStreamPlayer3D.new()
 
 @onready var _frozen_state := EnemyFrozen.new()
 @onready var _common_states: Array[EnemyBehavior] = [
@@ -91,6 +100,9 @@ func _init() -> void:
 		die_anims.append(Anim.NewKayKit.DIE if is_new_anims else Anim.OldKayKit.DIE)
 
 func _ready() -> void:
+	add_child(_sound)
+	_sound.volume_linear = Player.data.options.sound_volume
+	Player.data.options.sound_volume_changed.connect(_on_sound_volume_changed)
 	add_to_group(&"enemy")
 	suck_time_remaining = suck_time
 	_player_for_distance_checks = get_tree().get_first_node_in_group(&"PlayerCharacter")
@@ -108,6 +120,9 @@ func _ready() -> void:
 	_addtl_enemy_setup()
 	if health <= 0:
 		_die(false)
+
+func _on_sound_volume_changed(new_value: float) -> void:
+	_sound.volume_linear = new_value
 
 ## Called after _ready
 func _addtl_enemy_setup() -> void:
@@ -201,6 +216,10 @@ func _get_angle_diff(pos: Vector3) -> float:
 func _die(drop_item := true) -> void:
 	if drop_item:
 		_try_drop()
+		if death_sound == null:
+			death_sound = load("uid://bpbt3oy3ft77s")
+		_sound.stream = death_sound
+		_sound.play()
 	set_collision_layer_value(4, false)
 	on_died.emit()
 

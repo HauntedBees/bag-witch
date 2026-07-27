@@ -35,7 +35,7 @@ func _on_game_over() -> void:
 	Player.data.death_wipe()
 	await _audio_manager.fade_out_music()
 	_audio_manager.silence_all_sounds()
-	_audio_manager.play_sound(_GAME_OVER_SOUND)
+	_audio_manager.play_sound(_GAME_OVER_SOUND, false)
 	await get_tree().create_timer(_GAME_OVER_SOUND.get_length() - 0.5).timeout
 	Player.data.current_health = roundi(Player.data.max_health * 0.6)
 	_load_level_inner(

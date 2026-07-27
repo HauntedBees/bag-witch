@@ -99,12 +99,24 @@ enum ItemType {
 ## How long you must wait to use the item again.
 @export var usage_cooldown := 0.5
 
+## This plays when you use it.
+@export_custom(SRP_HINT.RESOURCE_PATH, "AudioStream") var usage_sound: String
+
+## If the sound's pitch should be varied with each use.
+@export var pitch_variance := true
+
+var _cached_sound: AudioStream = null
+
 func use(player: BogWitch) -> void:
 	Player.use_weapon(self)
 	if player.alt_hand_for_attack_anim && alt_use_animation != &"":
 		player.arms_overlay.arms.play_anim(alt_use_animation, true, use_animation_speed)
 	else:
 		player.arms_overlay.arms.play_anim(use_animation, true, use_animation_speed)
+	if !usage_sound.is_empty():
+		if _cached_sound == null:
+			_cached_sound = load(usage_sound)
+		SignalBus.play_sound.emit(_cached_sound, pitch_variance)
 	_inner_use(player)
 	player.alt_hand_for_attack_anim = !player.alt_hand_for_attack_anim
 
