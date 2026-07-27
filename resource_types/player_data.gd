@@ -120,10 +120,13 @@ func _on_item_removed(id: InventoryDetail) -> void:
 		# not equipped, we don't need to worry about shit anywhere
 		return
 	var alt: InventoryDetail = null
-	for potential_alt in inventory.items:
-		if potential_alt.item == id.item:
-			alt = potential_alt
-			break
+	if id.item is EnemyItem:
+		equip_slots[idx] = null
+	else:
+		for potential_alt in inventory.items:
+			if potential_alt.item == id.item:
+				alt = potential_alt
+				break
 	if alt != null:
 		equip_to_slot(alt, idx)
 	if current_equipped == id:

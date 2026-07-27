@@ -123,6 +123,7 @@ func _handle_enemy_carry() -> void:
 
 func _process(delta: float) -> void:
 	super(delta)
+	print(Player.data.equip_slots)
 	if global_position.y <= -42.0:
 		take_damage(1)
 	if _grace_period > 0.0:
