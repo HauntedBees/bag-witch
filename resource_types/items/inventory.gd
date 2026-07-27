@@ -48,6 +48,15 @@ func clear_all_but_safe(keep_equipped := true) -> void:
 		items.remove_at(idx)
 	items_purged.emit()
 
+func get_random_item(include_equipped := false) -> InventoryDetail:
+	var attempts := 5
+	while attempts > 0:
+		var item: InventoryDetail = items.pick_random()
+		if include_equipped || Player.data.current_equipped != item:
+			return item
+		attempts -= 1
+	return null
+
 func remove_item(i: InventoryDetail) -> void:
 	items.erase(i)
 	item_removed.emit(i)

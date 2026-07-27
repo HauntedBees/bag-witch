@@ -209,6 +209,13 @@ func take_damage(damage: int, knockback_source := Vector3.ZERO, knockback := 0.0
 				knockback *= 0.5
 	if damage > 0:
 		Player.take_damage(damage)
+	var drop_chance := 0.01 + (damage / (Player.data.max_health * 1.5))
+	if randf() <= drop_chance:
+		print("OH FUCK I'M LOSING RINGS") #TODO: noise
+		var item := Player.data.inventory.get_random_item()
+		if item != null:
+			Player.data.inventory.remove_item(item)
+			_on_inventory_display_spawn_item(item.item.get_world_item(item, true))
 	if knockback > 0.0:
 		var dir := global_position.direction_to(knockback_source)
 		velocity -= dir * knockback
