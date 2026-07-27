@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://c51r4xmw3oo0p"]
+
+[ext_resource type="Script" uid="uid://d0xkigh0bjml7" path="res://items/world/enemies/inventory_standard_slime.gd" id="1_8afqa"]
+[ext_resource type="PackedScene" uid="uid://ni2oyb1sktk0" path="res://enemies/hit_particle.tscn" id="2_5kbpl"]
+[ext_resource type="PackedScene" uid="uid://brjmi7v2y6hgo" path="res://spells/visuals/ice_cube.tscn" id="2_74ima"]
+
+[node name="InventoryStandardSlime" type="Node3D" unique_id=597440801]
+script = ExtResource("1_8afqa")
+
+[node name="IceCube" parent="." unique_id=573620875 instance=ExtResource("2_74ima")]
+unique_name_in_owner = true
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, -0.25, 0.75, 0.75)
+visible = false
+
+[node name="CharacterContainer" type="Node3D" parent="." unique_id=778294016]
+unique_name_in_owner = true
+transform = Transform3D(1.7320508, 0, -1, 0, 2, 0, 1, 0, 1.7320508, 0, -1.3, 0)
+
+[node name="HitParticle" parent="." unique_id=614540662 instance=ExtResource("2_5kbpl")]
+unique_name_in_owner = true
+visible = false
+single_use = false
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=438974645]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1.8524542, 0)

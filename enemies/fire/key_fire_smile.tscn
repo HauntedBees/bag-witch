@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ctlgvtilkqq0j" path="res://assets/models/enemies/lava_slime_key.blend" id="2_cfx7n"]
 [ext_resource type="Resource" uid="uid://sg2acn24uog7" path="res://items/keys/lava_slime_key.tres" id="3_obngk"]
 [ext_resource type="Script" uid="uid://c7obdbhjgnuay" path="res://enemies/behaviors/enemy_chase_player.gd" id="4_kpmbw"]
-[ext_resource type="Resource" uid="uid://dnxwvr16xgouf" path="res://items/enemies/lava_slime.tres" id="4_obngk"]
+[ext_resource type="Resource" uid="uid://cnbj1cnsj2m3f" path="res://items/enemies/lava_slime_with_key.tres" id="4_obngk"]
 [ext_resource type="Script" uid="uid://b2ldfj5ngv3ch" path="res://enemies/behaviors/enemy_melee_player.gd" id="5_iofec"]
 [ext_resource type="Script" uid="uid://dxggsp43p5ket" path="res://enemies/behaviors/enemy_alert_friends.gd" id="6_5ietn"]
 [ext_resource type="Script" uid="uid://cw1pwskvve6sn" path="res://enemies/behaviors/enemy_walk_between_points.gd" id="7_i2d11"]
