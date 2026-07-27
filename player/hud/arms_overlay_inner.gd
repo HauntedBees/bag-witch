@@ -8,6 +8,7 @@ signal set_suck(on: bool)
 @onready var _bag: Node3D = %bag
 
 var _waiting_on_return_to_idle := false
+var _held_enemy: InventoryStandardCharacter
 
 func _ready() -> void:
 	Player.equip_changed.connect(_on_weapon_changed)
@@ -20,6 +21,11 @@ func reset_idle() -> void:
 		_anim.play(&"Idle")
 	else:
 		_anim.play(w.equipped_animation)
+
+func show_enemy_damage(damage: int, fatal: bool, stale: bool) -> void:
+	if _held_enemy == null:
+		return
+	_held_enemy.show_damage(damage, fatal, stale)
 
 func play_anim(anim: StringName, return_to_idle := true, speed := 1.0) -> void:
 	_bag.visible = anim == &"BagUse" || anim == &"BagSuck"
@@ -34,6 +40,7 @@ func play_anim(anim: StringName, return_to_idle := true, speed := 1.0) -> void:
 func _on_weapon_changed(id: InventoryDetail) -> void:
 	if _waiting_on_return_to_idle:
 		await _anim.animation_finished
+	_held_enemy = null
 	for n in _right_hand.get_children():
 		if n == _bag:
 			continue
@@ -51,6 +58,8 @@ func _on_weapon_changed(id: InventoryDetail) -> void:
 	var equip := _add_to_bone(_right_hand, id)
 	if equip is PortalWisp:
 		equip.bind_from_inventory_portal(id.item)
+	elif w is EnemyItem:
+		_held_enemy = equip
 	if w.add_equip_scene_to_both_hands:
 		_add_to_bone(_left_hand, id)
 

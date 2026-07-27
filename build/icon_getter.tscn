@@ -1,39 +1,12 @@
 [gd_scene format=3 uid="uid://bm25pyymw8l2l"]
 
-[ext_resource type="PackedScene" uid="uid://oxmu4e0rixbn" path="res://assets/models/crystals/magic_emerald.blend" id="1_5vxlj"]
-[ext_resource type="PackedScene" uid="uid://4i1yaejh33ss" path="res://assets/models/broom.glb" id="1_q838r"]
-[ext_resource type="PackedScene" uid="uid://4xew5eee7k3a" path="res://assets/models/book.blend" id="2_kxga4"]
-[ext_resource type="PackedScene" uid="uid://ctlgvtilkqq0j" path="res://assets/models/enemies/lava_slime_key.blend" id="3_64tqg"]
-[ext_resource type="PackedScene" uid="uid://5mfo3873qvty" path="res://assets/models/enemies/lava_slime.blend" id="3_r0rjq"]
-[ext_resource type="PackedScene" uid="uid://b6udt5l2xtcco" path="res://assets/models/weapons/laser_gun.blend" id="4_7tem3"]
-[ext_resource type="PackedScene" uid="uid://bibhq0y5pdvul" path="res://assets/levels/common/rock5.blend" id="5_06n70"]
-[ext_resource type="PackedScene" uid="uid://ceqoh4vypo8gf" path="res://assets/models/crystals/power_ruby.blend" id="7_aweg0"]
-[ext_resource type="PackedScene" uid="uid://bwv0r3muuaoa4" path="res://assets/models/crystals/speed_sapphire.blend" id="8_mneki"]
-[ext_resource type="PackedScene" uid="uid://beeseglxa6nu0" path="res://assets/models/crystals/mind_diamond.blend" id="9_cw2bq"]
-[ext_resource type="PackedScene" uid="uid://2v0uloqifgx8" path="res://assets/models/crystals/bag_crystal.blend" id="10_6fg4f"]
-[ext_resource type="PackedScene" uid="uid://bd1u571jrpdyx" path="res://assets/models/weapons/shotgun.blend" id="11_8q6ll"]
-[ext_resource type="PackedScene" uid="uid://iymsvrvrct6i" path="res://assets/models/weapons/sawed_off_shotgun.blend" id="11_q066v"]
-[ext_resource type="PackedScene" uid="uid://d1oin21lall74" path="res://assets/models/items/saw.blend" id="13_wtsej"]
-[ext_resource type="PackedScene" uid="uid://di7ygh4p2y3m0" path="res://items/world/ammo/shotgun_ammo.tscn" id="14_aj5m7"]
-[ext_resource type="PackedScene" uid="uid://ceg3otvwnm6o8" path="res://items/world/ammo/pistol_ammo.tscn" id="15_r5y7o"]
-[ext_resource type="PackedScene" uid="uid://bqq68u3ntgxfx" path="res://assets/models/weapons/pistol.blend" id="16_4j6e1"]
-[ext_resource type="PackedScene" uid="uid://2vlxxw8d6rxk" path="res://assets/models/weapons/clip_small.blend" id="17_7tem3"]
-[ext_resource type="PackedScene" uid="uid://bigvxtmaq3x77" path="res://assets/models/ammo/power_cell.blend" id="19_318v8"]
-[ext_resource type="PackedScene" uid="uid://cdspmedbltw6e" path="res://assets/models/weapons/molotov.blend" id="20_2gas7"]
-[ext_resource type="PackedScene" uid="uid://c6c6m0nr2ihf8" path="res://assets/models/items/carrot.blend" id="21_1cl67"]
-[ext_resource type="PackedScene" uid="uid://d33yciniw87eq" path="res://assets/models/items/apple.blend" id="22_61ioy"]
-[ext_resource type="PackedScene" uid="uid://qxxj07ag6n0e" path="res://assets/models/items/mushroom.blend" id="23_qnu68"]
-[ext_resource type="PackedScene" uid="uid://cypw40a3e0wwi" path="res://assets/models/items/potion_a.blend" id="24_m4pri"]
-[ext_resource type="PackedScene" uid="uid://2wqw44kgydtc" path="res://assets/models/items/potion_b.blend" id="25_rvohc"]
-[ext_resource type="PackedScene" uid="uid://dv5bpvxcayas3" path="res://assets/models/items/pineapple.blend" id="26_rvohc"]
-[ext_resource type="PackedScene" uid="uid://rhnukpur7vae" path="res://assets/models/items/pineapple_rings.blend" id="27_rjuyh"]
-[ext_resource type="PackedScene" uid="uid://bu3vkhiaaxv6i" path="res://assets/models/weapons/sword.blend" id="28_5dpil"]
-[ext_resource type="PackedScene" uid="uid://dhlu6wawyieh5" path="res://environment/portals/portal.tscn" id="29_38d1y"]
-[ext_resource type="PackedScene" uid="uid://bqkdcbh8ymj41" path="res://assets/models/weapons/laser_sword.blend" id="30_q8ewj"]
-[ext_resource type="PackedScene" uid="uid://dbwqxpym38n74" path="res://assets/models/weapons/big_sword.blend" id="31_0mser"]
-[ext_resource type="PackedScene" uid="uid://c4eehlhqu23r8" path="res://assets/models/items/potion_c.blend" id="32_3jek5"]
-[ext_resource type="PackedScene" uid="uid://c77cqokcrngbg" path="res://assets/models/weapons/book_closed.blend" id="33_j7t2d"]
-[ext_resource type="PackedScene" uid="uid://md4neqx20w8h" path="res://assets/models/items/key.blend" id="34_jpsqj"]
+[ext_resource type="PackedScene" uid="uid://cphjo0ynxtgmo" path="res://enemies/ice/ice_golem.tscn" id="1_aweg0"]
+[ext_resource type="PackedScene" uid="uid://0tg0hdlwo3y3" path="res://enemies/common/big_knight.tscn" id="2_mneki"]
+[ext_resource type="PackedScene" uid="uid://dijrcn45o0wf7" path="res://enemies/common/gunner.tscn" id="3_cw2bq"]
+[ext_resource type="PackedScene" uid="uid://dv5y1llmnu8nh" path="res://enemies/common/mage.tscn" id="4_6fg4f"]
+[ext_resource type="PackedScene" uid="uid://dp2i4li76xmtp" path="res://enemies/common/space_knight.tscn" id="5_8q6ll"]
+[ext_resource type="PackedScene" uid="uid://pmkcnibojdbk" path="res://enemies/forest/sniper.tscn" id="6_q066v"]
+[ext_resource type="PackedScene" uid="uid://cvrxto4jxqgxk" path="res://enemies/common/cleric.tscn" id="7_wtsej"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eeolf"]
 shading_mode = 0
@@ -53,139 +26,234 @@ mesh = SubResource("QuadMesh_rhbnc")
 
 [node name="ThingContainer" type="Node3D" parent="." unique_id=2123754959]
 
-[node name="magic_emerald" parent="ThingContainer" unique_id=643382702 instance=ExtResource("1_5vxlj")]
-transform = Transform3D(0.97571623, 0.21018934, -0.061629813, -0.21903834, 0.93629795, -0.27453282, 0, 0.28136542, 0.9596007, 0, 0, 0)
+[node name="CharContainer" type="Node3D" parent="." unique_id=1358169874]
+transform = Transform3D(-0.3, 0, -2.6226834e-08, 0, 0.3, 0, 2.6226834e-08, 0, -0.3, 0, -0.2936597, 0.60339546)
+
+[node name="IceGolem" parent="CharContainer" unique_id=222303382 instance=ExtResource("1_aweg0")]
+transform = Transform3D(0.74999994, 0, -7.1054274e-15, 0, 0.74999994, 0, 7.1054274e-15, 0, 0.74999994, 0, -2.0263147, 0)
+
+[node name="BigKnight" parent="CharContainer" unique_id=968565782 instance=ExtResource("2_mneki")]
 visible = false
 
-[node name="broom" parent="ThingContainer" unique_id=93656533 instance=ExtResource("1_q838r")]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+[node name="big_knight" parent="CharContainer/BigKnight" index="0" unique_id=803165191]
+transform = Transform3D(-1.9999999, 0, -1.7484552e-07, 0, 1.9999999, 0, 1.7484552e-07, 0, -1.9999999, 0, -1.6295115, 0)
+
+[node name="Skeleton3D" parent="CharContainer/BigKnight/big_knight/Rig" parent_id_path=PackedInt32Array(968565782, 803165191, 1066649459) index="0" unique_id=446880449]
+bones/1/position = Vector3(0, 0.5067938, 0)
+bones/1/rotation = Quaternion(-1.11122646e-10, 0.043157756, 2.57241e-09, 0.9990683)
+bones/2/rotation = Quaternion(-5.451623e-18, 1.1920926e-07, -1.120948e-16, 1)
+bones/3/rotation = Quaternion(-5.451625e-18, -1.1920928e-07, 1.0994981e-16, 1)
+bones/4/position = Vector3(0.4420068, 0.24913156, 8.238331e-08)
+bones/4/rotation = Quaternion(-0.57209384, -0.11532224, -0.5973126, 0.55011547)
+bones/5/position = Vector3(8.9105896e-08, 0.29027703, -1.4230059e-08)
+bones/5/rotation = Quaternion(4.4281368e-08, -6.341979e-08, -0.5276684, 0.8494505)
+bones/6/position = Vector3(1.4189389e-08, 0.31205264, -1.0942156e-07)
+bones/6/rotation = Quaternion(-5.519384e-09, -1.0856743e-08, 0.026658094, 0.99964464)
+bones/7/rotation = Quaternion(-0.38193035, -0.3298678, 0.18706936, 0.84280574)
+bones/8/position = Vector3(-8.813455e-09, 0.11535029, -0.06899996)
+bones/8/rotation = Quaternion(7.939654e-06, 7.9396505e-06, -0.7070777, 0.70713586)
+bones/9/position = Vector3(-0.44200686, 0.24913156, 8.436295e-08)
+bones/9/rotation = Quaternion(-0.62979, 0.0906386, 0.5521231, 0.5388036)
+bones/10/position = Vector3(-2.9454947e-08, 0.29027697, -1.6696697e-07)
+bones/10/rotation = Quaternion(1.0901627e-08, 6.944156e-08, 0.54823107, 0.8363269)
+bones/11/rotation = Quaternion(-2.11849e-08, -1.7606771e-08, -0.026658088, 0.99964464)
+bones/12/rotation = Quaternion(-0.3845684, 0.28962877, -0.21675782, 0.8492575)
+bones/13/position = Vector3(1.7519485e-08, 0.11535031, -0.068999864)
+bones/13/rotation = Quaternion(2.6214302e-05, 3.0868337e-05, 0.7070796, 0.70713395)
+bones/14/position = Vector3(2.888718e-16, 0.38379633, -1.0889032e-17)
+bones/14/rotation = Quaternion(-5.8060792e-11, -0.03134175, -1.880125e-09, 0.99950874)
+bones/15/position = Vector3(0.17094506, 0.113587156, 1.1178633e-08)
+bones/15/rotation = Quaternion(0.99491054, 0.06240868, 0.0736465, 0.028884143)
+bones/16/position = Vector3(2.2056268e-08, 0.2845498, 1.6436223e-09)
+bones/16/rotation = Quaternion(0.19004294, 5.3566524e-08, -1.3757153e-07, 0.9817758)
+bones/17/position = Vector3(-9.688069e-09, 0.2062791, -2.165449e-09)
+bones/17/rotation = Quaternion(-0.50078017, -0.20554258, 0.019479088, 0.84059036)
+bones/18/position = Vector3(-1.0392265e-09, 0.16565008, -1.8214449e-08)
+bones/18/rotation = Quaternion(0.00015265793, 0.9202519, -0.39132637, -3.4465902e-05)
+bones/19/position = Vector3(-0.17094506, 0.113587156, 1.4858934e-08)
+bones/19/rotation = Quaternion(0.9972282, -0.023008559, 0.03222849, 0.06299047)
+bones/20/position = Vector3(-9.301512e-09, 0.28454983, -8.387313e-09)
+bones/20/rotation = Quaternion(0.2395878, -5.6239706e-08, 1.7366902e-07, 0.97087467)
+bones/21/position = Vector3(-6.784699e-09, 0.20627911, -4.0553756e-09)
+bones/21/rotation = Quaternion(-0.5270697, 0.113060266, 0.002226118, 0.84226483)
+bones/22/position = Vector3(-4.813372e-09, 0.16565005, 6.78522e-09)
+bones/22/rotation = Quaternion(-0.00011075949, 0.9202358, -0.3913645, 2.5202899e-05)
+bones/24/position = Vector3(0.85107505, 1.018196, -0.057637278)
+bones/24/rotation = Quaternion(-0.7946268, 1.2665987e-07, -0.60709834, 2.2351742e-08)
+bones/26/position = Vector3(-0.84107804, 1.018196, 0.05973684)
+bones/26/rotation = Quaternion(-0.7582528, -1.0803343e-07, 0.6519608, 4.842878e-08)
+bones/28/position = Vector3(0.20218208, 0.025990263, 0.20518115)
+bones/28/rotation = Quaternion(-0.7071068, -7.052851e-08, -7.0528486e-08, 0.7071068)
+bones/29/position = Vector3(2.5596076e-08, 0.36283267, -2.4286129e-15)
+bones/29/rotation = Quaternion(9.6579225e-09, 1.7795516e-09, 0.98571914, -0.1683977)
+bones/30/position = Vector3(1.4368181e-08, 0.21343614, -7.949216e-09)
+bones/30/rotation = Quaternion(3.9820044e-08, 0.39108434, 0.92035484, 2.755437e-08)
+bones/31/position = Vector3(-3.0455345e-09, 0.16565004, -6.805842e-09)
+bones/31/rotation = Quaternion(-0.39108434, 3.3929926e-08, 8.801427e-09, 0.92035484)
+bones/32/position = Vector3(1.1401093e-08, 0.16565004, -4.561299e-09)
+bones/32/rotation = Quaternion(1, 1.200291e-09, 8.038052e-08, 9.313231e-10)
+bones/33/rotation = Quaternion(-4.857212e-17, 9.9123706e-17, -1.94669e-08, 1)
+
+[node name="BoneAttachment3D" parent="CharContainer/BigKnight/big_knight/Rig/Skeleton3D" index="9" unique_id=412353810]
+transform = Transform3D(0.14989428, 4.4703484e-07, -0.9887018, 3.2782555e-07, -1, -2.0861626e-07, -0.9887018, -2.9802322e-07, -0.14989422, -0.8951558, 0.9641209, 0.104494)
+
+[node name="big_sword" parent="CharContainer/BigKnight/big_knight/Rig/Skeleton3D/BoneAttachment3D" index="0" unique_id=265808847]
 visible = false
 
-[node name="book" parent="ThingContainer" unique_id=1558442499 instance=ExtResource("2_kxga4")]
-transform = Transform3D(1, 0, 0, 0, 0.04936305, -0.9987809, 0, 0.9987809, 0.04936305, 0, 0, 0)
+[node name="Gunner" parent="CharContainer" unique_id=1818937297 instance=ExtResource("3_cw2bq")]
 visible = false
 
-[node name="laser_gun" parent="ThingContainer" unique_id=138838807 instance=ExtResource("4_7tem3")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.2839508, 0, 1.2411884e-08)
+[node name="pistol" parent="CharContainer/Gunner/survivalist/Rig/Skeleton3D/BoneAttachment3D" parent_id_path=PackedInt32Array(1818937297, 686138970) index="0" unique_id=249497001]
 visible = false
 
-[node name="lava_slime_key" parent="ThingContainer" unique_id=1502183172 instance=ExtResource("3_64tqg")]
-transform = Transform3D(0.4996387, 0, 0.019005619, 0, 0.5, 0, -0.019005619, 0, 0.4996387, 0, -0.5259384, 0.12154007)
+[node name="Mage" parent="CharContainer" unique_id=519180478 instance=ExtResource("4_6fg4f")]
 visible = false
 
-[node name="lava_slime" parent="ThingContainer" unique_id=571389064 instance=ExtResource("3_r0rjq")]
-transform = Transform3D(0.44418278, 0, -0.22956838, 0, 0.5, 0, 0.22956838, 0, 0.44418278, 0, -0.5259384, 0)
+[node name="SpaceKnight" parent="CharContainer" unique_id=1363421391 instance=ExtResource("5_8q6ll")]
 visible = false
 
-[node name="rock5" parent="ThingContainer" unique_id=634864392 instance=ExtResource("5_06n70")]
-transform = Transform3D(0.5, 0, 0, 0, 0.3696465, -0.33669195, 0, 0.33669195, 0.3696465, 0, -0.25484884, 0.24344683)
+[node name="Skeleton3D" parent="CharContainer/SpaceKnight/space_knight/Rig" parent_id_path=PackedInt32Array(1363421391, 799971212, 451994219) index="0" unique_id=1488851190]
+bones/1/position = Vector3(7.1671886e-09, 0.3045783, -0.030061372)
+bones/1/rotation = Quaternion(2.255949e-10, 0.17319314, 2.5649072e-09, 0.9848879)
+bones/2/position = Vector3(-2.1273505e-10, 0.19197747, -1.052652e-10)
+bones/2/rotation = Quaternion(0.11676573, -0.12958968, 0.025773186, 0.9843313)
+bones/3/rotation = Quaternion(0.28804758, -5.680758e-05, 0.024836091, 0.957294)
+bones/4/position = Vector3(0.21200736, 0.13413233, -1.1441732e-07)
+bones/4/rotation = Quaternion(-0.7573432, -0.18721882, -0.52127004, 0.3459164)
+bones/5/position = Vector3(-8.817211e-08, 0.24189736, -2.058981e-09)
+bones/5/rotation = Quaternion(2.0047946e-08, -4.994662e-08, -0.59765387, 0.80175436)
+bones/6/position = Vector3(2.4589073e-09, 0.26004398, -5.5266556e-09)
+bones/6/rotation = Quaternion(-9.308387e-09, 1.3059681e-09, 0.02665809, 0.99964464)
+bones/7/rotation = Quaternion(-0.123934396, -0.60864365, 0.0061098, 0.783681)
+bones/8/position = Vector3(-2.1837888e-08, 0.09612515, -0.05749999)
+bones/8/rotation = Quaternion(-0.025259197, -0.0006135539, -0.5007622, 0.86521614)
+bones/9/position = Vector3(-0.21200739, 0.13413236, 7.005937e-09)
+bones/9/rotation = Quaternion(-0.8051684, 0.1151267, 0.42974275, 0.39213648)
+bones/10/position = Vector3(-2.7530897e-08, 0.2418974, 6.313361e-08)
+bones/10/rotation = Quaternion(4.336533e-09, 6.0313944e-08, 0.48401237, 0.87506115)
+bones/11/position = Vector3(2.0233342e-08, 0.260044, 8.2017664e-08)
+bones/11/rotation = Quaternion(-1.3615764e-08, 1.1852053e-08, -0.026658088, 0.99964464)
+bones/12/rotation = Quaternion(-0.3421076, 0.4105217, -0.087770544, 0.8406728)
+bones/13/position = Vector3(3.4876415e-08, 0.0961251, -0.05749999)
+bones/13/rotation = Quaternion(2.833045e-09, -5.796496e-09, 0.7071069, 0.70710665)
+bones/14/position = Vector3(-1.2441888e-09, 0.26879665, -5.4842758e-08)
+bones/14/rotation = Quaternion(-0.2776829, -0.045778684, -0.0033215766, 0.95957565)
+bones/15/position = Vector3(0.17094508, 0.11358717, 1.7013328e-08)
+bones/15/rotation = Quaternion(0.92428577, 0.13636684, 0.2188944, 0.28139883)
+bones/16/position = Vector3(-8.672851e-09, 0.2270775, 9.262364e-09)
+bones/16/rotation = Quaternion(0.6368477, 3.5611876e-08, -4.5599018e-07, 0.77098966)
+bones/17/rotation = Quaternion(-0.6077596, -0.36906424, 0.19400766, 0.6758557)
+bones/18/position = Vector3(-4.472818e-08, 0.16565003, -2.418467e-08)
+bones/18/rotation = Quaternion(-0.00024031705, 0.9200973, -0.39169008, 5.1649615e-05)
+bones/19/position = Vector3(-0.17760514, 0.1135872, 0.07694325)
+bones/19/rotation = Quaternion(0.9196697, -0.2313527, 0.28569153, 0.13807237)
+bones/20/rotation = Quaternion(0.64336, -6.984709e-08, 4.5787073e-07, 0.76556385)
+bones/21/position = Vector3(-4.861193e-08, 0.14943705, -3.0172567e-09)
+bones/21/rotation = Quaternion(-0.7305759, 0.11185987, -0.1869202, 0.647153)
+bones/22/position = Vector3(-1.35022225e-08, 0.16565001, -1.7951272e-08)
+bones/22/rotation = Quaternion(0.00029769473, 0.9201191, -0.39163873, -6.292946e-05)
+bones/23/position = Vector3(0.20272529, 0.2923103, 0.5758125)
+bones/23/rotation = Quaternion(0.7071068, -2.2930234e-07, -4.6055156e-08, 0.7071068)
+bones/24/position = Vector3(0.20218208, 0.025990263, 0.20518114)
+bones/25/rotation = Quaternion(9.040256e-09, 3.8361385e-09, 0.92555374, -0.37861633)
+bones/26/position = Vector3(2.7499532e-08, 0.21343616, -6.6207146e-09)
+bones/26/rotation = Quaternion(-9.7178045e-08, 0.39108434, 0.92035484, -2.6612252e-08)
+bones/27/position = Vector3(-1.9769729e-08, 0.16565004, -2.95698e-08)
+bones/27/rotation = Quaternion(-0.39108434, -8.000555e-08, -6.8983816e-08, 0.92035484)
+bones/28/position = Vector3(-3.989252e-08, 0.16565003, -3.1168415e-08)
+bones/28/rotation = Quaternion(1, 1.0206828e-09, 2.0314194e-07, 1.9750913e-15)
+bones/29/rotation = Quaternion(2.567392e-16, -2.894548e-16, -1.9466935e-08, 1)
+bones/30/position = Vector3(-0.35255203, 0.2923103, 0.57581234)
+bones/30/rotation = Quaternion(0.7071068, -3.82385e-08, 1.4500867e-07, 0.7071068)
+bones/31/position = Vector3(-0.1709451, 0.025990263, 0.24578929)
+bones/32/position = Vector3(2.1008157e-08, 0.28560174, 2.4286129e-15)
+bones/32/rotation = Quaternion(-5.5977165e-09, 1.7713627e-09, 0.9557709, 0.2941122)
+bones/33/position = Vector3(3.7404924e-10, 0.21343616, -1.3360681e-08)
+bones/33/rotation = Quaternion(-9.032087e-08, 0.39108434, 0.92035484, -2.3698451e-08)
+bones/34/position = Vector3(1.592209e-08, 0.16565005, 1.6300689e-08)
+bones/34/rotation = Quaternion(-0.39108434, -6.612422e-08, -6.678702e-08, 0.92035484)
+bones/35/rotation = Quaternion(1, -3.4639425e-09, 1.8364999e-07, -3.725291e-09)
+bones/36/rotation = Quaternion(4.510296e-17, -1.7843255e-16, -2.69175e-08, 1)
+bones/38/position = Vector3(0.5208407, 0.73145086, 0.037451982)
+bones/38/rotation = Quaternion(-0.8929894, -0.2684559, -0.35583544, -0.06231077)
+bones/40/position = Vector3(-0.5442452, 0.74524903, -0.04164465)
+bones/40/rotation = Quaternion(-0.89316547, 0.02613841, 0.4341076, 0.11455554)
+
+[node name="head" parent="CharContainer/SpaceKnight/space_knight/Rig/Skeleton3D" index="0" unique_id=1728956244]
+transform = Transform3D(0.9998147, -0.014033984, -0.013174348, 0.01011356, 0.9653398, -0.2608002, 0.016377766, 0.26061866, 0.9653029, 4.072479e-05, 1.0429506, 0.2566615)
+
+[node name="chest" parent="CharContainer/SpaceKnight/space_knight/Rig/Skeleton3D" index="1" unique_id=1726951524]
+transform = Transform3D(0.99628896, 0.00015154481, 0.08607152, 0.063199155, 0.6775769, -0.73273146, -0.058431134, 0.7354519, 0.6750528, -3.9846864e-09, 0.8608202, 0.058974534)
+
+[node name="BoneAttachment3D" parent="CharContainer/SpaceKnight/space_knight/Rig/Skeleton3D" index="8" unique_id=103519957]
+transform = Transform3D(-0.14615057, -0.62173474, -0.7694708, -0.9723872, -0.052766804, 0.22732805, -0.1819404, 0.781448, -0.59685504, -0.5704056, 0.5915975, -0.03235215)
+
+[node name="laser_sword" parent="CharContainer/SpaceKnight/space_knight/Rig/Skeleton3D/BoneAttachment3D" index="0" unique_id=1094746878]
 visible = false
 
-[node name="power_ruby" parent="ThingContainer" unique_id=568320702 instance=ExtResource("7_aweg0")]
-transform = Transform3D(0.96650666, 0.0459328, -0.25249782, -3.7252903e-09, 0.9838534, 0.17897636, 0.25664172, -0.17298183, 0.9509008, 0, 0, 0)
+[node name="Marksman" parent="CharContainer" unique_id=93625443 instance=ExtResource("6_q066v")]
 visible = false
 
-[node name="speed_sapphire" parent="ThingContainer" unique_id=525887702 instance=ExtResource("8_mneki")]
-transform = Transform3D(0.9791553, 0.04707611, -0.19758226, -3.7252903e-09, 0.9727699, 0.23177296, 0.20311303, -0.22694172, 0.95249283, 0, 0, 0)
+[node name="Skeleton3D" parent="CharContainer/Marksman/marksman/Rig_Medium" parent_id_path=PackedInt32Array(93625443, 555136812, 1930975865) index="0" unique_id=639049598]
+bones/1/position = Vector3(0, 0.39206383, 0)
+bones/1/rotation = Quaternion(-1.11122625e-10, 0.043157753, 2.5724098e-09, 0.9990683)
+bones/1/scale = Vector3(0.99999994, 1, 0.99999994)
+bones/2/rotation = Quaternion(-6.938893e-18, 7.1054274e-15, 4.93038e-32, 1)
+bones/2/scale = Vector3(1.0000001, 1, 1.0000001)
+bones/3/rotation = Quaternion(8.271806e-25, 3.7252903e-09, -2.75506e-40, 1)
+bones/3/scale = Vector3(1, 0.9999999, 1)
+bones/4/position = Vector3(0.21200736, 0.13413203, 7.9299625e-08)
+bones/4/rotation = Quaternion(-0.55990624, -0.060880326, -0.6439744, 0.51777935)
+bones/4/scale = Vector3(0.9999991, 0.9999986, 0.9999996)
+bones/5/rotation = Quaternion(3.765066e-08, -5.13848e-08, -0.4947193, 0.8690529)
+bones/5/scale = Vector3(1.0000006, 0.99999946, 1)
+bones/7/rotation = Quaternion(-0.32106528, -0.32531866, 0.1457259, 0.8774103)
+bones/7/scale = Vector3(0.9999998, 0.9999999, 1.0000004)
+bones/8/position = Vector3(-6.936717e-09, 0.096125185, -0.057500005)
+bones/8/rotation = Quaternion(6.9489685e-09, -3.5877434e-09, -0.7071068, 0.7071067)
+bones/8/scale = Vector3(0.99999994, 1.0000001, 1.0000001)
+bones/9/position = Vector3(-0.21200737, 0.13413203, 8.6813984e-08)
+bones/9/rotation = Quaternion(-0.61824393, 0.08072861, 0.6180116, 0.47887278)
+bones/9/scale = Vector3(0.99999905, 0.9999985, 0.9999996)
+bones/10/rotation = Quaternion(2.1687788e-08, 6.223696e-08, 0.51793927, 0.85541743)
+bones/10/scale = Vector3(1.0000008, 0.99999964, 0.9999999)
+bones/12/rotation = Quaternion(-0.31929126, 0.30052418, -0.22734971, 0.8695116)
+bones/12/scale = Vector3(0.9999998, 0.99999994, 1.0000002)
+bones/13/position = Vector3(-1.541501e-08, 0.096125126, -0.057499975)
+bones/13/rotation = Quaternion(-9.53579e-10, -4.3147743e-09, 0.7071068, 0.7071067)
+bones/13/scale = Vector3(1, 1.0000001, 1.0000001)
+bones/14/rotation = Quaternion(-5.8060785e-11, -0.031341746, -1.880125e-09, 0.99950874)
+bones/14/scale = Vector3(1, 0.99999994, 1)
+bones/15/position = Vector3(0.17094508, 0.1135872, 1.5994095e-08)
+bones/15/rotation = Quaternion(0.9937152, 0.08371457, 0.07350378, 0.010918532)
+bones/15/scale = Vector3(0.99999994, 0.9999997, 1.0000008)
+bones/16/rotation = Quaternion(0.19560215, 6.262224e-08, -1.3223872e-07, 0.9806834)
+bones/16/scale = Vector3(1.0000004, 0.9999999, 0.99999994)
+bones/17/rotation = Quaternion(-0.517564, -0.20949672, 0.04365487, 0.8284521)
+bones/17/scale = Vector3(0.99999964, 1.0000006, 0.99999946)
+bones/18/rotation = Quaternion(0.0001117844, 0.9202578, -0.39131263, -2.5241654e-05)
+bones/18/scale = Vector3(0.99999994, 0.99999774, 1.0000024)
+bones/19/position = Vector3(-0.17094508, 0.11358732, 1.557549e-08)
+bones/19/rotation = Quaternion(0.99732214, -0.02945736, 0.03152927, 0.05904831)
+bones/19/scale = Vector3(0.9999999, 0.99999976, 1.0000008)
+bones/20/rotation = Quaternion(0.27400813, -6.381295e-08, 1.927607e-07, 0.96172744)
+bones/20/scale = Vector3(0.99999994, 0.99999976, 0.99999994)
+bones/21/rotation = Quaternion(-0.5590394, 0.11451277, -0.0086276345, 0.82115006)
+bones/21/scale = Vector3(0.99999976, 1.0000006, 0.9999992)
+bones/22/rotation = Quaternion(-8.93489e-05, 0.9202217, -0.39139768, 2.029099e-05)
+bones/22/scale = Vector3(1.0000002, 0.9999979, 1.0000024)
+
+[node name="BoneAttachment3D" parent="CharContainer/Marksman/marksman/Rig_Medium/Skeleton3D" index="10" unique_id=1245146808]
+transform = Transform3D(7.2248946e-07, -0.14989424, -0.9887017, -0.99999875, 2.0861613e-07, -5.485121e-08, -2.4047796e-07, 0.98870134, -0.14989486, -0.4910608, 0.64102995, 0.10659555)
+
+[node name="rifle" parent="CharContainer/Marksman/marksman/Rig_Medium/Skeleton3D/BoneAttachment3D" index="0" unique_id=541109022]
 visible = false
 
-[node name="mind_diamond" parent="ThingContainer" unique_id=1588437360 instance=ExtResource("9_cw2bq")]
-transform = Transform3D(0.9102724, -0.25524613, -0.3259655, -0.19146171, 0.4385542, -0.8780732, 0.3670783, 0.86169577, 0.35033396, 0, 0, 0)
+[node name="Cleric" parent="CharContainer" unique_id=407212230 instance=ExtResource("7_wtsej")]
 visible = false
 
-[node name="bag_crystal" parent="ThingContainer" unique_id=585419644 instance=ExtResource("10_6fg4f")]
-transform = Transform3D(0.96459055, 0.26375198, 0, -0.26375198, 0.96459055, 0, 0, 0, 1, 0, 0, 0.46701908)
+[node name="big_sword" parent="CharContainer/Cleric/cleric/Rig/Skeleton3D/BoneAttachment3D" parent_id_path=PackedInt32Array(407212230, 1428467053) index="0" unique_id=265808847]
 visible = false
-
-[node name="sawed_off_shotgun" parent="ThingContainer" unique_id=68184837 instance=ExtResource("11_q066v")]
-transform = Transform3D(-0.1736482, 0, -0.9848077, 0, 1, 0, 0.9848077, 0, -0.1736482, 0.34778717, 0, 0.37729105)
-visible = false
-
-[node name="shotgun2" parent="ThingContainer" unique_id=1540473676 instance=ExtResource("11_8q6ll")]
-transform = Transform3D(-0.1736482, 0, -0.9848077, 0, 1, 0, 0.9848077, 0, -0.1736482, 0.34778717, 0, 0.37729105)
-visible = false
-
-[node name="saw" parent="ThingContainer" unique_id=1596698549 instance=ExtResource("13_wtsej")]
-transform = Transform3D(0.9899728, 0.14125851, 0, -0.14125851, 0.9899728, 0, 0, 0, 1, 0, 0, 1.5276117)
-visible = false
-
-[node name="ShotgunAmmo" parent="ThingContainer" unique_id=458796508 instance=ExtResource("14_aj5m7")]
-transform = Transform3D(-0.18492226, 0, -0.98275316, 0, 1, 0, 0.98275316, 0, -0.18492226, 0, -0.23487091, 0.7443552)
-visible = false
-
-[node name="PistolAmmo" parent="ThingContainer" unique_id=520100052 instance=ExtResource("15_r5y7o")]
-transform = Transform3D(0.87160933, 0, 0.4902011, 0, 1, 0, -0.4902011, 0, 0.87160933, 0, -0.2616501, 0.7558036)
-visible = false
-
-[node name="pistol" parent="ThingContainer" unique_id=249497001 instance=ExtResource("16_4j6e1")]
-visible = false
-
-[node name="clip_small" parent="ThingContainer" unique_id=767339672 instance=ExtResource("17_7tem3")]
-transform = Transform3D(0.93802315, -0.3465726, 0, 0.3465726, 0.93802315, 0, 0, 0, 1, 0.038452595, -0.10407464, 1.3732877)
-visible = false
-
-[node name="power_cell" parent="ThingContainer" unique_id=1667063616 instance=ExtResource("19_318v8")]
-transform = Transform3D(-0.73251617, 0.61064637, -0.30088395, 0.56485206, 0.79190356, 0.23201522, 0.37995028, 0, -0.9250069, -0.28892523, -0.4294654, 0)
-visible = false
-
-[node name="molotov" parent="ThingContainer" unique_id=6487806 instance=ExtResource("20_2gas7")]
-transform = Transform3D(0.0533126, 0.2074404, 0.9767938, 0, 0.97818494, -0.20773584, -0.9985779, 0.011074937, 0.052149583, -0.01793196, -0.96167135, 0.33587658)
-visible = false
-
-[node name="carrot2" parent="ThingContainer" unique_id=1116982465 instance=ExtResource("21_1cl67")]
-transform = Transform3D(0.333, 0, 0, 0, 0.333, 0, 0, 0, 0.333, 0, -0.34123993, 1.3078737)
-visible = false
-
-[node name="apple2" parent="ThingContainer" unique_id=1314094389 instance=ExtResource("22_61ioy")]
-transform = Transform3D(0.415977, 0, -0.9093751, -0.5100408, 0.8279041, -0.23330887, 0.75287545, 0.5608695, 0.34438908, 0, 0, 0.38452244)
-visible = false
-
-[node name="mushroom2" parent="ThingContainer" unique_id=1888823098 instance=ExtResource("23_qnu68")]
-transform = Transform3D(0.5229078, 2.9802322e-08, 0.8523893, 0.36818904, 0.90189785, -0.2258697, -0.7687681, 0.43194944, 0.4716094, 0, -0.15196514, 0.54678893)
-visible = false
-
-[node name="potion_a" parent="ThingContainer" unique_id=256934327 instance=ExtResource("24_m4pri")]
-transform = Transform3D(0.87177414, 0, -0.489908, 0, 1, 0, 0.489908, 0, 0.87177414, 0, -0.45395374, 0.23199916)
-visible = false
-
-[node name="potion_b" parent="ThingContainer" unique_id=873311048 instance=ExtResource("25_rvohc")]
-transform = Transform3D(0.9285604, -0.11817334, -0.35186723, 7.450581e-09, 0.9479662, -0.318371, 0.3711812, 0.29562673, 0.88024396, 0.040811084, -0.32737947, -0.10209449)
-visible = false
-
-[node name="pineapple2" parent="ThingContainer" unique_id=1843147026 instance=ExtResource("26_rvohc")]
-transform = Transform3D(1, 0, 0, 0, 0.8861821, 0.46333712, 0, -0.46333712, 0.8861821, 0, -0.38346314, 0.47499108)
-visible = false
-
-[node name="pineapple_rings" parent="ThingContainer" unique_id=1258483484 instance=ExtResource("27_rjuyh")]
-transform = Transform3D(0.79734975, 0, 0.60351753, 0.59646755, 0.15240315, -0.7880354, -0.091977976, 0.9883184, 0.12151858, -1.3757884e-10, -0.090054505, 0.0824582)
-visible = false
-
-[node name="sword" parent="ThingContainer" unique_id=857736752 instance=ExtResource("28_5dpil")]
-transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0.7062378, 3.0870638e-08, 0)
-visible = false
-
-[node name="Portal" parent="ThingContainer" unique_id=573598963 instance=ExtResource("29_38d1y")]
-transform = Transform3D(-4.371139e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.371139e-09, 2.186924e-08, -0.3526225, 0.50030994)
-visible = false
-
-[node name="laser_sword" parent="ThingContainer" unique_id=1094746878 instance=ExtResource("30_q8ewj")]
-transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0.5064106, 2.213591e-08, 0)
-visible = false
-
-[node name="big_sword" parent="ThingContainer" unique_id=265808847 instance=ExtResource("31_0mser")]
-transform = Transform3D(-2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, 0, 0, 0, 0.5, 0.5386343, -0.047632933, 0)
-visible = false
-
-[node name="potion_c" parent="ThingContainer" unique_id=1602908828 instance=ExtResource("32_3jek5")]
-transform = Transform3D(0.7034233, 0, -0.7107713, -0.5376529, 0.6540678, -0.53209466, 0.46489266, 0.7564359, 0.46008655, 0, -0.058567047, 0)
-visible = false
-
-[node name="book_closed" parent="ThingContainer" unique_id=1729289132 instance=ExtResource("33_j7t2d")]
-transform = Transform3D(-3.809701e-09, -1, -4.3545054e-08, 0.087155804, -4.371139e-08, 0.9961947, -0.9961947, 0, 0.087155804, 0, 0, 0)
-visible = false
-
-[node name="key" parent="ThingContainer" unique_id=238245948 instance=ExtResource("34_jpsqj")]
-transform = Transform3D(0.7265342, -0.6871304, 0, 0.6871304, 0.7265342, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=120314320]
 transform = Transform3D(0.9717929, 0.11896129, -0.20363402, 0, 0.8634562, 0.50442386, 0.23583597, -0.4901955, 0.8391006, 0, 3.8723497, 4.9881706)
@@ -193,3 +261,14 @@ transform = Transform3D(0.9717929, 0.11896129, -0.20363402, 0, 0.8634562, 0.5044
 [node name="StatCrystalLight" type="DirectionalLight3D" parent="." unique_id=145518352]
 transform = Transform3D(0.9717929, 0.1189613, -0.20363404, -0.23573078, 0.46418965, -0.8537911, -0.0070432792, 0.87771076, 0.479139, 0, -0.18382263, 4.9881706)
 visible = false
+
+[editable path="CharContainer/BigKnight"]
+[editable path="CharContainer/BigKnight/big_knight"]
+[editable path="CharContainer/Gunner"]
+[editable path="CharContainer/Gunner/survivalist"]
+[editable path="CharContainer/SpaceKnight"]
+[editable path="CharContainer/SpaceKnight/space_knight"]
+[editable path="CharContainer/Marksman"]
+[editable path="CharContainer/Marksman/marksman"]
+[editable path="CharContainer/Cleric"]
+[editable path="CharContainer/Cleric/cleric"]

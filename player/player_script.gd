@@ -102,9 +102,24 @@ func _input(event: InputEvent) -> void:
 func _physics_process(delta: float) -> void:
 	if _grace_period > 0.0:
 		return
+	_handle_enemy_carry()
 	super(delta)
 	for c in clinging_effects:
 		c.physics_process(delta)
+
+func _handle_enemy_carry() -> void:
+	var id := Player.data.current_equipped
+	if id == null:
+		return
+	if id.item is not EnemyItem:
+		return
+	var e := id.item as EnemyItem
+	var speed_mult := e.dead_hold_speed_multiplier if id.ammo <= 0 else e.hold_speed_multiplier
+	velocity = Vector3(
+		speed_mult * velocity.x,
+		velocity.y if velocity.y < 0.0 else (speed_mult * velocity.y),
+		speed_mult * velocity.z
+	)
 
 func _process(delta: float) -> void:
 	super(delta)
@@ -171,10 +186,22 @@ func take_damage_from_weapon(w: Weapon, knockback_source: Vector3) -> void:
 	)
 
 func take_damage(damage: int, knockback_source := Vector3.ZERO, knockback := 0.0, additional_y_knockback := 0.0) -> void:
+	if knockback_source != Vector3.ZERO && Player.data.current_equipped != null && Player.data.current_equipped_item() is EnemyItem:
+		var knockback_dir := global_position.direction_to(knockback_source)
+		if get_front_direction(true).dot(knockback_dir) >= 0.8:
+			var meat := Player.data.current_equipped
+			if meat.ammo > 0:
+				meat.ammo -= damage
+				arms_overlay.arms.show_enemy_damage(damage, meat.ammo <= 0, false)
+				return
+			else:
+				damage = ceili(damage / 2.0)
+				arms_overlay.arms.show_enemy_damage(damage, true, true)
+				knockback *= 0.25
 	Player.take_damage(damage)
 	if knockback > 0.0:
 		var dir := global_position.direction_to(knockback_source)
-		velocity -= dir.normalized() * knockback
+		velocity -= dir * knockback
 		velocity.y += additional_y_knockback
 
 func get_front_direction(normalized := true) -> Vector3:
@@ -378,6 +405,7 @@ func _try_procure_enemy() -> bool:
 			TextContainer.TextPriority.IgnoreIfLessImportantReplaceOtherwise
 		)
 		return false
+	added.ammo = _current_targeted_enemy.health
 	_current_targeted_enemy.queue_free()
 	_current_targeted_enemy = null
 	_is_sucking = false
@@ -513,13 +541,23 @@ func _on_inventory_display_spawn_item(wi: WorldItem) -> void:
 	else:
 		current_cauldron.add_item(wi)
 
+func _on_inventory_display_spawn_enemy(wi: EnemyDisplay) -> void:
+	if current_cauldron == null:
+		get_parent().add_child(wi)
+		var center := get_viewport().get_visible_rect().size / 2.0
+		var to := _get_adjusted_drop_position(global_position, cam.project_ray_normal(center))
+		wi.global_position = global_position + to + Vector3(0.0, 0.3, 0.0)
+		wi.rotate_y(PI)
+	else:
+		print("witches brewww")
+		wi.queue_free()
+		#current_cauldron.add_item(wi)
+
 func _get_adjusted_drop_position(from: Vector3, to: Vector3) -> Vector3:
 	var space_state := get_world_3d().direct_space_state
 	for i: float in [2.0, 1.5, 1.0, 0.5]:
 		var query := PhysicsRayQueryParameters3D.create(from, from + to * i)
 		var result := space_state.intersect_ray(query)
 		if result.is_empty():
-			print("FUCKED WITH %s" % i)
 			return to * i
-		print("can't fuck with %s" % i)
 	return Vector3.ZERO

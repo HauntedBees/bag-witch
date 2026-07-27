@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://kse5kvv8viih"]
+
+[ext_resource type="Script" uid="uid://cj14vai1e1uww" path="res://items/world/enemies/inventory_standard_character.gd" id="1_oo2xv"]
+[ext_resource type="PackedScene" uid="uid://ni2oyb1sktk0" path="res://enemies/hit_particle.tscn" id="2_aba2j"]
+
+[node name="InventoryStandardCharacter" type="Node3D" unique_id=597440801]
+script = ExtResource("1_oo2xv")
+
+[node name="CharacterContainer" type="Node3D" parent="." unique_id=778294016]
+unique_name_in_owner = true
+transform = Transform3D(1.7320508, 0, -1, 0, 2, 0, 1, 0, 1.7320508, 0, -1.3, 0)
+
+[node name="HitParticle" parent="." unique_id=614540662 instance=ExtResource("2_aba2j")]
+unique_name_in_owner = true
+visible = false
+single_use = false

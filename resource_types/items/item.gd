@@ -70,6 +70,9 @@ enum ItemType {
 ## Mostly for use by spells; when the item is equipped, this is used instead of the regular scene.
 @export_custom(SRP_HINT.RESOURCE_PATH, "PackedScene") var custom_equip_scene: String
 
+## Used by InventoryStandardCharacter. Should be the raw blend file.
+@export_custom(SRP_HINT.RESOURCE_PATH, "PackedScene") var custom_equip_scene_inner: String
+
 ## The animation the hands should play when this item is equipped (not *being* equipped).
 @export var equipped_animation: StringName
 
@@ -133,7 +136,10 @@ func get_equip_instance() -> Node3D:
 	if path.is_empty():
 		return null
 	var scene: PackedScene = load(path)
-	return scene.instantiate()
+	var node := scene.instantiate()
+	if node is InventoryStandardCharacter:
+		node.item = self
+	return node
 
 func get_world_item(id: InventoryDetail = null, from_inventory := false) -> WorldItem:
 	var wi_scene: PackedScene = load(scene_path)

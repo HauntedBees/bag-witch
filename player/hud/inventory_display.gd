@@ -2,6 +2,7 @@ class_name InventoryDisplay extends VBoxContainer
 
 signal inventory_toggled(shown: bool)
 signal spawn_item(wi: WorldItem)
+signal spawn_enemy(wi: EnemyDisplay)
 
 enum Focus { Items, Spells }
 
@@ -417,9 +418,13 @@ func _on_item_removed(i: ItemDragDetails) -> void:
 	Player.data.inventory.remove_item(id)
 	## _on_item_removed_externally handles the rest
 	_select_item_tile_by_position(i.item.position, false)
-	spawn_item.emit(id.item.get_world_item(id, true))
-	if id.item is Spellbook:
-		_draw_spells()
+	if i.item.item is EnemyItem:
+		var e := i.item.item as EnemyItem
+		spawn_enemy.emit(e.get_enemy_detail(i.item, true))
+	else:
+		spawn_item.emit(id.item.get_world_item(id, true))
+		if id.item is Spellbook:
+			_draw_spells()
 
 func _draw_items() -> void:
 	for i in _items.get_children():

@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="Item" format=3 uid="uid://cnbj1cnsj2m3f"]
+[gd_resource type="Resource" script_class="EnemyItem" format=3 uid="uid://cnbj1cnsj2m3f"]
 
-[ext_resource type="Script" uid="uid://cgt7ckkn1gh5b" path="res://resource_types/items/item.gd" id="1_pxlyn"]
+[ext_resource type="Script" uid="uid://b7btwieeq2g52" path="res://resource_types/items/enemy_item.gd" id="1_pxlyn"]
 
 [resource]
 script = ExtResource("1_pxlyn")
+hold_speed_multiplier = 1.2
+dead_hold_speed_multiplier = 1.0
 name = "Lava Slime"
 description = "There appears to be a key stuck inside this thing... how do I get it out?"
 type = 6

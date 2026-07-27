@@ -9,8 +9,9 @@ const _MAX_LAVA_SCALE := 50.0
 var _current_scale := 1.0
 var _soaked_in_lava := false
 
-func _die() -> void:
-	_try_drop()
+func _die(include_drop := true) -> void:
+	if include_drop:
+		_try_drop()
 	set_collision_layer_value(4, false)
 	on_died.emit()
 	var smoke: SmokeCloud = _SMOKE_SCENE.instantiate()
@@ -51,7 +52,7 @@ func receive_weapon_hit(source: Vector3, w: Weapon, has_impact_position := false
 	on_hit.emit(w, source, damage_dealt, impact_position if has_impact_position else global_position, false)
 	if is_dead():
 		return
-	_health -= damage_dealt
+	health -= damage_dealt
 	var magic_level := 1
 	if w is Spell:
 		magic_level = w.magic_level_requirement
@@ -60,5 +61,5 @@ func receive_weapon_hit(source: Vector3, w: Weapon, has_impact_position := false
 			continue
 		var r := w.metadata_increase_ranges[e]
 		apply_effect(e, randf_range(r.x, r.y) * 0.75, magic_level)
-	if _health <= 0:
+	if health <= 0:
 		_die()
