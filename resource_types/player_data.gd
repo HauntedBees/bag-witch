@@ -131,7 +131,7 @@ func _on_item_removed(id: InventoryDetail) -> void:
 		equip_to_slot(alt, idx)
 	if current_equipped == id:
 		current_equipped = alt
-		last_equipped_idx = equip_slots.find(alt)
+		last_equipped_idx = idx
 		if alt == null:
 			Player.try_change_weapon(idx)
 
@@ -160,6 +160,11 @@ func _on_item_added(id: InventoryDetail) -> void:
 		if current_equipped != null:
 			Player.ammo_changed.emit(get_loaded_ammo(current_equipped))
 		return
+	if id.item is Throwable:
+		for idx in Player.data.equip_slots.size():
+			var e := Player.data.equip_slots[idx]
+			if e != null && e.item == id.item:
+				Player.data.equip_slots[idx] = id
 	if Player.data.options.equip_type != PlayerOptions.EquipType.Manual:
 		var first_empty := -1
 		for i in equip_slots.size():
