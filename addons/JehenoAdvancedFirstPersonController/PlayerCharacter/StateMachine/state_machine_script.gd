@@ -10,7 +10,8 @@ var states : Dictionary[String, State] = {}
 
 @onready var play_char : BogWitch = $".."
 
-signal change_fov
+signal change_fov()
+signal state_changed(prev_state_name: String, new_state_name: String)
 
 func _ready() -> void:
 	#get all the state childrens
@@ -45,7 +46,7 @@ func on_state_child_transition(state : State, new_state_name : String) -> void:
 	if !new_state: return
 
 	if play_char.is_action_locked() && _LOCKED_STATES.has(new_state_name):
-		print("blocking stte")
+		print("blocking state")
 		return
 
 	#exit the current state
@@ -58,4 +59,5 @@ func on_state_child_transition(state : State, new_state_name : String) -> void:
 	var last_state_name := curr_state_name
 	curr_state_name = curr_state.state_name
 
-	emit_signal("change_fov")
+	change_fov.emit()
+	state_changed.emit(last_state_name, curr_state_name)

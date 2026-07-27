@@ -2,6 +2,7 @@ class_name ArmsOverlayInner extends Node3D
 
 signal set_suck(on: bool)
 
+@onready var broomage: Node3D = %fly_the_broom
 @onready var _anim: AnimationPlayer = %AnimationPlayer
 @onready var _right_hand: BoneAttachment3D = %RightHand
 @onready var _left_hand: BoneAttachment3D = %LeftHand

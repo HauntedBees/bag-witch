@@ -95,6 +95,8 @@ func _input(event: InputEvent) -> void:
 	if _in_inventory:
 		return
 	if _try_switch_weapon(event):
+		if state_machine.curr_state_name == "Glide":
+			arms_overlay.set_extra_broom(true)
 		return
 	if _try_reload(event):
 		return
@@ -569,3 +571,7 @@ func _get_adjusted_drop_position(from: Vector3, to: Vector3) -> Vector3:
 		if result.is_empty():
 			return to * i
 	return Vector3.ZERO
+
+func _on_state_machine_state_changed(prev_state_name: String, new_state_name: String) -> void:
+	if prev_state_name == "Glide" && new_state_name != "Glide":
+		arms_overlay.set_extra_broom(false)

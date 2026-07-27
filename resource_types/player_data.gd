@@ -63,6 +63,7 @@ func _init() -> void:
 	if OS.has_feature("dev"):
 		completed_quests.append(&"Opening")
 		completed_quests.append(&"FromBog")
+		BWEnum.ALLOW_FLIGHT = true
 		bag = 3
 		strength = 3
 	inventory.item_added.connect(_on_item_added)
