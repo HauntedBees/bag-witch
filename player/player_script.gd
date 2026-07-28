@@ -32,6 +32,8 @@ var _suck_enemy: EnemyDisplay
 var _suck_portal: Portal
 var _max_grab_distance := 10.0
 
+var _cached_sounds: Array[CachedSound] = []
+
 @onready var speed_lines: ColorRect = %SpeedLines
 @onready var arms_overlay: ArmsOverlay = %ArmsOverlay
 @onready var text_container: TextContainer = %TextContainer
@@ -321,6 +323,7 @@ func _try_reload(event: InputEvent) -> bool:
 		_reloading_time_remaining *= 0.5
 	arms_overlay.arms.play_anim(w.reload_animation)
 	alt_hand_for_attack_anim = false
+	_play_sound(w.reload_sound)
 	return true
 
 func _handle_bag(delta: float) -> bool:
@@ -480,10 +483,14 @@ func _try_switch_weapon(event: InputEvent) -> bool:
 		var idx := posmod(Player.data.last_equipped_idx + 1, slots)
 		while !Player.is_valid_slot(idx) && idx != orig_idx:
 			idx = posmod(idx + 1, slots)
+		if idx == orig_idx:
+			return false
 		Player.try_change_weapon(idx)
+		_try_handle_equip_sound()
 		return true
 	if GASInput.is_event_action_just_pressed(event, &"cycle_weapon_left"):
 		if Player.data.current_equipped == null:
+			_try_handle_equip_sound()
 			Player.try_change_weapon(0)
 			return true
 		var slots := 10
@@ -491,7 +498,10 @@ func _try_switch_weapon(event: InputEvent) -> bool:
 		var idx := posmod(Player.data.last_equipped_idx - 1, slots)
 		while !Player.is_valid_slot(idx) && idx != orig_idx:
 			idx = posmod(idx - 1, slots)
+		if idx == orig_idx:
+			return false
 		Player.try_change_weapon(idx)
+		_try_handle_equip_sound()
 		return true
 	for i in BWEnum.WEAPON_SLOTS.size():
 		if GASInput.is_event_action_just_pressed(event, BWEnum.WEAPON_SLOTS[i]):
@@ -500,8 +510,16 @@ func _try_switch_weapon(event: InputEvent) -> bool:
 			print("current weapon is %s" % Player.data.current_equipped_item())
 			Player.weapon_cooldown = 0.0
 			alt_hand_for_attack_anim = false
+			_try_handle_equip_sound()
 			return true
 	return false
+
+func _try_handle_equip_sound() -> void:
+	var w := Player.data.current_equipped_item()
+	if w == null:
+		return
+	var sound := "uid://b1m323y1yu3nl" if w.equip_sound.is_empty() else w.equip_sound
+	_play_sound(sound)
 
 func _handle_attack(delta: float) -> void:
 	if _in_inventory || _reloading_time_remaining > 0.0:
@@ -510,12 +528,17 @@ func _handle_attack(delta: float) -> void:
 		Player.weapon_cooldown -= delta
 	if Player.weapon_cooldown > 0.0 || Player.data.current_equipped == null || !Input.is_action_pressed(&"attack"):
 		return
-	if Player.data.get_loaded_ammo(Player.data.current_equipped) == 0:
-		return
 	var id := Player.data.current_equipped
 	if id == null:
 		return
 	var item := id.item
+	if Player.data.get_loaded_ammo(Player.data.current_equipped) == 0:
+		if GASInput.is_action_just_pressed(&"attack"): # don't loop it
+			if item is ProjectileWeapon:
+				SignalBus.play_sound.emit(load("uid://bdh3lbclo2nwm"), true)
+			# TODO: separate sound for spells
+		return
+	_play_sound(item.usage_sound, item.pitch_variance)
 	item.use(self)
 	Player.weapon_cooldown = item.usage_cooldown
 	if Player.data.has_potion_ability(Potion.Ability.SuperGunshot) && item.type == Item.ItemType.Gun:
@@ -582,3 +605,28 @@ func _get_adjusted_drop_position(from: Vector3, to: Vector3) -> Vector3:
 func _on_state_machine_state_changed(prev_state_name: String, new_state_name: String) -> void:
 	if prev_state_name == "Glide" && new_state_name != "Glide":
 		arms_overlay.set_extra_broom(false)
+
+func _play_sound(uid: String, vary_pitch := false) -> void:
+	if uid.is_empty():
+		return
+	SignalBus.play_sound.emit(
+		_get_cached_sound(uid),
+		vary_pitch
+	)
+
+func _get_cached_sound(uid: String) -> AudioStream:
+	for i in _cached_sounds:
+		if i.sound_uid == uid:
+			return i.sound
+	var new := CachedSound.new(uid)
+	if _cached_sounds.size() > 10:
+		_cached_sounds.pop_front()
+	_cached_sounds.append(new)
+	return new.sound
+
+class CachedSound extends RefCounted:
+	var sound_uid: String
+	var sound: AudioStream
+	func _init(uid: String) -> void:
+		sound_uid = uid
+		sound = load(sound_uid)

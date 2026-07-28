@@ -10,6 +10,7 @@ description = "Grows in hot climates. Hard to eat, but worth it."
 type = 5
 icon = Rect2i(3, 5, 1, 1)
 scene_path = "uid://cgufgd0sharsb"
+usage_sound = "uid://ncm5j87nj4lv"
 discard_on_use = true
 equip_sprite_offset = Vector2i(1, 1)
 equipped_animation = &"FoodHold"

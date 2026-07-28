@@ -3,6 +3,7 @@ class_name CreditsItem extends VBoxContainer
 
 const _COMMON_LICENSES: Dictionary[String, String] = {
 	"CC-BY 3.0 license": "https://creativecommons.org/licenses/by/3.0/",
+	"CC-BY 4.0 license": "https://creativecommons.org/licenses/by/4.0/",
 	"MIT license": "https://opensource.org/license/MIT",
 	"SIL Open Font License": "https://openfontlicense.org/open-font-license-official-text/",
 	"CC0 1.0 Universal license": "https://creativecommons.org/publicdomain/zero/1.0/"

@@ -10,6 +10,7 @@ description = "What's is apples?"
 type = 5
 icon = Rect2i(6, 4, 1, 1)
 scene_path = "uid://d1vmwhy8b4jw5"
+usage_sound = "uid://ncm5j87nj4lv"
 discard_on_use = true
 equip_sprite_offset = Vector2i(1, 1)
 equipped_animation = &"FoodHold"
