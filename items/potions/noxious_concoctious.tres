@@ -10,6 +10,7 @@ description = "This is the result of a failed attempt at making a potion. I prob
 type = 14
 icon = Rect2i(1, 5, 1, 1)
 scene_path = "uid://bix1b5aax5f3f"
+usage_sound = "uid://cyp3qdners030"
 discard_on_use = true
 equip_sprite_offset = Vector2i(4, 1)
 equipped_animation = &"FoodHold"

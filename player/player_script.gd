@@ -472,6 +472,7 @@ func _try_add_item(item: Item) -> InventoryDetail:
 	if !potential_add:
 		return null
 	Player.data.inventory.add_item_detail(potential_add)
+	_play_sound("uid://bya1akwebjniw", true)
 	return potential_add
 
 func _try_switch_weapon(event: InputEvent) -> bool:
@@ -572,6 +573,7 @@ func is_action_locked() -> bool:
 	return _in_inventory
 
 func _on_inventory_display_spawn_item(wi: WorldItem) -> void:
+	_play_sound("uid://dxk6tvkv0441s", true)
 	if current_cauldron == null:
 		get_parent().add_child(wi)
 		var center := get_viewport().get_visible_rect().size / 2.0
@@ -582,6 +584,7 @@ func _on_inventory_display_spawn_item(wi: WorldItem) -> void:
 		current_cauldron.add_item(wi)
 
 func _on_inventory_display_spawn_enemy(wi: EnemyDisplay) -> void:
+	_play_sound("uid://dxk6tvkv0441s", true)
 	if current_cauldron == null:
 		get_parent().add_child(wi)
 		var center := get_viewport().get_visible_rect().size / 2.0

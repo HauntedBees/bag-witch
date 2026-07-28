@@ -191,6 +191,10 @@ func receive_weapon_hit(source: Vector3, w: Weapon, has_impact_position := false
 			sneak_attack = true
 			damage_mult *= 3
 	var damage_dealt := damage_mult * randi_range(w.damage_range.x, w.damage_range.y)
+	if hit_sound == null:
+		hit_sound = load("uid://dxbd2xstayq72")
+	_sound.stream = hit_sound
+	_sound.play()
 	on_hit.emit(w, source, damage_dealt, impact_position if has_impact_position else global_position, sneak_attack)
 	if is_dead():
 		return

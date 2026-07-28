@@ -30,6 +30,7 @@
 [ext_resource type="PackedScene" uid="uid://bdjp2yh6jrj8e" path="res://items/world/weapons/sawed_shotgun.tscn" id="28_0wwi1"]
 [ext_resource type="PackedScene" uid="uid://di7ygh4p2y3m0" path="res://items/world/ammo/shotgun_ammo.tscn" id="29_xkfll"]
 [ext_resource type="PackedScene" uid="uid://dvs7xaq0u4w4n" path="res://items/world/weapons/sword.tscn" id="30_0wwi1"]
+[ext_resource type="PackedScene" uid="uid://fptwiggukf88" path="res://items/world/weapons/rock.tscn" id="31_xkfll"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lqt7o"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -351,6 +352,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2335968, 0.2513139, 12.522
 
 [node name="Sword" parent="." unique_id=557915309 instance=ExtResource("30_0wwi1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.083128, 0.28814918, -5.7238903)
+
+[node name="Rock" parent="." unique_id=1514677953 instance=ExtResource("31_xkfll")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.8154335, 1.3561164, 4.406852)
 
 [editable path="ViewCastlePrison"]
 [editable path="ViewPortalFirePineRing"]

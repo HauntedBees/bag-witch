@@ -274,6 +274,8 @@ func _on_drag_dropped(drag_details: ItemDragDetails, grid_pos: Vector2i) -> void
 			var crystal: StatCrystal = potential_merge.item
 			if crystal.is_ready(potential_merge):
 				_use_crystal(crystal, potential_merge)
+			else:
+				SignalBus.play_sound.emit(load("uid://dicdylin7nrpd"), false)
 		if item.item.is_saw:
 			Player.equip_changed.emit(Player.data.current_equipped)
 			var old_info := _item_grid_info[potential_merge.position]
@@ -321,7 +323,7 @@ func _use_crystal(crystal: StatCrystal, id: InventoryDetail) -> void:
 	_inventory.remove_item(id)
 	_bake_item_positions()
 	crystal.activate(id)
-	print("DEEDLE EEDLE EE")
+	SignalBus.play_sound.emit(load("uid://dn0gt6kjjf8gn"), false)
 	_refresh_stats()
 	if crystal.stat == StatCrystal.Stat.Magic:
 		_draw_spells()

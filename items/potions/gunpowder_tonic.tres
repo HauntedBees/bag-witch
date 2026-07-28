@@ -11,6 +11,7 @@ description = "Drinking this potion will allow you to fire guns faster for 30 se
 type = 14
 icon = Rect2i(0, 5, 1, 1)
 scene_path = "uid://be6huj6ogq3i7"
+usage_sound = "uid://cyp3qdners030"
 discard_on_use = true
 equip_sprite_offset = Vector2i(4, 1)
 equipped_animation = &"FoodHold"

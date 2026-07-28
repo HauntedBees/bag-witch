@@ -15,6 +15,7 @@ size = Vector2i(3, 1)
 icon = Rect2i(1, 6, 3, 1)
 scene_path = "uid://b8gphm85s4mof"
 is_saw = true
+usage_sound = "uid://cpn5f7ulhaadf"
 use_range = 7.5
 equip_sprite_offset = Vector2i(7, 1)
 equipped_animation = &"MeleeOneHand"
