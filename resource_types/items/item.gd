@@ -124,6 +124,9 @@ func use(player: BogWitch) -> void:
 func _inner_use(_player: BogWitch) -> void:
 	pass
 
+func is_mergeable() -> bool: # this one's a hack
+	return is_saw || can_be_sawed
+
 func can_be_combined(_me: InventoryDetail, them: InventoryDetail) -> bool:
 	return them.item.is_saw && can_be_sawed
 

@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://5bg3vm8rli0i" path="res://levels/forest_world/forest_waterfall.tscn" id="3_kqbvp"]
 [ext_resource type="Script" uid="uid://lylfqtt7t8e6" path="res://levels/level_border.gd" id="3_l6ewq"]
 [ext_resource type="PackedScene" uid="uid://cwsoyn1remkbv" path="res://assets/models/environment/grass2.blend" id="4_l6ewq"]
+[ext_resource type="AudioStream" uid="uid://crfqdj3ac3nqa" path="res://assets/sounds/03_Step_grass_03.wav" id="4_o8fjh"]
 [ext_resource type="PackedScene" uid="uid://drq4lytfkk67o" path="res://assets/models/environment/grass1.blend" id="5_mh8nx"]
 [ext_resource type="Script" uid="uid://b7o0pdvrytkig" path="res://levels/enemy_spawner.gd" id="6_kdeys"]
 [ext_resource type="PackedScene" uid="uid://pmkcnibojdbk" path="res://enemies/forest/sniper.tscn" id="7_6dhd1"]
@@ -53,11 +54,11 @@ point_count = 7
 
 [sub_resource type="Environment" id="Environment_u7iwl"]
 
-[sub_resource type="World3D" id="World3D_0kdgp"]
+[sub_resource type="World3D" id="World3D_1sf01"]
 resource_local_to_scene = true
 environment = SubResource("Environment_u7iwl")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0873q"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_0kdgp"]
 resource_local_to_scene = true
 atlas = ExtResource("16_vdsrt")
 region = Rect2(512, 512, 256, 256)
@@ -66,11 +67,11 @@ filter_clip = true
 [sub_resource type="SphereShape3D" id="SphereShape3D_eeolf"]
 radius = 7.0
 
-[sub_resource type="World3D" id="World3D_fxpe0"]
+[sub_resource type="World3D" id="World3D_0873q"]
 resource_local_to_scene = true
 environment = SubResource("Environment_u7iwl")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_se7pp"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_fxpe0"]
 resource_local_to_scene = true
 atlas = ExtResource("16_vdsrt")
 region = Rect2(256, 512, 256, 256)
@@ -80,6 +81,7 @@ filter_clip = true
 script = ExtResource("1_of2v7")
 song = ExtResource("2_o8fjh")
 song_loop = ExtResource("3_1sf01")
+step_sound = ExtResource("4_o8fjh")
 
 [node name="Environment" type="Node3D" parent="." unique_id=602593407]
 
@@ -239,10 +241,10 @@ teleport_scene = "uid://cmf1v1vuyggrq"
 teleport_point_name = "TheGround"
 
 [node name="PortalSubviewportExternal" parent="Portal-FireGround" index="1" unique_id=389194511]
-world_3d = SubResource("World3D_0kdgp")
+world_3d = SubResource("World3D_1sf01")
 
 [node name="Sprite3D" parent="Portal-FireGround/PortalSubviewportExternal" index="1" unique_id=923265973]
-texture = SubResource("AtlasTexture_0873q")
+texture = SubResource("AtlasTexture_0kdgp")
 
 [node name="BagCrystal2" parent="." unique_id=31562561 instance=ExtResource("13_0x0av")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.616858, 122.11448, 20.7383)
@@ -283,10 +285,10 @@ teleport_scene = "uid://b8knls82eve"
 teleport_point_name = "DerryEntrance"
 
 [node name="PortalSubviewportExternal" parent="Portal-IceDerry" index="1" unique_id=389194511]
-world_3d = SubResource("World3D_fxpe0")
+world_3d = SubResource("World3D_0873q")
 
 [node name="Sprite3D" parent="Portal-IceDerry/PortalSubviewportExternal" index="1" unique_id=923265973]
-texture = SubResource("AtlasTexture_se7pp")
+texture = SubResource("AtlasTexture_fxpe0")
 
 [editable path="Portal-FireGround"]
 [editable path="Portal-FireGround/PortalSubviewportExternal"]

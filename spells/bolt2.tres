@@ -19,6 +19,7 @@ metadata_increase_ranges = Dictionary[int, Vector2]({
 name = "Bolt II"
 icon = Rect2i(0, 0, -1, 0)
 equip_sound = "uid://iq53y7x7d4os"
+usage_sound = "uid://qqke0k61xvnt"
 equip_sprite_offset = Vector2i(5, 1)
 custom_equip_scene = "uid://bqqwytufw3nb8"
 equipped_animation = &"Bolt"

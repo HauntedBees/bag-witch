@@ -1,6 +1,7 @@
 class_name EnemyDisplay extends CharacterBody3D
 
 const _SNEAK_ANGLE := PI / 2.5
+const _POP_SOUND := preload("uid://cuke0m0ydhchd")
 
 signal on_died()
 signal on_target_identified()
@@ -82,7 +83,7 @@ var health := 100
 var suck_time_remaining := 1.0
 var _effects: Dictionary[BWEnum.Effect, float] = {}
 var _player_for_distance_checks: Node3D
-var _sound := AudioStreamPlayer3D.new()
+var _sound := GASAudioStreamPlayer3D.new()
 
 @onready var _frozen_state := EnemyFrozen.new()
 @onready var _common_states: Array[EnemyBehavior] = [
@@ -101,8 +102,6 @@ func _init() -> void:
 
 func _ready() -> void:
 	add_child(_sound)
-	_sound.volume_linear = Player.data.options.sound_volume
-	Player.data.options.sound_volume_changed.connect(_on_sound_volume_changed)
 	add_to_group(&"enemy")
 	suck_time_remaining = suck_time
 	_player_for_distance_checks = get_tree().get_first_node_in_group(&"PlayerCharacter")
@@ -120,9 +119,6 @@ func _ready() -> void:
 	_addtl_enemy_setup()
 	if health <= 0:
 		_die(false)
-
-func _on_sound_volume_changed(new_value: float) -> void:
-	_sound.volume_linear = new_value
 
 ## Called after _ready
 func _addtl_enemy_setup() -> void:
@@ -191,6 +187,8 @@ func receive_weapon_hit(source: Vector3, w: Weapon, has_impact_position := false
 			sneak_attack = true
 			damage_mult *= 3
 	var damage_dealt := damage_mult * randi_range(w.damage_range.x, w.damage_range.y)
+	if w is Bolt && randf() <= 0.1:
+		damage_dealt *= 100
 	if hit_sound == null:
 		hit_sound = load("uid://dxbd2xstayq72")
 	_sound.stream = hit_sound
@@ -199,7 +197,6 @@ func receive_weapon_hit(source: Vector3, w: Weapon, has_impact_position := false
 	if is_dead():
 		return
 	if damage_dealt >= floori(max_health * 0.2) && randf() <= 0.75: # in addition to regular potential drop check
-		print("OUCH ME RINGS!") # TODO: sound
 		_try_drop(true)
 	health -= damage_dealt
 	var magic_level := 1
@@ -232,6 +229,8 @@ func _try_drop(forced := false) -> void:
 		return
 	if randf() > potential_drop_chance:
 		return
+	_sound.stream = _POP_SOUND
+	_sound.play()
 	# slightly prioritize the first item
 	var item: Item = potential_drops[0] if randf() <= 0.2 else potential_drops.pick_random()
 	var wi := item.get_world_item()

@@ -5,6 +5,10 @@ class_name AudioManager extends Node
 @onready var _sounds: Array[AudioStreamPlayer] = [
 	%Sound1, %Sound2, %Sound3, %Sound4, %Sound5, %Sound6
 ]
+@onready var _ui_confirm: AudioStreamPlayer = %UI_Confirm
+@onready var _ui_cancel: AudioStreamPlayer = %UI_Cancel
+@onready var _ui_back: AudioStreamPlayer = %UI_Back
+@onready var _ui_cursor: AudioStreamPlayer = %UI_Cursor
 
 var _current_music_player: AudioStreamPlayer = null
 var _next_music_loop: AudioStream = null
@@ -15,8 +19,14 @@ func _ready() -> void:
 	SignalBus.change_looping_song.connect(_change_looping_song)
 	SignalBus.stop_all_sounds.connect(silence_all_sounds)
 	SignalBus.play_sound.connect(play_sound)
+	SignalBus.ui_confirm.connect(_ui_confirm.play)
+	SignalBus.ui_cancel.connect(_ui_cancel.play)
+	SignalBus.ui_back.connect(_ui_back.play)
+	SignalBus.ui_cursor.connect(_ui_cursor.play)
 	Player.data.options.music_volume_changed.connect(_on_music_volume_changed)
+	_on_music_volume_changed(Player.data.options.music_volume)
 	Player.data.options.sound_volume_changed.connect(_on_sound_volume_changed)
+	_on_sound_volume_changed(Player.data.options.sound_volume)
 	_music1.finished.connect(_on_song_finished)
 	_music2.finished.connect(_on_song_finished)
 
@@ -27,10 +37,18 @@ func _on_music_volume_changed(new_value: float) -> void:
 func _on_sound_volume_changed(new_value: float) -> void:
 	for s in _sounds:
 		s.volume_linear = new_value
+	_ui_confirm.volume_linear = new_value
+	_ui_cancel.volume_linear = new_value
+	_ui_cursor.volume_linear = new_value
+	_ui_back.volume_linear = new_value
 
 func silence_all_sounds() -> void:
 	for s in _sounds:
 		s.stop()
+	_ui_confirm.stop()
+	_ui_cancel.stop()
+	_ui_cursor.stop()
+	_ui_back.stop()
 	_sound_idx = 0
 
 func play_sound(s: AudioStream, vary_pitch: bool) -> void:

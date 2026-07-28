@@ -16,12 +16,12 @@ filter_clip = true
 [sub_resource type="AtlasTexture" id="AtlasTexture_ligcp"]
 resource_local_to_scene = true
 atlas = ExtResource("2_2nfn2")
-region = Rect2(0, 208, 16, 16)
+region = Rect2(16, 240, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yiihc"]
 resource_local_to_scene = true
 atlas = ExtResource("2_2nfn2")
-region = Rect2(0, 208, 16, 16)
+region = Rect2(16, 240, 16, 16)
 
 [node name="InputOption" type="BoxContainer" unique_id=922843524 groups=["trigger_nav_cursor"]]
 anchors_preset = 10
@@ -79,3 +79,6 @@ layout_mode = 2
 mouse_default_cursor_shape = 2
 texture = SubResource("AtlasTexture_yiihc")
 display_type = 2
+
+[connection signal="gui_input" from="HBoxContainer/KeyboardInput" to="." method="_on_input_icon_gui_input"]
+[connection signal="gui_input" from="HBoxContainer/JoypadInput" to="." method="_on_input_icon_gui_input"]

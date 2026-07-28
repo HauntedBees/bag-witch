@@ -8,6 +8,7 @@ var _contents: Array[WorldItem] = []
 
 @onready var _holders: Array[Node3D] = [%ItemHolder1, %ItemHolder2, %ItemHolder3]
 @onready var _brew_position: Marker3D = %BrewPosition
+@onready var _brew_sound: GASAudioStreamPlayer3D = %GASAudioStreamPlayer3D
 
 func _ready() -> void:
 	for h in _holders:
@@ -50,6 +51,7 @@ func _on_item_picked_up(wi: WorldItem) -> void:
 		_holders[i].add_child(items[i])
 
 func _concoct_brew() -> void:
+	_brew_sound.play()
 	var brewed := false
 	for r in recipes:
 		if r.meets_requirements(_contents):
@@ -59,7 +61,6 @@ func _concoct_brew() -> void:
 	if !brewed:
 		#TODO: generate throwable noxious if certain conditions are met
 		_generate_item("uid://c8g7e2j5ndh5h") # noxious concoctious
-	# DO CONCOTIONS
 	for c in _contents:
 		c.queue_free()
 	_contents.clear()

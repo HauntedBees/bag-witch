@@ -5,6 +5,8 @@
 [ext_resource type="Shader" uid="uid://cn14y06puco1s" path="res://assets/shaders/lava.gdshader" id="2_ovluu"]
 [ext_resource type="Script" uid="uid://wbaxe261gvyn" path="res://environment/cauldron/cauldron_recipe.gd" id="2_vd1ef"]
 [ext_resource type="Script" uid="uid://wp1mdoed06xj" path="res://levels/quick_cutscene.gd" id="3_wemd6"]
+[ext_resource type="AudioStream" uid="uid://by1bnpmytq6ne" path="res://assets/sounds/458906__lilmati__retro-bubble-shot-01.wav" id="6_osbk2"]
+[ext_resource type="Script" uid="uid://c120qocv042rh" path="res://shared/gas_audio_stream_player_3d.gd" id="7_s8u7p"]
 
 [sub_resource type="Resource" id="Resource_0vwwb"]
 script = ExtResource("2_vd1ef")
@@ -145,6 +147,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5285687, 0)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=989031609]
 libraries/ = SubResource("AnimationLibrary_osbk2")
 autoplay = &"rotatay"
+
+[node name="GASAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1061244033]
+unique_name_in_owner = true
+stream = ExtResource("6_osbk2")
+script = ExtResource("7_s8u7p")
+metadata/_custom_type_script = "uid://c120qocv042rh"
 
 [connection signal="body_entered" from="CauldronDropArea" to="." method="_on_cauldron_drop_area_body_entered"]
 [connection signal="body_exited" from="CauldronDropArea" to="." method="_on_cauldron_drop_area_body_exited"]

@@ -271,9 +271,13 @@ active = false
 
 [node name="NavCursor" parent="." unique_id=850882829 instance=ExtResource("7_emjh3")]
 
+[connection signal="mouse_entered" from="Options/VBoxContainer/ContinueButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Options/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="mouse_entered" from="Options/VBoxContainer/HBoxContainer/OptionsButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Options/VBoxContainer/HBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="mouse_entered" from="Options/VBoxContainer/HBoxContainer2/SaveButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Options/VBoxContainer/HBoxContainer2/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="mouse_entered" from="Options/VBoxContainer/HBoxContainer3/QuitToTitleButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Options/VBoxContainer/HBoxContainer3/QuitToTitleButton" to="." method="_on_quit_to_title_button_pressed"]
 [connection signal="closed" from="OptionsMenu" to="." method="_on_options_menu_closed"]
 [connection signal="closed" from="SaveScreen" to="." method="_on_save_screen_closed"]

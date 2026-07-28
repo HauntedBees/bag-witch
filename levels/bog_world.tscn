@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dj8xd4a0a701g" path="res://assets/levels/bog.blend" id="1_vjnvp"]
 [ext_resource type="AudioStream" uid="uid://donluodemqeti" path="res://assets/music/opll_theres_no_rush_clean.mp3" id="2_yymi2"]
 [ext_resource type="Shader" uid="uid://csejch1iajbr4" path="res://assets/shaders/bog_water.gdshader" id="3_85nrh"]
+[ext_resource type="AudioStream" uid="uid://crfqdj3ac3nqa" path="res://assets/sounds/03_Step_grass_03.wav" id="3_ak1fh"]
 [ext_resource type="PackedScene" uid="uid://p2igx7geifib" path="res://assets/levels/bog/witch_hut.blend" id="4_f7sxh"]
 [ext_resource type="MeshLibrary" uid="uid://ch757jk85l1mm" path="res://assets/levels/castle/gridmap.blend" id="5_pkm5o"]
 [ext_resource type="PackedScene" uid="uid://b25xvdxojjqg1" path="res://assets/levels/bog/bed.blend" id="6_i4emm"]
@@ -109,17 +110,17 @@ size = Vector3(50, 10, 80)
 
 [sub_resource type="Environment" id="Environment_6q451"]
 
-[sub_resource type="World3D" id="World3D_n8ycd"]
+[sub_resource type="World3D" id="World3D_i8d1p"]
 resource_local_to_scene = true
 environment = SubResource("Environment_6q451")
 
 [sub_resource type="Environment" id="Environment_u7iwl"]
 
-[sub_resource type="World3D" id="World3D_ak1fh"]
+[sub_resource type="World3D" id="World3D_au1bg"]
 resource_local_to_scene = true
 environment = SubResource("Environment_u7iwl")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_i8d1p"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_xkoe2"]
 resource_local_to_scene = true
 atlas = ExtResource("13_n8ycd")
 region = Rect2(256, 0, 256, 256)
@@ -134,6 +135,7 @@ radius = 10.0
 [node name="Bog" type="Node3D" unique_id=866622824]
 script = ExtResource("1_5tax8")
 song = ExtResource("2_yymi2")
+step_sound = ExtResource("3_ak1fh")
 
 [node name="Environment" type="Node3D" parent="." unique_id=90060805]
 
@@ -205,7 +207,7 @@ teleport_scene = "uid://dkgap8kw2cyfc"
 teleport_point_name = "FromBog"
 
 [node name="ViewPortalToCastle" parent="." unique_id=389194511 instance=ExtResource("23_xvnqo")]
-world_3d = SubResource("World3D_n8ycd")
+world_3d = SubResource("World3D_i8d1p")
 
 [node name="PortalFirePineRing" parent="." unique_id=789452907 node_paths=PackedStringArray("subviewport") instance=ExtResource("10_tmrxh")]
 transform = Transform3D(-0.08715576, 0, 0.99619466, 0, 1, 0, -0.99619466, 0, -0.08715576, -4.157, 0.988, -29)
@@ -214,11 +216,11 @@ teleport_scene = "uid://cmf1v1vuyggrq"
 teleport_point_name = "FromCastleBasement"
 
 [node name="ViewPortalFirePineRing" parent="." unique_id=1926226445 instance=ExtResource("23_xvnqo")]
-world_3d = SubResource("World3D_ak1fh")
+world_3d = SubResource("World3D_au1bg")
 
 [node name="Sprite3D" parent="ViewPortalFirePineRing" index="1" unique_id=923265973]
 transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
-texture = SubResource("AtlasTexture_i8d1p")
+texture = SubResource("AtlasTexture_xkoe2")
 
 [node name="OpeningCutscene" type="Node" parent="." unique_id=353323456 node_paths=PackedStringArray("animals", "arm", "queen", "knight1", "knight2", "convo_trigger", "portal_pos", "knight1_pos", "knight2_pos", "nodes_to_kill")]
 script = ExtResource("13_8w6s2")

@@ -98,22 +98,31 @@ func _tween_out() -> void:
 
 func _on_continue_button_pressed() -> void:
 	_tween_out()
+	SignalBus.ui_confirm.emit()
 
 func _on_options_button_pressed() -> void:
 	_options_menu.active = true
+	SignalBus.ui_confirm.emit()
 
 func _on_options_menu_closed() -> void:
 	_options_menu.active = false
 	_buttons[1].mouse_entered.emit()
+	SignalBus.ui_back.emit()
 
 func _on_save_button_pressed() -> void:
 	_save_screen.active = true
+	SignalBus.ui_confirm.emit()
 
 func _on_save_screen_closed() -> void:
 	_save_screen.active = false
 	_buttons[2].mouse_entered.emit()
+	SignalBus.ui_back.emit()
 
 func _on_quit_to_title_button_pressed() -> void:
+	SignalBus.ui_confirm.emit()
 	var title_path := ResourceUID.uid_to_path("uid://dgyjtcymhrpkp")
 	get_tree().paused = false
 	get_tree().change_scene_to_file(title_path)
+
+func _on_button_mouse_entered() -> void:
+	SignalBus.ui_cursor.emit()

@@ -18,7 +18,7 @@ func _bind_navs() -> void:
 
 func _on_mouse_entered_option(c: BaseOption) -> void:
 	_last_node = c
-	global_position = c.get_cursor_pos() #+ Vector2(0.0, c.size.y / 2.0)
+	global_position = c.get_cursor_pos()
 
 func _on_mouse_entered(c: Control) -> void:
 	_last_node = c

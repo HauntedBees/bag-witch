@@ -1,5 +1,7 @@
 class_name PortalItem extends Item
 
+const _PORTAL_SOUND := preload("uid://ce3rjl4ed7toj")
+
 @export var portal_image: Texture2D
 @export var portal_dest_uid: String
 @export var portal_dest_point: String
@@ -25,5 +27,6 @@ func _init(portal: Portal = null) -> void:
 	scene_path = "uid://dtrdt6myagqjf" # portal_wisp.tscn
 
 func _inner_use(player: BogWitch) -> void:
+	SignalBus.play_sound.emit(_PORTAL_SOUND, false)
 	await player.get_tree().create_timer(0.125).timeout
 	SignalBus.load_new_level.emit(portal_dest_uid, portal_dest_point)

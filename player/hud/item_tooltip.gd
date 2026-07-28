@@ -33,7 +33,7 @@ func _update_item() -> void:
 	else:
 		_ammo_count.visible = false
 		_ammo_icon.visible = false
-	_is_mergeable.visible = true #TODO
+	_is_mergeable.visible = i.is_mergeable()
 	await get_tree().process_frame
 	var p := get_parent()
 	if p is PopupPanel:

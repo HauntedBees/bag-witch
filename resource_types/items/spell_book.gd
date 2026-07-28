@@ -8,6 +8,9 @@ class_name Spellbook extends Item
 func _init() -> void:
 	first_get_text = "Finally! A spellbook! These portals mess with me memory, so this should help me remember a spell or two!"
 
+func is_mergeable() -> bool:
+	return true
+
 func can_be_combined(_me: InventoryDetail, them: InventoryDetail) -> bool:
 	return them.item is Spellbook
 

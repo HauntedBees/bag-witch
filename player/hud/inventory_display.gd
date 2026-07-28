@@ -226,6 +226,8 @@ func _draw_item_grid() -> void:
 			_item_grid.add_child(tile)
 
 func _on_potential_drag(drag_details: ItemDragDetails, grid_pos: Vector2i) -> void:
+	if _current_draggable != drag_details:
+		SignalBus.ui_confirm.emit()
 	_current_draggable = drag_details
 	_cleanup_highlights()
 	var new_positions := drag_details.item.get_positions(grid_pos, _current_draggable.rotation_changed)
@@ -247,8 +249,9 @@ func _on_drag_dropped(drag_details: ItemDragDetails, grid_pos: Vector2i) -> void
 	var item := drag_details.item
 	var new_positions := item.get_positions(grid_pos, _current_draggable.rotation_changed)
 	if !_can_place(item, new_positions):
-		print("no")
+		SignalBus.ui_cancel.emit()
 		return
+	SignalBus.ui_confirm.emit()
 	var potential_merge := _get_merge_item(item, new_positions)
 	if potential_merge == null:
 		var old_info := _item_grid_info[item.position]
@@ -269,6 +272,7 @@ func _on_drag_dropped(drag_details: ItemDragDetails, grid_pos: Vector2i) -> void
 			old_info.empty()
 			_bake_item_positions()
 		if potential_merge.item is Spellbook:
+			SignalBus.play_sound.emit(load("uid://dy2p7a5dyhn7e"), false)
 			_draw_spells()
 		elif potential_merge.item is StatCrystal:
 			var crystal: StatCrystal = potential_merge.item
@@ -276,7 +280,12 @@ func _on_drag_dropped(drag_details: ItemDragDetails, grid_pos: Vector2i) -> void
 				_use_crystal(crystal, potential_merge)
 			else:
 				SignalBus.play_sound.emit(load("uid://dicdylin7nrpd"), false)
+		elif potential_merge.item is Ammo:
+			SignalBus.play_sound.emit(load("uid://byjpjmux8pa1y"), false)
+		elif potential_merge.item is ItemMod || item.item is ItemMod:
+			SignalBus.play_sound.emit(load("uid://byjpjmux8pa1y"), false)
 		if item.item.is_saw:
+			SignalBus.play_sound.emit(load("uid://25gwmg1v0uxw"), false)
 			Player.equip_changed.emit(Player.data.current_equipped)
 			var old_info := _item_grid_info[potential_merge.position]
 			old_info.item_display.queue_free()
@@ -293,7 +302,8 @@ func _try_equip_item(event: InputEvent) -> void:
 			if equipped_idx < 0:
 				var first_slot := Player.data.get_first_empty_slot()
 				if first_slot < 0:
-					return # TODO: error sound
+					SignalBus.ui_cancel.emit()
+					return
 				Player.data.equip_to_slot(_highlighted_item, first_slot)
 			else:
 				Player.data.equip_slots[equipped_idx] = null
@@ -302,12 +312,14 @@ func _try_equip_item(event: InputEvent) -> void:
 			if equipped_idx < 0:
 				var first_slot := Player.data.get_first_empty_slot()
 				if first_slot < 0:
-					return # TODO: error sound
+					SignalBus.ui_cancel.emit()
+					return
 				Player.data.equip_spell_to_slot(_highlighted_spell, first_slot)
 			else:
 				Player.data.equip_slots[equipped_idx] = null
 		_bake_item_positions()
 		_bake_spell_equips()
+		SignalBus.ui_confirm.emit()
 		return
 	for i in BWEnum.WEAPON_SLOTS.size():
 		if GASInput.is_event_action_just_pressed(event, BWEnum.WEAPON_SLOTS[i]):
@@ -317,6 +329,7 @@ func _try_equip_item(event: InputEvent) -> void:
 				Player.data.equip_spell_to_slot(_highlighted_spell, i)
 			_bake_item_positions()
 			_bake_spell_equips()
+			SignalBus.ui_confirm.emit()
 			return
 
 func _use_crystal(crystal: StatCrystal, id: InventoryDetail) -> void:
@@ -349,6 +362,7 @@ func _try_rotate_item(event: InputEvent) -> void:
 		_current_draggable.preview.position = InventoryItemDisplay.DRAG_OFFSET
 	if !_current_draggable.from_mouse:
 		_highlight.set_to_dragging_object(_current_draggable, null)
+	SignalBus.ui_back.emit()
 
 func _select_item_tile_by_position(v: Vector2i, from_mouse: bool) -> void:
 	_tooltip_panel.visible = false

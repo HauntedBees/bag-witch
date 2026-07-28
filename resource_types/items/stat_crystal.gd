@@ -9,6 +9,9 @@ enum Stat { Mind, Strength, Magic, Bag, Speed }
 func is_ready(id: InventoryDetail) -> bool:
 	return id.ammo >= _get_max_amount()
 
+func is_mergeable() -> bool:
+	return true
+
 func activate(id: InventoryDetail) -> void:
 	if !is_ready(id):
 		return

@@ -38,4 +38,19 @@ signal play_sound(sound: AudioStream, vary_pitch: bool)
 
 @warning_ignore("unused_signal")
 signal stop_all_sounds()
+
+@warning_ignore("unused_signal")
+signal set_step_sound(sound: AudioStream)
+
+@warning_ignore("unused_signal")
+signal ui_cursor()
+
+@warning_ignore("unused_signal")
+signal ui_confirm()
+
+@warning_ignore("unused_signal")
+signal ui_cancel()
+
+@warning_ignore("unused_signal")
+signal ui_back()
 #endregion

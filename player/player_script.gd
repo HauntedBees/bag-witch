@@ -1,5 +1,8 @@
 class_name BogWitch extends PlayerCharacter
 
+const _SUCK_SOUND := preload("uid://cx63r5e7g5j14")
+const _HIT_SOUND := preload("uid://qqke0k61xvnt")
+
 signal quest_added(q: Quest)
 signal quest_removed(q: Quest)
 
@@ -31,8 +34,14 @@ var _is_sucking := false
 var _suck_enemy: EnemyDisplay
 var _suck_portal: Portal
 var _max_grab_distance := 10.0
+var _time_to_suck_sound := 0.0
 
 var _cached_sounds: Array[CachedSound] = []
+
+var _step_timer := 0.2
+var _reset_step_timer := 0.2
+var _step_sound: AudioStream
+var _play_step_sound := true
 
 @onready var speed_lines: ColorRect = %SpeedLines
 @onready var arms_overlay: ArmsOverlay = %ArmsOverlay
@@ -48,7 +57,11 @@ func _ready() -> void:
 	super()
 	Player.data.stat_changed.connect(_adjust_movement_stats)
 	SignalBus.take_damage_from_hands.connect(_on_hand_damage)
+	SignalBus.set_step_sound.connect(_on_step_sound_changed)
 	_adjust_movement_stats()
+
+func _on_step_sound_changed(sound: AudioStream) -> void:
+	_step_sound = sound
 
 func set_warp_grace_period() -> void:
 	hitbox.disabled = true
@@ -127,6 +140,12 @@ func _handle_enemy_carry() -> void:
 
 func _process(delta: float) -> void:
 	super(delta)
+	_time_to_suck_sound -= delta
+	_step_timer -= delta
+	if _step_timer <= 0.0:
+		_step_timer += _reset_step_timer
+		if _play_step_sound && _step_sound != null:
+			SignalBus.play_sound.emit(_step_sound, true)
 	if global_position.y <= -42.0:
 		take_damage(1)
 	if _grace_period > 0.0:
@@ -209,13 +228,14 @@ func take_damage(damage: int, knockback_source := Vector3.ZERO, knockback := 0.0
 				damage = ceili(damage / 2.0)
 				arms_overlay.arms.show_enemy_damage(damage, true, true)
 				knockback *= 0.5
+	SignalBus.play_sound.emit(_HIT_SOUND, true)
 	if damage > 0:
 		Player.take_damage(damage)
 	elif damage < 0:
 		Player.recover_health(-damage)
 	var drop_chance := 0.01 + (damage / (Player.data.max_health * 1.5))
 	if randf() <= drop_chance:
-		print("OH FUCK I'M LOSING RINGS") #TODO: noise
+		_play_sound("uid://cuke0m0ydhchd", true)
 		var item := Player.data.inventory.get_random_item()
 		if item != null:
 			Player.data.inventory.remove_item(item)
@@ -355,6 +375,7 @@ func _handle_bag(delta: float) -> bool:
 				_is_sucking = false
 				return false
 			arms_overlay.arms.play_anim(&"BagSuck")
+			_play_suck_sound()
 			if _suck_enemy != null:
 				_suck_enemy.suck_time_remaining -= delta
 				if _suck_enemy.suck_time_remaining <= 0.0:
@@ -370,6 +391,12 @@ func _handle_bag(delta: float) -> bool:
 			_is_sucking = false
 			return false
 	return false
+
+func _play_suck_sound(fresh := false) -> void:
+	if !fresh && _time_to_suck_sound > 0.0:
+		return
+	SignalBus.play_sound.emit(_SUCK_SOUND, true)
+	_time_to_suck_sound = 0.3
 
 func _is_performing_suck_action() -> bool:
 	return Input.is_action_pressed(&"use") || !Player.data.options.hold_to_bag_enemies
@@ -389,9 +416,10 @@ func _try_start_enemy_sucking() -> bool:
 		)
 		return false
 	arms_overlay.arms.play_anim(&"BagSuck")
+	_play_suck_sound(true)
 	_is_sucking = true
 	if Player.data.bag == 3:
-		_current_targeted_enemy.suck_time_remaining *= 0.1
+		_current_targeted_enemy.suck_time_remaining *= 0.5
 	_suck_enemy = _current_targeted_enemy
 	return true
 
@@ -406,6 +434,7 @@ func _try_start_portal_sucking() -> bool:
 		)
 		return false
 	arms_overlay.arms.play_anim(&"BagSuck")
+	_play_suck_sound(true)
 	_is_sucking = true
 	_suck_portal = _current_targeted_portal
 	return true
@@ -610,6 +639,19 @@ func _get_adjusted_drop_position(from: Vector3, to: Vector3) -> Vector3:
 func _on_state_machine_state_changed(prev_state_name: String, new_state_name: String) -> void:
 	if prev_state_name == "Glide" && new_state_name != "Glide":
 		arms_overlay.set_extra_broom(false)
+	_step_timer = 0.0
+	match new_state_name:
+		"Glide", "Slide", "Jump", "Inair", "Fly", "Idle":
+			_play_step_sound = false
+		"Wallrun", "Run":
+			_play_step_sound = true
+			_reset_step_timer = 0.2
+		"Dash":
+			_play_step_sound = true
+			_reset_step_timer = 0.1
+		"Walk", "Crouch":
+			_play_step_sound = true
+			_reset_step_timer = 0.4
 
 func _play_sound(uid: String, vary_pitch := false) -> void:
 	if uid.is_empty():

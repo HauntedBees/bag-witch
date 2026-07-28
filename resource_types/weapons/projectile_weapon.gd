@@ -12,7 +12,13 @@ class_name ProjectileWeapon extends ReloadableItem
 ## How long it takes for the projectile to go away if it never hits anything.
 @export var fade_time := 5.0
 
+## Don't have time to implement proper checking of this, so we doin' it by hand!
+@export var has_mergeable_things := false
+
 var _cached_scene: PackedScene = null
+
+func is_mergeable() -> bool:
+	return has_mergeable_things
 
 func is_ammo_applicable() -> bool:
 	return !is_spell

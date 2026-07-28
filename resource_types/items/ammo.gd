@@ -14,6 +14,9 @@ func can_be_combined(_me: InventoryDetail, them: InventoryDetail) -> bool:
 func is_ammo_for(w: Weapon) -> bool:
 	return w == weapon || w == secondary_weapon
 
+func is_mergeable() -> bool:
+	return true
+
 func combine(me: InventoryDetail, them: InventoryDetail) -> void:
 	if !can_be_combined(me, them): # ONE MORE FOR GOOD MEASURE
 		return

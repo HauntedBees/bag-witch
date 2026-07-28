@@ -2,6 +2,8 @@ extends State
 
 class_name JumpState
 
+const _JUMP_SOUND := preload("uid://cs6eitt3rko8h")
+
 signal jumped()
 
 var state_name : String = "Jump"
@@ -110,6 +112,7 @@ func move(delta : float) -> void:
 			play_char.desired_move_speed = play_char.velocity.length()
 
 func jump() -> void:
+	SignalBus.play_sound.emit(_JUMP_SOUND, false)
 	#manage the jump behaviour, depending of the different variables and states the character is
 
 	var can_jump : bool = false #jump condition
@@ -147,6 +150,7 @@ func jump() -> void:
 		can_jump = false
 
 func walljump() -> void:
+	SignalBus.play_sound.emit(_JUMP_SOUND, false)
 	var wall_normal = play_char.wall_normal
 
 	var horizontal_velocity := Vector3(play_char.velocity.x,0.0,play_char.velocity.z)

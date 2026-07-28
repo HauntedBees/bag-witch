@@ -52,44 +52,52 @@ func _on_options_pressed() -> void:
 	if _is_loading_game:
 		return
 	_options_menu.active = true
+	SignalBus.ui_confirm.emit()
 
 func _on_credits_pressed() -> void:
 	if _is_loading_game:
 		return
 	_credits_menu.active = true
+	SignalBus.ui_confirm.emit()
 
 func _on_credits_menu_closed() -> void:
 	if _is_loading_game:
 		return
 	_credits_menu.active = false
 	_buttons[3].mouse_entered.emit()
+	SignalBus.ui_back.emit()
 
 func _on_options_menu_closed() -> void:
 	if _is_loading_game:
 		return
 	_options_menu.active = false
 	_buttons[2].mouse_entered.emit()
+	SignalBus.ui_back.emit()
 
 func _on_continue_pressed() -> void:
 	if _is_loading_game:
 		return
 	_save_screen.active = true
+	SignalBus.ui_confirm.emit()
 
 func _on_save_screen_closed() -> void:
 	if _is_loading_game:
 		return
 	_save_screen.active = false
 	_buttons[1].mouse_entered.emit()
+	SignalBus.ui_back.emit()
 
 func _on_new_game_pressed() -> void:
 	if _is_loading_game:
 		return
+	SignalBus.ui_confirm.emit()
 	_load_game()
 
 func _on_save_screen_load_save(sd: SaveFile) -> void:
 	if _is_loading_game:
 		return
 	Player.data = sd.data
+	SignalBus.ui_confirm.emit()
 	_load_game()
 
 func _load_game() -> void:
@@ -118,3 +126,6 @@ func _process(delta: float) -> void:
 			game_container.set_from_save(level, Player.data.last_warped_warp_point_name)
 		else:
 			get_tree().change_scene_to_node(game_container)
+
+func _on_button_mouse_entered() -> void:
+	SignalBus.ui_cursor.emit()

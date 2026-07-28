@@ -1,6 +1,7 @@
 class_name Portal extends Node3D
 
 const _SUCK_TIME := 0.75
+const _PORTAL_SOUND := preload("uid://ce3rjl4ed7toj")
 
 @export var subviewport: SubViewport
 
@@ -37,6 +38,7 @@ func _process(delta: float):
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body is not BogWitch:
 		return
+	SignalBus.play_sound.emit(_PORTAL_SOUND, false)
 	SignalBus.portal_entered.emit()
 	Player.data.generations_elapsed += 1
 	Player.data.portal_wipe()

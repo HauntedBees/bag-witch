@@ -18,6 +18,7 @@ metadata_increase_ranges = Dictionary[int, Vector2]({
 name = "Fireball II"
 icon = Rect2i(0, 0, -1, 0)
 equip_sound = "uid://drlx2vmomesda"
+usage_sound = "uid://dcum5vd7c0t7r"
 equip_sprite_offset = Vector2i(2, 0)
 custom_equip_scene = "uid://bju1pcheyyg8y"
 equipped_animation = &"Spell1"

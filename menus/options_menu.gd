@@ -41,7 +41,7 @@ func _ready() -> void:
 			_options.append(o)
 			o.mouse_entered.connect(_on_option_selected, CONNECT_APPEND_SOURCE_OBJECT)
 			if o is InputOption:
-				o.pressed.connect(_on_option_pressed, CONNECT_APPEND_SOURCE_OBJECT)
+				o.pressed.connect(_on_option_pressed, CONNECT_APPEND_SOURCE_OBJECT | CONNECT_DEFERRED)
 	_buttons_y = _options.size()
 	_toggle_highlight(_options[0], true)
 
@@ -49,6 +49,12 @@ func _on_option_pressed(o: InputOption) -> void:
 	_current_editing_input = o
 
 func _on_option_selected(o: BaseOption) -> void:
+	if _current_editing_input != null:
+		if o != _current_editing_input:
+			_scroll_container.ensure_control_visible(_current_editing_input)
+			_current_editing_input.mouse_entered.emit() # force the nav cursor back
+		return
+	SignalBus.ui_cursor.emit()
 	if _current_idx.y == _buttons_y:
 		_toggle_button_highlight(_buttons[_current_idx.x], false)
 	else:
@@ -137,6 +143,7 @@ func _on_save_button_pressed() -> void:
 	closed.emit()
 
 func _on_reset_button_pressed() -> void:
+	SignalBus.ui_confirm.emit()
 	Player.data.options.music_volume = 1.0
 	Player.data.options.sound_volume = 1.0
 	Player.data.options.font_scale = 1.0

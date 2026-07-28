@@ -58,15 +58,17 @@ func _update_values() -> void:
 
 func _on_left_selected() -> void:
 	if value_idx == 0 || disabled:
-		#SoundHandler.play_error_sound()
+		SignalBus.ui_cancel.emit()
 		return
 	value_idx -= 1
+	SignalBus.ui_confirm.emit()
 
 func _on_right_selected() -> void:
 	if value_idx == (values.size() - 1) || disabled:
-		#SoundHandler.play_error_sound()
+		SignalBus.ui_cancel.emit()
 		return
 	value_idx += 1
+	SignalBus.ui_confirm.emit()
 
 func get_cursor_pos() -> Vector2:
 	return _cursor_position.global_position - _OFFSET

@@ -1,5 +1,7 @@
 class_name GlideState extends State
 
+const _GLIDE_SOUND := preload("uid://cx63r5e7g5j14")
+
 var state_name := "Glide"
 
 var play_char: BogWitch
@@ -9,6 +11,7 @@ var fly_accel := 0.0
 var fly_deccel := 0.0
 
 func enter(play_char_ref : CharacterBody3D) -> void:
+	SignalBus.play_sound.emit(_GLIDE_SOUND, false)
 	play_char = play_char_ref
 	play_char.arms_overlay.arms.play_anim(&"BroomFly", false)
 	play_char.ready_to_glide = false

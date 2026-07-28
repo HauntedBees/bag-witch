@@ -6,6 +6,7 @@ class_name Door extends Node3D
 var _opened := false
 
 @onready var _body_collider: CollisionShape3D = %BodyCollider
+@onready var _door_sound: GASAudioStreamPlayer3D = %GASAudioStreamPlayer3D
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if _opened:
@@ -17,6 +18,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		Player.data.inventory.remove_item(key)
 		_body_collider.disabled = true
 		_opened = true
+		_door_sound.play()
 		if animation != null:
 			animation.play(&"open")
 

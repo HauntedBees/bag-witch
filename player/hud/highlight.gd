@@ -50,6 +50,7 @@ func _set_to_control(n: Control, is_item: bool, using_mouse: bool) -> void:
 	_rotate_icon.visible = false
 	global_position = n.global_position
 	size = n.size
+	SignalBus.ui_cursor.emit()
 	_toggle_select_button(is_item, using_mouse)
 
 func _toggle_select_button(show_button: bool, using_mouse: bool) -> void:

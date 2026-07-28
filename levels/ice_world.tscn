@@ -4,6 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://p7r2lsb318fn" path="res://assets/music/ice_start.ogg" id="2_vcxes"]
 [ext_resource type="AudioStream" uid="uid://7aari3k4iyax" path="res://assets/music/ice_loop.ogg" id="3_2ujki"]
 [ext_resource type="Script" uid="uid://ln2dmsedw0ev" path="res://levels/ice_world/snowifier.gd" id="3_hcls4"]
+[ext_resource type="AudioStream" uid="uid://cdmw457sr1kdb" path="res://assets/sounds/14_Step_water_02.wav" id="4_lf0o5"]
 [ext_resource type="PackedScene" uid="uid://bwnsfbcm24m4a" path="res://levels/ice_world/fermanagh.tscn" id="5_bue5n"]
 [ext_resource type="Script" uid="uid://cpe3jrnwinlxh" path="res://addons/JehenoAdvancedFirstPersonController/Map/MovementModifiers/slipperyZone/slippery_zone_script.gd" id="5_w165o"]
 [ext_resource type="PackedScene" uid="uid://cels0ivc77mq4" path="res://assets/levels/ice/armagh.blend" id="6_33ahx"]
@@ -57,11 +58,11 @@ radius = 400.0
 
 [sub_resource type="Environment" id="Environment_u7iwl"]
 
-[sub_resource type="World3D" id="World3D_2ujki"]
+[sub_resource type="World3D" id="World3D_wx74s"]
 resource_local_to_scene = true
 environment = SubResource("Environment_u7iwl")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lf0o5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_kr3gg"]
 resource_local_to_scene = true
 atlas = ExtResource("16_lf0o5")
 region = Rect2(768, 0, 256, 256)
@@ -72,11 +73,11 @@ radius = 400.0
 
 [sub_resource type="Environment" id="Environment_wx74s"]
 
-[sub_resource type="World3D" id="World3D_wx74s"]
+[sub_resource type="World3D" id="World3D_i2y12"]
 resource_local_to_scene = true
 environment = SubResource("Environment_wx74s")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kr3gg"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_qppdj"]
 resource_local_to_scene = true
 atlas = ExtResource("16_lf0o5")
 region = Rect2(0, 512, 256, 256)
@@ -86,6 +87,7 @@ filter_clip = true
 script = ExtResource("1_ffpem")
 song = ExtResource("2_vcxes")
 song_loop = ExtResource("3_2ujki")
+step_sound = ExtResource("4_lf0o5")
 
 [node name="Environment" type="Node3D" parent="." unique_id=817097154]
 
@@ -197,10 +199,10 @@ teleport_scene = "uid://ssp37cocp7km"
 teleport_point_name = "FromDeath"
 
 [node name="PortalSubviewportExternal" parent="NavigationRegion3D/BackToTheBog" index="1" unique_id=389194511]
-world_3d = SubResource("World3D_2ujki")
+world_3d = SubResource("World3D_wx74s")
 
 [node name="Sprite3D" parent="NavigationRegion3D/BackToTheBog/PortalSubviewportExternal" index="1" unique_id=923265973]
-texture = SubResource("AtlasTexture_lf0o5")
+texture = SubResource("AtlasTexture_kr3gg")
 
 [node name="Paths" type="Node3D" parent="." unique_id=1038295414]
 
@@ -220,10 +222,10 @@ teleport_scene = "uid://c5pqvv86efxau"
 teleport_point_name = "Entryway"
 
 [node name="PortalSubviewportExternal" parent="Warp-Forest" index="1" unique_id=389194511]
-world_3d = SubResource("World3D_wx74s")
+world_3d = SubResource("World3D_i2y12")
 
 [node name="Sprite3D" parent="Warp-Forest/PortalSubviewportExternal" index="1" unique_id=923265973]
-texture = SubResource("AtlasTexture_kr3gg")
+texture = SubResource("AtlasTexture_qppdj")
 
 [editable path="NavigationRegion3D/BackToTheBog"]
 [editable path="NavigationRegion3D/BackToTheBog/PortalSubviewportExternal"]

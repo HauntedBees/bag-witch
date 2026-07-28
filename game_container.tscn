@@ -4,6 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://bub2sh1fg5ddq" path="res://player/player_character_scene.tscn" id="2_ge4kj"]
 [ext_resource type="Script" uid="uid://b2papb24j7l2j" path="res://shared/audio_manager.gd" id="2_owbqv"]
 [ext_resource type="PackedScene" uid="uid://dtjtjjvwpwi2o" path="res://environment/portals/warp_effect.tscn" id="3_aq3js"]
+[ext_resource type="AudioStream" uid="uid://wplk083lsw58" path="res://assets/sounds/confirm.wav" id="5_ul0mr"]
+[ext_resource type="AudioStream" uid="uid://cewvxksps4wjt" path="res://assets/sounds/error.wav" id="6_b2v4k"]
+[ext_resource type="AudioStream" uid="uid://b12dm3svf6ffc" path="res://assets/sounds/back.wav" id="7_7lcu3"]
+[ext_resource type="AudioStream" uid="uid://uadyiivv3i2c" path="res://assets/sounds/cursor.wav" id="8_3g6o6"]
 
 [node name="GameContainer" type="Node3D" unique_id=827938429]
 process_mode = 3
@@ -51,5 +55,21 @@ unique_name_in_owner = true
 
 [node name="Sound6" type="AudioStreamPlayer" parent="AudioManager" unique_id=1025081884]
 unique_name_in_owner = true
+
+[node name="UI_Confirm" type="AudioStreamPlayer" parent="AudioManager" unique_id=1565774565]
+unique_name_in_owner = true
+stream = ExtResource("5_ul0mr")
+
+[node name="UI_Cancel" type="AudioStreamPlayer" parent="AudioManager" unique_id=2082569518]
+unique_name_in_owner = true
+stream = ExtResource("6_b2v4k")
+
+[node name="UI_Back" type="AudioStreamPlayer" parent="AudioManager" unique_id=1775916064]
+unique_name_in_owner = true
+stream = ExtResource("7_7lcu3")
+
+[node name="UI_Cursor" type="AudioStreamPlayer" parent="AudioManager" unique_id=1384820891]
+unique_name_in_owner = true
+stream = ExtResource("8_3g6o6")
 
 [connection signal="finished" from="WarpEffect" to="." method="_on_warp_effect_finished"]

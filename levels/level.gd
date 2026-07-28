@@ -8,10 +8,15 @@ class_name Level extends Node3D
 # If the song loops, use "song" as the start and this as the looping part.
 @export var song_loop: AudioStream
 
+@export var step_sound: AudioStream
+
 func _ready() -> void:
 	if !no_sound_if_this_cutscene_is_incomplete.is_empty() && !Player.has_completed(no_sound_if_this_cutscene_is_incomplete):
 		return
-	if song_loop == null:
-		SignalBus.change_song.emit.call_deferred(song, 0.25)
-	else:
-		SignalBus.change_looping_song.emit.call_deferred(song, song_loop, 0.25)
+	if song != null:
+		if song_loop == null:
+			SignalBus.change_song.emit.call_deferred(song, 0.25)
+		else:
+			SignalBus.change_looping_song.emit.call_deferred(song, song_loop, 0.25)
+	if step_sound != null:
+		SignalBus.set_step_sound.emit(step_sound)
