@@ -192,7 +192,19 @@ layout_mode = 2
 theme_override_constants/separation = 16
 theme_override_styles/separator = SubResource("StyleBoxEmpty_rhbnc")
 
-[node name="MusicVolume" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=57488810 groups=["trigger_nav_cursor"] instance=ExtResource("3_cet7k")]
+[node name="Resolution" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=57488810 groups=["trigger_nav_cursor"] instance=ExtResource("3_cet7k")]
+unique_name_in_owner = true
+layout_mode = 2
+values = Array[String](["960x540", "1920x1080"])
+label = "Resolution"
+
+[node name="FullScreen" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=1975776052 groups=["trigger_nav_cursor"] instance=ExtResource("3_cet7k")]
+unique_name_in_owner = true
+layout_mode = 2
+values = Array[String](["Off", "On"])
+label = "Full Screen"
+
+[node name="MusicVolume" parent="Foreground/VBoxContainer/ScrollContainer/OptionContainer" unique_id=366803466 groups=["trigger_nav_cursor"] instance=ExtResource("3_cet7k")]
 unique_name_in_owner = true
 layout_mode = 2
 values = Array[String](["Off", "25%", "50%", "75%", "100%"])
@@ -588,6 +600,8 @@ metadata/_custom_type_script = "uid://hafxp56l0iao"
 [node name="NavCursor" parent="." unique_id=850882829 instance=ExtResource("8_t77c5")]
 unique_name_in_owner = true
 
+[connection signal="changed" from="Foreground/VBoxContainer/ScrollContainer/OptionContainer/Resolution" to="." method="_on_resolution_changed"]
+[connection signal="changed" from="Foreground/VBoxContainer/ScrollContainer/OptionContainer/FullScreen" to="." method="_on_full_screen_changed"]
 [connection signal="changed" from="Foreground/VBoxContainer/ScrollContainer/OptionContainer/MusicVolume" to="." method="_on_music_volume_changed"]
 [connection signal="changed" from="Foreground/VBoxContainer/ScrollContainer/OptionContainer/SoundVolume" to="." method="_on_sound_volume_changed"]
 [connection signal="changed" from="Foreground/VBoxContainer/ScrollContainer/OptionContainer/FontSize" to="." method="_on_font_size_changed"]

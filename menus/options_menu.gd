@@ -2,9 +2,10 @@ class_name OptionsMenu extends CanvasLayer
 
 signal closed()
 
-const _SOUND_SCALES := [0.0, 0.25, 0.50, 0.75, 1.0]
-const _FONT_SCALES := [1.0, 1.25, 1.5]
-const _LOOK_SENSITIVITY_SCALES := [0.25, 0.5, 1.0, 1.25, 1.5]
+const _RESOLUTIONS: Array[Vector2] = [Vector2(960, 540), Vector2(1920, 1080)]
+const _SOUND_SCALES: Array[float] = [0.0, 0.25, 0.50, 0.75, 1.0]
+const _FONT_SCALES: Array[float] = [1.0, 1.25, 1.5]
+const _LOOK_SENSITIVITY_SCALES: Array[float] = [0.25, 0.5, 1.0, 1.25, 1.5]
 
 @export var active := true:
 	set(value):
@@ -15,6 +16,8 @@ const _LOOK_SENSITIVITY_SCALES := [0.25, 0.5, 1.0, 1.25, 1.5]
 		if active:
 			_load_from_options()
 
+@onready var _resolution: Option = %Resolution
+@onready var _full_screen: Option = %FullScreen
 @onready var _music_volume: Option = %MusicVolume
 @onready var _sound_volume: Option = %SoundVolume
 @onready var _font_size: Option = %FontSize
@@ -105,6 +108,8 @@ func _toggle_button_highlight(b: TextureButton, is_highlighted: bool) -> void:
 
 func _load_from_options() -> void:
 	_original_settings = Player.data.options.duplicate()
+	_resolution.value_idx = _RESOLUTIONS.find(_original_settings.resolution)
+	_full_screen.value_idx = 1 if _original_settings.full_screen else 0
 	_music_volume.value_idx = _SOUND_SCALES.find(_original_settings.music_volume)
 	_sound_volume.value_idx = _SOUND_SCALES.find(_original_settings.sound_volume)
 	_font_size.value_idx = _FONT_SCALES.find(_original_settings.font_scale)
@@ -116,6 +121,12 @@ func _load_from_options() -> void:
 	if _options.size() > 0:
 		_toggle_highlight(_options[0], true)
 	_scroll_container.set_deferred(&"scroll_vertical", 0)
+
+func _on_resolution_changed(_new_value: String, new_idx: int) -> void:
+	Player.data.options.resolution = _RESOLUTIONS[new_idx]
+
+func _on_full_screen_changed(_new_value: String, new_idx: int) -> void:
+	Player.data.options.full_screen = new_idx == 1
 
 func _on_music_volume_changed(_new_value: String, new_idx: int) -> void:
 	Player.data.options.music_volume = _SOUND_SCALES[new_idx]
@@ -144,6 +155,8 @@ func _on_save_button_pressed() -> void:
 
 func _on_reset_button_pressed() -> void:
 	SignalBus.ui_confirm.emit()
+	Player.data.options.resolution = _RESOLUTIONS[1]
+	Player.data.options.full_screen = false
 	Player.data.options.music_volume = 1.0
 	Player.data.options.sound_volume = 1.0
 	Player.data.options.font_scale = 1.0
@@ -154,6 +167,8 @@ func _on_reset_button_pressed() -> void:
 	closed.emit()
 
 func _on_cancel_button_pressed() -> void:
+	Player.data.options.resolution = _original_settings.resolution
+	Player.data.options.full_screen = _original_settings.full_screen
 	Player.data.options.music_volume = _original_settings.music_volume
 	Player.data.options.sound_volume = _original_settings.sound_volume
 	Player.data.options.font_scale = _original_settings.font_scale
