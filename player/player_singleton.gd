@@ -46,6 +46,12 @@ func take_damage(amount: int) -> void:
 				return
 		SignalBus.game_over.emit()
 
+func recover_health(amount: int) -> void:
+	data.current_health = mini(
+		data.max_health,
+		data.current_health + amount
+	)
+
 func has_completed(quest: StringName) -> bool:
 	return data.completed_quests.has(quest)
 

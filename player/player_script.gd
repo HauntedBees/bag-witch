@@ -211,6 +211,8 @@ func take_damage(damage: int, knockback_source := Vector3.ZERO, knockback := 0.0
 				knockback *= 0.5
 	if damage > 0:
 		Player.take_damage(damage)
+	elif damage < 0:
+		Player.recover_health(-damage)
 	var drop_chance := 0.01 + (damage / (Player.data.max_health * 1.5))
 	if randf() <= drop_chance:
 		print("OH FUCK I'M LOSING RINGS") #TODO: noise
