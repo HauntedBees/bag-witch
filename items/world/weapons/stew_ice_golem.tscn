@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://d04p1f5gidm5r"]
+
+[ext_resource type="Script" uid="uid://b66jl5gw8dewc" path="res://items/world/world_item.gd" id="1_6am3c"]
+[ext_resource type="Resource" uid="uid://btsw0hluu4773" path="res://items/enemies/ice_golem.tres" id="2_vmlx6"]
+[ext_resource type="PackedScene" uid="uid://bkp5hliwkeaq7" path="res://assets/models/enemies/frost_golem.blend" id="3_vmlx6"]
+[ext_resource type="PackedScene" uid="uid://bce761tpdiksy" path="res://spells/visuals/smoke/smoke.tscn" id="4_0slgm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rhbnc"]
+size = Vector3(1.3339386, 2.098938, 1.9029236)
+
+[node name="StewIceGolem" type="Area3D" unique_id=823143601 node_paths=PackedStringArray("collider")]
+collision_layer = 2
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_6am3c")
+item = ExtResource("2_vmlx6")
+collider = NodePath("CollisionShape3D")
+metadata/_custom_type_script = "uid://b66jl5gw8dewc"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2008358244]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.020011902, 1.0290833, -0.34138095)
+shape = SubResource("BoxShape3D_rhbnc")
+
+[node name="frost_golem" parent="." unique_id=344282052 instance=ExtResource("3_vmlx6")]
+transform = Transform3D(1, 0, 0, 0, 0.99152, 0.12995432, 0, -0.12995432, 0.99152, 0, -0.11306876, 0)
+
+[node name="SmokeCloud" parent="." unique_id=1242530226 instance=ExtResource("4_0slgm")]
+permanent = true

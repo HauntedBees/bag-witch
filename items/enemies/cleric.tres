@@ -6,7 +6,7 @@
 script = ExtResource("1_jhx4b")
 name = "Cleric"
 description = "As masters of both weaponry and magic, Clerics make fearsome adversaries. Fortunately they refuse to fight on holy days, so if you want to breeze past them, just play this game on a Sunday."
-type = 6
+type = 7
 size = Vector2i(3, 2)
 icon = Rect2i(0, 7, 3, 2)
 rotated_by_default = true

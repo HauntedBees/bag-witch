@@ -39,6 +39,7 @@
 [ext_resource type="PackedScene" uid="uid://docpfalint7kx" path="res://items/world/potions/blood_brew.tscn" id="37_pbixl"]
 [ext_resource type="PackedScene" uid="uid://cgu4sixaxb4y1" path="res://items/world/potions/bone_broth.tscn" id="38_7twur"]
 [ext_resource type="PackedScene" uid="uid://b0kq1w8v36oop" path="res://items/world/potions/lava_infusion.tscn" id="39_ecfv7"]
+[ext_resource type="PackedScene" uid="uid://b7kthsncg8yug" path="res://items/world/weapons/skeleton.tscn" id="40_akbr8"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lqt7o"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -396,6 +397,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5321398, 0.25784582, 6.0390
 
 [node name="BloodBrew2" parent="." unique_id=978484463 instance=ExtResource("39_ecfv7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0870676, 0.25784582, -5.239785)
+
+[node name="Skeleton" parent="." unique_id=1693842689 instance=ExtResource("40_akbr8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2747412, 0.50079215, 0.89608526)
 
 [editable path="ViewCastlePrison"]
 [editable path="ViewPortalFirePineRing"]

@@ -32,6 +32,10 @@ signal on_effect_applied(e: BWEnum.Effect, level: int)
 
 @export var can_be_picked_up_while_dead := true
 
+## The WorldItem that is created when you toss this motherfucker in a stew.
+## Default is a skeleton.
+@export_custom(SRP_HINT.RESOURCE_PATH, "PackedScene") var cauldron_scene := "uid://b7kthsncg8yug"
+
 @export_category("Navigation")
 ## The nav agent for this enemy.
 @onready var nav: NavigationAgent3D = $NavigationAgent3D

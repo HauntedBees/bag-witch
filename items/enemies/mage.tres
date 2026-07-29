@@ -6,7 +6,7 @@
 script = ExtResource("1_xhkab")
 name = "Mage"
 description = "The mages of the Perpetual Empire are no match for my witchcraft!"
-type = 6
+type = 7
 size = Vector2i(3, 2)
 icon = Rect2i(8, 2, 3, 2)
 rotated_by_default = true

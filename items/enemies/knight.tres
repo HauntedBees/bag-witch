@@ -6,7 +6,7 @@
 script = ExtResource("1_u6tus")
 name = "Knight"
 description = "Sworn defenders of the Perpetual Empire. They don't know what a bath is and wouldn't take one even if they did."
-type = 6
+type = 7
 size = Vector2i(3, 2)
 icon = Rect2i(8, 0, 3, 2)
 rotated_by_default = true

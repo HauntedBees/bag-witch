@@ -114,6 +114,7 @@ potential_drop_chance = 1.0
 capture_level = 3
 suck_time = 5.0
 suck_drop = ExtResource("10_soene")
+cauldron_scene = "uid://d04p1f5gidm5r"
 max_health = 350
 damage_stun_time = 0.0
 weaknesses = Array[int]([2])

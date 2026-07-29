@@ -33,6 +33,7 @@ potential_drop_chance = 1.0
 capture_level = 2
 suck_drop = ExtResource("4_obngk")
 can_be_picked_up_while_dead = false
+cauldron_scene = "uid://c7cv1lchtyovd"
 max_health = 5
 damage_stun_time = 0.0
 bounding_box = NodePath("BoundingBox")

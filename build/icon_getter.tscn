@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://dcc245o2e3w7t" path="res://assets/models/items/potion_g.blend" id="10_318v8"]
 [ext_resource type="PackedScene" uid="uid://5mfo3873qvty" path="res://assets/models/enemies/lava_slime.blend" id="12_aj5m7"]
 [ext_resource type="PackedScene" uid="uid://ctlgvtilkqq0j" path="res://assets/models/enemies/lava_slime_key.blend" id="13_r5y7o"]
+[ext_resource type="PackedScene" uid="uid://brtss2ydjuoeq" path="res://assets/models/items/skellington.blend" id="20_2gas7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eeolf"]
 shading_mode = 0
@@ -76,6 +77,7 @@ visible = false
 
 [node name="potion_g" parent="ThingContainer" unique_id=953505118 instance=ExtResource("10_318v8")]
 transform = Transform3D(0.7002425, 0, -0.71390504, 0, 1, 0, 0.71390504, 0, 0.7002425, 0, -0.5599115, 0.6969662)
+visible = false
 
 [node name="CharContainer" type="Node3D" parent="." unique_id=1358169874]
 transform = Transform3D(-0.3, 0, -2.6226834e-08, 0, 0.3, 0, 2.6226834e-08, 0, -0.3, 0, -0.2936597, 0.60339546)
@@ -469,6 +471,9 @@ visible = false
 [node name="lava_slime_key" parent="CharContainer" unique_id=320163799 instance=ExtResource("13_r5y7o")]
 transform = Transform3D(-0.99999994, 0, 8.742278e-08, 0, 0.99999994, 0, -8.742278e-08, 0, -0.99999994, 0, 0, 0)
 visible = false
+
+[node name="skellington" parent="CharContainer" unique_id=1929061299 instance=ExtResource("20_2gas7")]
+transform = Transform3D(-0.99999994, 0, 8.742278e-08, 0, 0.99999994, 0, -8.742278e-08, 0, -0.99999994, 0, 0, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=120314320]
 transform = Transform3D(0.9717929, 0.11896129, -0.20363402, 0, 0.8634562, 0.50442386, 0.23583597, -0.4901955, 0.8391006, 0, 3.8723497, 4.9881706)

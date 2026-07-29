@@ -6,7 +6,7 @@
 script = ExtResource("1_v1om5")
 name = "The Black Knight"
 description = "A deadly defender of the Perpetual Empire. How tall are they?!"
-type = 6
+type = 7
 size = Vector2i(5, 4)
 icon = Rect2i(11, 0, 5, 4)
 rotated_by_default = true

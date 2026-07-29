@@ -625,9 +625,10 @@ func _on_inventory_display_spawn_enemy(wi: EnemyDisplay) -> void:
 		wi.global_position = global_position + to + Vector3(0.0, 0.3, 0.0)
 		wi.rotate_y(PI)
 	else:
-		print("witches brewww")
+		var stew_scene: PackedScene = load(wi.cauldron_scene)
+		var stew_item: WorldItem = stew_scene.instantiate()
+		current_cauldron.add_item(stew_item)
 		wi.queue_free()
-		#current_cauldron.add_item(wi)
 
 func _get_adjusted_drop_position(from: Vector3, to: Vector3) -> Vector3:
 	var space_state := get_world_3d().direct_space_state

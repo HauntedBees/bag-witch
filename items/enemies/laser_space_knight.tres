@@ -6,7 +6,7 @@
 script = ExtResource("1_xtgw1")
 name = "Laser Space Knight"
 description = "With powerful mechanical wings, these Space Knights have mastered the power of flight."
-type = 6
+type = 7
 size = Vector2i(3, 2)
 icon = Rect2i(8, 4, 3, 2)
 rotated_by_default = true

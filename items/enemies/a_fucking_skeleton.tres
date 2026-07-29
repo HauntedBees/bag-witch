@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="SwingItem" format=3 uid="uid://bckmddmuhqkne"]
+
+[ext_resource type="Script" uid="uid://bmq8xwl1vjc1b" path="res://resource_types/items/swing_item.gd" id="1_gpdxa"]
+
+[resource]
+script = ExtResource("1_gpdxa")
+swing_animation_speed = 1.5
+is_melee = true
+damage_range = Vector2i(50, 60)
+knockback = 15.0
+additional_y_knockback = 10.0
+is_high_impact = true
+name = "Skeleton"
+description = "There's one of these hiding inside every one of us..."
+type = 7
+size = Vector2i(2, 2)
+icon = Rect2i(12, 8, 2, 2)
+rotated_by_default = true
+scene_path = "uid://b7kthsncg8yug"
+usage_sound = "uid://m4dc7v1lsu26"
+use_range = 7.75
+equip_sprite_offset = Vector2i(4, 0)
+custom_equip_scene = "uid://dr0w3dgf3w7g8"
+equipped_animation = &"HoldSkeleton"
+use_animation = &"SwingSkeleton"
+equipped_scale = 3.0
+usage_cooldown = 0.75
+metadata/_custom_type_script = "uid://cgt7ckkn1gh5b"
