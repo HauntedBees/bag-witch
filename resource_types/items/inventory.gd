@@ -14,10 +14,10 @@ signal items_purged()
 
 func recalibrate_bag_size() -> void:
 	match Player.data.bag:
-		1: # 21 (1)
+		1: # 21 (2)
 			dimensions = Vector2i(7, 3)
-			safe_tiles = [Vector2i(6, 2)]
-		2: # 32 (4)   [+11, +3]
+			safe_tiles = [Vector2i(6, 2), Vector2i(6, 1)]
+		2: # 32 (4)   [+11, +2]
 			dimensions = Vector2i(8, 4)
 			safe_tiles = [Vector2i(7, 3), Vector2i(7, 2), Vector2i(6, 3), Vector2i(6, 2)]
 		3: #45 (10) [+13, +6]
