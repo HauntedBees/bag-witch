@@ -68,7 +68,7 @@ func _on_trigger_one_entered(body: Node3D) -> void:
 	if body is not BogWitch:
 		return
 	SignalBus.say_thing.emit("Bag Witch", "A guard, huh? Maybe I can smack him with this rock while he's not looking!", _KEYS[7])
-	SignalBus.say_thing.emit("Bag Witch", "I can equip it with [input=weapon_slot_1] and attack with [input=attack].", "")
+	SignalBus.say_thing.emit("Bag Witch", "I can equip it with [input=weapon_slot_1] or [input=cycle_weapon_right] and attack with [input=attack].", "")
 
 func _on_enemy_died() -> void:
 	blocking_wall.queue_free()

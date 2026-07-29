@@ -197,7 +197,7 @@ transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 29.2
 potential_drops = Array[ExtResource("7_gvtdk")]([])
 max_health = 5
 
-[node name="Skeleton3D" parent="Parts_FirstFromBog/WeakAssKnight/knight/Rig_Medium" parent_id_path=PackedInt32Array(222303382, 1607028048, 1055075399) index="0" unique_id=2093083127]
+[node name="Skeleton3D" parent="Parts_FirstFromBog/WeakAssKnight/knight/Rig_Medium" parent_id_path=PackedInt32Array(222303382, 1607028048, 1577055457) index="0" unique_id=83218866]
 bones/1/scale = Vector3(0.99999994, 1, 0.99999994)
 bones/2/scale = Vector3(1.0000001, 1, 1.0000001)
 bones/3/scale = Vector3(1, 0.9999999, 1)
