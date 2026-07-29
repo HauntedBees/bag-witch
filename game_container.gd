@@ -74,6 +74,8 @@ func _process(_delta: float) -> void:
 		_place_player.call_deferred()
 		_is_warping = false
 		_warp.end()
+	elif status == ResourceLoader.THREAD_LOAD_FAILED: # try again lmao
+		ResourceLoader.load_threaded_request(_current_loading_scene_path, "PackedScene", true)
 
 func _place_player() -> void:
 	var warps := get_tree().get_nodes_in_group(&"warp")

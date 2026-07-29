@@ -15,12 +15,14 @@ class_name OpeningCutscene extends Cutscene
 @export var knight1_pos: Marker3D
 @export var knight2_pos: Marker3D
 
+var _convo_started := false
+
 func _init_cutscene() -> void:
 	Player.input_locked = true
 	Player.inventory_available = false
 	Player.equip_changed.emit(InventoryDetail.new(book, Vector2i.ZERO))
 	convo_trigger.body_entered.connect(func(b: Node3D) -> void:
-		if b is BogWitch:
+		if b is BogWitch && !_convo_started:
 			_on_start_conversation()
 	)
 	queen.set_anim(&"Idle", true)
@@ -36,7 +38,7 @@ func _init_cutscene() -> void:
 
 func _on_lunged() -> void:
 	SignalBus.change_song.emit(suspense_song, 0.125)
-	#TODO: squeaky sound
+	SignalBus.play_sound.emit(load("uid://bmv1b4cdwafq5"))
 	Player.equip_changed.emit(null)
 	animals.queue_free()
 	animals = null
@@ -47,6 +49,7 @@ func _on_left() -> void:
 	arm = null
 
 func _on_start_conversation() -> void:
+	_convo_started = true
 	SignalBus.text_ended.connect(_on_finish_queen_dialog, CONNECT_ONE_SHOT)
 	SignalBus.say_thing.emit("Queen Perpetua I", "Verily, these beestes sholde do well.", "QP1")
 	SignalBus.say_thing.emit("Queen Perpetua I", "Bryng them thru. We shal make good use of them.", "QP2")

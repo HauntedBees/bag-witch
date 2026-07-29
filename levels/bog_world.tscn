@@ -111,17 +111,17 @@ size = Vector3(50, 10, 80)
 
 [sub_resource type="Environment" id="Environment_6q451"]
 
-[sub_resource type="World3D" id="World3D_au1bg"]
+[sub_resource type="World3D" id="World3D_i8d1p"]
 resource_local_to_scene = true
 environment = SubResource("Environment_6q451")
 
 [sub_resource type="Environment" id="Environment_u7iwl"]
 
-[sub_resource type="World3D" id="World3D_xkoe2"]
+[sub_resource type="World3D" id="World3D_au1bg"]
 resource_local_to_scene = true
 environment = SubResource("Environment_u7iwl")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nwfmw"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_xkoe2"]
 resource_local_to_scene = true
 atlas = ExtResource("13_n8ycd")
 region = Rect2(256, 0, 256, 256)
@@ -208,7 +208,7 @@ teleport_scene = "uid://dkgap8kw2cyfc"
 teleport_point_name = "FromBog"
 
 [node name="ViewPortalToCastle" parent="." unique_id=389194511 instance=ExtResource("23_xvnqo")]
-world_3d = SubResource("World3D_au1bg")
+world_3d = SubResource("World3D_i8d1p")
 
 [node name="PortalFirePineRing" parent="." unique_id=789452907 node_paths=PackedStringArray("subviewport") instance=ExtResource("10_tmrxh")]
 transform = Transform3D(-0.08715576, 0, 0.99619466, 0, 1, 0, -0.99619466, 0, -0.08715576, -4.157, 0.988, -29)
@@ -217,11 +217,11 @@ teleport_scene = "uid://cmf1v1vuyggrq"
 teleport_point_name = "FromCastleBasement"
 
 [node name="ViewPortalFirePineRing" parent="." unique_id=1926226445 instance=ExtResource("23_xvnqo")]
-world_3d = SubResource("World3D_xkoe2")
+world_3d = SubResource("World3D_au1bg")
 
 [node name="Sprite3D" parent="ViewPortalFirePineRing" index="1" unique_id=923265973]
 transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
-texture = SubResource("AtlasTexture_nwfmw")
+texture = SubResource("AtlasTexture_xkoe2")
 
 [node name="OpeningCutscene" type="Node" parent="." unique_id=353323456 node_paths=PackedStringArray("animals", "arm", "queen", "knight1", "knight2", "convo_trigger", "portal_pos", "knight1_pos", "knight2_pos", "nodes_to_kill")]
 script = ExtResource("13_8w6s2")
