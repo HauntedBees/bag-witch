@@ -7,18 +7,18 @@
 [ext_resource type="AudioStream" uid="uid://dmkfc2tpbyfvo" path="res://assets/music/castle_loop.ogg" id="3_ldany"]
 [ext_resource type="PackedScene" uid="uid://bneb8643crrt0" path="res://levels/castle_world/basement.tscn" id="3_y1m4q"]
 [ext_resource type="AudioStream" uid="uid://ca528k4ab7wrc" path="res://assets/sounds/12_Step_wood_03.wav" id="4_ldany"]
+[ext_resource type="Texture2D" uid="uid://d1l014xdrhewt" path="res://assets/skyboxes/skybox-morning.png" id="5_1a5c5"]
 [ext_resource type="PackedScene" uid="uid://b3ykgnc02f66w" path="res://levels/castle_world/castle_exterior.tscn" id="5_gn5m0"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jhs48"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_n8cj0"]
+panorama = ExtResource("5_1a5c5")
 
-[sub_resource type="Sky" id="Sky_43bpn"]
-sky_material = SubResource("ProceduralSkyMaterial_jhs48")
+[sub_resource type="Sky" id="Sky_6ygb8"]
+sky_material = SubResource("PanoramaSkyMaterial_n8cj0")
 
 [sub_resource type="Environment" id="Environment_ro2ft"]
 background_mode = 2
-sky = SubResource("Sky_43bpn")
+sky = SubResource("Sky_6ygb8")
 tonemap_mode = 2
 glow_enabled = true
 

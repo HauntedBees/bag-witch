@@ -4,6 +4,7 @@
 [ext_resource type="Material" uid="uid://3ub3li5nvjsw" path="res://addons/JehenoAdvancedFirstPersonController/Map/Materials/not_floor_structure_material.tres" id="1_piha8"]
 [ext_resource type="PackedScene" uid="uid://dhlu6wawyieh5" path="res://environment/portals/portal.tscn" id="2_c576j"]
 [ext_resource type="AudioStream" uid="uid://crfqdj3ac3nqa" path="res://assets/sounds/03_Step_grass_03.wav" id="2_pbixl"]
+[ext_resource type="Texture2D" uid="uid://bv2olj52ks5" path="res://assets/skyboxes/skybox-lava.png" id="3_8gbf0"]
 [ext_resource type="PackedScene" uid="uid://d8qagseewo6x" path="res://environment/portals/portal_subviewport_external.tscn" id="3_lqt7o"]
 [ext_resource type="Texture2D" uid="uid://b468d6ayq7u4d" path="res://assets/sprites/warps.png" id="4_lqt7o"]
 [ext_resource type="PackedScene" uid="uid://c0c6yem7oc5h2" path="res://items/world/weapons/broom.tscn" id="5_4bsba"]
@@ -41,12 +42,11 @@
 [ext_resource type="PackedScene" uid="uid://b0kq1w8v36oop" path="res://items/world/potions/lava_infusion.tscn" id="39_ecfv7"]
 [ext_resource type="PackedScene" uid="uid://b7kthsncg8yug" path="res://items/world/weapons/skeleton.tscn" id="40_akbr8"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lqt7o"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_pkut4"]
+panorama = ExtResource("3_8gbf0")
 
 [sub_resource type="Sky" id="Sky_43bpn"]
-sky_material = SubResource("ProceduralSkyMaterial_lqt7o")
+sky_material = SubResource("PanoramaSkyMaterial_pkut4")
 
 [sub_resource type="Environment" id="Environment_vytw3"]
 background_mode = 2
@@ -71,16 +71,6 @@ radius = 20.0
 
 [sub_resource type="Environment" id="Environment_u7iwl"]
 
-[sub_resource type="World3D" id="World3D_akbr8"]
-resource_local_to_scene = true
-environment = SubResource("Environment_u7iwl")
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8gbf0"]
-resource_local_to_scene = true
-atlas = ExtResource("4_lqt7o")
-region = Rect2(0, 0, 256, 256)
-filter_clip = true
-
 [sub_resource type="World3D" id="World3D_l2iij"]
 resource_local_to_scene = true
 environment = SubResource("Environment_u7iwl")
@@ -88,16 +78,26 @@ environment = SubResource("Environment_u7iwl")
 [sub_resource type="AtlasTexture" id="AtlasTexture_vigtt"]
 resource_local_to_scene = true
 atlas = ExtResource("4_lqt7o")
+region = Rect2(0, 0, 256, 256)
+filter_clip = true
+
+[sub_resource type="World3D" id="World3D_5odvc"]
+resource_local_to_scene = true
+environment = SubResource("Environment_u7iwl")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a0ud1"]
+resource_local_to_scene = true
+atlas = ExtResource("4_lqt7o")
 region = Rect2(256, 0, 256, 256)
 filter_clip = true
 
 [sub_resource type="Environment" id="Environment_6q451"]
 
-[sub_resource type="World3D" id="World3D_5odvc"]
+[sub_resource type="World3D" id="World3D_vcfat"]
 resource_local_to_scene = true
 environment = SubResource("Environment_6q451")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_a0ud1"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6f7i"]
 resource_local_to_scene = true
 atlas = ExtResource("4_lqt7o")
 region = Rect2(768, 0, 256, 256)
@@ -105,11 +105,11 @@ filter_clip = true
 
 [sub_resource type="Environment" id="Environment_4bsba"]
 
-[sub_resource type="World3D" id="World3D_vcfat"]
+[sub_resource type="World3D" id="World3D_g0k03"]
 resource_local_to_scene = true
 environment = SubResource("Environment_4bsba")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_o6f7i"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjbvg"]
 resource_local_to_scene = true
 atlas = ExtResource("4_lqt7o")
 region = Rect2(512, 0, 256, 256)
@@ -117,11 +117,11 @@ filter_clip = true
 
 [sub_resource type="Environment" id="Environment_fqolt"]
 
-[sub_resource type="World3D" id="World3D_g0k03"]
+[sub_resource type="World3D" id="World3D_u6d2u"]
 resource_local_to_scene = true
 environment = SubResource("Environment_fqolt")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fjbvg"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xb27"]
 resource_local_to_scene = true
 atlas = ExtResource("4_lqt7o")
 region = Rect2(0, 512, 256, 256)
@@ -157,10 +157,10 @@ teleport_scene = "uid://dkgap8kw2cyfc"
 teleport_point_name = "CheatBoss"
 
 [node name="ViewCastlePrison" parent="." unique_id=389194511 instance=ExtResource("3_lqt7o")]
-world_3d = SubResource("World3D_akbr8")
+world_3d = SubResource("World3D_l2iij")
 
 [node name="Sprite3D" parent="ViewCastlePrison" index="1" unique_id=923265973]
-texture = SubResource("AtlasTexture_8gbf0")
+texture = SubResource("AtlasTexture_vigtt")
 
 [node name="PortalFirePineRing" parent="." unique_id=1269224502 node_paths=PackedStringArray("subviewport") instance=ExtResource("2_c576j")]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 10, 0, -10)
@@ -169,11 +169,11 @@ teleport_scene = "uid://cmf1v1vuyggrq"
 teleport_point_name = "FromCastleBasement"
 
 [node name="ViewPortalFirePineRing" parent="." unique_id=451018157 instance=ExtResource("3_lqt7o")]
-world_3d = SubResource("World3D_l2iij")
+world_3d = SubResource("World3D_5odvc")
 
 [node name="Sprite3D" parent="ViewPortalFirePineRing" index="1" unique_id=923265973]
 transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
-texture = SubResource("AtlasTexture_vigtt")
+texture = SubResource("AtlasTexture_a0ud1")
 
 [node name="PortalBogHome" parent="." unique_id=1172689013 node_paths=PackedStringArray("subviewport") instance=ExtResource("2_c576j")]
 transform = Transform3D(0.7071067, 0, -0.7071067, 0, 1, 0, 0.7071067, 0, 0.7071067, 10, 0, 10)
@@ -182,10 +182,10 @@ teleport_scene = "uid://ssp37cocp7km"
 teleport_point_name = "FromDeath"
 
 [node name="ViewPortalBogHome" parent="." unique_id=1797294538 instance=ExtResource("3_lqt7o")]
-world_3d = SubResource("World3D_5odvc")
+world_3d = SubResource("World3D_vcfat")
 
 [node name="Sprite3D" parent="ViewPortalBogHome" index="1" unique_id=923265973]
-texture = SubResource("AtlasTexture_a0ud1")
+texture = SubResource("AtlasTexture_o6f7i")
 
 [node name="LaserSword" parent="." unique_id=823143601 instance=ExtResource("5_vytw3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.8774405, 0.25169817, -7.6883154)
@@ -246,10 +246,10 @@ teleport_scene = "uid://b8knls82eve"
 teleport_point_name = "FermanaghWarp"
 
 [node name="PortalSubviewportExternal" parent="IceWarp1" index="1" unique_id=389194511]
-world_3d = SubResource("World3D_vcfat")
+world_3d = SubResource("World3D_g0k03")
 
 [node name="Sprite3D" parent="IceWarp1/PortalSubviewportExternal" index="1" unique_id=923265973]
-texture = SubResource("AtlasTexture_o6f7i")
+texture = SubResource("AtlasTexture_fjbvg")
 
 [node name="Broom" parent="." unique_id=458796508 instance=ExtResource("5_4bsba")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.021128, 0.25273177, -0.104356766)
@@ -270,10 +270,10 @@ teleport_scene = "uid://c5pqvv86efxau"
 teleport_point_name = "Entryway"
 
 [node name="PortalSubviewportExternal" parent="Warp-Forest" index="1" unique_id=389194511]
-world_3d = SubResource("World3D_g0k03")
+world_3d = SubResource("World3D_u6d2u")
 
 [node name="Sprite3D" parent="Warp-Forest/PortalSubviewportExternal" index="1" unique_id=923265973]
-texture = SubResource("AtlasTexture_fjbvg")
+texture = SubResource("AtlasTexture_8xb27")
 
 [node name="Key" parent="." unique_id=350301266 instance=ExtResource("20_t235d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.273698, 0.25, -4.626501)

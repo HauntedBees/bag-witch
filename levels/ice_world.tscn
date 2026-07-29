@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://cdmw457sr1kdb" path="res://assets/sounds/14_Step_water_02.wav" id="4_lf0o5"]
 [ext_resource type="PackedScene" uid="uid://bwnsfbcm24m4a" path="res://levels/ice_world/fermanagh.tscn" id="5_bue5n"]
 [ext_resource type="Script" uid="uid://cpe3jrnwinlxh" path="res://addons/JehenoAdvancedFirstPersonController/Map/MovementModifiers/slipperyZone/slippery_zone_script.gd" id="5_w165o"]
+[ext_resource type="Texture2D" uid="uid://fef6af6qdwas" path="res://assets/skyboxes/skybox-red.png" id="5_wx74s"]
 [ext_resource type="PackedScene" uid="uid://cels0ivc77mq4" path="res://assets/levels/ice/armagh.blend" id="6_33ahx"]
 [ext_resource type="PackedScene" uid="uid://chlicquyef0kv" path="res://levels/ice_world/antrim.tscn" id="6_ffpem"]
 [ext_resource type="Texture2D" uid="uid://c054yo85hklkh" path="res://assets/models/environment/textures/Icefloor.png" id="9_6nvvy"]
@@ -18,12 +19,11 @@
 [ext_resource type="PackedScene" uid="uid://8pmjrnhr3wew" path="res://environment/portals/portal_subviewport_pair.tscn" id="15_2ujki"]
 [ext_resource type="Texture2D" uid="uid://b468d6ayq7u4d" path="res://assets/sprites/warps.png" id="16_lf0o5"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_d6hs4"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_4fyvu"]
+panorama = ExtResource("5_wx74s")
 
 [sub_resource type="Sky" id="Sky_43bpn"]
-sky_material = SubResource("ProceduralSkyMaterial_d6hs4")
+sky_material = SubResource("PanoramaSkyMaterial_4fyvu")
 
 [sub_resource type="Environment" id="Environment_6ulv1"]
 background_mode = 2
@@ -58,11 +58,11 @@ radius = 400.0
 
 [sub_resource type="Environment" id="Environment_u7iwl"]
 
-[sub_resource type="World3D" id="World3D_wx74s"]
+[sub_resource type="World3D" id="World3D_kr3gg"]
 resource_local_to_scene = true
 environment = SubResource("Environment_u7iwl")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kr3gg"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_i2y12"]
 resource_local_to_scene = true
 atlas = ExtResource("16_lf0o5")
 region = Rect2(768, 0, 256, 256)
@@ -73,11 +73,11 @@ radius = 400.0
 
 [sub_resource type="Environment" id="Environment_wx74s"]
 
-[sub_resource type="World3D" id="World3D_i2y12"]
+[sub_resource type="World3D" id="World3D_qppdj"]
 resource_local_to_scene = true
 environment = SubResource("Environment_wx74s")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qppdj"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ca2ka"]
 resource_local_to_scene = true
 atlas = ExtResource("16_lf0o5")
 region = Rect2(0, 512, 256, 256)
@@ -199,10 +199,10 @@ teleport_scene = "uid://ssp37cocp7km"
 teleport_point_name = "FromDeath"
 
 [node name="PortalSubviewportExternal" parent="NavigationRegion3D/BackToTheBog" index="1" unique_id=389194511]
-world_3d = SubResource("World3D_wx74s")
+world_3d = SubResource("World3D_kr3gg")
 
 [node name="Sprite3D" parent="NavigationRegion3D/BackToTheBog/PortalSubviewportExternal" index="1" unique_id=923265973]
-texture = SubResource("AtlasTexture_kr3gg")
+texture = SubResource("AtlasTexture_i2y12")
 
 [node name="Paths" type="Node3D" parent="." unique_id=1038295414]
 
@@ -222,10 +222,10 @@ teleport_scene = "uid://c5pqvv86efxau"
 teleport_point_name = "Entryway"
 
 [node name="PortalSubviewportExternal" parent="Warp-Forest" index="1" unique_id=389194511]
-world_3d = SubResource("World3D_i2y12")
+world_3d = SubResource("World3D_qppdj")
 
 [node name="Sprite3D" parent="Warp-Forest/PortalSubviewportExternal" index="1" unique_id=923265973]
-texture = SubResource("AtlasTexture_qppdj")
+texture = SubResource("AtlasTexture_ca2ka")
 
 [editable path="NavigationRegion3D/BackToTheBog"]
 [editable path="NavigationRegion3D/BackToTheBog/PortalSubviewportExternal"]

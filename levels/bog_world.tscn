@@ -6,6 +6,7 @@
 [ext_resource type="Shader" uid="uid://csejch1iajbr4" path="res://assets/shaders/bog_water.gdshader" id="3_85nrh"]
 [ext_resource type="AudioStream" uid="uid://crfqdj3ac3nqa" path="res://assets/sounds/03_Step_grass_03.wav" id="3_ak1fh"]
 [ext_resource type="PackedScene" uid="uid://p2igx7geifib" path="res://assets/levels/bog/witch_hut.blend" id="4_f7sxh"]
+[ext_resource type="Texture2D" uid="uid://d1l014xdrhewt" path="res://assets/skyboxes/skybox-morning.png" id="4_i8d1p"]
 [ext_resource type="MeshLibrary" uid="uid://ch757jk85l1mm" path="res://assets/levels/castle/gridmap.blend" id="5_pkm5o"]
 [ext_resource type="PackedScene" uid="uid://b25xvdxojjqg1" path="res://assets/levels/bog/bed.blend" id="6_i4emm"]
 [ext_resource type="PackedScene" uid="uid://4snfvsmupqj0" path="res://assets/levels/bog/chair.blend" id="7_sblow"]
@@ -37,12 +38,12 @@
 [ext_resource type="Resource" uid="uid://sbrt245q0iwi" path="res://items/melee/sword.tres" id="33_i8d1p"]
 [ext_resource type="Resource" uid="uid://bblwxtkau8lot" path="res://items/ammo/power_cell.tres" id="34_au1bg"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_f7sxh"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_xn5jr"]
+panorama = ExtResource("4_i8d1p")
+filter = false
 
 [sub_resource type="Sky" id="Sky_43bpn"]
-sky_material = SubResource("ProceduralSkyMaterial_f7sxh")
+sky_material = SubResource("PanoramaSkyMaterial_xn5jr")
 
 [sub_resource type="Environment" id="Environment_pkm5o"]
 background_mode = 2
@@ -110,17 +111,17 @@ size = Vector3(50, 10, 80)
 
 [sub_resource type="Environment" id="Environment_6q451"]
 
-[sub_resource type="World3D" id="World3D_i8d1p"]
+[sub_resource type="World3D" id="World3D_au1bg"]
 resource_local_to_scene = true
 environment = SubResource("Environment_6q451")
 
 [sub_resource type="Environment" id="Environment_u7iwl"]
 
-[sub_resource type="World3D" id="World3D_au1bg"]
+[sub_resource type="World3D" id="World3D_xkoe2"]
 resource_local_to_scene = true
 environment = SubResource("Environment_u7iwl")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xkoe2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_nwfmw"]
 resource_local_to_scene = true
 atlas = ExtResource("13_n8ycd")
 region = Rect2(256, 0, 256, 256)
@@ -207,7 +208,7 @@ teleport_scene = "uid://dkgap8kw2cyfc"
 teleport_point_name = "FromBog"
 
 [node name="ViewPortalToCastle" parent="." unique_id=389194511 instance=ExtResource("23_xvnqo")]
-world_3d = SubResource("World3D_i8d1p")
+world_3d = SubResource("World3D_au1bg")
 
 [node name="PortalFirePineRing" parent="." unique_id=789452907 node_paths=PackedStringArray("subviewport") instance=ExtResource("10_tmrxh")]
 transform = Transform3D(-0.08715576, 0, 0.99619466, 0, 1, 0, -0.99619466, 0, -0.08715576, -4.157, 0.988, -29)
@@ -216,11 +217,11 @@ teleport_scene = "uid://cmf1v1vuyggrq"
 teleport_point_name = "FromCastleBasement"
 
 [node name="ViewPortalFirePineRing" parent="." unique_id=1926226445 instance=ExtResource("23_xvnqo")]
-world_3d = SubResource("World3D_au1bg")
+world_3d = SubResource("World3D_xkoe2")
 
 [node name="Sprite3D" parent="ViewPortalFirePineRing" index="1" unique_id=923265973]
 transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
-texture = SubResource("AtlasTexture_xkoe2")
+texture = SubResource("AtlasTexture_nwfmw")
 
 [node name="OpeningCutscene" type="Node" parent="." unique_id=353323456 node_paths=PackedStringArray("animals", "arm", "queen", "knight1", "knight2", "convo_trigger", "portal_pos", "knight1_pos", "knight2_pos", "nodes_to_kill")]
 script = ExtResource("13_8w6s2")
@@ -336,7 +337,7 @@ transform = Transform3D(1, 7.450581e-09, 2.0264679e-11, -7.450581e-09, 0.9999999
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -6.948619, 0.9944458, -18.186111)
 script = ExtResource("20_0yn3c")
 
-[node name="Skeleton3D" parent="CutsceneStuff/bottomknight/Rig_Medium" parent_id_path=PackedInt32Array(1607028048, 1055075399) index="0" unique_id=2093083127]
+[node name="Skeleton3D" parent="CutsceneStuff/bottomknight/Rig_Medium" parent_id_path=PackedInt32Array(1607028048, 1577055457) index="0" unique_id=83218866]
 bones/1/position = Vector3(0, 0.39206383, 0)
 bones/1/rotation = Quaternion(-1.11122625e-10, 0.043157753, 2.5724098e-09, 0.9990683)
 bones/1/scale = Vector3(0.99999994, 1, 0.99999994)
@@ -397,7 +398,7 @@ libraries/Rig_Medium_MovementBasic = ExtResource("21_0yn3c")
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -6.948619, 0.9944458, -21.659508)
 script = ExtResource("20_0yn3c")
 
-[node name="Skeleton3D" parent="CutsceneStuff/topknight/Rig_Medium" parent_id_path=PackedInt32Array(725271147, 1055075399) index="0" unique_id=2093083127]
+[node name="Skeleton3D" parent="CutsceneStuff/topknight/Rig_Medium" parent_id_path=PackedInt32Array(725271147, 1577055457) index="0" unique_id=83218866]
 bones/1/position = Vector3(0, 0.39206383, 0)
 bones/1/rotation = Quaternion(-1.11122625e-10, 0.043157753, 2.5724098e-09, 0.9990683)
 bones/1/scale = Vector3(0.99999994, 1, 0.99999994)
