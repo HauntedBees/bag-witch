@@ -517,7 +517,7 @@ func _try_switch_weapon(event: InputEvent) -> bool:
 		var idx := posmod(Player.data.last_equipped_idx + 1, slots)
 		while !Player.is_valid_slot(idx) && idx != orig_idx:
 			idx = posmod(idx + 1, slots)
-		if idx == orig_idx:
+		if idx == orig_idx && Player.data.current_equipped != null:
 			return false
 		Player.try_change_weapon(idx)
 		_try_handle_equip_sound()
@@ -532,7 +532,7 @@ func _try_switch_weapon(event: InputEvent) -> bool:
 		var idx := posmod(Player.data.last_equipped_idx - 1, slots)
 		while !Player.is_valid_slot(idx) && idx != orig_idx:
 			idx = posmod(idx - 1, slots)
-		if idx == orig_idx:
+		if idx == orig_idx && Player.data.current_equipped != null:
 			return false
 		Player.try_change_weapon(idx)
 		_try_handle_equip_sound()
