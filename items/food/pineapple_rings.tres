@@ -4,9 +4,9 @@
 
 [resource]
 script = ExtResource("1_waotj")
-heal_range = Vector2i(6, 14)
+heal_range = Vector2i(30, 40)
 name = "Pineapple Slices"
-description = "Grows in hot climates. Hard to eat, but worth it."
+description = "These grow in hot climates. Hard to eat, but worth it. Eating these can recover 30 to 40 health points."
 type = 5
 icon = Rect2i(3, 5, 1, 1)
 scene_path = "uid://cgufgd0sharsb"

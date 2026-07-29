@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_u6tus")
 name = "Knight"
-description = "Sworn defender of the Perpetual Empire. Doesn't know what a bath is and wouldn't take one even if he did."
+description = "Sworn defenders of the Perpetual Empire. They don't know what a bath is and wouldn't take one even if they did."
 type = 6
 size = Vector2i(3, 2)
 icon = Rect2i(8, 0, 3, 2)

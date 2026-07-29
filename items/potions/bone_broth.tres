@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Potion" format=3 uid="uid://ta6ljvq68i7w"]
+
+[ext_resource type="Script" uid="uid://ctw20egdhhpr" path="res://resource_types/items/potion.gd" id="1_os6mf"]
+
+[resource]
+script = ExtResource("1_os6mf")
+ability = 3
+metadata = 2
+duration = 10.0
+name = "Bone Broth"
+description = "Drinking this potion will permanently decrease my maximum health by 50, but make all of my attacks extremely powerful for 10 seconds. Made by cooking three people in a cauldron."
+type = 14
+icon = Rect2i(15, 5, 1, 1)
+scene_path = "uid://cgu4sixaxb4y1"
+usage_sound = "uid://cyp3qdners030"
+discard_on_use = true
+equip_sprite_offset = Vector2i(4, 1)
+equipped_animation = &"FoodHold"
+use_animation = &"FoodEat"
+metadata/_custom_type_script = "uid://ctw20egdhhpr"

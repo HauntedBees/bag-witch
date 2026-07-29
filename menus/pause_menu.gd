@@ -122,6 +122,7 @@ func _on_quit_to_title_button_pressed() -> void:
 	SignalBus.ui_confirm.emit()
 	var title_path := ResourceUID.uid_to_path("uid://dgyjtcymhrpkp")
 	get_tree().paused = false
+	Player.data = PlayerData.new()
 	get_tree().change_scene_to_file(title_path)
 
 func _on_button_mouse_entered() -> void:

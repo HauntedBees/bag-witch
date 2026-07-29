@@ -67,16 +67,23 @@ func _process(delta: float) -> void:
 		return
 	_tooltip_timer -= delta
 	if _tooltip_timer <= 0.0:
-		var td := _item_grid_info[_highlight.grid_pos]
-		_tooltip_panel.visible = true
-		var id := td.item_display
-		if id == null:
-			if td.item == null:
+		if _focus == Focus.Items:
+			var td := _item_grid_info[_highlight.grid_pos]
+			_tooltip_panel.visible = true
+			var id := td.item_display
+			if id == null:
+				if td.item == null:
+					return
+				id = _item_grid_info[td.item.position].item_display
+			_tooltip_panel.global_position = id.global_position + _TOOLTIP_OFFSET
+			_tooltip_panel.set_item(td.item)
+		else:
+			var id := _spell_grid_info[_highlight.grid_pos]
+			_tooltip_panel.visible = true
+			if id == null:
 				return
-			id = _item_grid_info[td.item.position].item_display
-		_tooltip_panel.global_position = id.global_position + _TOOLTIP_OFFSET
-		_tooltip_panel.set_item(td.item)
-		await get_tree().process_frame
+			_tooltip_panel.global_position = id.global_position + _TOOLTIP_OFFSET
+			_tooltip_panel.set_spell(id.spell)
 		var x_end := _tooltip_panel.global_position.x + _tooltip_panel.size.x
 		var rect := get_viewport_rect()
 		if x_end > rect.size.x:

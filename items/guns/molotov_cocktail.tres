@@ -13,7 +13,7 @@ metadata_increase_ranges = Dictionary[int, Vector2]({
 2: Vector2(1, 1)
 })
 name = "Molotov Cocktail"
-description = "You throw it and the good times roll."
+description = "Some weapons are long-range because they can hit targets that are far away, and some weapons are long-range because you'll get hurt, too, if you're not careful with them. This is the latter."
 type = 11
 icon = Rect2i(4, 4, 1, 1)
 scene_path = "uid://blcxo6dbc3d4t"

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b66jl5gw8dewc" path="res://items/world/world_item.gd" id="1_hkcii"]
 [ext_resource type="Resource" uid="uid://8cw7tywrtk5y" path="res://items/ammo/shotgun_ammo.tres" id="2_hkcii"]
-[ext_resource type="PackedScene" uid="uid://g8ri41fugakv" path="res://assets/models/weapons/ammo1.blend" id="3_vnib5"]
+[ext_resource type="PackedScene" uid="uid://u2pdvjvvn0q2" path="res://assets/models/weapons/ammo2.blend" id="3_hkcii"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rhbnc"]
 size = Vector3(1, 0.41229248, 0.54421234)
@@ -19,5 +19,4 @@ collider = NodePath("CollisionShape3D")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20999146, -0.08979416)
 shape = SubResource("BoxShape3D_rhbnc")
 
-[node name="ammo1" parent="." unique_id=932594749 instance=ExtResource("3_vnib5")]
-transform = Transform3D(0.75, 0, 0, 0, 1, 0, 0, 0, 1.25, 0, 0, 0)
+[node name="ammo2" parent="." unique_id=1138613535 instance=ExtResource("3_hkcii")]

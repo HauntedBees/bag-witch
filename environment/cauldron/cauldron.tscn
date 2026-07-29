@@ -1,28 +1,19 @@
 [gd_scene format=3 uid="uid://bojcp628rd3l4"]
 
-[ext_resource type="PackedScene" uid="uid://dj07kmeoa1jno" path="res://assets/models/cauldron.blend" id="1_sr7id"]
+[ext_resource type="PackedScene" uid="uid://dj07kmeoa1jno" path="res://assets/models/environment/cauldron.blend" id="1_sr7id"]
 [ext_resource type="Script" uid="uid://bo6iyh0lkvbjp" path="res://environment/cauldron/cauldron.gd" id="1_y6hjw"]
 [ext_resource type="Shader" uid="uid://cn14y06puco1s" path="res://assets/shaders/lava.gdshader" id="2_ovluu"]
 [ext_resource type="Script" uid="uid://wbaxe261gvyn" path="res://environment/cauldron/cauldron_recipe.gd" id="2_vd1ef"]
+[ext_resource type="Resource" uid="uid://b867n847sbquq" path="res://environment/cauldron/recipes/apple_potion_of_life.tres" id="3_vjn1l"]
 [ext_resource type="Script" uid="uid://wp1mdoed06xj" path="res://levels/quick_cutscene.gd" id="3_wemd6"]
+[ext_resource type="Resource" uid="uid://6d6p8e7vldn7" path="res://environment/cauldron/recipes/gunpowder_potion.tres" id="4_6ujny"]
+[ext_resource type="Resource" uid="uid://c77q04q58ttki" path="res://environment/cauldron/recipes/bone_broth.tres" id="4_2803w"]
+[ext_resource type="Resource" uid="uid://bftgv68ri4k8a" path="res://environment/cauldron/recipes/blood_brew.tres" id="4_nid7l"]
+[ext_resource type="Resource" uid="uid://dp1a0x0p8dvyv" path="res://environment/cauldron/recipes/potion_of_life.tres" id="5_nid7l"]
 [ext_resource type="AudioStream" uid="uid://by1bnpmytq6ne" path="res://assets/sounds/458906__lilmati__retro-bubble-shot-01.wav" id="6_osbk2"]
+[ext_resource type="Resource" uid="uid://d26185jgd7ny8" path="res://environment/cauldron/recipes/lava_infusion.tres" id="7_4mlop"]
 [ext_resource type="Script" uid="uid://c120qocv042rh" path="res://shared/gas_audio_stream_player_3d.gd" id="7_s8u7p"]
-
-[sub_resource type="Resource" id="Resource_0vwwb"]
-script = ExtResource("2_vd1ef")
-output = "uid://diqgeut6827ix"
-item_1_type = 4
-item_2_type = 5
-item_3_type = 5
-metadata/_custom_type_script = "uid://wbaxe261gvyn"
-
-[sub_resource type="Resource" id="Resource_eav75"]
-script = ExtResource("2_vd1ef")
-output = "uid://mbu0okiovudq"
-item_1_type = 5
-item_2_type = 5
-item_3_type = 5
-metadata/_custom_type_script = "uid://wbaxe261gvyn"
+[ext_resource type="Resource" uid="uid://5nsdg60mnkq8" path="res://environment/cauldron/recipes/lava_infusion_b.tres" id="8_xth8k"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_rhbnc"]
 height = 1.2899933
@@ -92,7 +83,7 @@ _data = {
 
 [node name="Cauldron" type="StaticBody3D" unique_id=439509165]
 script = ExtResource("1_y6hjw")
-recipes = Array[ExtResource("2_vd1ef")]([SubResource("Resource_0vwwb"), SubResource("Resource_eav75")])
+recipes = Array[ExtResource("2_vd1ef")]([ExtResource("3_vjn1l"), ExtResource("4_2803w"), ExtResource("4_nid7l"), ExtResource("4_6ujny"), ExtResource("7_4mlop"), ExtResource("8_xth8k"), ExtResource("5_nid7l")])
 
 [node name="cauldron" parent="." unique_id=789874657 instance=ExtResource("1_sr7id")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)

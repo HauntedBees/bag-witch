@@ -5,7 +5,7 @@ signal weapon_cooldown_changed(amount: int)
 signal ammo_changed(new_ammo: int)
 
 var input_locked := false
-var inventory_available := true#false
+var inventory_available := true
 
 var data := PlayerData.new()
 var weapon_cooldown := 0.0:
@@ -42,7 +42,7 @@ func take_damage(amount: int) -> void:
 				var amt := roundi(Player.data.max_health * lrp.dying_percentage_healed)
 				data.current_health = amt
 				Player.data.inventory.remove_item(id)
-				# TODO: a jingle or something?
+				SignalBus.play_sound.emit(load("uid://cyp3qdners030"))
 				return
 		SignalBus.game_over.emit()
 

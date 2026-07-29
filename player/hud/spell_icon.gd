@@ -1,6 +1,7 @@
 class_name SpellIcon extends MarginContainer
 
 const _ATLAS_SIZE := 16.0
+const _TOOLTIP_SCENE := preload("uid://bdcwnvc7nfxv3")
 
 var spell: Item:
 	set(value):
@@ -25,3 +26,9 @@ func set_slot(action_name: StringName) -> void:
 func _update_spell() -> void:
 	_tex.region.position = _ATLAS_SIZE * spell.equip_sprite_offset
 	tooltip_text = spell.name
+
+func _make_custom_tooltip(_for_text: String) -> Object:
+	var tt: ItemTooltip = _TOOLTIP_SCENE.instantiate()
+	tt.spell = spell
+	tt.reset_size()
+	return tt

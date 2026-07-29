@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://lgalymb8gv2m" path="res://player/hud/arms_overlay_inner.gd" id="1_6x1t1"]
 [ext_resource type="PackedScene" uid="uid://n3iwouykopyy" path="res://assets/models/arms.blend" id="1_efhis"]
 [ext_resource type="PackedScene" uid="uid://cuem65brxiirw" path="res://assets/models/weapons/bag.blend" id="3_r1tj3"]
-[ext_resource type="PackedScene" uid="uid://4i1yaejh33ss" path="res://assets/models/broom.glb" id="4_t04jf"]
+[ext_resource type="PackedScene" uid="uid://dhv5o51uwpqbe" path="res://assets/models/weapons/broom.blend" id="4_t04jf"]
 
 [sub_resource type="Animation" id="Animation_0j0xl"]
 resource_name = "BagSuck"
@@ -27559,17 +27559,21 @@ autoplay = &"Idle"
 [node name="arms2" parent="." unique_id=1508114174 instance=ExtResource("1_efhis")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.3634429)
 
-[node name="Skeleton3D" parent="arms2/arms" parent_id_path=PackedInt32Array(1508114174, 1138826295) index="0" unique_id=541455370]
-bones/3/rotation = Quaternion(0.7452866, 0.007922597, 0.30733383, 0.5916343)
+[node name="Skeleton3D" parent="arms2/arms" parent_id_path=PackedInt32Array(1508114174, 1991366725) index="0" unique_id=351171672]
+bones/3/rotation = Quaternion(0.6462882, 0.189156, 0.09622097, 0.73298913)
 bones/5/rotation = Quaternion(-0.19578485, 0.014683957, 0.19575475, 0.9607981)
+bones/7/position = Vector3(-0.2607861, 0.43694115, 0.15753591)
+bones/10/position = Vector3(-0.2025942, 0.425457, 0.06839012)
 bones/12/rotation = Quaternion(-0.0009080964, -0.018355867, 0.110830754, 0.9936694)
 bones/13/rotation = Quaternion(-0.026190726, 0.033585776, -0.10871984, 0.99315965)
 bones/14/rotation = Quaternion(0.06246407, -0.1369784, 0.1775956, 0.97251993)
+bones/16/position = Vector3(-0.004433003, 0.31286022, 0.0015585765)
 bones/18/rotation = Quaternion(-0.16249192, -0.06371558, 0.028204648, 0.98424655)
-bones/20/position = Vector3(-0.96103835, 0.56562614, -0.15304518)
-bones/27/position = Vector3(0.002377503, 2.275165, 5.005616e-05)
+bones/19/position = Vector3(-0.09992516, 0.3405389, -0.052510507)
+bones/20/position = Vector3(0.06847288, -1.0854949, -0.28516823)
+bones/20/scale = Vector3(0.9999999, 0.99999994, 1)
+bones/27/position = Vector3(2.5403094, 1.906715, 0.05334734)
 bones/27/rotation = Quaternion(0.061552476, -0.0398768, -0.39811075, 0.91440094)
-bones/28/position = Vector3(2.636307, 0.22231102, 0.2949894)
 bones/30/rotation = Quaternion(-0.19578525, -0.014684119, -0.19575462, 0.960798)
 bones/35/rotation = Quaternion(-0.0069453483, 0.0064765997, 0.030040506, 0.9995036)
 bones/36/rotation = Quaternion(-0.054452613, 0.13216095, -0.18806504, 0.9716996)
@@ -27578,7 +27582,7 @@ bones/39/rotation = Quaternion(0.06246367, 0.13697846, -0.17759539, 0.97252)
 
 [node name="RightHand" type="BoneAttachment3D" parent="arms2/arms/Skeleton3D" index="1" unique_id=53198998]
 unique_name_in_owner = true
-transform = Transform3D(0.41462293, -0.58683395, 0.6954952, -0.8911246, -0.10700602, 0.44096082, -0.18434863, -0.8026049, -0.5673098, 1.3728507, -2.1984115, -2.5158587)
+transform = Transform3D(0.44081637, 0.026286801, 0.89721256, -0.89112467, -0.10700582, 0.44096076, 0.107598424, -0.9939103, -0.023745121, 4.053549, -2.073129, -1.7701346)
 bone_name = "socket.r"
 bone_idx = 20
 
@@ -27588,16 +27592,16 @@ visible = false
 
 [node name="LeftHand" type="BoneAttachment3D" parent="arms2/arms/Skeleton3D" index="2" unique_id=591314673]
 unique_name_in_owner = true
-transform = Transform3D(0.45968783, -0.40775236, -0.7889389, 0.52106273, -0.59554696, 0.61140585, -0.7191522, -0.6921428, -0.061301187, -1.710219, -3.5133717, -2.862718)
+transform = Transform3D(0.45968783, -0.40775236, -0.7889389, 0.52106273, -0.59554696, 0.61140585, -0.7191522, -0.6921428, -0.061301187, -4.9785094, -6.054299, -2.862718)
 bone_name = "socket.l"
 bone_idx = 45
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=781619882]
 transform = Transform3D(1, 0, 0, 0, -8.940697e-08, 1, 0, -1, -8.940697e-08, 0, 0, 0)
 
-[node name="fly_the_broom" parent="." unique_id=93656533 instance=ExtResource("4_t04jf")]
+[node name="fly_the_broom" parent="." unique_id=859679141 instance=ExtResource("4_t04jf")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.6011103, 0.7991661, 0, -0.7991661, 0.6011103, 0, -0.626945, 0)
+transform = Transform3D(-1, -6.9910655e-08, -5.2490403e-08, 0, 0.60042024, -0.79968464, 8.742278e-08, -0.79968464, -0.60042024, 0, -0.627, 0)
 visible = false
 
 [editable path="arms2"]

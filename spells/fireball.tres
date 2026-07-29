@@ -15,6 +15,7 @@ metadata_increase_ranges = Dictionary[int, Vector2]({
 2: Vector2(1, 1)
 })
 name = "Fireball I"
+description = "Rapidly shoots fireballs that can burn enemies. I can probably burn wood and heat up metal with this, too."
 icon = Rect2i(0, 0, -1, 0)
 equip_sound = "uid://drlx2vmomesda"
 usage_sound = "uid://dcum5vd7c0t7r"

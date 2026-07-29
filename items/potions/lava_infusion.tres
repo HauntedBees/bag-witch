@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Potion" format=3 uid="uid://i0s08jjfn7gf"]
+
+[ext_resource type="Script" uid="uid://ctw20egdhhpr" path="res://resource_types/items/potion.gd" id="1_xl36p"]
+
+[resource]
+script = ExtResource("1_xl36p")
+ability = 4
+duration = 15.0
+name = "Lava Infusion"
+description = "Drinking this potion will make me immune to fire and lava based attacks and increase my own fire abilities for 15 seconds. Made by cooking a Lava Slime with two pieces of food in a cauldron."
+type = 14
+icon = Rect2i(2, 9, 1, 1)
+scene_path = "uid://b0kq1w8v36oop"
+usage_sound = "uid://cyp3qdners030"
+discard_on_use = true
+equip_sprite_offset = Vector2i(4, 1)
+equipped_animation = &"FoodHold"
+use_animation = &"FoodEat"
+metadata/_custom_type_script = "uid://ctw20egdhhpr"

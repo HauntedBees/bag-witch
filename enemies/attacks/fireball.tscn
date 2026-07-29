@@ -70,6 +70,7 @@ flip_on_load = false
 end_on_hit = true
 knockback = 30.0
 additional_y_knockback = 2.0
+effect = 2
 damage_range = Vector2i(5, 15)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=958486120]

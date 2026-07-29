@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cxo2r2jswnrc0"]
 
 [ext_resource type="PackedScene" uid="uid://bkkdwla7pwp3s" path="res://environment/door.tscn" id="1_cu1nf"]
-[ext_resource type="PackedScene" uid="uid://dgsi18ril37qr" path="res://assets/models/skull.blend" id="2_r6swp"]
+[ext_resource type="PackedScene" uid="uid://dgsi18ril37qr" path="res://assets/models/environment/skull.blend" id="2_r6swp"]
 
 [node name="SkeletonDoor" type="Node3D" unique_id=1670362905]
 

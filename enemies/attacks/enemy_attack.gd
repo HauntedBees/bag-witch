@@ -15,6 +15,8 @@ class_name EnemyAttack extends Node3D
 ## How far the player should be knocked up (ayy lmao) when hit.  Should be a small number.
 @export var additional_y_knockback := 0.0
 
+@export var effect := BWEnum.Effect.None
+
 ## Set by attacker.
 var knockback_source := Vector3.ZERO
 
@@ -34,7 +36,8 @@ func _on_body_entered(body: Node3D) -> void:
 				randi_range(damage_range.x, damage_range.y),
 				knockback_source,
 				knockback,
-				additional_y_knockback
+				additional_y_knockback,
+				effect
 			)
 		else:
 			print("DODGED!")

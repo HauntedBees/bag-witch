@@ -49,6 +49,8 @@ func clear_all_but_safe(keep_equipped := true) -> void:
 	items_purged.emit()
 
 func get_random_item(include_equipped := false) -> InventoryDetail:
+	if items.size() == 0:
+		return null
 	var attempts := 5
 	while attempts > 0:
 		var item: InventoryDetail = items.pick_random()

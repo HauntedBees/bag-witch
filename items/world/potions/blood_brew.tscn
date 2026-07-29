@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://docpfalint7kx"]
+
+[ext_resource type="Script" uid="uid://b66jl5gw8dewc" path="res://items/world/world_item.gd" id="1_qbo01"]
+[ext_resource type="Resource" uid="uid://bcu7bqwmb222f" path="res://items/potions/blood_brew.tres" id="2_qbo01"]
+[ext_resource type="PackedScene" uid="uid://dehy57pu1m370" path="res://assets/models/items/potion_d.blend" id="3_qbo01"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rhbnc"]
+size = Vector3(0.73083496, 1.1538086, 0.6018677)
+
+[node name="BloodBrew" type="Area3D" unique_id=951298956 node_paths=PackedStringArray("collider")]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_qbo01")
+item = ExtResource("2_qbo01")
+collider = NodePath("CollisionShape3D")
+metadata/_custom_type_script = "uid://b66jl5gw8dewc"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=270526766]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.012878418, 0.5680735, -3.0517578e-05)
+shape = SubResource("BoxShape3D_rhbnc")
+
+[node name="potion_d" parent="." unique_id=1471516794 instance=ExtResource("3_qbo01")]

@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_svmu3")
 name = "Ice Golem"
-description = "An animated beast made of ice and snow. If you can get some flavorings in there, it'd probably taste pretty good."
+description = "Animated beasts made of ice and snow. If I could get some flavorings in there, I bet they'd probably taste pretty good!"
 type = 6
 size = Vector2i(4, 4)
 icon = Rect2i(11, 4, 4, 4)

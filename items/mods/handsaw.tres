@@ -5,8 +5,9 @@
 [resource]
 script = ExtResource("1_5wakb")
 name = "Handsaw"
-description = "I can cut other items in my bag with this."
+description = "I can cut other items in my bag with this by dragging it onto them."
 size = Vector2i(2, 1)
 icon = Rect2i(0, 3, 2, 1)
+scene_path = "uid://brhmvisll3d2q"
+is_saw = true
 custom_equip_scene = "uid://brhmvisll3d2q"
-metadata/_custom_type_script = "uid://bjji4dehurusi"

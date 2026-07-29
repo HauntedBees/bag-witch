@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://d1tslr26ralhm"]
+
+[ext_resource type="Texture2D" uid="uid://b5qihp8j0mtb0" path="res://assets/sprites/extra_life.png" id="1_eyc48"]
+
+[node name="Leaflet" type="TextureRect" unique_id=791825539]
+custom_minimum_size = Vector2(16, 16)
+texture = ExtResource("1_eyc48")

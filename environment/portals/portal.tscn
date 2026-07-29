@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dhlu6wawyieh5"]
 
-[ext_resource type="PackedScene" uid="uid://ogtdbm7k0f17" path="res://assets/models/portal.blend" id="1_aftk5"]
+[ext_resource type="PackedScene" uid="uid://ogtdbm7k0f17" path="res://assets/models/environment/portal.blend" id="1_aftk5"]
 [ext_resource type="Script" uid="uid://dvcflp1bg4tw3" path="res://environment/portals/portal.gd" id="1_va07s"]
 [ext_resource type="Shader" uid="uid://bxvg24o86je3n" path="res://assets/shaders/portal.gdshader" id="2_i0tqa"]
 

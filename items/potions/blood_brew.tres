@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Potion" format=3 uid="uid://bcu7bqwmb222f"]
+
+[ext_resource type="Script" uid="uid://ctw20egdhhpr" path="res://resource_types/items/potion.gd" id="1_wlgtm"]
+
+[resource]
+script = ExtResource("1_wlgtm")
+ability = 3
+metadata = 1
+duration = 30.0
+name = "Blood Brew"
+description = "Drinking this potion will permanently decrease my maximum health by 10, but make all of my attacks much stronger for 30 seconds. Made by cooking a person in a cauldron."
+type = 14
+icon = Rect2i(2, 9, 1, 1)
+scene_path = "uid://docpfalint7kx"
+usage_sound = "uid://cyp3qdners030"
+discard_on_use = true
+equip_sprite_offset = Vector2i(4, 1)
+equipped_animation = &"FoodHold"
+use_animation = &"FoodEat"
+metadata/_custom_type_script = "uid://ctw20egdhhpr"

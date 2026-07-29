@@ -39,7 +39,15 @@ import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={}
+_subresources={
+"materials": {
+"Magma": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://assets/levels/fire/lava_floor.tres",
+"use_external/path": "uid://cgn5a87b5uxyh"
+}
+}
+}
 blender/nodes/visible=0
 blender/nodes/active_collection_only=false
 blender/nodes/punctual_lights=true

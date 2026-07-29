@@ -6,7 +6,7 @@
 script = ExtResource("1_eav75")
 drinking_percentage_healed = 1.0
 name = "Potion of Life"
-description = "This potion will recover all of my health if I drink it. If I die while it's in my posession, it will automatically recover half of my health."
+description = "This potion will recover all of my health if I drink it. If I die while it's in my posession, it will automatically recover half of my health. Made by cooking three food items in a cauldron."
 type = 14
 icon = Rect2i(7, 5, 1, 1)
 first_get_text = "I should definitely keep these on hand... Life in a bottle!"

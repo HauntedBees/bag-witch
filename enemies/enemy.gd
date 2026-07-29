@@ -186,6 +186,10 @@ func receive_weapon_hit(source: Vector3, w: Weapon, has_impact_position := false
 		if diff >= _SNEAK_ANGLE:
 			sneak_attack = true
 			damage_mult *= 3
+	if effect_keys.has(BWEnum.Effect.Burn) && Player.data.has_potion_ability(Potion.Ability.LavaInfusion):
+		damage_mult *= 4
+	if Player.data.has_potion_ability(Potion.Ability.SuperPower):
+		damage_mult *= 3 * Player.data.get_potion_metadata(Potion.Ability.SuperPower, true)
 	var damage_dealt := damage_mult * randi_range(w.damage_range.x, w.damage_range.y)
 	if w is Bolt && randf() <= 0.1:
 		damage_dealt *= 100

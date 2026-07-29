@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://b7o0pdvrytkig" path="res://levels/enemy_spawner.gd" id="6_7xo41"]
 [ext_resource type="PackedScene" uid="uid://eq158w8w1hls" path="res://enemies/fire/key_fire_smile.tscn" id="7_5rrxe"]
 [ext_resource type="PackedScene" uid="uid://j6ijx2yvkafq" path="res://enemies/fire/fire_slime.tscn" id="8_5rrxe"]
+[ext_resource type="Script" uid="uid://u8o4b2ewwqbc" path="res://levels/fire_world/special_lava.gd" id="9_1yfyx"]
 [ext_resource type="Script" uid="uid://lylfqtt7t8e6" path="res://levels/level_border.gd" id="9_80h6e"]
 [ext_resource type="Script" uid="uid://wp1mdoed06xj" path="res://levels/quick_cutscene.gd" id="10_snvax"]
 [ext_resource type="Script" uid="uid://bh3e52s7bb0by" path="res://environment/portals/warp_point.gd" id="10_u8j4s"]
@@ -91,21 +92,21 @@ point_count = 12
 
 [sub_resource type="Environment" id="Environment_u7iwl"]
 
-[sub_resource type="World3D" id="World3D_1yfyx"]
+[sub_resource type="World3D" id="World3D_euduq"]
 resource_local_to_scene = true
 environment = SubResource("Environment_u7iwl")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kbimt"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1yfyx"]
 resource_local_to_scene = true
 atlas = ExtResource("19_ht1gs")
 region = Rect2(512, 256, 256, 256)
 filter_clip = true
 
-[sub_resource type="World3D" id="World3D_twyxu"]
+[sub_resource type="World3D" id="World3D_kbimt"]
 resource_local_to_scene = true
 environment = SubResource("Environment_u7iwl")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vqai3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_twyxu"]
 resource_local_to_scene = true
 atlas = ExtResource("19_ht1gs")
 region = Rect2(768, 256, 256, 256)
@@ -113,11 +114,11 @@ filter_clip = true
 
 [sub_resource type="Environment" id="Environment_4bsba"]
 
-[sub_resource type="World3D" id="World3D_b87om"]
+[sub_resource type="World3D" id="World3D_vqai3"]
 resource_local_to_scene = true
 environment = SubResource("Environment_4bsba")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6rvlv"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_b87om"]
 resource_local_to_scene = true
 atlas = ExtResource("19_ht1gs")
 region = Rect2(512, 0, 256, 256)
@@ -166,6 +167,15 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LavaFloor" unique_id=932867734]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -19.733871, 0)
 shape = SubResource("CylinderShape3D_rhbnc")
+
+[node name="SpecialLava" type="StaticBody3D" parent="." unique_id=213143004]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.547119, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SpecialLava" unique_id=1100534987]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -14, 0)
+shape = SubResource("CylinderShape3D_rhbnc")
+disabled = true
+script = ExtResource("9_1yfyx")
 
 [node name="SlimeSpawnerBottom" type="Node3D" parent="." unique_id=1913732965 node_paths=PackedStringArray("potential_spawn_points", "enemy_point_collection", "spawn_container")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 89, 0)
@@ -260,10 +270,10 @@ teleport_scene = "uid://dkgap8kw2cyfc"
 teleport_point_name = "SideRoom"
 
 [node name="PortalSubviewportExternal" parent="CastleWarp_SideRoom" index="1" unique_id=389194511]
-world_3d = SubResource("World3D_1yfyx")
+world_3d = SubResource("World3D_euduq")
 
 [node name="Sprite3D" parent="CastleWarp_SideRoom/PortalSubviewportExternal" index="1" unique_id=923265973]
-texture = SubResource("AtlasTexture_kbimt")
+texture = SubResource("AtlasTexture_1yfyx")
 
 [node name="CastleWarp_TopArea" parent="." unique_id=870096478 instance=ExtResource("18_1swv2")]
 transform = Transform3D(0.481663, 0, 0.87635654, 0, 1, 0, -0.87635654, 0, 0.481663, -19.76175, 43.768524, -69.499374)
@@ -274,10 +284,10 @@ teleport_scene = "uid://dkgap8kw2cyfc"
 teleport_point_name = "TopArea"
 
 [node name="PortalSubviewportExternal" parent="CastleWarp_TopArea" index="1" unique_id=389194511]
-world_3d = SubResource("World3D_twyxu")
+world_3d = SubResource("World3D_kbimt")
 
 [node name="Sprite3D" parent="CastleWarp_TopArea/PortalSubviewportExternal" index="1" unique_id=923265973]
-texture = SubResource("AtlasTexture_vqai3")
+texture = SubResource("AtlasTexture_twyxu")
 
 [node name="IceWarp_Ferm" parent="." unique_id=1843832751 instance=ExtResource("18_1swv2")]
 transform = Transform3D(0.42261824, 0, -0.9063078, 0, 1, 0, 0.9063078, 0, 0.42261824, -107.720894, 7.2894516, 129.68338)
@@ -287,10 +297,10 @@ teleport_scene = "uid://b8knls82eve"
 teleport_point_name = "FermanaghWarp"
 
 [node name="PortalSubviewportExternal" parent="IceWarp_Ferm" index="1" unique_id=389194511]
-world_3d = SubResource("World3D_b87om")
+world_3d = SubResource("World3D_vqai3")
 
 [node name="Sprite3D" parent="IceWarp_Ferm/PortalSubviewportExternal" index="1" unique_id=923265973]
-texture = SubResource("AtlasTexture_6rvlv")
+texture = SubResource("AtlasTexture_b87om")
 
 [node name="TheGround" type="RayCast3D" parent="." unique_id=989709324]
 transform = Transform3D(-0.57357645, 0, -0.819152, 0, 1, 0, 0.819152, 0, -0.57357645, -112.67836, 17.920715, -120.414566)

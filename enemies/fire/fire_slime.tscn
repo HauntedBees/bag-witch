@@ -88,7 +88,7 @@ script = ExtResource("4_nihj0")
 attack_anims = Array[StringName]([&"Attack"])
 close_enough_radius = NodePath("../CloseEnough")
 attack_y_offset = 0.8
-attack_scene = "uid://b550rngva186a"
+attack_scene = "uid://pc6vni2tvv6p"
 priority = 2
 
 [node name="EnemyAlertFriends" type="Node" parent="." unique_id=466831532]

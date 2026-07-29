@@ -2,13 +2,13 @@ class_name CauldronRecipe extends Resource
 
 @export_custom(SRP_HINT.RESOURCE_PATH, "Item") var output: String
 
-@export_custom(SRP_HINT.RESOURCE_PATH, "PackedScene") var item_1_path: String
+@export_custom(SRP_HINT.RESOURCE_PATH, "Item") var item_1_path: String
 @export var item_1_type := Item.ItemType.None
 
-@export_custom(SRP_HINT.RESOURCE_PATH, "PackedScene") var item_2_path: String
+@export_custom(SRP_HINT.RESOURCE_PATH, "Item") var item_2_path: String
 @export var item_2_type := Item.ItemType.None
 
-@export_custom(SRP_HINT.RESOURCE_PATH, "PackedScene") var item_3_path: String
+@export_custom(SRP_HINT.RESOURCE_PATH, "Item") var item_3_path: String
 @export var item_3_type := Item.ItemType.None
 
 var _cached_checks: Array[Callable] = []
@@ -44,8 +44,9 @@ func _ensure_cache() -> void:
 		checks.append(_path_check.bind(ResourceUID.path_to_uid(item_3_path)))
 	_cached_checks = checks
 
+## True if types match, or if specified type is "None"
 func _type_check(wi: WorldItem, t: Item.ItemType) -> bool:
-	return wi.item.type == t
+	return wi.item.type == t || t == Item.ItemType.None
 
 func _path_check(wi: WorldItem, uid: String) -> bool:
 	return wi.item.resource_path == uid

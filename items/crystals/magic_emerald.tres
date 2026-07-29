@@ -6,7 +6,7 @@
 script = ExtResource("1_byok2")
 stat = 2
 name = "Magic Emerald"
-description = "Magic Emeralds can increase your Magic stat, making your spells more powerful and allowing you to learn advanced versions of spells."
+description = "Magic Emeralds can increase my Magic stat, making my spells more powerful and allowing me to learn advanced versions of spells. I can combine them by dragging and dropping them on top of each other."
 type = 10
 icon = Rect2i(1, 2, 1, 1)
 first_get_text = "If I combine enough of these shards, I can permanently improve my Magic..."

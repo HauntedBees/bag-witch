@@ -302,12 +302,7 @@ autoplay = &"speed"
 
 [node name="ArmsOverlay" parent="HUDLayer/HUD" unique_id=938030434 instance=ExtResource("14_8kajx")]
 unique_name_in_owner = true
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
+layout_mode = 1
 texture = SubResource("ViewportTexture_85h7n")
 
 [node name="Crosshair" type="CenterContainer" parent="HUDLayer/HUD" unique_id=1562813601]

@@ -6,7 +6,7 @@
 script = ExtResource("1_10j5m")
 stat = 1
 name = "Power Ruby"
-description = "Power Rubies can increase your Strength stat, increasing your max health, strengthening melee attacks, and allowing you to pick up heavier things to put in your bag."
+description = "Power Rubies can increase my Strength stat, increasing my maximum health, strengthening melee attacks, and allowing me to pick up heavier things to put in my bag. I can combine them by dragging and dropping them on top of each other."
 type = 10
 icon = Rect2i(2, 2, 1, 1)
 first_get_text = "If I combine enough of these shards, I can permanently improve my Strength..."

@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cgu4sixaxb4y1"]
+
+[ext_resource type="Script" uid="uid://b66jl5gw8dewc" path="res://items/world/world_item.gd" id="1_mrgeo"]
+[ext_resource type="Resource" uid="uid://ta6ljvq68i7w" path="res://items/potions/bone_broth.tres" id="2_mrgeo"]
+[ext_resource type="PackedScene" uid="uid://dgtun7lted61y" path="res://assets/models/items/potion_e.blend" id="3_mrgeo"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rhbnc"]
+size = Vector3(0.73083496, 0.4777832, 0.6018677)
+
+[node name="BoneBroth" type="Area3D" unique_id=951298956 node_paths=PackedStringArray("collider")]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_mrgeo")
+item = ExtResource("2_mrgeo")
+collider = NodePath("CollisionShape3D")
+metadata/_custom_type_script = "uid://b66jl5gw8dewc"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=270526766]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.012878418, 0.23006082, -3.0517578e-05)
+shape = SubResource("BoxShape3D_rhbnc")
+
+[node name="potion_e" parent="." unique_id=740591503 instance=ExtResource("3_mrgeo")]

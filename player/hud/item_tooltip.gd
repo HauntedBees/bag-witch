@@ -7,6 +7,13 @@ var item: InventoryDetail:
 			await ready
 		_update_item()
 
+var spell: Spell:
+	set(value):
+		spell = value
+		if !is_inside_tree():
+			await ready
+		_update_spell()
+
 @onready var _title: GASLabel = %Title
 @onready var _description: GASRichTextLabel = %Description
 
@@ -34,7 +41,22 @@ func _update_item() -> void:
 		_ammo_count.visible = false
 		_ammo_icon.visible = false
 	_is_mergeable.visible = i.is_mergeable()
-	await get_tree().process_frame
+	await get_tree().process_frame # this doesn't work anymore :(
+	var p := get_parent()
+	if p is PopupPanel:
+		p.size = Vector2i.ZERO
+		p.reset_size()
+
+func _update_spell() -> void:
+	if spell == null:
+		return
+	_title.text = spell.name
+	_description.text = spell.description
+	_type_icon_tex.region.position = 16.0 * spell.equip_sprite_offset
+	_ammo_count.visible = false
+	_ammo_icon.visible = false
+	_is_mergeable.visible = false
+	await get_tree().process_frame # this doesn't work anymore :(
 	var p := get_parent()
 	if p is PopupPanel:
 		p.size = Vector2i.ZERO

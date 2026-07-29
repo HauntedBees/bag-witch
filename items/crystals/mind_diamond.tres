@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_s6tkl")
 name = "Mind Diamond"
-description = "Mind Diamonds can increase your Mind stat, allowing you to combine more items in your inventory, and letting you remember spells longer when losing spellbooks or warping to new areas."
+description = "Mind Diamonds can increase my Mind stat, allowing me to combine more items in my bag, and letting me remember spells longer when losing spellbooks or warping to new areas. I can combine them by dragging and dropping them on top of each other."
 type = 10
 icon = Rect2i(4, 2, 1, 1)
 first_get_text = "If I combine enough of these shards, I can permanently improve my Mind..."

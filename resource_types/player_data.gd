@@ -92,6 +92,16 @@ func has_potion_ability(ability: Potion.Ability) -> bool:
 			return true
 	return false
 
+func get_potion_metadata(ability: Potion.Ability, additive: bool) -> int:
+	var sum := 0
+	for p: Potion in active_potions.keys():
+		if p.ability == ability:
+			if additive:
+				sum += p.metadata
+			else:
+				return p.metadata
+	return sum
+
 func death_wipe() -> void:
 	_remembered_spell = null
 	_remembered_spell_ammo = 0

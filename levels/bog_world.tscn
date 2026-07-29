@@ -19,7 +19,7 @@
 [ext_resource type="Resource" uid="uid://bo2r1oepd3xvs" path="res://items/fuckin_whatever/cutscene_book.tres" id="15_vkem0"]
 [ext_resource type="PackedScene" uid="uid://fki16hjn3l7f" path="res://levels/bog_world/bad_guy_arm.tscn" id="16_i8cbu"]
 [ext_resource type="PackedScene" uid="uid://6acxbkqxmdrn" path="res://assets/models/enemies/queen_i.blend" id="18_lirpi"]
-[ext_resource type="PackedScene" uid="uid://cen6t4vxoxv6u" path="res://assets/models/knight.blend" id="19_6yunu"]
+[ext_resource type="PackedScene" uid="uid://cen6t4vxoxv6u" path="res://assets/models/enemies/knight.blend" id="19_6yunu"]
 [ext_resource type="Script" uid="uid://bpjdbd3v8hbkm" path="res://levels/lazy_anim.gd" id="20_0yn3c"]
 [ext_resource type="AnimationLibrary" uid="uid://ce56a4127anc5" path="res://assets/animations/Rig_Medium_General.glb" id="20_t35t8"]
 [ext_resource type="AnimationLibrary" uid="uid://ntjgewrphs02" path="res://assets/animations/Rig_Medium_MovementBasic.glb" id="21_0yn3c"]

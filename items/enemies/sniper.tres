@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_a32o1")
 name = "Marksman"
-description = "Shrouded in leaves, this stealthy sniper needs to be dealt with quickly."
+description = "Shrouded in leaves, these stealthy snipers needs to be dealt with quickly."
 type = 6
 size = Vector2i(3, 6)
 icon = Rect2i(8, 0, 3, 2)

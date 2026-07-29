@@ -17,6 +17,7 @@ metadata_increase_ranges = Dictionary[int, Vector2]({
 3: Vector2(1, 1)
 })
 name = "Bolt II"
+description = "Shoots lightning bolts that briefly stun enemies, and do a little bit of damage. But sometimes? Sometimes it do a lottle bunch of damage."
 icon = Rect2i(0, 0, -1, 0)
 equip_sound = "uid://iq53y7x7d4os"
 usage_sound = "uid://qqke0k61xvnt"

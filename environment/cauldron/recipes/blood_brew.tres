@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CauldronRecipe" format=3 uid="uid://bftgv68ri4k8a"]
+
+[ext_resource type="Script" uid="uid://wbaxe261gvyn" path="res://environment/cauldron/cauldron_recipe.gd" id="1_fuahu"]
+
+[resource]
+script = ExtResource("1_fuahu")
+output = "uid://bcu7bqwmb222f"
+item_1_type = 7
+metadata/_custom_type_script = "uid://wbaxe261gvyn"

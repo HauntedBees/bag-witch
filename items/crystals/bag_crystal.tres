@@ -6,7 +6,7 @@
 script = ExtResource("1_1laa2")
 stat = 3
 name = "Bag Crystal"
-description = "Bag Crystals can increase your Bag stat, increasing your magic bag's carrying capacity and warp-safe pouch size."
+description = "Bag Crystals can increase my Bag stat, increasing my magic bag's carrying capacity and warp-safe pouch size. I can combine them by dragging and dropping them on top of each other."
 type = 10
 icon = Rect2i(5, 2, 1, 1)
 first_get_text = "If I combine enough of these shards, I can permanently improve my Bag..."

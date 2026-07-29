@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cgn5a87b5uxyh"]
+
+[ext_resource type="Texture2D" uid="uid://cf2sm5v4fmud" path="res://assets/levels/fire/fire_volcano_floor.png" id="1_ptf3r"]
+
+[resource]
+albedo_texture = ExtResource("1_ptf3r")
+texture_filter = 0

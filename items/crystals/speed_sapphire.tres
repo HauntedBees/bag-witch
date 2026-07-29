@@ -6,7 +6,7 @@
 script = ExtResource("1_vb36o")
 stat = 4
 name = "Speed Sapphire"
-description = "Speed Sapphires can increase your Speed stat, increasing your running speed, wall-running and jumping abilities, and the odds of randomly dodging enemy attacks."
+description = "Speed Sapphires can increase my Speed stat, increasing my running speed, wall-running and jumping abilities, and the odds of randomly dodging enemy attacks. I can combine them by dragging and dropping them on top of each other."
 type = 10
 icon = Rect2i(3, 2, 1, 1)
 first_get_text = "If I combine enough of these shards, I can permanently improve my Speed..."

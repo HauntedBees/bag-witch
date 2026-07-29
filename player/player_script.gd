@@ -213,8 +213,10 @@ func take_damage_from_weapon(w: Weapon, knockback_source: Vector3) -> void:
 func _on_hand_damage(amount: int) -> void:
 	take_damage(amount)
 
-func take_damage(damage: int, knockback_source := Vector3.ZERO, knockback := 0.0, additional_y_knockback := 0.0) -> void:
-	if knockback_source != Vector3.ZERO && Player.data.current_equipped != null && Player.data.current_equipped_item() is EnemyItem:
+func take_damage(damage: int, knockback_source := Vector3.ZERO, knockback := 0.0, additional_y_knockback := 0.0, effect := BWEnum.Effect.None) -> void:
+	if Player.data.has_potion_ability(Potion.Ability.LavaInfusion) && effect == BWEnum.Effect.Burn:
+		damage = -1
+	elif knockback_source != Vector3.ZERO && Player.data.current_equipped != null && Player.data.current_equipped_item() is EnemyItem:
 		var knockback_dir := global_position.direction_to(knockback_source)
 		if get_front_direction(true).dot(knockback_dir) >= 0.8:
 			var meat := Player.data.current_equipped
@@ -234,7 +236,7 @@ func take_damage(damage: int, knockback_source := Vector3.ZERO, knockback := 0.0
 	elif damage < 0:
 		Player.recover_health(-damage)
 	var drop_chance := 0.01 + (damage / (Player.data.max_health * 1.5))
-	if randf() <= drop_chance:
+	if damage > 0 && randf() <= drop_chance:
 		_play_sound("uid://cuke0m0ydhchd", true)
 		var item := Player.data.inventory.get_random_item()
 		if item != null:

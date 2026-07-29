@@ -9,7 +9,11 @@ func _ready() -> void:
 
 func _on_body_entered(body: Node3D) -> void:
 	if body is BogWitch:
-		body.take_damage(999)
+		var attempts := 45
+		while Player.data.current_health > 0 && attempts > 0:
+			body.take_damage(999)
+			attempts -= 1
+		# if you somehow survive even after a full inventory of potions of life is emptied, sure. you can live.
 	elif body is LavaSlime:
 		body.lava_up()
 	elif body is EnemyDisplay:
