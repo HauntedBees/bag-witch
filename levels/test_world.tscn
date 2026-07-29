@@ -41,6 +41,7 @@
 [ext_resource type="PackedScene" uid="uid://cgu4sixaxb4y1" path="res://items/world/potions/bone_broth.tscn" id="38_7twur"]
 [ext_resource type="PackedScene" uid="uid://b0kq1w8v36oop" path="res://items/world/potions/lava_infusion.tscn" id="39_ecfv7"]
 [ext_resource type="PackedScene" uid="uid://b7kthsncg8yug" path="res://items/world/weapons/skeleton.tscn" id="40_akbr8"]
+[ext_resource type="PackedScene" uid="uid://nhixgopg3rk5" path="res://items/world/food/pineapple.tscn" id="42_l2iij"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_pkut4"]
 panorama = ExtResource("3_8gbf0")
@@ -400,6 +401,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0870676, 0.25784582, -5.239
 
 [node name="Skeleton" parent="." unique_id=1693842689 instance=ExtResource("40_akbr8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2747412, 0.50079215, 0.89608526)
+
+[node name="Pineapple" parent="." unique_id=933644729 instance=ExtResource("42_l2iij")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.636097, 0.25, -3.2811613)
 
 [editable path="ViewCastlePrison"]
 [editable path="ViewPortalFirePineRing"]

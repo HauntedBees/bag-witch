@@ -409,7 +409,7 @@ func _can_place(id: InventoryDetail, new_positions: Array[Vector2i]) -> bool:
 			if existing_id == null || existing_id == id:
 				continue
 			if existing_id.item.can_be_combined(existing_id, id):
-				continue
+				return true
 			if existing_id != id:
 				return false
 		else:
