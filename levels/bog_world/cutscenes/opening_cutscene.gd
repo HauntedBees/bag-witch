@@ -38,7 +38,7 @@ func _init_cutscene() -> void:
 
 func _on_lunged() -> void:
 	SignalBus.change_song.emit(suspense_song, 0.125)
-	SignalBus.play_sound.emit(load("uid://bmv1b4cdwafq5"))
+	SignalBus.play_sound.emit(load("uid://bmv1b4cdwafq5"), false)
 	Player.equip_changed.emit(null)
 	animals.queue_free()
 	animals = null
