@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://dcbw1l051fcok" path="res://items/world/crystals/power_ruby.tscn" id="18_rds3k"]
 [ext_resource type="PackedScene" uid="uid://bojcp628rd3l4" path="res://environment/cauldron/cauldron.tscn" id="19_m0yv4"]
 [ext_resource type="Script" uid="uid://wp1mdoed06xj" path="res://levels/quick_cutscene.gd" id="20_qm5vt"]
+[ext_resource type="Script" uid="uid://fsfuu68avi00" path="res://levels/generational_item_spawner.gd" id="25_0kdgp"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_phqu4"]
 panorama = ExtResource("5_1sf01")
@@ -76,6 +77,13 @@ resource_local_to_scene = true
 atlas = ExtResource("16_vdsrt")
 region = Rect2(256, 512, 256, 256)
 filter_clip = true
+
+[sub_resource type="Curve3D" id="Curve3D_ana2s"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -21.17389, 1.934082, 54.70349, 0, 0, 0, 0, 0, 0, 9.383362, 1.934082, 61.324646, 0, 0, 0, 0, 0, 0, 51.69055, 1.934082, 23.601135, 0, 0, 0, 0, 0, 0, 55.565796, 1.9342041, 2.559143, 0, 0, 0, 0, 0, 0, 41.75177, 1.9342041, -30.342194, 0, 0, 0, 0, 0, 0, 28.185303, 1.934082, -38.500847, 0, 0, 0, 0, 0, 0, -4.904434, 1.934082, -45.565918, 0, 0, 0, 0, 0, 0, -30.273346, 1.93396, -33.53528, 0, 0, 0, 0, 0, 0, -31.764923, 1.9342041, -103.91846, 0, 0, 0, 0, 0, 0, -40.957886, 12.317993, 32.629944, 0, 0, 0, 0, 0, 0, 18.459106, 6.8624268, -38.634277, 0, 0, 0, 0, 0, 0, 43.873596, 10.559692, -15.795349, 0, 0, 0, 0, 0, 0, 35.83203, 15.672241, 10.277161, 0, 0, 0, 0, 0, 0, 23.439331, 9.041992, 44.96927),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 14
 
 [node name="ForestWorld" type="Node3D" unique_id=101979317]
 script = ExtResource("1_of2v7")
@@ -228,7 +236,7 @@ script = ExtResource("14_33dhx")
 metadata/_custom_type_script = "uid://bh3e52s7bb0by"
 
 [node name="TheTree" type="RayCast3D" parent="." unique_id=2132112382]
-transform = Transform3D(-0.7765652, 0, 0.6300369, 0, 1, 0, -0.6300369, 0, -0.7765652, 54.047363, 184.94032, -56.981567)
+transform = Transform3D(-0.7765652, 0, 0.6300369, 0, 1, 0, -0.6300369, 0, -0.7765652, 13.151646, 184.94032, -56.981567)
 target_position = Vector3(0, 0, -20)
 script = ExtResource("14_33dhx")
 metadata/_custom_type_script = "uid://bh3e52s7bb0by"
@@ -289,6 +297,17 @@ world_3d = SubResource("World3D_fxpe0")
 
 [node name="Sprite3D" parent="Portal-IceDerry/PortalSubviewportExternal" index="1" unique_id=923265973]
 texture = SubResource("AtlasTexture_se7pp")
+
+[node name="GenerationalItemSpawner" type="Node" parent="." unique_id=1962803145 node_paths=PackedStringArray("potential_spawn_points")]
+script = ExtResource("25_0kdgp")
+potential_spawn_points = NodePath("../ItemPoints")
+spawn_amount_range = Vector2i(2, 4)
+metadata/_custom_type_script = "uid://fsfuu68avi00"
+
+[node name="ItemPoints" type="Path3D" parent="." unique_id=1548357967]
+curve = SubResource("Curve3D_ana2s")
+script = ExtResource("7_l0ssa")
+metadata/_custom_type_script = "uid://bn3r43bitaf3i"
 
 [editable path="Portal-FireGround"]
 [editable path="Portal-FireGround/PortalSubviewportExternal"]

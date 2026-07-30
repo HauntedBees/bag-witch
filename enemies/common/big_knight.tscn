@@ -39,7 +39,7 @@ max_health = 500
 damage_stun_time = 0.1
 weaknesses = Array[int]([2])
 weakness_multiplier = 5
-bounding_box = NodePath("BoundingBox")
+bounding_box = NodePath("Area3D/BoundingBox")
 animation_player = NodePath("big_knight/AnimationPlayer")
 idle_anims = Array[StringName]([&"Idle", &"Idle_B", &"Idle_Combat"])
 hit_anim = &"Hit_A"
@@ -183,7 +183,11 @@ damage_range = Vector2i(50, 60)
 attack_scene = "uid://b550rngva186a"
 priority = 2
 
-[node name="BoundingBox" type="CollisionShape3D" parent="." unique_id=1812678119]
+[node name="Area3D" type="Area3D" parent="." unique_id=879588098]
+collision_layer = 14
+monitoring = false
+
+[node name="BoundingBox" type="CollisionShape3D" parent="Area3D" unique_id=1812678119]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2008884, 0)
 shape = SubResource("BoxShape3D_rhbnc")
 

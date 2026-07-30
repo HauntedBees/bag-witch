@@ -45,6 +45,7 @@ max_health = 400
 bounding_box = NodePath("BoundingBox")
 animation_player = NodePath("marksman/AnimationPlayer")
 idle_anims = Array[StringName]([&"Rig_Medium_General/Death_B_Pose"])
+animal_spawn_count = 2
 
 [node name="marksman" parent="." unique_id=555136812 instance=ExtResource("5_fk44x")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)

@@ -246,6 +246,8 @@ func take_damage(damage: int, knockback_source := Vector3.ZERO, knockback := 0.0
 		var dir := global_position.direction_to(knockback_source)
 		velocity -= dir * knockback
 		velocity.y += additional_y_knockback
+	if Player.data.current_health <= 0:
+		arms_overlay.arms.broomage.visible = false
 
 func get_front_direction(normalized := true) -> Vector3:
 	var dir := _front_check.to_global(_front_check.target_position) - _front_check.global_position
@@ -273,6 +275,11 @@ func _handle_front_raycast() -> void:
 	if obj is not Node:
 		return
 	var obj_parent := (obj as Node).get_parent()
+	# laziness due last-minute realization that BoundingBoxes need to be under Area3Ds
+	# only actually implementing for big enemies because everyone else is small enough
+	# for it to not matter.
+	if obj is Area3D && obj_parent != null && obj_parent is EnemyDisplay:
+		obj = obj_parent
 	var found_something := false
 	if obj is WorldItem:
 		if obj.global_position.distance_to(global_position) <= _max_grab_distance:

@@ -1,6 +1,8 @@
 @tool
 extends GridMap
 
+@export var _wall_height_mult := 1.0
+
 ## Points that need to be logging when generating things, for debugging purposes.
 const _DEBUG_LOGGIES: Array[Vector3] = [Vector3(9.0, 0.0, -17.0)]
 
@@ -75,9 +77,9 @@ func _bake() -> void:
 		var b := CSGBox3D.new()
 		var line_length := l.length()
 		if l.direction == Vector3.RIGHT:
-			b.size = _SCALE * Vector3(line_length, _WALL_HEIGHT, 0.5)
+			b.size = _SCALE * Vector3(line_length, _wall_height_mult * _WALL_HEIGHT, 0.5)
 		else:
-			b.size = _SCALE * Vector3(0.5, _WALL_HEIGHT, line_length)
+			b.size = _SCALE * Vector3(0.5, _wall_height_mult * _WALL_HEIGHT, line_length)
 		b.name = "%s%d" % [_NAME, i]
 		b.position = l.center()
 		combiner.add_child(b)

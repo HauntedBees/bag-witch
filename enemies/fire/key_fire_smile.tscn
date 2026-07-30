@@ -42,6 +42,7 @@ idle_anims = Array[StringName]([&"IDLE"])
 hit_anim = &"Attack"
 big_hit_anim = &"Attack"
 die_anims = Array[StringName]([&"Attack"])
+animal_spawn_count = 0
 
 [node name="lava_slime_key" parent="." unique_id=1954922517 instance=ExtResource("2_cfx7n")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.771225, 0)

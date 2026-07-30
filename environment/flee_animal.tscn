@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://dv85nim1mtt6w"]
+
+[ext_resource type="Texture2D" uid="uid://4uhnd1isql2t" path="res://assets/sprites/animals_and_theyre_lucky.png" id="1_ifhxl"]
+[ext_resource type="Script" uid="uid://nmceg4wrsube" path="res://environment/flee_animal.gd" id="1_vlmvg"]
+[ext_resource type="Texture2D" uid="uid://4pwqiadp0p6m" path="res://assets/sprites/shadow.png" id="2_vlmvg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qiwh6"]
+resource_local_to_scene = true
+atlas = ExtResource("1_ifhxl")
+region = Rect2(0, 0, 16, 16)
+filter_clip = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mkopk"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+shading_mode = 0
+albedo_texture = ExtResource("2_vlmvg")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_uh601"]
+material = SubResource("StandardMaterial3D_mkopk")
+size = Vector2(0.25, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vlmvg"]
+size = Vector3(0.25, 0.25, 0.25)
+
+[node name="FleeAnimal" type="RigidBody3D" unique_id=619181384]
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+script = ExtResource("1_vlmvg")
+
+[node name="Container" type="Node3D" parent="." unique_id=1218851474]
+
+[node name="Sprite3D" type="Sprite3D" parent="Container" unique_id=1274734977]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.970971, 0)
+pixel_size = 0.02
+billboard = 1
+texture_filter = 0
+texture = SubResource("AtlasTexture_qiwh6")
+
+[node name="Shadow" type="MeshInstance3D" parent="Container" unique_id=267679138]
+unique_name_in_owner = true
+transform = Transform3D(0.5145145, 0, 0, 0, 0.5145145, 0, 0, 0, 0.5145145, 0, 0.14324951, 0)
+mesh = SubResource("PlaneMesh_uh601")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=799256718]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.13106, 0)
+shape = SubResource("BoxShape3D_vlmvg")

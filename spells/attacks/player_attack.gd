@@ -13,6 +13,7 @@ var knockback_source := Vector3.ZERO
 
 func _ready() -> void:
 	area.body_entered.connect(_on_body_entered)
+	area.area_entered.connect(_on_area_3d_area_entered)
 	anim.animation_finished.connect(_on_animation_finished)
 	if weapon is SwingItem:
 		anim.speed_scale = weapon.swing_animation_speed
@@ -32,3 +33,10 @@ func _on_body_entered(body: Node3D) -> void:
 
 func _on_animation_finished(_name: StringName) -> void:
 	queue_free()
+
+func _on_area_3d_area_entered(hit_area: Area3D) -> void:
+	if hit_area is CanBeHurtBox:
+		hit_area.receive_hit(weapon)
+		if end_on_hit:
+			queue_free()
+		return

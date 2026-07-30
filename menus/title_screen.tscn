@@ -20,6 +20,8 @@
 [ext_resource type="AudioStream" uid="uid://cewvxksps4wjt" path="res://assets/sounds/error.wav" id="18_864al"]
 [ext_resource type="AudioStream" uid="uid://b12dm3svf6ffc" path="res://assets/sounds/back.wav" id="19_a0bkl"]
 [ext_resource type="AudioStream" uid="uid://uadyiivv3i2c" path="res://assets/sounds/cursor.wav" id="20_g2kaq"]
+[ext_resource type="Script" uid="uid://5p6g43op2pwu" path="res://menus/cheat_code_manager.gd" id="21_jtp7x"]
+[ext_resource type="AudioStream" uid="uid://dy2p7a5dyhn7e" path="res://assets/sounds/684472__protopines__1.wav" id="22_864al"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dpr3f"]
 atlas = ExtResource("1_dpr3f")
@@ -386,6 +388,10 @@ stream = ExtResource("19_a0bkl")
 unique_name_in_owner = true
 stream = ExtResource("20_g2kaq")
 
+[node name="CheatCodeManager" type="AudioStreamPlayer" parent="." unique_id=437106312]
+stream = ExtResource("22_864al")
+script = ExtResource("21_jtp7x")
+
 [connection signal="mouse_entered" from="MarginContainer3/HBoxContainer/NewGame" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="MarginContainer3/HBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
 [connection signal="mouse_entered" from="MarginContainer3/HBoxContainer/Continue" to="." method="_on_button_mouse_entered"]
@@ -398,3 +404,4 @@ stream = ExtResource("20_g2kaq")
 [connection signal="closed" from="SaveScreen" to="." method="_on_save_screen_closed"]
 [connection signal="load_save" from="SaveScreen" to="." method="_on_save_screen_load_save"]
 [connection signal="closed" from="CreditsMenu" to="." method="_on_credits_menu_closed"]
+[connection signal="level_select_triggered" from="CheatCodeManager" to="." method="_on_cheat_code_manager_level_select_triggered"]

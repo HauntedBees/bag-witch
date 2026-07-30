@@ -105,7 +105,11 @@ func get_potion_metadata(ability: Potion.Ability, additive: bool) -> int:
 func death_wipe() -> void:
 	_remembered_spell = null
 	_remembered_spell_ammo = 0
-	inventory.clear_all_but_safe(false)
+	current_equipped = null
+	for i in equip_slots.size():
+		equip_slots[i] = null
+	inventory.clear_all()
+	Player.equip_changed.emit(null)
 
 func portal_wipe() -> void:
 	_retain_current_spell()

@@ -1,5 +1,6 @@
 class_name EnemyDisplay extends CharacterBody3D
 
+const _ANIMAL_SCENE := preload("uid://dv85nim1mtt6w")
 const _SNEAK_ANGLE := PI / 2.5
 const _POP_SOUND := preload("uid://cuke0m0ydhchd")
 
@@ -72,6 +73,8 @@ signal on_effect_applied(e: BWEnum.Effect, level: int)
 @export var big_hit_anim: StringName
 
 @export var die_anims: Array[StringName] = []
+
+@export var animal_spawn_count := 1
 
 @export_category("Sounds")
 
@@ -216,14 +219,19 @@ func receive_weapon_hit(source: Vector3, w: Weapon, has_impact_position := false
 	if health <= 0:
 		_die()
 
+func _handle_knockback() -> void:
+	pass
+
 func _get_angle_diff(pos: Vector3) -> float:
 	var my_dir := -transform.basis.z
 	var target_dir := global_position.direction_to(pos)
 	target_dir.y = 0.0
 	return my_dir.angle_to(target_dir)
 
-func _die(drop_item := true) -> void:
-	if drop_item:
+## "from_being_killed" as opposed to from being dropped as a corpse from inventory
+func _die(from_being_killed := true) -> void:
+	if from_being_killed:
+		_try_animal_spawn()
 		_try_drop()
 		if death_sound == null:
 			death_sound = load("uid://bpbt3oy3ft77s")
@@ -231,6 +239,14 @@ func _die(drop_item := true) -> void:
 		_sound.play()
 	set_collision_layer_value(4, false)
 	on_died.emit()
+
+func _try_animal_spawn() -> void:
+	if animal_spawn_count == 0:
+		return
+	for i in animal_spawn_count:
+		var animal: FleeAnimal = _ANIMAL_SCENE.instantiate()
+		get_parent().add_child(animal)
+		animal.global_position = global_position + Vector3(0.0, 2.0, 0.0)
 
 func _try_drop(forced := false) -> void:
 	if potential_drops.size() == 0:

@@ -23,6 +23,7 @@
 [ext_resource type="Script" uid="uid://bm8tlxrb5y7t1" path="res://levels/fire_world/first_time_in_lava_world_spawner.gd" id="17_euduq"]
 [ext_resource type="PackedScene" uid="uid://8pmjrnhr3wew" path="res://environment/portals/portal_subviewport_pair.tscn" id="18_1swv2"]
 [ext_resource type="Texture2D" uid="uid://b468d6ayq7u4d" path="res://assets/sprites/warps.png" id="19_ht1gs"]
+[ext_resource type="Script" uid="uid://fsfuu68avi00" path="res://levels/generational_item_spawner.gd" id="24_vqai3"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_gy6g4"]
 panorama = ExtResource("5_twyxu")
@@ -90,21 +91,21 @@ point_count = 12
 
 [sub_resource type="Environment" id="Environment_u7iwl"]
 
-[sub_resource type="World3D" id="World3D_vqai3"]
+[sub_resource type="World3D" id="World3D_b87om"]
 resource_local_to_scene = true
 environment = SubResource("Environment_u7iwl")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_b87om"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6rvlv"]
 resource_local_to_scene = true
 atlas = ExtResource("19_ht1gs")
 region = Rect2(512, 256, 256, 256)
 filter_clip = true
 
-[sub_resource type="World3D" id="World3D_6rvlv"]
+[sub_resource type="World3D" id="World3D_3x78i"]
 resource_local_to_scene = true
 environment = SubResource("Environment_u7iwl")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3x78i"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_yvu7y"]
 resource_local_to_scene = true
 atlas = ExtResource("19_ht1gs")
 region = Rect2(768, 256, 256, 256)
@@ -112,15 +113,22 @@ filter_clip = true
 
 [sub_resource type="Environment" id="Environment_4bsba"]
 
-[sub_resource type="World3D" id="World3D_yvu7y"]
+[sub_resource type="World3D" id="World3D_pe4y8"]
 resource_local_to_scene = true
 environment = SubResource("Environment_4bsba")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pe4y8"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_phqu4"]
 resource_local_to_scene = true
 atlas = ExtResource("19_ht1gs")
 region = Rect2(512, 0, 256, 256)
 filter_clip = true
+
+[sub_resource type="Curve3D" id="Curve3D_yua47"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 129.30127, 12.928345, 58.736206, 0, 0, 0, 0, 0, 0, 149.0149, 13.050903, 31.822632, 0, 0, 0, 0, 0, 0, 127.45532, 13.10791, 10.448242, 0, 0, 0, 0, 0, 0, 151.23615, 13.06604, 12.565186, 0, 0, 0, 0, 0, 0, 176.13507, 12.815186, 39.03369, 0, 0, 0, 0, 0, 0, 194.26056, 12.831299, 22.013184, 0, 0, 0, 0, 0, 0, 222.92017, 12.687256, 4.609497, 0, 0, 0, 0, 0, 0, 208.75311, 12.783447, -8.90625, 0, 0, 0, 0, 0, 0, 182.5647, 12.891724, -7.405884, 0, 0, 0, 0, 0, 0, 163.15991, 12.949585, -2.5546875, 0, 0, 0, 0, 0, 0, 135.28467, 12.845703, -18.289429, 0, 0, 0, 0, 0, 0, 106.2229, 12.915527, -19.071167, 0, 0, 0, 0, 0, 0, 88.15503, 12.904785, -20.519775, 0, 0, 0, 0, 0, 0, 65.48572, 13.049927, -9.390625, 0, 0, 0, 0, 0, 0, 21.06128, 12.899048, -6.6735077, 0, 0, 0, 0, 0, 0, 11.108765, 12.838623, -15.075027, 0, 0, 0, 0, 0, 0, -7.2748413, 12.928711, -39.92133, 0, 0, 0, 0, 0, 0, -11.529541, 12.97583, -58.741615, 0, 0, 0, 0, 0, 0, -9.678406, 12.872681, -68.39505, 0, 0, 0, 0, 0, 0, -13.391785, 12.787964, -87.24842, 0, 0, 0, 0, 0, 0, -25.06128, 13.112305, -107.20523, 0, 0, 0, 0, 0, 0, -51.07727, 13.150513, -92.36369, 0, 0, 0, 0, 0, 0, -54.82129, 13.017212, -111.2152, 0, 0, 0, 0, 0, 0, -34.605103, 13.016968, -118.81184, 0, 0, 0, 0, 0, 0, -32.683167, 12.684692, -176.17085, 0, 0, 0, 0, 0, 0, -55.82367, 12.776123, -145.60478, 0, 0, 0, 0, 0, 0, -54.02191, 12.9021, -127.69452, 0, 0, 0, 0, 0, 0, -69.61072, 12.746338, -145.29156, 0, 0, 0, 0, 0, 0, -92.16052, 12.904053, -136.49213, 0, 0, 0, 0, 0, 0, -87.632935, 13.033569, -115.03848, 0, 0, 0, 0, 0, 0, -109.39508, 12.989258, -101.51717, 0, 0, 0, 0, 0, 0, -139.31775, 12.738525, -106.57717, 0, 0, 0, 0, 0, 0, -139.1615, 12.696167, -124.077194, 0, 0, 0, 0, 0, 0, -122.036255, 12.813232, -121.94453, 0, 0, 0, 0, 0, 0, -121.87225, 12.731934, -138.915, 0, 0, 0, 0, 0, 0, -130.7467, 12.673706, -139.96227, 0, 0, 0, 0, 0, 0, -121.59302, 12.679443, -154.30247, 0, 0, 0, 0, 0, 0, -106.57971, 12.6397705, -174.83125, 0, 0, 0, 0, 0, 0, -109.17883, 12.785889, -147.11157, 0, 0, 0, 0, 0, 0, -107.40039, 12.874756, -129.19986, 0, 0, 0, 0, 0, 0, -106.385376, 12.947876, -113.36156, 0, 0, 0, 0, 0, 0, -119.47534, 12.965088, -91.8904, 0, 0, 0, 0, 0, 0, -130.23627, 12.85144, -82.22198, 0, 0, 0, 0, 0, 0, -116.01715, 12.952148, -45.46068, 0, 0, 0, 0, 0, 0, -120.04999, 12.753052, -17.123291, 0, 0, 0, 0, 0, 0, -120.38605, 13.039795, 5.1578636, 0, 0, 0, 0, 0, 0, -134.33997, 12.813232, 15.021542, 0, 0, 0, 0, 0, 0, -128.76044, 13.19458, 30.580696, 0, 0, 0, 0, 0, 0, -176.60144, 12.661133, 53.117275, 0, 0, 0, 0, 0, 0, -152.74884, 12.623169, 95.11952, 0, 0, 0, 0, 0, 0, -157.05267, 12.746216, 74.712234, 0, 0, 0, 0, 0, 0, -149.56873, 12.869873, 62.5942, 0, 0, 0, 0, 0, 0, -133.94775, 12.871582, 82.30929, 0, 0, 0, 0, 0, 0, -133.15033, 13.009888, 63.18004, 0, 0, 0, 0, 0, 0, -115.97125, 12.870361, 79.089745, 0, 0, 0, 0, 0, 0, -127.90265, 6.4198, 124.87068, 0, 0, 0, 0, 0, 0, -92.30963, 6.4782715, 122.163704, 0, 0, 0, 0, 0, 0, -92.328, 12.739502, 77.64366, 0, 0, 0, 0, 0, 0, -95.289856, 13.113281, 56.094273, 0, 0, 0, 0, 0, 0, -71.969055, 12.812134, 71.62835, 0, 0, 0, 0, 0, 0, -63.523376, 12.958496, 64.751625, 0, 0, 0, 0, 0, 0, -43.749084, 12.974487, 80.50261, 0, 0, 0, 0, 0, 0, -32.04431, 13.065308, 66.006355, 0, 0, 0, 0, 0, 0, -30.361633, 12.745728, 86.57399, 0, 0, 0, 0, 0, 0, -10.641663, 12.846436, 80.06773, 0, 0, 0, 0, 0, 0, -6.894287, 13.087769, 67.118195, 0, 0, 0, 0, 0, 0, 9.74585, 12.673828, 87.300995, 0, 0, 0, 0, 0, 0, 33.333496, 13.070068, 79.49815, 0, 0, 0, 0, 0, 0, 60.4859, 12.938843, 84.1976, 0, 0, 0, 0, 0, 0, 77.43567, 12.9140625, 74.680695, 0, 0, 0, 0, 0, 0, 92.845276, 12.682861, 93.34871, 0, 0, 0, 0, 0, 0, 102.919556, 12.885498, 71.53199, 0, 0, 0, 0, 0, 0, 83.596924, 41.325317, 35.392097, 0, 0, 0, 0, 0, 0, 61.309265, 41.322388, 39.349564, 0, 0, 0, 0, 0, 0, 43.09851, 41.324097, 20.411789, 0, 0, 0, 0, 0, 0, 29.636047, 41.323242, 44.724197, 0, 0, 0, 0, 0, 0, 25.195007, 41.323364, 29.487457, 0, 0, 0, 0, 0, 0, 7.588196, 41.324097, 39.57872, 0, 0, 0, 0, 0, 0, 7.5252686, 41.323364, 26.923141, 0, 0, 0, 0, 0, 0, -21.03833, 41.326294, 42.96321, 0, 0, 0, 0, 0, 0, -12.999634, 41.323853, 20.782715, 0, 0, 0, 0, 0, 0, -36.805237, 41.322144, 28.272476, 0, 0, 0, 0, 0, 0, -25.543274, 41.323364, 15.071167, 0, 0, 0, 0, 0, 0, -60.001465, 41.32483, 21.257538, 0, 0, 0, 0, 0, 0, -82.04883, 41.32666, 16.111923, 0, 0, 0, 0, 0, 0, -65.7384, 41.328003, 3.643341, 0, 0, 0, 0, 0, 0, -45.093384, 41.326538, -0.16998291, 0, 0, 0, 0, 0, 0, -69.735596, 41.327637, -10.069672, 0, 0, 0, 0, 0, 0, -44.113464, 41.323242, -17.537811, 0, 0, 0, 0, 0, 0, -30.172302, 41.32263, -38.132446, 0, 0, 0, 0, 0, 0, -71.23291, 41.316406, -42.14453, 0, 0, 0, 0, 0, 0, -66.95105, 41.318848, -54.413345, 0, 0, 0, 0, 0, 0, -51.010086, 41.320354, -50.85933, 0, 0, 0, 0, 0, 0, -40.146812, 41.32138, -48.437378, 0, 0, 0, 0, 0, 0, -29.459778, 41.322388, -46.054718),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 95
 
 [node name="FireWorld" type="Node3D" unique_id=1891173490 groups=["heat_world"]]
 script = ExtResource("1_wq31c")
@@ -271,10 +279,10 @@ teleport_scene = "uid://dkgap8kw2cyfc"
 teleport_point_name = "SideRoom"
 
 [node name="PortalSubviewportExternal" parent="CastleWarp_SideRoom" index="1" unique_id=389194511]
-world_3d = SubResource("World3D_vqai3")
+world_3d = SubResource("World3D_b87om")
 
 [node name="Sprite3D" parent="CastleWarp_SideRoom/PortalSubviewportExternal" index="1" unique_id=923265973]
-texture = SubResource("AtlasTexture_b87om")
+texture = SubResource("AtlasTexture_6rvlv")
 
 [node name="CastleWarp_TopArea" parent="." unique_id=870096478 instance=ExtResource("18_1swv2")]
 transform = Transform3D(0.481663, 0, 0.87635654, 0, 1, 0, -0.87635654, 0, 0.481663, -19.76175, 43.768524, -69.499374)
@@ -285,10 +293,10 @@ teleport_scene = "uid://dkgap8kw2cyfc"
 teleport_point_name = "TopArea"
 
 [node name="PortalSubviewportExternal" parent="CastleWarp_TopArea" index="1" unique_id=389194511]
-world_3d = SubResource("World3D_6rvlv")
+world_3d = SubResource("World3D_3x78i")
 
 [node name="Sprite3D" parent="CastleWarp_TopArea/PortalSubviewportExternal" index="1" unique_id=923265973]
-texture = SubResource("AtlasTexture_3x78i")
+texture = SubResource("AtlasTexture_yvu7y")
 
 [node name="IceWarp_Ferm" parent="." unique_id=1843832751 instance=ExtResource("18_1swv2")]
 transform = Transform3D(0.42261824, 0, -0.9063078, 0, 1, 0, 0.9063078, 0, 0.42261824, -107.720894, 7.2894516, 129.68338)
@@ -298,16 +306,27 @@ teleport_scene = "uid://b8knls82eve"
 teleport_point_name = "FermanaghWarp"
 
 [node name="PortalSubviewportExternal" parent="IceWarp_Ferm" index="1" unique_id=389194511]
-world_3d = SubResource("World3D_yvu7y")
+world_3d = SubResource("World3D_pe4y8")
 
 [node name="Sprite3D" parent="IceWarp_Ferm/PortalSubviewportExternal" index="1" unique_id=923265973]
-texture = SubResource("AtlasTexture_pe4y8")
+texture = SubResource("AtlasTexture_phqu4")
 
 [node name="TheGround" type="RayCast3D" parent="." unique_id=989709324]
 transform = Transform3D(-0.57357645, 0, -0.819152, 0, 1, 0, 0.819152, 0, -0.57357645, -112.67836, 17.920715, -120.414566)
 target_position = Vector3(0, 0, -20)
 script = ExtResource("10_u8j4s")
 metadata/_custom_type_script = "uid://bh3e52s7bb0by"
+
+[node name="GenerationalItemSpawner" type="Node" parent="." unique_id=882965081 node_paths=PackedStringArray("potential_spawn_points")]
+script = ExtResource("24_vqai3")
+potential_spawn_points = NodePath("../ItemPoints")
+spawn_amount_range = Vector2i(8, 16)
+metadata/_custom_type_script = "uid://fsfuu68avi00"
+
+[node name="ItemPoints" type="Path3D" parent="." unique_id=328360781]
+curve = SubResource("Curve3D_yua47")
+script = ExtResource("5_xfttq")
+metadata/_custom_type_script = "uid://bn3r43bitaf3i"
 
 [editable path="CastleWarp_SideRoom"]
 [editable path="CastleWarp_SideRoom/PortalSubviewportExternal"]

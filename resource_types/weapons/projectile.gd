@@ -22,6 +22,8 @@ func _physics_process(delta: float) -> void:
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	var body_parent := body.get_parent()
+	if body is AnimatableBody3D: # final boss
+		return
 	if body is EnemyDisplay:
 		var space_state := get_world_3d().direct_space_state
 		var dir := -global_transform.basis.z.normalized()
@@ -46,6 +48,10 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 	queue_free()
 
 func _on_area_3d_area_entered(area: Area3D) -> void:
+	if area is CanBeHurtBox:
+		area.receive_hit(_weapon)
+		queue_free()
+		return
 	var area_parent := area.get_parent()
 	if area_parent != null && area_parent is Waterfall:
 		var wf := area_parent as Waterfall

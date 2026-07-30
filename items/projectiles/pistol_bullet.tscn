@@ -20,4 +20,5 @@ shape = SubResource("CylinderShape3D_rhbnc")
 [node name="pistol_bullet" parent="." unique_id=574989348 instance=ExtResource("2_k2o0r")]
 transform = Transform3D(7.642742e-15, -1.7484555e-07, 4, -4, -1.7484555e-07, 0, 1.7484555e-07, -4, -1.7484555e-07, 0, 0, 0)
 
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

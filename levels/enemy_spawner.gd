@@ -68,7 +68,8 @@ func _pick_enemy() -> PackedScene:
 
 func _get_enemy_count() -> int:
 	var count := 0
-	for e: EnemyDisplay in spawn_container.get_children():
-		if !e.is_dead():
-			count += 1
+	for e in spawn_container.get_children():
+		if e is EnemyDisplay:
+			if !e.is_dead():
+				count += 1
 	return count

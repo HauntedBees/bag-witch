@@ -129,3 +129,9 @@ func _process(delta: float) -> void:
 
 func _on_button_mouse_entered() -> void:
 	SignalBus.ui_cursor.emit()
+
+func _on_cheat_code_manager_level_select_triggered() -> void:
+	Player.data.last_warped_scene_uid = "uid://x0dsvspu5lqf"
+	Player.data.last_warped_warp_point_name = "LevelSelectPoint"
+	SignalBus.ui_confirm.emit()
+	_load_game()

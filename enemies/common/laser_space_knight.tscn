@@ -46,11 +46,12 @@ idle_anims = Array[StringName]([&"2H_Melee_Idle"])
 hit_anim = &"Hit_A"
 big_hit_anim = &"Hit_B"
 die_anims = Array[StringName]([&"Death_A"])
+animal_spawn_count = 3
 
 [node name="space_knight" parent="." unique_id=799971212 instance=ExtResource("6_5dvj5")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
-[node name="Skeleton3D" parent="space_knight/Rig" parent_id_path=PackedInt32Array(799971212, 451994219) index="0" unique_id=1488851190]
+[node name="Skeleton3D" parent="space_knight/Rig" parent_id_path=PackedInt32Array(799971212, 262073298) index="0" unique_id=2077165733]
 bones/1/position = Vector3(0, 0.39206383, 0)
 bones/1/rotation = Quaternion(-1.1112421e-10, 0.042571303, 2.572446e-09, 0.9990935)
 bones/2/position = Vector3(3.9563215e-17, 0.1919775, -7.2099444e-18)
@@ -123,10 +124,10 @@ bones/39/rotation = Quaternion(-0.7071068, -7.279511e-08, -7.279509e-08, 0.70710
 bones/40/position = Vector3(-0.5103388, 0.7944927, 0.06388007)
 bones/40/rotation = Quaternion(-0.7581324, 0.012679398, 0.65181106, -0.014731748)
 
-[node name="head" parent="space_knight/Rig/Skeleton3D" index="0" unique_id=1728956244]
+[node name="head" parent="space_knight/Rig/Skeleton3D" index="0" unique_id=1835696518]
 transform = Transform3D(0.99975, 0.0011946345, 0.02232895, -0.0013184036, 0.9999838, 0.00552907, -0.02232198, -0.0055571264, 0.9997354, 0.0007188265, 1.2278242, -0.0005674994)
 
-[node name="chest" parent="space_knight/Rig/Skeleton3D" index="1" unique_id=1726951524]
+[node name="chest" parent="space_knight/Rig/Skeleton3D" index="1" unique_id=322727766]
 transform = Transform3D(0.99701935, 0.0026742506, 0.07710625, -0.0028290758, 0.99999416, 0.0018987815, -0.077100724, -0.0021112612, 0.99702114, -2.919696e-09, 0.9590293, -1.7127781e-12)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="space_knight/Rig/Skeleton3D" index="8" unique_id=103519957]

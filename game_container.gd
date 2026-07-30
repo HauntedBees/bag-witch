@@ -17,6 +17,8 @@ func _ready() -> void:
 	SignalBus.load_new_level.connect(_on_load_new_level)
 	SignalBus.game_over.connect(_on_game_over)
 	if !is_loading_from_file:
+#		var b: PackedScene = load("uid://x0dsvspu5lqf")
+#		set_from_save(b.instantiate(), "LevelSelectPoint")
 		var b: PackedScene = load("uid://b8ihm5mdma5nd")
 		set_from_save(b.instantiate(), "TestPoint")
 

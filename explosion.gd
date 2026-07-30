@@ -2,7 +2,7 @@ class_name Explosion extends Node3D
 
 const _DPS := 5.0
 
-var weapon: Weapon
+@export var weapon: Weapon
 
 var _gettin_boomed: Dictionary[Node3D, float] = {}
 

@@ -304,7 +304,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6676762, 0.2513139, 11.593
 transform = Transform3D(0.08715568, 0, -0.9961947, 0, 1, 0, 0.9961947, 0, 0.08715568, 4.3963013, 0, -1.2305741)
 potential_drops = Array[ExtResource("25_kvpjg")]([])
 capture_level = 1
-max_health = 999
+max_health = 5
+animal_spawn_count = 5
 
 [node name="Skeleton3D" parent="WeakAssKnight/knight/Rig_Medium" parent_id_path=PackedInt32Array(222303382, 1607028048, 1577055457) index="0" unique_id=83218866]
 bones/1/position = Vector3(0, 0.40566343, 0)

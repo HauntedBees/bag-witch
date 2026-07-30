@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://dvs7xaq0u4w4n" path="res://items/world/weapons/sword.tscn" id="17_k8stu"]
 [ext_resource type="PackedScene" uid="uid://bhoxhmha1477m" path="res://items/world/crystals/bag_crystal.tscn" id="18_ylgfq"]
 [ext_resource type="PackedScene" uid="uid://bwxgynt16u860" path="res://items/world/potions/potion_of_life.tscn" id="19_ncmxb"]
+[ext_resource type="Script" uid="uid://fsfuu68avi00" path="res://levels/generational_item_spawner.gd" id="20_2cv63"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ti3ln"]
 size = Vector3(88.81853, 1, 24.710709)
@@ -89,15 +90,22 @@ data = PackedVector3Array(1, 1, -70, 1, 1, -51, 3, 1, -70, 1, 1, -51, 1, 1, -50,
 
 [sub_resource type="Environment" id="Environment_fqolt"]
 
-[sub_resource type="World3D" id="World3D_4uky4"]
+[sub_resource type="World3D" id="World3D_2cv63"]
 resource_local_to_scene = true
 environment = SubResource("Environment_fqolt")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_j8bdi"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_xd46b"]
 resource_local_to_scene = true
 atlas = ExtResource("13_nprii")
 region = Rect2(0, 512, 256, 256)
 filter_clip = true
+
+[sub_resource type="Curve3D" id="Curve3D_ylgfq"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 71.44127, 1.7047119, -13.800659, 0, 0, 0, 0, 0, 0, 70.58218, 1.7045898, -1.6513062, 0, 0, 0, 0, 0, 0, 49.470436, 1.7045898, -4.2697754, 0, 0, 0, 0, 0, 0, 23.217316, 1.7044678, -9.98626, 0, 0, 0, 0, 0, 0, 23.339365, 1.7044678, 3.6212916, 0, 0, 0, 0, 0, 0, 3.715018, 1.7044678, 2.785799, 0, 0, 0, 0, 0, 0, 3.402446, 1.7045898, -10.6561365, 0, 0, 0, 0, 0, 0, 18.915768, 1.7047119, 31.453543, 0, 0, 0, 0, 0, 0, 4.8143883, 1.7047119, 43.76994, 0, 0, 0, 0, 0, 0, -31.242313, 1.7047119, 39.128975, 0, 0, 0, 0, 0, 0, -45.879185, 1.7047119, 57.87132, 0, 0, 0, 0, 0, 0, -31.777805, 1.7047119, 59.656307, 0, 0, 0, 0, 0, 0, -44.89917, 1.7047119, 36.86792, 0, 0, 0, 0, 0, 0, -41.47058, 1.7047119, 14.363037, 0, 0, 0, 0, 0, 0, -81.664246, 1.7047119, -13.905151, 0, 0, 0, 0, 0, 0, -84.67859, 1.7047119, -7.6796875, 0, 0, 0, 0, 0, 0, -65.98065, 1.7047119, -6.1710815, 0, 0, 0, 0, 0, 0, -66.306946, 1.7047119, -14.204956, 0, 0, 0, 0, 0, 0, -49.56086, 1.7045898, -7.5436707, 0, 0, 0, 0, 0, 0, -35.88311, 1.7047119, -6.288391, 0, 0, 0, 0, 0, 0, -49.600903, 1.7044678, -26.965057, 0, 0, 0, 0, 0, 0, -32.239098, 1.7045898, -26.437943, 0, 0, 0, 0, 0, 0, 11.7240305, 0.89367676, -40.811115, 0, 0, 0, 0, 0, 0, -19.248724, 0.8937988, -61.00937, 0, 0, 0, 0, 0, 0, -39.374344, 0.8937988, -91.30135, 0, 0, 0, 0, 0, 0, -37.603626, 0.8937988, -123.52545, 0, 0, 0, 0, 0, 0, -18.454124, 0.8937988, -145.35692, 0, 0, 0, 0, 0, 0, 23.159336, 0.8939209, -154.67326, 0, 0, 0, 0, 0, 0, 59.50631, 0.8937988, -111.620926, 0, 0, 0, 0, 0, 0, 59.336987, 0.8939209, -84.10429, 0, 0, 0, 0, 0, 0, 37.466183, 0.89367676, -67.88226),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 31
 
 [node name="FirstFloor" type="StaticBody3D" unique_id=1771725875]
 
@@ -254,10 +262,10 @@ teleport_scene = "uid://c5pqvv86efxau"
 teleport_point_name = "Entryway"
 
 [node name="PortalSubviewportExternal" parent="Warp-Forest" index="1" unique_id=389194511]
-world_3d = SubResource("World3D_4uky4")
+world_3d = SubResource("World3D_2cv63")
 
 [node name="Sprite3D" parent="Warp-Forest/PortalSubviewportExternal" index="1" unique_id=923265973]
-texture = SubResource("AtlasTexture_j8bdi")
+texture = SubResource("AtlasTexture_xd46b")
 
 [node name="BigSword" parent="." unique_id=823143601 instance=ExtResource("14_d34no")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.41973, 1.9808187, -42.645264)
@@ -295,6 +303,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.456177, 1.722292, 54.67364
 
 [node name="PotionOfLife" parent="." unique_id=198363436 instance=ExtResource("19_ncmxb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.47003, 1.7124357, 54.910522)
+
+[node name="FirstFloorItemPoints" type="Path3D" parent="." unique_id=984493555]
+curve = SubResource("Curve3D_ylgfq")
+script = ExtResource("10_b53l7")
+metadata/_custom_type_script = "uid://bn3r43bitaf3i"
+
+[node name="FirstFloorItemSpawner" type="Node" parent="." unique_id=31773731 node_paths=PackedStringArray("potential_spawn_points")]
+script = ExtResource("20_2cv63")
+potential_spawn_points = NodePath("../FirstFloorItemPoints")
+spawn_amount_range = Vector2i(10, 20)
+metadata/_custom_type_script = "uid://fsfuu68avi00"
 
 [editable path="Warp-Forest"]
 [editable path="Warp-Forest/PortalSubviewportExternal"]
