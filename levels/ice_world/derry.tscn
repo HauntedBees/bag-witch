@@ -30,6 +30,7 @@
 [ext_resource type="PackedScene" uid="uid://8pmjrnhr3wew" path="res://environment/portals/portal_subviewport_pair.tscn" id="28_l8wme"]
 [ext_resource type="Texture2D" uid="uid://b468d6ayq7u4d" path="res://assets/sprites/warps.png" id="29_nov03"]
 [ext_resource type="Script" uid="uid://bh3e52s7bb0by" path="res://environment/portals/warp_point.gd" id="30_tekmr"]
+[ext_resource type="PackedScene" uid="uid://dye3wqgt0yj3w" path="res://assets/levels/ice/ice_mountain.blend" id="31_lt3dp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p63pa"]
 albedo_color = Color(0.9843137, 0.8745098, 0.7411765, 1)
@@ -66,11 +67,11 @@ data = PackedVector3Array(-58, -7.5, 0.5, -58, -7.5, 3.2071068, -57.5, -7.5, 0.5
 
 [sub_resource type="Environment" id="Environment_u7iwl"]
 
-[sub_resource type="World3D" id="World3D_lt3dp"]
+[sub_resource type="World3D" id="World3D_er0ov"]
 resource_local_to_scene = true
 environment = SubResource("Environment_u7iwl")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_er0ov"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bsi64"]
 resource_local_to_scene = true
 atlas = ExtResource("29_nov03")
 region = Rect2(0, 256, 256, 256)
@@ -502,16 +503,40 @@ teleport_scene = "uid://dkgap8kw2cyfc"
 teleport_point_name = "OutsideCastle"
 
 [node name="PortalSubviewportExternal" parent="PortalCameraPair" index="1" unique_id=389194511]
-world_3d = SubResource("World3D_lt3dp")
+world_3d = SubResource("World3D_er0ov")
 
 [node name="Sprite3D" parent="PortalCameraPair/PortalSubviewportExternal" index="1" unique_id=923265973]
-texture = SubResource("AtlasTexture_er0ov")
+texture = SubResource("AtlasTexture_bsi64")
 
 [node name="DerryEntrance" type="RayCast3D" parent="." unique_id=2103415278]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 41, 68)
 target_position = Vector3(0, 0, -20)
 script = ExtResource("30_tekmr")
 metadata/_custom_type_script = "uid://bh3e52s7bb0by"
+
+[node name="ice_mountain" parent="." unique_id=41586393 instance=ExtResource("31_lt3dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.577637, 34.12732, -29.5542)
+
+[node name="ice_mountain2" parent="." unique_id=1138214161 instance=ExtResource("31_lt3dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.577637, 35.544678, -27.125122)
+
+[node name="ice_mountain3" parent="." unique_id=388114438 instance=ExtResource("31_lt3dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.577637, 37.164795, -24.473938)
+
+[node name="ice_mountain4" parent="." unique_id=619623736 instance=ExtResource("31_lt3dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.577637, 38.987427, -21.979553)
+
+[node name="ice_mountain5" parent="." unique_id=125131474 instance=ExtResource("31_lt3dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.577637, 41.164368, -19.151611)
+
+[node name="ice_mountain6" parent="." unique_id=1919892586 instance=ExtResource("31_lt3dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.577637, 43.5943, -16.648987)
+
+[node name="ice_mountain7" parent="." unique_id=602189 instance=ExtResource("31_lt3dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.577637, 45.72052, -13.95697)
+
+[node name="ice_mountain8" parent="." unique_id=487879712 instance=ExtResource("31_lt3dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.577637, 47.49243, -11.622925)
 
 [editable path="PortalCameraPair"]
 [editable path="PortalCameraPair/PortalSubviewportExternal"]
