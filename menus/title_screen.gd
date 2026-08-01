@@ -11,11 +11,12 @@ var _btn_idx := 0
 
 @onready var _continue_btn: TextureButton = %Continue
 @onready var _title_music: AudioStreamPlayer = %TitleMusic
+@onready var _controls_list: CanvasLayer = %ControlsList
 @onready var _options_menu: OptionsMenu = %OptionsMenu
 @onready var _save_screen: SaveScreen = %SaveScreen
 @onready var _credits_menu: CreditsMenu = %CreditsMenu
 @onready var _fade_player: AnimationPlayer = %FadePlayer
-@onready var _buttons: Array[TextureButton] = [%NewGame, %Continue, %Options, %Credits]
+@onready var _buttons: Array[TextureButton] = [%NewGame, %Continue, %Controls,  %Options, %Credits]
 
 func _ready() -> void:
 	var last_data: LastSaveDetails = null
@@ -23,6 +24,8 @@ func _ready() -> void:
 		last_data = ResourceLoader.load(SaveScreen.LAST_SAVED_DETAILS_PATH, "LastSaveDetails", ResourceLoader.CACHE_MODE_REPLACE_DEEP)
 		Player.data.options.music_volume = last_data.music_volume
 		Player.data.options.sound_volume = last_data.sound_volume
+	else:
+		_buttons.erase(_continue_btn)
 	_continue_btn.visible = last_data != null
 	_title_music.volume_linear = Player.data.options.music_volume
 	Player.data.options.music_volume_changed.connect(_on_music_volume_changed)
@@ -92,6 +95,12 @@ func _on_new_game_pressed() -> void:
 		return
 	SignalBus.ui_confirm.emit()
 	_load_game()
+
+func _on_controls_pressed() -> void:
+	if _is_loading_game:
+		return
+	SignalBus.ui_confirm.emit()
+	_controls_list.visible = true
 
 func _on_save_screen_load_save(sd: SaveFile) -> void:
 	if _is_loading_game:

@@ -26,217 +26,217 @@ outline_color = Color(0, 0, 0, 1)
 [sub_resource type="AtlasTexture" id="AtlasTexture_xhg3j"]
 resource_local_to_scene = true
 atlas = ExtResource("6_kpyg6")
-region = Rect2(0, 208, 16, 16)
+region = Rect2(16, 240, 16, 16)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uedkr"]
 resource_local_to_scene = true
 atlas = ExtResource("6_kpyg6")
-region = Rect2(0, 208, 16, 16)
+region = Rect2(16, 240, 16, 16)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kpyg6"]
 resource_local_to_scene = true
 atlas = ExtResource("6_kpyg6")
-region = Rect2(0, 208, 16, 16)
+region = Rect2(16, 240, 16, 16)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n5lpe"]
 resource_local_to_scene = true
 atlas = ExtResource("6_kpyg6")
-region = Rect2(0, 208, 16, 16)
+region = Rect2(16, 240, 16, 16)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m3f1a"]
 resource_local_to_scene = true
 atlas = ExtResource("6_kpyg6")
-region = Rect2(0, 208, 16, 16)
+region = Rect2(16, 240, 16, 16)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yp0yq"]
 resource_local_to_scene = true
 atlas = ExtResource("6_kpyg6")
-region = Rect2(0, 208, 16, 16)
+region = Rect2(16, 240, 16, 16)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r2bf2"]
 resource_local_to_scene = true
 atlas = ExtResource("6_kpyg6")
-region = Rect2(0, 208, 16, 16)
+region = Rect2(16, 240, 16, 16)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_46ra4"]
 resource_local_to_scene = true
 atlas = ExtResource("6_kpyg6")
-region = Rect2(0, 208, 16, 16)
+region = Rect2(16, 240, 16, 16)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jcueh"]
 resource_local_to_scene = true
 atlas = ExtResource("6_kpyg6")
-region = Rect2(0, 208, 16, 16)
+region = Rect2(16, 240, 16, 16)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w13ng"]
 resource_local_to_scene = true
 atlas = ExtResource("6_kpyg6")
-region = Rect2(0, 208, 16, 16)
+region = Rect2(16, 240, 16, 16)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mspg2"]
 resource_local_to_scene = true
 atlas = ExtResource("6_kpyg6")
-region = Rect2(0, 208, 16, 16)
+region = Rect2(16, 240, 16, 16)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1vav6"]
 resource_local_to_scene = true
 atlas = ExtResource("6_kpyg6")
-region = Rect2(0, 208, 16, 16)
+region = Rect2(16, 240, 16, 16)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6vwxj"]
 resource_local_to_scene = true
 atlas = ExtResource("6_kpyg6")
-region = Rect2(0, 208, 16, 16)
+region = Rect2(16, 240, 16, 16)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3mckc"]
 resource_local_to_scene = true
 atlas = ExtResource("6_kpyg6")
-region = Rect2(0, 208, 16, 16)
+region = Rect2(16, 240, 16, 16)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t87dp"]
 resource_local_to_scene = true
 atlas = ExtResource("6_kpyg6")
-region = Rect2(0, 208, 16, 16)
+region = Rect2(16, 240, 16, 16)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5hom5"]
 resource_local_to_scene = true
 atlas = ExtResource("6_kpyg6")
-region = Rect2(0, 208, 16, 16)
+region = Rect2(16, 240, 16, 16)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ddhll"]
 resource_local_to_scene = true
 atlas = ExtResource("6_kpyg6")
-region = Rect2(0, 208, 16, 16)
+region = Rect2(16, 240, 16, 16)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_axcbw"]
 resource_local_to_scene = true
 atlas = ExtResource("6_kpyg6")
-region = Rect2(0, 208, 16, 16)
+region = Rect2(16, 240, 16, 16)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_amin8"]
 resource_local_to_scene = true
 atlas = ExtResource("6_kpyg6")
-region = Rect2(0, 208, 16, 16)
+region = Rect2(16, 240, 16, 16)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xsnig"]
 resource_local_to_scene = true
 atlas = ExtResource("6_kpyg6")
-region = Rect2(0, 208, 16, 16)
+region = Rect2(16, 240, 16, 16)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dk3by"]
 resource_local_to_scene = true
 atlas = ExtResource("6_kpyg6")
-region = Rect2(0, 208, 16, 16)
+region = Rect2(16, 240, 16, 16)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oyc7x"]
 resource_local_to_scene = true
 atlas = ExtResource("6_kpyg6")
-region = Rect2(0, 208, 16, 16)
+region = Rect2(16, 240, 16, 16)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0u2ih"]
 resource_local_to_scene = true
 atlas = ExtResource("6_kpyg6")
-region = Rect2(0, 208, 16, 16)
+region = Rect2(16, 240, 16, 16)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0mcu2"]
 resource_local_to_scene = true
 atlas = ExtResource("6_kpyg6")
-region = Rect2(0, 208, 16, 16)
+region = Rect2(16, 240, 16, 16)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aji24"]
 resource_local_to_scene = true
 atlas = ExtResource("6_kpyg6")
-region = Rect2(0, 208, 16, 16)
+region = Rect2(16, 240, 16, 16)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uam16"]
 resource_local_to_scene = true
 atlas = ExtResource("6_kpyg6")
-region = Rect2(0, 208, 16, 16)
+region = Rect2(16, 240, 16, 16)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7qcfq"]
 resource_local_to_scene = true
 atlas = ExtResource("6_kpyg6")
-region = Rect2(0, 208, 16, 16)
+region = Rect2(16, 240, 16, 16)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_13y63"]
 resource_local_to_scene = true
 atlas = ExtResource("6_kpyg6")
-region = Rect2(0, 208, 16, 16)
+region = Rect2(16, 240, 16, 16)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ni2ln"]
 resource_local_to_scene = true
 atlas = ExtResource("6_kpyg6")
-region = Rect2(0, 208, 16, 16)
+region = Rect2(16, 240, 16, 16)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u7t83"]
 resource_local_to_scene = true
 atlas = ExtResource("6_kpyg6")
-region = Rect2(0, 208, 16, 16)
+region = Rect2(16, 240, 16, 16)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bjyw7"]
 resource_local_to_scene = true
 atlas = ExtResource("6_kpyg6")
-region = Rect2(0, 208, 16, 16)
+region = Rect2(16, 240, 16, 16)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cseue"]
 resource_local_to_scene = true
 atlas = ExtResource("6_kpyg6")
-region = Rect2(0, 208, 16, 16)
+region = Rect2(16, 240, 16, 16)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lvxeh"]
 resource_local_to_scene = true
 atlas = ExtResource("6_kpyg6")
-region = Rect2(0, 208, 16, 16)
+region = Rect2(16, 240, 16, 16)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_obm7r"]
 resource_local_to_scene = true
 atlas = ExtResource("6_kpyg6")
-region = Rect2(0, 208, 16, 16)
+region = Rect2(16, 240, 16, 16)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7bbxv"]
 resource_local_to_scene = true
 atlas = ExtResource("6_kpyg6")
-region = Rect2(0, 208, 16, 16)
+region = Rect2(16, 240, 16, 16)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_legja"]
 resource_local_to_scene = true
 atlas = ExtResource("6_kpyg6")
-region = Rect2(0, 208, 16, 16)
+region = Rect2(16, 240, 16, 16)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rhbnc"]
@@ -399,13 +399,18 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_rhbnc")
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="GridContainer" type="GridContainer" parent="Foreground/VBoxContainer/ScrollContainer" unique_id=2044965305]
+[node name="VBoxContainer" type="VBoxContainer" parent="Foreground/VBoxContainer/ScrollContainer" unique_id=955811340]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=2044965305]
 layout_mode = 2
 size_flags_horizontal = 6
 theme_override_constants/h_separation = 64
 columns = 2
 
-[node name="GASLabel" type="Label" parent="Foreground/VBoxContainer/ScrollContainer/GridContainer" unique_id=1649936984]
+[node name="GASLabel" type="Label" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer" unique_id=1649936984]
 layout_mode = 2
 text = "Movement"
 label_settings = ExtResource("4_xhg3j")
@@ -413,59 +418,59 @@ horizontal_alignment = 2
 script = ExtResource("3_xhg3j")
 metadata/_custom_type_script = "uid://hafxp56l0iao"
 
-[node name="HBoxContainer" type="GridContainer" parent="Foreground/VBoxContainer/ScrollContainer/GridContainer" unique_id=366953612]
+[node name="HBoxContainer" type="GridContainer" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer" unique_id=366953612]
 layout_mode = 2
 columns = 4
 
-[node name="InputImage" parent="Foreground/VBoxContainer/ScrollContainer/GridContainer/HBoxContainer" unique_id=1161082248 instance=ExtResource("5_uedkr")]
+[node name="InputImage" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer/HBoxContainer" unique_id=1161082248 instance=ExtResource("5_uedkr")]
 layout_mode = 2
 texture = SubResource("AtlasTexture_xhg3j")
 action_name = &"play_char_move_forward_action"
 display_type = 1
 
-[node name="InputImage2" parent="Foreground/VBoxContainer/ScrollContainer/GridContainer/HBoxContainer" unique_id=1921633765 instance=ExtResource("5_uedkr")]
+[node name="InputImage2" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer/HBoxContainer" unique_id=1921633765 instance=ExtResource("5_uedkr")]
 layout_mode = 2
 texture = SubResource("AtlasTexture_uedkr")
 action_name = &"play_char_move_left_action"
 display_type = 1
 
-[node name="InputImage3" parent="Foreground/VBoxContainer/ScrollContainer/GridContainer/HBoxContainer" unique_id=568807707 instance=ExtResource("5_uedkr")]
+[node name="InputImage3" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer/HBoxContainer" unique_id=568807707 instance=ExtResource("5_uedkr")]
 layout_mode = 2
 texture = SubResource("AtlasTexture_kpyg6")
 action_name = &"play_char_move_backward_action"
 display_type = 1
 
-[node name="InputImage4" parent="Foreground/VBoxContainer/ScrollContainer/GridContainer/HBoxContainer" unique_id=129786222 instance=ExtResource("5_uedkr")]
+[node name="InputImage4" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer/HBoxContainer" unique_id=129786222 instance=ExtResource("5_uedkr")]
 layout_mode = 2
 texture = SubResource("AtlasTexture_n5lpe")
 action_name = &"play_char_move_right_action"
 display_type = 1
 
-[node name="InputImage5" parent="Foreground/VBoxContainer/ScrollContainer/GridContainer/HBoxContainer" unique_id=451590086 instance=ExtResource("5_uedkr")]
+[node name="InputImage5" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer/HBoxContainer" unique_id=451590086 instance=ExtResource("5_uedkr")]
 layout_mode = 2
 texture = SubResource("AtlasTexture_m3f1a")
 action_name = &"play_char_move_forward_action"
 display_type = 2
 
-[node name="InputImage6" parent="Foreground/VBoxContainer/ScrollContainer/GridContainer/HBoxContainer" unique_id=1236664065 instance=ExtResource("5_uedkr")]
+[node name="InputImage6" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer/HBoxContainer" unique_id=1236664065 instance=ExtResource("5_uedkr")]
 layout_mode = 2
 texture = SubResource("AtlasTexture_yp0yq")
 action_name = &"play_char_move_left_action"
 display_type = 2
 
-[node name="InputImage7" parent="Foreground/VBoxContainer/ScrollContainer/GridContainer/HBoxContainer" unique_id=1567732102 instance=ExtResource("5_uedkr")]
+[node name="InputImage7" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer/HBoxContainer" unique_id=1567732102 instance=ExtResource("5_uedkr")]
 layout_mode = 2
 texture = SubResource("AtlasTexture_r2bf2")
 action_name = &"play_char_move_backward_action"
 display_type = 2
 
-[node name="InputImage8" parent="Foreground/VBoxContainer/ScrollContainer/GridContainer/HBoxContainer" unique_id=830116494 instance=ExtResource("5_uedkr")]
+[node name="InputImage8" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer/HBoxContainer" unique_id=830116494 instance=ExtResource("5_uedkr")]
 layout_mode = 2
 texture = SubResource("AtlasTexture_46ra4")
 action_name = &"play_char_move_right_action"
 display_type = 2
 
-[node name="GASLabel2" type="Label" parent="Foreground/VBoxContainer/ScrollContainer/GridContainer" unique_id=674511489]
+[node name="GASLabel2" type="Label" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer" unique_id=674511489]
 layout_mode = 2
 text = "Jump"
 label_settings = ExtResource("4_xhg3j")
@@ -473,22 +478,22 @@ horizontal_alignment = 2
 script = ExtResource("3_xhg3j")
 metadata/_custom_type_script = "uid://hafxp56l0iao"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Foreground/VBoxContainer/ScrollContainer/GridContainer" unique_id=925800204]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer" unique_id=925800204]
 layout_mode = 2
 
-[node name="InputImage" parent="Foreground/VBoxContainer/ScrollContainer/GridContainer/HBoxContainer2" unique_id=434072487 instance=ExtResource("5_uedkr")]
+[node name="InputImage" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer/HBoxContainer2" unique_id=434072487 instance=ExtResource("5_uedkr")]
 layout_mode = 2
 texture = SubResource("AtlasTexture_jcueh")
 action_name = &"play_char_jump_action"
 display_type = 1
 
-[node name="InputImage2" parent="Foreground/VBoxContainer/ScrollContainer/GridContainer/HBoxContainer2" unique_id=2044218213 instance=ExtResource("5_uedkr")]
+[node name="InputImage2" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer/HBoxContainer2" unique_id=2044218213 instance=ExtResource("5_uedkr")]
 layout_mode = 2
 texture = SubResource("AtlasTexture_w13ng")
 action_name = &"play_char_jump_action"
 display_type = 2
 
-[node name="GASLabel3" type="Label" parent="Foreground/VBoxContainer/ScrollContainer/GridContainer" unique_id=1015326911]
+[node name="GASLabel3" type="Label" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer" unique_id=1015326911]
 layout_mode = 2
 text = "Use"
 label_settings = ExtResource("4_xhg3j")
@@ -496,22 +501,22 @@ horizontal_alignment = 2
 script = ExtResource("3_xhg3j")
 metadata/_custom_type_script = "uid://hafxp56l0iao"
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="Foreground/VBoxContainer/ScrollContainer/GridContainer" unique_id=1582569025]
+[node name="HBoxContainer3" type="HBoxContainer" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer" unique_id=1582569025]
 layout_mode = 2
 
-[node name="InputImage" parent="Foreground/VBoxContainer/ScrollContainer/GridContainer/HBoxContainer3" unique_id=1829829163 instance=ExtResource("5_uedkr")]
+[node name="InputImage" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer/HBoxContainer3" unique_id=1829829163 instance=ExtResource("5_uedkr")]
 layout_mode = 2
 texture = SubResource("AtlasTexture_mspg2")
 action_name = &"attack"
 display_type = 1
 
-[node name="InputImage2" parent="Foreground/VBoxContainer/ScrollContainer/GridContainer/HBoxContainer3" unique_id=1883371523 instance=ExtResource("5_uedkr")]
+[node name="InputImage2" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer/HBoxContainer3" unique_id=1883371523 instance=ExtResource("5_uedkr")]
 layout_mode = 2
 texture = SubResource("AtlasTexture_1vav6")
 action_name = &"attack"
 display_type = 2
 
-[node name="GASLabel10" type="Label" parent="Foreground/VBoxContainer/ScrollContainer/GridContainer" unique_id=659571734]
+[node name="GASLabel10" type="Label" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer" unique_id=659571734]
 layout_mode = 2
 text = "Reload"
 label_settings = ExtResource("4_xhg3j")
@@ -519,22 +524,22 @@ horizontal_alignment = 2
 script = ExtResource("3_xhg3j")
 metadata/_custom_type_script = "uid://hafxp56l0iao"
 
-[node name="HBoxContainer10" type="HBoxContainer" parent="Foreground/VBoxContainer/ScrollContainer/GridContainer" unique_id=879737918]
+[node name="HBoxContainer10" type="HBoxContainer" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer" unique_id=879737918]
 layout_mode = 2
 
-[node name="InputImage" parent="Foreground/VBoxContainer/ScrollContainer/GridContainer/HBoxContainer10" unique_id=1121990068 instance=ExtResource("5_uedkr")]
+[node name="InputImage" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer/HBoxContainer10" unique_id=1121990068 instance=ExtResource("5_uedkr")]
 layout_mode = 2
 texture = SubResource("AtlasTexture_6vwxj")
 action_name = &"reload"
 display_type = 1
 
-[node name="InputImage2" parent="Foreground/VBoxContainer/ScrollContainer/GridContainer/HBoxContainer10" unique_id=1409214898 instance=ExtResource("5_uedkr")]
+[node name="InputImage2" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer/HBoxContainer10" unique_id=1409214898 instance=ExtResource("5_uedkr")]
 layout_mode = 2
 texture = SubResource("AtlasTexture_3mckc")
 action_name = &"reload"
 display_type = 2
 
-[node name="GASLabel4" type="Label" parent="Foreground/VBoxContainer/ScrollContainer/GridContainer" unique_id=142289582]
+[node name="GASLabel4" type="Label" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer" unique_id=142289582]
 layout_mode = 2
 text = "Pick Up"
 label_settings = ExtResource("4_xhg3j")
@@ -542,22 +547,22 @@ horizontal_alignment = 2
 script = ExtResource("3_xhg3j")
 metadata/_custom_type_script = "uid://hafxp56l0iao"
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="Foreground/VBoxContainer/ScrollContainer/GridContainer" unique_id=536645289]
+[node name="HBoxContainer4" type="HBoxContainer" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer" unique_id=536645289]
 layout_mode = 2
 
-[node name="InputImage" parent="Foreground/VBoxContainer/ScrollContainer/GridContainer/HBoxContainer4" unique_id=67851438 instance=ExtResource("5_uedkr")]
+[node name="InputImage" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer/HBoxContainer4" unique_id=67851438 instance=ExtResource("5_uedkr")]
 layout_mode = 2
 texture = SubResource("AtlasTexture_t87dp")
 action_name = &"use"
 display_type = 1
 
-[node name="InputImage2" parent="Foreground/VBoxContainer/ScrollContainer/GridContainer/HBoxContainer4" unique_id=504696056 instance=ExtResource("5_uedkr")]
+[node name="InputImage2" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer/HBoxContainer4" unique_id=504696056 instance=ExtResource("5_uedkr")]
 layout_mode = 2
 texture = SubResource("AtlasTexture_5hom5")
 action_name = &"use"
 display_type = 2
 
-[node name="GASLabel5" type="Label" parent="Foreground/VBoxContainer/ScrollContainer/GridContainer" unique_id=715411334]
+[node name="GASLabel5" type="Label" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer" unique_id=715411334]
 layout_mode = 2
 text = "Run (Toggle)"
 label_settings = ExtResource("4_xhg3j")
@@ -565,22 +570,22 @@ horizontal_alignment = 2
 script = ExtResource("3_xhg3j")
 metadata/_custom_type_script = "uid://hafxp56l0iao"
 
-[node name="HBoxContainer5" type="HBoxContainer" parent="Foreground/VBoxContainer/ScrollContainer/GridContainer" unique_id=78365345]
+[node name="HBoxContainer5" type="HBoxContainer" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer" unique_id=78365345]
 layout_mode = 2
 
-[node name="InputImage" parent="Foreground/VBoxContainer/ScrollContainer/GridContainer/HBoxContainer5" unique_id=1193270629 instance=ExtResource("5_uedkr")]
+[node name="InputImage" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer/HBoxContainer5" unique_id=1193270629 instance=ExtResource("5_uedkr")]
 layout_mode = 2
 texture = SubResource("AtlasTexture_ddhll")
 action_name = &"play_char_run_action"
 display_type = 1
 
-[node name="InputImage2" parent="Foreground/VBoxContainer/ScrollContainer/GridContainer/HBoxContainer5" unique_id=1085311678 instance=ExtResource("5_uedkr")]
+[node name="InputImage2" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer/HBoxContainer5" unique_id=1085311678 instance=ExtResource("5_uedkr")]
 layout_mode = 2
 texture = SubResource("AtlasTexture_axcbw")
 action_name = &"play_char_run_action"
 display_type = 2
 
-[node name="GASLabel6" type="Label" parent="Foreground/VBoxContainer/ScrollContainer/GridContainer" unique_id=853070399]
+[node name="GASLabel6" type="Label" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer" unique_id=853070399]
 layout_mode = 2
 text = "Advance Text"
 label_settings = ExtResource("4_xhg3j")
@@ -588,22 +593,22 @@ horizontal_alignment = 2
 script = ExtResource("3_xhg3j")
 metadata/_custom_type_script = "uid://hafxp56l0iao"
 
-[node name="HBoxContainer6" type="HBoxContainer" parent="Foreground/VBoxContainer/ScrollContainer/GridContainer" unique_id=2015112352]
+[node name="HBoxContainer6" type="HBoxContainer" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer" unique_id=2015112352]
 layout_mode = 2
 
-[node name="InputImage" parent="Foreground/VBoxContainer/ScrollContainer/GridContainer/HBoxContainer6" unique_id=336583556 instance=ExtResource("5_uedkr")]
+[node name="InputImage" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer/HBoxContainer6" unique_id=336583556 instance=ExtResource("5_uedkr")]
 layout_mode = 2
 texture = SubResource("AtlasTexture_amin8")
 action_name = &"advance_text"
 display_type = 1
 
-[node name="InputImage2" parent="Foreground/VBoxContainer/ScrollContainer/GridContainer/HBoxContainer6" unique_id=183246629 instance=ExtResource("5_uedkr")]
+[node name="InputImage2" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer/HBoxContainer6" unique_id=183246629 instance=ExtResource("5_uedkr")]
 layout_mode = 2
 texture = SubResource("AtlasTexture_xsnig")
 action_name = &"advance_text"
 display_type = 2
 
-[node name="GASLabel7" type="Label" parent="Foreground/VBoxContainer/ScrollContainer/GridContainer" unique_id=1582625416]
+[node name="GASLabel7" type="Label" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer" unique_id=1582625416]
 layout_mode = 2
 text = "Inventory"
 label_settings = ExtResource("4_xhg3j")
@@ -611,22 +616,22 @@ horizontal_alignment = 2
 script = ExtResource("3_xhg3j")
 metadata/_custom_type_script = "uid://hafxp56l0iao"
 
-[node name="HBoxContainer7" type="HBoxContainer" parent="Foreground/VBoxContainer/ScrollContainer/GridContainer" unique_id=303950954]
+[node name="HBoxContainer7" type="HBoxContainer" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer" unique_id=303950954]
 layout_mode = 2
 
-[node name="InputImage" parent="Foreground/VBoxContainer/ScrollContainer/GridContainer/HBoxContainer7" unique_id=1067828052 instance=ExtResource("5_uedkr")]
+[node name="InputImage" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer/HBoxContainer7" unique_id=1067828052 instance=ExtResource("5_uedkr")]
 layout_mode = 2
 texture = SubResource("AtlasTexture_dk3by")
 action_name = &"toggle_inventory"
 display_type = 1
 
-[node name="InputImage2" parent="Foreground/VBoxContainer/ScrollContainer/GridContainer/HBoxContainer7" unique_id=2107656942 instance=ExtResource("5_uedkr")]
+[node name="InputImage2" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer/HBoxContainer7" unique_id=2107656942 instance=ExtResource("5_uedkr")]
 layout_mode = 2
 texture = SubResource("AtlasTexture_oyc7x")
 action_name = &"toggle_inventory"
 display_type = 2
 
-[node name="GASLabel8" type="Label" parent="Foreground/VBoxContainer/ScrollContainer/GridContainer" unique_id=187380638]
+[node name="GASLabel8" type="Label" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer" unique_id=187380638]
 layout_mode = 2
 text = "Pause"
 label_settings = ExtResource("4_xhg3j")
@@ -634,22 +639,22 @@ horizontal_alignment = 2
 script = ExtResource("3_xhg3j")
 metadata/_custom_type_script = "uid://hafxp56l0iao"
 
-[node name="HBoxContainer8" type="HBoxContainer" parent="Foreground/VBoxContainer/ScrollContainer/GridContainer" unique_id=1025246285]
+[node name="HBoxContainer8" type="HBoxContainer" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer" unique_id=1025246285]
 layout_mode = 2
 
-[node name="InputImage" parent="Foreground/VBoxContainer/ScrollContainer/GridContainer/HBoxContainer8" unique_id=38973098 instance=ExtResource("5_uedkr")]
+[node name="InputImage" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer/HBoxContainer8" unique_id=38973098 instance=ExtResource("5_uedkr")]
 layout_mode = 2
 texture = SubResource("AtlasTexture_0u2ih")
 action_name = &"action_pause"
 display_type = 1
 
-[node name="InputImage2" parent="Foreground/VBoxContainer/ScrollContainer/GridContainer/HBoxContainer8" unique_id=1966365551 instance=ExtResource("5_uedkr")]
+[node name="InputImage2" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer/HBoxContainer8" unique_id=1966365551 instance=ExtResource("5_uedkr")]
 layout_mode = 2
 texture = SubResource("AtlasTexture_0mcu2")
 action_name = &"action_pause"
 display_type = 2
 
-[node name="GASLabel9" type="Label" parent="Foreground/VBoxContainer/ScrollContainer/GridContainer" unique_id=1234513145]
+[node name="GASLabel9" type="Label" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer" unique_id=1234513145]
 layout_mode = 2
 text = "Change Item"
 label_settings = ExtResource("4_xhg3j")
@@ -657,83 +662,83 @@ horizontal_alignment = 2
 script = ExtResource("3_xhg3j")
 metadata/_custom_type_script = "uid://hafxp56l0iao"
 
-[node name="HBoxContainer9" type="GridContainer" parent="Foreground/VBoxContainer/ScrollContainer/GridContainer" unique_id=336223943]
+[node name="HBoxContainer9" type="GridContainer" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer" unique_id=336223943]
 layout_mode = 2
 columns = 6
 
-[node name="InputImage" parent="Foreground/VBoxContainer/ScrollContainer/GridContainer/HBoxContainer9" unique_id=636864398 instance=ExtResource("5_uedkr")]
+[node name="InputImage" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer/HBoxContainer9" unique_id=636864398 instance=ExtResource("5_uedkr")]
 layout_mode = 2
 texture = SubResource("AtlasTexture_aji24")
 action_name = &"weapon_slot_1"
 display_type = 1
 
-[node name="InputImage3" parent="Foreground/VBoxContainer/ScrollContainer/GridContainer/HBoxContainer9" unique_id=457809133 instance=ExtResource("5_uedkr")]
+[node name="InputImage3" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer/HBoxContainer9" unique_id=457809133 instance=ExtResource("5_uedkr")]
 layout_mode = 2
 texture = SubResource("AtlasTexture_uam16")
 action_name = &"weapon_slot_2"
 display_type = 1
 
-[node name="InputImage4" parent="Foreground/VBoxContainer/ScrollContainer/GridContainer/HBoxContainer9" unique_id=1353752958 instance=ExtResource("5_uedkr")]
+[node name="InputImage4" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer/HBoxContainer9" unique_id=1353752958 instance=ExtResource("5_uedkr")]
 layout_mode = 2
 texture = SubResource("AtlasTexture_7qcfq")
 action_name = &"weapon_slot_3"
 display_type = 1
 
-[node name="InputImage5" parent="Foreground/VBoxContainer/ScrollContainer/GridContainer/HBoxContainer9" unique_id=1950538075 instance=ExtResource("5_uedkr")]
+[node name="InputImage5" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer/HBoxContainer9" unique_id=1950538075 instance=ExtResource("5_uedkr")]
 layout_mode = 2
 texture = SubResource("AtlasTexture_13y63")
 action_name = &"weapon_slot_4"
 display_type = 1
 
-[node name="InputImage6" parent="Foreground/VBoxContainer/ScrollContainer/GridContainer/HBoxContainer9" unique_id=1993074979 instance=ExtResource("5_uedkr")]
+[node name="InputImage6" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer/HBoxContainer9" unique_id=1993074979 instance=ExtResource("5_uedkr")]
 layout_mode = 2
 texture = SubResource("AtlasTexture_ni2ln")
 action_name = &"weapon_slot_5"
 display_type = 1
 
-[node name="InputImage7" parent="Foreground/VBoxContainer/ScrollContainer/GridContainer/HBoxContainer9" unique_id=1068736093 instance=ExtResource("5_uedkr")]
+[node name="InputImage7" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer/HBoxContainer9" unique_id=1068736093 instance=ExtResource("5_uedkr")]
 layout_mode = 2
 texture = SubResource("AtlasTexture_u7t83")
 action_name = &"weapon_slot_6"
 display_type = 1
 
-[node name="InputImage8" parent="Foreground/VBoxContainer/ScrollContainer/GridContainer/HBoxContainer9" unique_id=317496613 instance=ExtResource("5_uedkr")]
+[node name="InputImage8" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer/HBoxContainer9" unique_id=317496613 instance=ExtResource("5_uedkr")]
 layout_mode = 2
 texture = SubResource("AtlasTexture_bjyw7")
 action_name = &"weapon_slot_7"
 display_type = 1
 
-[node name="InputImage9" parent="Foreground/VBoxContainer/ScrollContainer/GridContainer/HBoxContainer9" unique_id=1456769486 instance=ExtResource("5_uedkr")]
+[node name="InputImage9" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer/HBoxContainer9" unique_id=1456769486 instance=ExtResource("5_uedkr")]
 layout_mode = 2
 texture = SubResource("AtlasTexture_cseue")
 action_name = &"weapon_slot_8"
 display_type = 1
 
-[node name="InputImage10" parent="Foreground/VBoxContainer/ScrollContainer/GridContainer/HBoxContainer9" unique_id=846379593 instance=ExtResource("5_uedkr")]
+[node name="InputImage10" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer/HBoxContainer9" unique_id=846379593 instance=ExtResource("5_uedkr")]
 layout_mode = 2
 texture = SubResource("AtlasTexture_lvxeh")
 action_name = &"weapon_slot_9"
 display_type = 1
 
-[node name="InputImage11" parent="Foreground/VBoxContainer/ScrollContainer/GridContainer/HBoxContainer9" unique_id=408182823 instance=ExtResource("5_uedkr")]
+[node name="InputImage11" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer/HBoxContainer9" unique_id=408182823 instance=ExtResource("5_uedkr")]
 layout_mode = 2
 texture = SubResource("AtlasTexture_obm7r")
 action_name = &"weapon_slot_0"
 display_type = 1
 
-[node name="InputImage2" parent="Foreground/VBoxContainer/ScrollContainer/GridContainer/HBoxContainer9" unique_id=422885952 instance=ExtResource("5_uedkr")]
+[node name="InputImage2" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer/HBoxContainer9" unique_id=422885952 instance=ExtResource("5_uedkr")]
 layout_mode = 2
 texture = SubResource("AtlasTexture_7bbxv")
 action_name = &"cycle_weapon_left"
 display_type = 2
 
-[node name="InputImage12" parent="Foreground/VBoxContainer/ScrollContainer/GridContainer/HBoxContainer9" unique_id=1099070937 instance=ExtResource("5_uedkr")]
+[node name="InputImage12" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer/HBoxContainer9" unique_id=1099070937 instance=ExtResource("5_uedkr")]
 layout_mode = 2
 texture = SubResource("AtlasTexture_legja")
 action_name = &"cycle_weapon_right"
 display_type = 2
 
-[node name="GASLabel11" type="Label" parent="Foreground/VBoxContainer/ScrollContainer/GridContainer" unique_id=1571963936]
+[node name="GASLabel11" type="Label" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer" unique_id=1571963936]
 layout_mode = 2
 text = "Rearrange or
 Combine Items"
@@ -742,11 +747,19 @@ horizontal_alignment = 2
 script = ExtResource("3_xhg3j")
 metadata/_custom_type_script = "uid://hafxp56l0iao"
 
-[node name="GASLabel12" type="Label" parent="Foreground/VBoxContainer/ScrollContainer/GridContainer" unique_id=1689001801]
+[node name="GASLabel12" type="Label" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer" unique_id=1689001801]
 layout_mode = 2
 text = "Click and drag in Inventory,
 press R to rotate item."
 label_settings = ExtResource("6_n5lpe")
+script = ExtResource("3_xhg3j")
+metadata/_custom_type_script = "uid://hafxp56l0iao"
+
+[node name="GASLabel" type="Label" parent="Foreground/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1940467314]
+layout_mode = 2
+text = "See the Options Menu for additional controls and to customize them."
+label_settings = ExtResource("4_xhg3j")
+horizontal_alignment = 1
 script = ExtResource("3_xhg3j")
 metadata/_custom_type_script = "uid://hafxp56l0iao"
 

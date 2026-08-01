@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://ckeigba41ani3" path="res://assets/music/title.ogg" id="10_ctf6r"]
 [ext_resource type="PackedScene" uid="uid://q31nttrkbxcg" path="res://menus/options_menu.tscn" id="11_dbvjn"]
 [ext_resource type="PackedScene" uid="uid://85ebibl4e8nh" path="res://menus/save/save_screen.tscn" id="12_eujrm"]
+[ext_resource type="PackedScene" uid="uid://bd5jlp8u85ngj" path="res://menus/controls_list.tscn" id="13_a0bkl"]
 [ext_resource type="PackedScene" uid="uid://d3wmq3gfikjv2" path="res://menus/credits_menu.tscn" id="13_o4wu6"]
 [ext_resource type="PackedScene" uid="uid://d1wsjpjk170dr" path="res://menus/nav_cursor.tscn" id="14_fuwux"]
 [ext_resource type="Script" uid="uid://cmghej4edfl76" path="res://menus/mouse_cursor_binding.gd" id="15_h3epy"]
@@ -270,6 +271,33 @@ horizontal_alignment = 1
 script = ExtResource("8_ctf6r")
 metadata/_custom_type_script = "uid://hafxp56l0iao"
 
+[node name="Controls" type="TextureButton" parent="MarginContainer3/HBoxContainer" unique_id=1640882232 groups=["cursor_button", "trigger_nav_cursor"]]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_default_cursor_shape = 2
+texture_normal = SubResource("AtlasTexture_dbvjn")
+texture_hover = SubResource("AtlasTexture_eujrm")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer3/HBoxContainer/Controls" unique_id=2004497280]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GASLabel" type="Label" parent="MarginContainer3/HBoxContainer/Controls/MarginContainer" unique_id=2081371636]
+layout_mode = 2
+text = "View Controls"
+label_settings = ExtResource("7_76gmy")
+horizontal_alignment = 1
+script = ExtResource("8_ctf6r")
+metadata/_custom_type_script = "uid://hafxp56l0iao"
+
 [node name="Options" type="TextureButton" parent="MarginContainer3/HBoxContainer" unique_id=1365479226 groups=["cursor_button", "trigger_nav_cursor"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 80)
@@ -340,6 +368,10 @@ visible = false
 is_load = true
 active = false
 
+[node name="ControlsList" parent="." unique_id=1842205982 instance=ExtResource("13_a0bkl")]
+unique_name_in_owner = true
+visible = false
+
 [node name="CreditsMenu" parent="." unique_id=1704920630 instance=ExtResource("13_o4wu6")]
 unique_name_in_owner = true
 visible = false
@@ -396,6 +428,8 @@ script = ExtResource("21_jtp7x")
 [connection signal="pressed" from="MarginContainer3/HBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
 [connection signal="mouse_entered" from="MarginContainer3/HBoxContainer/Continue" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="MarginContainer3/HBoxContainer/Continue" to="." method="_on_continue_pressed"]
+[connection signal="mouse_entered" from="MarginContainer3/HBoxContainer/Controls" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="MarginContainer3/HBoxContainer/Controls" to="." method="_on_controls_pressed"]
 [connection signal="mouse_entered" from="MarginContainer3/HBoxContainer/Options" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="MarginContainer3/HBoxContainer/Options" to="." method="_on_options_pressed"]
 [connection signal="mouse_entered" from="MarginContainer3/HBoxContainer/Credits" to="." method="_on_button_mouse_entered"]
