@@ -1,0 +1,1454 @@
+[gd_scene format=3 uid="uid://d3wmq3gfikjv2"]
+
+[ext_resource type="Script" uid="uid://co0hoa40kjxq4" path="res://menus/credits_menu.gd" id="1_2wirg"]
+[ext_resource type="FontFile" uid="uid://d3y651l4q0g7n" path="res://assets/fonts/Gothica-Bold.ttf" id="2_a4qr7"]
+[ext_resource type="PackedScene" uid="uid://bi75tcolvv8tm" path="res://player/hud/input_image.tscn" id="3_8f2xa"]
+[ext_resource type="LabelSettings" uid="uid://d3fgf6aofyfc4" path="res://menus/credits_label_settings.tres" id="3_j7dvr"]
+[ext_resource type="Script" uid="uid://hafxp56l0iao" path="res://addons/gas/gas_label.gd" id="3_xn5jr"]
+[ext_resource type="PackedScene" uid="uid://bvglflfgvdtqo" path="res://menus/credits_item.tscn" id="4_a4qr7"]
+[ext_resource type="Texture2D" uid="uid://dorg26lk5rom5" path="res://assets/sprites/input_icons.png" id="4_j7dvr"]
+[ext_resource type="PackedScene" uid="uid://c15p4xf5ihtdo" path="res://menus/multi_author_credits_item.tscn" id="5_xn5jr"]
+[ext_resource type="LabelSettings" uid="uid://cv2nv0q56shf6" path="res://assets/fonts/body_text.tres" id="6_wbovt"]
+[ext_resource type="Texture2D" uid="uid://c1jditcnn7st6" path="res://assets/sprites/buttons.png" id="7_146xs"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rhbnc"]
+font = ExtResource("2_a4qr7")
+font_size = 72
+font_color = Color(0, 0, 0.72156864, 1)
+shadow_color = Color(0, 0, 0.43137255, 1)
+shadow_offset = Vector2(0, -2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8f2xa"]
+font_size = 64
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j7dvr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_a4qr7"]
+font_size = 48
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhbnc"]
+atlas = ExtResource("7_146xs")
+region = Rect2(0, 0, 200, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eeolf"]
+atlas = ExtResource("7_146xs")
+region = Rect2(200, 0, 200, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xn5jr"]
+resource_local_to_scene = true
+atlas = ExtResource("4_j7dvr")
+region = Rect2(16, 240, 16, 16)
+filter_clip = true
+
+[node name="CreditsMenu" type="CanvasLayer" unique_id=960938909 groups=["hud"]]
+layer = 999
+script = ExtResource("1_2wirg")
+
+[node name="Background" type="MarginContainer" parent="." unique_id=1175559333]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="ColorRect" type="ColorRect" parent="Background" unique_id=1621972708]
+layout_mode = 2
+color = Color(0, 0.14117648, 0.8666667, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="Background" unique_id=1364203620]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/MarginContainer" unique_id=707169189]
+layout_mode = 2
+size_flags_vertical = 0
+offset_transform_enabled = true
+
+[node name="Label" type="Label" parent="Background/MarginContainer/VBoxContainer" unique_id=459306656]
+layout_mode = 2
+text = "BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH"
+label_settings = SubResource("LabelSettings_rhbnc")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Background/MarginContainer/VBoxContainer" unique_id=2028508666]
+layout_mode = 2
+text = "BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH"
+label_settings = SubResource("LabelSettings_rhbnc")
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="Background/MarginContainer/VBoxContainer" unique_id=331775069]
+layout_mode = 2
+text = "BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH"
+label_settings = SubResource("LabelSettings_rhbnc")
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="Background/MarginContainer/VBoxContainer" unique_id=724841189]
+layout_mode = 2
+text = "BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH"
+label_settings = SubResource("LabelSettings_rhbnc")
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="Background/MarginContainer/VBoxContainer" unique_id=1501002820]
+layout_mode = 2
+text = "BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH"
+label_settings = SubResource("LabelSettings_rhbnc")
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="Background/MarginContainer/VBoxContainer" unique_id=1471021352]
+layout_mode = 2
+text = "BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH"
+label_settings = SubResource("LabelSettings_rhbnc")
+horizontal_alignment = 1
+
+[node name="Label7" type="Label" parent="Background/MarginContainer/VBoxContainer" unique_id=625192898]
+layout_mode = 2
+text = "BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH"
+label_settings = SubResource("LabelSettings_rhbnc")
+horizontal_alignment = 1
+
+[node name="Label8" type="Label" parent="Background/MarginContainer/VBoxContainer" unique_id=175938166]
+layout_mode = 2
+text = "BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH"
+label_settings = SubResource("LabelSettings_rhbnc")
+horizontal_alignment = 1
+
+[node name="Label9" type="Label" parent="Background/MarginContainer/VBoxContainer" unique_id=1869909602]
+layout_mode = 2
+text = "BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH"
+label_settings = SubResource("LabelSettings_rhbnc")
+horizontal_alignment = 1
+
+[node name="Label10" type="Label" parent="Background/MarginContainer/VBoxContainer" unique_id=236709210]
+layout_mode = 2
+text = "BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH"
+label_settings = SubResource("LabelSettings_rhbnc")
+horizontal_alignment = 1
+
+[node name="Label11" type="Label" parent="Background/MarginContainer/VBoxContainer" unique_id=1217669178]
+layout_mode = 2
+text = "BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH"
+label_settings = SubResource("LabelSettings_rhbnc")
+horizontal_alignment = 1
+
+[node name="Label12" type="Label" parent="Background/MarginContainer/VBoxContainer" unique_id=1101321687]
+layout_mode = 2
+text = "BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH"
+label_settings = SubResource("LabelSettings_rhbnc")
+horizontal_alignment = 1
+
+[node name="Label13" type="Label" parent="Background/MarginContainer/VBoxContainer" unique_id=1616967769]
+layout_mode = 2
+text = "BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH"
+label_settings = SubResource("LabelSettings_rhbnc")
+horizontal_alignment = 1
+
+[node name="Label14" type="Label" parent="Background/MarginContainer/VBoxContainer" unique_id=1273975020]
+layout_mode = 2
+text = "BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH"
+label_settings = SubResource("LabelSettings_rhbnc")
+horizontal_alignment = 1
+
+[node name="Label15" type="Label" parent="Background/MarginContainer/VBoxContainer" unique_id=693037370]
+layout_mode = 2
+text = "BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH"
+label_settings = SubResource("LabelSettings_rhbnc")
+horizontal_alignment = 1
+
+[node name="Label16" type="Label" parent="Background/MarginContainer/VBoxContainer" unique_id=560432948]
+layout_mode = 2
+text = "BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH   BAG WITCH"
+label_settings = SubResource("LabelSettings_rhbnc")
+horizontal_alignment = 1
+
+[node name="Foreground" type="MarginContainer" parent="." unique_id=1881788391]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Foreground" unique_id=1860079804]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Foreground/VBoxContainer" unique_id=1422360972]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Heading" type="Label" parent="Foreground/VBoxContainer/VBoxContainer" unique_id=481241217]
+layout_mode = 2
+text = "Credits"
+label_settings = SubResource("LabelSettings_8f2xa")
+horizontal_alignment = 1
+script = ExtResource("3_xn5jr")
+metadata/_custom_type_script = "uid://hafxp56l0iao"
+
+[node name="HSeparator" type="HSeparator" parent="Foreground/VBoxContainer/VBoxContainer" unique_id=624566493]
+layout_mode = 2
+theme_override_constants/separation = 16
+theme_override_styles/separator = SubResource("StyleBoxEmpty_j7dvr")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Foreground/VBoxContainer/VBoxContainer" unique_id=361869536]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+follow_focus = true
+vertical_scroll_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer" unique_id=81381237]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 32
+
+[node name="GridContainer" type="GridContainer" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=147813292]
+layout_mode = 2
+theme_override_constants/h_separation = 32
+theme_override_constants/v_separation = 16
+columns = 2
+
+[node name="GASLabel" type="Label" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer" unique_id=2009499843]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Programming:"
+label_settings = ExtResource("3_j7dvr")
+horizontal_alignment = 2
+script = ExtResource("3_xn5jr")
+metadata/_custom_type_script = "uid://hafxp56l0iao"
+
+[node name="GASLabel2" type="Label" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer" unique_id=1353469068]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Sean Finch"
+label_settings = ExtResource("3_j7dvr")
+script = ExtResource("3_xn5jr")
+metadata/_custom_type_script = "uid://hafxp56l0iao"
+
+[node name="GASLabel3" type="Label" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer" unique_id=814526315]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Game Design:"
+label_settings = ExtResource("3_j7dvr")
+horizontal_alignment = 2
+script = ExtResource("3_xn5jr")
+metadata/_custom_type_script = "uid://hafxp56l0iao"
+
+[node name="GASLabel4" type="Label" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer" unique_id=1598423629]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Sean Finch"
+label_settings = ExtResource("3_j7dvr")
+script = ExtResource("3_xn5jr")
+metadata/_custom_type_script = "uid://hafxp56l0iao"
+
+[node name="Control" type="Control" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer" unique_id=990179906]
+layout_mode = 2
+
+[node name="GASLabel5" type="Label" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer" unique_id=201641564]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Skyler Johnson"
+label_settings = ExtResource("3_j7dvr")
+script = ExtResource("3_xn5jr")
+metadata/_custom_type_script = "uid://hafxp56l0iao"
+
+[node name="Control2" type="Control" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer" unique_id=639637907]
+layout_mode = 2
+
+[node name="GASLabel6" type="Label" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer" unique_id=1418287495]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "CC"
+label_settings = ExtResource("3_j7dvr")
+script = ExtResource("3_xn5jr")
+metadata/_custom_type_script = "uid://hafxp56l0iao"
+
+[node name="GASLabel7" type="Label" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer" unique_id=89916199]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Custom Art Assets:"
+label_settings = ExtResource("3_j7dvr")
+horizontal_alignment = 2
+script = ExtResource("3_xn5jr")
+metadata/_custom_type_script = "uid://hafxp56l0iao"
+
+[node name="GASLabel8" type="Label" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer" unique_id=1978019056]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Sean Finch"
+label_settings = ExtResource("3_j7dvr")
+script = ExtResource("3_xn5jr")
+metadata/_custom_type_script = "uid://hafxp56l0iao"
+
+[node name="GASLabel9" type="Label" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer" unique_id=1622422764]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Management:"
+label_settings = ExtResource("3_j7dvr")
+horizontal_alignment = 2
+script = ExtResource("3_xn5jr")
+metadata/_custom_type_script = "uid://hafxp56l0iao"
+
+[node name="GASLabel10" type="Label" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer" unique_id=389824718]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "CC"
+label_settings = ExtResource("3_j7dvr")
+script = ExtResource("3_xn5jr")
+metadata/_custom_type_script = "uid://hafxp56l0iao"
+
+[node name="GASLabel11" type="Label" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1442417044]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Developed for the Portland Indie Game Squad \"Summer Slow Jams 2026: Inventory\" Game Jam"
+label_settings = ExtResource("3_j7dvr")
+horizontal_alignment = 1
+script = ExtResource("3_xn5jr")
+metadata/_custom_type_script = "uid://hafxp56l0iao"
+
+[node name="GASLabel" type="Label" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=428108475]
+layout_mode = 2
+text = "Music"
+label_settings = SubResource("LabelSettings_a4qr7")
+horizontal_alignment = 1
+script = ExtResource("3_xn5jr")
+metadata/_custom_type_script = "uid://hafxp56l0iao"
+
+[node name="Music" type="GridContainer" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1647136122]
+layout_mode = 2
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 64
+columns = 3
+
+[node name="CreditsItem" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Music" unique_id=1374007702 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Unfinished Business"
+title_source = "https://opengameart.org/content/unfinished-business"
+author = "Mega Pixel Music Lab"
+author_source = "https://opengameart.org/users/mega-pixel-music-lab"
+license = "CC-BY 3.0 license"
+
+[node name="CreditsItem5" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Music" unique_id=1269482242 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "There's No Rush"
+title_source = "https://opengameart.org/content/theres-no-rush"
+author = "Mega Pixel Music Lab"
+author_source = "https://opengameart.org/users/mega-pixel-music-lab"
+license = "OGA-BY 4.0 license"
+license_source = "https://opengameart.org/content/oga-by-40-faq"
+
+[node name="CreditsItem6" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Music" unique_id=1082887956 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Pound the Enemy Base"
+title_source = "https://opengameart.org/content/pound-the-enemy-base"
+author = "Mega Pixel Music Lab"
+author_source = "https://opengameart.org/users/mega-pixel-music-lab"
+license = "CC-BY 4.0 license"
+license_source = "https://creativecommons.org/licenses/by/4.0/"
+
+[node name="CreditsItem2" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Music" unique_id=859438027 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "\"Crisis! You're Dehydrated!\""
+title_source = "https://opengameart.org/content/crisis-youre-dehydrated"
+author = "Spring Spring"
+author_source = "https://opengameart.org/users/spring-spring"
+license = "CC-BY 3.0 license"
+
+[node name="CreditsItem3" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Music" unique_id=854458006 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Red Hot"
+title_source = "https://opengameart.org/content/red-hot"
+author = "Snabisch"
+author_source = "https://opengameart.org/users/snabisch"
+license = "CC-BY 3.0 license"
+
+[node name="CreditsItem42" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Music" unique_id=228036442 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Boba Gor"
+title_source = "https://opengameart.org/content/boba-gor"
+author = "congusbongus"
+author_source = "https://opengameart.org/users/congusbongus"
+license = "CC0 1.0 Universal license"
+
+[node name="CreditsItem4" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Music" unique_id=670259531 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Game Over Jingle 4"
+title_source = "https://opengameart.org/content/game-over-jingles"
+author = "Tine S"
+author_source = "https://opengameart.org/users/tine-s"
+license = "CC BY-SA 4.0 license"
+license_source = "https://creativecommons.org/licenses/by-sa/4.0/"
+
+[node name="GASLabel7" type="Label" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1916971941]
+layout_mode = 2
+text = "Sound Effects"
+label_settings = SubResource("LabelSettings_a4qr7")
+horizontal_alignment = 1
+script = ExtResource("3_xn5jr")
+metadata/_custom_type_script = "uid://hafxp56l0iao"
+
+[node name="Sound" type="GridContainer" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=950470687]
+layout_mode = 2
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 64
+columns = 3
+
+[node name="CreditsItem2" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Sound" unique_id=611969278 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Generic Firearm Dryfire"
+title_source = "https://freesound.org/people/jackyyang09/sounds/467432/"
+author = "jackyyang09"
+author_source = "https://freesound.org/people/jackyyang09/"
+license = "CC-BY 4.0 license"
+
+[node name="CreditsItem3" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Sound" unique_id=1275185039 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Gun trigger pull 3"
+title_source = "https://freesound.org/people/JakLocke/sounds/412296/"
+author = "JakLocke"
+author_source = "https://freesound.org/people/JakLocke/"
+license = "CC-BY 4.0 license"
+
+[node name="CreditsItem8" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Sound" unique_id=377722647 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Weapons Synth Blast 01"
+title_source = "https://freesound.org/people/DWOBoyle/sounds/143611/"
+author = "DWOBoyle"
+author_source = "https://freesound.org/people/DWOBoyle/"
+license = "CC-BY 4.0 license"
+
+[node name="CreditsItem10" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Sound" unique_id=686695045 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Fantasy SFX Pack Vol 1"
+title_source = "https://opengameart.org/content/jc-sounds-fantasy-sfx-pack-vol-1"
+author = "JC Sounds"
+author_source = "https://opengameart.org/users/jc-sounds"
+license = "CC-BY 4.0 license"
+
+[node name="CreditsItem13" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Sound" unique_id=357793120 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Sci-Fi Pack Vol 1"
+title_source = "https://opengameart.org/content/jc-sounds-sci-fi-pack-vol-1"
+author = "JC Sounds"
+author_source = "https://opengameart.org/users/jc-sounds"
+license = "CC-BY 4.0 license"
+
+[node name="CreditsItem23" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Sound" unique_id=1604910185 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Water Droplet Bubble Pop1"
+title_source = "https://freesound.org/people/CGEffex/sounds/89536/"
+author = "CGEffex"
+author_source = "https://freesound.org/people/CGEffex/"
+license = "CC-BY 4.0 license"
+
+[node name="CreditsItem29" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Sound" unique_id=1042134621 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "12 Player Movement SFX"
+title_source = "https://opengameart.org/content/12-player-movement-sfx"
+author = "leohpaz"
+author_source = "https://opengameart.org/users/leohpaz"
+license = "CC-BY 4.0 license"
+
+[node name="CreditsItem12" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Sound" unique_id=702335330 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "3 Item Sounds"
+title_source = "https://opengameart.org/content/3-item-sounds"
+author = "Michel Baradari"
+author_source = "https://apollo-music.de/"
+license = "CC-BY 3.0 license"
+
+[node name="CreditsItem16" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Sound" unique_id=2016872834 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Punch"
+title_source = "https://freesound.org/people/ztrees1/sounds/134934/"
+author = "ztrees1"
+author_source = "https://freesound.org/people/ztrees1/"
+license = "CC-BY 3.0 license"
+
+[node name="CreditsItem19" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Sound" unique_id=290350240 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Sfx_Throw"
+title_source = "https://opengameart.org/content/sfxthrow"
+author = "the Blender Foundation"
+author_source = "https://apricot.blender.org/"
+license = "CC-BY 3.0 license"
+
+[node name="CreditsItem22" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Sound" unique_id=498135806 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "ZombieHit"
+title_source = "https://freesound.org/people/Alderman2k/sounds/494776/"
+author = "Alderman2k"
+author_source = "https://freesound.org/people/Alderman2k/"
+license = "CC-BY 3.0 license"
+
+[node name="CreditsItem27" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Sound" unique_id=1037623025 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "8 Bit Teleport"
+title_source = "https://opengameart.org/content/8-bit-teleport"
+author = "diego200052"
+author_source = "https://opengameart.org/users/diego200052"
+license = "CC-BY 3.0 license"
+
+[node name="CreditsItem" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Sound" unique_id=1448595532 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Some sounds 2"
+title_source = "https://opengameart.org/content/some-sounds-2"
+author = "Ziph"
+author_source = "https://opengameart.org/users/ziph"
+license = "CC0 1.0 Universal license"
+
+[node name="CreditsItem4" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Sound" unique_id=935554651 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Player_Shoot1"
+title_source = "https://freesound.org/people/BaggoNotes/sounds/720118/"
+author = "BaggoNotes"
+author_source = "https://freesound.org/people/BaggoNotes/"
+license = "CC0 1.0 Universal license"
+
+[node name="CreditsItem5" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Sound" unique_id=434362130 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Weapon, Ready"
+title_source = "https://freesound.org/people/LilMati/sounds/448987/"
+author = "LilMati"
+author_source = "https://freesound.org/people/LilMati/"
+license = "CC0 1.0 Universal license"
+
+[node name="CreditsItem25" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Sound" unique_id=1581963411 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Retro, Bubble Shot 01"
+title_source = "https://freesound.org/people/LilMati/sounds/458906/"
+author = "LilMati"
+author_source = "https://freesound.org/people/LilMati/"
+license = "CC0 1.0 Universal license"
+
+[node name="CreditsItem6" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Sound" unique_id=403427390 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Sword"
+title_source = "https://freesound.org/people/cribbler/sounds/381864/"
+author = "cribbler"
+author_source = "https://freesound.org/people/cribbler/"
+license = "CC0 1.0 Universal license"
+
+[node name="CreditsItem7" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Sound" unique_id=605527544 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "shotgun_rack"
+title_source = "https://freesound.org/people/Pacifici/sounds/351226/"
+author = "Pacifici"
+author_source = "https://freesound.org/people/Pacifici/"
+license = "CC0 1.0 Universal license"
+
+[node name="CreditsItem9" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Sound" unique_id=1280481752 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "arrow damage"
+title_source = "https://freesound.org/people/braqoon/sounds/161098/"
+author = "braqoon"
+author_source = "https://freesound.org/people/braqoon/"
+license = "CC0 1.0 Universal license"
+
+[node name="CreditsItem11" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Sound" unique_id=369222041 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "7 Eating Crunches "
+title_source = "https://opengameart.org/content/7-eating-crunches"
+author = "StarNinjas"
+author_source = "https://opengameart.org/users/starninjas"
+license = "CC0 1.0 Universal license"
+
+[node name="CreditsItem14" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Sound" unique_id=631500893 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "200 Free SFX"
+title_source = "https://kronbits.itch.io/freesfx"
+author = "Kronbits"
+author_source = "https://kronbits.itch.io/"
+license = "CC0 1.0 Universal license"
+
+[node name="CreditsItem15" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Sound" unique_id=374969846 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Pew Laser Fire Sound"
+title_source = "https://opengameart.org/content/pew-laser-fire-sound"
+author = "sketcherskt"
+author_source = "https://opengameart.org/users/sketcherskt"
+license = "CC0 1.0 Universal license"
+
+[node name="CreditsItem17" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Sound" unique_id=978962054 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "RPG Sound Pack"
+title_source = "https://opengameart.org/content/rpg-sound-pack"
+author = "artisticdude"
+author_source = "https://opengameart.org/users/artisticdude"
+license = "CC0 1.0 Universal license"
+
+[node name="CreditsItem18" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Sound" unique_id=1843247666 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Gravity Inverter"
+title_source = "https://opengameart.org/content/gravity-inverter"
+author = "fvcalderan"
+author_source = "https://opengameart.org/users/fvcalderan"
+license = "CC0 1.0 Universal license"
+
+[node name="CreditsItem20" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Sound" unique_id=266775970 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "b1"
+title_source = "https://freesound.org/people/Pellepyb/sounds/431671/"
+author = "Pellepyb"
+author_source = "https://freesound.org/people/Pellepyb/"
+license = "CC0 1.0 Universal license"
+
+[node name="CreditsItem21" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Sound" unique_id=559847375 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Pop11"
+title_source = "https://freesound.org/people/lbrady240/sounds/850097/"
+author = "lbrady240"
+author_source = "https://freesound.org/people/lbrady240/"
+license = "CC0 1.0 Universal license"
+
+[node name="CreditsItem24" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Sound" unique_id=641800520 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "1"
+title_source = "https://freesound.org/people/protopines/sounds/684472/"
+author = "protopines"
+author_source = "https://freesound.org/people/protopines/"
+license = "CC0 1.0 Universal license"
+
+[node name="CreditsItem26" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Sound" unique_id=92528109 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Magic - Blast or Whoosh"
+title_source = "https://freesound.org/people/Vrymaa/sounds/802725/"
+author = "Vrymaa"
+author_source = "https://freesound.org/people/Vrymaa/"
+license = "CC0 1.0 Universal license"
+
+[node name="CreditsItem28" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Sound" unique_id=1715767306 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Slash - Rpg"
+title_source = "https://freesound.org/people/colorsCrimsonTears/sounds/580307/"
+author = "colorsCrimsonTears"
+author_source = "https://freesound.org/people/colorsCrimsonTears/"
+license = "CC0 1.0 Universal license"
+
+[node name="CreditsItem30" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Sound" unique_id=1382821860 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Interface SFX Pack 1"
+title_source = "https://obsydianx.itch.io/interface-sfx-pack-1"
+author = "ObsydianX"
+author_source = "https://obsydianx.itch.io/"
+license = "CC0 1.0 Universal license"
+
+[node name="GASLabel2" type="Label" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1824285454]
+layout_mode = 2
+text = "Graphics"
+label_settings = SubResource("LabelSettings_a4qr7")
+horizontal_alignment = 1
+script = ExtResource("3_xn5jr")
+metadata/_custom_type_script = "uid://hafxp56l0iao"
+
+[node name="Graphics" type="GridContainer" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1199737292]
+layout_mode = 2
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 64
+columns = 3
+
+[node name="CreditsItem" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=1609030107 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Volcano Lava Floor"
+title_source = "https://opengameart.org/content/volcano-lava-floor"
+author = "Dakal"
+author_source = "https://opengameart.org/users/dakal"
+license = "CC-BY 3.0 license"
+
+[node name="CreditsItem2" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=1527194044 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Golden UI - Bigger Than Ever edition"
+title_source = "https://opengameart.org/content/golden-ui-bigger-than-ever-edition"
+author = "Buch"
+author_source = "https://opengameart.org/users/buch"
+license = "CC BY-SA 3.0 license"
+license_source = "https://creativecommons.org/licenses/by-sa/3.0/"
+
+[node name="CreditsItem3" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=347568243 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Old Oak Tree"
+title_source = "https://opengameart.org/content/old-oak-tree"
+author = "Julius"
+author_source = "https://opengameart.org/users/julius"
+license = "CC BY-SA 3.0 license"
+license_source = "https://creativecommons.org/licenses/by-sa/3.0/"
+
+[node name="CreditsItem4" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=239427209 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Gems"
+title_source = "https://opengameart.org/content/gems"
+author = "Clint Bellanger"
+author_source = "https://opengameart.org/users/clint-bellanger"
+license = "CC BY-SA 3.0 license"
+license_source = "https://creativecommons.org/licenses/by-sa/3.0/"
+
+[node name="CreditsItem5" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=1965567838 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Ice Sparkles Overlay Effect"
+title_source = "https://opengameart.org/content/ice-sparkles-overlay-effect"
+author = "AntumDeluge"
+author_source = "https://opengameart.org/users/antumdeluge"
+license = "CC-BY 4.0 license"
+license_source = "https://creativecommons.org/licenses/by/4.0/"
+
+[node name="CreditsItem6" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=275160405 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Stylized Magic Book"
+title_source = "https://opengameart.org/content/stylized-magic-book"
+author = "animatedheaven"
+author_source = "https://opengameart.org/users/animatedheaven"
+license = "CC-BY 4.0 license"
+license_source = "https://creativecommons.org/licenses/by/4.0/"
+
+[node name="CreditsItem7" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=2130322574 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Low Poly Crown"
+title_source = "https://opengameart.org/content/low-poly-crown-0"
+author = "Tianmaru"
+author_source = "https://opengameart.org/users/tianmaru"
+license = "CC-BY 4.0 license"
+license_source = "https://creativecommons.org/licenses/by/4.0/"
+
+[node name="CreditsItem8" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=116662971 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "3D Ice Tileset"
+title_source = "https://wizp.itch.io/ice-tileset"
+author = "WizP"
+author_source = "https://wizp.itch.io/"
+
+[node name="Title" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics/CreditsItem8" index="0" unique_id=2092783902]
+text = "\"3D Ice Tileset\""
+
+[node name="Author" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics/CreditsItem8/HBoxContainer" parent_id_path=PackedInt32Array(116662971, 1923085623) index="1" unique_id=1747246967]
+text = "WizP"
+
+[node name="GASLabel3" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics/CreditsItem8" index="2" unique_id=1522127840]
+visible = false
+
+[node name="License" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics/CreditsItem8" index="3" unique_id=1719631733]
+visible = false
+
+[node name="CreditsItem42" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=842640183 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Snowflake 1 icon"
+title_source = "https://game-icons.net/1x1/lorc/snowflake-1.html"
+author = "Lorc"
+author_source = "https://lorcblog.blogspot.com/"
+license = "CC-BY 3.0 license"
+
+[node name="CreditsItem44" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=1807944646 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Jigsaw piece icon"
+title_source = "https://game-icons.net/1x1/lorc/jigsaw-piece.html"
+author = "Lorc"
+author_source = "https://lorcblog.blogspot.com/"
+license = "CC-BY 3.0 license"
+
+[node name="CreditsItem45" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=1531432758 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Fireball icon"
+title_source = "https://game-icons.net/1x1/lorc/fireball.html"
+author = "Lorc"
+author_source = "https://lorcblog.blogspot.com/"
+license = "CC-BY 3.0 license"
+
+[node name="CreditsItem46" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=513411916 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Minotaur icon"
+title_source = "https://game-icons.net/1x1/lorc/minotaur.html"
+author = "Lorc"
+author_source = "https://lorcblog.blogspot.com/"
+license = "CC-BY 3.0 license"
+
+[node name="CreditsItem47" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=1683083145 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Rock icon"
+title_source = "https://game-icons.net/1x1/lorc/rock.html"
+author = "Lorc"
+author_source = "https://lorcblog.blogspot.com/"
+license = "CC-BY 3.0 license"
+
+[node name="CreditsItem50" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=270887367 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Laser sparks icon"
+title_source = "https://game-icons.net/1x1/lorc/laser-sparks.html"
+author = "Lorc"
+author_source = "https://lorcblog.blogspot.com/"
+license = "CC-BY 3.0 license"
+
+[node name="CreditsItem51" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=1761202482 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Molotov icon"
+title_source = "https://game-icons.net/1x1/lorc/molotov.html"
+author = "Lorc"
+author_source = "https://lorcblog.blogspot.com/"
+license = "CC-BY 3.0 license"
+metadata/_edit_lock_ = true
+
+[node name="CreditsItem52" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=527940474 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Orb direction icon"
+title_source = "https://game-icons.net/1x1/lorc/orb-direction.html"
+author = "Lorc"
+author_source = "https://lorcblog.blogspot.com/"
+license = "CC-BY 3.0 license"
+
+[node name="CreditsItem53" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=1346248909 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Potion ball icon"
+title_source = "https://game-icons.net/1x1/lorc/potion-ball.html"
+author = "Lorc"
+author_source = "https://lorcblog.blogspot.com/"
+license = "CC-BY 3.0 license"
+
+[node name="CreditsItem48" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=1127429603 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Portal icon"
+title_source = "https://game-icons.net/1x1/lorc/portal.html"
+author = "Lorc"
+author_source = "https://lorcblog.blogspot.com/"
+license = "CC-BY 3.0 license"
+
+[node name="CreditsItem54" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=1355075192 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Broadsword icon"
+title_source = "https://game-icons.net/1x1/lorc/broadsword.html"
+author = "Lorc"
+author_source = "https://lorcblog.blogspot.com/"
+license = "CC-BY 3.0 license"
+
+[node name="CreditsItem49" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=1357869971 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Broom icon"
+title_source = "https://game-icons.net/1x1/delapouite/broom.html"
+author = "Delapouite"
+author_source = "https://delapouite.com/"
+license = "CC-BY 3.0 license"
+
+[node name="CreditsItem55" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=2038884956 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Heavy bullets icon"
+title_source = "https://game-icons.net/1x1/delapouite/heavy-bullets.html"
+author = "Delapouite"
+author_source = "https://delapouite.com/"
+license = "CC-BY 3.0 license"
+
+[node name="CreditsItem56" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=1212201219 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Bell pepper icon"
+title_source = "https://game-icons.net/1x1/delapouite/bell-pepper.html"
+author = "Delapouite"
+author_source = "https://delapouite.com/"
+license = "CC-BY 3.0 license"
+
+[node name="CreditsItem57" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=1596743152 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Leg icon"
+title_source = "https://game-icons.net/1x1/delapouite/leg.html"
+author = "Delapouite"
+author_source = "https://delapouite.com/"
+license = "CC-BY 3.0 license"
+
+[node name="CreditsItem58" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=353283623 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Cancel icon"
+title_source = "https://game-icons.net/1x1/sbed/cancel.html"
+author = "sbed"
+author_source = "https://opengameart.org/users/sbed"
+license = "CC-BY 3.0 license"
+
+[node name="CreditsItem59" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=997595443 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Shotgun icon"
+title_source = "https://game-icons.net/1x1/sbed/shotgun.html"
+author = "sbed"
+author_source = "https://opengameart.org/users/sbed"
+license = "CC-BY 3.0 license"
+
+[node name="CreditsItem60" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=1049521370 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Electric icon"
+title_source = "https://game-icons.net/1x1/sbed/electric.html"
+author = "sbed"
+author_source = "https://opengameart.org/users/sbed"
+license = "CC-BY 3.0 license"
+
+[node name="CreditsItem62" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=2043067566 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Pistol gun icon"
+title_source = "https://game-icons.net/1x1/john-colburn/pistol-gun.html"
+author = "John Colburn"
+author_source = "https://ninmunanmu.com/"
+license = "CC-BY 3.0 license"
+
+[node name="CreditsItem9" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=1082634085 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Tiny RPG - Dark Dwellers GUI"
+title_source = "https://opengameart.org/content/tiny-rpg-dark-dwellers-gui"
+author = "Gabriel Lima"
+author_source = "https://opengameart.org/users/tiopalada"
+license = "CC0 1.0 Universal license"
+
+[node name="CreditsItem10" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=1083081515 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Tiny RPG - Mana Soul GUI"
+title_source = "https://opengameart.org/content/tiny-rpg-mana-soul-gui"
+author = "Gabriel Lima"
+author_source = "https://opengameart.org/users/tiopalada"
+license = "CC0 1.0 Universal license"
+
+[node name="CreditsItem11" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=584659594 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Tiny RPG - Dragon Regalia GUI"
+title_source = "https://opengameart.org/content/tiny-rpg-dragon-regalia-gui"
+author = "Gabriel Lima"
+author_source = "https://opengameart.org/users/tiopalada"
+license = "CC0 1.0 Universal license"
+
+[node name="CreditsItem12" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=593789432 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Particle Pack (80+ sprites)"
+title_source = "https://opengameart.org/content/particle-pack-80-sprites"
+author = "Kenney"
+author_source = "https://www.kenney.nl/"
+license = "CC0 1.0 Universal license"
+
+[node name="CreditsItem13" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=139148994 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Input Prompts Pixel"
+title_source = "https://kenney.nl/assets/input-prompts-pixel"
+author = "Kenney"
+author_source = "https://www.kenney.nl/"
+license = "CC0 1.0 Universal license"
+
+[node name="CreditsItem14" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=469044447 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Cursor Pixel Pack"
+title_source = "https://kenney.nl/assets/cursor-pixel-pack"
+author = "Kenney"
+author_source = "https://www.kenney.nl/"
+license = "CC0 1.0 Universal license"
+
+[node name="CreditsItem27" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=373236114 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Blaster Kit"
+title_source = "https://opengameart.org/content/blaster-kit"
+author = "Kenney"
+author_source = "https://www.kenney.nl/"
+license = "CC0 1.0 Universal license"
+
+[node name="CreditsItem36" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=660095846 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Survival Kit"
+title_source = "https://kenney.nl/assets/survival-kit"
+author = "Kenney"
+author_source = "https://www.kenney.nl/"
+license = "CC0 1.0 Universal license"
+
+[node name="CreditsItem37" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=367849177 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Nature Kit"
+title_source = "https://kenney.nl/assets/nature-kit"
+author = "Kenney"
+author_source = "https://www.kenney.nl/"
+license = "CC0 1.0 Universal license"
+
+[node name="CreditsItem38" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=212185908 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Food Kit"
+title_source = "https://kenney.nl/assets/food-kit"
+author = "Kenney"
+author_source = "https://www.kenney.nl/"
+license = "CC0 1.0 Universal license"
+
+[node name="CreditsItem61" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=213929083 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Skyboxes"
+title_source = "https://kenney.nl/assets/skyboxes"
+author = "Kenney"
+author_source = "https://www.kenney.nl/"
+license = "CC0 1.0 Universal license"
+
+[node name="CreditsItem15" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=938260348 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Dungeon Pack "
+title_source = "https://kaylousberg.itch.io/kaykit-dungeon-pack"
+author = "Kay Lousberg"
+author_source = "https://kaylousberg.com/"
+license = "CC0 1.0 Universal license"
+
+[node name="CreditsItem16" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=738532271 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Character Pack: Adventurers"
+title_source = "https://kaylousberg.itch.io/kaykit-adventurers"
+author = "Kay Lousberg"
+author_source = "https://kaylousberg.com/"
+license = "CC0 1.0 Universal license"
+
+[node name="CreditsItem41" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=837049016 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Character Pack: Skeletons"
+title_source = "https://kaylousberg.itch.io/kaykit-skeletons"
+author = "Kay Lousberg"
+author_source = "https://kaylousberg.com/"
+license = "CC0 1.0 Universal license"
+
+[node name="CreditsItem17" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=1434904000 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Mystery Monthly: Series 4"
+title_source = "https://kaylousberg.itch.io/kaykit-series-4"
+author = "Kay Lousberg"
+author_source = "https://kaylousberg.com/"
+license = "CC0 1.0 Universal license"
+
+[node name="CreditsItem18" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=682878491 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Mystery Monthly: Series 5"
+title_source = "https://kaylousberg.itch.io/kaykit-series-5"
+author = "Kay Lousberg"
+author_source = "https://kaylousberg.com/"
+license = "CC0 1.0 Universal license"
+
+[node name="CreditsItem19" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=729601266 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Mystery Monthly: Series 6"
+title_source = "https://kaylousberg.itch.io/kaykit-series-6"
+author = "Kay Lousberg"
+author_source = "https://kaylousberg.com/"
+license = "CC0 1.0 Universal license"
+
+[node name="CreditsItem20" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=1312197784 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Tiny Creatures"
+title_source = "https://opengameart.org/content/tiny-creatures"
+author = "Clint Bellanger"
+author_source = "https://opengameart.org/users/clint-bellanger"
+license = "CC0 1.0 Universal license"
+
+[node name="CreditsItem21" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=795524343 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Potions"
+title_source = "https://opengameart.org/content/potions-6"
+author = "yd"
+author_source = "https://opengameart.org/users/yd"
+license = "CC0 1.0 Universal license"
+
+[node name="CreditsItem39" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=1861579184 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Bag of Coins"
+title_source = "https://opengameart.org/content/bag-of-coins"
+author = "yd"
+author_source = "https://opengameart.org/users/yd"
+license = "CC0 1.0 Universal license"
+
+[node name="CreditsItem23" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=1412783349 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Lowpoly Molotov"
+title_source = "https://opengameart.org/content/lowpoly-molotov"
+author = "Lucian Pavel"
+author_source = "https://opengameart.org/users/lucian-pavel"
+license = "CC0 1.0 Universal license"
+
+[node name="CreditsItem22" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=998144701 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "2D Explosion Animations"
+title_source = "https://opengameart.org/content/2d-explosion-animations-frame-by-frame"
+author = "Sinestesia"
+author_source = "https://opengameart.org/users/sinestesia"
+license = "CC0 1.0 Universal license"
+
+[node name="CreditsItem43" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=1770245128 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Hit Animation 2"
+title_source = "https://opengameart.org/content/hit-animation-2-frame-by-frame"
+author = "Sinestesia"
+author_source = "https://opengameart.org/users/sinestesia"
+license = "CC0 1.0 Universal license"
+
+[node name="CreditsItem24" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=887307154 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Energy Pipe"
+title_source = "https://opengameart.org/content/energy-pipe"
+author = "Tim Vögtli"
+author_source = "https://opengameart.org/users/musdasch"
+license = "CC0 1.0 Universal license"
+
+[node name="CreditsItem25" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=1517847076 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Tool Pack 1"
+title_source = "https://opengameart.org/content/tool-pack-1"
+author = "LonesomeDucky"
+author_source = "https://opengameart.org/users/lonesomeducky"
+license = "CC0 1.0 Universal license"
+
+[node name="CreditsItem26" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=1125198354 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "3D (Mese) Crystal"
+title_source = "https://opengameart.org/content/3d-mese-crystal"
+author = "rubberduck"
+author_source = "https://opengameart.org/users/rubberduck"
+license = "CC0 1.0 Universal license"
+
+[node name="CreditsItem28" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=1107448088 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Medieval Blacksmith"
+title_source = "https://opengameart.org/content/medievalblacksmith1"
+author = "Paul Wortmann"
+author_source = "https://opengameart.org/users/paul-wortmann"
+license = "CC0 1.0 Universal license"
+
+[node name="CreditsItem29" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=437900327 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Powerup (Animated Orb)"
+title_source = "https://opengameart.org/content/powerup-animated-orb"
+author = "Joseph Crown"
+author_source = "https://opengameart.org/users/jcrown41"
+license = "CC0 1.0 Universal license"
+
+[node name="CreditsItem30" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=270776412 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Animated 3D Cartoon Chest"
+title_source = "https://opengameart.org/content/animated-3d-cartoon-chest"
+author = "Rômulo Lima"
+author_source = "https://opengameart.org/users/overactiongamestudio"
+license = "CC0 1.0 Universal license"
+
+[node name="CreditsItem31" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=177878125 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "RPG Item collection 2"
+title_source = "https://opengameart.org/content/rpg-item-collection-2"
+author = "Miloslav Číž"
+author_source = "https://opengameart.org/users/drummyfish"
+license = "CC0 1.0 Universal license"
+
+[node name="CreditsItem32" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=336336932 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "LowPoly Animated Slime"
+title_source = "https://opengameart.org/content/fbx-blend-lowpoly-animated-slime"
+author = "Alexandra Alarie"
+author_source = "https://opengameart.org/users/pinkcannon"
+license = "CC0 1.0 Universal license"
+
+[node name="CreditsItem33" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=446284465 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Toon Waterfall"
+title_source = "https://opengameart.org/content/toon-waterfall"
+author = "doodlebuiltt"
+author_source = "https://opengameart.org/users/doodlebuilt"
+license = "CC0 1.0 Universal license"
+
+[node name="CreditsItem34" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=433515273 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Low Poly Portal"
+title_source = "https://opengameart.org/content/low-poly-portal"
+author = "HippoDevelopment"
+author_source = "https://opengameart.org/users/hippodevelopment"
+license = "CC0 1.0 Universal license"
+
+[node name="CreditsItem35" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=1083918885 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "30 Unique Lowpoly Swords"
+title_source = "https://opengameart.org/content/30-unique-lowpoly-swords-cc0-swordtember2022"
+author = "CC0 Game Assets"
+author_source = "https://opengameart.org/users/cc0-game-assets"
+license = "CC0 1.0 Universal license"
+
+[node name="CreditsItem40" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=561805401 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Guns Asset Pack"
+title_source = "https://styloo.itch.io/guns-asset-pack"
+author = "styloo"
+author_source = "https://styloo.itch.io/"
+license = "CC0 1.0 Universal license"
+
+[node name="CreditsItem63" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics" unique_id=1143761572 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "WRAD ARMS"
+title_source = "https://wriks.itch.io/wrad-arms"
+author = "wriks"
+author_source = "https://wriks.itch.io/"
+license = "CC0 1.0 Universal license"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1360345719]
+layout_mode = 2
+
+[node name="CreditsItem14" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=1262915805 instance=ExtResource("5_xn5jr")]
+layout_mode = 2
+size_flags_stretch_ratio = 2.0
+authors = Array[String](["Zabin", "Daniel Cook", "Jetrel", "Saphy (TMW)", "Bertram"])
+author_sources = Array[String](["https://opengameart.org/users/zabin", "", "https://opengameart.org/users/jetrel", "", "https://opengameart.org/users/bertram"])
+title = "2d Lost Garden Zelda style tiles resized to 32x32 with additions"
+title_source = "https://opengameart.org/content/2d-lost-garden-zelda-style-tiles-resized-to-32x32-with-additions"
+license = "CC-BY 3.0 license"
+
+[node name="GASLabel3" type="Label" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=138322688]
+layout_mode = 2
+text = "Shaders"
+label_settings = SubResource("LabelSettings_a4qr7")
+horizontal_alignment = 1
+script = ExtResource("3_xn5jr")
+metadata/_custom_type_script = "uid://hafxp56l0iao"
+
+[node name="Shaders" type="GridContainer" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1323412181]
+layout_mode = 2
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 64
+columns = 3
+
+[node name="CreditsItem" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Shaders" unique_id=194129346 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Speed Effect"
+title_source = "https://godotshaders.com/shader/speed-effect/"
+author = "IHaveUsefullShaders"
+author_source = "https://godotshaders.com/author/ihaveusefullshaders/"
+license = "GNU GPLv3 license"
+license_source = "https://choosealicense.com/licenses/gpl-3.0/"
+
+[node name="CreditsItem2" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Shaders" unique_id=762342246 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Ripple shader"
+title_source = "https://godotshaders.com/shader/ripple-shader/"
+author = "Nevoski"
+author_source = "https://godotshaders.com/author/nevoski/"
+license = "CC BY-NC-SA 3.0 license"
+license_source = "https://creativecommons.org/licenses/by-nc-sa/3.0/"
+
+[node name="CreditsItem3" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Shaders" unique_id=1888646488 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Pixelate"
+title_source = "https://godotshaders.com/shader/pixelate-2/"
+author = "aricchi"
+author_source = "https://godotshaders.com/author/aricchi/"
+license = "MIT license"
+
+[node name="CreditsItem4" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Shaders" unique_id=1170740827 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Fire Distortion"
+title_source = "https://godotshaders.com/shader/fire-distortion/"
+author = "fritzy"
+author_source = "https://godotshaders.com/author/fritzy/"
+license = "MIT license"
+
+[node name="CreditsItem5" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Shaders" unique_id=831694637 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Stylized Flame"
+title_source = "https://godotshaders.com/shader/stylized-flame/"
+author = "Thundergecko8"
+author_source = "https://godotshaders.com/author/thundergecko8/"
+license = "MIT license"
+
+[node name="CreditsItem6" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Shaders" unique_id=1472157495 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Spatial Ice Shader"
+title_source = "https://godotshaders.com/shader/spatial-ice-shader/"
+author = "NekotoArts"
+author_source = "https://godotshaders.com/author/nekotoarts/"
+license = "CC0 1.0 Universal license"
+
+[node name="CreditsItem7" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Shaders" unique_id=483407989 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Cartoon 3D Fire"
+title_source = "https://godotshaders.com/shader/cartoon-3d-fire/"
+author = "erBimo"
+author_source = "https://godotshaders.com/author/erbimo/"
+license = "CC0 1.0 Universal license"
+
+[node name="CreditsItem8" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Shaders" unique_id=1349287925 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Stylized Smoke Shader"
+title_source = "https://godotshaders.com/shader/stylized-smoke-shader/"
+author = "Loop_Box"
+author_source = "https://godotshaders.com/author/loop_box/"
+license = "CC0 1.0 Universal license"
+
+[node name="CreditsItem11" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Shaders" unique_id=1892897037 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "3D Lightning shader"
+title_source = "https://godotshaders.com/shader/3d-lightning-shader/"
+author = "Loop_Box"
+author_source = "https://godotshaders.com/author/loop_box/"
+license = "CC0 1.0 Universal license"
+
+[node name="CreditsItem9" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Shaders" unique_id=845158399 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Swaying Material"
+title_source = "https://godotshaders.com/shader/swaying-material/"
+author = "Miu"
+author_source = "https://godotshaders.com/author/miu/"
+license = "CC0 1.0 Universal license"
+
+[node name="CreditsItem10" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Shaders" unique_id=225357158 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "3D Pixelated Fire Shader"
+title_source = "https://godotshaders.com/shader/3d-pixelated-fire-shader/"
+author = "dardevv"
+author_source = "https://godotshaders.com/author/dardevv/"
+license = "CC0 1.0 Universal license"
+
+[node name="GASLabel5" type="Label" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=650068520]
+layout_mode = 2
+text = "Fonts"
+label_settings = SubResource("LabelSettings_a4qr7")
+horizontal_alignment = 1
+script = ExtResource("3_xn5jr")
+metadata/_custom_type_script = "uid://hafxp56l0iao"
+
+[node name="Fonts" type="GridContainer" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1403365908]
+layout_mode = 2
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 64
+columns = 3
+
+[node name="CreditsItem" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Fonts" unique_id=1396043463 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Celtica Book"
+title_source = "https://fontlibrary.org/en/font/celtica"
+author = "Wojciech Kalinowski"
+license = "SIL Open Font License"
+
+[node name="Title" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Fonts/CreditsItem" index="0" unique_id=2092783902]
+text = "\"Celtica Book\""
+
+[node name="Author" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Fonts/CreditsItem/HBoxContainer" parent_id_path=PackedInt32Array(1396043463, 1923085623) index="1" unique_id=1747246967]
+modulate = Color(1, 1, 1, 1)
+text = "Wojciech Kalinowski"
+
+[node name="License" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Fonts/CreditsItem" index="3" unique_id=1719631733]
+text = "SIL Open Font License"
+
+[node name="CreditsItem2" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Fonts" unique_id=1921280952 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Gothica Book"
+title_source = "https://fontlibrary.org/en/font/gothica"
+author = "Wojciech Kalinowski"
+license = "SIL Open Font License"
+
+[node name="Title" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Fonts/CreditsItem2" index="0" unique_id=2092783902]
+text = "\"Gothica Book\""
+
+[node name="Author" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Fonts/CreditsItem2/HBoxContainer" parent_id_path=PackedInt32Array(1921280952, 1923085623) index="1" unique_id=1747246967]
+modulate = Color(1, 1, 1, 1)
+text = "Wojciech Kalinowski"
+
+[node name="License" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Fonts/CreditsItem2" index="3" unique_id=1719631733]
+text = "SIL Open Font License"
+
+[node name="CreditsItem3" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Fonts" unique_id=705750819 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "HappySalvaje"
+title_source = "https://pixel-salvaje.itch.io/free-font-happysalvaje"
+author = "Pixel_Salvaje"
+author_source = "https://pixel-salvaje.itch.io/"
+license = "OFL"
+
+[node name="Title" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Fonts/CreditsItem3" index="0" unique_id=2092783902]
+text = "\"HappySalvaje\""
+
+[node name="Author" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Fonts/CreditsItem3/HBoxContainer" parent_id_path=PackedInt32Array(705750819, 1923085623) index="1" unique_id=1747246967]
+text = "Pixel_Salvaje"
+
+[node name="GASLabel3" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Fonts/CreditsItem3" index="2" unique_id=1522127840]
+text = ""
+
+[node name="License" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Fonts/CreditsItem3" index="3" unique_id=1719631733]
+visible = false
+text = "OFL"
+
+[node name="GASLabel6" type="Label" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=596556571]
+layout_mode = 2
+text = "Godot Engine Plugins"
+label_settings = SubResource("LabelSettings_a4qr7")
+horizontal_alignment = 1
+script = ExtResource("3_xn5jr")
+metadata/_custom_type_script = "uid://hafxp56l0iao"
+
+[node name="Plugins" type="GridContainer" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1517743345]
+layout_mode = 2
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 64
+columns = 2
+
+[node name="CreditsItem" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Plugins" unique_id=953945710 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Godot Advanced State Machine (First Person Controller)"
+title_source = "https://github.com/Jeh3no/Godot-Advanced-State-Machine-First-Person-Controller"
+author = "Jeheno"
+author_source = "https://github.com/Jeh3no"
+license = "MIT license"
+
+[node name="CreditsItem2" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Plugins" unique_id=1649014767 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "VisionCone3D"
+title_source = "https://github.com/Tattomoosa/VisionCone3D"
+author = "Matt O'Tousa"
+author_source = "https://github.com/Tattomoosa"
+license = "MIT license"
+
+[node name="CreditsItem3" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Plugins" unique_id=1394821220 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Safe Resource Picker Editor Plugin"
+title_source = "https://github.com/HauntedBees/safe-resource-picker"
+author = "Haunted Bees Productions"
+author_source = "https://www.hauntedbees.com/"
+license = "MIT license"
+
+[node name="CreditsItem4" parent="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Plugins" unique_id=968799778 instance=ExtResource("4_a4qr7")]
+layout_mode = 2
+title = "Godot Accessibility Suite"
+title_source = "https://github.com/HauntedBees/Godot-Accessibility-Suite/"
+author = "Haunted Bees Productions"
+author_source = "https://www.hauntedbees.com/"
+license = "MIT license"
+
+[node name="CancelButton" type="TextureButton" parent="Foreground/VBoxContainer" unique_id=522947607 groups=["trigger_nav_cursor"]]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_default_cursor_shape = 2
+texture_normal = SubResource("AtlasTexture_rhbnc")
+texture_hover = SubResource("AtlasTexture_eeolf")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Foreground/VBoxContainer/CancelButton" unique_id=505750822]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Foreground/VBoxContainer/CancelButton/MarginContainer" unique_id=742377820]
+layout_mode = 2
+alignment = 1
+
+[node name="InputImage" parent="Foreground/VBoxContainer/CancelButton/MarginContainer/HBoxContainer" unique_id=1161082248 instance=ExtResource("3_8f2xa")]
+layout_mode = 2
+texture = SubResource("AtlasTexture_xn5jr")
+action_name = &"menu_confirm"
+
+[node name="GASLabel" type="Label" parent="Foreground/VBoxContainer/CancelButton/MarginContainer/HBoxContainer" unique_id=1178663598]
+layout_mode = 2
+text = "Back"
+label_settings = ExtResource("6_wbovt")
+horizontal_alignment = 1
+script = ExtResource("3_xn5jr")
+metadata/_custom_type_script = "uid://hafxp56l0iao"
+
+[connection signal="pressed" from="Foreground/VBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
+
+[editable path="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Graphics/CreditsItem8"]
+[editable path="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Fonts/CreditsItem"]
+[editable path="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Fonts/CreditsItem2"]
+[editable path="Foreground/VBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Fonts/CreditsItem3"]
